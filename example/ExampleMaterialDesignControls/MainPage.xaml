@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:ExampleMaterialDesignControls"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="ExampleMaterialDesignControls.MainPage">
+    <ContentPage.Resources>
+        <Style x:Key="MaterialEntryStyle" TargetType="material:MaterialEntry">
+            <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
+            <Setter Property="ClearIcon" Value="cancel.png" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="16" Spacing="16" VerticalOptions="CenterAndExpand">
+            <Label Text="MaterialEntry" HorizontalOptions="Center" />
+            <material:MaterialEntry Style="{StaticResource MaterialEntryStyle}" LabelText="Name" Placeholder="Enter your name" />
+            <material:MaterialEntry x:Name="emailField" Style="{StaticResource MaterialEntryStyle}" LabelText="Email" Placeholder="Enter your email"
+                                    LeadingIcon="email.png" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
