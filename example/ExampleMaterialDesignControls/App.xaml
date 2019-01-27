@@ -25,33 +25,7 @@
             <Setter Property="SelectedTextColor" Value="{StaticResource White}" />
         </Style>
             
-        <Style x:Key="MaterialEntryStyle" TargetType="material:MaterialEntry">
-            <Setter Property="LabelFontSize" Value="{StaticResource smallLabelFontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource DarkBlue}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource Red}" />
-            <Setter Property="TextColor" Value="{StaticResource DarkBlue}" />
-            <Setter Property="FontSize" Value="{StaticResource titleLabelFontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource White}" />
-            <Setter Property="BorderColor" Value="{StaticResource Gray}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource Red}" />
-            <Setter Property="AssistiveTextColor" Value="{StaticResource Red}" />
-            <Setter Property="AssistiveFontSize" Value="{StaticResource smallLabelFontSize}" />
-            <Setter Property="PlaceholderColor" Value="{StaticResource Gray}" />
-            <Setter Property="ClearIcon" Value="cancel.png" />
-        </Style>
-            
-        <Style x:Key="MaterialDatePickerStyle" TargetType="material:MaterialDatePicker">
-            <Setter Property="LabelFontSize" Value="{StaticResource smallLabelFontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource DarkBlue}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource Red}" />
-            <Setter Property="TextColor" Value="{StaticResource DarkBlue}" />
-            <Setter Property="FontSize" Value="{StaticResource titleLabelFontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource White}" />
-            <Setter Property="BorderColor" Value="{StaticResource Gray}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource Red}" />
-            <Setter Property="AssistiveTextColor" Value="{StaticResource Red}" />
-            <Setter Property="AssistiveFontSize" Value="{StaticResource smallLabelFontSize}" />
-        </Style>
+        
             
         <Style x:Key="MaterialSelectionStyle" TargetType="material:MaterialSelection">
             <Setter Property="LabelFontSize" Value="{StaticResource smallLabelFontSize}" />
@@ -82,19 +56,6 @@
             <Setter Property="FontSize" Value="{StaticResource titleLabelFontSize}" />
             <Setter Property="BorderColor" Value="{StaticResource Blue}" />
             <Setter Property="DisabledBorderColor" Value="{StaticResource Gray}" />
-        </Style>
-            
-        <Style x:Key="MaterialPickerStyle" TargetType="material:MaterialPicker">
-            <Setter Property="LabelFontSize" Value="{StaticResource smallLabelFontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource DarkBlue}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource Red}" />
-            <Setter Property="TextColor" Value="{StaticResource DarkBlue}" />
-            <Setter Property="FontSize" Value="{StaticResource titleLabelFontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource White}" />
-            <Setter Property="BorderColor" Value="{StaticResource Gray}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource Red}" />
-            <Setter Property="AssistiveTextColor" Value="{StaticResource Red}" />
-            <Setter Property="AssistiveFontSize" Value="{StaticResource smallLabelFontSize}" />
         </Style>-->
         
     </Application.Resources>

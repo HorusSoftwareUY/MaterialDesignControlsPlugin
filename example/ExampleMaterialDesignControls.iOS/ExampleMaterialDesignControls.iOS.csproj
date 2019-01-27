@@ -168,5 +168,6 @@
   <ItemGroup>
     <BundleResource Include="Resources\cancel.png" />
     <BundleResource Include="Resources\email.png" />
+    <BundleResource Include="Resources\arrow_drop_down.png" />
   </ItemGroup>
 </Project>

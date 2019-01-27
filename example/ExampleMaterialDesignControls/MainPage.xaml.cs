@@ -8,30 +8,23 @@ using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : MasterDetailPage
     {
         public MainPage()
         {
             InitializeComponent();
 
-            this.emailField.TextChanged += EmailField_TextChanged;
+            masterPage.ListView.ItemSelected += OnItemSelected;
         }
 
-        private void EmailField_TextChanged(object sender, EventArgs e)
+        void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            this.emailField.AssistiveText = this.IsValid(this.emailField.Text) ? string.Empty : "The Email Address is in an invalid format.";
-        }
-
-        private bool IsValid(string emailaddress)
-        {
-            try
+            var item = e.SelectedItem as MasterPageItem;
+            if (item != null)
             {
-                MailAddress m = new MailAddress(emailaddress);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
+                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+                masterPage.ListView.SelectedItem = null;
+                IsPresented = false;
             }
         }
     }

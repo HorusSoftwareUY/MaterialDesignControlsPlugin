@@ -237,12 +237,16 @@ namespace Plugin.MaterialDesignControls
             this.pckDate.MaximumDate = this.MaximumDate;
             this.pckDate.TextColor = this.TextColor;
             this.pckDate.FontSize = this.FontSize;
+            this.pckDate.Format = this.Format;
+
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;
             this.lblLabel.FontSize = this.LabelFontSize;
+
             this.frmContainer.BackgroundColor = this.BackgroundColor;
             this.frmContainer.Padding = this.Padding;
             this.frmContainer.BorderColor = this.BorderColor;
+
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
             this.lblAssistive.FontSize = this.AssistiveFontSize;

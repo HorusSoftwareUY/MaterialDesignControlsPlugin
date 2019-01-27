@@ -1,10 +1,11 @@
 ﻿using System;
+using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Renderers;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(Entry), typeof(MaterialEntryRenderer))]
+[assembly: ExportRenderer(typeof(CustomEntry), typeof(MaterialEntryRenderer))]
 
 namespace Plugin.MaterialDesignControls.Renderers
 {

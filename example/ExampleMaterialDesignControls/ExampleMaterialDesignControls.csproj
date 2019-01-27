@@ -15,4 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialPickerPage"
+             Title="MaterialPicker">
+    <ContentPage.Resources>
+        <Style TargetType="material:MaterialPicker">
+            <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="16" Spacing="16">
+            <material:MaterialPicker x:Name="pckColors" LabelText="Color" TrailingIcon="arrow_drop_down.png" />
+            <material:MaterialPicker x:Name="pckSizes" LabelText="Size" TrailingIcon="arrow_drop_down.png" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

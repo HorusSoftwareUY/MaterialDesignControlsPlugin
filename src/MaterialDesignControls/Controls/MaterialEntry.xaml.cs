@@ -52,6 +52,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(IsEnabledProperty, value); }
         }
 
+        public static readonly BindableProperty IsPasswordProperty =
+            BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false, propertyChanged: OnPropertyChanged);
+
+        public bool IsPassword
+        {
+            get { return (bool)GetValue(IsPasswordProperty); }
+            set { SetValue(IsPasswordProperty, value); }
+        }
+
         public static readonly BindableProperty LabelTextProperty =
             BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
 
@@ -262,12 +271,16 @@ namespace Plugin.MaterialDesignControls
             this.txtEntry.FontSize = this.FontSize;
             this.txtEntry.Placeholder = this.Placeholder;
             this.txtEntry.PlaceholderColor = this.PlaceholderColor;
+            this.txtEntry.IsPassword = this.IsPassword;
+
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;
             this.lblLabel.FontSize = this.LabelFontSize;
+
             this.frmContainer.BackgroundColor = this.BackgroundColor;
             this.frmContainer.Padding = this.Padding;
             this.frmContainer.BorderColor = this.BorderColor;
+
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
             this.lblAssistive.FontSize = this.AssistiveFontSize;

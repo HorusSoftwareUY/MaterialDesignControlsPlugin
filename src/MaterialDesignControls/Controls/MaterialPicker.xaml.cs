@@ -253,12 +253,15 @@ namespace Plugin.MaterialDesignControls
             this.pckOptions.IsEnabled = this.IsEnabled;
             this.pckOptions.TextColor = this.TextColor;
             this.pckOptions.FontSize = this.FontSize;
+
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;
             this.lblLabel.FontSize = this.LabelFontSize;
+
             this.frmContainer.BackgroundColor = this.BackgroundColor;
             this.frmContainer.Padding = this.Padding;
             this.frmContainer.BorderColor = this.BorderColor;
+
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
             this.lblAssistive.FontSize = this.AssistiveFontSize;
