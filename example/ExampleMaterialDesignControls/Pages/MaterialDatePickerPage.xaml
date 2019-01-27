@@ -21,7 +21,7 @@
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
             <material:MaterialDatePicker LabelText="Start date" Format="yyyy-MM-dd" TrailingIcon="arrow_drop_down.png" />
-            <material:MaterialDatePicker LabelText="End date" Format="yyyy-MM-dd" TrailingIcon="arrow_drop_down.png" />
+            <material:MaterialDatePicker LabelText="End date" Format="dd/MM/yyyy" TrailingIcon="arrow_drop_down.png" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

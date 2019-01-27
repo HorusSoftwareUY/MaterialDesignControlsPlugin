@@ -25,7 +25,7 @@ namespace ExampleMaterialDesignControls.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
-            Plugin.MaterialDesignControls.iOS.Renderers.Init();
+            Plugin.MaterialDesignControls.iOS.Renderer.Init();
 
             LoadApplication(new App());
 

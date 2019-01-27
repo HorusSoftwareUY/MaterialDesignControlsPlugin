@@ -20,7 +20,7 @@ namespace ExampleMaterialDesignControls.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            Plugin.MaterialDesignControls.Android.Renderers.Init();
+            Plugin.MaterialDesignControls.Android.Renderer.Init();
 
             LoadApplication(new App());
         }

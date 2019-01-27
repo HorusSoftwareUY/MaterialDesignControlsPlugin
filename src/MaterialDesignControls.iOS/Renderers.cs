@@ -4,7 +4,7 @@ using Plugin.MaterialDesignControls.Renderers;
 
 namespace Plugin.MaterialDesignControls.iOS
 {
-    public static class Renderers
+    public static class Renderer
     {
         public static void Init()
         {

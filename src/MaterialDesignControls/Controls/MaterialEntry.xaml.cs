@@ -286,7 +286,7 @@ namespace Plugin.MaterialDesignControls
             this.lblAssistive.FontSize = this.AssistiveFontSize;
 
             this.imgClearIcon.Source = this.ClearIcon;
-            this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled;
+            this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled && !string.IsNullOrEmpty(this.Text);
 
             this.imgLeadingIcon.Source = this.LeadingIcon;
             this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
