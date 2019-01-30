@@ -11,9 +11,12 @@
             <ListView x:Name="listView" x:FieldModifier="public" SeparatorColor="Transparent">
                <ListView.ItemsSource>
                     <x:Array Type="{x:Type root:MasterPageItem}">
+                        <root:MasterPageItem Title="MaterialButton" TargetType="{x:Type pages:MaterialButtonPage}" />
+                        <root:MasterPageItem Title="MaterialChips" TargetType="{x:Type pages:MaterialChipsPage}" />
                         <root:MasterPageItem Title="MaterialEntry" TargetType="{x:Type pages:MaterialEntryPage}" />
                         <root:MasterPageItem Title="MaterialDatePicker" TargetType="{x:Type pages:MaterialDatePickerPage}" />
                         <root:MasterPageItem Title="MaterialPicker" TargetType="{x:Type pages:MaterialPickerPage}" />
+                        <root:MasterPageItem Title="MaterialSelection" TargetType="{x:Type pages:MaterialSelectionPage}" />
                     </x:Array>
                 </ListView.ItemsSource>
                 <ListView.ItemTemplate>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialButtonPage"
+             Title="MaterialButton">
+    <ContentPage.Resources>
+        <Style x:Key="PrimaryMaterialButton" TargetType="material:MaterialButton">
+            <Setter Property="TextColor" Value="#ffffff" />
+            <Setter Property="DisabledTextColor" Value="#ffffff" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BackgroundColor" Value="#4c6277" />
+            <Setter Property="DisabledBackgroundColor" Value="#c6c6c5" />
+            <Setter Property="BorderColor" Value="#4c6277" />
+            <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
+        </Style>
+            
+        <Style x:Key="SecondaryMaterialButton" TargetType="material:MaterialButton">
+            <Setter Property="TextColor" Value="#4c6277" />
+            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BorderColor" Value="#4c6277" />
+            <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
+        </Style>
+        
+        <Style x:Key="DestructiveMaterialButton" TargetType="material:MaterialButton">
+            <Setter Property="TextColor" Value="#c92726" />
+            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="16" Spacing="16">
+            <material:MaterialButton Style="{StaticResource PrimaryMaterialButton}" Type="Filled" Text="Save" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
+            <material:MaterialButton Style="{StaticResource SecondaryMaterialButton}" Type="Outlined" Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
+            <material:MaterialButton Style="{StaticResource DestructiveMaterialButton}" Type="Text" Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
+            
+            <material:MaterialButton Style="{StaticResource PrimaryMaterialButton}" Type="Filled" IsEnabled="false" Text="Save" Icon="save.png" DisabledIcon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
+            <material:MaterialButton Style="{StaticResource SecondaryMaterialButton}" Type="Outlined" IsEnabled="false" Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
+            <material:MaterialButton Style="{StaticResource DestructiveMaterialButton}" Type="Text" IsEnabled="false" Text="Delete" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

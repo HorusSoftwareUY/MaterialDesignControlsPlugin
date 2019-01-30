@@ -24,6 +24,15 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
+        public static readonly BindableProperty TypeProperty =
+            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialEntry), defaultValue: FieldTypes.Filled, propertyChanged: OnPropertyChanged);
+
+        public FieldTypes Type
+        {
+            get { return (FieldTypes)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
+
         public static readonly new BindableProperty PaddingProperty =
             BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialDatePicker), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
 
@@ -243,9 +252,28 @@ namespace Plugin.MaterialDesignControls
             this.lblLabel.TextColor = this.LabelTextColor;
             this.lblLabel.FontSize = this.LabelFontSize;
 
-            this.frmContainer.BackgroundColor = this.BackgroundColor;
             this.frmContainer.Padding = this.Padding;
-            this.frmContainer.BorderColor = this.BorderColor;
+            switch (this.Type)
+            {
+                case FieldTypes.Filled:
+                    this.frmContainer.BackgroundColor = this.BackgroundColor;
+                    this.frmContainer.BorderColor = this.BorderColor;
+                    this.frmContainer.CornerRadius = 20;
+                    this.bxvLine.IsVisible = false;
+                    break;
+                case FieldTypes.Outlined:
+                    this.frmContainer.BackgroundColor = this.BackgroundColor;
+                    this.frmContainer.BorderColor = this.BorderColor;
+                    this.frmContainer.CornerRadius = 4;
+                    this.bxvLine.IsVisible = false;
+                    break;
+                case FieldTypes.Lined:
+                    this.frmContainer.BackgroundColor = Color.Transparent;
+                    this.frmContainer.BorderColor = Color.Transparent;
+                    this.bxvLine.IsVisible = true;
+                    this.bxvLine.Color = this.BorderColor;
+                    break;
+            }
 
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
@@ -261,13 +289,33 @@ namespace Plugin.MaterialDesignControls
         private void Handle_Focused(object sender, FocusEventArgs e)
         {
             this.lblLabel.TextColor = this.FocusedLabelTextColor;
-            this.frmContainer.BorderColor = this.FocusedBorderColor;
+
+            switch (this.Type)
+            {
+                case FieldTypes.Filled:
+                case FieldTypes.Outlined:
+                    this.frmContainer.BorderColor = this.FocusedBorderColor;
+                    break;
+                case FieldTypes.Lined:
+                    this.bxvLine.Color = this.FocusedBorderColor;
+                    break;
+            }
         }
 
         private void Handle_Unfocused(object sender, FocusEventArgs e)
         {
             this.lblLabel.TextColor = this.LabelTextColor;
-            this.frmContainer.BorderColor = this.BorderColor;
+
+            switch (this.Type)
+            {
+                case FieldTypes.Filled:
+                case FieldTypes.Outlined:
+                    this.frmContainer.BorderColor = this.BorderColor;
+                    break;
+                case FieldTypes.Lined:
+                    this.bxvLine.Color = this.BorderColor;
+                    break;
+            }
         }
 
         #endregion Methods

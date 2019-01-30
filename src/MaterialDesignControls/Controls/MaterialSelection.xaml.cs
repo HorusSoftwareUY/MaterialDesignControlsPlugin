@@ -22,6 +22,15 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
+        public static readonly BindableProperty TypeProperty =
+            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialEntry), defaultValue: FieldTypes.Filled, propertyChanged: OnPropertyChanged);
+
+        public FieldTypes Type
+        {
+            get { return (FieldTypes)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
+
         public static readonly BindableProperty CommandProperty =
             BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialSelection), defaultValue: null, propertyChanged: OnCommandChanged);
 
@@ -102,15 +111,6 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (Color)GetValue(LabelTextColorProperty); }
             set { SetValue(LabelTextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
-
-        public Color FocusedLabelTextColor
-        {
-            get { return (Color)GetValue(FocusedLabelTextColorProperty); }
-            set { SetValue(FocusedLabelTextColorProperty, value); }
         }
 
         public static readonly BindableProperty TextColorProperty =
@@ -260,9 +260,36 @@ namespace Plugin.MaterialDesignControls
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;
             this.lblLabel.FontSize = this.LabelFontSize;
-            this.frmContainer.BackgroundColor = this.BackgroundColor;
+
+            if (string.IsNullOrEmpty(this.Text))
+            {
+                this.lblText.Text = this.Placeholder;
+                this.lblText.TextColor = this.PlaceholderColor;
+            }
+
             this.frmContainer.Padding = this.Padding;
-            this.frmContainer.BorderColor = this.BorderColor;
+            switch (this.Type)
+            {
+                case FieldTypes.Filled:
+                    this.frmContainer.BackgroundColor = this.BackgroundColor;
+                    this.frmContainer.BorderColor = this.BorderColor;
+                    this.frmContainer.CornerRadius = 20;
+                    this.bxvLine.IsVisible = false;
+                    break;
+                case FieldTypes.Outlined:
+                    this.frmContainer.BackgroundColor = this.BackgroundColor;
+                    this.frmContainer.BorderColor = this.BorderColor;
+                    this.frmContainer.CornerRadius = 4;
+                    this.bxvLine.IsVisible = false;
+                    break;
+                case FieldTypes.Lined:
+                    this.frmContainer.BackgroundColor = Color.Transparent;
+                    this.frmContainer.BorderColor = Color.Transparent;
+                    this.bxvLine.IsVisible = true;
+                    this.bxvLine.Color = this.BorderColor;
+                    break;
+            }
+
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
             this.lblAssistive.FontSize = this.AssistiveFontSize;

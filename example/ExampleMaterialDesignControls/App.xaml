@@ -4,7 +4,6 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.App">
     <Application.Resources>
-        
         <x:Double x:Key="LabelFontSize">12</x:Double>
         <x:Double x:Key="FontSize">16</x:Double>
         <x:Double x:Key="AssistiveFontSize">11</x:Double>
@@ -17,46 +16,5 @@
         <Color x:Key="FocusedBorderColor">#c92726</Color>
         <Color x:Key="AssistiveTextColor">#c92726</Color>
         <Color x:Key="PlaceholderColor">#c6c6c5</Color>
-        
-        <!--<Style x:Key="MaterialChipsStyle" TargetType="material:MaterialChips">
-            <Setter Property="FontSize" Value="{StaticResource smallLabelFontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource Gray}" />
-            <Setter Property="TextColor" Value="{StaticResource Black}" />
-            <Setter Property="SelectedTextColor" Value="{StaticResource White}" />
-        </Style>
-            
-        
-            
-        <Style x:Key="MaterialSelectionStyle" TargetType="material:MaterialSelection">
-            <Setter Property="LabelFontSize" Value="{StaticResource smallLabelFontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource DarkBlue}" />
-            <Setter Property="TextColor" Value="{StaticResource DarkBlue}" />
-            <Setter Property="FontSize" Value="{StaticResource titleLabelFontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource White}" />
-            <Setter Property="BorderColor" Value="{StaticResource Gray}" />
-            <Setter Property="AssistiveTextColor" Value="{StaticResource Red}" />
-            <Setter Property="AssistiveFontSize" Value="{StaticResource smallLabelFontSize}" />
-            <Setter Property="PlaceholderColor" Value="{StaticResource Gray}" />
-            <Setter Property="TrailingIcon" Value="chevron_right.png" />
-        </Style>
-            
-        <Style x:Key="MaterialContainedButtonStyle" TargetType="material:MaterialButton">
-            <Setter Property="TextColor" Value="{StaticResource White}" />
-            <Setter Property="DisabledTextColor" Value="{StaticResource White}" />
-            <Setter Property="FontSize" Value="{StaticResource titleLabelFontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource Blue}" />
-            <Setter Property="DisabledBackgroundColor" Value="{StaticResource Gray}" />
-            <Setter Property="BorderColor" Value="{StaticResource Blue}" />
-            <Setter Property="DisabledBorderColor" Value="{StaticResource Gray}" />
-        </Style>
-            
-        <Style x:Key="MaterialOutlinedButtonStyle" TargetType="material:MaterialButton">
-            <Setter Property="TextColor" Value="{StaticResource Blue}" />
-            <Setter Property="DisabledTextColor" Value="{StaticResource Gray}" />
-            <Setter Property="FontSize" Value="{StaticResource titleLabelFontSize}" />
-            <Setter Property="BorderColor" Value="{StaticResource Blue}" />
-            <Setter Property="DisabledBorderColor" Value="{StaticResource Gray}" />
-        </Style>-->
-        
     </Application.Resources>
 </Application>

@@ -22,6 +22,15 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
+        public static readonly BindableProperty TypeProperty =
+            BindableProperty.Create(nameof(Type), typeof(ButtonTypes), typeof(MaterialEntry), defaultValue: ButtonTypes.Filled, propertyChanged: OnPropertyChanged);
+
+        public ButtonTypes Type
+        {
+            get { return (ButtonTypes)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
+
         public static readonly BindableProperty CommandProperty =
             BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialButton), defaultValue: null, propertyChanged: OnCommandChanged);
 
@@ -153,6 +162,15 @@ namespace Plugin.MaterialDesignControls
             get { return !string.IsNullOrEmpty(this.Icon); }
         }
 
+        public static readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialChips), defaultValue: 4.0, propertyChanged: OnPropertyChanged);
+
+        public double CornerRadius
+        {
+            get { return (double)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -184,9 +202,25 @@ namespace Plugin.MaterialDesignControls
             this.lblText.Text = this.Text;
             this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
             this.lblText.FontSize = this.FontSize;
-            this.frmContainer.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
+
             this.frmContainer.Padding = this.Padding;
-            this.frmContainer.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
+            this.frmContainer.CornerRadius = (float)this.CornerRadius;
+
+            switch (this.Type)
+            {
+                case ButtonTypes.Filled:
+                    this.frmContainer.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
+                    this.frmContainer.BorderColor = Color.Transparent;
+                    break;
+                case ButtonTypes.Outlined:
+                    this.frmContainer.BackgroundColor = Color.Transparent;
+                    this.frmContainer.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
+                    break;
+                case ButtonTypes.Text:
+                    this.frmContainer.BackgroundColor = Color.Transparent;
+                    this.frmContainer.BorderColor = Color.Transparent;
+                    break;
+            }
 
             this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
             this.imgIcon.IsVisible = this.IconIsVisible;

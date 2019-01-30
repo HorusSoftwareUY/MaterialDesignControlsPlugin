@@ -16,12 +16,14 @@
             <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
+            <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
-            <material:MaterialDatePicker LabelText="Start date" Format="yyyy-MM-dd" TrailingIcon="arrow_drop_down.png" />
-            <material:MaterialDatePicker LabelText="End date" Format="dd/MM/yyyy" TrailingIcon="arrow_drop_down.png" />
+            <material:MaterialDatePicker Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" />
+            <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />
+            <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

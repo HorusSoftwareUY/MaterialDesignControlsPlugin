@@ -101,6 +101,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(SelectedTextColorProperty, value); }
         }
 
+        public static readonly BindableProperty DisabledTextColorProperty =
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+
+        public Color DisabledTextColor
+        {
+            get { return (Color)GetValue(DisabledTextColorProperty); }
+            set { SetValue(DisabledTextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledSelectedTextColorProperty =
+            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.White, propertyChanged: OnPropertyChanged);
+
+        public Color DisabledSelectedTextColor
+        {
+            get { return (Color)GetValue(DisabledSelectedTextColorProperty); }
+            set { SetValue(DisabledSelectedTextColorProperty, value); }
+        }
+
         public static readonly new BindableProperty BackgroundColorProperty =
             BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
 
@@ -119,6 +137,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(SelectedBackgroundColorProperty, value); }
         }
 
+        public static readonly BindableProperty DisabledBackgroundColorProperty =
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.White, propertyChanged: OnPropertyChanged);
+
+        public Color DisabledBackgroundColor
+        {
+            get { return (Color)GetValue(DisabledBackgroundColorProperty); }
+            set { SetValue(DisabledBackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledSelectedBackgroundColorProperty =
+            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+
+        public Color DisabledSelectedBackgroundColor
+        {
+            get { return (Color)GetValue(DisabledSelectedBackgroundColorProperty); }
+            set { SetValue(DisabledSelectedBackgroundColorProperty, value); }
+        }
+
         public static readonly BindableProperty FontSizeProperty = 
             BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialChips), defaultValue: 14.0, propertyChanged: OnFontSizeChanged);
 
@@ -126,6 +162,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (double)GetValue(FontSizeProperty); }
             set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialChips), defaultValue: 16.0, propertyChanged: OnPropertyChanged);
+
+        public double CornerRadius
+        {
+            get { return (double)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
         }
 
         #endregion Properties
@@ -158,15 +203,33 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyControlProperties()
         {
-            if (this.IsSelected)
+            this.frmContainer.CornerRadius = (float)this.CornerRadius;
+
+            if (this.IsEnabled)
             {
-                this.lblText.TextColor = this.SelectedTextColor;
-                this.frmContainer.BackgroundColor = this.SelectedBackgroundColor;
+                if (this.IsSelected)
+                {
+                    this.lblText.TextColor = this.SelectedTextColor;
+                    this.frmContainer.BackgroundColor = this.SelectedBackgroundColor;
+                }
+                else
+                {
+                    this.lblText.TextColor = this.TextColor;
+                    this.frmContainer.BackgroundColor = this.BackgroundColor;
+                }
             }
             else
             {
-                this.lblText.TextColor = this.TextColor;
-                this.frmContainer.BackgroundColor = this.BackgroundColor;
+                if (this.IsSelected)
+                {
+                    this.lblText.TextColor = this.DisabledSelectedTextColor;
+                    this.frmContainer.BackgroundColor = this.DisabledSelectedBackgroundColor;
+                }
+                else
+                {
+                    this.lblText.TextColor = this.DisabledTextColor;
+                    this.frmContainer.BackgroundColor = this.DisabledBackgroundColor;
+                }
             }
         }
 

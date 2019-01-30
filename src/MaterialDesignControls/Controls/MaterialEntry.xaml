@@ -5,8 +5,8 @@
              x:Class="Plugin.MaterialDesignControls.MaterialEntry">
     <ContentView.Content>
         <StackLayout Spacing="2">
-            <Label x:Name="lblLabel" Margin="14,0" />
-            <Frame x:Name="frmContainer" HasShadow="false" CornerRadius="4" HeightRequest="40" Padding="12,0" HorizontalOptions="FillAndExpand">
+            <Label x:Name="lblLabel" Margin="14,0,14,2" />
+            <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0" HorizontalOptions="FillAndExpand">
                 <StackLayout Orientation="Horizontal" Spacing="12" VerticalOptions="Center">
                     <Image x:Name="imgLeadingIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                     <controls:CustomEntry x:Name="txtEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
@@ -14,7 +14,8 @@
                     <Image x:Name="imgClearIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                 </StackLayout>
             </Frame>
-            <Label x:Name="lblAssistive" Margin="14,0" />
+            <BoxView x:Name="bxvLine" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+            <Label x:Name="lblAssistive" Margin="14,2,14,0" />
         </StackLayout>
     </ContentView.Content>
 </ContentView>

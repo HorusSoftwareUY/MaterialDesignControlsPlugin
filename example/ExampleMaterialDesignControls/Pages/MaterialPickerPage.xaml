@@ -16,12 +16,14 @@
             <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
+            <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
-            <material:MaterialPicker x:Name="pckColors" LabelText="Color" TrailingIcon="arrow_drop_down.png" />
-            <material:MaterialPicker x:Name="pckSizes" LabelText="Size" TrailingIcon="arrow_drop_down.png" />
+            <material:MaterialPicker x:Name="pckColors" Type="Filled" LabelText="Color" />
+            <material:MaterialPicker x:Name="pckSizes" Type="Outlined" LabelText="Size" />
+            <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

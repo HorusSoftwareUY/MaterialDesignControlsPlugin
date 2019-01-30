@@ -25,7 +25,7 @@
     <key>CFBundleDisplayName</key>
     <string>ExampleMaterialDesignControls</string>
     <key>CFBundleIdentifier</key>
-    <string>com.materialdesigncontrols.example.MaterialDesignControls</string>
+    <string>com.horus.examplematerialdesigncontrols</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>UILaunchStoryboardName</key>

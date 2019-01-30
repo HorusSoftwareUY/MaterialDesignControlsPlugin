@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryPage"
-             Title="MaterialEntry">
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
+             Title="MaterialSelection">
     <ContentPage.Resources>
-        <Style TargetType="material:MaterialEntry">
+        <Style TargetType="material:MaterialSelection">
             <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
             <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             <Setter Property="FontSize" Value="{StaticResource FontSize}" />
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
             <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
-            <Setter Property="ClearIcon" Value="cancel.png" />
+            <Setter Property="TrailingIcon" Value="chevron_right.png" />
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
-            <material:MaterialEntry Type="Filled" LabelText="Name" Placeholder="Enter your name" />
-            <material:MaterialEntry x:Name="emailField" Type="Outlined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" />
-            <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" />
-            <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" />
+            <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="User A" Command="{Binding TapCommand}" CommandParameter="User selection" />
+            <material:MaterialSelection Type="Outlined" LabelText="Product" Placeholder="Select product" Command="{Binding TapCommand}" CommandParameter="Product selection" />
+            <material:MaterialSelection Type="Lined" LabelText="Model" Placeholder="Select model" Command="{Binding TapCommand}" CommandParameter="Model selection" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
