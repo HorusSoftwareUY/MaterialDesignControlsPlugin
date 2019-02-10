@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
+using System.Text.RegularExpressions;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
-    public partial class MaterialEntry : ContentView
+    public partial class MaterialEntry : ContentView, IFieldControl
     {
         #region Constructors
 
@@ -24,11 +23,29 @@ namespace Plugin.MaterialDesignControls
                 this.txtEntry.Text = string.Empty;
             };
             this.imgClearIcon.GestureRecognizers.Add(clearTapGestureRecognizer);
+
+            TapGestureRecognizer showPasswordTapGestureRecognizer = new TapGestureRecognizer();
+            showPasswordTapGestureRecognizer.Tapped += async (s, e) =>
+            {
+                if (this.passwordIsVisible)
+                {
+                    this.txtEntry.IsPassword = true;
+                    this.passwordIsVisible = false;
+                }
+                else
+                {
+                    this.txtEntry.IsPassword = false;
+                    this.passwordIsVisible = true;
+                }
+            };
+            this.imgShowPasswordIcon.GestureRecognizers.Add(showPasswordTapGestureRecognizer);
         }
 
         #endregion Constructors
 
         #region Attributes
+
+        private bool passwordIsVisible = false;
 
         #endregion Attributes
 
@@ -232,6 +249,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ClearIconIsVisibleProperty, value); }
         }
 
+        public static readonly BindableProperty ShowPasswordIconProperty =
+            BindableProperty.Create(nameof(ShowPasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+
+        public string ShowPasswordIcon
+        {
+            get { return (string)GetValue(ShowPasswordIconProperty); }
+            set { SetValue(ShowPasswordIconProperty, value); }
+        }
+
+        public static readonly BindableProperty ShowPasswordIconIsVisibleProperty =
+            BindableProperty.Create(nameof(ShowPasswordIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true, propertyChanged: OnPropertyChanged);
+
+        public bool ShowPasswordIconIsVisible
+        {
+            get { return (bool)GetValue(ShowPasswordIconIsVisibleProperty); }
+            set { SetValue(ShowPasswordIconIsVisibleProperty, value); }
+        }
+
         public static readonly BindableProperty LeadingIconProperty =
             BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
 
@@ -260,6 +295,51 @@ namespace Plugin.MaterialDesignControls
             get { return !string.IsNullOrEmpty(this.TrailingIcon); }
         }
 
+        public static readonly BindableProperty RegexValidationProperty =
+            BindableProperty.Create(nameof(RegexValidation), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+
+        public string RegexValidation
+        {
+            get { return (string)GetValue(RegexValidationProperty); }
+            set { SetValue(RegexValidationProperty, value); }
+        }
+
+        public static readonly BindableProperty InvalidMessageProperty =
+            BindableProperty.Create(nameof(InvalidMessage), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+
+        public string InvalidMessage
+        {
+            get { return (string)GetValue(InvalidMessageProperty); }
+            set { SetValue(InvalidMessageProperty, value); }
+        }
+
+        public static readonly BindableProperty IsRequiredProperty =
+            BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialEntry), defaultValue: false, propertyChanged: OnPropertyChanged);
+
+        public bool IsRequired
+        {
+            get { return (bool)GetValue(IsRequiredProperty); }
+            set { SetValue(IsRequiredProperty, value); }
+        }
+
+        public static readonly BindableProperty IsValidProperty =
+            BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialEntry), defaultValue: true, defaultBindingMode: BindingMode.OneWayToSource);
+
+        public bool IsValid
+        {
+            get { return (bool)GetValue(IsValidProperty); }
+            set { SetValue(IsValidProperty, value); }
+        }
+
+        public static readonly BindableProperty FieldNameProperty =
+            BindableProperty.Create(nameof(FieldName), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnFieldNameChanged);
+
+        public string FieldName
+        {
+            get { return (string)GetValue(FieldNameProperty); }
+            set { SetValue(FieldNameProperty, value); }
+        }
+
         #endregion Properties
 
         #region Events
@@ -274,6 +354,12 @@ namespace Plugin.MaterialDesignControls
         {
             var control = (MaterialEntry)bindable;
             control.txtEntry.Text = (string)newValue;
+        }
+
+        private static void OnFieldNameChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialEntry)bindable;
+            FieldsValidator.RegisterControl(control);
         }
 
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -316,12 +402,31 @@ namespace Plugin.MaterialDesignControls
                     this.frmContainer.BorderColor = Color.Transparent;
                     this.bxvLine.IsVisible = true;
                     this.bxvLine.Color = this.BorderColor;
+
+                    if (this.LeadingIconIsVisible)
+                    {
+                        this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top, 
+                                                            this.lblLabel.Margin.Right, this.lblLabel.Margin.Bottom);
+                        this.frmContainer.Padding = new Thickness(0);
+                        this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top, 
+                                                            this.lblAssistive.Margin.Right, this.lblAssistive.Margin.Bottom);
+                        this.bxvLine.Margin = new Thickness(36, 0, 0, 0);
+                    }
+                    else
+                    {
+                        this.lblLabel.Margin = new Thickness(0, this.lblLabel.Margin.Top, 0, this.lblLabel.Margin.Bottom);
+                        this.frmContainer.Padding = new Thickness(0);
+                        this.lblAssistive.Margin = new Thickness(0, this.lblAssistive.Margin.Top, 0, this.lblAssistive.Margin.Bottom);
+                    }
                     break;
             }
 
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
             this.lblAssistive.FontSize = this.AssistiveFontSize;
+
+            this.imgShowPasswordIcon.Source = this.ShowPasswordIcon;
+            this.imgShowPasswordIcon.IsVisible = this.IsPassword && this.ShowPasswordIconIsVisible && !string.IsNullOrEmpty(this.ShowPasswordIcon);
 
             this.imgClearIcon.Source = this.ClearIcon;
             this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled && !string.IsNullOrEmpty(this.Text);
@@ -331,6 +436,11 @@ namespace Plugin.MaterialDesignControls
 
             this.imgTrailingIcon.Source = this.TrailingIcon;
             this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
+
+            if (!string.IsNullOrEmpty(this.RegexValidation) || this.IsRequired)
+            {
+                this.IsValid = false;
+            }
         }
 
         private void Handle_Focused(object sender, FocusEventArgs e)
@@ -374,7 +484,36 @@ namespace Plugin.MaterialDesignControls
 
             this.Text = this.txtEntry.Text;
 
+            this.Validate();
+
             this.TextChanged?.Invoke(this, e);
+        }
+
+        public bool Validate()
+        {
+            if (!string.IsNullOrEmpty(this.RegexValidation) || this.IsRequired)
+            {
+                if (this.Text != null)
+                {
+                    if (this.IsRequired)
+                    {
+                        this.AssistiveText = string.IsNullOrWhiteSpace(this.Text) ? this.InvalidMessage : string.Empty;
+                        this.IsValid = !string.IsNullOrWhiteSpace(this.Text);
+                    }
+                    else
+                    {
+                        var match = Regex.Match(this.Text, this.RegexValidation, RegexOptions.IgnoreCase);
+                        this.AssistiveText = !match.Success ? this.InvalidMessage : string.Empty;
+                        this.IsValid = match.Success;
+                    }
+                }
+                else
+                {
+                    this.AssistiveText = this.InvalidMessage;
+                    this.IsValid = false;
+                }
+            }
+            return this.IsValid;
         }
 
         #endregion Methods

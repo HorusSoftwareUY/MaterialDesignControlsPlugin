@@ -11,6 +11,7 @@
                     <Image x:Name="imgLeadingIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                     <controls:CustomEntry x:Name="txtEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
                     <Image x:Name="imgTrailingIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+                    <Image x:Name="imgShowPasswordIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                     <Image x:Name="imgClearIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                 </StackLayout>
             </Frame>

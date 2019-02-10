@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
-    public partial class MaterialPicker : ContentView
+    public partial class MaterialPicker : ContentView, IFieldControl
     {
         #region Constructors
 
@@ -208,6 +208,42 @@ namespace Plugin.MaterialDesignControls
             get { return !string.IsNullOrEmpty(this.TrailingIcon); }
         }
 
+        public static readonly BindableProperty InvalidMessageProperty =
+            BindableProperty.Create(nameof(InvalidMessage), typeof(string), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnPropertyChanged);
+
+        public string InvalidMessage
+        {
+            get { return (string)GetValue(InvalidMessageProperty); }
+            set { SetValue(InvalidMessageProperty, value); }
+        }
+
+        public static readonly BindableProperty IsRequiredProperty =
+            BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialPicker), defaultValue: false, propertyChanged: OnPropertyChanged);
+
+        public bool IsRequired
+        {
+            get { return (bool)GetValue(IsRequiredProperty); }
+            set { SetValue(IsRequiredProperty, value); }
+        }
+
+        public static readonly BindableProperty IsValidProperty =
+            BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialPicker), defaultValue: true, defaultBindingMode: BindingMode.OneWayToSource);
+
+        public bool IsValid
+        {
+            get { return (bool)GetValue(IsValidProperty); }
+            set { SetValue(IsValidProperty, value); }
+        }
+
+        public static readonly BindableProperty FieldNameProperty =
+            BindableProperty.Create(nameof(FieldName), typeof(string), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnFieldNameChanged);
+
+        public string FieldName
+        {
+            get { return (string)GetValue(FieldNameProperty); }
+            set { SetValue(FieldNameProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -216,6 +252,12 @@ namespace Plugin.MaterialDesignControls
         {
             var control = (MaterialPicker)bindable;
             control.pckOptions.SelectedItem = (string)newValue;
+        }
+
+        private static void OnFieldNameChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialPicker)bindable;
+            FieldsValidator.RegisterControl(control);
         }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
@@ -287,6 +329,22 @@ namespace Plugin.MaterialDesignControls
                     this.frmContainer.BorderColor = Color.Transparent;
                     this.bxvLine.IsVisible = true;
                     this.bxvLine.Color = this.BorderColor;
+
+                    if (this.LeadingIconIsVisible)
+                    {
+                        this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top,
+                                                            this.lblLabel.Margin.Right, this.lblLabel.Margin.Bottom);
+                        this.frmContainer.Padding = new Thickness(0);
+                        this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top,
+                                                            this.lblAssistive.Margin.Right, this.lblAssistive.Margin.Bottom);
+                        this.bxvLine.Margin = new Thickness(36, 0, 0, 0);
+                    }
+                    else
+                    {
+                        this.lblLabel.Margin = new Thickness(0, this.lblLabel.Margin.Top, 0, this.lblLabel.Margin.Bottom);
+                        this.frmContainer.Padding = new Thickness(0);
+                        this.lblAssistive.Margin = new Thickness(0, this.lblAssistive.Margin.Top, 0, this.lblAssistive.Margin.Bottom);
+                    }
                     break;
             }
 
@@ -299,6 +357,11 @@ namespace Plugin.MaterialDesignControls
 
             this.imgTrailingIcon.Source = this.TrailingIcon;
             this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible && this.IsEnabled;
+
+            if (this.IsRequired)
+            {
+                this.IsValid = false;
+            }
         }
 
         private void Handle_Focused(object sender, FocusEventArgs e)
@@ -348,6 +411,18 @@ namespace Plugin.MaterialDesignControls
                     index++;
                 }
             }
+
+            this.Validate();
+        }
+
+        public bool Validate()
+        {
+            if (this.IsRequired)
+            {
+                this.AssistiveText = this.SelectedItem == null ? this.InvalidMessage : string.Empty;
+                this.IsValid = this.SelectedItem != null;
+            }
+            return this.IsValid;
         }
 
         #endregion Methods

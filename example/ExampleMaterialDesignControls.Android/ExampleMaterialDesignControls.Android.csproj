@@ -89,6 +89,7 @@
     <AndroidResource Include="Resources\drawable\color.png" />
     <AndroidResource Include="Resources\drawable\delete.png" />
     <AndroidResource Include="Resources\drawable\save.png" />
+    <AndroidResource Include="Resources\drawable\showPassword.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

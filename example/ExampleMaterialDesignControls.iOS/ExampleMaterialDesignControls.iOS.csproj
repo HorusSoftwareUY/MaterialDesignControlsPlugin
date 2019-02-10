@@ -173,5 +173,6 @@
     <BundleResource Include="Resources\color.png" />
     <BundleResource Include="Resources\delete.png" />
     <BundleResource Include="Resources\save.png" />
+    <BundleResource Include="Resources\showPassword.png" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Mail;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
@@ -11,24 +12,26 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            this.emailField.TextChanged += EmailField_TextChanged;
+            this.TapCommand = new Command<string>(OnTap);
+
+            this.BindingContext = this;
+
+            Plugin.MaterialDesignControls.FieldsValidator.Initialize(this);
         }
 
-        private void EmailField_TextChanged(object sender, EventArgs e)
-        {
-            this.emailField.AssistiveText = this.IsValid(this.emailField.Text) ? string.Empty : "The Email Address is in an invalid format.";
-        }
+        public ICommand TapCommand { get; set; }
 
-        private bool IsValid(string emailaddress)
+        public async void OnTap(object parameter)
         {
-            try
+            bool isValid = Plugin.MaterialDesignControls.FieldsValidator.Validate();
+
+            if (isValid)
             {
-                MailAddress m = new MailAddress(emailaddress);
-                return true;
+                await this.DisplayAlert("", "Saved", "Ok");
             }
-            catch (Exception ex)
+            else
             {
-                return false;
+                await this.DisplayAlert("", "The form has invalid fields", "Ok");
             }
         }
     }

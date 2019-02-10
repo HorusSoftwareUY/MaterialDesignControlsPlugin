@@ -75,6 +75,8 @@
     <Compile Include="Implementations\CustomPicker.cs" />
     <Compile Include="FieldTypes.cs" />
     <Compile Include="ButtonTypes.cs" />
+    <Compile Include="FieldsValidator.cs" />
+    <Compile Include="IFieldControl.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

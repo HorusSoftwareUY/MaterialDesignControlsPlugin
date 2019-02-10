@@ -287,6 +287,22 @@ namespace Plugin.MaterialDesignControls
                     this.frmContainer.BorderColor = Color.Transparent;
                     this.bxvLine.IsVisible = true;
                     this.bxvLine.Color = this.BorderColor;
+
+                    if (this.LeadingIconIsVisible)
+                    {
+                        this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top,
+                                                            this.lblLabel.Margin.Right, this.lblLabel.Margin.Bottom);
+                        this.frmContainer.Padding = new Thickness(0);
+                        this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top,
+                                                            this.lblAssistive.Margin.Right, this.lblAssistive.Margin.Bottom);
+                        this.bxvLine.Margin = new Thickness(36, 0, 0, 0);
+                    }
+                    else
+                    {
+                        this.lblLabel.Margin = new Thickness(0, this.lblLabel.Margin.Top, 0, this.lblLabel.Margin.Bottom);
+                        this.frmContainer.Padding = new Thickness(0);
+                        this.lblAssistive.Margin = new Thickness(0, this.lblAssistive.Margin.Top, 0, this.lblAssistive.Margin.Bottom);
+                    }
                     break;
             }
 
