@@ -5,11 +5,11 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
-    public partial class MaterialButton : ContentView
+    public partial class MaterialOutlineButton : ContentView
     {
         #region Constructors
 
-        public MaterialButton()
+        public MaterialOutlineButton()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace Plugin.MaterialDesignControls
         #region Properties
 
         public static readonly BindableProperty CommandProperty =
-            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialButton), defaultValue: null, propertyChanged: OnCommandChanged);
+            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialOutlineButton), defaultValue: null, propertyChanged: OnCommandChanged);
 
         public ICommand Command
         {
@@ -32,16 +32,16 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CommandParameterProperty =
-            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialButton), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialOutlineButton), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public object CommandParameter
         {
             get { return (object)GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
         }
-    
+
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialButton), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialOutlineButton), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
 
         public new Thickness Padding
         {
@@ -50,7 +50,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialButton), defaultValue: true, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialOutlineButton), defaultValue: true, propertyChanged: OnPropertyChanged);
 
         public new bool IsEnabled
         {
@@ -59,7 +59,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialButton), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialOutlineButton), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string Text
         {
@@ -68,7 +68,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Black, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialOutlineButton), defaultValue: Color.Black, propertyChanged: OnPropertyChanged);
 
         public Color TextColor
         {
@@ -77,7 +77,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialOutlineButton), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color DisabledTextColor
         {
@@ -85,26 +85,8 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledTextColorProperty, value); }
         }
 
-        public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Transparent, propertyChanged: OnPropertyChanged);
-
-        public new Color BackgroundColor
-        {
-            get { return (Color)GetValue(BackgroundColorProperty); }
-            set { SetValue(BackgroundColorProperty, value); }
-        }
-
-        public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Transparent, propertyChanged: OnPropertyChanged);
-
-        public Color DisabledBackgroundColor
-        {
-            get { return (Color)GetValue(DisabledBackgroundColorProperty); }
-            set { SetValue(DisabledBackgroundColorProperty, value); }
-        }
-
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialOutlineButton), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
 
         public double FontSize
         {
@@ -113,7 +95,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Transparent, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialOutlineButton), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
 
         public Color BorderColor
         {
@@ -122,7 +104,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledBorderColorProperty =
-            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Transparent, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialOutlineButton), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
 
         public Color DisabledBorderColor
         {
@@ -131,7 +113,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty IconProperty =
-            BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialButton), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialOutlineButton), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string Icon
         {
@@ -140,7 +122,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledIconProperty =
-            BindableProperty.Create(nameof(DisabledIcon), typeof(string), typeof(MaterialButton), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledIcon), typeof(string), typeof(MaterialOutlineButton), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string DisabledIcon
         {
@@ -154,7 +136,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialButton), defaultValue: 4.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialOutlineButton), defaultValue: 4.0, propertyChanged: OnPropertyChanged);
 
         public double CornerRadius
         {
@@ -168,7 +150,7 @@ namespace Plugin.MaterialDesignControls
 
         private static void OnCommandChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialButton)bindable;
+            var control = (MaterialOutlineButton)bindable;
 
             TapGestureRecognizer selectionTapGestureRecognizer = new TapGestureRecognizer();
             selectionTapGestureRecognizer.Tapped += async (s, e) =>
@@ -184,7 +166,7 @@ namespace Plugin.MaterialDesignControls
 
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialButton)bindable;
+            var control = (MaterialOutlineButton)bindable;
             control.ApplyControlProperties();
         }
 
@@ -197,7 +179,6 @@ namespace Plugin.MaterialDesignControls
             this.frmContainer.Padding = this.Padding;
             this.frmContainer.CornerRadius = (float)this.CornerRadius;
 
-            this.frmContainer.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
             this.frmContainer.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
 
             this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;

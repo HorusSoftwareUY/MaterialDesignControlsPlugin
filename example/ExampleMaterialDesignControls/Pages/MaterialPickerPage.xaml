@@ -25,7 +25,7 @@
                                      IsRequired="true" InvalidMessage="The color is required" />
             <material:MaterialPicker x:Name="pckSizes" Type="Outlined" LabelText="Size" />
             <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" />
-            <material:MaterialButton Type="Filled" Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
+            <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

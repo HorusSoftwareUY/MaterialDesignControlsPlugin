@@ -18,6 +18,7 @@
             <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
             <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
             <Setter Property="ClearIcon" Value="cancel.png" />
+            <Setter Property="ShowPasswordIcon" Value="showPassword.png" />
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -26,12 +27,12 @@
                                     IsRequired="true" InvalidMessage="The name is required" />
             <material:MaterialEntry FieldName="Mail" Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" 
                                     RegexValidation="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" InvalidMessage="The Email Address is in an invalid format" />
-            <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" ShowPasswordIcon="showPassword.png" />
+            <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" />
             <material:MaterialEntry Type="Outlined" LabelText="Confirm Password" Placeholder="Enter your password" IsPassword="true" />
             <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" />
             <material:MaterialEntry FieldName="ZipCode" Type="Outlined" LabelText="ZIP code" Placeholder="Enter your ZIP code" Keyboard="Numeric" 
                                     RegexValidation="^[0-9]{5}(?:-[0-9]{4})?$" InvalidMessage="The zip code must have a 5-digit format" />
-            <material:MaterialButton Type="Filled" Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
+            <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
