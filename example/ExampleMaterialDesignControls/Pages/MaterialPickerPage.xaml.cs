@@ -18,15 +18,13 @@ namespace ExampleMaterialDesignControls.Pages
             this.TapCommand = new Command<string>(OnTap);
 
             this.BindingContext = this;
-
-            Plugin.MaterialDesignControls.FieldsValidator.Initialize(this);
         }
 
         public ICommand TapCommand { get; set; }
 
         public async void OnTap(object parameter)
         {
-            bool isValid = Plugin.MaterialDesignControls.FieldsValidator.Validate();
+            bool isValid = Plugin.MaterialDesignControls.FieldsValidator.Validate(this);
 
             if (isValid)
             {

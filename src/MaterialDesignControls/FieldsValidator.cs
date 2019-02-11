@@ -20,7 +20,7 @@ namespace Plugin.MaterialDesignControls
             FieldControls.Add(new FieldControl { PageId = null, Control = control });
         }
 
-        public static void Initialize(object page)
+        private static void Initialize(object page)
         {
             if (FieldControls != null)
             {
@@ -50,8 +50,10 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-        public static bool Validate()
+        public static bool Validate(object page)
         {
+            Initialize(page);
+
             var result = true;
             if (FieldControls != null)
             {
@@ -67,8 +69,10 @@ namespace Plugin.MaterialDesignControls
             return result;
         }
 
-        public static Dictionary<string, string> GetInvalidFields()
+        public static Dictionary<string, string> GetInvalidFields(object page)
         {
+            Initialize(page);
+
             var result = new Dictionary<string, string>();
             if (FieldControls != null)
             {
