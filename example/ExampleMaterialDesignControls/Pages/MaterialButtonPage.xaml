@@ -4,31 +4,6 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialButtonPage"
              Title="MaterialButton">
-    <ContentPage.Resources>
-        <Style TargetType="material:MaterialButton">
-            <Setter Property="TextColor" Value="#ffffff" />
-            <Setter Property="DisabledTextColor" Value="#ffffff" />
-            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
-            <Setter Property="BackgroundColor" Value="#4c6277" />
-            <Setter Property="DisabledBackgroundColor" Value="#c6c6c5" />
-            <Setter Property="BorderColor" Value="#4c6277" />
-            <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
-        </Style>
-            
-        <Style TargetType="material:MaterialOutlineButton">
-            <Setter Property="TextColor" Value="#4c6277" />
-            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
-            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
-            <Setter Property="BorderColor" Value="#4c6277" />
-            <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
-        </Style>
-        
-        <Style TargetType="material:MaterialFlatButton">
-            <Setter Property="TextColor" Value="#c92726" />
-            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
-            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
-        </Style>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
             <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />

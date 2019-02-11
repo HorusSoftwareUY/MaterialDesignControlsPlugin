@@ -11,12 +11,18 @@ namespace Plugin.MaterialDesignControls
 
         public MaterialSelection()
         {
-            InitializeComponent();
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
         }
 
         #endregion Constructors
 
         #region Attributes
+
+        private bool initialized = false;
 
         #endregion Attributes
 
@@ -256,6 +262,12 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyControlProperties()
         {
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
+
             this.lblText.FontSize = this.FontSize;
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;

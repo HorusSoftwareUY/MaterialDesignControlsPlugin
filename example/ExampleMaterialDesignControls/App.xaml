@@ -16,5 +16,109 @@
         <Color x:Key="FocusedBorderColor">#c92726</Color>
         <Color x:Key="AssistiveTextColor">#c92726</Color>
         <Color x:Key="PlaceholderColor">#c6c6c5</Color>
+        
+        <!-- MaterialButton -->
+        <Style TargetType="material:MaterialButton">
+            <Setter Property="TextColor" Value="#ffffff" />
+            <Setter Property="DisabledTextColor" Value="#ffffff" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BackgroundColor" Value="#4c6277" />
+            <Setter Property="DisabledBackgroundColor" Value="#c6c6c5" />
+            <Setter Property="BorderColor" Value="#4c6277" />
+            <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
+        </Style>
+            
+        <!-- MaterialOutlineButton -->
+        <Style TargetType="material:MaterialOutlineButton">
+            <Setter Property="TextColor" Value="#4c6277" />
+            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BorderColor" Value="#4c6277" />
+            <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
+        </Style>
+        
+        <!-- MaterialFlatButton -->
+        <Style TargetType="material:MaterialFlatButton">
+            <Setter Property="TextColor" Value="#c92726" />
+            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+        </Style>
+        
+        <!-- MaterialChips -->
+        <Style TargetType="material:MaterialChips">
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Padding" Value="12,0" />
+            <Setter Property="BackgroundColor" Value="#ffffff" />
+            <Setter Property="TextColor" Value="#4c6277" />
+            <Setter Property="SelectedBackgroundColor" Value="#4c6277" />
+            <Setter Property="SelectedTextColor" Value="#ffffff" />
+            <Setter Property="DisabledBackgroundColor" Value="#ffffff" />
+            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
+            <Setter Property="DisabledSelectedBackgroundColor" Value="#c6c6c5" />
+            <Setter Property="DisabledSelectedTextColor" Value="#ffffff" />
+        </Style>
+        
+        <!-- MaterialDatePicker -->
+        <Style TargetType="material:MaterialDatePicker">
+            <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
+            <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
+        </Style>
+        
+        <!-- MaterialEntry -->
+        <Style TargetType="material:MaterialEntry">
+            <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
+            <Setter Property="ClearIcon" Value="cancel.png" />
+            <Setter Property="ShowPasswordIcon" Value="showPassword.png" />
+        </Style>
+        
+        <!-- MaterialEntry -->
+        <Style TargetType="material:MaterialPicker">
+            <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
+            <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
+        </Style>
+        
+        <!-- MaterialSelection -->
+        <Style TargetType="material:MaterialSelection">
+            <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
+            <Setter Property="TrailingIcon" Value="chevron_right.png" />
+        </Style>
+        
     </Application.Resources>
 </Application>

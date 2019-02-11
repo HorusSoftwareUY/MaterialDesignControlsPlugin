@@ -10,7 +10,11 @@ namespace Plugin.MaterialDesignControls
 
         public MaterialDatePicker()
         {
-            InitializeComponent();
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
 
             this.pckDate.Focused += Handle_Focused;
             this.pckDate.Unfocused += Handle_Unfocused;
@@ -19,6 +23,8 @@ namespace Plugin.MaterialDesignControls
         #endregion Constructors
 
         #region Attributes
+
+        private bool initialized = false;
 
         #endregion Attributes
 
@@ -241,6 +247,12 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyControlProperties()
         {
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
+
             this.pckDate.IsEnabled = this.IsEnabled;
             this.pckDate.MinimumDate = this.MinimumDate;
             this.pckDate.MaximumDate = this.MaximumDate;

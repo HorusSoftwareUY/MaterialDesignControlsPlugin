@@ -4,21 +4,6 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialDatePickerPage"
              Title="MaterialDatePicker">
-    <ContentPage.Resources>
-        <Style TargetType="material:MaterialDatePicker">
-            <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
-            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
-            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
-            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
-            <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
-        </Style>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
             <material:MaterialDatePicker Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" />

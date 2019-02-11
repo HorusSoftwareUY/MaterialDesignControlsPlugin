@@ -4,23 +4,6 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryPage"
              Title="MaterialEntry">
-    <ContentPage.Resources>
-        <Style TargetType="material:MaterialEntry">
-            <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
-            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
-            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
-            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
-            <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
-            <Setter Property="ClearIcon" Value="cancel.png" />
-            <Setter Property="ShowPasswordIcon" Value="showPassword.png" />
-        </Style>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
             <material:MaterialEntry FieldName="Name" Type="Filled" LabelText="Name" Placeholder="Enter your name"

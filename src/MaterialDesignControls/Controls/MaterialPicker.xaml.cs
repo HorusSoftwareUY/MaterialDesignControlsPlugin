@@ -12,7 +12,11 @@ namespace Plugin.MaterialDesignControls
 
         public MaterialPicker()
         {
-            InitializeComponent();
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
 
             this.pckOptions.Focused += Handle_Focused;
             this.pckOptions.Unfocused += Handle_Unfocused;
@@ -22,6 +26,8 @@ namespace Plugin.MaterialDesignControls
         #endregion Constructors
 
         #region Attributes
+
+        private bool initialized = false;
 
         #endregion Attributes
 
@@ -301,6 +307,12 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyControlProperties()
         {
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
+
             this.pckOptions.IsEnabled = this.IsEnabled;
             this.pckOptions.TextColor = this.TextColor;
             this.pckOptions.FontSize = this.FontSize;

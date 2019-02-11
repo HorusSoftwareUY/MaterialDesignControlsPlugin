@@ -4,21 +4,6 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialChipsPage"
              Title="MaterialChips">
-    <ContentPage.Resources>
-        <Style TargetType="material:MaterialChips">
-            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
-            <Setter Property="CornerRadius" Value="16" />
-            <Setter Property="Padding" Value="12,0" />
-            <Setter Property="BackgroundColor" Value="#ffffff" />
-            <Setter Property="TextColor" Value="#4c6277" />
-            <Setter Property="SelectedBackgroundColor" Value="#4c6277" />
-            <Setter Property="SelectedTextColor" Value="#ffffff" />
-            <Setter Property="DisabledBackgroundColor" Value="#ffffff" />
-            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
-            <Setter Property="DisabledSelectedBackgroundColor" Value="#c6c6c5" />
-            <Setter Property="DisabledSelectedTextColor" Value="#ffffff" />
-        </Style>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
             <Grid RowSpacing="16">

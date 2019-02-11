@@ -11,7 +11,11 @@ namespace Plugin.MaterialDesignControls
 
         public MaterialChips()
         {
-            InitializeComponent();
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
 
             TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += async (s, e) =>
@@ -33,6 +37,8 @@ namespace Plugin.MaterialDesignControls
         #endregion Constructors
 
         #region Attributes
+
+        private bool initialized = false;
 
         #endregion Attributes
 
@@ -66,7 +72,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChips), defaultValue: new Thickness(12, 0), propertyChanged: OnPaddingChanged);
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChips), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
 
         public new Thickness Padding
         {
@@ -75,7 +81,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialChips), defaultValue: null, propertyChanged: OnTextChanged);
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialChips), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string Text
         {
@@ -156,7 +162,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontSizeProperty = 
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialChips), defaultValue: 14.0, propertyChanged: OnFontSizeChanged);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialChips), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
 
         public double FontSize
         {
@@ -177,24 +183,6 @@ namespace Plugin.MaterialDesignControls
 
         #region Methods
 
-        private static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialChips)bindable;
-            control.lblText.Text = (string)newValue;
-        }
-
-        private static void OnPaddingChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialChips)bindable;
-            control.frmContainer.Padding = (Thickness)newValue;
-        }
-
-        private static void OnFontSizeChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialChips)bindable;
-            control.lblText.FontSize = (double)newValue;
-        }
-
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialChips)bindable;
@@ -203,6 +191,16 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyControlProperties()
         {
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
+
+            this.lblText.Text = this.Text;
+            this.lblText.FontSize = this.FontSize;
+
+            this.frmContainer.Padding = this.Padding;
             this.frmContainer.CornerRadius = (float)this.CornerRadius;
 
             if (this.IsEnabled)

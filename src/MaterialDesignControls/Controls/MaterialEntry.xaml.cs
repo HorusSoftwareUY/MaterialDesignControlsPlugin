@@ -10,7 +10,11 @@ namespace Plugin.MaterialDesignControls
 
         public MaterialEntry()
         {
-            InitializeComponent();
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
 
             this.txtEntry.Focused += Handle_Focused;
             this.txtEntry.Unfocused += Handle_Unfocused;
@@ -44,6 +48,8 @@ namespace Plugin.MaterialDesignControls
         #endregion Constructors
 
         #region Attributes
+
+        private bool initialized = false;
 
         private bool passwordIsVisible = false;
 
@@ -370,6 +376,12 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyControlProperties()
         {
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
+
             this.txtEntry.IsEnabled = this.IsEnabled;
             this.txtEntry.TextColor = this.TextColor;
             this.txtEntry.FontSize = this.FontSize;

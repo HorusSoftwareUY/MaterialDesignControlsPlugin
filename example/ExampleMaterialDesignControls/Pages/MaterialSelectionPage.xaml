@@ -4,20 +4,6 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
              Title="MaterialSelection">
-    <ContentPage.Resources>
-        <Style TargetType="material:MaterialSelection">
-            <Setter Property="LabelFontSize" Value="{StaticResource LabelFontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
-            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
-            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
-            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveFontSize" Value="{StaticResource AssistiveFontSize}" />
-            <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
-            <Setter Property="TrailingIcon" Value="chevron_right.png" />
-        </Style>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
             <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="User A" Command="{Binding TapCommand}" CommandParameter="User selection" />

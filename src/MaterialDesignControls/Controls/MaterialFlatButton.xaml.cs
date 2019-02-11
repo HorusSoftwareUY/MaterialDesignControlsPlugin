@@ -11,12 +11,18 @@ namespace Plugin.MaterialDesignControls
 
         public MaterialFlatButton()
         {
-            InitializeComponent();
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
         }
 
         #endregion Constructors
 
         #region Attributes
+
+        private bool initialized = false;
 
         #endregion Attributes
 
@@ -145,6 +151,12 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyControlProperties()
         {
+            if (!this.initialized)
+            {
+                this.InitializeComponent();
+                this.initialized = true;
+            }
+
             this.lblText.Text = this.Text;
             this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
             this.lblText.FontSize = this.FontSize;
