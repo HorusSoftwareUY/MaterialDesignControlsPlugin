@@ -67,7 +67,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DateProperty =
-            BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnDateChanged);
+            BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnDateChanged, defaultBindingMode: BindingMode.TwoWay);
 
         public DateTime Date
         {

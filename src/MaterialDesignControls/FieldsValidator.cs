@@ -11,59 +11,77 @@ namespace Plugin.MaterialDesignControls
         {
             public string PageId { get; set; }
             public IFieldControl Control { get; set; }
+
+            public string ControlId
+            {
+                get
+                {
+                    return $"{PageId}-{Control?.FieldName}";
+                }
+            }
         }
 
         private static List<FieldControl> FieldControls { get; set; } = new List<FieldControl>();
 
+        private static List<IFieldControl> RegisteredControls { get; set; } = new List<IFieldControl>();
+
         internal static void RegisterControl(IFieldControl control)
         {
-            FieldControls.Add(new FieldControl { PageId = null, Control = control });
+            if (RegisteredControls == null)
+            {
+                RegisteredControls = new List<IFieldControl>();
+            }
+
+            RegisteredControls.Add(control);
+
+            System.Diagnostics.Debug.WriteLine($"Plugin.MaterialDesignControls.FieldsValidator - RegisterControl - {control.FieldName}");
         }
 
-        private static void Initialize(object page)
+        public static void Initialize(object page)
         {
-            if (FieldControls != null)
+            if (FieldControls == null)
             {
-                var pageId = page.GetType().Name;
-
-                foreach (var control in FieldControls)
-                {
-                    if (control.PageId == null)
-                    {
-                        control.PageId = pageId;
-                    }
-                }
-
-                FieldControls.RemoveAll(x => !x.PageId.Equals(pageId));
-
-                var fieldControl = new List<FieldControl>();
-                for (int i = FieldControls.Count - 1; i >= 0; i--)
-                {
-                    var control = FieldControls[i];
-                    if (!fieldControl.Any(x => x.Control.FieldName.Equals(control.Control.FieldName)))
-                    {
-                        fieldControl.Add(control);
-                    }
-                }
-
-                FieldControls = fieldControl;
+                FieldControls = new List<FieldControl>();
             }
+
+            var pageId = page.GetType().Name;
+
+            if (RegisteredControls != null)
+            {
+                foreach (var control in RegisteredControls)
+                {
+                    var newControl = new FieldControl { PageId = pageId, Control = control };
+
+                    if (FieldControls.Any(x => x.ControlId.Equals(newControl.ControlId)))
+                    {
+                        FieldControls.RemoveAll(x => x.ControlId.Equals(newControl.ControlId));
+                    }
+
+                    FieldControls.Add(newControl);
+
+                    System.Diagnostics.Debug.WriteLine($"Plugin.MaterialDesignControls.FieldsValidator - Initialize - {newControl.ControlId}");
+                }
+            }
+
+            RegisteredControls = new List<IFieldControl>();
         }
 
         public static bool Validate(object page)
         {
-            Initialize(page);
+            var pageId = page.GetType().Name;
 
             var result = true;
             if (FieldControls != null)
             {
-                foreach (var control in FieldControls)
+                foreach (var control in FieldControls.Where(x => x.PageId.Equals(pageId)))
                 {
                     var controlIsValid = control.Control.Validate();
                     if (result)
                     {
                         result = controlIsValid;
                     }
+
+                    System.Diagnostics.Debug.WriteLine($"Plugin.MaterialDesignControls.FieldsValidator - Validate - {control.ControlId} - IsValid: {controlIsValid}");
                 }
             }
             return result;
@@ -71,21 +89,33 @@ namespace Plugin.MaterialDesignControls
 
         public static Dictionary<string, string> GetInvalidFields(object page)
         {
-            Initialize(page);
+            var pageId = page.GetType().Name;
 
             var result = new Dictionary<string, string>();
             if (FieldControls != null)
             {
-                foreach (var control in FieldControls)
+                foreach (var control in FieldControls.Where(x => x.PageId.Equals(pageId)))
                 {
                     var controlIsValid = control.Control.Validate();
                     if (!controlIsValid && !result.ContainsKey(control.Control.FieldName))
                     {
                         result.Add(control.Control.FieldName, control.Control.InvalidMessage);
                     }
+
+                    System.Diagnostics.Debug.WriteLine($"Plugin.MaterialDesignControls.FieldsValidator - Validate - {control.ControlId} - IsValid: {controlIsValid} - Message: {control.Control.InvalidMessage}");
                 }
             }
             return result;
+        }
+
+        public static void Dispose(object page)
+        {
+            var pageId = page.GetType().Name;
+
+            if (FieldControls != null)
+            {
+                FieldControls.RemoveAll(x => x.PageId.Equals(pageId));
+            }
         }
     }
 }

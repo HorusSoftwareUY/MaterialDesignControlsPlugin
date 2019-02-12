@@ -17,6 +17,13 @@ namespace ExampleMaterialDesignControls.Pages
             this.BindingContext = this;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Plugin.MaterialDesignControls.FieldsValidator.Initialize(this);
+        }
+
         public ICommand TapCommand { get; set; }
 
         public async void OnTap(object parameter)
