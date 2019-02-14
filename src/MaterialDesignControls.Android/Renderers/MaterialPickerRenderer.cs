@@ -6,9 +6,9 @@ using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(CustomPicker), typeof(Plugin.MaterialDesignControls.Android.Renderers.MaterialPickerRenderer))]
+[assembly: ExportRenderer(typeof(CustomPicker), typeof(Plugin.MaterialDesignControls.Android.MaterialPickerRenderer))]
 
-namespace Plugin.MaterialDesignControls.Android.Renderers
+namespace Plugin.MaterialDesignControls.Android
 {
     public class MaterialPickerRenderer : PickerRenderer
     {

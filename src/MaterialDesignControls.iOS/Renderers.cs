@@ -1,8 +1,4 @@
-﻿using System;
-using Plugin.MaterialDesignControls;
-using Plugin.MaterialDesignControls.Renderers;
-
-namespace Plugin.MaterialDesignControls.iOS
+﻿namespace Plugin.MaterialDesignControls.iOS
 {
     public static class Renderer
     {
@@ -11,6 +7,8 @@ namespace Plugin.MaterialDesignControls.iOS
             MaterialDatePickerRenderer.Init();
             MaterialEntryRenderer.Init();
             MaterialPickerRenderer.Init();
+            MaterialTimePickerRenderer.Init();
+            MaterialEditorRenderer.Init();
         }
     }
 }

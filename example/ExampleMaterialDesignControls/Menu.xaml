@@ -17,6 +17,8 @@
                         <root:MasterPageItem Title="MaterialDatePicker" TargetType="{x:Type pages:MaterialDatePickerPage}" />
                         <root:MasterPageItem Title="MaterialPicker" TargetType="{x:Type pages:MaterialPickerPage}" />
                         <root:MasterPageItem Title="MaterialSelection" TargetType="{x:Type pages:MaterialSelectionPage}" />
+                        <root:MasterPageItem Title="MaterialEditor" TargetType="{x:Type pages:MaterialEditorPage}" />
+                        <root:MasterPageItem Title="MaterialTimePicker" TargetType="{x:Type pages:MaterialTimePickerPage}" />
                     </x:Array>
                 </ListView.ItemsSource>
                 <ListView.ItemTemplate>

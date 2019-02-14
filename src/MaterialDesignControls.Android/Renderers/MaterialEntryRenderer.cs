@@ -6,9 +6,9 @@ using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(CustomEntry), typeof(Plugin.MaterialDesignControls.Android.Renderers.MaterialEntryRenderer))]
+[assembly: ExportRenderer(typeof(CustomEntry), typeof(Plugin.MaterialDesignControls.Android.MaterialEntryRenderer))]
 
-namespace Plugin.MaterialDesignControls.Android.Renderers
+namespace Plugin.MaterialDesignControls.Android
 {
     public class MaterialEntryRenderer : EntryRenderer
     {

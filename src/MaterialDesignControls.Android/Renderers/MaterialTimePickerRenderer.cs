@@ -6,18 +6,18 @@ using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(CustomDatePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialDatePickerRenderer))]
+[assembly: ExportRenderer(typeof(CustomTimePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialTimePickerRenderer))]
 
 namespace Plugin.MaterialDesignControls.Android
 {
-    public class MaterialDatePickerRenderer : DatePickerRenderer
+    public class MaterialTimePickerRenderer : TimePickerRenderer
     {
         public static void Init() { }
 
-        public MaterialDatePickerRenderer(Context context) : base(context)
+        public MaterialTimePickerRenderer(Context context) : base(context)
         { }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.DatePicker> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.TimePicker> e)
         {
             base.OnElementChanged(e);
             if (this.Control != null)

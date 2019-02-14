@@ -5,15 +5,15 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(CustomDatePicker), typeof(MaterialDatePickerRenderer))]
+[assembly: ExportRenderer(typeof(CustomTimePicker), typeof(MaterialTimePickerRenderer))]
 
 namespace Plugin.MaterialDesignControls.iOS
 {
-    public class MaterialDatePickerRenderer : DatePickerRenderer
+    public class MaterialTimePickerRenderer : TimePickerRenderer
     {
         public static void Init() { }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.DatePicker> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.TimePicker> e)
         {
             base.OnElementChanged(e);
             if (this.Control != null)

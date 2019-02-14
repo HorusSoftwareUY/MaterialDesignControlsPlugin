@@ -4,11 +4,11 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
-    public partial class MaterialDatePicker : ContentView
+    public partial class MaterialTimePicker : ContentView
     {
         #region Constructors
 
-        public MaterialDatePicker()
+        public MaterialTimePicker()
         {
             if (!this.initialized)
             {
@@ -16,8 +16,8 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
-            this.pckDate.Focused += Handle_Focused;
-            this.pckDate.Unfocused += Handle_Unfocused;
+            this.pckTime.Focused += Handle_Focused;
+            this.pckTime.Unfocused += Handle_Unfocused;
         }
 
         #endregion Constructors
@@ -31,7 +31,7 @@ namespace Plugin.MaterialDesignControls
         #region Properties
 
         public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialDatePicker), defaultValue: FieldTypes.Filled, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialTimePicker), defaultValue: FieldTypes.Filled, propertyChanged: OnPropertyChanged);
 
         public FieldTypes Type
         {
@@ -40,7 +40,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialDatePicker), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialTimePicker), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
 
         public new Thickness Padding
         {
@@ -49,7 +49,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDatePicker), defaultValue: true, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialTimePicker), defaultValue: true, propertyChanged: OnPropertyChanged);
 
         public new bool IsEnabled
         {
@@ -58,7 +58,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextProperty =
-            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialTimePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string LabelText
         {
@@ -66,35 +66,17 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LabelTextProperty, value); }
         }
 
-        public static readonly BindableProperty DateProperty =
-            BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnDateChanged, defaultBindingMode: BindingMode.TwoWay);
+        public static readonly BindableProperty TimeProperty =
+            BindableProperty.Create(nameof(Time), typeof(TimeSpan), typeof(MaterialTimePicker), defaultValue: null, propertyChanged: OnTimeChanged, defaultBindingMode: BindingMode.TwoWay);
 
-        public DateTime Date
+        public TimeSpan Time
         {
-            get { return (DateTime)GetValue(DateProperty); }
-            set { SetValue(DateProperty, value); }
-        }
-
-        public static readonly BindableProperty MinimumDateProperty =
-            BindableProperty.Create(nameof(MinimumDate), typeof(DateTime), typeof(MaterialDatePicker), defaultValue: DateTime.MinValue, propertyChanged: OnPropertyChanged);
-
-        public DateTime MinimumDate
-        {
-            get { return (DateTime)GetValue(MinimumDateProperty); }
-            set { SetValue(MinimumDateProperty, value); }
-        }
-
-        public static readonly BindableProperty MaximumDateProperty =
-            BindableProperty.Create(nameof(MaximumDate), typeof(DateTime), typeof(MaterialDatePicker), defaultValue: DateTime.MaxValue, propertyChanged: OnPropertyChanged);
-
-        public DateTime MaximumDate
-        {
-            get { return (DateTime)GetValue(MaximumDateProperty); }
-            set { SetValue(MaximumDateProperty, value); }
+            get { return (TimeSpan)GetValue(TimeProperty); }
+            set { SetValue(TimeProperty, value); }
         }
 
         public static readonly BindableProperty FormatProperty =
-            BindableProperty.Create(nameof(Format), typeof(string), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Format), typeof(string), typeof(MaterialTimePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string Format
         {
@@ -103,7 +85,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialTimePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string AssistiveText
         {
@@ -112,7 +94,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialTimePicker), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color LabelTextColor
         {
@@ -121,7 +103,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialTimePicker), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color FocusedLabelTextColor
         {
@@ -130,7 +112,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialTimePicker), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color TextColor
         {
@@ -139,7 +121,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialTimePicker), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color AssistiveTextColor
         {
@@ -148,7 +130,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialTimePicker), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
 
         public new Color BackgroundColor
         {
@@ -157,7 +139,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelFontSizeProperty =
-            BindableProperty.Create(nameof(LabelFontSize), typeof(double), typeof(MaterialDatePicker), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelFontSize), typeof(double), typeof(MaterialTimePicker), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
 
         public double LabelFontSize
         {
@@ -166,7 +148,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialDatePicker), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialTimePicker), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
 
         public double FontSize
         {
@@ -175,7 +157,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveFontSizeProperty =
-            BindableProperty.Create(nameof(AssistiveFontSize), typeof(double), typeof(MaterialDatePicker), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveFontSize), typeof(double), typeof(MaterialTimePicker), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
 
         public double AssistiveFontSize
         {
@@ -184,7 +166,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialTimePicker), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
 
         public Color BorderColor
         {
@@ -193,7 +175,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedBorderColorProperty =
-            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialTimePicker), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
 
         public Color FocusedBorderColor
         {
@@ -202,7 +184,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialTimePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string LeadingIcon
         {
@@ -216,7 +198,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialTimePicker), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string TrailingIcon
         {
@@ -233,15 +215,15 @@ namespace Plugin.MaterialDesignControls
 
         #region Methods
 
-        private static void OnDateChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void OnTimeChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialDatePicker)bindable;
-            control.pckDate.Date = (DateTime)newValue;
+            var control = (MaterialTimePicker)bindable;
+            control.pckTime.Time = (TimeSpan)newValue;
         }
 
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialDatePicker)bindable;
+            var control = (MaterialTimePicker)bindable;
             control.ApplyControlProperties();
         }
 
@@ -253,12 +235,10 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
-            this.pckDate.IsEnabled = this.IsEnabled;
-            this.pckDate.MinimumDate = this.MinimumDate;
-            this.pckDate.MaximumDate = this.MaximumDate;
-            this.pckDate.TextColor = this.TextColor;
-            this.pckDate.FontSize = this.FontSize;
-            this.pckDate.Format = this.Format;
+            this.pckTime.IsEnabled = this.IsEnabled;
+            this.pckTime.TextColor = this.TextColor;
+            this.pckTime.FontSize = this.FontSize;
+            this.pckTime.Format = this.Format;
 
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;

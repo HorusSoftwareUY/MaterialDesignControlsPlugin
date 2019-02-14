@@ -123,6 +123,8 @@
     <Compile Include="Renderers\MaterialDatePickerRenderer.cs" />
     <Compile Include="Renderers\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\MaterialPickerRenderer.cs" />
+    <Compile Include="Renderers\MaterialTimePickerRenderer.cs" />
+    <Compile Include="Renderers\MaterialEditorRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

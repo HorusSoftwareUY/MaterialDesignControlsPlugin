@@ -79,6 +79,14 @@
     <Compile Include="FieldTypes.cs" />
     <Compile Include="FieldsValidator.cs" />
     <Compile Include="IFieldControl.cs" />
+    <Compile Include="Controls\MaterialTimePicker.xaml.cs">
+      <DependentUpon>MaterialTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MaterialEditor.xaml.cs">
+      <DependentUpon>MaterialEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implementations\CustomTimePicker.cs" />
+    <Compile Include="Implementations\CustomEditor.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout Padding="16" Spacing="16">
             <material:MaterialEntry FieldName="Name" Type="Filled" LabelText="Name" Placeholder="Enter your name"
-                                    IsRequired="true" InvalidMessage="The name is required" />
+                                    IsRequired="true" InvalidMessage="The name is required" MaxLength="12" />
             <material:MaterialEntry FieldName="Mail" Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" 
                                     RegexValidation="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" InvalidMessage="The Email Address is in an invalid format" />
             <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" />

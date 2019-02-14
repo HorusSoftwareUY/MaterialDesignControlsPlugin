@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
-    public partial class MaterialEntry : ContentView, IFieldControl
+    public partial class MaterialEditor : ContentView, IFieldControl
     {
         #region Constructors
 
-        public MaterialEntry()
+        public MaterialEditor()
         {
             if (!this.initialized)
             {
@@ -16,33 +17,17 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
-            this.txtEntry.Focused += Handle_Focused;
-            this.txtEntry.Unfocused += Handle_Unfocused;
-            this.txtEntry.TextChanged += TxtEntry_TextChanged;
+            this.txtEditor.Focused += Handle_Focused;
+            this.txtEditor.Unfocused += Handle_Unfocused;
+            this.txtEditor.TextChanged += TxtEntry_TextChanged;
 
             TapGestureRecognizer clearTapGestureRecognizer = new TapGestureRecognizer();
             clearTapGestureRecognizer.Tapped += async (s, e) =>
             {
                 this.Text = string.Empty;
-                this.txtEntry.Text = string.Empty;
+                this.txtEditor.Text = string.Empty;
             };
             this.imgClearIcon.GestureRecognizers.Add(clearTapGestureRecognizer);
-
-            TapGestureRecognizer showPasswordTapGestureRecognizer = new TapGestureRecognizer();
-            showPasswordTapGestureRecognizer.Tapped += async (s, e) =>
-            {
-                if (this.passwordIsVisible)
-                {
-                    this.txtEntry.IsPassword = true;
-                    this.passwordIsVisible = false;
-                }
-                else
-                {
-                    this.txtEntry.IsPassword = false;
-                    this.passwordIsVisible = true;
-                }
-            };
-            this.imgShowPasswordIcon.GestureRecognizers.Add(showPasswordTapGestureRecognizer);
         }
 
         #endregion Constructors
@@ -51,14 +36,12 @@ namespace Plugin.MaterialDesignControls
 
         private bool initialized = false;
 
-        private bool passwordIsVisible = false;
-
         #endregion Attributes
 
         #region Properties
 
         public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialEntry), defaultValue: FieldTypes.Filled, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialEditor), defaultValue: FieldTypes.Filled, propertyChanged: OnPropertyChanged);
 
         public FieldTypes Type
         {
@@ -67,7 +50,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEntry), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEditor), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
 
         public new Thickness Padding
         {
@@ -76,7 +59,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialEntry), defaultValue: true, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialEditor), defaultValue: true, propertyChanged: OnPropertyChanged);
 
         public new bool IsEnabled
         {
@@ -84,17 +67,8 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(IsEnabledProperty, value); }
         }
 
-        public static readonly BindableProperty IsPasswordProperty =
-            BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false, propertyChanged: OnPropertyChanged);
-
-        public bool IsPassword
-        {
-            get { return (bool)GetValue(IsPasswordProperty); }
-            set { SetValue(IsPasswordProperty, value); }
-        }
-
         public static readonly BindableProperty KeyboardProperty =
-            BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(MaterialEntry), defaultValue: Keyboard.Text, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(MaterialEditor), defaultValue: Keyboard.Text, propertyChanged: OnPropertyChanged);
 
         public Keyboard Keyboard
         {
@@ -103,7 +77,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextProperty =
-            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string LabelText
         {
@@ -112,7 +86,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnTextChanged, defaultBindingMode: BindingMode.TwoWay);
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnTextChanged, defaultBindingMode: BindingMode.TwoWay);
 
         public string Text
         {
@@ -121,7 +95,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty PlaceholderProperty =
-            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string Placeholder
         {
@@ -130,7 +104,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string AssistiveText
         {
@@ -139,7 +113,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialEditor), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color LabelTextColor
         {
@@ -148,7 +122,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialEditor), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color FocusedLabelTextColor
         {
@@ -157,7 +131,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialEditor), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color TextColor
         {
@@ -166,7 +140,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty PlaceholderColorProperty =
-            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialEditor), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color PlaceholderColor
         {
@@ -175,7 +149,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialEditor), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
 
         public Color AssistiveTextColor
         {
@@ -184,7 +158,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEditor), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
 
         public new Color BackgroundColor
         {
@@ -192,8 +166,8 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty LabelFontSizeProperty = 
-            BindableProperty.Create(nameof(LabelFontSize), typeof(double), typeof(MaterialEntry), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+        public static readonly BindableProperty LabelFontSizeProperty =
+            BindableProperty.Create(nameof(LabelFontSize), typeof(double), typeof(MaterialEditor), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
 
         public double LabelFontSize
         {
@@ -202,7 +176,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEntry), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEditor), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
 
         public double FontSize
         {
@@ -211,7 +185,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveFontSizeProperty =
-            BindableProperty.Create(nameof(AssistiveFontSize), typeof(double), typeof(MaterialEntry), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveFontSize), typeof(double), typeof(MaterialEditor), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
 
         public double AssistiveFontSize
         {
@@ -220,7 +194,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialEditor), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
 
         public Color BorderColor
         {
@@ -229,7 +203,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedBorderColorProperty =
-            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialEditor), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
 
         public Color FocusedBorderColor
         {
@@ -238,7 +212,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ClearIconProperty =
-            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string ClearIcon
         {
@@ -247,7 +221,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ClearIconIsVisibleProperty =
-            BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEditor), defaultValue: true, propertyChanged: OnPropertyChanged);
 
         public bool ClearIconIsVisible
         {
@@ -255,26 +229,8 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ClearIconIsVisibleProperty, value); }
         }
 
-        public static readonly BindableProperty ShowPasswordIconProperty =
-            BindableProperty.Create(nameof(ShowPasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
-
-        public string ShowPasswordIcon
-        {
-            get { return (string)GetValue(ShowPasswordIconProperty); }
-            set { SetValue(ShowPasswordIconProperty, value); }
-        }
-
-        public static readonly BindableProperty ShowPasswordIconIsVisibleProperty =
-            BindableProperty.Create(nameof(ShowPasswordIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true, propertyChanged: OnPropertyChanged);
-
-        public bool ShowPasswordIconIsVisible
-        {
-            get { return (bool)GetValue(ShowPasswordIconIsVisibleProperty); }
-            set { SetValue(ShowPasswordIconIsVisibleProperty, value); }
-        }
-
         public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string LeadingIcon
         {
@@ -288,7 +244,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string TrailingIcon
         {
@@ -302,7 +258,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty MaxLengthProperty =
-            BindableProperty.Create(nameof(MaxLength), typeof(int), typeof(MaterialEntry), defaultValue: Int32.MaxValue, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(MaxLength), typeof(int), typeof(MaterialEditor), defaultValue: Int32.MaxValue, propertyChanged: OnPropertyChanged);
 
         public int MaxLength
         {
@@ -311,7 +267,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty RegexValidationProperty =
-            BindableProperty.Create(nameof(RegexValidation), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(RegexValidation), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string RegexValidation
         {
@@ -320,7 +276,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty InvalidMessageProperty =
-            BindableProperty.Create(nameof(InvalidMessage), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(InvalidMessage), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnPropertyChanged);
 
         public string InvalidMessage
         {
@@ -329,7 +285,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty IsRequiredProperty =
-            BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialEntry), defaultValue: false, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialEditor), defaultValue: false, propertyChanged: OnPropertyChanged);
 
         public bool IsRequired
         {
@@ -338,7 +294,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty IsValidProperty =
-            BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialEntry), defaultValue: true, defaultBindingMode: BindingMode.OneWayToSource);
+            BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialEditor), defaultValue: true, defaultBindingMode: BindingMode.OneWayToSource);
 
         public bool IsValid
         {
@@ -347,7 +303,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FieldNameProperty =
-            BindableProperty.Create(nameof(FieldName), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnFieldNameChanged);
+            BindableProperty.Create(nameof(FieldName), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnFieldNameChanged);
 
         public string FieldName
         {
@@ -367,19 +323,19 @@ namespace Plugin.MaterialDesignControls
 
         private static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialEntry)bindable;
-            control.txtEntry.Text = (string)newValue;
+            var control = (MaterialEditor)bindable;
+            control.txtEditor.Text = (string)newValue;
         }
 
         private static void OnFieldNameChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialEntry)bindable;
+            var control = (MaterialEditor)bindable;
             FieldsValidator.RegisterControl(control);
         }
 
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialEntry)bindable;
+            var control = (MaterialEditor)bindable;
             control.ApplyControlProperties();
         }
 
@@ -391,16 +347,19 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
-            this.txtEntry.IsEnabled = this.IsEnabled;
-            this.txtEntry.TextColor = this.TextColor;
-            this.txtEntry.FontSize = this.FontSize;
-            this.txtEntry.Placeholder = this.Placeholder;
-            this.txtEntry.PlaceholderColor = this.PlaceholderColor;
-            this.txtEntry.IsPassword = this.IsPassword;
-            this.txtEntry.Keyboard = this.Keyboard;
-            this.txtEntry.MaxLength = this.MaxLength;
+            this.txtEditor.IsEnabled = this.IsEnabled;
+            this.txtEditor.TextColor = this.TextColor;
+            this.txtEditor.FontSize = this.FontSize;
+            this.txtEditor.Keyboard = this.Keyboard;
+            this.txtEditor.MaxLength = this.MaxLength;
+            this.txtEditor.BackgroundColor = Color.Transparent;
+            this.txtEditor.Placeholder = this.Placeholder;
+            this.txtEditor.PlaceholderColor = this.PlaceholderColor;
 
-            // TODO: Check if you can take out the strong password.
+            // TODO: add autosize property
+            this.txtEditor.AutoSize = EditorAutoSizeOption.Disabled;
+
+            // TODO: apply the height of the control.
 
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;
@@ -429,10 +388,10 @@ namespace Plugin.MaterialDesignControls
 
                     if (this.LeadingIconIsVisible)
                     {
-                        this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top, 
+                        this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top,
                                                             this.lblLabel.Margin.Right, this.lblLabel.Margin.Bottom);
                         this.frmContainer.Padding = new Thickness(0);
-                        this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top, 
+                        this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top,
                                                             this.lblAssistive.Margin.Right, this.lblAssistive.Margin.Bottom);
                         this.bxvLine.Margin = new Thickness(36, 0, 0, 0);
                     }
@@ -448,9 +407,6 @@ namespace Plugin.MaterialDesignControls
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
             this.lblAssistive.FontSize = this.AssistiveFontSize;
-
-            this.imgShowPasswordIcon.Source = this.ShowPasswordIcon;
-            this.imgShowPasswordIcon.IsVisible = this.IsPassword && this.ShowPasswordIconIsVisible && !string.IsNullOrEmpty(this.ShowPasswordIcon);
 
             this.imgClearIcon.Source = this.ClearIcon;
             this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled && !string.IsNullOrEmpty(this.Text);
@@ -506,7 +462,7 @@ namespace Plugin.MaterialDesignControls
                 this.imgClearIcon.IsVisible = !string.IsNullOrEmpty(e.NewTextValue);
             }
 
-            this.Text = this.txtEntry.Text;
+            this.Text = this.txtEditor.Text;
 
             this.Validate();
 

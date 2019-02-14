@@ -1,8 +1,4 @@
-﻿using System;
-using Plugin.MaterialDesignControls;
-using Plugin.MaterialDesignControls.Android.Renderers;
-
-namespace Plugin.MaterialDesignControls.Android
+﻿namespace Plugin.MaterialDesignControls.Android
 {
     public static class Renderer
     {
@@ -11,6 +7,8 @@ namespace Plugin.MaterialDesignControls.Android
             MaterialDatePickerRenderer.Init();
             MaterialEntryRenderer.Init();
             MaterialPickerRenderer.Init();
+            MaterialTimePickerRenderer.Init();
+            MaterialEditorRenderer.Init();
         }
     }
 }
