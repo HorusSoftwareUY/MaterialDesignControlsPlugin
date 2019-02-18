@@ -328,6 +328,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(InvalidMessageProperty, value); }
         }
 
+        public static readonly BindableProperty RequiredMessageProperty =
+            BindableProperty.Create(nameof(RequiredMessage), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+
+        public string RequiredMessage
+        {
+            get { return (string)GetValue(RequiredMessageProperty); }
+            set { SetValue(RequiredMessageProperty, value); }
+        }
+
         public static readonly BindableProperty IsRequiredProperty =
             BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialEntry), defaultValue: false, propertyChanged: OnPropertyChanged);
 
@@ -515,27 +524,26 @@ namespace Plugin.MaterialDesignControls
 
         public bool Validate()
         {
-            if (!string.IsNullOrEmpty(this.RegexValidation) || this.IsRequired)
+            if (this.IsRequired && string.IsNullOrWhiteSpace(this.Text))
             {
-                if (this.Text != null)
-                {
-                    if (this.IsRequired)
-                    {
-                        this.AssistiveText = string.IsNullOrWhiteSpace(this.Text) ? this.InvalidMessage : string.Empty;
-                        this.IsValid = !string.IsNullOrWhiteSpace(this.Text);
-                    }
-                    else
-                    {
-                        var match = Regex.Match(this.Text, this.RegexValidation, RegexOptions.IgnoreCase);
-                        this.AssistiveText = !match.Success ? this.InvalidMessage : string.Empty;
-                        this.IsValid = match.Success;
-                    }
-                }
-                else
-                {
-                    this.AssistiveText = this.InvalidMessage;
-                    this.IsValid = false;
-                }
+                this.AssistiveText = this.RequiredMessage;
+                this.IsValid = false;
+            }
+            else if (!string.IsNullOrEmpty(this.RegexValidation) && this.Text == null)
+            {
+                this.AssistiveText = this.InvalidMessage;
+                this.IsValid = false;
+            }
+            else if (!string.IsNullOrEmpty(this.RegexValidation))
+            {
+                var match = Regex.Match(this.Text, this.RegexValidation, RegexOptions.IgnoreCase);
+                this.AssistiveText = !match.Success ? this.InvalidMessage : string.Empty;
+                this.IsValid = match.Success;
+            }
+            else
+            {
+                this.AssistiveText = string.Empty;
+                this.IsValid = true;
             }
             return this.IsValid;
         }
