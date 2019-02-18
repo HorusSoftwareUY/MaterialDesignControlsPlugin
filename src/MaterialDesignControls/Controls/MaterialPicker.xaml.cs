@@ -342,10 +342,12 @@ namespace Plugin.MaterialDesignControls
                     this.bxvLine.IsVisible = true;
                     this.bxvLine.Color = this.BorderColor;
 
+                    this.frmContainer.HeightRequest = 30;
+
                     if (this.LeadingIconIsVisible)
                     {
                         this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top,
-                                                            this.lblLabel.Margin.Right, this.lblLabel.Margin.Bottom);
+                                                            this.lblLabel.Margin.Right, 0);
                         this.frmContainer.Padding = new Thickness(0);
                         this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top,
                                                             this.lblAssistive.Margin.Right, this.lblAssistive.Margin.Bottom);
@@ -353,7 +355,7 @@ namespace Plugin.MaterialDesignControls
                     }
                     else
                     {
-                        this.lblLabel.Margin = new Thickness(0, this.lblLabel.Margin.Top, 0, this.lblLabel.Margin.Bottom);
+                        this.lblLabel.Margin = new Thickness(0, this.lblLabel.Margin.Top, 0, 0);
                         this.frmContainer.Padding = new Thickness(0);
                         this.lblAssistive.Margin = new Thickness(0, this.lblAssistive.Margin.Top, 0, this.lblAssistive.Margin.Bottom);
                     }
