@@ -17,7 +17,7 @@ namespace Plugin.MaterialDesignControls.iOS
         {
             base.OnElementChanged(e);
 
-            if (this.Control != null)
+            if (this.Control != null && this.Control.Text != null && this.Element != null)
             {
                 var text = this.Control.Text;
                 var attributedString = new NSMutableAttributedString(text);
@@ -27,7 +27,7 @@ namespace Plugin.MaterialDesignControls.iOS
                 var range = new NSRange(0, text.Length);
 
                 attributedString.AddAttribute(nsKern, spacing, range);
-                Control.AttributedText = attributedString;
+                this.Control.AttributedText = attributedString;
             }
         }
     }
