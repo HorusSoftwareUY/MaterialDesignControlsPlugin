@@ -1,5 +1,6 @@
 ﻿using System;
 using Android.Content;
+using Android.OS;
 using Plugin.MaterialDesignControls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -21,8 +22,11 @@ namespace Plugin.MaterialDesignControls.Android
 
             if (this.Control != null)
             {
-                this.Control.LetterSpacing = (float)((MaterialLabel)this.Element).LetterSpacing;
-                this.UpdateLayout();
+                if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+                {
+                    this.Control.LetterSpacing = (float)((MaterialLabel)this.Element).LetterSpacing;
+                    this.UpdateLayout();
+                }
             }
         }
     }
