@@ -73,6 +73,14 @@ namespace Plugin.MaterialDesignControls
                     this.FontSize = 14;
                     this.LetterSpacing = 0.1;
                     break;
+                case ScaleTypes.Body3:
+                    this.FontSize = 12;
+                    this.LetterSpacing = 0;
+                    break;
+                case ScaleTypes.Body4:
+                    this.FontSize = 10;
+                    this.LetterSpacing = 0;
+                    break;
                 case ScaleTypes.BUTTON:
                     this.FontSize = 14;
                     this.LetterSpacing = 0.75;

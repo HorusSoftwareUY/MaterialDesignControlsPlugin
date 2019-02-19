@@ -17,6 +17,8 @@
                 <material:MaterialLabel Text="Subtitle2" Scale="Subtitle2" />
                 <material:MaterialLabel Text="Body1" Scale="Body1" />
                 <material:MaterialLabel Text="Body2" Scale="Body2" />
+                <material:MaterialLabel Text="Body3" Scale="Body3" />
+                <material:MaterialLabel Text="Body4" Scale="Body4" />
                 <material:MaterialLabel Text="BUTTON" Scale="BUTTON" />
                 <material:MaterialLabel Text="Caption" Scale="Caption" />
                 <material:MaterialLabel Text="OVERLINE" Scale="OVERLINE" />
