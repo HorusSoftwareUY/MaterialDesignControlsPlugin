@@ -125,6 +125,7 @@
     <Compile Include="Renderers\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\MaterialEditorRenderer.cs" />
+    <Compile Include="Renderers\MaterialLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

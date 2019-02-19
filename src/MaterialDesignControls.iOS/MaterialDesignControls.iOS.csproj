@@ -74,6 +74,7 @@
     <Compile Include="Renderers.cs" />
     <Compile Include="Renderers\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\MaterialEditorRenderer.cs" />
+    <Compile Include="Renderers\MaterialLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

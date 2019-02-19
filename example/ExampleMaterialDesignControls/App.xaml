@@ -17,6 +17,11 @@
         <Color x:Key="AssistiveTextColor">#c92726</Color>
         <Color x:Key="PlaceholderColor">#c6c6c5</Color>
         
+        <!-- MaterialLabel -->
+        <Style TargetType="material:MaterialLabel">
+            <Setter Property="TextColor" Value="#0d1a26" />
+        </Style>
+        
         <!-- MaterialButton -->
         <Style TargetType="material:MaterialButton">
             <Setter Property="TextColor" Value="#ffffff" />

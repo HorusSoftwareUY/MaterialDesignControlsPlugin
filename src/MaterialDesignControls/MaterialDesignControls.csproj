@@ -88,6 +88,8 @@
     <Compile Include="Implementations\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomEditor.cs" />
     <Compile Include="Implementations\CustomLabel.cs" />
+    <Compile Include="Controls\MaterialLabel.cs" />
+    <Compile Include="ScaleTypes.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

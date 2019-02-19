@@ -9,6 +9,7 @@
             MaterialPickerRenderer.Init();
             MaterialTimePickerRenderer.Init();
             MaterialEditorRenderer.Init();
+            MaterialLabelRenderer.Init();
         }
     }
 }

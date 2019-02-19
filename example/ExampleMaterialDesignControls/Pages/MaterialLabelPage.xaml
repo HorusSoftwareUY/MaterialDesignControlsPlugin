@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialLabelPage"
+             Title="MaterialLabel">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialLabel Text="H1" Scale="H1" />
+                <material:MaterialLabel Text="H2" Scale="H2" />
+                <material:MaterialLabel Text="H3" Scale="H3" />
+                <material:MaterialLabel Text="H4" Scale="H4" />
+                <material:MaterialLabel Text="H5" Scale="H5" />
+                <material:MaterialLabel Text="H6" Scale="H6" />
+                <material:MaterialLabel Text="Subtitle1" Scale="Subtitle1" />
+                <material:MaterialLabel Text="Subtitle2" Scale="Subtitle2" />
+                <material:MaterialLabel Text="Body1" Scale="Body1" />
+                <material:MaterialLabel Text="Body2" Scale="Body2" />
+                <material:MaterialLabel Text="BUTTON" Scale="BUTTON" />
+                <material:MaterialLabel Text="Caption" Scale="Caption" />
+                <material:MaterialLabel Text="OVERLINE" Scale="OVERLINE" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
