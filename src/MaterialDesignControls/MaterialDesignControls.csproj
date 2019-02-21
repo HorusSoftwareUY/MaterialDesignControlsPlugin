@@ -59,37 +59,28 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Renderers\MaterialDatePickerRenderer.cs" />
-    <Compile Remove="Renderers\MaterialEntryRenderer.cs" />
-    <Compile Remove="Controls\EmptyClass.cs" />
-    <Compile Remove="ButtonTypes.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Controls\MaterialButton.xaml.cs" />
-    <Compile Include="Controls\MaterialFlatButton.xaml.cs" />
-    <Compile Include="Controls\MaterialOutlineButton.xaml.cs" />
-    <Compile Include="Controls\MaterialChips.xaml.cs" />
-    <Compile Include="Controls\MaterialDatePicker.xaml.cs" />
-    <Compile Include="Controls\MaterialEntry.xaml.cs" />
-    <Compile Include="Controls\MaterialPicker.xaml.cs" />
-    <Compile Include="Controls\MaterialSelection.xaml.cs" />
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
     <Compile Include="Implementations\CustomPicker.cs" />
     <Compile Include="FieldTypes.cs" />
     <Compile Include="FieldsValidator.cs" />
     <Compile Include="IFieldControl.cs" />
-    <Compile Include="Controls\MaterialTimePicker.xaml.cs">
-      <DependentUpon>MaterialTimePicker.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MaterialEditor.xaml.cs">
-      <DependentUpon>MaterialEditor.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Implementations\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomEditor.cs" />
     <Compile Include="Implementations\CustomLabel.cs" />
-    <Compile Include="Controls\MaterialLabel.cs" />
     <Compile Include="ScaleTypes.cs" />
+    <Compile Include="Controls\MaterialButton.xaml.cs" />
+    <Compile Include="Controls\MaterialChips.xaml.cs" />
+    <Compile Include="Controls\MaterialDatePicker.xaml.cs" />
+    <Compile Include="Controls\MaterialEditor.xaml.cs" />
+    <Compile Include="Controls\MaterialEntry.xaml.cs" />
+    <Compile Include="Controls\MaterialFlatButton.xaml.cs" />
+    <Compile Include="Controls\MaterialLabel.cs" />
+    <Compile Include="Controls\MaterialOutlineButton.xaml.cs" />
+    <Compile Include="Controls\MaterialPicker.xaml.cs" />
+    <Compile Include="Controls\MaterialSelection.xaml.cs" />
+    <Compile Include="Controls\MaterialTimePicker.xaml.cs" />
+    <Compile Include="Controls\MaterialField.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -101,5 +92,18 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\MaterialButton.xaml" />
+    <EmbeddedResource Include="Controls\MaterialChips.xaml" />
+    <EmbeddedResource Include="Controls\MaterialDatePicker.xaml" />
+    <EmbeddedResource Include="Controls\MaterialEditor.xaml" />
+    <EmbeddedResource Include="Controls\MaterialEntry.xaml" />
+    <EmbeddedResource Include="Controls\MaterialFlatButton.xaml" />
+    <EmbeddedResource Include="Controls\MaterialOutlineButton.xaml" />
+    <EmbeddedResource Include="Controls\MaterialPicker.xaml" />
+    <EmbeddedResource Include="Controls\MaterialSelection.xaml" />
+    <EmbeddedResource Include="Controls\MaterialTimePicker.xaml" />
+    <EmbeddedResource Include="Controls\MaterialField.xaml" />
   </ItemGroup>
 </Project>

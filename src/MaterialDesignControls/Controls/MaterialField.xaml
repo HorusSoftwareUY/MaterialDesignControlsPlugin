@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+             x:Class="Plugin.MaterialDesignControls.MaterialField">
+    <ContentView.Content>
+        <StackLayout Spacing="2">
+            <controls:CustomLabel x:Name="lblLabel" Margin="14,0,14,2" />
+            <StackLayout Orientation="Horizontal" Spacing="12" HorizontalOptions="FillAndExpand">
+                <Image x:Name="imgLeadingIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+                <controls:CustomLabel x:Name="lblText" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                <Image x:Name="imgTrailingIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+            </StackLayout>
+            <controls:CustomLabel x:Name="lblAssistive" Margin="14,2,14,0" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
