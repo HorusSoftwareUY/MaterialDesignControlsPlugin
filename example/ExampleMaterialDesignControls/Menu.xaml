@@ -32,7 +32,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding IconSource}" />
-                                <Label Grid.Column="1" Text="{Binding Title}" />
+                                <Label Grid.Column="1" Text="{Binding Title}" HorizontalTextAlignment="Center" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

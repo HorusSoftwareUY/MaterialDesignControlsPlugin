@@ -24,7 +24,7 @@ namespace Plugin.MaterialDesignControls.Android
             if (this.Control != null)
             {
                 this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
-                this.Control.SetPadding(1, 0, 0, 0);
+                this.Control.SetPadding(4, 0, 0, 0);
             }
 
             if (e.NewElement != null)

@@ -155,31 +155,31 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty LabelFontSizeProperty =
-            BindableProperty.Create(nameof(LabelFontSize), typeof(double), typeof(MaterialSelection), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+        public static readonly BindableProperty LabelScaleProperty =
+            BindableProperty.Create(nameof(LabelScale), typeof(ScaleTypes), typeof(MaterialSelection), defaultValue: ScaleTypes.Body3, propertyChanged: OnPropertyChanged);
 
-        public double LabelFontSize
+        public ScaleTypes LabelScale
         {
-            get { return (double)GetValue(LabelFontSizeProperty); }
-            set { SetValue(LabelFontSizeProperty, value); }
+            get { return (ScaleTypes)GetValue(LabelScaleProperty); }
+            set { SetValue(LabelScaleProperty, value); }
         }
 
-        public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialSelection), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+        public static new readonly BindableProperty ScaleProperty =
+            BindableProperty.Create(nameof(Scale), typeof(ScaleTypes), typeof(MaterialSelection), defaultValue: ScaleTypes.Body2, propertyChanged: OnPropertyChanged);
 
-        public double FontSize
+        public new ScaleTypes Scale
         {
-            get { return (double)GetValue(FontSizeProperty); }
-            set { SetValue(FontSizeProperty, value); }
+            get { return (ScaleTypes)GetValue(ScaleProperty); }
+            set { SetValue(ScaleProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveFontSizeProperty =
-            BindableProperty.Create(nameof(AssistiveFontSize), typeof(double), typeof(MaterialSelection), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+        public static readonly BindableProperty AssistiveScaleProperty =
+            BindableProperty.Create(nameof(AssistiveScale), typeof(ScaleTypes), typeof(MaterialSelection), defaultValue: ScaleTypes.Body3, propertyChanged: OnPropertyChanged);
 
-        public double AssistiveFontSize
+        public ScaleTypes AssistiveScale
         {
-            get { return (double)GetValue(AssistiveFontSizeProperty); }
-            set { SetValue(AssistiveFontSizeProperty, value); }
+            get { return (ScaleTypes)GetValue(AssistiveScaleProperty); }
+            set { SetValue(AssistiveScaleProperty, value); }
         }
 
         public static readonly BindableProperty BorderColorProperty =
@@ -268,10 +268,10 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
-            this.lblText.FontSize = this.FontSize;
+            this.lblText.Scale = this.Scale;
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;
-            this.lblLabel.FontSize = this.LabelFontSize;
+            this.lblLabel.Scale = this.LabelScale;
 
             if (string.IsNullOrEmpty(this.Text))
             {
@@ -322,7 +322,7 @@ namespace Plugin.MaterialDesignControls
 
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
-            this.lblAssistive.FontSize = this.AssistiveFontSize;
+            this.lblAssistive.Scale = this.AssistiveScale;
 
             this.imgLeadingIcon.Source = this.LeadingIcon;
             this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;

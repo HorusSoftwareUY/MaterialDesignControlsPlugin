@@ -19,9 +19,11 @@
                 <material:MaterialLabel Text="Body2" Scale="Body2" />
                 <material:MaterialLabel Text="Body3" Scale="Body3" />
                 <material:MaterialLabel Text="Body4" Scale="Body4" />
-                <material:MaterialLabel Text="BUTTON" Scale="BUTTON" />
+                <material:MaterialLabel Text="Button" Scale="BUTTON" />
+                <material:MaterialLabel Text="Button" Scale="Button" />
                 <material:MaterialLabel Text="Caption" Scale="Caption" />
-                <material:MaterialLabel Text="OVERLINE" Scale="OVERLINE" />
+                <material:MaterialLabel Text="Overline" Scale="OVERLINE" />
+                <material:MaterialLabel Text="Overline" Scale="Overline" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -5,6 +5,15 @@ namespace Plugin.MaterialDesignControls
 {
     public class MaterialLabel : Label
     {
+        public static new readonly BindableProperty TextProperty =
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnTextChanged);
+
+        public new string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
         public static new readonly BindableProperty ScaleProperty =
             BindableProperty.Create(nameof(Scale), typeof(ScaleTypes), typeof(MaterialLabel), defaultValue: ScaleTypes.Caption, propertyChanged: OnPropertyChanged);
 
@@ -21,6 +30,26 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (double)GetValue(LetterSpacingProperty); }
             set { SetValue(LetterSpacingProperty, value); }
+        }
+
+        private static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialLabel)bindable;
+            control.ApplyTextProperty();
+        }
+
+        private void ApplyTextProperty()
+        {
+            switch (this.Scale)
+            {
+                case ScaleTypes.BUTTON:
+                case ScaleTypes.OVERLINE:
+                    base.Text = this.Text?.ToUpper();
+                    break;
+                default:
+                    base.Text = this.Text;
+                    break;
+            }
         }
 
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -83,13 +112,23 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case ScaleTypes.BUTTON:
                     this.FontSize = 14;
-                    this.LetterSpacing = 0.75;
+                    this.LetterSpacing = 0.2;
+                    base.Text = this.Text?.ToUpper();
+                    break;
+                case ScaleTypes.Button:
+                    this.FontSize = 14;
+                    this.LetterSpacing = 0.2;
                     break;
                 case ScaleTypes.Caption:
                     this.FontSize = 12;
-                    this.LetterSpacing = 0.4;
+                    this.LetterSpacing = 0.2;
                     break;
                 case ScaleTypes.OVERLINE:
+                    this.FontSize = 10;
+                    this.LetterSpacing = 0.75;
+                    base.Text = this.Text?.ToUpper();
+                    break;
+                case ScaleTypes.Overline:
                     this.FontSize = 10;
                     this.LetterSpacing = 0.75;
                     break;
