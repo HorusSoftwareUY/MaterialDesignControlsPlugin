@@ -6,7 +6,7 @@
     <Application.Resources>
         <x:String x:Key="LabelScale">Body3</x:String>
         <x:Double x:Key="FontSize">14</x:Double>
-        <x:String x:Key="Scale">Body2</x:String>
+        <x:String x:Key="TextScale">Body2</x:String>
         <x:String x:Key="AssistiveScale">Body3</x:String>
         
         <Color x:Key="LabelTextColor">#0d1a26</Color>
@@ -28,7 +28,7 @@
             <Setter Property="LabelScale" Value="{StaticResource LabelScale}" />
             <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="Scale" Value="{StaticResource Scale}" />
+            <Setter Property="TextScale" Value="{StaticResource TextScale}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveScale" Value="{StaticResource AssistiveScale}" />
         </Style>
@@ -37,7 +37,7 @@
         <Style TargetType="material:MaterialButton">
             <Setter Property="TextColor" Value="#ffffff" />
             <Setter Property="DisabledTextColor" Value="#ffffff" />
-            <Setter Property="Scale" Value="BUTTON" />
+            <Setter Property="TextScale" Value="BUTTON" />
             <Setter Property="BackgroundColor" Value="#4c6277" />
             <Setter Property="DisabledBackgroundColor" Value="#c6c6c5" />
             <Setter Property="BorderColor" Value="#4c6277" />
@@ -48,7 +48,7 @@
         <Style TargetType="material:MaterialOutlineButton">
             <Setter Property="TextColor" Value="#4c6277" />
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
-            <Setter Property="Scale" Value="BUTTON" />
+            <Setter Property="TextScale" Value="BUTTON" />
             <Setter Property="BorderColor" Value="#4c6277" />
             <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
         </Style>
@@ -57,12 +57,12 @@
         <Style TargetType="material:MaterialFlatButton">
             <Setter Property="TextColor" Value="#c92726" />
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
-            <Setter Property="Scale" Value="Button" />
+            <Setter Property="TextScale" Value="Button" />
         </Style>
         
         <!-- MaterialChips -->
         <Style TargetType="material:MaterialChips">
-            <Setter Property="Scale" Value="{StaticResource Scale}" />
+            <Setter Property="TextScale" Value="{StaticResource TextScale}" />
             <Setter Property="CornerRadius" Value="16" />
             <Setter Property="Padding" Value="12,0" />
             <Setter Property="BackgroundColor" Value="#ffffff" />
@@ -127,7 +127,7 @@
             <Setter Property="LabelScale" Value="{StaticResource LabelScale}" />
             <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="Scale" Value="{StaticResource Scale}" />
+            <Setter Property="TextScale" Value="{StaticResource TextScale}" />
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />

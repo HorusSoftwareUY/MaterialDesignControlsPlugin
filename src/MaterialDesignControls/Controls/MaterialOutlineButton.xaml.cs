@@ -91,13 +91,13 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledTextColorProperty, value); }
         }
 
-        public static new readonly BindableProperty ScaleProperty =
-            BindableProperty.Create(nameof(Scale), typeof(ScaleTypes), typeof(MaterialOutlineButton), defaultValue: ScaleTypes.BUTTON, propertyChanged: OnPropertyChanged);
+        public static readonly BindableProperty TextScaleProperty =
+            BindableProperty.Create(nameof(TextScale), typeof(ScaleTypes), typeof(MaterialFlatButton), defaultValue: ScaleTypes.BUTTON, propertyChanged: OnPropertyChanged);
 
-        public new ScaleTypes Scale
+        public ScaleTypes TextScale
         {
-            get { return (ScaleTypes)GetValue(ScaleProperty); }
-            set { SetValue(ScaleProperty, value); }
+            get { return (ScaleTypes)GetValue(TextScaleProperty); }
+            set { SetValue(TextScaleProperty, value); }
         }
 
         public static readonly BindableProperty BorderColorProperty =
@@ -186,7 +186,7 @@ namespace Plugin.MaterialDesignControls
 
             this.lblText.Text = this.Text;
             this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
-            this.lblText.Scale = this.Scale;
+            this.lblText.Scale = this.TextScale;
 
             this.frmContainer.Padding = this.Padding;
             this.frmContainer.CornerRadius = (float)this.CornerRadius;
