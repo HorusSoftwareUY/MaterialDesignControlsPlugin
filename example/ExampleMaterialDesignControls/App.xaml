@@ -75,6 +75,25 @@
             <Setter Property="DisabledSelectedTextColor" Value="#ffffff" />
         </Style>
         
+        <!-- MaterialChipsGroup -->
+        <Style TargetType="material:MaterialChipsGroup">
+            <Setter Property="LabelScale" Value="{StaticResource LabelScale}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveScale" Value="{StaticResource AssistiveScale}" />
+            <Setter Property="TextScale" Value="{StaticResource TextScale}" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Padding" Value="12,0" />
+            <Setter Property="BackgroundColor" Value="#ffffff" />
+            <Setter Property="TextColor" Value="#4c6277" />
+            <Setter Property="SelectedBackgroundColor" Value="#4c6277" />
+            <Setter Property="SelectedTextColor" Value="#ffffff" />
+            <Setter Property="DisabledBackgroundColor" Value="#ffffff" />
+            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
+            <Setter Property="DisabledSelectedBackgroundColor" Value="#c6c6c5" />
+            <Setter Property="DisabledSelectedTextColor" Value="#ffffff" />
+        </Style>
+        
         <!-- MaterialDatePicker -->
         <Style TargetType="material:MaterialDatePicker">
             <Setter Property="LabelScale" Value="{StaticResource LabelScale}" />

@@ -63,7 +63,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty IsSelectedProperty =
-            BindableProperty.Create(nameof(IsSelected), typeof(bool), typeof(MaterialChips), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsSelected), typeof(bool), typeof(MaterialChips), defaultValue: null, propertyChanged: OnIsSelectedChanged);
 
         public bool IsSelected
         {
@@ -181,7 +181,20 @@ namespace Plugin.MaterialDesignControls
 
         #endregion Properties
 
+        #region Events
+
+        public event EventHandler IsSelectedChanged;
+
+        #endregion Events
+
         #region Methods
+
+        private static void OnIsSelectedChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialChips)bindable;
+            control.ApplyIsSelected();
+            control.IsSelectedChanged?.Invoke(control, null);
+        }
 
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -203,6 +216,11 @@ namespace Plugin.MaterialDesignControls
             this.frmContainer.Padding = this.Padding;
             this.frmContainer.CornerRadius = (float)this.CornerRadius;
 
+            this.ApplyIsSelected();
+        }
+
+        private void ApplyIsSelected()
+        {
             if (this.IsEnabled)
             {
                 if (this.IsSelected)

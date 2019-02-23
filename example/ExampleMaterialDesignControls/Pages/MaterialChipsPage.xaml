@@ -31,6 +31,10 @@
                 <material:MaterialChips Grid.Column="2" Grid.Row="2" CornerRadius="4" IsSelected="false" IsEnabled="true" Text="Option I" />
             </Grid>
             
+            <material:MaterialChipsGroup LabelText="Sizes" SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" />
+            
+            <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -80,6 +80,9 @@
     <Compile Include="Controls\MaterialSelection.xaml.cs" />
     <Compile Include="Controls\MaterialTimePicker.xaml.cs" />
     <Compile Include="Controls\MaterialField.xaml.cs" />
+    <Compile Include="Controls\MaterialChipsGroup.xaml.cs">
+      <DependentUpon>MaterialChipsGroup.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -104,5 +107,9 @@
     <EmbeddedResource Include="Controls\MaterialSelection.xaml" />
     <EmbeddedResource Include="Controls\MaterialTimePicker.xaml" />
     <EmbeddedResource Include="Controls\MaterialField.xaml" />
+    <EmbeddedResource Include="Controls\MaterialChipsGroup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -214,13 +214,13 @@ namespace Plugin.MaterialDesignControls
             get { return !string.IsNullOrEmpty(this.TrailingIcon); }
         }
 
-        public static readonly BindableProperty InvalidMessageProperty =
-            BindableProperty.Create(nameof(InvalidMessage), typeof(string), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnPropertyChanged);
+        public static readonly BindableProperty RequiredMessageProperty =
+            BindableProperty.Create(nameof(RequiredMessage), typeof(string), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnPropertyChanged);
 
-        public string InvalidMessage
+        public string RequiredMessage
         {
-            get { return (string)GetValue(InvalidMessageProperty); }
-            set { SetValue(InvalidMessageProperty, value); }
+            get { return (string)GetValue(RequiredMessageProperty); }
+            set { SetValue(RequiredMessageProperty, value); }
         }
 
         public static readonly BindableProperty IsRequiredProperty =
@@ -248,6 +248,12 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (string)GetValue(FieldNameProperty); }
             set { SetValue(FieldNameProperty, value); }
+        }
+
+        public string InvalidMessage 
+        {
+            get { return this.RequiredMessage; }
+            set { }
         }
 
         #endregion Properties
@@ -433,7 +439,7 @@ namespace Plugin.MaterialDesignControls
         {
             if (this.IsRequired)
             {
-                this.AssistiveText = this.SelectedItem == null ? this.InvalidMessage : string.Empty;
+                this.AssistiveText = this.SelectedItem == null ? this.RequiredMessage : string.Empty;
                 this.IsValid = this.SelectedItem != null;
             }
             return this.IsValid;
