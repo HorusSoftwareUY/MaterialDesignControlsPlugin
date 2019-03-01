@@ -156,11 +156,11 @@ namespace Plugin.MaterialDesignControls
 
             this.lblText.Text = this.Text;
             this.lblText.TextColor = this.TextColor;
-            this.lblText.Scale = this.TextScale;
+            this.lblText.TextScale = this.TextScale;
 
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;
-            this.lblLabel.Scale = this.LabelScale;
+            this.lblLabel.TextScale = this.LabelScale;
 
             if (this.LeadingIconIsVisible)
             {
@@ -177,7 +177,7 @@ namespace Plugin.MaterialDesignControls
 
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
-            this.lblAssistive.Scale = this.AssistiveScale;
+            this.lblAssistive.TextScale = this.AssistiveScale;
 
             this.imgLeadingIcon.Source = this.LeadingIcon;
             this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;

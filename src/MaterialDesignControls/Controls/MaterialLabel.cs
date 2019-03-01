@@ -14,13 +14,13 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(TextProperty, value); }
         }
 
-        public static new readonly BindableProperty ScaleProperty =
-            BindableProperty.Create(nameof(Scale), typeof(ScaleTypes), typeof(MaterialLabel), defaultValue: ScaleTypes.Caption, propertyChanged: OnPropertyChanged);
+        public static readonly BindableProperty TextScaleProperty =
+            BindableProperty.Create(nameof(TextScale), typeof(ScaleTypes), typeof(MaterialLabel), defaultValue: ScaleTypes.Caption, propertyChanged: OnPropertyChanged);
 
-        public new ScaleTypes Scale
+        public ScaleTypes TextScale
         {
-            get { return (ScaleTypes)GetValue(ScaleProperty); }
-            set { SetValue(ScaleProperty, value); }
+            get { return (ScaleTypes)GetValue(TextScaleProperty); }
+            set { SetValue(TextScaleProperty, value); }
         }
 
         public static readonly BindableProperty LetterSpacingProperty =
@@ -40,7 +40,7 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyTextProperty()
         {
-            switch (this.Scale)
+            switch (this.TextScale)
             {
                 case ScaleTypes.BUTTON:
                 case ScaleTypes.OVERLINE:
@@ -60,7 +60,7 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyControlProperties()
         {
-            switch (this.Scale)
+            switch (this.TextScale)
             {
                 case ScaleTypes.H1:
                     this.FontSize = 96;

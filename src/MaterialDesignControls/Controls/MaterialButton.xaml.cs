@@ -204,7 +204,7 @@ namespace Plugin.MaterialDesignControls
 
             this.lblText.Text = this.Text;
             this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
-            this.lblText.Scale = this.TextScale;
+            this.lblText.TextScale = this.TextScale;
 
             this.frmContainer.Padding = this.Padding;
             this.frmContainer.CornerRadius = (float)this.CornerRadius;

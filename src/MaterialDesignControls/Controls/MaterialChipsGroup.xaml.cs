@@ -354,13 +354,13 @@ namespace Plugin.MaterialDesignControls
 
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;
-            this.lblLabel.Scale = this.LabelScale;
+            this.lblLabel.TextScale = this.LabelScale;
 
             this.stcContainer.Padding = this.Padding;
 
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
-            this.lblAssistive.Scale = this.AssistiveScale;
+            this.lblAssistive.TextScale = this.AssistiveScale;
 
             if (this.IsRequired)
             {

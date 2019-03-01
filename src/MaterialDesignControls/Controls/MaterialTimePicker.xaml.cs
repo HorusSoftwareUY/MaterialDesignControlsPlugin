@@ -242,7 +242,7 @@ namespace Plugin.MaterialDesignControls
 
             this.lblLabel.Text = this.LabelText;
             this.lblLabel.TextColor = this.LabelTextColor;
-            this.lblLabel.Scale = this.LabelScale;
+            this.lblLabel.TextScale = this.LabelScale;
 
             this.frmContainer.Padding = this.Padding;
             switch (this.Type)
@@ -287,7 +287,7 @@ namespace Plugin.MaterialDesignControls
 
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
-            this.lblAssistive.Scale = this.AssistiveScale;
+            this.lblAssistive.TextScale = this.AssistiveScale;
 
             this.imgLeadingIcon.Source = this.LeadingIcon;
             this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;

@@ -7,23 +7,23 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialLabel Text="H1" Scale="H1" />
-                <material:MaterialLabel Text="H2" Scale="H2" />
-                <material:MaterialLabel Text="H3" Scale="H3" />
-                <material:MaterialLabel Text="H4" Scale="H4" />
-                <material:MaterialLabel Text="H5" Scale="H5" />
-                <material:MaterialLabel Text="H6" Scale="H6" />
-                <material:MaterialLabel Text="Subtitle1" Scale="Subtitle1" />
-                <material:MaterialLabel Text="Subtitle2" Scale="Subtitle2" />
-                <material:MaterialLabel Text="Body1" Scale="Body1" />
-                <material:MaterialLabel Text="Body2" Scale="Body2" />
-                <material:MaterialLabel Text="Body3" Scale="Body3" />
-                <material:MaterialLabel Text="Body4" Scale="Body4" />
-                <material:MaterialLabel Text="Button" Scale="BUTTON" />
-                <material:MaterialLabel Text="Button" Scale="Button" />
-                <material:MaterialLabel Text="Caption" Scale="Caption" />
-                <material:MaterialLabel Text="Overline" Scale="OVERLINE" />
-                <material:MaterialLabel Text="Overline" Scale="Overline" />
+                <material:MaterialLabel Text="H1" TextScale="H1" />
+                <material:MaterialLabel Text="H2" TextScale="H2" />
+                <material:MaterialLabel Text="H3" TextScale="H3" />
+                <material:MaterialLabel Text="H4" TextScale="H4" />
+                <material:MaterialLabel Text="H5" TextScale="H5" />
+                <material:MaterialLabel Text="H6" TextScale="H6" />
+                <material:MaterialLabel Text="Subtitle1" TextScale="Subtitle1" />
+                <material:MaterialLabel Text="Subtitle2" TextScale="Subtitle2" />
+                <material:MaterialLabel Text="Body1" TextScale="Body1" />
+                <material:MaterialLabel Text="Body2" TextScale="Body2" />
+                <material:MaterialLabel Text="Body3" TextScale="Body3" />
+                <material:MaterialLabel Text="Body4" TextScale="Body4" />
+                <material:MaterialLabel Text="Button" TextScale="BUTTON" />
+                <material:MaterialLabel Text="Button" TextScale="Button" />
+                <material:MaterialLabel Text="Caption" TextScale="Caption" />
+                <material:MaterialLabel Text="Overline" TextScale="OVERLINE" />
+                <material:MaterialLabel Text="Overline" TextScale="Overline" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
