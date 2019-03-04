@@ -324,10 +324,16 @@ namespace Plugin.MaterialDesignControls
             this.lblAssistive.TextColor = this.AssistiveTextColor;
             this.lblAssistive.TextScale = this.AssistiveScale;
 
-            this.imgLeadingIcon.Source = this.LeadingIcon;
+            if (!string.IsNullOrEmpty(this.LeadingIcon))
+            {
+                this.imgLeadingIcon.Source = this.LeadingIcon;
+            }
             this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
 
-            this.imgTrailingIcon.Source = this.TrailingIcon;
+            if (!string.IsNullOrEmpty(this.TrailingIcon))
+            {
+                this.imgTrailingIcon.Source = this.TrailingIcon;
+            }
             this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
         }
 

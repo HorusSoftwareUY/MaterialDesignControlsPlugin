@@ -212,7 +212,10 @@ namespace Plugin.MaterialDesignControls
             this.frmContainer.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
             this.frmContainer.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
 
-            this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
+            if (!string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon))
+            {
+                this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
+            }
             this.imgIcon.IsVisible = this.IconIsVisible;
         }
 

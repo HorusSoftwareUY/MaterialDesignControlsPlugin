@@ -4,10 +4,10 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.App">
     <Application.Resources>
-        <x:String x:Key="LabelScale">Body3</x:String>
+        <material:ScaleTypes x:Key="LabelScale">Body4</material:ScaleTypes>
         <x:Double x:Key="FontSize">14</x:Double>
-        <x:String x:Key="TextScale">Body2</x:String>
-        <x:String x:Key="AssistiveScale">Body3</x:String>
+        <material:ScaleTypes x:Key="TextScale">Body1</material:ScaleTypes>
+        <material:ScaleTypes x:Key="AssistiveScale">Body3</material:ScaleTypes>
         
         <Color x:Key="LabelTextColor">#0d1a26</Color>
         <Color x:Key="FocusedLabelTextColor">#c92726</Color>

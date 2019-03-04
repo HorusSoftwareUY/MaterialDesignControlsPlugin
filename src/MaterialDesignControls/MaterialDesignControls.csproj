@@ -59,6 +59,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controls\MaterialField.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
     <Compile Include="Implementations\CustomPicker.cs" />
@@ -79,10 +82,10 @@
     <Compile Include="Controls\MaterialPicker.xaml.cs" />
     <Compile Include="Controls\MaterialSelection.xaml.cs" />
     <Compile Include="Controls\MaterialTimePicker.xaml.cs" />
-    <Compile Include="Controls\MaterialField.xaml.cs" />
     <Compile Include="Controls\MaterialChipsGroup.xaml.cs">
       <DependentUpon>MaterialChipsGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MaterialField.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -96,6 +99,9 @@
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Remove="Controls\MaterialField.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Controls\MaterialButton.xaml" />
     <EmbeddedResource Include="Controls\MaterialChips.xaml" />
     <EmbeddedResource Include="Controls\MaterialDatePicker.xaml" />
@@ -106,7 +112,6 @@
     <EmbeddedResource Include="Controls\MaterialPicker.xaml" />
     <EmbeddedResource Include="Controls\MaterialSelection.xaml" />
     <EmbeddedResource Include="Controls\MaterialTimePicker.xaml" />
-    <EmbeddedResource Include="Controls\MaterialField.xaml" />
     <EmbeddedResource Include="Controls\MaterialChipsGroup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>

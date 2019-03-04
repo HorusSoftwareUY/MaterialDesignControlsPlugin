@@ -163,7 +163,10 @@ namespace Plugin.MaterialDesignControls
 
             this.frmContainer.Padding = this.Padding;
 
-            this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
+            if (!string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon))
+            {
+                this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
+            }
             this.imgIcon.IsVisible = this.IconIsVisible;
         }
 
