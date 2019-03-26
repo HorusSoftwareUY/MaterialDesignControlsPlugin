@@ -11,6 +11,8 @@
                 <material:MaterialField LabelText="Phone" Text="099123456" />
                 <material:MaterialField LabelText="ZipCode" Text="11000" />
                 <material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
+                <material:MaterialField LabelText="Address" EmptyText="Has not specified" />
+                <material:MaterialField LabelText="City" EmptyText="-" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

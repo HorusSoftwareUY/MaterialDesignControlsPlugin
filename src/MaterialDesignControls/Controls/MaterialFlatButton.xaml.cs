@@ -100,6 +100,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(TextScaleProperty, value); }
         }
 
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialButton), defaultValue: null, propertyChanged: OnPropertyChanged);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
+        }
+
         public static readonly BindableProperty IconProperty =
             BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialFlatButton), defaultValue: null, propertyChanged: OnPropertyChanged);
 
@@ -160,6 +169,7 @@ namespace Plugin.MaterialDesignControls
             this.lblText.Text = this.Text;
             this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
             this.lblText.TextScale = this.TextScale;
+            this.lblText.FontFamily = this.FontFamily;
 
             this.frmContainer.Padding = this.Padding;
 

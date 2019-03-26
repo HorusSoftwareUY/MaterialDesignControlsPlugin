@@ -51,7 +51,7 @@ namespace Plugin.MaterialDesignControls
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Start,
                 TextColor = this.TextColor,
-                TextScale = this.TextScale
+                TextScale = this.TextScale,
             };
             secondStackLayout.Children.Add(this.lblText);
 
@@ -89,7 +89,6 @@ namespace Plugin.MaterialDesignControls
             this.Content = mainStackLayout;
 
             this.initialized = true;
-            //this.InitializeStyle();
         }
 
         #endregion Constructors
@@ -128,6 +127,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
+        }
+
+        public static readonly BindableProperty EmptyTextProperty =
+            BindableProperty.Create(nameof(EmptyText), typeof(string), typeof(MaterialField), defaultValue: null, defaultBindingMode: BindingMode.TwoWay);
+
+        public string EmptyText
+        {
+            get { return (string)GetValue(EmptyTextProperty); }
+            set { SetValue(EmptyTextProperty, value); }
         }
 
         public static readonly BindableProperty AssistiveTextProperty =
@@ -225,18 +233,6 @@ namespace Plugin.MaterialDesignControls
 
         #region Methods
 
-        //private void InitializeStyle()
-        //{
-        //    this.OnPropertyChanged(nameof(this.TextColor));
-        //    this.OnPropertyChanged(nameof(this.TextScale));
-        //    this.OnPropertyChanged(nameof(this.LabelTextColor));
-        //    this.OnPropertyChanged(nameof(this.LabelScale));
-        //    this.OnPropertyChanged(nameof(this.AssistiveTextColor));
-        //    this.OnPropertyChanged(nameof(this.AssistiveScale));
-        //    this.OnPropertyChanged(nameof(this.LeadingIcon));
-        //    this.OnPropertyChanged(nameof(this.TrailingIcon));
-        //}
-
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (this.initialized)
@@ -244,7 +240,8 @@ namespace Plugin.MaterialDesignControls
                 switch (propertyName)
                 {
                     case nameof(this.Text):
-                        this.lblText.Text = this.Text;
+                    case nameof(this.EmptyText):
+                        this.lblText.Text = !string.IsNullOrEmpty(this.Text) ? this.Text : this.EmptyText;
                         break;
                     case nameof(this.TextColor):
                         this.lblText.TextColor = this.TextColor;
