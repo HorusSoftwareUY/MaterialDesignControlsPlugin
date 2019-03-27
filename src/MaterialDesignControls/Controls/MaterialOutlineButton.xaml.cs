@@ -91,13 +91,13 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledTextColorProperty, value); }
         }
 
-        public static readonly BindableProperty TextScaleProperty =
-            BindableProperty.Create(nameof(TextScale), typeof(ScaleTypes), typeof(MaterialFlatButton), defaultValue: ScaleTypes.BUTTON, propertyChanged: OnPropertyChanged);
+        public static readonly BindableProperty TextSizeProperty =
+            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialFlatButton), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
 
-        public ScaleTypes TextScale
+        public double TextSize
         {
-            get { return (ScaleTypes)GetValue(TextScaleProperty); }
-            set { SetValue(TextScaleProperty, value); }
+            get { return (double)GetValue(TextSizeProperty); }
+            set { SetValue(TextSizeProperty, value); }
         }
 
         public static readonly BindableProperty FontFamilyProperty =
@@ -195,7 +195,7 @@ namespace Plugin.MaterialDesignControls
 
             this.lblText.Text = this.Text;
             this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
-            this.lblText.TextScale = this.TextScale;
+            this.lblText.FontSize = this.TextSize;
             this.lblText.FontFamily = this.FontFamily;
 
             this.frmContainer.Padding = this.Padding;

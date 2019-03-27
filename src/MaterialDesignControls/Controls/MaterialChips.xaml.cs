@@ -161,13 +161,13 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledSelectedBackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty TextScaleProperty =
-            BindableProperty.Create(nameof(TextScale), typeof(ScaleTypes), typeof(MaterialChips), defaultValue: ScaleTypes.Body2, propertyChanged: OnPropertyChanged);
+        public static readonly BindableProperty TextSizeProperty =
+            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialChips), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
 
-        public ScaleTypes TextScale
+        public double TextSize
         {
-            get { return (ScaleTypes)GetValue(TextScaleProperty); }
-            set { SetValue(TextScaleProperty, value); }
+            get { return (double)GetValue(TextSizeProperty); }
+            set { SetValue(TextSizeProperty, value); }
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
@@ -211,7 +211,7 @@ namespace Plugin.MaterialDesignControls
             }
 
             this.lblText.Text = this.Text;
-            this.lblText.TextScale = this.TextScale;
+            this.lblText.FontSize = this.TextSize;
 
             this.frmContainer.Padding = this.Padding;
             this.frmContainer.CornerRadius = (float)this.CornerRadius;

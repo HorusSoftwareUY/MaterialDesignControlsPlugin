@@ -18,7 +18,7 @@ namespace Plugin.MaterialDesignControls
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Start,
                 TextColor = this.LabelTextColor,
-                TextScale = this.LabelScale
+                FontSize = this.LabelSize
             };
             mainStackLayout.Children.Add(this.lblLabel);
 
@@ -51,7 +51,7 @@ namespace Plugin.MaterialDesignControls
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Start,
                 TextColor = this.TextColor,
-                TextScale = this.TextScale,
+                FontSize = this.TextSize,
             };
             secondStackLayout.Children.Add(this.lblText);
 
@@ -76,7 +76,7 @@ namespace Plugin.MaterialDesignControls
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Start,
                 TextColor = this.AssistiveTextColor,
-                TextScale = this.AssistiveScale
+                FontSize = this.AssistiveSize
             };
             mainStackLayout.Children.Add(this.lblAssistive);
 
@@ -174,31 +174,31 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AssistiveTextColorProperty, value); }
         }
 
-        public static readonly BindableProperty LabelScaleProperty =
-            BindableProperty.Create(nameof(LabelScale), typeof(ScaleTypes), typeof(MaterialField), defaultValue: ScaleTypes.Body3);
+        public static readonly BindableProperty LabelSizeProperty =
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialField), defaultValue: Font.Default.FontSize);
 
-        public ScaleTypes LabelScale
+        public double LabelSize
         {
-            get { return (ScaleTypes)GetValue(LabelScaleProperty); }
-            set { SetValue(LabelScaleProperty, value); }
+            get { return (double)GetValue(LabelSizeProperty); }
+            set { SetValue(LabelSizeProperty, value); }
         }
 
-        public static readonly BindableProperty TextScaleProperty =
-            BindableProperty.Create(nameof(TextScale), typeof(ScaleTypes), typeof(MaterialField), defaultValue: ScaleTypes.Body2);
+        public static readonly BindableProperty TextSizeProperty =
+            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialField), defaultValue: Font.Default.FontSize);
 
-        public ScaleTypes TextScale
+        public double TextSize
         {
-            get { return (ScaleTypes)GetValue(TextScaleProperty); }
-            set { SetValue(TextScaleProperty, value); }
+            get { return (double)GetValue(TextSizeProperty); }
+            set { SetValue(TextSizeProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveScaleProperty =
-            BindableProperty.Create(nameof(AssistiveScale), typeof(ScaleTypes), typeof(MaterialField), defaultValue: ScaleTypes.Body3);
+        public static readonly BindableProperty AssistiveSizeProperty =
+            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialField), defaultValue: Font.Default.FontSize);
 
-        public ScaleTypes AssistiveScale
+        public double AssistiveSize
         {
-            get { return (ScaleTypes)GetValue(AssistiveScaleProperty); }
-            set { SetValue(AssistiveScaleProperty, value); }
+            get { return (double)GetValue(AssistiveSizeProperty); }
+            set { SetValue(AssistiveSizeProperty, value); }
         }
 
         public static readonly BindableProperty LeadingIconProperty =
@@ -246,8 +246,8 @@ namespace Plugin.MaterialDesignControls
                     case nameof(this.TextColor):
                         this.lblText.TextColor = this.TextColor;
                         break;
-                    case nameof(this.TextScale):
-                        this.lblText.TextScale = this.TextScale;
+                    case nameof(this.TextSize):
+                        this.lblText.FontSize = this.TextSize;
                         break;
                     case nameof(this.LabelText):
                         this.lblLabel.Text = this.LabelText;
@@ -255,8 +255,8 @@ namespace Plugin.MaterialDesignControls
                     case nameof(this.LabelTextColor):
                         this.lblLabel.TextColor = this.LabelTextColor;
                         break;
-                    case nameof(this.LabelScale):
-                        this.lblLabel.TextScale = this.LabelScale;
+                    case nameof(this.LabelSize):
+                        this.lblLabel.FontSize = this.LabelSize;
                         break;
                     case nameof(this.AssistiveText):
                         this.lblAssistive.Text = this.AssistiveText;
@@ -264,8 +264,8 @@ namespace Plugin.MaterialDesignControls
                     case nameof(this.AssistiveTextColor):
                         this.lblAssistive.TextColor = this.AssistiveTextColor;
                         break;
-                    case nameof(this.AssistiveScale):
-                        this.lblAssistive.TextScale = this.AssistiveScale;
+                    case nameof(this.AssistiveSize):
+                        this.lblAssistive.FontSize = this.AssistiveSize;
                         break;
                     case nameof(this.LeadingIcon):
                         if (!string.IsNullOrEmpty(this.LeadingIcon))

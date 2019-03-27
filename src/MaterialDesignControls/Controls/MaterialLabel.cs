@@ -6,6 +6,8 @@ namespace Plugin.MaterialDesignControls
 {
     public class MaterialLabel : Label
     {
+        #region Properties
+
         public static new readonly BindableProperty TextProperty =
             BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnTextChanged);
 
@@ -13,15 +15,6 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
-        }
-
-        public static readonly BindableProperty TextScaleProperty =
-            BindableProperty.Create(nameof(TextScale), typeof(ScaleTypes), typeof(MaterialLabel), defaultValue: ScaleTypes.Caption, propertyChanged: OnPropertyChanged);
-
-        public ScaleTypes TextScale
-        {
-            get { return (ScaleTypes)GetValue(TextScaleProperty); }
-            set { SetValue(TextScaleProperty, value); }
         }
 
         public static readonly BindableProperty LetterSpacingProperty =
@@ -33,6 +26,19 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LetterSpacingProperty, value); }
         }
 
+        public static readonly BindableProperty ToUpperProperty =
+            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialLabel), defaultValue: false);
+
+        public bool ToUpper
+        {
+            get { return (bool)GetValue(ToUpperProperty); }
+            set { SetValue(ToUpperProperty, value); }
+        }
+
+        #endregion Properties
+
+        #region Methods
+
         private static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialLabel)bindable;
@@ -41,87 +47,9 @@ namespace Plugin.MaterialDesignControls
 
         private void ApplyTextProperty()
         {
-            switch (this.TextScale)
-            {
-                case ScaleTypes.BUTTON:
-                case ScaleTypes.OVERLINE:
-                    base.Text = this.Text?.ToUpper();
-                    break;
-                default:
-                    base.Text = this.Text;
-                    break;
-            }
+            base.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
         }
 
-        private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialLabel)bindable;
-            control.ApplyControlProperties();
-        }
-
-        private void ApplyControlProperties()
-        {
-            switch (this.TextScale)
-            {
-                case ScaleTypes.H1:
-                    this.FontSize = 96;
-                    break;
-                case ScaleTypes.H2:
-                    this.FontSize = 60;
-                    break;
-                case ScaleTypes.H3:
-                    this.FontSize = 48;
-                    break;
-                case ScaleTypes.H4:
-                    this.FontSize = 34;
-                    break;
-                case ScaleTypes.H5:
-                    this.FontSize = 24;
-                    break;
-                case ScaleTypes.H6:
-                    this.FontSize = 20;
-                    break;
-                case ScaleTypes.Subtitle1:
-                    this.FontSize = 16;
-                    break;
-                case ScaleTypes.Subtitle2:
-                    this.FontSize = 14;
-                    break;
-                case ScaleTypes.Body1:
-                    this.FontSize = 16;
-                    break;
-                case ScaleTypes.Body2:
-                    this.FontSize = 14;
-                    break;
-                case ScaleTypes.Body3:
-                    this.FontSize = 12;
-                    break;
-                case ScaleTypes.Body4:
-                    this.FontSize = 10;
-                    break;
-                case ScaleTypes.BUTTON:
-                    this.FontSize = 14;
-                    this.LetterSpacing = 0.1;
-                    base.Text = this.Text?.ToUpper();
-                    break;
-                case ScaleTypes.Button:
-                    this.FontSize = 14;
-                    this.LetterSpacing = 0.1;
-                    break;
-                case ScaleTypes.Caption:
-                    this.FontSize = 12;
-                    this.LetterSpacing = 0.2;
-                    break;
-                case ScaleTypes.OVERLINE:
-                    this.FontSize = 10;
-                    this.LetterSpacing = 0.2;
-                    base.Text = this.Text?.ToUpper();
-                    break;
-                case ScaleTypes.Overline:
-                    this.FontSize = 10;
-                    this.LetterSpacing = 0.2;
-                    break;
-            }
-        }
+        #endregion Methods
     }
 }

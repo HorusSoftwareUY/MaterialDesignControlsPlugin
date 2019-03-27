@@ -70,7 +70,6 @@
     <Compile Include="IFieldControl.cs" />
     <Compile Include="Implementations\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomEditor.cs" />
-    <Compile Include="ScaleTypes.cs" />
     <Compile Include="Controls\MaterialButton.xaml.cs" />
     <Compile Include="Controls\MaterialChips.xaml.cs" />
     <Compile Include="Controls\MaterialDatePicker.xaml.cs" />
