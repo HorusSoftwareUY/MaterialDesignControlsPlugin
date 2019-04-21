@@ -4,7 +4,7 @@
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="Plugin.MaterialDesignControls.MaterialChips">
     <ContentView.Content>
-        <Frame x:Name="frmContainer" HasShadow="false" Padding="12,0" HeightRequest="32" HorizontalOptions="FillAndExpand">
+        <Frame x:Name="frmContainer" HasShadow="false" Padding="12,0" MinimumHeightRequest="32" HeightRequest="32" HorizontalOptions="FillAndExpand">
             <controls:MaterialLabel x:Name="lblText" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" />
         </Frame>
     </ContentView.Content>
