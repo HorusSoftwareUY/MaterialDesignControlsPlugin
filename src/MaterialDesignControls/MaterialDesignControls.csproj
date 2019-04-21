@@ -1,14 +1,6 @@
-<Project Sdk="MSBuild.Sdk.Extras/1.6.61">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!--Work around so the conditions work below-->
-    <TargetFrameworks></TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard1.0;netstandard2.0;Xamarin.iOS10;MonoAndroid81;uap10.0.16299</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard1.0;netstandard2.0;Xamarin.iOS10;MonoAndroid81</TargetFrameworks>
-    <!--Feel free to add as many targets as you need below
-    netstandard1.0;netstandard2.0;MonoAndroid81;Xamarin.iOS10;uap10.0.16299;Xamarin.TVOS10;Xamarin.WatchOS10;Xamarin.Mac20;Tizen40
-    For UWP update the version number with a version number you have installed.
-    -->
     <AssemblyName>Plugin.MaterialDesignControls</AssemblyName>
     <RootNamespace>Plugin.MaterialDesignControls</RootNamespace>
     <PackageId>Plugin.MaterialDesignControls</PackageId>
@@ -44,7 +36,7 @@
     <Owners>YOU</Owners>
     <Authors>YOU</Authors>
     <Copyright>Copyright 2018</Copyright>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
@@ -58,9 +50,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Controls\MaterialField.xaml.cs" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
@@ -81,9 +70,7 @@
     <Compile Include="Controls\MaterialPicker.xaml.cs" />
     <Compile Include="Controls\MaterialSelection.xaml.cs" />
     <Compile Include="Controls\MaterialTimePicker.xaml.cs" />
-    <Compile Include="Controls\MaterialChipsGroup.xaml.cs">
-      <DependentUpon>MaterialChipsGroup.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Controls\MaterialChipsGroup.xaml.cs" />
     <Compile Include="Controls\MaterialField.cs" />
   </ItemGroup>
 
@@ -96,24 +83,5 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Remove="Controls\MaterialField.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Controls\MaterialButton.xaml" />
-    <EmbeddedResource Include="Controls\MaterialChips.xaml" />
-    <EmbeddedResource Include="Controls\MaterialDatePicker.xaml" />
-    <EmbeddedResource Include="Controls\MaterialEditor.xaml" />
-    <EmbeddedResource Include="Controls\MaterialEntry.xaml" />
-    <EmbeddedResource Include="Controls\MaterialFlatButton.xaml" />
-    <EmbeddedResource Include="Controls\MaterialOutlineButton.xaml" />
-    <EmbeddedResource Include="Controls\MaterialPicker.xaml" />
-    <EmbeddedResource Include="Controls\MaterialSelection.xaml" />
-    <EmbeddedResource Include="Controls\MaterialTimePicker.xaml" />
-    <EmbeddedResource Include="Controls\MaterialChipsGroup.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
