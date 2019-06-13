@@ -18,6 +18,7 @@ namespace Plugin.MaterialDesignControls
 
             this.pckTime.Focused += Handle_Focused;
             this.pckTime.Unfocused += Handle_Unfocused;
+            this.pckTime.SetBinding(TimePicker.TimeProperty, new Binding() { Source = this, Path = TimeProperty.PropertyName });
         }
 
         #endregion Constructors

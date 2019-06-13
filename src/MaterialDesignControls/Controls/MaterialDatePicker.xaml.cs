@@ -18,6 +18,7 @@ namespace Plugin.MaterialDesignControls
 
             this.pckDate.Focused += Handle_Focused;
             this.pckDate.Unfocused += Handle_Unfocused;
+            this.pckDate.SetBinding(DatePicker.DateProperty, new Binding() { Source = this, Path = DateProperty.PropertyName });
         }
 
         #endregion Constructors
