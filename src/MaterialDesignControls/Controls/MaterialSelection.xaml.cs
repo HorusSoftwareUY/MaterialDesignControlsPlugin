@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -31,7 +32,7 @@ namespace Plugin.MaterialDesignControls
         #region Properties
 
         public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialEntry), defaultValue: FieldTypes.Filled, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialEntry), defaultValue: FieldTypes.Filled);
 
         public FieldTypes Type
         {
@@ -49,7 +50,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CommandParameterProperty =
-            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialSelection), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialSelection), defaultValue: null);
 
         public object CommandParameter
         {
@@ -59,7 +60,7 @@ namespace Plugin.MaterialDesignControls
 
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialSelection), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialSelection), defaultValue: new Thickness(12, 0));
 
         public new Thickness Padding
         {
@@ -68,7 +69,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialSelection), defaultValue: true, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialSelection), defaultValue: true);
 
         public new bool IsEnabled
         {
@@ -77,7 +78,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextProperty =
-            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialSelection), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialSelection), defaultValue: null);
 
         public string LabelText
         {
@@ -95,7 +96,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty PlaceholderProperty =
-            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialSelection), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialSelection), defaultValue: null);
 
         public string Placeholder
         {
@@ -104,7 +105,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialSelection), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialSelection), defaultValue: null);
 
         public string AssistiveText
         {
@@ -113,7 +114,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.Gray);
 
         public Color LabelTextColor
         {
@@ -122,7 +123,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.Gray);
 
         public Color TextColor
         {
@@ -131,7 +132,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty PlaceholderColorProperty =
-            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.Gray);
 
         public Color PlaceholderColor
         {
@@ -140,7 +141,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.Gray);
 
         public Color AssistiveTextColor
         {
@@ -149,7 +150,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.LightGray);
 
         public new Color BackgroundColor
         {
@@ -158,7 +159,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialSelection), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialSelection), defaultValue: Font.Default.FontSize);
 
         public double LabelSize
         {
@@ -167,7 +168,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextSizeProperty =
-            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialSelection), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialSelection), defaultValue: Font.Default.FontSize);
 
         public double TextSize
         {
@@ -176,7 +177,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveSizeProperty =
-            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialSelection), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialSelection), defaultValue: Font.Default.FontSize);
 
         public double AssistiveSize
         {
@@ -185,7 +186,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialSelection), defaultValue: Color.LightGray);
 
         public Color BorderColor
         {
@@ -194,7 +195,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialSelection), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialSelection), defaultValue: null);
 
         public string LeadingIcon
         {
@@ -208,7 +209,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialSelection), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialSelection), defaultValue: null);
 
         public string TrailingIcon
         {
@@ -245,7 +246,7 @@ namespace Plugin.MaterialDesignControls
             var control = (MaterialSelection)bindable;
 
             TapGestureRecognizer selectionTapGestureRecognizer = new TapGestureRecognizer();
-            selectionTapGestureRecognizer.Tapped += async (s, e) =>
+            selectionTapGestureRecognizer.Tapped += (s, e) =>
             {
                 if (control.IsEnabled && control.Command != null && control.Command.CanExecute(control.CommandParameter))
                 {
@@ -256,13 +257,7 @@ namespace Plugin.MaterialDesignControls
             control.frmContainer.GestureRecognizers.Add(selectionTapGestureRecognizer);
         }
 
-        private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialSelection)bindable;
-            control.ApplyControlProperties();
-        }
-
-        private void ApplyControlProperties()
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (!this.initialized)
             {
@@ -270,73 +265,105 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
-            this.lblText.FontSize = this.TextSize;
-            this.lblLabel.Text = this.LabelText;
-            this.lblLabel.TextColor = this.LabelTextColor;
-            this.lblLabel.FontSize = this.LabelSize;
-
-            if (string.IsNullOrEmpty(this.Text))
+            switch (propertyName)
             {
-                this.lblText.Text = this.Placeholder;
-                this.lblText.TextColor = this.PlaceholderColor;
-            }
-
-            this.frmContainer.Padding = this.Padding;
-            switch (this.Type)
-            {
-                case FieldTypes.Filled:
-                    this.frmContainer.BackgroundColor = this.BackgroundColor;
-                    this.frmContainer.BorderColor = this.BorderColor;
-                    this.frmContainer.CornerRadius = 20;
-                    this.bxvLine.IsVisible = false;
+                case nameof(this.TextSize):
+                    this.lblText.FontSize = this.TextSize;
                     break;
-                case FieldTypes.Outlined:
-                    this.frmContainer.BackgroundColor = this.BackgroundColor;
-                    this.frmContainer.BorderColor = this.BorderColor;
-                    this.frmContainer.CornerRadius = 4;
-                    this.bxvLine.IsVisible = false;
-                    break;
-                case FieldTypes.Lined:
-                    this.frmContainer.BackgroundColor = Color.Transparent;
-                    this.frmContainer.BorderColor = Color.Transparent;
-                    this.bxvLine.IsVisible = true;
-                    this.bxvLine.Color = this.BorderColor;
 
-                    this.frmContainer.HeightRequest = 30;
-
-                    if (this.LeadingIconIsVisible)
+                case nameof(this.Text):
+                case nameof(this.Placeholder):
+                case nameof(this.PlaceholderColor):
+                    if (string.IsNullOrEmpty(this.Text))
                     {
-                        this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top,
-                                                            this.lblLabel.Margin.Right, 0);
-                        this.frmContainer.Padding = new Thickness(0);
-                        this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top,
-                                                            this.lblAssistive.Margin.Right, this.lblAssistive.Margin.Bottom);
-                        this.bxvLine.Margin = new Thickness(36, 0, 0, 0);
-                    }
-                    else
-                    {
-                        this.lblLabel.Margin = new Thickness(0, this.lblLabel.Margin.Top, 0, 0);
-                        this.frmContainer.Padding = new Thickness(0);
-                        this.lblAssistive.Margin = new Thickness(0, this.lblAssistive.Margin.Top, 0, this.lblAssistive.Margin.Bottom);
+                        this.lblText.Text = this.Placeholder;
+                        this.lblText.TextColor = this.PlaceholderColor;
                     }
                     break;
-            }
 
-            this.lblAssistive.Text = this.AssistiveText;
-            this.lblAssistive.TextColor = this.AssistiveTextColor;
-            this.lblAssistive.FontSize = this.AssistiveSize;
+                case nameof(this.LabelText):
+                    this.lblLabel.Text = this.LabelText;
+                    break;
+                case nameof(this.LabelTextColor):
+                    this.lblLabel.TextColor = this.LabelTextColor;
+                    break;
+                case nameof(this.LabelSize):
+                    this.lblLabel.FontSize = this.LabelSize;
+                    break;
 
-            if (!string.IsNullOrEmpty(this.LeadingIcon))
-            {
-                this.imgLeadingIcon.Source = this.LeadingIcon;
-            }
-            this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
+                case nameof(this.Padding):
+                    this.frmContainer.Padding = this.Padding;
+                    break;
 
-            if (!string.IsNullOrEmpty(this.TrailingIcon))
-            {
-                this.imgTrailingIcon.Source = this.TrailingIcon;
+                case nameof(this.Type):
+                case nameof(this.BackgroundColor):
+                case nameof(this.BorderColor):
+                    switch (this.Type)
+                    {
+                        case FieldTypes.Filled:
+                            this.frmContainer.BackgroundColor = this.BackgroundColor;
+                            this.frmContainer.BorderColor = this.BorderColor;
+                            this.frmContainer.CornerRadius = 20;
+                            this.bxvLine.IsVisible = false;
+                            break;
+                        case FieldTypes.Outlined:
+                            this.frmContainer.BackgroundColor = this.BackgroundColor;
+                            this.frmContainer.BorderColor = this.BorderColor;
+                            this.frmContainer.CornerRadius = 4;
+                            this.bxvLine.IsVisible = false;
+                            break;
+                        case FieldTypes.Lined:
+                            this.frmContainer.BackgroundColor = Color.Transparent;
+                            this.frmContainer.BorderColor = Color.Transparent;
+                            this.bxvLine.IsVisible = true;
+                            this.bxvLine.Color = this.BorderColor;
+
+                            this.frmContainer.HeightRequest = 30;
+
+                            if (this.LeadingIconIsVisible)
+                            {
+                                this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top,
+                                                                    this.lblLabel.Margin.Right, 0);
+                                this.frmContainer.Padding = new Thickness(0);
+                                this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top,
+                                                                    this.lblAssistive.Margin.Right, this.lblAssistive.Margin.Bottom);
+                                this.bxvLine.Margin = new Thickness(36, 0, 0, 0);
+                            }
+                            else
+                            {
+                                this.lblLabel.Margin = new Thickness(0, this.lblLabel.Margin.Top, 0, 0);
+                                this.frmContainer.Padding = new Thickness(0);
+                                this.lblAssistive.Margin = new Thickness(0, this.lblAssistive.Margin.Top, 0, this.lblAssistive.Margin.Bottom);
+                            }
+                            break;
+                    }
+                    break;
+
+                case nameof(this.AssistiveText):
+                    this.lblAssistive.Text = this.AssistiveText;
+                    break;
+                case nameof(this.AssistiveTextColor):
+                    this.lblAssistive.TextColor = this.AssistiveTextColor;
+                    break;
+                case nameof(this.AssistiveSize):
+                    this.lblAssistive.FontSize = this.AssistiveSize;
+                    break;
+
+                case nameof(this.LeadingIcon):
+                    if (!string.IsNullOrEmpty(this.LeadingIcon))
+                    {
+                        this.imgLeadingIcon.Source = this.LeadingIcon;
+                    }
+                    this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
+                    break;
+                case nameof(this.TrailingIcon):
+                    if (!string.IsNullOrEmpty(this.TrailingIcon))
+                    {
+                        this.imgTrailingIcon.Source = this.TrailingIcon;
+                    }
+                    this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible && this.IsEnabled;
+                    break;
             }
-            this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
         }
 
         #endregion Methods
