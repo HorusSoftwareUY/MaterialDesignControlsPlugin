@@ -5,19 +5,19 @@
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
              x:Class="Plugin.MaterialDesignControls.MaterialEntry">
     <ContentView.Content>
-        <StackLayout Spacing="2">
-            <controls:MaterialLabel x:Name="lblLabel" Margin="14,0,14,2" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" />
-            <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0" HorizontalOptions="FillAndExpand">
-                <StackLayout Orientation="Horizontal" Spacing="12" VerticalOptions="Center">
-                    <Image x:Name="imgLeadingIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+        <StackLayout CompressedLayout.IsHeadless="true" Spacing="2">
+            <controls:MaterialLabel x:Name="lblLabel" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
+            <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0">
+                <StackLayout CompressedLayout.IsHeadless="true" Orientation="Horizontal" Spacing="12">
+                    <Image x:Name="imgLeadingIcon" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="24" HeightRequest="24" />
                     <custom:CustomEntry x:Name="txtEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
                     <Image x:Name="imgTrailingIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                     <Image x:Name="imgShowPasswordIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                     <Image x:Name="imgClearIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                 </StackLayout>
             </Frame>
-            <BoxView x:Name="bxvLine" HeightRequest="1" HorizontalOptions="FillAndExpand" />
-            <controls:MaterialLabel x:Name="lblAssistive" Margin="14,2,14,0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" />
+            <BoxView x:Name="bxvLine" HeightRequest="1" />
+            <controls:MaterialLabel x:Name="lblAssistive" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
         </StackLayout>
     </ContentView.Content>
 </ContentView>

@@ -252,7 +252,7 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(FieldNameProperty, value); }
         }
 
-        public string InvalidMessage 
+        public string InvalidMessage
         {
             get { return this.RequiredMessage; }
             set { }
