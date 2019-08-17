@@ -59,10 +59,6 @@
     <Compile Include="IFieldControl.cs" />
     <Compile Include="Implementations\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomEditor.cs" />
-    <Compile Include="Controls\MaterialButton.xaml.cs">
-      <DependentUpon>MaterialButton.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Controls\MaterialChips.xaml.cs">
       <DependentUpon>MaterialChips.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -99,6 +95,11 @@
     <Compile Include="Controls\MaterialField.cs" />
     <Compile Include="Controls\MaterialOutlineButton.cs" />
     <Compile Include="Controls\MaterialFlatButton.cs" />
+    <Compile Include="Implementations\MaterialFieldLayout.xaml.cs">
+      <DependentUpon>MaterialFieldLayout.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialButton.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
