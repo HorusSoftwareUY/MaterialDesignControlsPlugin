@@ -59,19 +59,46 @@
     <Compile Include="IFieldControl.cs" />
     <Compile Include="Implementations\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomEditor.cs" />
-    <Compile Include="Controls\MaterialButton.xaml.cs" />
-    <Compile Include="Controls\MaterialChips.xaml.cs" />
-    <Compile Include="Controls\MaterialDatePicker.xaml.cs" />
-    <Compile Include="Controls\MaterialEditor.xaml.cs" />
-    <Compile Include="Controls\MaterialEntry.xaml.cs" />
-    <Compile Include="Controls\MaterialFlatButton.xaml.cs" />
+    <Compile Include="Controls\MaterialButton.xaml.cs">
+      <DependentUpon>MaterialButton.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialChips.xaml.cs">
+      <DependentUpon>MaterialChips.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialDatePicker.xaml.cs">
+      <DependentUpon>MaterialDatePicker.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialEditor.xaml.cs">
+      <DependentUpon>MaterialEditor.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialEntry.xaml.cs">
+      <DependentUpon>MaterialEntry.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controls\MaterialLabel.cs" />
-    <Compile Include="Controls\MaterialOutlineButton.xaml.cs" />
-    <Compile Include="Controls\MaterialPicker.xaml.cs" />
-    <Compile Include="Controls\MaterialSelection.xaml.cs" />
-    <Compile Include="Controls\MaterialTimePicker.xaml.cs" />
-    <Compile Include="Controls\MaterialChipsGroup.xaml.cs" />
+    <Compile Include="Controls\MaterialPicker.xaml.cs">
+      <DependentUpon>MaterialPicker.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialSelection.xaml.cs">
+      <DependentUpon>MaterialSelection.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialTimePicker.xaml.cs">
+      <DependentUpon>MaterialTimePicker.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialChipsGroup.xaml.cs">
+      <DependentUpon>MaterialChipsGroup.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controls\MaterialField.cs" />
+    <Compile Include="Controls\MaterialOutlineButton.cs" />
+    <Compile Include="Controls\MaterialFlatButton.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

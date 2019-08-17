@@ -7,7 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialButton : ContentView
+    public partial class MaterialButton : Frame
     {
         #region Constructors
 
@@ -46,24 +46,6 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (object)GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
-        }
-    
-        public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialButton), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
-
-        public new Thickness Padding
-        {
-            get { return (Thickness)GetValue(PaddingProperty); }
-            set { SetValue(PaddingProperty, value); }
-        }
-
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialButton), defaultValue: true, propertyChanged: OnPropertyChanged);
-
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
         }
 
         public static readonly BindableProperty TextProperty =
@@ -129,10 +111,10 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(FontFamilyProperty, value); }
         }
 
-        public static readonly BindableProperty BorderColorProperty =
+        public static readonly new BindableProperty BorderColorProperty =
             BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Transparent, propertyChanged: OnPropertyChanged);
 
-        public Color BorderColor
+        public new Color BorderColor
         {
             get { return (Color)GetValue(BorderColorProperty); }
             set { SetValue(BorderColorProperty, value); }
@@ -170,15 +152,6 @@ namespace Plugin.MaterialDesignControls
             get { return !string.IsNullOrEmpty(this.Icon); }
         }
 
-        public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialButton), defaultValue: 4.0, propertyChanged: OnPropertyChanged);
-
-        public double CornerRadius
-        {
-            get { return (double)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
         #endregion Properties
 
         #region Methods
@@ -195,8 +168,8 @@ namespace Plugin.MaterialDesignControls
                     control.Command.Execute(control.CommandParameter);
                 }
             };
-            control.frmContainer.GestureRecognizers.Clear();
-            control.frmContainer.GestureRecognizers.Add(selectionTapGestureRecognizer);
+            control.GestureRecognizers.Clear();
+            control.GestureRecognizers.Add(selectionTapGestureRecognizer);
         }
 
         private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -218,11 +191,8 @@ namespace Plugin.MaterialDesignControls
             this.lblText.FontSize = this.TextSize;
             this.lblText.FontFamily = this.FontFamily;
 
-            this.frmContainer.Padding = this.Padding;
-            this.frmContainer.CornerRadius = (float)this.CornerRadius;
-
-            this.frmContainer.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
-            this.frmContainer.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
+            base.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
+            base.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
 
             if (!string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon))
             {
