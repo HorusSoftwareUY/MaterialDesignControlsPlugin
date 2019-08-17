@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialEditor : ContentView, IFieldControl
     {
         #region Constructors

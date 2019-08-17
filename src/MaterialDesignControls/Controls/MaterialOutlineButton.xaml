@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="Plugin.MaterialDesignControls.MaterialOutlineButton"
-             HorizontalOptions="FillAndExpand">
+             CompressedLayout.IsHeadless="true">
     <ContentView.Content>
-        <Frame x:Name="frmContainer" BackgroundColor="Transparent" HasShadow="false" MinimumHeightRequest="40" HeightRequest="40" Padding="12,0" HorizontalOptions="FillAndExpand">
-            <StackLayout Orientation="Horizontal" Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
-                <Image x:Name="imgIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
-                <controls:MaterialLabel x:Name="lblText" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" />
+        <Frame x:Name="frmContainer" BackgroundColor="Transparent" HasShadow="false" MinimumHeightRequest="40" HeightRequest="40" Padding="12,0">
+            <StackLayout CompressedLayout.IsHeadless="true" Orientation="Horizontal" Spacing="12" HorizontalOptions="Center">
+                <Image x:Name="imgIcon" VerticalOptions="Center" WidthRequest="24" HeightRequest="24" />
+                <controls:MaterialLabel x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" />
             </StackLayout>
         </Frame>
     </ContentView.Content>

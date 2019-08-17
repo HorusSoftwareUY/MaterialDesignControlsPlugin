@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialChips : ContentView
     {
         #region Constructors
@@ -20,18 +22,21 @@ namespace Plugin.MaterialDesignControls
             TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += async (s, e) =>
             {
-                if (CommandProperty != null && this.Command != null)
+                if (this.IsEnabled)
                 {
-                    Opacity = .5;
-                    Opacity = 1;
-                    this.Command.Execute(this.CommandParameter);
-                }
-                else
-                {
-                    this.IsSelected = !this.IsSelected;
+                    if (CommandProperty != null && this.Command != null)
+                    {
+                        Opacity = .5;
+                        Opacity = 1;
+                        this.Command.Execute(this.CommandParameter);
+                    }
+                    else
+                    {
+                        this.IsSelected = !this.IsSelected;
+                    }
                 }
             };
-            this.GestureRecognizers.Add(tapGestureRecognizer);
+            this.frmContainer.GestureRecognizers.Add(tapGestureRecognizer);
         }
 
         #endregion Constructors

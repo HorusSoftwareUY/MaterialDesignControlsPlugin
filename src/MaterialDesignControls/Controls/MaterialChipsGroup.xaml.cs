@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialChipsGroup : ContentView, IFieldControl
     {
         #region Constructors

@@ -2,10 +2,11 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             x:Class="Plugin.MaterialDesignControls.MaterialChips">
+             x:Class="Plugin.MaterialDesignControls.MaterialChips"
+             CompressedLayout.IsHeadless="true">
     <ContentView.Content>
-        <Frame x:Name="frmContainer" HasShadow="false" Padding="12,0" MinimumHeightRequest="32" HeightRequest="32" HorizontalOptions="FillAndExpand">
-            <controls:MaterialLabel x:Name="lblText" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" />
+        <Frame x:Name="frmContainer" HasShadow="false" Padding="12,0" MinimumHeightRequest="32" HeightRequest="32">
+            <controls:MaterialLabel x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalTextAlignment="Center" />
         </Frame>
     </ContentView.Content>
 </ContentView>

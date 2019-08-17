@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialPicker : ContentView, IFieldControl
     {
         #region Constructors
