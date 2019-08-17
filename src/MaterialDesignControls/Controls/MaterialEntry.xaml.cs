@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,7 +24,7 @@ namespace Plugin.MaterialDesignControls
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
 
             TapGestureRecognizer clearTapGestureRecognizer = new TapGestureRecognizer();
-            clearTapGestureRecognizer.Tapped += async (s, e) =>
+            clearTapGestureRecognizer.Tapped += (s, e) =>
             {
                 this.Text = string.Empty;
                 this.txtEntry.Text = string.Empty;
@@ -31,7 +32,7 @@ namespace Plugin.MaterialDesignControls
             this.imgClearIcon.GestureRecognizers.Add(clearTapGestureRecognizer);
 
             TapGestureRecognizer showPasswordTapGestureRecognizer = new TapGestureRecognizer();
-            showPasswordTapGestureRecognizer.Tapped += async (s, e) =>
+            showPasswordTapGestureRecognizer.Tapped += (s, e) =>
             {
                 if (this.passwordIsVisible)
                 {
@@ -60,7 +61,7 @@ namespace Plugin.MaterialDesignControls
         #region Properties
 
         public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialEntry), defaultValue: FieldTypes.Filled, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialEntry), defaultValue: FieldTypes.Filled);
 
         public FieldTypes Type
         {
@@ -69,7 +70,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEntry), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEntry), defaultValue: new Thickness(12, 0));
 
         public new Thickness Padding
         {
@@ -78,7 +79,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialEntry), defaultValue: true, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialEntry), defaultValue: true);
 
         public new bool IsEnabled
         {
@@ -87,7 +88,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty IsPasswordProperty =
-            BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false);
 
         public bool IsPassword
         {
@@ -96,7 +97,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty KeyboardProperty =
-            BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(MaterialEntry), defaultValue: Keyboard.Text, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(MaterialEntry), defaultValue: Keyboard.Text);
 
         public Keyboard Keyboard
         {
@@ -105,7 +106,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextProperty =
-            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string LabelText
         {
@@ -123,7 +124,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty PlaceholderProperty =
-            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string Placeholder
         {
@@ -132,7 +133,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string AssistiveText
         {
@@ -141,7 +142,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray);
 
         public Color LabelTextColor
         {
@@ -150,7 +151,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray);
 
         public Color FocusedLabelTextColor
         {
@@ -159,7 +160,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray);
 
         public Color TextColor
         {
@@ -168,7 +169,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty PlaceholderColorProperty =
-            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray);
 
         public Color PlaceholderColor
         {
@@ -177,7 +178,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.Gray);
 
         public Color AssistiveTextColor
         {
@@ -186,7 +187,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray);
 
         public new Color BackgroundColor
         {
@@ -195,7 +196,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialEntry), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialEntry), defaultValue: Font.Default.FontSize);
 
         public double LabelSize
         {
@@ -204,7 +205,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEntry), defaultValue: 14.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEntry), defaultValue: 14.0);
 
         public double FontSize
         {
@@ -213,7 +214,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveSizeProperty =
-            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialEntry), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialEntry), defaultValue: Font.Default.FontSize);
 
         public double AssistiveSize
         {
@@ -222,7 +223,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray);
 
         public Color BorderColor
         {
@@ -231,7 +232,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedBorderColorProperty =
-            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray);
 
         public Color FocusedBorderColor
         {
@@ -240,7 +241,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ClearIconProperty =
-            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string ClearIcon
         {
@@ -249,7 +250,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ClearIconIsVisibleProperty =
-            BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
 
         public bool ClearIconIsVisible
         {
@@ -258,7 +259,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ShowPasswordIconProperty =
-            BindableProperty.Create(nameof(ShowPasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(ShowPasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string ShowPasswordIcon
         {
@@ -267,7 +268,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ShowPasswordIconIsVisibleProperty =
-            BindableProperty.Create(nameof(ShowPasswordIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(ShowPasswordIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
 
         public bool ShowPasswordIconIsVisible
         {
@@ -276,7 +277,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string LeadingIcon
         {
@@ -290,7 +291,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string TrailingIcon
         {
@@ -304,7 +305,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty MaxLengthProperty =
-            BindableProperty.Create(nameof(MaxLength), typeof(int), typeof(MaterialEntry), defaultValue: Int32.MaxValue, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(MaxLength), typeof(int), typeof(MaterialEntry), defaultValue: Int32.MaxValue);
 
         public int MaxLength
         {
@@ -313,7 +314,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty RegexValidationProperty =
-            BindableProperty.Create(nameof(RegexValidation), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(RegexValidation), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string RegexValidation
         {
@@ -322,7 +323,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty InvalidMessageProperty =
-            BindableProperty.Create(nameof(InvalidMessage), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(InvalidMessage), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string InvalidMessage
         {
@@ -331,7 +332,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty RequiredMessageProperty =
-            BindableProperty.Create(nameof(RequiredMessage), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(RequiredMessage), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
         public string RequiredMessage
         {
@@ -340,7 +341,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty IsRequiredProperty =
-            BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialEntry), defaultValue: false, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialEntry), defaultValue: false);
 
         public bool IsRequired
         {
@@ -388,13 +389,7 @@ namespace Plugin.MaterialDesignControls
             FieldsValidator.RegisterControl(control);
         }
 
-        private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialEntry)bindable;
-            control.ApplyControlProperties();
-        }
-
-        private void ApplyControlProperties()
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (!this.initialized)
             {
@@ -402,93 +397,140 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
-            this.txtEntry.IsEnabled = this.IsEnabled;
-            this.txtEntry.TextColor = this.TextColor;
-            this.txtEntry.FontSize = this.FontSize;
-            this.txtEntry.Placeholder = this.Placeholder;
-            this.txtEntry.PlaceholderColor = this.PlaceholderColor;
-            this.txtEntry.IsPassword = this.IsPassword;
-            this.txtEntry.Keyboard = this.Keyboard;
-            this.txtEntry.MaxLength = this.MaxLength;
-
             // TODO: Check if you can take out the strong password.
 
-            this.lblLabel.Text = this.LabelText;
-            this.lblLabel.TextColor = this.LabelTextColor;
-            this.lblLabel.FontSize = this.LabelSize;
-
-            this.frmContainer.Padding = this.Padding;
-            switch (this.Type)
+            switch (propertyName)
             {
-                case FieldTypes.Filled:
-                    this.frmContainer.BackgroundColor = this.BackgroundColor;
-                    this.frmContainer.BorderColor = this.BorderColor;
-                    this.frmContainer.CornerRadius = 20;
-                    this.bxvLine.IsVisible = false;
+                case nameof(this.IsEnabled):
+                    this.txtEntry.IsEnabled = this.IsEnabled;
                     break;
-                case FieldTypes.Outlined:
-                    this.frmContainer.BackgroundColor = this.BackgroundColor;
-                    this.frmContainer.BorderColor = this.BorderColor;
-                    this.frmContainer.CornerRadius = 4;
-                    this.bxvLine.IsVisible = false;
+                case nameof(this.TextColor):
+                    this.txtEntry.TextColor = this.TextColor;
                     break;
-                case FieldTypes.Lined:
-                    this.frmContainer.BackgroundColor = Color.Transparent;
-                    this.frmContainer.BorderColor = Color.Transparent;
-                    this.bxvLine.IsVisible = true;
-                    this.bxvLine.Color = this.BorderColor;
+                case nameof(this.FontSize):
+                    this.txtEntry.FontSize = this.FontSize;
+                    break;
+                case nameof(this.Placeholder):
+                    this.txtEntry.Placeholder = this.Placeholder;
+                    break;
+                case nameof(this.PlaceholderColor):
+                    this.txtEntry.PlaceholderColor = this.PlaceholderColor;
+                    break;
+                case nameof(this.Keyboard):
+                    this.txtEntry.Keyboard = this.Keyboard;
+                    break;
+                case nameof(this.MaxLength):
+                    this.txtEntry.MaxLength = this.MaxLength;
+                    break;
 
-                    this.frmContainer.HeightRequest = 30;
+                case nameof(this.LabelText):
+                    this.lblLabel.Text = this.LabelText;
+                    break;
+                case nameof(this.LabelTextColor):
+                    this.lblLabel.TextColor = this.LabelTextColor;
+                    break;
+                case nameof(this.LabelSize):
+                    this.lblLabel.FontSize = this.LabelSize;
+                    break;
 
-                    if (this.LeadingIconIsVisible)
+                case nameof(this.Padding):
+                    this.frmContainer.Padding = this.Padding;
+                    break;
+
+                case nameof(this.Type):
+                case nameof(this.BackgroundColor):
+                case nameof(this.BorderColor):
+                    switch (this.Type)
                     {
-                        this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top,
-                                                            this.lblLabel.Margin.Right, 0);
-                        this.frmContainer.Padding = new Thickness(0);
-                        this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top,
-                                                            this.lblAssistive.Margin.Right, this.lblAssistive.Margin.Bottom);
-                        this.bxvLine.Margin = new Thickness(36, 0, 0, 0);
-                    }
-                    else
-                    {
-                        this.lblLabel.Margin = new Thickness(0, this.lblLabel.Margin.Top, 0, 0);
-                        this.frmContainer.Padding = new Thickness(0);
-                        this.lblAssistive.Margin = new Thickness(0, this.lblAssistive.Margin.Top, 0, this.lblAssistive.Margin.Bottom);
+                        case FieldTypes.Filled:
+                            this.frmContainer.BackgroundColor = this.BackgroundColor;
+                            this.frmContainer.BorderColor = this.BorderColor;
+                            this.frmContainer.CornerRadius = 20;
+                            this.bxvLine.IsVisible = false;
+                            break;
+                        case FieldTypes.Outlined:
+                            this.frmContainer.BackgroundColor = this.BackgroundColor;
+                            this.frmContainer.BorderColor = this.BorderColor;
+                            this.frmContainer.CornerRadius = 4;
+                            this.bxvLine.IsVisible = false;
+                            break;
+                        case FieldTypes.Lined:
+                            this.frmContainer.BackgroundColor = Color.Transparent;
+                            this.frmContainer.BorderColor = Color.Transparent;
+                            this.bxvLine.IsVisible = true;
+                            this.bxvLine.Color = this.BorderColor;
+
+                            this.frmContainer.HeightRequest = 30;
+
+                            if (this.LeadingIconIsVisible)
+                            {
+                                this.lblLabel.Margin = new Thickness(36, this.lblLabel.Margin.Top,
+                                                                    this.lblLabel.Margin.Right, 0);
+                                this.frmContainer.Padding = new Thickness(0);
+                                this.lblAssistive.Margin = new Thickness(36, this.lblAssistive.Margin.Top,
+                                                                    this.lblAssistive.Margin.Right, this.lblAssistive.Margin.Bottom);
+                                this.bxvLine.Margin = new Thickness(36, 0, 0, 0);
+                            }
+                            else
+                            {
+                                this.lblLabel.Margin = new Thickness(0, this.lblLabel.Margin.Top, 0, 0);
+                                this.frmContainer.Padding = new Thickness(0);
+                                this.lblAssistive.Margin = new Thickness(0, this.lblAssistive.Margin.Top, 0, this.lblAssistive.Margin.Bottom);
+                            }
+                            break;
                     }
                     break;
-            }
 
-            this.lblAssistive.Text = this.AssistiveText;
-            this.lblAssistive.TextColor = this.AssistiveTextColor;
-            this.lblAssistive.FontSize = this.AssistiveSize;
+                case nameof(this.AssistiveText):
+                    this.lblAssistive.Text = this.AssistiveText;
+                    break;
+                case nameof(this.AssistiveTextColor):
+                    this.lblAssistive.TextColor = this.AssistiveTextColor;
+                    break;
+                case nameof(this.AssistiveSize):
+                    this.lblAssistive.FontSize = this.AssistiveSize;
+                    break;
 
-            if (!string.IsNullOrEmpty(this.ShowPasswordIcon))
-            {
-                this.imgShowPasswordIcon.Source = this.ShowPasswordIcon;
-            }
-            this.imgShowPasswordIcon.IsVisible = this.IsPassword && this.ShowPasswordIconIsVisible && !string.IsNullOrEmpty(this.ShowPasswordIcon);
+                case nameof(this.IsPassword):
+                case nameof(this.ShowPasswordIcon):
+                case nameof(this.ShowPasswordIconIsVisible):
+                    this.txtEntry.IsPassword = this.IsPassword;
+                    if (!string.IsNullOrEmpty(this.ShowPasswordIcon))
+                    {
+                        this.imgShowPasswordIcon.Source = this.ShowPasswordIcon;
+                    }
+                    this.imgShowPasswordIcon.IsVisible = this.IsPassword && this.ShowPasswordIconIsVisible && !string.IsNullOrEmpty(this.ShowPasswordIcon);
+                    break;
+                case nameof(this.ClearIcon):
+                case nameof(this.ClearIconIsVisible):
+                    if (!string.IsNullOrEmpty(this.ClearIcon))
+                    {
+                        this.imgClearIcon.Source = this.ClearIcon;
+                    }
+                    this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled && !string.IsNullOrEmpty(this.Text);
+                    break;
+                case nameof(this.LeadingIcon):
+                    if (!string.IsNullOrEmpty(this.LeadingIcon))
+                    {
+                        this.imgLeadingIcon.Source = this.LeadingIcon;
+                    }
+                    this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
+                    break;
+                case nameof(this.TrailingIcon):
+                    if (!string.IsNullOrEmpty(this.TrailingIcon))
+                    {
+                        this.imgTrailingIcon.Source = this.TrailingIcon;
+                    }
+                    this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
+                    break;
 
-            if (!string.IsNullOrEmpty(this.ClearIcon))
-            {
-                this.imgClearIcon.Source = this.ClearIcon;
-            }
-            this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled && !string.IsNullOrEmpty(this.Text);
-
-            if (!string.IsNullOrEmpty(this.LeadingIcon))
-            {
-                this.imgLeadingIcon.Source = this.LeadingIcon;
-            }
-            this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
-
-            if (!string.IsNullOrEmpty(this.TrailingIcon))
-            {
-                this.imgTrailingIcon.Source = this.TrailingIcon;
-            }
-            this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
-
-            if (!string.IsNullOrEmpty(this.RegexValidation) || this.IsRequired)
-            {
-                this.IsValid = false;
+                case nameof(this.RegexValidation):
+                case nameof(this.IsRequired):
+                    if (!string.IsNullOrEmpty(this.RegexValidation) || this.IsRequired)
+                    {
+                        this.IsValid = false;
+                    }
+                    break;
             }
         }
 

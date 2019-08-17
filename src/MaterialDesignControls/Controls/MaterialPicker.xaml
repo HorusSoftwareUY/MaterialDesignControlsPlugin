@@ -9,9 +9,9 @@
             <controls:MaterialLabel x:Name="lblLabel" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
             <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0">
                 <StackLayout CompressedLayout.IsHeadless="true" Orientation="Horizontal" Spacing="12">
-                    <Image x:Name="imgLeadingIcon" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="24" HeightRequest="24" />
+                    <Image x:Name="imgLeadingIcon" IsVisible="false" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="24" HeightRequest="24" />
                     <custom:CustomPicker x:Name="pckOptions" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
-                    <Image x:Name="imgTrailingIcon" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+                    <Image x:Name="imgTrailingIcon" IsVisible="false" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                 </StackLayout>
             </Frame>
             <BoxView x:Name="bxvLine" HeightRequest="1" />
