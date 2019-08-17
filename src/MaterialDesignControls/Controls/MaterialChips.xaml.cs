@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,14 +21,12 @@ namespace Plugin.MaterialDesignControls
             }
 
             TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += async (s, e) =>
+            tapGestureRecognizer.Tapped += (s, e) =>
             {
                 if (this.IsEnabled)
                 {
                     if (CommandProperty != null && this.Command != null)
                     {
-                        Opacity = .5;
-                        Opacity = 1;
                         this.Command.Execute(this.CommandParameter);
                     }
                     else
@@ -77,7 +76,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChips), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChips), defaultValue: new Thickness(12, 0));
 
         public new Thickness Padding
         {
@@ -86,7 +85,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialChips), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialChips), defaultValue: null);
 
         public string Text
         {
@@ -95,7 +94,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Gray);
 
         public Color TextColor
         {
@@ -104,7 +103,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedTextColorProperty =
-            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Black, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Black);
 
         public Color SelectedTextColor
         {
@@ -113,7 +112,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray);
 
         public Color DisabledTextColor
         {
@@ -122,7 +121,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledSelectedTextColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.White, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.White);
 
         public Color DisabledSelectedTextColor
         {
@@ -131,7 +130,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray);
 
         public new Color BackgroundColor
         {
@@ -140,7 +139,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedBackgroundColorProperty =
-            BindableProperty.Create(nameof(SelectedBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(SelectedBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Gray);
 
         public Color SelectedBackgroundColor
         {
@@ -149,7 +148,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.White, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.White);
 
         public Color DisabledBackgroundColor
         {
@@ -158,7 +157,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledSelectedBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray);
 
         public Color DisabledSelectedBackgroundColor
         {
@@ -167,7 +166,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextSizeProperty =
-            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialChips), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialChips), defaultValue: Font.Default.FontSize);
 
         public double TextSize
         {
@@ -176,7 +175,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialChips), defaultValue: 16.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialChips), defaultValue: 16.0);
 
         public double CornerRadius
         {
@@ -201,13 +200,7 @@ namespace Plugin.MaterialDesignControls
             control.IsSelectedChanged?.Invoke(control, null);
         }
 
-        private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialChips)bindable;
-            control.ApplyControlProperties();
-        }
-
-        private void ApplyControlProperties()
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (!this.initialized)
             {
@@ -215,13 +208,33 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
-            this.lblText.Text = this.Text;
-            this.lblText.FontSize = this.TextSize;
-
-            this.frmContainer.Padding = this.Padding;
-            this.frmContainer.CornerRadius = (float)this.CornerRadius;
-
-            this.ApplyIsSelected();
+            switch (propertyName)
+            {
+                case nameof(this.Text):
+                    this.lblText.Text = this.Text;
+                    break;
+                case nameof(this.TextSize):
+                    this.lblText.FontSize = this.TextSize;
+                    break;
+                case nameof(this.Padding):
+                    this.frmContainer.Padding = this.Padding;
+                    break;
+                case nameof(this.CornerRadius):
+                    this.frmContainer.CornerRadius = (float)this.CornerRadius;
+                    break;
+                case nameof(this.IsEnabled):
+                case nameof(IsSelected):
+                case nameof(this.SelectedTextColor):
+                case nameof(this.SelectedBackgroundColor):
+                case nameof(this.TextColor):
+                case nameof(this.BackgroundColor):
+                case nameof(this.DisabledSelectedTextColor):
+                case nameof(this.DisabledSelectedBackgroundColor):
+                case nameof(this.DisabledTextColor):
+                case nameof(this.DisabledBackgroundColor):
+                    this.ApplyIsSelected();
+                    break;
+            }
         }
 
         private void ApplyIsSelected()

@@ -95,10 +95,6 @@
     <Compile Include="Controls\MaterialField.cs" />
     <Compile Include="Controls\MaterialOutlineButton.cs" />
     <Compile Include="Controls\MaterialFlatButton.cs" />
-    <Compile Include="Implementations\MaterialFieldLayout.xaml.cs">
-      <DependentUpon>MaterialFieldLayout.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Controls\MaterialButton.cs" />
   </ItemGroup>
 
