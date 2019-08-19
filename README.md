@@ -33,17 +33,116 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 
 ## Controls
 
+### MaterialButton
+Buttons allow users to take actions, and make choices, with a single tap.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
+```
+
+### MaterialChip
+Chips are compact elements that represent an action.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chip.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialChips IsSelected="true" IsEnabled="true" Text="Option A" />
+```
+
 ### MaterialEntry
 Text fields let users enter and edit text.
 
 **Screenshot**
 
-![](https://raw.githubusercontent.com/AgustinBonilla/ConfigPlugin/master/art/icon.png)
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.jpg" width="300">
 
 **Example**
 ```XML
 <material:MaterialEntry FieldName="Name" Type="Filled" LabelText="Name" Placeholder="Enter your name"
                         IsRequired="true" RequiredMessage="The name is required" MaxLength="12" />
+```
+
+### MaterialDatePicker
+Date pickers let users select a date.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/datepicker.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialDatePicker Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" />
+```
+
+### MaterialTimePicker
+Time pickers let users select a time.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/timepicker.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialTimePicker Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" />
+```
+
+### MaterialPicker
+Pickers let users select an option.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/picker.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialPicker FieldName="Color" Type="Filled" LabelText="Color"
+                         IsRequired="true" RequiredMessage="The color is required" />
+```
+
+### MaterialEditor
+Text fields let users enter and edit text.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/editor.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" 
+                         LeadingIcon="email.png" HeightRequest="200" />
+```
+
+### MaterialSelection
+Selection let users select an option.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/selection.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialSelection Type="Filled" LeadingIcon="calendar.png" LabelText="User" Placeholder="Select user" Text="User A" 
+                            Command="{Binding TapCommand}" CommandParameter="User selection" />
+```
+
+### MaterialField
+Displays a value with its respective label in read-only format.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/field.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
 ```
 
 ## Demo
