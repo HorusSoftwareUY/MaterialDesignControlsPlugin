@@ -5,10 +5,12 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialDatePickerPage"
              Title="MaterialDatePicker">
     <ContentPage.Content>
-        <StackLayout Padding="16" Spacing="16">
-            <material:MaterialDatePicker Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" />
-            <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />
-            <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialDatePicker Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" />
+                <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />
+                <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

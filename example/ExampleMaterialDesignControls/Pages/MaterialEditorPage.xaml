@@ -5,12 +5,15 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialEditorPage"
              Title="MaterialEditor">
     <ContentPage.Content>
-        <StackLayout Padding="16" Spacing="16">
-            <material:MaterialEditor FieldName="Message" Type="Filled" LabelText="Message" Placeholder="Enter your message"
-                                    IsRequired="true" RequiredMessage="The message is required" />
-            <material:MaterialEditor Type="Lined" LabelText="Observation" Placeholder="Enter your observation" />
-            <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" />
-            <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialEditor FieldName="Message" Type="Filled" LabelText="Message" Placeholder="Enter your message"
+                                        IsRequired="true" RequiredMessage="The message is required" />
+                <material:MaterialEditor Type="Lined" LabelText="Observation" Placeholder="Enter your observation" />
+                <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" />
+                <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" HeightRequest="200" />
+                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

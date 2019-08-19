@@ -5,10 +5,12 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialTimePickerPage"
              Title="MaterialTimePicker">
     <ContentPage.Content>
-        <StackLayout Padding="16" Spacing="16">
-            <material:MaterialTimePicker Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" />
-            <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
-            <material:MaterialTimePicker Type="Lined" LabelText="Deadline" Format="H:mm" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialTimePicker Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" />
+                <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
+                <material:MaterialTimePicker Type="Lined" LabelText="Deadline" Format="H:mm" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

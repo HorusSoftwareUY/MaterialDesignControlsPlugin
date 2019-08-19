@@ -5,11 +5,13 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
              Title="MaterialSelection">
     <ContentPage.Content>
-        <StackLayout Padding="16" Spacing="16">
-            <material:MaterialSelection Type="Filled" LeadingIcon="calendar.png" LabelText="User" Placeholder="Select user" Text="User A" Command="{Binding TapCommand}" CommandParameter="User selection" />
-            <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="This is a test of MaterialSelection control" Command="{Binding TapCommand}" CommandParameter="User selection" />
-            <material:MaterialSelection Type="Outlined" LabelText="Product" Placeholder="Select product" Command="{Binding TapCommand}" CommandParameter="Product selection" />
-            <material:MaterialSelection Type="Lined" TrailingIcon="arrow_drop_down.png" LabelText="Model" Placeholder="Select model" Command="{Binding TapCommand}" CommandParameter="Model selection" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialSelection Type="Filled" LeadingIcon="calendar.png" LabelText="User" Placeholder="Select user" Text="User A" Command="{Binding TapCommand}" CommandParameter="User selection" />
+                <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="This is a test of MaterialSelection control" Command="{Binding TapCommand}" CommandParameter="User selection" />
+                <material:MaterialSelection Type="Outlined" LabelText="Product" Placeholder="Select product" Command="{Binding TapCommand}" CommandParameter="Product selection" />
+                <material:MaterialSelection Type="Lined" TrailingIcon="arrow_drop_down.png" LabelText="Model" Placeholder="Select model" Command="{Binding TapCommand}" CommandParameter="Model selection" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

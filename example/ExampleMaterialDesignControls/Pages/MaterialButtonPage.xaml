@@ -5,14 +5,16 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialButtonPage"
              Title="MaterialButton">
     <ContentPage.Content>
-        <StackLayout Padding="16" Spacing="16">
-            <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
-            <material:MaterialOutlineButton Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
-            <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
+                <material:MaterialOutlineButton Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
+                <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
             
-            <material:MaterialButton IsEnabled="false" Text="Save" Icon="save.png" DisabledIcon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
-            <material:MaterialOutlineButton IsEnabled="false" Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
-            <material:MaterialFlatButton IsEnabled="false" Text="Delete" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
-        </StackLayout>
+                <material:MaterialButton IsEnabled="false" Text="Save" Icon="save.png" DisabledIcon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
+                <material:MaterialOutlineButton IsEnabled="false" Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
+                <material:MaterialFlatButton IsEnabled="false" Text="Delete" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

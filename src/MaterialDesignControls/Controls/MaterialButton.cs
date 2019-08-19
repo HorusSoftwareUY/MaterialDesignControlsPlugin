@@ -170,7 +170,6 @@ namespace Plugin.MaterialDesignControls
                 Spacing = 12,
                 HorizontalOptions = LayoutOptions.Center,
             };
-            CompressedLayout.SetIsHeadless(this.stcLayout, true);
             this.Content = this.stcLayout;
 
             this.imgIcon = new Image
