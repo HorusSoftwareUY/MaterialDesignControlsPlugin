@@ -9,10 +9,18 @@
             <controls:MaterialLabel x:Name="lblLabel" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
             <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0" VerticalOptions="FillAndExpand">
                 <StackLayout Orientation="Horizontal" Spacing="12" VerticalOptions="FillAndExpand">
-                    <Image x:Name="imgLeadingIcon" IsVisible="false" Margin="0,8,0,8" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="24" HeightRequest="24" />
-                    <custom:CustomEditor x:Name="txtEditor" Margin="0,8,0,8" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-                    <Image x:Name="imgTrailingIcon" IsVisible="false" Margin="0,8,0,8" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
-                    <Image x:Name="imgClearIcon" IsVisible="false" Margin="0,8,0,8" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+                    <Image x:Name="imgLeadingIcon" IsVisible="false" Margin="0,8" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="24" HeightRequest="24" />
+                    <custom:CustomEditor x:Name="txtEditor" Margin="0,8" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <custom:CustomEditor.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <OnPlatform.Platforms>
+                                    <On Platform="iOS" Value="0,2" />
+                                </OnPlatform.Platforms>
+                            </OnPlatform>
+                        </custom:CustomEditor.Margin>
+                    </custom:CustomEditor>
+                    <Image x:Name="imgTrailingIcon" IsVisible="false" Margin="0,8" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+                    <Image x:Name="imgClearIcon" IsVisible="false" Margin="0,8" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
                 </StackLayout>
             </Frame>
             <BoxView x:Name="bxvLine" HeightRequest="1" />
