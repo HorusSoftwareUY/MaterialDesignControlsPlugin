@@ -1,5 +1,5 @@
 # MaterialDesignControls Plugin for Xamarin Forms
-Description
+MaterialDesignControls Plugin for Xamarin Forms is a collection of Xamarin.Forms controls that apply the [Material Design Guidelines](https://material.io/design/components/selection-controls.html)
 
 ## Setup
 * Available on NuGet: [Plugin.MaterialDesignControls](https://www.nuget.org/packages/Plugin.MaterialDesignControls/) [![NuGet](https://img.shields.io/nuget/v/Plugin.MaterialDesignControls.svg?label=NuGet)](https://www.nuget.org/packages/Plugin.MaterialDesignControls/)
@@ -25,7 +25,7 @@ or if you're using **Android**:
 ```C#
 Plugin.MaterialDesignControls.Android.Renderer.Init();           
 ```
-You must add this line to your xaml files:
+You must add this namespace to your xaml files:
 
 ```XML
 xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
@@ -34,25 +34,26 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 ## Controls
 
 ### MaterialEntry
-[Control description]
+Text fields let users enter and edit text.
+
+[Documentation](https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/wiki/MaterialEntry)
 
 **Example**
 ```XML
 <material:MaterialEntry FieldName="Name" Type="Filled" LabelText="Name" Placeholder="Enter your name"
-                                        IsRequired="true" RequiredMessage="The name is required" MaxLength="12" />
+                        IsRequired="true" RequiredMessage="The name is required" MaxLength="12" />
 ```
+
 **Screenshot**
 [Screenshot]
-
-[Documentation](https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/wiki/MaterialEntry)
 
 ## Demo
 https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/tree/master/example
 
-#### Contributions
+## Contributions
 Contributions are welcome! If you find a bug want a feature added please report it.
 
 If you want to contribute code please file an issue, create a branch, and file a pull request.
 
-#### License 
+## License 
 MIT License - see LICENSE.txt
