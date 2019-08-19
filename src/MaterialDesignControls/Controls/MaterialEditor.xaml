@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+             x:Class="Plugin.MaterialDesignControls.MaterialEditor">
+    <ContentView.Content>
+        <StackLayout CompressedLayout.IsHeadless="true" Spacing="2">
+            <controls:MaterialLabel x:Name="lblLabel" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
+            <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0" VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" Spacing="12" VerticalOptions="FillAndExpand">
+                    <Image x:Name="imgLeadingIcon" IsVisible="false" Margin="0,8" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="24" HeightRequest="24" />
+                    <custom:CustomEditor x:Name="txtEditor" Margin="0,8" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <custom:CustomEditor.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <OnPlatform.Platforms>
+                                    <On Platform="iOS" Value="0,2" />
+                                </OnPlatform.Platforms>
+                            </OnPlatform>
+                        </custom:CustomEditor.Margin>
+                    </custom:CustomEditor>
+                    <Image x:Name="imgTrailingIcon" IsVisible="false" Margin="0,8" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+                    <Image x:Name="imgClearIcon" IsVisible="false" Margin="0,8" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+                </StackLayout>
+            </Frame>
+            <BoxView x:Name="bxvLine" HeightRequest="1" />
+            <controls:MaterialLabel x:Name="lblAssistive" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

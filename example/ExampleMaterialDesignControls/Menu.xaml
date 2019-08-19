@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:ExampleMaterialDesignControls.Pages;assembly=ExampleMaterialDesignControls"
+             xmlns:root="clr-namespace:ExampleMaterialDesignControls;assembly=ExampleMaterialDesignControls"
+             x:Class="ExampleMaterialDesignControls.Menu"
+             Padding="0,40,0,0"
+             Title="Controls">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="listView" x:FieldModifier="public" SeparatorColor="Transparent">
+               <ListView.ItemsSource>
+                    <x:Array Type="{x:Type root:MasterPageItem}">
+                        <root:MasterPageItem Title="MaterialButton" TargetType="{x:Type pages:MaterialButtonPage}" />
+                        <root:MasterPageItem Title="MaterialChips" TargetType="{x:Type pages:MaterialChipsPage}" />
+                        <root:MasterPageItem Title="MaterialEntry" TargetType="{x:Type pages:MaterialEntryPage}" />
+                        <root:MasterPageItem Title="MaterialDatePicker" TargetType="{x:Type pages:MaterialDatePickerPage}" />
+                        <root:MasterPageItem Title="MaterialPicker" TargetType="{x:Type pages:MaterialPickerPage}" />
+                        <root:MasterPageItem Title="MaterialSelection" TargetType="{x:Type pages:MaterialSelectionPage}" />
+                        <root:MasterPageItem Title="MaterialEditor" TargetType="{x:Type pages:MaterialEditorPage}" />
+                        <root:MasterPageItem Title="MaterialTimePicker" TargetType="{x:Type pages:MaterialTimePickerPage}" />
+                        <root:MasterPageItem Title="MaterialField" TargetType="{x:Type pages:MaterialFieldPage}" />
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding IconSource}" />
+                                <Label Grid.Column="1" Text="{Binding Title}" HorizontalTextAlignment="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

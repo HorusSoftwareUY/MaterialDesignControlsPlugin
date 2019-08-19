@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialFieldPage"
+             Title="MaterialField">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialField LabelText="Name" Text="Michael Jordan" />
+                <material:MaterialField LabelText="Phone" Text="099123456" />
+                <material:MaterialField LabelText="ZipCode" Text="11000" />
+                <material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
+                <material:MaterialField LabelText="Address" EmptyText="Has not specified" />
+                <material:MaterialField LabelText="City" EmptyText="-" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

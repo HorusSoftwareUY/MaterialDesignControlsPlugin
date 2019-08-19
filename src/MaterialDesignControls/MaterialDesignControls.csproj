@@ -1,0 +1,111 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Plugin.MaterialDesignControls</AssemblyName>
+    <RootNamespace>Plugin.MaterialDesignControls</RootNamespace>
+    <PackageId>Plugin.MaterialDesignControls</PackageId>
+    
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+    <Version>1.0.0.0</Version>
+    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackOnBuild>true</PackOnBuild>
+    <NeutralLanguage>en</NeutralLanguage>
+    <LangVersion>default</LangVersion>
+    <DefineConstants>$(DefineConstants);</DefineConstants>
+    
+    <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+
+    <LangVersion>latest</LangVersion>
+    
+    <!--TODO: Fill these in-->
+    <PackageLicenseUrl>LINK TO LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>LINK TO PROJECT</PackageProjectUrl>
+    <RepositoryUrl>LINK TO PROJECT</RepositoryUrl>
+    <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
+    <PackageIconUrl>ICON URL</PackageIconUrl>
+    <PackageTags>xamarin, windows, ios, android, xamarin.forms, plugin, MaterialDesignControls</PackageTags>
+    
+    <Title>MaterialDesignControls Plugin for Xamarin and Windows</Title>
+    <Summary>Summary of nuget</Summary>
+    <Description>Plugin Description</Description>
+    
+    
+    <Owners>YOU</Owners>
+    <Authors>YOU</Authors>
+    <Copyright>Copyright 2018</Copyright>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <DebugType>pdbonly</DebugType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Implementations\CustomDatePicker.cs" />
+    <Compile Include="Implementations\CustomEntry.cs" />
+    <Compile Include="Implementations\CustomPicker.cs" />
+    <Compile Include="FieldTypes.cs" />
+    <Compile Include="FieldsValidator.cs" />
+    <Compile Include="IFieldControl.cs" />
+    <Compile Include="Implementations\CustomTimePicker.cs" />
+    <Compile Include="Implementations\CustomEditor.cs" />
+    <Compile Include="Controls\MaterialChips.xaml.cs">
+      <DependentUpon>MaterialChips.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialDatePicker.xaml.cs">
+      <DependentUpon>MaterialDatePicker.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialEditor.xaml.cs">
+      <DependentUpon>MaterialEditor.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialEntry.xaml.cs">
+      <DependentUpon>MaterialEntry.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialLabel.cs" />
+    <Compile Include="Controls\MaterialPicker.xaml.cs">
+      <DependentUpon>MaterialPicker.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialSelection.xaml.cs">
+      <DependentUpon>MaterialSelection.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialTimePicker.xaml.cs">
+      <DependentUpon>MaterialTimePicker.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialChipsGroup.xaml.cs">
+      <DependentUpon>MaterialChipsGroup.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialField.cs" />
+    <Compile Include="Controls\MaterialOutlineButton.cs" />
+    <Compile Include="Controls\MaterialFlatButton.cs" />
+    <Compile Include="Controls\MaterialButton.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Implementations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
+  </ItemGroup>
+</Project>

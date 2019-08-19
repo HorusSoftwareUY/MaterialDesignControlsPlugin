@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+             x:Class="Plugin.MaterialDesignControls.MaterialSelection">
+    <ContentView.Content>
+        <StackLayout CompressedLayout.IsHeadless="true" Spacing="2">
+            <controls:MaterialLabel x:Name="lblLabel" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
+            <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0">
+                <StackLayout Orientation="Horizontal" Spacing="12">
+                    <Image x:Name="imgLeadingIcon" IsVisible="false" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="24" HeightRequest="24" />
+                    <controls:MaterialLabel x:Name="lblText" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" LineBreakMode="TailTruncation" />
+                    <Image x:Name="imgTrailingIcon" IsVisible="false" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" />
+                </StackLayout>
+            </Frame>
+            <BoxView x:Name="bxvLine" HeightRequest="1" />
+            <controls:MaterialLabel x:Name="lblAssistive" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
