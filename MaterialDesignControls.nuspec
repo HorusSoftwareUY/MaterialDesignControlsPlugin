@@ -5,16 +5,15 @@
        <version>1.0.0</version>
        <title>MaterialDesignControls Plugin for Xamarin Forms</title>
        <authors>Horus</authors>
-       <owners>Horus</owners>
+       <owners>AgustinBonillaHorus</owners>
        <licenseUrl>https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/LICENSE</licenseUrl>
        <projectUrl>https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin</projectUrl> 
        <iconUrl>https://raw.githubusercontent.com/jamesmontemagno/Xamarin-Templates/master/Templates/icons/plugin_icon_nuget.png</iconUrl>
-     
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
        <description>MaterialDesignControls Plugin for Xamarin Forms</description>
        <releaseNotes></releaseNotes>
        <summary>Material Design Controls Plugin for Xamarin Forms</summary>
-       <tags>xamarin, windows, ios, android, xamarin.forms, plugin, MaterialDesignControls</tags>
+       <tags>xamarin, ios, android, xamarin.forms, plugin, materialdesigncontrols, materialdesign, materialcontrols</tags>
        <dependencies>
        </dependencies>
    </metadata>
