@@ -36,16 +36,15 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 ### MaterialEntry
 Text fields let users enter and edit text.
 
-[Documentation](https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/wiki/MaterialEntry)
+**Screenshot**
+
+![](https://raw.githubusercontent.com/AgustinBonilla/ConfigPlugin/master/art/icon.png)
 
 **Example**
 ```XML
 <material:MaterialEntry FieldName="Name" Type="Filled" LabelText="Name" Placeholder="Enter your name"
                         IsRequired="true" RequiredMessage="The name is required" MaxLength="12" />
 ```
-
-**Screenshot**
-[Screenshot]
 
 ## Demo
 https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/tree/master/example
