@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -62,6 +62,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
+        }
+
+        public static readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialButton), defaultValue: 4.0);
+
+        public double CornerRadius
+        {
+            get { return (double)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
         }
 
         public static readonly BindableProperty IsBusyProperty =
@@ -163,6 +172,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledBorderColorProperty, value); }
         }
 
+        public static readonly BindableProperty BusyBorderColorProperty =
+            BindableProperty.Create(nameof(BusyBorderColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Transparent);
+
+        public Color BusyBorderColor
+        {
+            get { return (Color)GetValue(BusyBorderColorProperty); }
+            set { SetValue(BusyBorderColorProperty, value); }
+        }
+
         public static readonly BindableProperty IconProperty =
             BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialButton), defaultValue: null);
 
@@ -256,6 +274,9 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.FontFamily):
                     this.lblText.FontFamily = this.FontFamily;
                     break;
+                case nameof(this.CornerRadius):
+                    this.frmLayout.CornerRadius = (float)this.CornerRadius;
+                    break;
                 case nameof(this.BackgroundColor):
                 case nameof(this.DisabledBackgroundColor):
                     this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
@@ -293,6 +314,7 @@ namespace Plugin.MaterialDesignControls
                         this.actIndicator.IsVisible = true;
                         this.actIndicator.IsRunning = true;
                         this.frmLayout.BackgroundColor = this.BusyBackgroundColor;
+                        this.frmLayout.BorderColor = this.BusyBorderColor;
                     }
                     else
                     {
@@ -301,6 +323,7 @@ namespace Plugin.MaterialDesignControls
                         this.actIndicator.IsVisible = false;
                         this.actIndicator.IsRunning = false;
                         this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
+                        this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
                     }
                     break;
                 case nameof(this.Command):

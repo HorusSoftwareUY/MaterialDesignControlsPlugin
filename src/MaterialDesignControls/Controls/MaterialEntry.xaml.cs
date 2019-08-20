@@ -46,6 +46,13 @@ namespace Plugin.MaterialDesignControls
                 }
             };
             this.imgShowPasswordIcon.GestureRecognizers.Add(showPasswordTapGestureRecognizer);
+
+            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
+            frameTapGestureRecognizer.Tapped += (s, e) =>
+            {
+                this.txtEntry.Focus();
+            };
+            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors

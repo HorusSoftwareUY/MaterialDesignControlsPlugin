@@ -22,6 +22,13 @@ namespace Plugin.MaterialDesignControls
             this.pckDate.Focused += Handle_Focused;
             this.pckDate.Unfocused += Handle_Unfocused;
             this.pckDate.SetBinding(DatePicker.DateProperty, new Binding() { Source = this, Path = DateProperty.PropertyName });
+
+            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
+            frameTapGestureRecognizer.Tapped += (s, e) =>
+            {
+                this.pckDate.Focus();
+            };
+            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors

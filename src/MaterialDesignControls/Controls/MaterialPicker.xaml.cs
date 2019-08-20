@@ -23,6 +23,13 @@ namespace Plugin.MaterialDesignControls
             this.pckOptions.Focused += Handle_Focused;
             this.pckOptions.Unfocused += Handle_Unfocused;
             this.pckOptions.SelectedIndexChanged += PckOptions_SelectedIndexChanged;
+
+            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
+            frameTapGestureRecognizer.Tapped += (s, e) =>
+            {
+                this.pckOptions.Focus();
+            };
+            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors

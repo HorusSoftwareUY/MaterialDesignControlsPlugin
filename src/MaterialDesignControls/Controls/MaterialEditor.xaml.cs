@@ -31,6 +31,13 @@ namespace Plugin.MaterialDesignControls
                 this.txtEditor.Text = string.Empty;
             };
             this.imgClearIcon.GestureRecognizers.Add(clearTapGestureRecognizer);
+
+            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
+            frameTapGestureRecognizer.Tapped += (s, e) =>
+            {
+                this.txtEditor.Focus();
+            };
+            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors

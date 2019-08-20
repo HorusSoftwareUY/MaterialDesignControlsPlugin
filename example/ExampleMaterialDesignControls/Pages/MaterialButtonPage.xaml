@@ -11,8 +11,8 @@
                 <material:MaterialOutlineButton Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
                 <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
             
-                <material:MaterialButton IsEnabled="false" Text="Save" Icon="save.png" DisabledIcon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
-                <material:MaterialOutlineButton IsEnabled="false" Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
+                <material:MaterialButton IsEnabled="false" Text="Save" Icon="save.png" DisabledIcon="save.png" CornerRadius="20" Command="{Binding TapCommand}" CommandParameter="Saved" />
+                <material:MaterialOutlineButton IsEnabled="false" Text="Cancel" Command="{Binding TapCommand}" CornerRadius="20" CommandParameter="Canceled" />
                 <material:MaterialFlatButton IsEnabled="false" Text="Delete" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
             </StackLayout>
         </ScrollView>
