@@ -7,7 +7,8 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialEntry x:Name="txtEntry" Type="Filled" LabelText="Name" Placeholder="Enter your name" MaxLength="12" />
+                <material:MaterialEntry Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12"
+                                        Text="{Binding Name}" AssistiveText="{Binding NameError}" />
                 <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" />
                 <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" />
                 <material:MaterialEntry Type="Outlined" LabelText="Confirm Password" Placeholder="Enter your password" IsPassword="true" />
