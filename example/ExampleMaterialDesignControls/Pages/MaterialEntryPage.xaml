@@ -7,16 +7,12 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialEntry FieldName="Name" Type="Filled" LabelText="Name" Placeholder="Enter your name"
-                                        IsRequired="true" RequiredMessage="The name is required" MaxLength="12" />
-                <material:MaterialEntry FieldName="Mail" Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email"
-                                        IsRequired="true" RequiredMessage="The mail is required"
-                                        RegexValidation="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" InvalidMessage="The Email Address is in an invalid format" />
+                <material:MaterialEntry x:Name="txtEntry" Type="Filled" LabelText="Name" Placeholder="Enter your name" MaxLength="12" />
+                <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" />
                 <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" />
                 <material:MaterialEntry Type="Outlined" LabelText="Confirm Password" Placeholder="Enter your password" IsPassword="true" />
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" />
-                <material:MaterialEntry FieldName="ZipCode" Type="Outlined" LabelText="ZIP code" Placeholder="Enter your ZIP code" Keyboard="Numeric" 
-                                        RegexValidation="^[0-9]{5}(?:-[0-9]{4})?$" InvalidMessage="The zip code must have a 5-digit format" />
+                <material:MaterialEntry Type="Outlined" LabelText="ZIP code" Placeholder="Enter your ZIP code" Keyboard="Numeric" />
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>

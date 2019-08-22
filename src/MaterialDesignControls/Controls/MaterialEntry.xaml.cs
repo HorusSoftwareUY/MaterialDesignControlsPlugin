@@ -7,7 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialEntry : ContentView, IFieldControl
+    public partial class MaterialEntry : ContentView
     {
         #region Constructors
 
@@ -320,60 +320,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(MaxLengthProperty, value); }
         }
 
-        public static readonly BindableProperty RegexValidationProperty =
-            BindableProperty.Create(nameof(RegexValidation), typeof(string), typeof(MaterialEntry), defaultValue: null);
-
-        public string RegexValidation
-        {
-            get { return (string)GetValue(RegexValidationProperty); }
-            set { SetValue(RegexValidationProperty, value); }
-        }
-
-        public static readonly BindableProperty InvalidMessageProperty =
-            BindableProperty.Create(nameof(InvalidMessage), typeof(string), typeof(MaterialEntry), defaultValue: null);
-
-        public string InvalidMessage
-        {
-            get { return (string)GetValue(InvalidMessageProperty); }
-            set { SetValue(InvalidMessageProperty, value); }
-        }
-
-        public static readonly BindableProperty RequiredMessageProperty =
-            BindableProperty.Create(nameof(RequiredMessage), typeof(string), typeof(MaterialEntry), defaultValue: null);
-
-        public string RequiredMessage
-        {
-            get { return (string)GetValue(RequiredMessageProperty); }
-            set { SetValue(RequiredMessageProperty, value); }
-        }
-
-        public static readonly BindableProperty IsRequiredProperty =
-            BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialEntry), defaultValue: false);
-
-        public bool IsRequired
-        {
-            get { return (bool)GetValue(IsRequiredProperty); }
-            set { SetValue(IsRequiredProperty, value); }
-        }
-
-        public static readonly BindableProperty IsValidProperty =
-            BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialEntry), defaultValue: true, defaultBindingMode: BindingMode.OneWayToSource);
-
-        public bool IsValid
-        {
-            get { return (bool)GetValue(IsValidProperty); }
-            set { SetValue(IsValidProperty, value); }
-        }
-
-        public static readonly BindableProperty FieldNameProperty =
-            BindableProperty.Create(nameof(FieldName), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnFieldNameChanged);
-
-        public string FieldName
-        {
-            get { return (string)GetValue(FieldNameProperty); }
-            set { SetValue(FieldNameProperty, value); }
-        }
-
         #endregion Properties
 
         #region Events
@@ -388,12 +334,6 @@ namespace Plugin.MaterialDesignControls
         {
             var control = (MaterialEntry)bindable;
             control.txtEntry.Text = (string)newValue;
-        }
-
-        private static void OnFieldNameChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialEntry)bindable;
-            FieldsValidator.RegisterControl(control);
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -530,14 +470,6 @@ namespace Plugin.MaterialDesignControls
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
                     break;
-
-                case nameof(this.RegexValidation):
-                case nameof(this.IsRequired):
-                    if (!string.IsNullOrEmpty(this.RegexValidation) || this.IsRequired)
-                    {
-                        this.IsValid = false;
-                    }
-                    break;
             }
         }
 
@@ -581,36 +513,7 @@ namespace Plugin.MaterialDesignControls
             }
 
             this.Text = this.txtEntry.Text;
-
-            this.Validate();
-
             this.TextChanged?.Invoke(this, e);
-        }
-
-        public bool Validate()
-        {
-            if (this.IsRequired && string.IsNullOrWhiteSpace(this.Text))
-            {
-                this.AssistiveText = this.RequiredMessage;
-                this.IsValid = false;
-            }
-            else if (!string.IsNullOrEmpty(this.RegexValidation) && this.Text == null)
-            {
-                this.AssistiveText = this.InvalidMessage;
-                this.IsValid = false;
-            }
-            else if (!string.IsNullOrEmpty(this.RegexValidation))
-            {
-                var match = Regex.Match(this.Text, this.RegexValidation, RegexOptions.IgnoreCase);
-                this.AssistiveText = !match.Success ? this.InvalidMessage : string.Empty;
-                this.IsValid = match.Success;
-            }
-            else
-            {
-                this.AssistiveText = string.Empty;
-                this.IsValid = true;
-            }
-            return this.IsValid;
         }
 
         #endregion Methods

@@ -17,26 +17,18 @@ namespace ExampleMaterialDesignControls.Pages
             this.BindingContext = this;
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            Plugin.MaterialDesignControls.FieldsValidator.Initialize(this);
-        }
-
         public ICommand TapCommand { get; set; }
 
         public async void OnTap(object parameter)
         {
-            bool isValid = Plugin.MaterialDesignControls.FieldsValidator.Validate(this);
-
-            if (isValid)
+            if (!string.IsNullOrEmpty(this.txtEntry.Text))
             {
+                this.txtEntry.AssistiveText = null;
                 await this.DisplayAlert("", "Saved", "Ok");
             }
             else
             {
-                await this.DisplayAlert("", "The form has invalid fields", "Ok");
+                this.txtEntry.AssistiveText = "The message is required";
             }
         }
     }

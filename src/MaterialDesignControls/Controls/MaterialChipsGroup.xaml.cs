@@ -7,7 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialChipsGroup : ContentView, IFieldControl
+    public partial class MaterialChipsGroup : ContentView
     {
         #region Constructors
 
@@ -210,57 +210,9 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        public static readonly BindableProperty RequiredMessageProperty =
-            BindableProperty.Create(nameof(RequiredMessage), typeof(string), typeof(MaterialChipsGroup), defaultValue: null, propertyChanged: OnPropertyChanged);
-
-        public string RequiredMessage
-        {
-            get { return (string)GetValue(RequiredMessageProperty); }
-            set { SetValue(RequiredMessageProperty, value); }
-        }
-
-        public static readonly BindableProperty IsRequiredProperty =
-            BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialChipsGroup), defaultValue: false, propertyChanged: OnPropertyChanged);
-
-        public bool IsRequired
-        {
-            get { return (bool)GetValue(IsRequiredProperty); }
-            set { SetValue(IsRequiredProperty, value); }
-        }
-
-        public static readonly BindableProperty IsValidProperty =
-            BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialChipsGroup), defaultValue: true, defaultBindingMode: BindingMode.OneWayToSource);
-
-        public bool IsValid
-        {
-            get { return (bool)GetValue(IsValidProperty); }
-            set { SetValue(IsValidProperty, value); }
-        }
-
-        public static readonly BindableProperty FieldNameProperty =
-            BindableProperty.Create(nameof(FieldName), typeof(string), typeof(MaterialChipsGroup), defaultValue: null, propertyChanged: OnFieldNameChanged);
-
-        public string FieldName
-        {
-            get { return (string)GetValue(FieldNameProperty); }
-            set { SetValue(FieldNameProperty, value); }
-        }
-
-        public string InvalidMessage
-        {
-            get { return this.RequiredMessage; }
-            set { }
-        }
-
         #endregion Properties
 
         #region Methods
-
-        private static void OnFieldNameChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialChipsGroup)bindable;
-            FieldsValidator.RegisterControl(control);
-        }
 
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -363,21 +315,6 @@ namespace Plugin.MaterialDesignControls
             this.lblAssistive.Text = this.AssistiveText;
             this.lblAssistive.TextColor = this.AssistiveTextColor;
             this.lblAssistive.FontSize = this.AssistiveSize;
-
-            if (this.IsRequired)
-            {
-                this.IsValid = false;
-            }
-        }
-
-        public bool Validate()
-        {
-            if (this.IsRequired)
-            {
-                this.AssistiveText = this.SelectedItem == null ? this.RequiredMessage : string.Empty;
-                this.IsValid = this.SelectedItem != null;
-            }
-            return this.IsValid;
         }
 
         #endregion Methods
