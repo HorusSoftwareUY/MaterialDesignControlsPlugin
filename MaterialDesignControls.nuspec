@@ -2,18 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Plugin.MaterialDesignControls</id>
-       <version>1.0.0</version>
+       <version>1.1.1</version>
        <title>MaterialDesignControls Plugin for Xamarin Forms</title>
        <authors>Horus</authors>
        <owners>AgustinBonillaHorus</owners>
        <licenseUrl>https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/LICENSE</licenseUrl>
        <projectUrl>https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin</projectUrl> 
-       <iconUrl>https://raw.githubusercontent.com/jamesmontemagno/Xamarin-Templates/master/Templates/icons/plugin_icon_nuget.png</iconUrl>
+       <iconUrl>https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/icon.png</iconUrl>
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
        <description>Material Design Controls for Xamarin Forms</description>
        <releaseNotes></releaseNotes>
        <summary>Material Design Controls for Xamarin Forms</summary>
-       <tags>xamarin, ios, android, xamarin.forms, plugin, materialdesigncontrols, materialdesign, materialcontrols</tags>
+       <tags>xamarin, ios, android, xamarin.forms, plugin, materialdesigncontrols, materialdesign, materialcontrols, horus</tags>
        <dependencies>
        </dependencies>
    </metadata>

@@ -55,8 +55,6 @@
     <Compile Include="Implementations\CustomEntry.cs" />
     <Compile Include="Implementations\CustomPicker.cs" />
     <Compile Include="FieldTypes.cs" />
-    <Compile Include="FieldsValidator.cs" />
-    <Compile Include="IFieldControl.cs" />
     <Compile Include="Implementations\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomEditor.cs" />
     <Compile Include="Controls\MaterialChips.xaml.cs">
