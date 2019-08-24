@@ -8,7 +8,7 @@
        <owners>AgustinBonillaHorus</owners>
        <licenseUrl>https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/LICENSE</licenseUrl>
        <projectUrl>https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin</projectUrl> 
-       <iconUrl>https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/icon.png</iconUrl>
+       <iconUrl>https://raw.githubusercontent.com/HorusSoftwareUY/MaterialDesignControlsPlugin/master/icon.png</iconUrl>
        <requireLicenseAcceptance>false</requireLicenseAcceptance>
        <description>Material Design Controls for Xamarin Forms</description>
        <releaseNotes></releaseNotes>
