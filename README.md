@@ -1,4 +1,7 @@
 # MaterialDesignControls Plugin for Xamarin Forms
+
+<img src="https://raw.githubusercontent.com/HorusSoftwareUY/MaterialDesignControlsPlugin/master/icon.png" width="128">
+
 MaterialDesignControls Plugin for Xamarin Forms is a collection of Xamarin.Forms controls that apply the [Material Design Guidelines](https://material.io/design/components/selection-controls.html)
 
 ## Setup
