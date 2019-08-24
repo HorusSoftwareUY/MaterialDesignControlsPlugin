@@ -22,6 +22,13 @@ namespace Plugin.MaterialDesignControls
             this.pckTime.Focused += Handle_Focused;
             this.pckTime.Unfocused += Handle_Unfocused;
             this.pckTime.SetBinding(TimePicker.TimeProperty, new Binding() { Source = this, Path = TimeProperty.PropertyName });
+
+            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
+            frameTapGestureRecognizer.Tapped += (s, e) =>
+            {
+                this.pckTime.Focus();
+            };
+            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors

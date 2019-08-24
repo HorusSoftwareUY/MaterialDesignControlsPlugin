@@ -8,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialPicker : ContentView, IFieldControl
+    public partial class MaterialPicker : ContentView
     {
         #region Constructors
 
@@ -23,6 +23,13 @@ namespace Plugin.MaterialDesignControls
             this.pckOptions.Focused += Handle_Focused;
             this.pckOptions.Unfocused += Handle_Unfocused;
             this.pckOptions.SelectedIndexChanged += PckOptions_SelectedIndexChanged;
+
+            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
+            frameTapGestureRecognizer.Tapped += (s, e) =>
+            {
+                this.pckOptions.Focus();
+            };
+            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
@@ -216,48 +223,6 @@ namespace Plugin.MaterialDesignControls
             get { return !string.IsNullOrEmpty(this.TrailingIcon); }
         }
 
-        public static readonly BindableProperty RequiredMessageProperty =
-            BindableProperty.Create(nameof(RequiredMessage), typeof(string), typeof(MaterialPicker), defaultValue: null);
-
-        public string RequiredMessage
-        {
-            get { return (string)GetValue(RequiredMessageProperty); }
-            set { SetValue(RequiredMessageProperty, value); }
-        }
-
-        public static readonly BindableProperty IsRequiredProperty =
-            BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(MaterialPicker), defaultValue: false);
-
-        public bool IsRequired
-        {
-            get { return (bool)GetValue(IsRequiredProperty); }
-            set { SetValue(IsRequiredProperty, value); }
-        }
-
-        public static readonly BindableProperty IsValidProperty =
-            BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialPicker), defaultValue: true, defaultBindingMode: BindingMode.OneWayToSource);
-
-        public bool IsValid
-        {
-            get { return (bool)GetValue(IsValidProperty); }
-            set { SetValue(IsValidProperty, value); }
-        }
-
-        public static readonly BindableProperty FieldNameProperty =
-            BindableProperty.Create(nameof(FieldName), typeof(string), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnFieldNameChanged);
-
-        public string FieldName
-        {
-            get { return (string)GetValue(FieldNameProperty); }
-            set { SetValue(FieldNameProperty, value); }
-        }
-
-        public string InvalidMessage
-        {
-            get { return this.RequiredMessage; }
-            set { }
-        }
-
         #endregion Properties
 
         #region Methods
@@ -266,12 +231,6 @@ namespace Plugin.MaterialDesignControls
         {
             var control = (MaterialPicker)bindable;
             control.pckOptions.SelectedItem = (string)newValue;
-        }
-
-        private static void OnFieldNameChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialPicker)bindable;
-            FieldsValidator.RegisterControl(control);
         }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
@@ -409,13 +368,6 @@ namespace Plugin.MaterialDesignControls
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible && this.IsEnabled;
                     break;
-
-                case nameof(this.IsRequired):
-                    if (this.IsRequired)
-                    {
-                        this.IsValid = false;
-                    }
-                    break;
             }
         }
 
@@ -466,18 +418,6 @@ namespace Plugin.MaterialDesignControls
                     index++;
                 }
             }
-
-            this.Validate();
-        }
-
-        public bool Validate()
-        {
-            if (this.IsRequired)
-            {
-                this.AssistiveText = this.SelectedItem == null ? this.RequiredMessage : string.Empty;
-                this.IsValid = this.SelectedItem != null;
-            }
-            return this.IsValid;
         }
 
         #endregion Methods
