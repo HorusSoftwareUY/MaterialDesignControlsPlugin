@@ -84,6 +84,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
+        public static readonly BindableProperty IconProperty =
+            BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(MaterialChips), defaultValue: null);
+
+        public ImageSource Icon
+        {
+            get { return (ImageSource)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
+        public static readonly BindableProperty IconCommandProperty =
+            BindableProperty.Create(nameof(IconCommand), typeof(ICommand), typeof(MaterialChips));
+
+        public ICommand IconCommand
+        {
+            get { return (ICommand)GetValue(IconCommandProperty); }
+            set { SetValue(IconCommandProperty, value); }
+        }
+
+
         public static readonly BindableProperty TextProperty =
             BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialChips), defaultValue: null);
 
@@ -234,8 +252,38 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.DisabledBackgroundColor):
                     this.ApplyIsSelected();
                     break;
+                case nameof(this.Icon):
+                    this.imgIcon.Source = this.Icon;
+                    this.imgContainer.IsVisible = true;
+                    break;
+                case nameof(this.IconCommand):
+                    AddIconTapGesture();
+                    break;
             }
         }
+
+        private void AddIconTapGesture()
+        {
+            this.frmContainer.GestureRecognizers.RemoveAt(0); //Remove main tap gesture
+
+            TapGestureRecognizer tapIconGestureRecognizer = new TapGestureRecognizer();
+            tapIconGestureRecognizer.Tapped += (s, e) =>
+            {
+                if (this.IsEnabled)
+                {
+                    if (IconCommandProperty != null && this.IconCommand != null)
+                    {
+                        this.IconCommand.Execute(null);
+                    }
+                    else
+                    {
+                        this.IsSelected = !this.IsSelected;
+                    }
+                }
+            };
+            imgContainer.GestureRecognizers.Add(tapIconGestureRecognizer);
+        }
+
 
         private void ApplyIsSelected()
         {

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             x:Class="ExampleMaterialDesignControls.Pages.MaterialChipsPage"
-             Title="MaterialChips">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" x:Class="ExampleMaterialDesignControls.Pages.MaterialChipsPage" Title="MaterialChips">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
@@ -17,25 +13,35 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                
                     <material:MaterialChips Grid.Column="0" Grid.Row="0" IsSelected="true" IsEnabled="true" Text="Option A" />
                     <material:MaterialChips Grid.Column="1" Grid.Row="0" IsSelected="false" IsEnabled="true" Text="Option B" />
                     <material:MaterialChips Grid.Column="2" Grid.Row="0" IsSelected="false" IsEnabled="true" Text="Option C" />
-                
                     <material:MaterialChips Grid.Column="0" Grid.Row="1" IsSelected="true" IsEnabled="false" Text="Option D" />
                     <material:MaterialChips Grid.Column="1" Grid.Row="1" IsSelected="false" IsEnabled="false" Text="Option E" />
                     <material:MaterialChips Grid.Column="2" Grid.Row="1" IsSelected="false" IsEnabled="false" Text="Option F" />
-                
                     <material:MaterialChips Grid.Column="0" Grid.Row="2" CornerRadius="4" IsSelected="true" IsEnabled="true" Text="Option G" />
                     <material:MaterialChips Grid.Column="1" Grid.Row="2" CornerRadius="4" IsSelected="false" IsEnabled="true" Text="Option H" />
                     <material:MaterialChips Grid.Column="2" Grid.Row="2" CornerRadius="4" IsSelected="false" IsEnabled="true" Text="Option I" />
                 </Grid>
-            
                 <material:MaterialChipsGroup LabelText="Sizes" SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" />
-            
+                <Grid RowSpacing="16" Margin="0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <material:MaterialLabel Text="Filters" Grid.Column="0" Grid.Row="0" />
+                    <material:MaterialChips Grid.Column="0" Grid.Row="1" Icon="delete.png" IconCommand="{Binding IconTapCommand}" CornerRadius="4" IsSelected="false" IsEnabled="true" Text="Option J" />
+                    <material:MaterialChips Grid.Column="1" Grid.Row="1" Icon="delete.png" IconCommand="{Binding IconTapCommand}" CornerRadius="4" IsSelected="true" IsEnabled="true" Text="Option K" />
+                    <material:MaterialChips Grid.Column="2" Grid.Row="1" Icon="delete.png" IconCommand="{Binding IconTapCommand}" CornerRadius="4" IsSelected="false" IsEnabled="true" Text="Option L" />
+                </Grid>
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
-            
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

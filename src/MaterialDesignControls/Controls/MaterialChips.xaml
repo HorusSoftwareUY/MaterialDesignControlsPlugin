@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             x:Class="Plugin.MaterialDesignControls.MaterialChips">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" x:Class="Plugin.MaterialDesignControls.MaterialChips">
     <ContentView.Content>
         <Frame x:Name="frmContainer" HasShadow="false" CornerRadius="16" Padding="12,0" MinimumHeightRequest="32" HeightRequest="32">
-            <controls:MaterialLabel x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+            <StackLayout Orientation="Horizontal">
+                <controls:MaterialLabel BackgroundColor="Red" x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
+                <Grid x:Name="imgContainer" IsVisible="false" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="16,0" BackgroundColor="Blue">
+                    <Image x:Name="imgIcon" HorizontalOptions="Center" HeightRequest="16" WidthRequest="16" Aspect="AspectFit" BackgroundColor="Yellow" />
+                </Grid>
+            </StackLayout>
         </Frame>
     </ContentView.Content>
 </ContentView>
