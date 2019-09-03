@@ -20,6 +20,7 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
+
             TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (s, e) =>
             {

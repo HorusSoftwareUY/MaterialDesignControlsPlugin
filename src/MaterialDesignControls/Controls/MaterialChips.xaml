@@ -2,10 +2,12 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" x:Class="Plugin.MaterialDesignControls.MaterialChips">
     <ContentView.Content>
         <Frame x:Name="frmContainer" HasShadow="false" CornerRadius="16" Padding="12,0" MinimumHeightRequest="32" HeightRequest="32">
-            <StackLayout Orientation="Horizontal">
-                <controls:MaterialLabel BackgroundColor="Red" x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
-                <Grid x:Name="imgContainer" IsVisible="false" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="16,0" BackgroundColor="Blue">
-                    <Image x:Name="imgIcon" HorizontalOptions="Center" HeightRequest="16" WidthRequest="16" Aspect="AspectFit" BackgroundColor="Yellow" />
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="0">
+                <Grid HorizontalOptions="CenterAndExpand">
+                    <controls:MaterialLabel x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
+                </Grid>
+                <Grid x:Name="imgContainer" Margin="8,0,0,0" IsVisible="false" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24">
+                    <Image x:Name="imgIcon" HorizontalOptions="Center" HeightRequest="16" WidthRequest="16" Aspect="AspectFit" />
                 </Grid>
             </StackLayout>
         </Frame>
