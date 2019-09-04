@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">
-      <Project>{2DD667DD-DC54-4CA6-B167-B0B4C1CE72D2}</Project>
+      <Project>{6828B960-D79F-4B88-B54E-D15728EE8E2D}</Project>
       <Name>MaterialDesignControls</Name>
     </ProjectReference>
   </ItemGroup>

@@ -20,15 +20,21 @@ namespace ExampleMaterialDesignControls.Pages
             this.SelectedSizes = "M";
 
             this.TapCommand = new Command<string>(OnTap);
-
+            this.IconTapCommand = new Command<string>(OnIconTap);
             this.BindingContext = this;
         }
 
         public ICommand TapCommand { get; set; }
+        public Command<string> IconTapCommand { get; set; }
 
         public async void OnTap(object parameter)
         {
             await this.DisplayAlert("Saved", this.SelectedSizes, "Ok");
+        }
+
+        public async void OnIconTap(object parameter)
+        {
+            await this.DisplayAlert(parameter != null ? parameter.ToString() : "Command excecuted!","", "Ok");
         }
     }
 }

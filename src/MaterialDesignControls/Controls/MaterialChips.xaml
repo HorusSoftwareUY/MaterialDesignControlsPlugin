@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             x:Class="Plugin.MaterialDesignControls.MaterialChips">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" x:Class="Plugin.MaterialDesignControls.MaterialChips">
     <ContentView.Content>
         <Frame x:Name="frmContainer" HasShadow="false" CornerRadius="16" Padding="12,0" MinimumHeightRequest="32" HeightRequest="32">
-            <controls:MaterialLabel x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="0">
+                <Image x:Name="imgLeading" Margin="0,0,8,0" IsVisible="false" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="20" HeightRequest="20" Aspect="AspectFit" />
+                <controls:MaterialLabel x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
+                <Image x:Name="imgTrailing" Margin="8,0,0,0" IsVisible="false" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="20" HeightRequest="20" Aspect="AspectFit" />
+            </StackLayout>
         </Frame>
     </ContentView.Content>
 </ContentView>
