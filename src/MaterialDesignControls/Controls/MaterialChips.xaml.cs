@@ -19,20 +19,20 @@ namespace Plugin.MaterialDesignControls
                 this.InitializeComponent();
                 this.initialized = true;
             }
+            AddMainTapGesture();
+        }
 
+        private void AddMainTapGesture()
+        {
             TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (s, e) =>
             {
                 if (this.IsEnabled)
                 {
                     if (CommandProperty != null && this.Command != null)
-                    {
                         this.Command.Execute(this.CommandParameter);
-                    }
                     else
-                    {
                         this.IsSelected = !this.IsSelected;
-                    }
                 }
             };
             this.frmContainer.GestureRecognizers.Add(tapGestureRecognizer);
@@ -120,6 +120,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LeadingIconCommandProperty, value); }
         }
 
+        public static readonly BindableProperty LeadingIconCommandParameterProperty =
+            BindableProperty.Create(nameof(LeadingIconCommandParameter), typeof(object), typeof(MaterialChips), defaultValue: null);
+
+        public object LeadingIconCommandParameter
+        {
+            get { return GetValue(LeadingIconCommandParameterProperty); }
+            set { SetValue(LeadingIconCommandParameterProperty, value); }
+        }
+
         public static readonly BindableProperty TrailingIconCommandProperty =
             BindableProperty.Create(nameof(TrailingIconCommand), typeof(ICommand), typeof(MaterialChips));
 
@@ -127,6 +136,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (ICommand)GetValue(TrailingIconCommandProperty); }
             set { SetValue(TrailingIconCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty TrailingIconCommandParameterProperty =
+            BindableProperty.Create(nameof(TrailingIconCommandParameter), typeof(object), typeof(MaterialChips), defaultValue: null);
+
+        public object TrailingIconCommandParameter
+        {
+            get { return GetValue(TrailingIconCommandParameterProperty); }
+            set { SetValue(TrailingIconCommandParameterProperty, value); }
         }
 
         public static readonly BindableProperty TextProperty =
@@ -281,11 +299,11 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.TrailingIcon):
                     this.imgTrailing.Source = this.TrailingIcon;
-                    this.imgTrailingContainer.IsVisible = true;
+                    this.imgTrailing.IsVisible = true;
                     break;
                 case nameof(this.LeadingIcon):
                     this.imgLeading.Source = this.LeadingIcon;
-                    this.imgLeadingContainer.IsVisible = true;
+                    this.imgLeading.IsVisible = true;
                     break;
                 case nameof(this.LeadingIconCommand):
                     AddIconTapGesture(false);
@@ -312,25 +330,24 @@ namespace Plugin.MaterialDesignControls
                     {
                         if (this.TrailingIconCommand != null)
                         {
-                            this.TrailingIconCommand.Execute(null);
+                            this.TrailingIconCommand.Execute(this.TrailingIconCommandParameter);
                         }
                     }
                     else
                     {
                         if (this.LeadingIconCommand != null)
                         {
-                            this.LeadingIconCommand.Execute(null);
+                            this.LeadingIconCommand.Execute(this.LeadingIconCommandParameter);
                         }
                     }
                 }
             };
 
             if (isTrailingIcon)
-                imgTrailingContainer.GestureRecognizers.Add(tapIconGestureRecognizer);
+                imgTrailing.GestureRecognizers.Add(tapIconGestureRecognizer);
             else
-                imgLeadingContainer.GestureRecognizers.Add(tapIconGestureRecognizer);
+                imgLeading.GestureRecognizers.Add(tapIconGestureRecognizer);
         }
-
 
         private void ApplyIsSelected()
         {

@@ -3,15 +3,9 @@
     <ContentView.Content>
         <Frame x:Name="frmContainer" HasShadow="false" CornerRadius="16" Padding="12,0" MinimumHeightRequest="32" HeightRequest="32">
             <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="0">
-                 <Grid x:Name="imgLeadingContainer" Margin="0,0,8,0" IsVisible="false" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="20" HeightRequest="20">
-                    <Image x:Name="imgLeading" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Aspect="AspectFit" />
-                </Grid>
-                <Grid HorizontalOptions="CenterAndExpand">
-                    <controls:MaterialLabel x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
-                </Grid>
-                <Grid x:Name="imgTrailingContainer" Margin="8,0,0,0" IsVisible="false" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="20" HeightRequest="20">
-                    <Image x:Name="imgTrailing" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Aspect="AspectFit" />
-                </Grid>
+                <Image x:Name="imgLeading" Margin="0,0,8,0" IsVisible="false" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="20" HeightRequest="20" Aspect="AspectFit" />
+                <controls:MaterialLabel x:Name="lblText" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
+                <Image x:Name="imgTrailing" Margin="8,0,0,0" IsVisible="false" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="20" HeightRequest="20" Aspect="AspectFit" />
             </StackLayout>
         </Frame>
     </ContentView.Content>

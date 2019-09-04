@@ -25,7 +25,7 @@ namespace ExampleMaterialDesignControls.Pages
         }
 
         public ICommand TapCommand { get; set; }
-        public ICommand IconTapCommand { get; set; }
+        public Command<string> IconTapCommand { get; set; }
 
         public async void OnTap(object parameter)
         {
@@ -34,7 +34,7 @@ namespace ExampleMaterialDesignControls.Pages
 
         public async void OnIconTap(object parameter)
         {
-            await this.DisplayAlert("Do something!", this.SelectedSizes, "Ok");
+            await this.DisplayAlert(parameter != null ? parameter.ToString() : "Command excecuted!","", "Ok");
         }
     }
 }
