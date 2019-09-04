@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls
@@ -110,6 +114,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (Keyboard)GetValue(KeyboardProperty); }
             set { SetValue(KeyboardProperty, value); }
+        }
+
+        public static readonly BindableProperty ReturnTypeProperty =
+            BindableProperty.Create(nameof(ReturnType), typeof(ReturnType), typeof(MaterialEntry), defaultValue: null);
+
+        public ReturnType ReturnType
+        {
+            get { return (ReturnType)GetValue(ReturnTypeProperty); }
+            set { SetValue(ReturnTypeProperty, value); }
         }
 
         public static readonly BindableProperty LabelTextProperty =
@@ -470,6 +483,29 @@ namespace Plugin.MaterialDesignControls
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
                     break;
+
+                case nameof(this.TabIndex):
+                    if (this.TabIndex != 0)
+                    {
+                        this.txtEntry.TabIndex = this.TabIndex;
+                        this.TabIndex = 0;
+                    }
+                    break;
+                case nameof(this.IsTabStop):
+                    this.txtEntry.IsTabStop = this.IsTabStop;
+                    break;
+                case nameof(this.ReturnType):
+                    this.txtEntry.ReturnType = this.ReturnType;
+
+                    if (this.ReturnType.Equals(Xamarin.Forms.ReturnType.Next))
+                    {
+                        this.txtEntry.ReturnCommand = new Command(() =>
+                        {
+                            var currentTabIndex = this.txtEntry.TabIndex;
+                            this.FocusNextElement(currentTabIndex);
+                        });
+                    }
+                    break;
             }
         }
 
@@ -514,6 +550,36 @@ namespace Plugin.MaterialDesignControls
 
             this.Text = this.txtEntry.Text;
             this.TextChanged?.Invoke(this, e);
+        }
+
+        private void FocusNextElement(int currentTabIndex)
+        {
+            try
+            {
+                var tabIndexes = this.GetTabIndexesOnParentPage(out int count);
+
+                if (tabIndexes != null)
+                {
+                    var nextElement = this.FindNextElement(true, tabIndexes, ref currentTabIndex);
+                    if (nextElement != null)
+                    {
+                        if (nextElement is CustomEntry nextEntry && nextEntry.IsEnabled)
+                        {
+                            nextEntry.Focus();
+                            string textInsideInput = nextEntry.Text;
+                            nextEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
+                        }
+                        else
+                        {
+                            this.FocusNextElement(currentTabIndex);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
         }
 
         #endregion Methods

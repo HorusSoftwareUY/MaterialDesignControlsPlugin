@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -418,6 +419,17 @@ namespace Plugin.MaterialDesignControls
                         this.imgTrailingIcon.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
+                    break;
+
+                case nameof(this.TabIndex):
+                    if (this.TabIndex != 0)
+                    {
+                        this.txtEditor.TabIndex = this.TabIndex;
+                        this.TabIndex = 0;
+                    }
+                    break;
+                case nameof(this.IsTabStop):
+                    this.txtEditor.IsTabStop = this.IsTabStop;
                     break;
             }
         }
