@@ -299,11 +299,11 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.TrailingIcon):
                     this.imgTrailing.Source = this.TrailingIcon;
-                    this.imgTrailing.IsVisible = true;
+                    this.imgTrailingContainer.IsVisible = true;
                     break;
                 case nameof(this.LeadingIcon):
                     this.imgLeading.Source = this.LeadingIcon;
-                    this.imgLeading.IsVisible = true;
+                    this.imgLeadingContainer.IsVisible = true;
                     break;
                 case nameof(this.LeadingIconCommand):
                     AddIconTapGesture(false);
@@ -319,7 +319,8 @@ namespace Plugin.MaterialDesignControls
 
         private void AddIconTapGesture(bool isTrailingIcon)
         {
-            this.frmContainer.GestureRecognizers.RemoveAt(0); //Remove main tap gesture
+            if (this.frmContainer.GestureRecognizers.Count > 0)
+                this.frmContainer.GestureRecognizers.RemoveAt(0); //Remove main tap gesture
 
             TapGestureRecognizer tapIconGestureRecognizer = new TapGestureRecognizer();
             tapIconGestureRecognizer.Tapped += (s, e) =>
@@ -344,9 +345,9 @@ namespace Plugin.MaterialDesignControls
             };
 
             if (isTrailingIcon)
-                imgTrailing.GestureRecognizers.Add(tapIconGestureRecognizer);
+                imgTrailingContainer.GestureRecognizers.Add(tapIconGestureRecognizer);
             else
-                imgLeading.GestureRecognizers.Add(tapIconGestureRecognizer);
+                imgLeadingContainer.GestureRecognizers.Add(tapIconGestureRecognizer);
         }
 
         private void ApplyIsSelected()
