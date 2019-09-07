@@ -286,6 +286,9 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(base.TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(this.IsEnabled):
                     this.pckOptions.IsEnabled = this.IsEnabled;
                     break;

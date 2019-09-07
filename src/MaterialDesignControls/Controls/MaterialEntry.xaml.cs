@@ -367,6 +367,9 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(base.TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(this.IsEnabled):
                     this.txtEntry.IsEnabled = this.IsEnabled;
                     break;

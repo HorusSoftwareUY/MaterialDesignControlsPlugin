@@ -313,6 +313,9 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(base.TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(this.LabelText):
                     this.lblLabel.Text = this.LabelText;
                     this.lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);

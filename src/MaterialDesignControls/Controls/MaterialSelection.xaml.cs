@@ -277,6 +277,9 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(base.TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(this.TextSize):
                     this.lblText.FontSize = this.TextSize;
                     break;
