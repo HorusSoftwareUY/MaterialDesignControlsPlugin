@@ -307,12 +307,14 @@ namespace Plugin.MaterialDesignControls
             }
 
             this.lblLabel.Text = this.LabelText;
+            this.lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);
             this.lblLabel.TextColor = this.LabelTextColor;
             this.lblLabel.FontSize = this.LabelSize;
 
             this.stcContainer.Padding = this.Padding;
 
             this.lblAssistive.Text = this.AssistiveText;
+            this.lblAssistive.IsVisible = !string.IsNullOrEmpty(this.AssistiveText);
             this.lblAssistive.TextColor = this.AssistiveTextColor;
             this.lblAssistive.FontSize = this.AssistiveSize;
         }

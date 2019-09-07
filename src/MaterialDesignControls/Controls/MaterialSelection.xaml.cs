@@ -283,6 +283,7 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.LabelText):
                     this.lblLabel.Text = this.LabelText;
+                    this.lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);
                     break;
                 case nameof(this.LabelTextColor):
                     this.lblLabel.TextColor = this.LabelTextColor;
@@ -341,6 +342,7 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.AssistiveText):
                     this.lblAssistive.Text = this.AssistiveText;
+                    this.lblAssistive.IsVisible = !string.IsNullOrEmpty(this.AssistiveText);
                     break;
                 case nameof(this.AssistiveTextColor):
                     this.lblAssistive.TextColor = this.AssistiveTextColor;

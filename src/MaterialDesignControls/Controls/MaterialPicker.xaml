@@ -6,7 +6,7 @@
              x:Class="Plugin.MaterialDesignControls.MaterialPicker">
     <ContentView.Content>
         <StackLayout Spacing="2">
-            <controls:MaterialLabel x:Name="lblLabel" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
+            <controls:MaterialLabel x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
             <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0">
                 <StackLayout Orientation="Horizontal" Spacing="0">
                     <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" />
@@ -15,7 +15,7 @@
                 </StackLayout>
             </Frame>
             <BoxView x:Name="bxvLine" HeightRequest="1" />
-            <controls:MaterialLabel x:Name="lblAssistive" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
         </StackLayout>
     </ContentView.Content>
 </ContentView>
