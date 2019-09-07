@@ -352,14 +352,14 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.LeadingIcon):
                     if (!string.IsNullOrEmpty(this.LeadingIcon))
                     {
-                        this.imgLeadingIcon.Source = this.LeadingIcon;
+                        this.imgLeadingIcon.Image.Source = this.LeadingIcon;
                     }
                     this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
                     break;
                 case nameof(this.TrailingIcon):
                     if (!string.IsNullOrEmpty(this.TrailingIcon))
                     {
-                        this.imgTrailingIcon.Source = this.TrailingIcon;
+                        this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible && this.IsEnabled;
                     break;

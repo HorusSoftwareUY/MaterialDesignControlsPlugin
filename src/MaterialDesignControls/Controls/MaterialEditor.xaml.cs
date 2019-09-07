@@ -25,13 +25,11 @@ namespace Plugin.MaterialDesignControls
             this.txtEditor.Unfocused += Handle_Unfocused;
             this.txtEditor.TextChanged += TxtEntry_TextChanged;
 
-            TapGestureRecognizer clearTapGestureRecognizer = new TapGestureRecognizer();
-            clearTapGestureRecognizer.Tapped += (s, e) =>
+            this.imgClearIcon.Tapped = () =>
             {
                 this.Text = string.Empty;
                 this.txtEditor.Text = string.Empty;
             };
-            this.imgClearIcon.GestureRecognizers.Add(clearTapGestureRecognizer);
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
@@ -402,21 +400,21 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.ClearIconIsVisible):
                     if (!string.IsNullOrEmpty(this.ClearIcon))
                     {
-                        this.imgClearIcon.Source = this.ClearIcon;
+                        this.imgClearIcon.Image.Source = this.ClearIcon;
                     }
                     this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled && !string.IsNullOrEmpty(this.Text);
                     break;
                 case nameof(this.LeadingIcon):
                     if (!string.IsNullOrEmpty(this.LeadingIcon))
                     {
-                        this.imgLeadingIcon.Source = this.LeadingIcon;
+                        this.imgLeadingIcon.Image.Source = this.LeadingIcon;
                     }
                     this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
                     break;
                 case nameof(this.TrailingIcon):
                     if (!string.IsNullOrEmpty(this.TrailingIcon))
                     {
-                        this.imgTrailingIcon.Source = this.TrailingIcon;
+                        this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
                     break;

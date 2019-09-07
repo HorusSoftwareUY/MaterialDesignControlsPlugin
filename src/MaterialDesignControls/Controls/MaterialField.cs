@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
-    public partial class MaterialField : ContentView
+    public class MaterialField : ContentView
     {
         #region Constructors
 
@@ -25,22 +26,19 @@ namespace Plugin.MaterialDesignControls
             var secondStackLayout = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                Spacing = 12,
+                Spacing = 0,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
             mainStackLayout.Children.Add(secondStackLayout);
 
-            this.imgLeadingIcon = new Image
+            this.imgLeadingIcon = new CustomImageButton
             {
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.End,
-                WidthRequest = 24,
-                HeightRequest = 24,
+                HorizontalOptions = LayoutOptions.Start,
                 IsVisible = false
             };
             if (this.LeadingIconIsVisible)
             {
-                this.imgLeadingIcon.Source = this.LeadingIcon;
+                this.imgLeadingIcon.Image.Source = this.LeadingIcon;
                 this.imgLeadingIcon.IsVisible = true;
             }
             secondStackLayout.Children.Add(this.imgLeadingIcon);
@@ -55,17 +53,14 @@ namespace Plugin.MaterialDesignControls
             };
             secondStackLayout.Children.Add(this.lblText);
 
-            this.imgTrailingIcon = new Image
+            this.imgTrailingIcon = new CustomImageButton
             {
-                VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.End,
-                WidthRequest = 24,
-                HeightRequest = 24,
                 IsVisible = false
             };
             if (this.TrailingIconIsVisible)
             {
-                this.imgTrailingIcon.Source = this.TrailingIcon;
+                this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                 this.imgTrailingIcon.IsVisible = true;
             }
             secondStackLayout.Children.Add(this.imgTrailingIcon);
@@ -99,11 +94,11 @@ namespace Plugin.MaterialDesignControls
 
         private MaterialLabel lblLabel;
 
-        private Image imgLeadingIcon;
+        private CustomImageButton imgLeadingIcon;
 
         private MaterialLabel lblText;
 
-        private Image imgTrailingIcon;
+        private CustomImageButton imgTrailingIcon;
 
         private MaterialLabel lblAssistive;
 
@@ -270,7 +265,7 @@ namespace Plugin.MaterialDesignControls
                     case nameof(this.LeadingIcon):
                         if (!string.IsNullOrEmpty(this.LeadingIcon))
                         {
-                            this.imgLeadingIcon.Source = this.LeadingIcon;
+                            this.imgLeadingIcon.Image.Source = this.LeadingIcon;
                         }
                         this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
 
@@ -283,7 +278,7 @@ namespace Plugin.MaterialDesignControls
                     case nameof(this.TrailingIcon):
                         if (!string.IsNullOrEmpty(this.TrailingIcon))
                         {
-                            this.imgTrailingIcon.Source = this.TrailingIcon;
+                            this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                         }
                         this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
                         break;

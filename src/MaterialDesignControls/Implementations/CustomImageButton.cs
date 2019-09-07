@@ -5,9 +5,33 @@ namespace Plugin.MaterialDesignControls.Implementations
 {
     public class CustomImageButton : ContentView
     {
-        public Image Image { get; set; }
+        private Action tapped;
 
-        public Action Tapped { get; set; }
+        public Action Tapped
+        {
+            get { return this.tapped; }
+            set
+            {
+                if (this.tapped != null)
+                {
+                    this.GestureRecognizers.Clear();
+                }
+
+                this.tapped = value;
+
+                var tapGestureRecognizer = new TapGestureRecognizer();
+                tapGestureRecognizer.Tapped += (s, e) =>
+                {
+                    if (this.Tapped != null)
+                    {
+                        this.Tapped.Invoke();
+                    }
+                };
+                this.GestureRecognizers.Add(tapGestureRecognizer);
+            }
+        }
+
+        public Image Image { get; set; }
 
         public CustomImageButton()
         {
@@ -21,16 +45,6 @@ namespace Plugin.MaterialDesignControls.Implementations
                 HeightRequest = 24,
             };
 
-            var tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += (s, e) =>
-            {
-                if (this.Tapped != null)
-                {
-                    this.Tapped.Invoke();
-                }
-            };
-            this.GestureRecognizers.Add(tapGestureRecognizer);
-            
             this.Content = this.Image;
         }
     }
