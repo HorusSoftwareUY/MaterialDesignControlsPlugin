@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -222,6 +223,15 @@ namespace Plugin.MaterialDesignControls
             get { return !string.IsNullOrEmpty(this.TrailingIcon); }
         }
 
+        public static readonly BindableProperty AnimateErrorProperty =
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialSelection), defaultValue: false);
+
+        public bool AnimateError
+        {
+            get { return (bool)GetValue(AnimateErrorProperty); }
+            set { SetValue(AnimateErrorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -343,6 +353,10 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.AssistiveText):
                     this.lblAssistive.Text = this.AssistiveText;
                     this.lblAssistive.IsVisible = !string.IsNullOrEmpty(this.AssistiveText);
+                    if (this.AnimateError && !string.IsNullOrEmpty(this.AssistiveText))
+                    {
+                        ShakeAnimation.Animate(this);
+                    }
                     break;
                 case nameof(this.AssistiveTextColor):
                     this.lblAssistive.TextColor = this.AssistiveTextColor;

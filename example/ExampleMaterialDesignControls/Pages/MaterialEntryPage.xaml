@@ -8,10 +8,11 @@
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
                 <material:MaterialEntry Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12"
-                                        Text="{Binding Name}" AssistiveText="{Binding NameError}" TabIndex="1" ReturnType="Next" />
+                                        Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True"
+                                        TabIndex="1" ReturnType="Next" />
                 <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
                 <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" TabIndex="3" ReturnType="Next" />
-                <material:MaterialEntry Type="Outlined" LabelText="Confirm Password" Placeholder="Enter your password" IsPassword="true" TabIndex="4" ReturnType="Next" />
+                <material:MaterialEntry Type="Outlined" LabelText="Con" Placeholder="Enter" IsPassword="true" TabIndex="4" ReturnType="Next" />
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" />
                 <material:MaterialEntry Type="Outlined" LabelText="ZIP code" Placeholder="Enter your ZIP code" Keyboard="Numeric" TabIndex="6" ReturnType="Done" />
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
