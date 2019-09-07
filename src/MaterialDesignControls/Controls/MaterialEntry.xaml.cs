@@ -27,16 +27,13 @@ namespace Plugin.MaterialDesignControls
             this.txtEntry.Unfocused += Handle_Unfocused;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
 
-            TapGestureRecognizer clearTapGestureRecognizer = new TapGestureRecognizer();
-            clearTapGestureRecognizer.Tapped += (s, e) =>
+            this.imgClearIcon.Tapped = () =>
             {
                 this.Text = string.Empty;
                 this.txtEntry.Text = string.Empty;
             };
-            this.imgClearIcon.GestureRecognizers.Add(clearTapGestureRecognizer);
 
-            TapGestureRecognizer showPasswordTapGestureRecognizer = new TapGestureRecognizer();
-            showPasswordTapGestureRecognizer.Tapped += (s, e) =>
+            this.imgShowPasswordIcon.Tapped = () =>
             {
                 if (this.passwordIsVisible)
                 {
@@ -49,7 +46,6 @@ namespace Plugin.MaterialDesignControls
                     this.passwordIsVisible = true;
                 }
             };
-            this.imgShowPasswordIcon.GestureRecognizers.Add(showPasswordTapGestureRecognizer);
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
@@ -457,7 +453,7 @@ namespace Plugin.MaterialDesignControls
                     this.txtEntry.IsPassword = this.IsPassword;
                     if (!string.IsNullOrEmpty(this.ShowPasswordIcon))
                     {
-                        this.imgShowPasswordIcon.Source = this.ShowPasswordIcon;
+                        this.imgShowPasswordIcon.Image.Source = this.ShowPasswordIcon;
                     }
                     this.imgShowPasswordIcon.IsVisible = this.IsPassword && this.ShowPasswordIconIsVisible && !string.IsNullOrEmpty(this.ShowPasswordIcon);
                     break;
@@ -465,21 +461,21 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.ClearIconIsVisible):
                     if (!string.IsNullOrEmpty(this.ClearIcon))
                     {
-                        this.imgClearIcon.Source = this.ClearIcon;
+                        this.imgClearIcon.Image.Source = this.ClearIcon;
                     }
                     this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled && !string.IsNullOrEmpty(this.Text);
                     break;
                 case nameof(this.LeadingIcon):
                     if (!string.IsNullOrEmpty(this.LeadingIcon))
                     {
-                        this.imgLeadingIcon.Source = this.LeadingIcon;
+                        this.imgLeadingIcon.Image.Source = this.LeadingIcon;
                     }
                     this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
                     break;
                 case nameof(this.TrailingIcon):
                     if (!string.IsNullOrEmpty(this.TrailingIcon))
                     {
-                        this.imgTrailingIcon.Source = this.TrailingIcon;
+                        this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
                     break;

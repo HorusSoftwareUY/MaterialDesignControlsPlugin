@@ -23,7 +23,7 @@ namespace Plugin.MaterialDesignControls
 
         private bool initialized = false;
 
-        private Frame frmLayout;
+        protected Frame frmLayout;
 
         private StackLayout stcLayout;
 
