@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -25,13 +26,11 @@ namespace Plugin.MaterialDesignControls
             this.txtEditor.Unfocused += Handle_Unfocused;
             this.txtEditor.TextChanged += TxtEntry_TextChanged;
 
-            TapGestureRecognizer clearTapGestureRecognizer = new TapGestureRecognizer();
-            clearTapGestureRecognizer.Tapped += (s, e) =>
+            this.imgClearIcon.Tapped = () =>
             {
                 this.Text = string.Empty;
                 this.txtEditor.Text = string.Empty;
             };
-            this.imgClearIcon.GestureRecognizers.Add(clearTapGestureRecognizer);
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
@@ -277,6 +276,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(MaxLengthProperty, value); }
         }
 
+        public static readonly BindableProperty AnimateErrorProperty =
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialEditor), defaultValue: false);
+
+        public bool AnimateError
+        {
+            get { return (bool)GetValue(AnimateErrorProperty); }
+            set { SetValue(AnimateErrorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Events
@@ -308,6 +316,9 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(base.TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(this.IsEnabled):
                     this.txtEditor.IsEnabled = this.IsEnabled;
                     break;
@@ -332,6 +343,7 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.LabelText):
                     this.lblLabel.Text = this.LabelText;
+                    this.lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);
                     break;
                 case nameof(this.LabelTextColor):
                     this.lblLabel.TextColor = this.LabelTextColor;
@@ -390,6 +402,11 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.AssistiveText):
                     this.lblAssistive.Text = this.AssistiveText;
+                    this.lblAssistive.IsVisible = !string.IsNullOrEmpty(this.AssistiveText);
+                    if (this.AnimateError && !string.IsNullOrEmpty(this.AssistiveText))
+                    {
+                        ShakeAnimation.Animate(this);
+                    }
                     break;
                 case nameof(this.AssistiveTextColor):
                     this.lblAssistive.TextColor = this.AssistiveTextColor;
@@ -402,21 +419,21 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.ClearIconIsVisible):
                     if (!string.IsNullOrEmpty(this.ClearIcon))
                     {
-                        this.imgClearIcon.Source = this.ClearIcon;
+                        this.imgClearIcon.Image.Source = this.ClearIcon;
                     }
                     this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled && !string.IsNullOrEmpty(this.Text);
                     break;
                 case nameof(this.LeadingIcon):
                     if (!string.IsNullOrEmpty(this.LeadingIcon))
                     {
-                        this.imgLeadingIcon.Source = this.LeadingIcon;
+                        this.imgLeadingIcon.Image.Source = this.LeadingIcon;
                     }
                     this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
                     break;
                 case nameof(this.TrailingIcon):
                     if (!string.IsNullOrEmpty(this.TrailingIcon))
                     {
-                        this.imgTrailingIcon.Source = this.TrailingIcon;
+                        this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
                     break;

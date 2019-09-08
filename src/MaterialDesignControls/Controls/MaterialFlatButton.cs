@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
@@ -7,8 +7,8 @@ namespace Plugin.MaterialDesignControls
     {
         public MaterialFlatButton()
         {
-            this.BackgroundColor = Color.Transparent;
-            this.BorderColor = Color.Transparent;
+            this.button.BackgroundColor = Color.Transparent;
+            this.button.BorderColor = Color.Transparent;
         }
     }
 }

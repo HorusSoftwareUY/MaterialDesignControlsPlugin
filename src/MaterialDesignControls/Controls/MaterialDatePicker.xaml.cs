@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -240,6 +241,15 @@ namespace Plugin.MaterialDesignControls
             get { return !string.IsNullOrEmpty(this.TrailingIcon); }
         }
 
+        public static readonly BindableProperty AnimateErrorProperty =
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialDatePicker), defaultValue: false);
+
+        public bool AnimateError
+        {
+            get { return (bool)GetValue(AnimateErrorProperty); }
+            set { SetValue(AnimateErrorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -260,6 +270,9 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(base.TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(this.IsEnabled):
                     this.pckDate.IsEnabled = this.IsEnabled;
                     break;
@@ -281,6 +294,7 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.LabelText):
                     this.lblLabel.Text = this.LabelText;
+                    this.lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);
                     break;
                 case nameof(this.LabelTextColor):
                     this.lblLabel.TextColor = this.LabelTextColor;
@@ -339,6 +353,11 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.AssistiveText):
                     this.lblAssistive.Text = this.AssistiveText;
+                    this.lblAssistive.IsVisible = !string.IsNullOrEmpty(this.AssistiveText);
+                    if (this.AnimateError && !string.IsNullOrEmpty(this.AssistiveText))
+                    {
+                        ShakeAnimation.Animate(this);
+                    }
                     break;
                 case nameof(this.AssistiveTextColor):
                     this.lblAssistive.TextColor = this.AssistiveTextColor;
@@ -350,14 +369,14 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.LeadingIcon):
                     if (!string.IsNullOrEmpty(this.LeadingIcon))
                     {
-                        this.imgLeadingIcon.Source = this.LeadingIcon;
+                        this.imgLeadingIcon.Image.Source = this.LeadingIcon;
                     }
                     this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
                     break;
                 case nameof(this.TrailingIcon):
                     if (!string.IsNullOrEmpty(this.TrailingIcon))
                     {
-                        this.imgTrailingIcon.Source = this.TrailingIcon;
+                        this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible && this.IsEnabled;
                     break;

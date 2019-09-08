@@ -26,7 +26,7 @@
                     <material:MaterialChips Grid.Column="2" Grid.Row="2" CornerRadius="4" IsSelected="false" IsEnabled="true" Text="Option I" />
                 </Grid>
                 <material:MaterialLabel Text="Chips group control" Margin="0,24,0,0" />
-                <material:MaterialChipsGroup LabelText="Sizes" SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" />
+                <material:MaterialChipsGroup LabelText="Sizes" SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" />
                 <material:MaterialLabel Text="Filters" Margin="0,24,0,0" />
                 <FlexLayout Wrap="Wrap" Direction="Row" HorizontalOptions="FillAndExpand">
                     <StackLayout>

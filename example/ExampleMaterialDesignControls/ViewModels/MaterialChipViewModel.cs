@@ -32,20 +32,12 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref selectedSizes, value); }
         }
 
-        private string name;
+        private string error;
 
-        public string Name
+        public string Error
         {
-            get { return name; }
-            set { SetProperty(ref name, value); }
-        }
-
-        private string nameError;
-
-        public string NameError
-        {
-            get { return nameError; }
-            set { SetProperty(ref nameError, value); }
+            get { return error; }
+            set { SetProperty(ref error, value); }
         }
 
         public delegate Task DisplayAlertType(string title, string message, string cancel);
@@ -71,19 +63,18 @@ namespace ExampleMaterialDesignControls.ViewModels
             })));
 
             this.Sizes = new ObservableCollection<string> { "P", "M", "X", "XL" };
-            this.SelectedSizes = "M";
         }
 
         private async void OnTapCommand()
         {
-            if (!string.IsNullOrEmpty(this.Name))
+            if (!string.IsNullOrEmpty(this.SelectedSizes))
             {
-                this.NameError = null;
+                this.Error = null;
                 await this.DisplayAlert.Invoke("", "Saved", "Ok");
             }
             else
             {
-                this.NameError = "The message is required";
+                this.Error = "The size is required";
             }
         }
     }

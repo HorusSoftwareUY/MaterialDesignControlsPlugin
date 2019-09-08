@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialEditor x:Name="txtEditor" Type="Filled" LabelText="Message*" Placeholder="Enter your message" TabIndex="1" />
+                <material:MaterialEditor x:Name="txtEditor" Type="Filled" LabelText="Message*" Placeholder="Enter your message" AnimateError="True" TabIndex="1" />
                 <material:MaterialEditor Type="Lined" LabelText="Observation" Placeholder="Enter your observation" TabIndex="2" />
                 <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" TabIndex="3" />
                 <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" HeightRequest="200" TabIndex="4" />

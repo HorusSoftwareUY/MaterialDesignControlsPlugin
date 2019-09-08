@@ -23,13 +23,9 @@ namespace Plugin.MaterialDesignControls
 
         private bool initialized = false;
 
-        private Frame frmLayout;
+        protected Button button;
 
-        private StackLayout stcLayout;
-
-        private Image imgIcon;
-
-        private MaterialLabel lblText;
+        private Grid grid;
 
         private ActivityIndicator actIndicator;
 
@@ -118,15 +114,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledBackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty BusyBackgroundColorProperty =
-            BindableProperty.Create(nameof(BusyBackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Transparent);
-
-        public Color BusyBackgroundColor
-        {
-            get { return (Color)GetValue(BusyBackgroundColorProperty); }
-            set { SetValue(BusyBackgroundColorProperty, value); }
-        }
-
         public static readonly BindableProperty BusyColorProperty =
             BindableProperty.Create(nameof(BusyColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Black);
 
@@ -172,15 +159,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledBorderColorProperty, value); }
         }
 
-        public static readonly BindableProperty BusyBorderColorProperty =
-            BindableProperty.Create(nameof(BusyBorderColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Transparent);
-
-        public Color BusyBorderColor
-        {
-            get { return (Color)GetValue(BusyBorderColorProperty); }
-            set { SetValue(BusyBorderColorProperty, value); }
-        }
-
         public static readonly BindableProperty IconProperty =
             BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialButton), defaultValue: null);
 
@@ -207,39 +185,12 @@ namespace Plugin.MaterialDesignControls
         {
             this.initialized = true;
 
-            this.frmLayout = new Frame
+            this.grid = new Grid
             {
-                HasShadow = false,
-                CornerRadius = 4,
                 MinimumHeightRequest = 40,
                 HeightRequest = 40,
-                Padding = new Thickness(12, 0)
             };
-            this.Content = this.frmLayout;
-
-            this.stcLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Horizontal,
-                Spacing = 12,
-                HorizontalOptions = LayoutOptions.Center,
-            };
-            this.frmLayout.Content = this.stcLayout;
-
-            this.imgIcon = new Image
-            {
-                VerticalOptions = LayoutOptions.Center,
-                WidthRequest = 24,
-                HeightRequest = 24,
-                IsVisible = false
-            };
-            this.stcLayout.Children.Add(this.imgIcon);
-
-            this.lblText = new MaterialLabel
-            {
-                LineBreakMode = LineBreakMode.NoWrap,
-                VerticalOptions = LayoutOptions.Center
-            };
-            this.stcLayout.Children.Add(this.lblText);
+            this.Content = this.grid;
 
             this.actIndicator = new ActivityIndicator
             {
@@ -247,9 +198,17 @@ namespace Plugin.MaterialDesignControls
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 24,
                 HeightRequest = 24,
+                IsRunning = false,
                 IsVisible = false
             };
-            this.stcLayout.Children.Add(this.actIndicator);
+            this.grid.Children.Add(this.actIndicator, 0, 0);
+
+            this.button = new Button
+            {
+                CornerRadius = 4,
+                Padding = new Thickness(12, 0)
+            };
+            this.grid.Children.Add(this.button, 0, 0);
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -262,45 +221,43 @@ namespace Plugin.MaterialDesignControls
             switch (propertyName)
             {
                 case nameof(this.Text):
-                    this.lblText.Text = this.Text;
+                    this.button.Text = this.Text;
                     break;
                 case nameof(this.TextColor):
                 case nameof(this.DisabledTextColor):
-                    this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
+                    this.button.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
                     break;
                 case nameof(this.TextSize):
-                    this.lblText.FontSize = this.TextSize;
+                    this.button.FontSize = this.TextSize;
                     break;
                 case nameof(this.FontFamily):
-                    this.lblText.FontFamily = this.FontFamily;
+                    this.button.FontFamily = this.FontFamily;
                     break;
                 case nameof(this.CornerRadius):
-                    this.frmLayout.CornerRadius = (float)this.CornerRadius;
+                    this.button.CornerRadius = Convert.ToInt32(this.CornerRadius);
                     break;
                 case nameof(this.BackgroundColor):
                 case nameof(this.DisabledBackgroundColor):
-                    this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
+                    this.button.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
                     break;
                 case nameof(this.BorderColor):
                 case nameof(this.DisabledBorderColor):
-                    this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
+                    this.button.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
                     break;
                 case nameof(this.Icon):
                 case nameof(this.DisabledIcon):
                     if (!string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon))
                     {
-                        this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
-                        this.imgIcon.IsVisible = true;
+                        this.button.ImageSource = this.IsEnabled ? this.Icon : this.DisabledIcon;
                     }
                     break;
                 case nameof(this.IsEnabled):
-                    this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
-                    this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
-                    this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
+                    this.button.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
+                    this.button.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
+                    this.button.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
                     if (!string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon))
                     {
-                        this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
-                        this.imgIcon.IsVisible = true;
+                        this.button.ImageSource = this.IsEnabled ? this.Icon : this.DisabledIcon;
                     }
                     break;
                 case nameof(this.BusyColor):
@@ -309,34 +266,22 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.IsBusy):
                     if (this.IsBusy)
                     {
-                        this.lblText.IsVisible = false;
-                        this.imgIcon.IsVisible = false;
                         this.actIndicator.IsVisible = true;
                         this.actIndicator.IsRunning = true;
-                        this.frmLayout.BackgroundColor = this.BusyBackgroundColor;
-                        this.frmLayout.BorderColor = this.BusyBorderColor;
+                        this.button.IsVisible = false;
                     }
                     else
                     {
-                        this.lblText.IsVisible = true;
-                        this.imgIcon.IsVisible = !string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon);
                         this.actIndicator.IsVisible = false;
                         this.actIndicator.IsRunning = false;
-                        this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
-                        this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
+                        this.button.IsVisible = true;
                     }
                     break;
                 case nameof(this.Command):
-                    var selectionTapGestureRecognizer = new TapGestureRecognizer();
-                    selectionTapGestureRecognizer.Tapped += (s, e) =>
-                    {
-                        if (this.IsEnabled && this.Command != null && this.Command.CanExecute(this.CommandParameter))
-                        {
-                            this.Command.Execute(this.CommandParameter);
-                        }
-                    };
-                    this.GestureRecognizers.Clear();
-                    this.GestureRecognizers.Add(selectionTapGestureRecognizer);
+                    this.button.Command = this.Command;
+                    break;
+                case nameof(this.CommandParameter):
+                    this.button.CommandParameter = this.CommandParameter;
                     break;
             }
         }

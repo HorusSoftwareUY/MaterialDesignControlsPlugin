@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,7 +33,7 @@ namespace Plugin.MaterialDesignControls
         #region Properties
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(12, 0), propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(12, 0));
 
         public new Thickness Padding
         {
@@ -40,7 +42,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialChipsGroup), defaultValue: true, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialChipsGroup), defaultValue: true);
 
         public new bool IsEnabled
         {
@@ -49,7 +51,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextProperty =
-            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null);
 
         public string LabelText
         {
@@ -76,7 +78,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null);
 
         public string AssistiveText
         {
@@ -85,7 +87,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray);
 
         public Color LabelTextColor
         {
@@ -94,7 +96,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray);
 
         public Color AssistiveTextColor
         {
@@ -103,7 +105,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
 
         public double LabelSize
         {
@@ -112,7 +114,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveSizeProperty =
-            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
 
         public double AssistiveSize
         {
@@ -121,7 +123,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray);
 
         public Color TextColor
         {
@@ -130,7 +132,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedTextColorProperty =
-            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Black, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Black);
 
         public Color SelectedTextColor
         {
@@ -139,7 +141,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray);
 
         public Color DisabledTextColor
         {
@@ -148,7 +150,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledSelectedTextColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.White, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.White);
 
         public Color DisabledSelectedTextColor
         {
@@ -157,7 +159,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray);
 
         public new Color BackgroundColor
         {
@@ -166,7 +168,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedBackgroundColorProperty =
-            BindableProperty.Create(nameof(SelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(SelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray);
 
         public Color SelectedBackgroundColor
         {
@@ -175,7 +177,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.White, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.White);
 
         public Color DisabledBackgroundColor
         {
@@ -184,7 +186,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledSelectedBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray);
 
         public Color DisabledSelectedBackgroundColor
         {
@@ -193,7 +195,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextSizeProperty =
-            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
 
         public double TextSize
         {
@@ -202,12 +204,21 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialChipsGroup), defaultValue: 16.0, propertyChanged: OnPropertyChanged);
+            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialChipsGroup), defaultValue: 16.0);
 
         public double CornerRadius
         {
             get { return (double)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimateErrorProperty =
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialChipsGroup), defaultValue: false);
+
+        public bool AnimateError
+        {
+            get { return (bool)GetValue(AnimateErrorProperty); }
+            set { SetValue(AnimateErrorProperty, value); }
         }
 
         #endregion Properties
@@ -292,13 +303,7 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-        private static void OnPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialChipsGroup)bindable;
-            control.ApplyControlProperties();
-        }
-
-        private void ApplyControlProperties()
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (!this.initialized)
             {
@@ -306,15 +311,42 @@ namespace Plugin.MaterialDesignControls
                 this.initialized = true;
             }
 
-            this.lblLabel.Text = this.LabelText;
-            this.lblLabel.TextColor = this.LabelTextColor;
-            this.lblLabel.FontSize = this.LabelSize;
+            switch (propertyName)
+            {
+                case nameof(base.TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
+                case nameof(this.LabelText):
+                    this.lblLabel.Text = this.LabelText;
+                    this.lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);
+                    break;
+                case nameof(this.LabelTextColor):
+                    this.lblLabel.TextColor = this.LabelTextColor;
+                    break;
+                case nameof(this.LabelSize):
+                    this.lblLabel.FontSize = this.LabelSize;
+                    break;
 
-            this.stcContainer.Padding = this.Padding;
+                case nameof(this.Padding):
+                    this.stcContainer.Padding = this.Padding;
+                    break;
 
-            this.lblAssistive.Text = this.AssistiveText;
-            this.lblAssistive.TextColor = this.AssistiveTextColor;
-            this.lblAssistive.FontSize = this.AssistiveSize;
+                case nameof(this.AssistiveText):
+                    this.lblAssistive.Text = this.AssistiveText;
+                    this.lblAssistive.IsVisible = !string.IsNullOrEmpty(this.AssistiveText);
+                    if (this.AnimateError && !string.IsNullOrEmpty(this.AssistiveText))
+                    {
+                        ShakeAnimation.Animate(this);
+                    }
+                    break;
+                case nameof(this.AssistiveTextColor):
+                    this.lblAssistive.TextColor = this.AssistiveTextColor;
+                    break;
+                case nameof(this.AssistiveSize):
+                    this.lblAssistive.FontSize = this.AssistiveSize;
+                    break;
+
+            }
         }
 
         #endregion Methods

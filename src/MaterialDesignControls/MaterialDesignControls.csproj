@@ -94,6 +94,8 @@
     <Compile Include="Controls\MaterialOutlineButton.cs" />
     <Compile Include="Controls\MaterialFlatButton.cs" />
     <Compile Include="Controls\MaterialButton.cs" />
+    <Compile Include="Implementations\CustomImageButton.cs" />
+    <Compile Include="Animations\ShakeAnimation.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -102,6 +104,7 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Implementations\" />
+    <Folder Include="Animations\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
