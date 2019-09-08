@@ -7,8 +7,8 @@ namespace Plugin.MaterialDesignControls
     {
         public MaterialFlatButton()
         {
-            this.frmLayout.BackgroundColor = Color.Transparent;
-            this.frmLayout.BorderColor = Color.Transparent;
+            this.button.BackgroundColor = Color.Transparent;
+            this.button.BorderColor = Color.Transparent;
         }
     }
 }

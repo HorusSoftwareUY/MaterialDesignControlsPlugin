@@ -7,7 +7,8 @@ namespace Plugin.MaterialDesignControls
     {
         public MaterialOutlineButton()
         {
-            this.frmLayout.BackgroundColor = Color.Transparent;
+            this.button.BackgroundColor = Color.Transparent;
+            this.button.BorderWidth = 1;
         }
     }
 }
