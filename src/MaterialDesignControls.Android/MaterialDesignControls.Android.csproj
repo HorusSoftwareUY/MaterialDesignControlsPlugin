@@ -130,6 +130,7 @@
     <Compile Include="Renderers\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\MaterialEditorRenderer.cs" />
     <Compile Include="Renderers\MaterialLabelRenderer.cs" />
+    <Compile Include="Renderers\MaterialButtonRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -1,11 +1,9 @@
-﻿using System;
-using Android.Content;
+﻿using Android.Content;
 using Android.Graphics.Drawables;
 using AndroidGraphics = Android.Graphics;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(CustomEditor), typeof(Plugin.MaterialDesignControls.Android.MaterialEditorRenderer))]
 
