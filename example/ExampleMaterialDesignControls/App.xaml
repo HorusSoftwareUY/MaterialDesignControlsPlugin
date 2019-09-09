@@ -55,6 +55,7 @@
             <Setter Property="BorderColor" Value="#4c6277" />
             <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
             <Setter Property="BusyColor" Value="#4c6277" />
+            <Setter Property="ToUpper" Value="False" />
         </Style>
             
         <!-- MaterialOutlineButton -->

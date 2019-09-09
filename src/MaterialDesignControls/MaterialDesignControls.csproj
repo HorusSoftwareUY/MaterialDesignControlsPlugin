@@ -96,6 +96,7 @@
     <Compile Include="Controls\MaterialButton.cs" />
     <Compile Include="Implementations\CustomImageButton.cs" />
     <Compile Include="Animations\ShakeAnimation.cs" />
+    <Compile Include="Implementations\CustomButton.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

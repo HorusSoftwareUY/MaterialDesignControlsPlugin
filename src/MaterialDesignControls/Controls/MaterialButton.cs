@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
@@ -23,7 +24,7 @@ namespace Plugin.MaterialDesignControls
 
         private bool initialized = false;
 
-        protected Button button;
+        protected CustomButton button;
 
         private Grid grid;
 
@@ -177,6 +178,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledIconProperty, value); }
         }
 
+        public static readonly BindableProperty ToUpperProperty =
+            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialButton), defaultValue: false);
+
+        public bool ToUpper
+        {
+            get { return (bool)GetValue(ToUpperProperty); }
+            set { SetValue(ToUpperProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -203,7 +213,7 @@ namespace Plugin.MaterialDesignControls
             };
             this.grid.Children.Add(this.actIndicator, 0, 0);
 
-            this.button = new Button
+            this.button = new CustomButton
             {
                 CornerRadius = 4,
                 Padding = new Thickness(12, 0)
@@ -221,7 +231,8 @@ namespace Plugin.MaterialDesignControls
             switch (propertyName)
             {
                 case nameof(this.Text):
-                    this.button.Text = this.Text;
+                case nameof(this.ToUpper):
+                    this.button.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
                     break;
                 case nameof(this.TextColor):
                 case nameof(this.DisabledTextColor):
