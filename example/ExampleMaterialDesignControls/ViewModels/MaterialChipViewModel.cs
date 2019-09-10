@@ -57,29 +57,6 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public MaterialChipViewModel()
         {
-            Items = new ObservableCollection<Item>();
-            Items.Add(new Item("Test 1",
-                new Command(() =>
-                {
-                    Items.RemoveAt(0);
-                }),
-                new Command(() =>
-                {
-                    Items.RemoveAt(0);
-                })
-             ));
-
-            Items.Add(new Item("Test 2",
-                new Command(() =>
-                {
-                    Items.RemoveAt(0);
-                }),
-                new Command(() =>
-                {
-                    Items.RemoveAt(0);
-                })
-            ));
-
             this.Sizes = new ObservableCollection<string> { "P", "M", "X", "XL" };
         }
 
