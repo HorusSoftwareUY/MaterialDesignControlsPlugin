@@ -29,10 +29,17 @@ namespace Plugin.MaterialDesignControls
             {
                 if (this.IsEnabled)
                 {
-                    if (CommandProperty != null && this.Command != null)
-                        this.Command.Execute(this.CommandParameter);
+                    if (this.IsSelected)
+                    {
+                        if (UnselectedCommand != null)
+                            this.UnselectedCommand.Execute(this.UnselectedCommandParameter);
+                    }
                     else
-                        this.IsSelected = !this.IsSelected;
+                    {
+                        if (Command != null)
+                            this.Command.Execute(this.CommandParameter);
+                    }
+                    this.IsSelected = !this.IsSelected;
                 }
             };
             this.frmContainer.GestureRecognizers.Add(tapGestureRecognizer);
@@ -64,6 +71,25 @@ namespace Plugin.MaterialDesignControls
         {
             get { return GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
+        }
+
+        public static readonly BindableProperty UnselectedCommandProperty =
+           BindableProperty.Create(nameof(UnselectedCommand), typeof(ICommand), typeof(MaterialChips));
+
+
+        public ICommand UnselectedCommand
+        {
+            get { return (ICommand)GetValue(UnselectedCommandProperty); }
+            set { SetValue(UnselectedCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty UnselectedCommandParameterProperty =
+            BindableProperty.Create(nameof(UnselectedCommandParameter), typeof(object), typeof(MaterialChips), defaultValue: null);
+
+        public object UnselectedCommandParameter
+        {
+            get { return GetValue(UnselectedCommandParameterProperty); }
+            set { SetValue(UnselectedCommandParameterProperty, value); }
         }
 
         public static readonly BindableProperty IsSelectedProperty =

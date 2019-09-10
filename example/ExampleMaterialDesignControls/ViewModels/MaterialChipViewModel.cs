@@ -45,6 +45,8 @@ namespace ExampleMaterialDesignControls.ViewModels
         public DisplayAlertType DisplayAlert { get; set; }
 
         public ICommand TapCommand => new Command(OnTapCommand);
+
+        public ICommand UnselectedCommand => new Command(OnUnselectedCommand);
         public ICommand IconTapCommand => new Command<string>(OnIconTapCommand);
 
         private void OnIconTapCommand(string obj)
@@ -52,15 +54,31 @@ namespace ExampleMaterialDesignControls.ViewModels
             this.DisplayAlert("Chip icon command", obj, "Ok");
         }
 
+
         public MaterialChipViewModel()
         {
             Items = new ObservableCollection<Item>();
-            Items.Add(new Item("Test 1", new Command(() => {
-                Items.RemoveAt(0);
-            })));
-            Items.Add(new Item("Test 2", new Command(() => {
-                Items.RemoveAt(0);
-            })));
+            Items.Add(new Item("Test 1",
+                new Command(() =>
+                {
+                    Items.RemoveAt(0);
+                }),
+                new Command(() =>
+                {
+                    Items.RemoveAt(0);
+                })
+             ));
+
+            Items.Add(new Item("Test 2",
+                new Command(() =>
+                {
+                    Items.RemoveAt(0);
+                }),
+                new Command(() =>
+                {
+                    Items.RemoveAt(0);
+                })
+            ));
 
             this.Sizes = new ObservableCollection<string> { "P", "M", "X", "XL" };
         }
@@ -77,17 +95,24 @@ namespace ExampleMaterialDesignControls.ViewModels
                 this.Error = "The size is required";
             }
         }
+
+        private async void OnUnselectedCommand()
+        {
+            await this.DisplayAlert.Invoke("", "Unselected", "Ok");
+        }
     }
 
     public class Item
     {
         public string Name { get; set; }
         public ICommand TapCommand { get; set; }
+        public ICommand UnselectedCommand { get; set; }
 
-        public Item(string name, ICommand cmd)
+        public Item(string name, ICommand cmd, ICommand unselectedCmd)
         {
             this.Name = name;
             this.TapCommand = cmd;
+            this.UnselectedCommand = unselectedCmd;
         }
     }
 }
