@@ -21,15 +21,18 @@ namespace ExampleMaterialDesignControls.Pages
 
         public async void OnTap(object parameter)
         {
-            if (parameter is string && ((string)parameter).ToString().Equals("Saved"))
+            if (parameter != null)
             {
-                this.btnSave.IsBusy = true;
-                await Task.Delay(2000);
-                this.btnSave.IsBusy = false;
-            }
+                if (parameter is string && ((string)parameter).ToString().Equals("Saved"))
+                {
+                    this.btnSave.IsBusy = true;
+                    await Task.Delay(2000);
+                    this.btnSave.IsBusy = false;
+                }
 
-            string text = parameter.ToString();
-            await this.DisplayAlert("", text, "Ok");
+                string text = parameter.ToString();
+                await this.DisplayAlert("", text, "Ok");
+            }
         }
     }
 }

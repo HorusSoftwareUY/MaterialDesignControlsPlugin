@@ -131,6 +131,8 @@
     <Compile Include="Renderers\MaterialEditorRenderer.cs" />
     <Compile Include="Renderers\MaterialLabelRenderer.cs" />
     <Compile Include="Renderers\MaterialButtonRenderer.cs" />
+    <Compile Include="Effects\TouchAndPressEffect.cs" />
+    <Compile Include="Effects.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -141,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />
+    <Folder Include="Effects\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

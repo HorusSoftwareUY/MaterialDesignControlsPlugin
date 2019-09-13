@@ -1,12 +1,15 @@
 using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.MaterialDesignControls.Effects;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
-    public class MaterialButton : ContentView
+    public class MaterialButton : ContentView, ITouchAndPressEffectConsumer
     {
         #region Constructors
 
@@ -50,6 +53,24 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (object)GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationProperty =
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
+
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
         }
 
         public static readonly BindableProperty TextProperty =
@@ -230,6 +251,10 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(base.Opacity):
+                case nameof(base.Scale):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(this.Text):
                 case nameof(this.ToUpper):
                     this.button.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
@@ -289,11 +314,73 @@ namespace Plugin.MaterialDesignControls
                     }
                     break;
                 case nameof(this.Command):
-                    this.button.Command = this.Command;
+                    if (this.Animation == AnimationTypes.None)
+                    {
+                        this.button.Command = this.Command;
+                    }
                     break;
                 case nameof(this.CommandParameter):
-                    this.button.CommandParameter = this.CommandParameter;
+                    if (this.Animation == AnimationTypes.None)
+                    {
+                        this.button.CommandParameter = this.CommandParameter;
+                    }
                     break;
+                case nameof(this.Animation):
+                    if (this.Animation != AnimationTypes.None)
+                    {
+                        this.button.Command = null;
+                        this.button.CommandParameter = null;
+
+                        if (!this.Effects.Any())
+                        {
+                            this.Effects.Add(new TouchAndPressEffect());
+                        }
+                    }
+                    break;
+            }
+        }
+
+        public void ConsumeEvent(EventType gestureType)
+        {
+            switch (gestureType)
+            {
+                case EventType.Pressing:
+                    if (this.IsEnabled && (this.Command == null || this.Command.CanExecute(this.CommandParameter)))
+                    {
+                        Task.Run(async () =>
+                        {
+                            if (this.Animation == AnimationTypes.Fade)
+                            {
+                                await this.FadeTo(this.AnimationParameter.HasValue ? this.AnimationParameter.Value : 0.6, 100);
+                            }
+                            else
+                            {
+                                await this.ScaleTo(this.AnimationParameter.HasValue ? this.AnimationParameter.Value : 0.95, 100);
+                            }
+                        });
+                    }
+                    break;
+                case EventType.Cancelled:
+                case EventType.Released:
+                    if (this.IsEnabled && this.Command != null && this.Command.CanExecute(this.CommandParameter))
+                    {
+                        this.Command.Execute(this.CommandParameter);
+                    }
+
+                    Task.Run(async () =>
+                    {
+                        if (this.Animation == AnimationTypes.Fade)
+                        {
+                            await this.FadeTo(1, 100);
+                        }
+                        else
+                        {
+                            await this.ScaleTo(1, 100);
+                        }
+                    });
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(gestureType), gestureType, null);
             }
         }
 

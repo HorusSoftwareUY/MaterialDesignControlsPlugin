@@ -65,6 +65,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Effects\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,6 +76,8 @@
     <Compile Include="Renderers\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\MaterialEditorRenderer.cs" />
     <Compile Include="Renderers\MaterialLabelRenderer.cs" />
+    <Compile Include="Effects\TouchAndPressEffect.cs" />
+    <Compile Include="Effects.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

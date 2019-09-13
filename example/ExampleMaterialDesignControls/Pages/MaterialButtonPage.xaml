@@ -14,6 +14,11 @@
                 <material:MaterialButton IsEnabled="false" Text="Save" Icon="save.png" DisabledIcon="save.png" CornerRadius="20" Command="{Binding TapCommand}" CommandParameter="Saved" />
                 <material:MaterialOutlineButton IsEnabled="false" Text="Cancel" Command="{Binding TapCommand}" CornerRadius="20" CommandParameter="Canceled" />
                 <material:MaterialFlatButton IsEnabled="false" Text="Delete" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
+
+                <Label Text="Animations" HorizontalTextAlignment="Center" />
+                <material:MaterialButton Animation="None" Text="None" ToUpper="True" />
+                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" ToUpper="True" />
+                <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" ToUpper="True" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
