@@ -148,6 +148,44 @@ Displays a value with its respective label in read-only format.
 ```XML
 <material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
 ```
+## Effects
+
+### TouchAndPressEffect
+Effect to detect the different types of taps on a view: Pressing, Released and Canceled can be detected.
+
+**Example**
+```XML
+<MyControl.Effects>
+    <material:TouchAndPressEffect />
+</MyControl.Effects>
+```
+
+```C#
+public class MyControl : ContentView, ITouchAndPressEffectConsumer
+{
+    public void ConsumeEvent(EventType gestureType)
+    {
+        switch (gestureType)
+        {
+            case EventType.Pressing:
+                Task.Run(async () =>
+                {
+                    await this.ScaleTo(0.90, 100);
+                });
+                break;
+            case EventType.Cancelled:
+            case EventType.Released:
+                Task.Run(async () =>
+                {
+                    await this.ScaleTo(1, 100);
+                });
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(gestureType), gestureType, null);
+        }
+    }
+}
+```
 
 ## Demo
 https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/tree/master/example

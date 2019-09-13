@@ -11,7 +11,6 @@
             MaterialTimePickerRenderer.Init();
             MaterialEditorRenderer.Init();
             MaterialLabelRenderer.Init();
-            MaterialButtonRenderer.Init();
         }
     }
 }

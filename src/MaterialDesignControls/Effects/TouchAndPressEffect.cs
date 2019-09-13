@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace Plugin.MaterialDesignControls.Effects
+namespace Plugin.MaterialDesignControls
 {
     public interface ITouchAndPressEffectConsumer
     {

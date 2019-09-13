@@ -1,11 +1,11 @@
 ﻿using Foundation;
-using Plugin.MaterialDesignControls.Effects;
+using Plugin.MaterialDesignControls;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using TouchAndPressEffect = Plugin.MaterialDesignControls.iOS.TouchAndPressEffect;
 
-[assembly: ResolutionGroupName(Plugin.MaterialDesignControls.Effects.TouchAndPressEffect.EffectIdPrefix)]
+[assembly: ResolutionGroupName(Plugin.MaterialDesignControls.TouchAndPressEffect.EffectIdPrefix)]
 [assembly: ExportEffect(typeof(TouchAndPressEffect), nameof(TouchAndPressEffect))]
 
 namespace Plugin.MaterialDesignControls.iOS
