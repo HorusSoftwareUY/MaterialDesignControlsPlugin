@@ -4,13 +4,13 @@
     {
         public static void Init()
         {
+            Effects.Init();
             MaterialDatePickerRenderer.Init();
             MaterialEntryRenderer.Init();
             MaterialPickerRenderer.Init();
             MaterialTimePickerRenderer.Init();
             MaterialEditorRenderer.Init();
             MaterialLabelRenderer.Init();
-            MaterialButtonRenderer.Init();
         }
     }
 }

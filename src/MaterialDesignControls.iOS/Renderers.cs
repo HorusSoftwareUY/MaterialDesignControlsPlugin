@@ -4,6 +4,7 @@
     {
         public static void Init()
         {
+            Effects.Init();
             MaterialDatePickerRenderer.Init();
             MaterialEntryRenderer.Init();
             MaterialPickerRenderer.Init();

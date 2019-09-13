@@ -96,7 +96,8 @@
     <Compile Include="Controls\MaterialButton.cs" />
     <Compile Include="Implementations\CustomImageButton.cs" />
     <Compile Include="Animations\ShakeAnimation.cs" />
-    <Compile Include="Implementations\CustomButton.cs" />
+    <Compile Include="Effects\TouchAndPressEffect.cs" />
+    <Compile Include="AnimationTypes.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -106,6 +107,7 @@
     <Folder Include="Controls\" />
     <Folder Include="Implementations\" />
     <Folder Include="Animations\" />
+    <Folder Include="Effects\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />

@@ -1,12 +1,12 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
-    public class MaterialButton : ContentView
+    public class MaterialButton : ContentView, ITouchAndPressEffectConsumer
     {
         #region Constructors
 
@@ -24,9 +24,13 @@ namespace Plugin.MaterialDesignControls
 
         private bool initialized = false;
 
-        protected CustomButton button;
+        protected Frame frmLayout;
 
-        private Grid grid;
+        private StackLayout stcLayout;
+
+        private Image imgIcon;
+
+        private MaterialLabel lblText;
 
         private ActivityIndicator actIndicator;
 
@@ -50,6 +54,24 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (object)GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationProperty =
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
+
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
         }
 
         public static readonly BindableProperty TextProperty =
@@ -195,12 +217,39 @@ namespace Plugin.MaterialDesignControls
         {
             this.initialized = true;
 
-            this.grid = new Grid
+            this.frmLayout = new Frame
             {
+                HasShadow = false,
+                CornerRadius = 4,
                 MinimumHeightRequest = 40,
                 HeightRequest = 40,
+                Padding = new Thickness(12, 0)
             };
-            this.Content = this.grid;
+            this.Content = this.frmLayout;
+
+            this.stcLayout = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                Spacing = 12,
+                HorizontalOptions = LayoutOptions.Center,
+            };
+            this.frmLayout.Content = this.stcLayout;
+
+            this.imgIcon = new Image
+            {
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 24,
+                HeightRequest = 24,
+                IsVisible = false
+            };
+            this.stcLayout.Children.Add(this.imgIcon);
+
+            this.lblText = new MaterialLabel
+            {
+                LineBreakMode = LineBreakMode.NoWrap,
+                VerticalOptions = LayoutOptions.Center
+            };
+            this.stcLayout.Children.Add(this.lblText);
 
             this.actIndicator = new ActivityIndicator
             {
@@ -208,17 +257,11 @@ namespace Plugin.MaterialDesignControls
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 24,
                 HeightRequest = 24,
-                IsRunning = false,
                 IsVisible = false
             };
-            this.grid.Children.Add(this.actIndicator, 0, 0);
+            this.stcLayout.Children.Add(this.actIndicator);
 
-            this.button = new CustomButton
-            {
-                CornerRadius = 4,
-                Padding = new Thickness(12, 0)
-            };
-            this.grid.Children.Add(this.button, 0, 0);
+            this.Effects.Add(new TouchAndPressEffect());
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -230,45 +273,49 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(base.Opacity):
+                case nameof(base.Scale):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(this.Text):
                 case nameof(this.ToUpper):
-                    this.button.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
+                    this.lblText.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
                     break;
                 case nameof(this.TextColor):
                 case nameof(this.DisabledTextColor):
-                    this.button.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
+                    this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
                     break;
                 case nameof(this.TextSize):
-                    this.button.FontSize = this.TextSize;
+                    this.lblText.FontSize = this.TextSize;
                     break;
                 case nameof(this.FontFamily):
-                    this.button.FontFamily = this.FontFamily;
+                    this.lblText.FontFamily = this.FontFamily;
                     break;
                 case nameof(this.CornerRadius):
-                    this.button.CornerRadius = Convert.ToInt32(this.CornerRadius);
+                    this.frmLayout.CornerRadius = Convert.ToInt32(this.CornerRadius);
                     break;
                 case nameof(this.BackgroundColor):
                 case nameof(this.DisabledBackgroundColor):
-                    this.button.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
+                    this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
                     break;
                 case nameof(this.BorderColor):
                 case nameof(this.DisabledBorderColor):
-                    this.button.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
+                    this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
                     break;
                 case nameof(this.Icon):
                 case nameof(this.DisabledIcon):
                     if (!string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon))
                     {
-                        this.button.ImageSource = this.IsEnabled ? this.Icon : this.DisabledIcon;
+                        this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
                     }
                     break;
                 case nameof(this.IsEnabled):
-                    this.button.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
-                    this.button.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
-                    this.button.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
+                    this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
+                    this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
+                    this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
                     if (!string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon))
                     {
-                        this.button.ImageSource = this.IsEnabled ? this.Icon : this.DisabledIcon;
+                        this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
                     }
                     break;
                 case nameof(this.BusyColor):
@@ -277,23 +324,70 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.IsBusy):
                     if (this.IsBusy)
                     {
+                        this.lblText.IsVisible = false;
+                        this.imgIcon.IsVisible = false;
                         this.actIndicator.IsVisible = true;
                         this.actIndicator.IsRunning = true;
-                        this.button.IsVisible = false;
+                        this.frmLayout.BackgroundColor = Color.Transparent;
+                        this.frmLayout.BorderColor = Color.Transparent;
                     }
                     else
                     {
+                        this.lblText.IsVisible = true;
+                        this.imgIcon.IsVisible = !string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon);
                         this.actIndicator.IsVisible = false;
                         this.actIndicator.IsRunning = false;
-                        this.button.IsVisible = true;
+                        this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
+                        this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
                     }
                     break;
-                case nameof(this.Command):
-                    this.button.Command = this.Command;
+            }
+        }
+
+        public void ConsumeEvent(EventType gestureType)
+        {
+            switch (gestureType)
+            {
+                case EventType.Pressing:
+                    if (this.Animation != AnimationTypes.None && this.IsEnabled && (this.Command == null || this.Command.CanExecute(this.CommandParameter)))
+                    {
+                        Task.Run(async () =>
+                        {
+                            if (this.Animation == AnimationTypes.Fade)
+                            {
+                                await this.FadeTo(this.AnimationParameter.HasValue ? this.AnimationParameter.Value : 0.6, 100);
+                            }
+                            else
+                            {
+                                await this.ScaleTo(this.AnimationParameter.HasValue ? this.AnimationParameter.Value : 0.95, 100);
+                            }
+                        });
+                    }
                     break;
-                case nameof(this.CommandParameter):
-                    this.button.CommandParameter = this.CommandParameter;
+                case EventType.Cancelled:
+                case EventType.Released:
+                    if (this.IsEnabled && this.Command != null && this.Command.CanExecute(this.CommandParameter))
+                    {
+                        this.Command.Execute(this.CommandParameter);
+                    }
+
+                    if (this.Animation != AnimationTypes.None)
+                    {
+                        Task.Run(async () =>
+                        {
+                            if (this.Animation == AnimationTypes.Fade)
+                            {
+                                await this.FadeTo(1, 100);
+                            }
+                            else
+                            {
+                                await this.ScaleTo(1, 100);
+                            }
+                        });
+                    }
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(gestureType), gestureType, null);
             }
         }
 
