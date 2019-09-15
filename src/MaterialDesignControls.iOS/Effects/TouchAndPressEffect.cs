@@ -81,6 +81,12 @@ namespace Plugin.MaterialDesignControls.iOS
                 base.TouchesCancelled(touches, evt);
                 _touchAndPressEffectConsumer.ConsumeEvent(EventType.Cancelled);
             }
+
+            public override void IgnoreTouch(UITouch touch, UIEvent forEvent)
+            {
+                base.IgnoreTouch(touch, forEvent);
+                _touchAndPressEffectConsumer.ConsumeEvent(EventType.Ignored);
+            }
         }
     }
 }

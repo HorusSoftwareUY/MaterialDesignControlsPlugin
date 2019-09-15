@@ -98,6 +98,7 @@
     <Compile Include="Animations\ShakeAnimation.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="AnimationTypes.cs" />
+    <Compile Include="Animations\TouchAndPressAnimation.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

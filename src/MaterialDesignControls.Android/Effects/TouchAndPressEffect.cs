@@ -35,6 +35,10 @@ namespace Plugin.MaterialDesignControls.Android
             }
         }
 
+        private float? firstX;
+        private float? firstY;
+        private bool ignored;
+
         private void OnViewOnTouch(object sender, View.TouchEventArgs e)
         {
             switch (e.Event.ActionMasked)
@@ -60,6 +64,28 @@ namespace Plugin.MaterialDesignControls.Android
                 case MotionEventActions.Mask:
                     break;
                 case MotionEventActions.Move:
+                    var motionEvent = e.Event as MotionEvent;
+
+                    if (motionEvent != null)
+                    {
+                        var x = motionEvent.GetX();
+                        var y = motionEvent.GetY();
+
+                        if (!this.firstX.HasValue || !this.firstY.HasValue)
+                        {
+                            this.firstX = x;
+                            this.firstY = y;
+                        }
+
+                        var maxDelta = 10;
+                        var deltaX = Math.Abs(x - this.firstX.Value);
+                        var deltaY = Math.Abs(y - this.firstY.Value);
+                        if (!this.ignored && (deltaX > maxDelta || deltaY > maxDelta))
+                        {
+                            this.ignored = true;
+                            _touchAndPressEffectConsumer?.ConsumeEvent(EventType.Ignored);
+                        }
+                    }
                     break;
                 case MotionEventActions.Outside:
                     break;
@@ -86,6 +112,13 @@ namespace Plugin.MaterialDesignControls.Android
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+
+            if (e.Event.ActionMasked != MotionEventActions.Move)
+            {
+                this.ignored = false;
+                this.firstX = null;
+                this.firstY = null;
             }
         }
     }

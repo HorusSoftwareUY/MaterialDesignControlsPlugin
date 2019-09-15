@@ -165,24 +165,7 @@ public class MyControl : ContentView, ITouchAndPressEffectConsumer
 {
     public void ConsumeEvent(EventType gestureType)
     {
-        switch (gestureType)
-        {
-            case EventType.Pressing:
-                Task.Run(async () =>
-                {
-                    await this.ScaleTo(0.90, 100);
-                });
-                break;
-            case EventType.Cancelled:
-            case EventType.Released:
-                Task.Run(async () =>
-                {
-                    await this.ScaleTo(1, 100);
-                });
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(gestureType), gestureType, null);
-        }
+        TouchAndPressAnimation.Animate(this, gestureType);
     }
 }
 ```
