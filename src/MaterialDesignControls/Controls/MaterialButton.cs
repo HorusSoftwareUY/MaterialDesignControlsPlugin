@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
@@ -346,49 +347,7 @@ namespace Plugin.MaterialDesignControls
 
         public void ConsumeEvent(EventType gestureType)
         {
-            switch (gestureType)
-            {
-                case EventType.Pressing:
-                    if (this.Animation != AnimationTypes.None && this.IsEnabled && (this.Command == null || this.Command.CanExecute(this.CommandParameter)))
-                    {
-                        Task.Run(async () =>
-                        {
-                            if (this.Animation == AnimationTypes.Fade)
-                            {
-                                await this.FadeTo(this.AnimationParameter.HasValue ? this.AnimationParameter.Value : 0.6, 100);
-                            }
-                            else
-                            {
-                                await this.ScaleTo(this.AnimationParameter.HasValue ? this.AnimationParameter.Value : 0.95, 100);
-                            }
-                        });
-                    }
-                    break;
-                case EventType.Cancelled:
-                case EventType.Released:
-                    if (this.IsEnabled && this.Command != null && this.Command.CanExecute(this.CommandParameter))
-                    {
-                        this.Command.Execute(this.CommandParameter);
-                    }
-
-                    if (this.Animation != AnimationTypes.None)
-                    {
-                        Task.Run(async () =>
-                        {
-                            if (this.Animation == AnimationTypes.Fade)
-                            {
-                                await this.FadeTo(1, 100);
-                            }
-                            else
-                            {
-                                await this.ScaleTo(1, 100);
-                            }
-                        });
-                    }
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(gestureType), gestureType, null);
-            }
+            TouchAndPressAnimation.Animate(this, gestureType);
         }
 
         #endregion Methods

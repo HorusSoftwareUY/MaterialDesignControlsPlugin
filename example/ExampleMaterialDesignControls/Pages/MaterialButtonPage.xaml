@@ -15,10 +15,12 @@
                 <material:MaterialOutlineButton IsEnabled="false" Text="Cancel" Command="{Binding TapCommand}" CornerRadius="20" CommandParameter="Canceled" />
                 <material:MaterialFlatButton IsEnabled="false" Text="Delete" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
 
-                <Label Text="Animations" HorizontalTextAlignment="Center" />
+                <Label Text="Animations" HorizontalTextAlignment="Center" Margin="0,40,0,0" />
                 <material:MaterialButton Animation="None" Text="None" ToUpper="True" />
                 <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" ToUpper="True" />
+                <material:MaterialButton Animation="Fade" AnimationParameter="0.2" Text="Fade" ToUpper="True" />
                 <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" ToUpper="True" />
+                <material:MaterialButton Animation="Scale" AnimationParameter="0.7" Text="Scale" ToUpper="True" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

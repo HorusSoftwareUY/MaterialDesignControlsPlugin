@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
@@ -6,13 +8,19 @@ namespace Plugin.MaterialDesignControls
     public interface ITouchAndPressEffectConsumer
     {
         void ConsumeEvent(EventType gestureType);
+        ICommand Command { get; set; }
+        object CommandParameter { get; set; }
+        bool IsEnabled { get; set; }
+        AnimationTypes Animation { get; set; }
+        double? AnimationParameter { get; set; }
     }
 
     public enum EventType
     {
         Pressing,
         Released,
-        Cancelled
+        Cancelled,
+        Ignored
     }
 
     public class TouchAndPressEffect : RoutingEffect
