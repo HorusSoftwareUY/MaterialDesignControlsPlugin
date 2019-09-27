@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
@@ -33,6 +34,22 @@ namespace Plugin.MaterialDesignControls.Implementations
 
         public Image Image { get; set; }
 
+        public static readonly BindableProperty ImageHeightRequestProperty = BindableProperty.Create(nameof(ImageHeightRequest), typeof(double), typeof(CustomImageButton), defaultValue: 24.0);
+
+        public double ImageHeightRequest
+        {
+            get { return (double)GetValue(ImageHeightRequestProperty); }
+            set { SetValue(ImageHeightRequestProperty, value); }
+        }
+
+        public static readonly BindableProperty ImageWidthRequestProperty = BindableProperty.Create(nameof(ImageWidthRequest), typeof(double), typeof(CustomImageButton), defaultValue: 24.0);
+
+        public double ImageWidthRequest
+        {
+            get { return (double)GetValue(ImageWidthRequestProperty); }
+            set { SetValue(ImageWidthRequestProperty, value); }
+        }
+
         public CustomImageButton()
         {
             this.Padding = 6;
@@ -41,11 +58,27 @@ namespace Plugin.MaterialDesignControls.Implementations
             this.Image = new Image
             {
                 VerticalOptions = LayoutOptions.Center,
-                WidthRequest = 24,
-                HeightRequest = 24,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = this.ImageWidthRequest,
+                HeightRequest = this.ImageHeightRequest,
             };
 
             this.Content = this.Image;
+        }
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            switch (propertyName)
+            {
+                case nameof(this.ImageWidthRequest):
+                    this.Image.WidthRequest = this.ImageWidthRequest;
+                    break;
+                case nameof(this.ImageHeightRequest):
+                    this.Image.HeightRequest = this.ImageHeightRequest;
+                    break;
+            }
         }
     }
 }
