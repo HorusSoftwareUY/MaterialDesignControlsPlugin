@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" x:Class="Plugin.MaterialDesignControls.MaterialChips">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls" x:Class="Plugin.MaterialDesignControls.MaterialChips">
     <ContentView.Content>
         <Frame x:Name="frmContainer" HasShadow="false" CornerRadius="16" Padding="12,0" MinimumHeightRequest="32" HeightRequest="32">
             <StackLayout VerticalOptions="Center" Spacing="0" HorizontalOptions="Center" Orientation="Horizontal">
-                <Grid x:Name="imgLeadingContainer" IsVisible="false" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" WidthRequest="24" HeightRequest="26">
-                    <Image x:Name="imgLeading" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Aspect="AspectFit" WidthRequest="18" HeightRequest="18" />
-                </Grid>
+                <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" Padding="0,0,4,0" ImageWidthRequest="18" ImageHeightRequest="18" />
                 <controls:MaterialLabel x:Name="lblText" HorizontalOptions="CenterAndExpand" LineBreakMode="NoWrap" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                <Grid x:Name="imgTrailingContainer" IsVisible="false" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" WidthRequest="24" HeightRequest="26">
-                    <Image x:Name="imgTrailing" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Aspect="AspectFit" WidthRequest="18" HeightRequest="18" />
-                </Grid>
+                <custom:CustomImageButton x:Name="imgTrailingIcon" IsVisible="false" HorizontalOptions="End" Padding="4,0,0,0" ImageWidthRequest="18" ImageHeightRequest="18" />
             </StackLayout>
         </Frame>
     </ContentView.Content>

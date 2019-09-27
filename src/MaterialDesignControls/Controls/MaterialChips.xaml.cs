@@ -298,12 +298,12 @@ namespace Plugin.MaterialDesignControls
                     this.ApplyIsSelected();
                     break;
                 case nameof(this.TrailingIcon):
-                    this.imgTrailing.Source = this.TrailingIcon;
-                    this.imgTrailingContainer.IsVisible = true;
+                    this.imgTrailingIcon.Image.Source = this.TrailingIcon;
+                    this.imgTrailingIcon.IsVisible = true;
                     break;
                 case nameof(this.LeadingIcon):
-                    this.imgLeading.Source = this.LeadingIcon;
-                    this.imgLeadingContainer.IsVisible = true;
+                    this.imgTrailingIcon.Image.Source = this.LeadingIcon;
+                    this.imgTrailingIcon.IsVisible = true;
                     break;
                 case nameof(this.LeadingIconCommand):
                     AddIconTapGesture(false);
@@ -322,32 +322,26 @@ namespace Plugin.MaterialDesignControls
             if (this.frmContainer.GestureRecognizers.Count > 0)
                 this.frmContainer.GestureRecognizers.RemoveAt(0); //Remove main tap gesture
 
-            TapGestureRecognizer tapIconGestureRecognizer = new TapGestureRecognizer();
-            tapIconGestureRecognizer.Tapped += (s, e) =>
-            {
-                if (this.IsEnabled)
-                {
-                    if (isTrailingIcon)
-                    {
-                        if (this.TrailingIconCommand != null)
-                        {
-                            this.TrailingIconCommand.Execute(this.TrailingIconCommandParameter);
-                        }
-                    }
-                    else
-                    {
-                        if (this.LeadingIconCommand != null)
-                        {
-                            this.LeadingIconCommand.Execute(this.LeadingIconCommandParameter);
-                        }
-                    }
-                }
-            };
-
             if (isTrailingIcon)
-                imgTrailingContainer.GestureRecognizers.Add(tapIconGestureRecognizer);
+            {
+                this.imgTrailingIcon.Tapped = () =>
+                {
+                    if (this.IsEnabled && this.TrailingIconCommand != null)
+                    {
+                        this.TrailingIconCommand.Execute(this.TrailingIconCommandParameter);
+                    }
+                };
+            }
             else
-                imgLeadingContainer.GestureRecognizers.Add(tapIconGestureRecognizer);
+            {
+                this.imgLeadingIcon.Tapped = () =>
+                {
+                    if (this.IsEnabled && this.LeadingIconCommand != null)
+                    {
+                        this.LeadingIconCommand.Execute(this.LeadingIconCommandParameter);
+                    }
+                };
+            }
         }
 
         private void ApplyIsSelected()

@@ -15,13 +15,20 @@ namespace ExampleMaterialDesignControls.Pages
 
             this.pckColors.ItemsSource = new List<string> { "Red", "Blue", "Green" };
             this.pckSizes.ItemsSource = new List<string> { "P", "M", "X", "XL" };
+
             this.pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            this.pckModels.SelectedIndexChanged += PckModels_SelectedIndexChanged;
 
             this.SelectedSizes = "M";
 
             this.TapCommand = new Command<string>(OnTap);
 
             this.BindingContext = this;
+        }
+
+        private void PckModels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.lblSelectedIndex.Text = $"SelectedIndex: {this.pckModels.SelectedIndex}";
         }
 
         public ICommand TapCommand { get; set; }

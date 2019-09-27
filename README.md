@@ -172,6 +172,9 @@ public class MyControl : ContentView, ITouchAndPressEffectConsumer
 
 ## Demo
 https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/tree/master/example
+ 
+## Developed by
+<a href="http://horus.com.uy" ><img src="https://horus.com.uy/img/logo_horus.png" width="128"></a>
 
 ## Contributions
 Contributions are welcome! If you find a bug want a feature added please report it.

@@ -41,6 +41,12 @@ namespace Plugin.MaterialDesignControls
 
         #endregion Attributes
 
+        #region Events
+
+        public event EventHandler SelectedIndexChanged;
+
+        #endregion Events
+
         #region Properties
 
         public static readonly BindableProperty TypeProperty =
@@ -231,6 +237,27 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (bool)GetValue(AnimateErrorProperty); }
             set { SetValue(AnimateErrorProperty, value); }
+        }
+
+        public int SelectedIndex
+        {
+            get
+            {
+                if (this.ItemsSource != null)
+                {
+                    var index = 0;
+                    foreach (var item in this.ItemsSource)
+                    {
+                        if (index.Equals(this.pckOptions.SelectedIndex))
+                        {
+                            return index;
+                        }
+                        index++;
+                    }
+                }
+
+                return -1;
+            }
         }
 
         #endregion Properties
@@ -432,6 +459,10 @@ namespace Plugin.MaterialDesignControls
                     if (index.Equals(this.pckOptions.SelectedIndex))
                     {
                         this.SelectedItem = item.ToString();
+                        if (this.SelectedIndexChanged != null)
+                        {
+                            this.SelectedIndexChanged.Invoke(this, e);
+                        }
                         break;
                     }
                     index++;
