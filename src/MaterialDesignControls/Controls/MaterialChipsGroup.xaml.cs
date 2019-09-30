@@ -194,13 +194,22 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledSelectedBackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty TextSizeProperty =
-            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
+        public static readonly BindableProperty FontSizeProperty =
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
 
-        public double TextSize
+        public double FontSize
         {
-            get { return (double)GetValue(TextSizeProperty); }
-            set { SetValue(TextSizeProperty, value); }
+            get { return (double)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialChipsGroup), defaultValue: null);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
@@ -252,7 +261,8 @@ namespace Plugin.MaterialDesignControls
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         Text = item.ToString(),
-                        TextSize = control.TextSize,
+                        FontSize = control.FontSize,
+                        FontFamily = control.FontFamily,
                         CornerRadius = control.CornerRadius,
                         Padding = control.Padding,
                         BackgroundColor = control.BackgroundColor,

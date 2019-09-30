@@ -167,12 +167,21 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEntry), defaultValue: 14.0);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEntry), defaultValue: Font.Default.FontSize);
 
         public double FontSize
         {
             get { return (double)GetValue(FontSizeProperty); }
             set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialEntry), defaultValue: null);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
         }
 
         public static readonly BindableProperty AssistiveSizeProperty =
@@ -351,6 +360,11 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.FontSize):
                     this.pckOptions.FontSize = this.FontSize;
+                    break;
+                case nameof(this.FontFamily):
+                    this.pckOptions.FontFamily = this.FontFamily;
+                    this.lblLabel.FontFamily = this.FontFamily;
+                    this.lblAssistive.FontFamily = this.FontFamily;
                     break;
 
                 case nameof(this.LabelText):

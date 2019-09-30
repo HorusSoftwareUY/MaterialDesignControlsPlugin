@@ -14,7 +14,14 @@
                 <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />
                 <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon=""
                                              Placeholder="Select time" PlaceholderColor="Red" />
-                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="" />
+                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="">
+                    <material:MaterialTimePicker.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.Android>monospace</OnPlatform.Android>
+                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                        </OnPlatform>
+                    </material:MaterialTimePicker.FontFamily>
+                </material:MaterialTimePicker>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

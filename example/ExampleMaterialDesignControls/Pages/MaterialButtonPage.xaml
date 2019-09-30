@@ -20,7 +20,14 @@
                 <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" ToUpper="True" />
                 <material:MaterialButton Animation="Fade" AnimationParameter="0.2" Text="Fade" ToUpper="True" />
                 <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" ToUpper="True" />
-                <material:MaterialButton Animation="Scale" AnimationParameter="0.7" Text="Scale" ToUpper="True" />
+                <material:MaterialButton Animation="Scale" AnimationParameter="0.7" Text="Scale" ToUpper="True">
+                    <material:MaterialButton.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.Android>monospace</OnPlatform.Android>
+                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                        </OnPlatform>
+                    </material:MaterialButton.FontFamily>
+                </material:MaterialButton>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

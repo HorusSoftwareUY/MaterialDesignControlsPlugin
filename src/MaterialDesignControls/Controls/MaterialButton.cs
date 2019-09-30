@@ -147,13 +147,13 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(BusyColorProperty, value); }
         }
 
-        public static readonly BindableProperty TextSizeProperty =
-            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialButton), defaultValue: Font.Default.FontSize);
+        public static readonly BindableProperty FontSizeProperty =
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: Font.Default.FontSize);
 
-        public double TextSize
+        public double FontSize
         {
-            get { return (double)GetValue(TextSizeProperty); }
-            set { SetValue(TextSizeProperty, value); }
+            get { return (double)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
         }
 
         public static readonly BindableProperty FontFamilyProperty =
@@ -286,8 +286,8 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.DisabledTextColor):
                     this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
                     break;
-                case nameof(this.TextSize):
-                    this.lblText.FontSize = this.TextSize;
+                case nameof(this.FontSize):
+                    this.lblText.FontSize = this.FontSize;
                     break;
                 case nameof(this.FontFamily):
                     this.lblText.FontFamily = this.FontFamily;
