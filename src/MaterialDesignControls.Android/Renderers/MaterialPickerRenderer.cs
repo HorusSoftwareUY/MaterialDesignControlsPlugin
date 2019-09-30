@@ -25,7 +25,18 @@ namespace Plugin.MaterialDesignControls.Android
             {
                 this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
                 this.Control.SetPadding(4, 0, 0, 0);
-                this.Control.Gravity = TextAlignmentHelper.Convert(((CustomPicker)this.Element).HorizontalTextAlignment);
+
+                if (this.Element is CustomPicker customPicker)
+                {
+                    this.Control.Gravity = TextAlignmentHelper.Convert(customPicker.HorizontalTextAlignment);
+
+                    if (customPicker.SelectedItem == null && !string.IsNullOrEmpty(customPicker.Placeholder))
+                    {
+                        this.Control.Text = null;
+                        this.Control.Hint = customPicker.Placeholder;
+                        this.Control.SetHintTextColor(customPicker.PlaceholderColor.ToAndroid());
+                    }
+                }
             }
         }
     }

@@ -79,11 +79,11 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TimeProperty =
-            BindableProperty.Create(nameof(Time), typeof(TimeSpan), typeof(MaterialTimePicker), defaultValue: null, propertyChanged: OnTimeChanged, defaultBindingMode: BindingMode.TwoWay);
+            BindableProperty.Create(nameof(Time), typeof(TimeSpan?), typeof(MaterialTimePicker), defaultValue: null, propertyChanged: OnTimeChanged, defaultBindingMode: BindingMode.TwoWay);
 
-        public TimeSpan Time
+        public TimeSpan? Time
         {
-            get { return (TimeSpan)GetValue(TimeProperty); }
+            get { return (TimeSpan?)GetValue(TimeProperty); }
             set { SetValue(TimeProperty, value); }
         }
 
@@ -241,6 +241,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(HorizontalTextAlignmentProperty, value); }
         }
 
+        public static readonly BindableProperty PlaceholderProperty =
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialTimePicker), defaultValue: null);
+
+        public string Placeholder
+        {
+            get { return (string)GetValue(PlaceholderProperty); }
+            set { SetValue(PlaceholderProperty, value); }
+        }
+
+        public static readonly BindableProperty PlaceholderColorProperty =
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialTimePicker), defaultValue: Color.Gray);
+
+        public Color PlaceholderColor
+        {
+            get { return (Color)GetValue(PlaceholderColorProperty); }
+            set { SetValue(PlaceholderColorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -248,7 +266,7 @@ namespace Plugin.MaterialDesignControls
         private static void OnTimeChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialTimePicker)bindable;
-            control.pckTime.Time = (TimeSpan)newValue;
+            control.pckTime.Time = (TimeSpan?)newValue;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -368,6 +386,13 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.HorizontalTextAlignment):
                     this.pckTime.HorizontalTextAlignment = this.HorizontalTextAlignment;
+                    break;
+
+                case nameof(this.Placeholder):
+                    this.pckTime.Placeholder = this.Placeholder;
+                    break;
+                case nameof(this.PlaceholderColor):
+                    this.pckTime.PlaceholderColor = this.PlaceholderColor;
                     break;
             }
         }

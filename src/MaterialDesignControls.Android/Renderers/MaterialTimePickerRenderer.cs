@@ -25,7 +25,18 @@ namespace Plugin.MaterialDesignControls.Android
             {
                 this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
                 this.Control.SetPadding(4, 0, 0, 0);
-                this.Control.Gravity = TextAlignmentHelper.Convert(((CustomTimePicker)this.Element).HorizontalTextAlignment);
+
+                if (this.Element is CustomTimePicker customTimePicker)
+                {
+                    this.Control.Gravity = TextAlignmentHelper.Convert(customTimePicker.HorizontalTextAlignment);
+
+                    if (!customTimePicker.Time.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
+                    {
+                        this.Control.Text = null;
+                        this.Control.Hint = customTimePicker.Placeholder;
+                        this.Control.SetHintTextColor(customTimePicker.PlaceholderColor.ToAndroid());
+                    }
+                }
             }
         }
     }

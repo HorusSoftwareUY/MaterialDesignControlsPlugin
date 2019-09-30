@@ -12,7 +12,8 @@
                 <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />
                 <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
                 <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />
-                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon="" />
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon=""
+                                             Placeholder="Select date" PlaceholderColor="Red" />
                 <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="" />
             </StackLayout>
         </ScrollView>

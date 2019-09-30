@@ -1,4 +1,5 @@
 ﻿using System;
+using Foundation;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.iOS;
 using Plugin.MaterialDesignControls.iOS.Utils;
@@ -20,7 +21,17 @@ namespace Plugin.MaterialDesignControls.iOS
             if (this.Control != null)
             {
                 this.Control.BorderStyle = UITextBorderStyle.None;
-                this.Control.TextAlignment = TextAlignmentHelper.Convert(((CustomPicker)this.Element).HorizontalTextAlignment);
+
+                if (this.Element is CustomPicker customPicker)
+                {
+                    this.Control.TextAlignment = TextAlignmentHelper.Convert(customPicker.HorizontalTextAlignment);
+
+                    if (customPicker.SelectedItem == null && !string.IsNullOrEmpty(customPicker.Placeholder))
+                    {
+                        this.Control.Text = null;
+                        this.Control.AttributedPlaceholder = new NSAttributedString(customPicker.Placeholder, foregroundColor: customPicker.PlaceholderColor.ToUIColor());
+                    }
+                }
             }
         }
     }

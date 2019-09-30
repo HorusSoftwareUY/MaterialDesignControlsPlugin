@@ -25,7 +25,18 @@ namespace Plugin.MaterialDesignControls.Android
             {
                 this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
                 this.Control.SetPadding(4, 0, 0, 0);
-                this.Control.Gravity = TextAlignmentHelper.Convert(((CustomDatePicker)this.Element).HorizontalTextAlignment);
+
+                if (this.Element is CustomDatePicker customDatePicker)
+                {
+                    this.Control.Gravity = TextAlignmentHelper.Convert(customDatePicker.HorizontalTextAlignment);
+
+                    if (!customDatePicker.Date.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
+                    {
+                        this.Control.Text = null;
+                        this.Control.Hint = customDatePicker.Placeholder;
+                        this.Control.SetHintTextColor(customDatePicker.PlaceholderColor.ToAndroid());
+                    }
+                }
             }
         }
     }

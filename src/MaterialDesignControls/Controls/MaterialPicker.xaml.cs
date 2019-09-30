@@ -269,6 +269,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(HorizontalTextAlignmentProperty, value); }
         }
 
+        public static readonly BindableProperty PlaceholderProperty =
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialPicker), defaultValue: null);
+
+        public string Placeholder
+        {
+            get { return (string)GetValue(PlaceholderProperty); }
+            set { SetValue(PlaceholderProperty, value); }
+        }
+
+        public static readonly BindableProperty PlaceholderColorProperty =
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.Gray);
+
+        public Color PlaceholderColor
+        {
+            get { return (Color)GetValue(PlaceholderColorProperty); }
+            set { SetValue(PlaceholderColorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -426,6 +444,13 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.HorizontalTextAlignment):
                     this.pckOptions.HorizontalTextAlignment = this.HorizontalTextAlignment;
+                    break;
+
+                case nameof(this.Placeholder):
+                    this.pckOptions.Placeholder = this.Placeholder;
+                    break;
+                case nameof(this.PlaceholderColor):
+                    this.pckOptions.PlaceholderColor = this.PlaceholderColor;
                     break;
             }
         }

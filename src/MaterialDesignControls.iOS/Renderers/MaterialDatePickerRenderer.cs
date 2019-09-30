@@ -21,8 +21,17 @@ namespace Plugin.MaterialDesignControls.iOS
             if (this.Control != null)
             {
                 this.Control.BorderStyle = UITextBorderStyle.None;
-                this.Control.TextAlignment = TextAlignmentHelper.Convert(((CustomDatePicker)this.Element).HorizontalTextAlignment);
-                //this.Control.AttributedPlaceholder = new NSAttributedString("Select an option", foregroundColor: UIColor.White);
+                
+                if (this.Element is CustomDatePicker customDatePicker)
+                {
+                    this.Control.TextAlignment = TextAlignmentHelper.Convert(customDatePicker.HorizontalTextAlignment);
+
+                    if (!customDatePicker.Date.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
+                    {
+                        this.Control.Text = null;
+                        this.Control.AttributedPlaceholder = new NSAttributedString(customDatePicker.Placeholder, foregroundColor: customDatePicker.PlaceholderColor.ToUIColor());
+                    }
+                }
             }
         }
     }
