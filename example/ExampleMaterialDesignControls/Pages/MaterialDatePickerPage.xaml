@@ -10,6 +10,10 @@
                 <material:MaterialDatePicker Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" />
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />
                 <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />
+                <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon="" />
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -12,6 +12,11 @@
                 <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" />
                 <Label x:Name="lblSelectedIndex" Text="SelectedIndex: -" />
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
+
+                <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
+                <material:MaterialPicker x:Name="pckModels2" Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />
+                <material:MaterialPicker x:Name="pckModels3" Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon="" />
+                <material:MaterialPicker x:Name="pckModels4" Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

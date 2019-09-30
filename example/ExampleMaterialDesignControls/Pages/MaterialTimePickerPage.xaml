@@ -10,6 +10,10 @@
                 <material:MaterialTimePicker Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" />
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
                 <material:MaterialTimePicker Type="Lined" LabelText="Deadline" Format="H:mm" />
+                <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
+                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />
+                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon="" />
+                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

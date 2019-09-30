@@ -5,6 +5,7 @@ using AndroidGraphics = Android.Graphics;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Plugin.MaterialDesignControls.Android.Utils;
 
 [assembly: ExportRenderer(typeof(CustomDatePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialDatePickerRenderer))]
 
@@ -24,6 +25,7 @@ namespace Plugin.MaterialDesignControls.Android
             {
                 this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
                 this.Control.SetPadding(4, 0, 0, 0);
+                this.Control.Gravity = TextAlignmentHelper.Convert(((CustomDatePicker)this.Element).HorizontalTextAlignment);
             }
         }
     }

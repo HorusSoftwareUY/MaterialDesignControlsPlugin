@@ -232,6 +232,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimateErrorProperty, value); }
         }
 
+        public static readonly BindableProperty HorizontalTextAlignmentProperty =
+            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(TextAlignment), typeof(MaterialTimePicker), defaultValue: TextAlignment.Start);
+
+        public TextAlignment HorizontalTextAlignment
+        {
+            get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
+            set { SetValue(HorizontalTextAlignmentProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -355,6 +364,10 @@ namespace Plugin.MaterialDesignControls
                         this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible && this.IsEnabled;
+                    break;
+
+                case nameof(this.HorizontalTextAlignment):
+                    this.pckTime.HorizontalTextAlignment = this.HorizontalTextAlignment;
                     break;
             }
         }
