@@ -12,7 +12,14 @@
                 <material:MaterialField LabelText="ZipCode" Text="11000" />
                 <material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
                 <material:MaterialField LabelText="Address" EmptyText="Has not specified" />
-                <material:MaterialField LabelText="City" EmptyText="-" />
+                <material:MaterialField LabelText="City" EmptyText="-">
+                    <material:MaterialField.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.Android>monospace</OnPlatform.Android>
+                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                        </OnPlatform>
+                    </material:MaterialField.FontFamily>
+                </material:MaterialField>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

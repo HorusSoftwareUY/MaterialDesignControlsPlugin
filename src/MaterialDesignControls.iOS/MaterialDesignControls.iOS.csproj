@@ -66,6 +66,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Renderers\" />
     <Folder Include="Effects\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Renderers\MaterialLabelRenderer.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="Effects.cs" />
+    <Compile Include="Utils\TextAlignmentHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

@@ -21,6 +21,10 @@ namespace ExampleMaterialDesignControls.Pages
 
             this.SelectedSizes = "M";
 
+            this.pckModels2.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            this.pckModels3.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            this.pckModels4.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+
             this.TapCommand = new Command<string>(OnTap);
 
             this.BindingContext = this;

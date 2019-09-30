@@ -1,6 +1,8 @@
 ﻿using System;
+using Foundation;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.iOS;
+using Plugin.MaterialDesignControls.iOS.Utils;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -19,6 +21,17 @@ namespace Plugin.MaterialDesignControls.iOS
             if (this.Control != null)
             {
                 this.Control.BorderStyle = UITextBorderStyle.None;
+
+                if (this.Element is CustomTimePicker customTimePicker)
+                {
+                    this.Control.TextAlignment = TextAlignmentHelper.Convert(customTimePicker.HorizontalTextAlignment);
+
+                    if (!customTimePicker.Time.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
+                    {
+                        this.Control.Text = null;
+                        this.Control.AttributedPlaceholder = new NSAttributedString(customTimePicker.Placeholder, foregroundColor: customTimePicker.PlaceholderColor.ToUIColor());
+                    }
+                }
             }
         }
     }

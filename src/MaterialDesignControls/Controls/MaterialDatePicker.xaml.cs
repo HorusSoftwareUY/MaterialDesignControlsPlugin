@@ -79,11 +79,11 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DateProperty =
-            BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnDateChanged, defaultBindingMode: BindingMode.TwoWay);
+            BindableProperty.Create(nameof(Date), typeof(DateTime?), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnDateChanged, defaultBindingMode: BindingMode.TwoWay);
 
-        public DateTime Date
+        public DateTime? Date
         {
-            get { return (DateTime)GetValue(DateProperty); }
+            get { return (DateTime?)GetValue(DateProperty); }
             set { SetValue(DateProperty, value); }
         }
 
@@ -178,12 +178,21 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEntry), defaultValue: 14.0);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEntry), defaultValue: Font.Default.FontSize);
 
         public double FontSize
         {
             get { return (double)GetValue(FontSizeProperty); }
             set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialEntry), defaultValue: null);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
         }
 
         public static readonly BindableProperty AssistiveSizeProperty =
@@ -250,6 +259,33 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimateErrorProperty, value); }
         }
 
+        public static readonly BindableProperty HorizontalTextAlignmentProperty =
+            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(TextAlignment), typeof(MaterialDatePicker), defaultValue: TextAlignment.Start);
+
+        public TextAlignment HorizontalTextAlignment
+        {
+            get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
+            set { SetValue(HorizontalTextAlignmentProperty, value); }
+        }
+
+        public static readonly BindableProperty PlaceholderProperty =
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialDatePicker), defaultValue: null);
+
+        public string Placeholder
+        {
+            get { return (string)GetValue(PlaceholderProperty); }
+            set { SetValue(PlaceholderProperty, value); }
+        }
+
+        public static readonly BindableProperty PlaceholderColorProperty =
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.Gray);
+
+        public Color PlaceholderColor
+        {
+            get { return (Color)GetValue(PlaceholderColorProperty); }
+            set { SetValue(PlaceholderColorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -257,7 +293,7 @@ namespace Plugin.MaterialDesignControls
         private static void OnDateChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialDatePicker)bindable;
-            control.pckDate.Date = (DateTime)newValue;
+            control.pckDate.Date = (DateTime?)newValue;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -287,6 +323,11 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.FontSize):
                     this.pckDate.FontSize = this.FontSize;
+                    break;
+                case nameof(this.FontFamily):
+                    this.pckDate.FontFamily = this.FontFamily;
+                    this.lblLabel.FontFamily = this.FontFamily;
+                    this.lblAssistive.FontFamily = this.FontFamily;
                     break;
                 case nameof(this.Format):
                     this.pckDate.Format = this.Format;
@@ -379,6 +420,17 @@ namespace Plugin.MaterialDesignControls
                         this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible && this.IsEnabled;
+                    break;
+
+                case nameof(this.HorizontalTextAlignment):
+                    this.pckDate.HorizontalTextAlignment = this.HorizontalTextAlignment;
+                    break;
+
+                case nameof(this.Placeholder):
+                    this.pckDate.Placeholder = this.Placeholder;
+                    break;
+                case nameof(this.PlaceholderColor):
+                    this.pckDate.PlaceholderColor = this.PlaceholderColor;
                     break;
             }
         }

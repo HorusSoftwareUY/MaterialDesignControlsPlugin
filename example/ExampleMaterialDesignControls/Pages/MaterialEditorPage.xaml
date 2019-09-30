@@ -10,7 +10,14 @@
                 <material:MaterialEditor x:Name="txtEditor" Type="Filled" LabelText="Message*" Placeholder="Enter your message" AnimateError="True" TabIndex="1" />
                 <material:MaterialEditor Type="Lined" LabelText="Observation" Placeholder="Enter your observation" TabIndex="2" />
                 <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" TabIndex="3" />
-                <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" HeightRequest="200" TabIndex="4" />
+                <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" HeightRequest="200" TabIndex="4">
+                    <material:MaterialEditor.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.Android>monospace</OnPlatform.Android>
+                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                        </OnPlatform>
+                    </material:MaterialEditor.FontFamily>
+                </material:MaterialEditor>
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>

@@ -167,12 +167,21 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEntry), defaultValue: 14.0);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialEntry), defaultValue: Font.Default.FontSize);
 
         public double FontSize
         {
             get { return (double)GetValue(FontSizeProperty); }
             set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialEntry), defaultValue: null);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
         }
 
         public static readonly BindableProperty AssistiveSizeProperty =
@@ -260,6 +269,33 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
+        public static readonly BindableProperty HorizontalTextAlignmentProperty =
+            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(TextAlignment), typeof(MaterialPicker), defaultValue: TextAlignment.Start);
+
+        public TextAlignment HorizontalTextAlignment
+        {
+            get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
+            set { SetValue(HorizontalTextAlignmentProperty, value); }
+        }
+
+        public static readonly BindableProperty PlaceholderProperty =
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialPicker), defaultValue: null);
+
+        public string Placeholder
+        {
+            get { return (string)GetValue(PlaceholderProperty); }
+            set { SetValue(PlaceholderProperty, value); }
+        }
+
+        public static readonly BindableProperty PlaceholderColorProperty =
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.Gray);
+
+        public Color PlaceholderColor
+        {
+            get { return (Color)GetValue(PlaceholderColorProperty); }
+            set { SetValue(PlaceholderColorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -324,6 +360,11 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.FontSize):
                     this.pckOptions.FontSize = this.FontSize;
+                    break;
+                case nameof(this.FontFamily):
+                    this.pckOptions.FontFamily = this.FontFamily;
+                    this.lblLabel.FontFamily = this.FontFamily;
+                    this.lblAssistive.FontFamily = this.FontFamily;
                     break;
 
                 case nameof(this.LabelText):
@@ -413,6 +454,17 @@ namespace Plugin.MaterialDesignControls
                         this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible && this.IsEnabled;
+                    break;
+
+                case nameof(this.HorizontalTextAlignment):
+                    this.pckOptions.HorizontalTextAlignment = this.HorizontalTextAlignment;
+                    break;
+
+                case nameof(this.Placeholder):
+                    this.pckOptions.Placeholder = this.Placeholder;
+                    break;
+                case nameof(this.PlaceholderColor):
+                    this.pckOptions.PlaceholderColor = this.PlaceholderColor;
                     break;
             }
         }

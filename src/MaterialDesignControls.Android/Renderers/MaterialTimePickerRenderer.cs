@@ -5,6 +5,7 @@ using AndroidGraphics = Android.Graphics;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Plugin.MaterialDesignControls.Android.Utils;
 
 [assembly: ExportRenderer(typeof(CustomTimePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialTimePickerRenderer))]
 
@@ -24,6 +25,18 @@ namespace Plugin.MaterialDesignControls.Android
             {
                 this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
                 this.Control.SetPadding(4, 0, 0, 0);
+
+                if (this.Element is CustomTimePicker customTimePicker)
+                {
+                    this.Control.Gravity = TextAlignmentHelper.Convert(customTimePicker.HorizontalTextAlignment);
+
+                    if (!customTimePicker.Time.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
+                    {
+                        this.Control.Text = null;
+                        this.Control.Hint = customTimePicker.Placeholder;
+                        this.Control.SetHintTextColor(customTimePicker.PlaceholderColor.ToAndroid());
+                    }
+                }
             }
         }
     }

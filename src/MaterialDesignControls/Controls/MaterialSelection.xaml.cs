@@ -168,13 +168,22 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LabelSizeProperty, value); }
         }
 
-        public static readonly BindableProperty TextSizeProperty =
-            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialSelection), defaultValue: Font.Default.FontSize);
+        public static readonly BindableProperty FontSizeProperty =
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialSelection), defaultValue: Font.Default.FontSize);
 
-        public double TextSize
+        public double FontSize
         {
-            get { return (double)GetValue(TextSizeProperty); }
-            set { SetValue(TextSizeProperty, value); }
+            get { return (double)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialSelection), defaultValue: null);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
         }
 
         public static readonly BindableProperty AssistiveSizeProperty =
@@ -280,8 +289,13 @@ namespace Plugin.MaterialDesignControls
                 case nameof(base.TranslationX):
                     base.OnPropertyChanged(propertyName);
                     break;
-                case nameof(this.TextSize):
-                    this.lblText.FontSize = this.TextSize;
+                case nameof(this.FontSize):
+                    this.lblText.FontSize = this.FontSize;
+                    break;
+                case nameof(this.FontFamily):
+                    this.lblText.FontFamily = this.FontFamily;
+                    this.lblLabel.FontFamily = this.FontFamily;
+                    this.lblAssistive.FontFamily = this.FontFamily;
                     break;
 
                 case nameof(this.Text):

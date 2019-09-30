@@ -36,6 +36,11 @@ namespace Plugin.MaterialDesignControls.iOS
                 BackgroundColor = UIColor.Clear
             };
 
+            if (!string.IsNullOrEmpty(element.FontFamily))
+            {
+                this.lblPlaceholder.Font = UIFont.FromName(element.FontFamily, (nfloat)element.FontSize);
+            }
+
             var edgeInsets = this.Control.TextContainerInset;
             var lineFragmentPadding = this.Control.TextContainer.LineFragmentPadding;
 

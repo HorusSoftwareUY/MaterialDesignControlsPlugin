@@ -19,7 +19,8 @@ namespace Plugin.MaterialDesignControls
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Start,
                 TextColor = this.LabelTextColor,
-                FontSize = this.LabelSize
+                FontSize = this.LabelSize,
+                FontFamily = this.FontFamily
             };
             mainStackLayout.Children.Add(this.lblLabel);
 
@@ -49,7 +50,8 @@ namespace Plugin.MaterialDesignControls
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Start,
                 TextColor = this.TextColor,
-                FontSize = this.TextSize,
+                FontSize = this.FontSize,
+                FontFamily = this.FontFamily
             };
             secondStackLayout.Children.Add(this.lblText);
 
@@ -71,7 +73,8 @@ namespace Plugin.MaterialDesignControls
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Start,
                 TextColor = this.AssistiveTextColor,
-                FontSize = this.AssistiveSize
+                FontSize = this.AssistiveSize,
+                FontFamily = this.FontFamily
             };
             mainStackLayout.Children.Add(this.lblAssistive);
 
@@ -178,13 +181,22 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LabelSizeProperty, value); }
         }
 
-        public static readonly BindableProperty TextSizeProperty =
-            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialField), defaultValue: Font.Default.FontSize);
+        public static readonly BindableProperty FontSizeProperty =
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialField), defaultValue: Font.Default.FontSize);
 
-        public double TextSize
+        public double FontSize
         {
-            get { return (double)GetValue(TextSizeProperty); }
-            set { SetValue(TextSizeProperty, value); }
+            get { return (double)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialField), defaultValue: null);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
         }
 
         public static readonly BindableProperty AssistiveSizeProperty =
@@ -241,8 +253,13 @@ namespace Plugin.MaterialDesignControls
                     case nameof(this.TextColor):
                         this.lblText.TextColor = this.TextColor;
                         break;
-                    case nameof(this.TextSize):
-                        this.lblText.FontSize = this.TextSize;
+                    case nameof(this.FontSize):
+                        this.lblText.FontSize = this.FontSize;
+                        break;
+                    case nameof(this.FontFamily):
+                        this.lblText.FontFamily = this.FontFamily;
+                        this.lblLabel.FontFamily = this.FontFamily;
+                        this.lblAssistive.FontFamily = this.FontFamily;
                         break;
                     case nameof(this.LabelText):
                         this.lblLabel.Text = this.LabelText;

@@ -40,7 +40,7 @@
             <Setter Property="LabelSize" Value="{StaticResource Body4FontSize}" />
             <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="TextSize" Value="{StaticResource Body1FontSize}" />
+            <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
         </Style>
@@ -49,7 +49,7 @@
         <Style TargetType="material:MaterialButton">
             <Setter Property="TextColor" Value="#ffffff" />
             <Setter Property="DisabledTextColor" Value="#ffffff" />
-            <Setter Property="TextSize" Value="{StaticResource ButtonFontSize}" />
+            <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
             <Setter Property="BackgroundColor" Value="#4c6277" />
             <Setter Property="DisabledBackgroundColor" Value="#c6c6c5" />
             <Setter Property="BorderColor" Value="#4c6277" />
@@ -62,7 +62,7 @@
         <Style TargetType="material:MaterialOutlineButton">
             <Setter Property="TextColor" Value="#4c6277" />
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
-            <Setter Property="TextSize" Value="{StaticResource ButtonFontSize}" />
+            <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
             <Setter Property="BorderColor" Value="#4c6277" />
             <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
         </Style>
@@ -71,12 +71,12 @@
         <Style TargetType="material:MaterialFlatButton">
             <Setter Property="TextColor" Value="#c92726" />
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
-            <Setter Property="TextSize" Value="{StaticResource ButtonFontSize}" />
+            <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
         </Style>
         
         <!-- MaterialChips -->
         <Style TargetType="material:MaterialChips">
-            <Setter Property="TextSize" Value="{StaticResource Body1FontSize}" />
+            <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             <Setter Property="CornerRadius" Value="16" />
             <Setter Property="Padding" Value="12,0" />
             <Setter Property="BackgroundColor" Value="#ffffff" />
@@ -95,7 +95,7 @@
             <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
-            <Setter Property="TextSize" Value="{StaticResource Body1FontSize}" />
+            <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             <Setter Property="CornerRadius" Value="16" />
             <Setter Property="Padding" Value="12,0" />
             <Setter Property="BackgroundColor" Value="#ffffff" />
@@ -160,7 +160,7 @@
             <Setter Property="LabelSize" Value="{StaticResource Body4FontSize}" />
             <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="TextSize" Value="{StaticResource Body1FontSize}" />
+            <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />

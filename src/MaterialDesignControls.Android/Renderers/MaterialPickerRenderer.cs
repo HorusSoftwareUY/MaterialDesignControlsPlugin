@@ -5,6 +5,7 @@ using AndroidGraphics = Android.Graphics;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Plugin.MaterialDesignControls.Android.Utils;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(Plugin.MaterialDesignControls.Android.MaterialPickerRenderer))]
 
@@ -24,6 +25,18 @@ namespace Plugin.MaterialDesignControls.Android
             {
                 this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
                 this.Control.SetPadding(4, 0, 0, 0);
+
+                if (this.Element is CustomPicker customPicker)
+                {
+                    this.Control.Gravity = TextAlignmentHelper.Convert(customPicker.HorizontalTextAlignment);
+
+                    if (customPicker.SelectedItem == null && !string.IsNullOrEmpty(customPicker.Placeholder))
+                    {
+                        this.Control.Text = null;
+                        this.Control.Hint = customPicker.Placeholder;
+                        this.Control.SetHintTextColor(customPicker.PlaceholderColor.ToAndroid());
+                    }
+                }
             }
         }
     }

@@ -228,13 +228,22 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledSelectedBackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty TextSizeProperty =
-            BindableProperty.Create(nameof(TextSize), typeof(double), typeof(MaterialChips), defaultValue: Font.Default.FontSize);
+        public static readonly BindableProperty FontSizeProperty =
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialChips), defaultValue: Font.Default.FontSize);
 
-        public double TextSize
+        public double FontSize
         {
-            get { return (double)GetValue(TextSizeProperty); }
-            set { SetValue(TextSizeProperty, value); }
+            get { return (double)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialChips), defaultValue: null);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
@@ -244,6 +253,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (double)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly BindableProperty ToUpperProperty =
+            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialChips), defaultValue: false);
+
+        public bool ToUpper
+        {
+            get { return (bool)GetValue(ToUpperProperty); }
+            set { SetValue(ToUpperProperty, value); }
         }
 
         #endregion Properties
@@ -274,10 +292,14 @@ namespace Plugin.MaterialDesignControls
             switch (propertyName)
             {
                 case nameof(this.Text):
-                    this.lblText.Text = this.Text;
+                case nameof(this.ToUpper):
+                    this.lblText.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
                     break;
-                case nameof(this.TextSize):
-                    this.lblText.FontSize = this.TextSize;
+                case nameof(this.FontSize):
+                    this.lblText.FontSize = this.FontSize;
+                    break;
+                case nameof(this.FontFamily):
+                    this.lblText.FontFamily = this.FontFamily;
                     break;
                 case nameof(this.Padding):
                     this.frmContainer.Padding = this.Padding;
