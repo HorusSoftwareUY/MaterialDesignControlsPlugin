@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using ExampleMaterialDesignControls.ViewModels;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
@@ -10,6 +10,8 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialTimePickerPage()
         {
             InitializeComponent();
+
+            this.BindingContext = new MaterialTimePickerViewModel { DisplayAlert = this.DisplayAlert };
         }
     }
 }

@@ -19,8 +19,6 @@ namespace ExampleMaterialDesignControls.Pages
             this.pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             this.pckModels.SelectedIndexChanged += PckModels_SelectedIndexChanged;
 
-            this.SelectedSizes = "M";
-
             this.pckModels2.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             this.pckModels3.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             this.pckModels4.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
@@ -42,7 +40,7 @@ namespace ExampleMaterialDesignControls.Pages
             if (!string.IsNullOrEmpty(this.pckColors.SelectedItem))
             {
                 this.pckColors.AssistiveText = null;
-                await this.DisplayAlert("", "Saved", "Ok");
+                await this.DisplayAlert("Saved", !string.IsNullOrEmpty(this.SelectedSizes) ? this.SelectedSizes : "Select option", "Ok");
             }
             else
             {

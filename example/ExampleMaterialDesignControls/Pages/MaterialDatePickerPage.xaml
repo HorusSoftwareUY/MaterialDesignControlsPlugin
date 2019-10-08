@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialDatePicker Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" />
+                <material:MaterialDatePicker Date="{Binding Date}" Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" Placeholder="Select date" PlaceholderColor="Red" />
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />
                 <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />
                 <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
@@ -22,6 +22,7 @@
                         </OnPlatform>
                     </material:MaterialDatePicker.FontFamily>
                 </material:MaterialDatePicker>
+                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
