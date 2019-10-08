@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
@@ -7,7 +8,20 @@ namespace Plugin.MaterialDesignControls.Implementations
     {
         public TextAlignment HorizontalTextAlignment { get; set; }
 
-        public new DateTime? Date { get; set; }
+        private DateTime? date;
+
+        public new DateTime? Date
+        {
+            get { return this.date; }
+            set
+            {
+                this.date = value;
+                if (this.Date.HasValue)
+                {
+                    base.Date = this.Date.Value;
+                }
+            }
+        }
 
         public string Placeholder { get; set; }
 

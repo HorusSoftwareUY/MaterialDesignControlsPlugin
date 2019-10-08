@@ -8,7 +8,7 @@
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
                 <material:MaterialPicker x:Name="pckColors" Type="Filled" LabelText="Color" AnimateError="True" />
-                <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Outlined" LabelText="Size" />
+                <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Outlined" LabelText="Size" Placeholder="Select option" PlaceholderColor="Red" />
                 <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" />
                 <Label x:Name="lblSelectedIndex" Text="SelectedIndex: -" />
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />

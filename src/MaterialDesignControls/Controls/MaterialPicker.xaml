@@ -10,7 +10,7 @@
             <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0">
                 <StackLayout Orientation="Horizontal" Spacing="0">
                     <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" />
-                    <custom:CustomPicker x:Name="pckOptions" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                    <custom:CustomPicker x:Name="pckOptions" VerticalOptions="Center" HorizontalOptions="FillAndExpand" PlaceholderColor="Gray" />
                     <custom:CustomImageButton x:Name="imgTrailingIcon" IsVisible="false" HorizontalOptions="End" />
                 </StackLayout>
             </Frame>

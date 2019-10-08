@@ -324,8 +324,8 @@ namespace Plugin.MaterialDesignControls
                     this.imgTrailingIcon.IsVisible = true;
                     break;
                 case nameof(this.LeadingIcon):
-                    this.imgTrailingIcon.Image.Source = this.LeadingIcon;
-                    this.imgTrailingIcon.IsVisible = true;
+                    this.imgLeadingIcon.Image.Source = this.LeadingIcon;
+                    this.imgLeadingIcon.IsVisible = true;
                     break;
                 case nameof(this.LeadingIconCommand):
                     AddIconTapGesture(false);
