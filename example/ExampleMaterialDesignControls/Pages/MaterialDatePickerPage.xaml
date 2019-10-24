@@ -13,7 +13,8 @@
                 <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
                 <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />
                 <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon=""
-                                             Placeholder="Select date" PlaceholderColor="Red" />
+                                             Placeholder="Select date" PlaceholderColor="Red"
+                                             AssistiveText="Required field" LabelText="Date" />
                 <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="">
                     <material:MaterialDatePicker.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">

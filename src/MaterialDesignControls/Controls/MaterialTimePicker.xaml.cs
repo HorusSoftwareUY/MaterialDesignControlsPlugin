@@ -399,7 +399,9 @@ namespace Plugin.MaterialDesignControls
                     break;
 
                 case nameof(this.HorizontalTextAlignment):
+                    this.lblLabel.HorizontalTextAlignment = this.HorizontalTextAlignment;
                     this.pckTime.HorizontalTextAlignment = this.HorizontalTextAlignment;
+                    this.lblAssistive.HorizontalTextAlignment = this.HorizontalTextAlignment;
                     break;
 
                 case nameof(this.Placeholder):
