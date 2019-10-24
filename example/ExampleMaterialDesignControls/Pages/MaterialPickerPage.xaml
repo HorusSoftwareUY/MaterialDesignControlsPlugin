@@ -16,7 +16,8 @@
                 <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
                 <material:MaterialPicker x:Name="pckModels2" Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />
                 <material:MaterialPicker x:Name="pckModels3" Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon=""
-                                         Placeholder="Select option" PlaceholderColor="Red" />
+                                         Placeholder="Select option" PlaceholderColor="Red"
+                                         AssistiveText="Required field" LabelText="Option" />
                 <material:MaterialPicker x:Name="pckModels4" Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="">
                     <material:MaterialPicker.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
