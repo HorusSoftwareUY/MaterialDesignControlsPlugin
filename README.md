@@ -116,9 +116,7 @@ Double pickers let users select two options in the same dialog.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/doublePickerAndroid.jpg" width="300">
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/doublePickeriOS.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/doublePickerAndroid.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/doublePickeriOS.png" width="300">
 
 **Example**
 ```XML
