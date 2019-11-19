@@ -8,6 +8,7 @@
             MaterialDatePickerRenderer.Init();
             MaterialEntryRenderer.Init();
             MaterialPickerRenderer.Init();
+            MaterialDoublePickerRenderer.Init();
             MaterialTimePickerRenderer.Init();
             MaterialEditorRenderer.Init();
             MaterialLabelRenderer.Init();

@@ -80,6 +80,7 @@
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="Effects.cs" />
     <Compile Include="Utils\TextAlignmentHelper.cs" />
+    <Compile Include="Renderers\MaterialDoublePickerRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

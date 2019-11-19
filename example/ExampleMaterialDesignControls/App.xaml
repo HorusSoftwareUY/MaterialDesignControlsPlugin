@@ -154,6 +154,21 @@
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
             <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
         </Style>
+
+        <!-- MaterialPicker -->
+        <Style TargetType="material:MaterialDoublePicker">
+            <Setter Property="LabelSize" Value="{StaticResource Body4FontSize}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="{StaticResource Body2FontSize}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
+            <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
+        </Style>
         
         <!-- MaterialSelection -->
         <Style TargetType="material:MaterialSelection">
