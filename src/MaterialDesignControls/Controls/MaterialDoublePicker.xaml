@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+             x:Class="Plugin.MaterialDesignControls.MaterialDoublePicker">
+    <ContentView.Content>
+        <StackLayout Spacing="2">
+            <controls:MaterialLabel x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
+            <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0">
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" />
+                    <custom:DoublePicker x:Name="pckOptions" VerticalOptions="Center" HorizontalOptions="FillAndExpand" PlaceholderColor="Gray" />
+                    <custom:CustomImageButton x:Name="imgTrailingIcon" IsVisible="false" HorizontalOptions="End" />
+                </StackLayout>
+            </Frame>
+            <BoxView x:Name="bxvLine" HeightRequest="1" />
+            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

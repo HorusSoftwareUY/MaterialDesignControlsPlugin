@@ -26,6 +26,16 @@
                         </OnPlatform>
                     </material:MaterialPicker.FontFamily>
                 </material:MaterialPicker>
+
+                <material:MaterialDoublePicker x:Name="pckDouble" Type="Filled" LabelText="Double Picker"
+                                               ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}"
+                                               SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
+                <Label x:Name="lblSelectedIndexes" Text="SelectedIndexes: -" />
+                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding Tap2Command}" />
+
+                <material:MaterialDoublePicker Type="Filled" LabelText="Double Picker" Separator=" - "
+                                               ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}"
+                                               SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -9,11 +9,11 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialPicker : ContentView
+    public partial class MaterialDoublePicker : ContentView
     {
         #region Constructors
 
-        public MaterialPicker()
+        public MaterialDoublePicker()
         {
             if (!this.initialized)
             {
@@ -23,7 +23,7 @@ namespace Plugin.MaterialDesignControls
 
             this.pckOptions.Focused += Handle_Focused;
             this.pckOptions.Unfocused += Handle_Unfocused;
-            this.pckOptions.SelectedIndexChanged += PckOptions_SelectedIndexChanged;
+            this.pckOptions.SelectedIndexesChanged += PckOptions_SelectedIndexesChanged;
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
@@ -43,14 +43,14 @@ namespace Plugin.MaterialDesignControls
 
         #region Events
 
-        public event EventHandler SelectedIndexChanged;
+        public event EventHandler<SelectedIndexesEventArgs> SelectedIndexesChanged;
 
         #endregion Events
 
         #region Properties
 
         public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialPicker), defaultValue: FieldTypes.Filled);
+            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialDoublePicker), defaultValue: FieldTypes.Filled);
 
         public FieldTypes Type
         {
@@ -59,7 +59,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialPicker), defaultValue: new Thickness(12, 0));
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialDoublePicker), defaultValue: new Thickness(12, 0));
 
         public new Thickness Padding
         {
@@ -68,7 +68,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialPicker), defaultValue: true);
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDoublePicker), defaultValue: true);
 
         public new bool IsEnabled
         {
@@ -77,7 +77,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextProperty =
-            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialPicker), defaultValue: null);
+            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialDoublePicker), defaultValue: null);
 
         public string LabelText
         {
@@ -86,7 +86,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ItemsSourceProperty =
-            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnItemsSourceChanged);
+            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnItemsSourceChanged);
 
         public IEnumerable ItemsSource
         {
@@ -94,8 +94,17 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ItemsSourceProperty, value); }
         }
 
+        public static readonly BindableProperty SecondaryItemsSourceProperty =
+            BindableProperty.Create(nameof(SecondaryItemsSource), typeof(IEnumerable), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnSecondaryItemsSourceChanged);
+
+        public IEnumerable SecondaryItemsSource
+        {
+            get { return (IEnumerable)GetValue(SecondaryItemsSourceProperty); }
+            set { SetValue(SecondaryItemsSourceProperty, value); }
+        }
+
         public static readonly BindableProperty SelectedItemProperty =
-            BindableProperty.Create(nameof(SelectedItem), typeof(string), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnSelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
+            BindableProperty.Create(nameof(SelectedItem), typeof(string), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnSelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
 
         public string SelectedItem
         {
@@ -103,8 +112,26 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(SelectedItemProperty, value); }
         }
 
+        public static readonly BindableProperty SecondarySelectedItemProperty =
+            BindableProperty.Create(nameof(SecondarySelectedItem), typeof(string), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnSecondarySelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
+
+        public string SecondarySelectedItem
+        {
+            get { return (string)GetValue(SecondarySelectedItemProperty); }
+            set { SetValue(SecondarySelectedItemProperty, value); }
+        }
+
+        public static readonly BindableProperty SeparatorProperty =
+            BindableProperty.Create(nameof(Separator), typeof(string), typeof(MaterialDoublePicker), defaultValue: " ");
+
+        public string Separator
+        {
+            get { return (string)GetValue(SeparatorProperty); }
+            set { SetValue(SeparatorProperty, value); }
+        }
+
         public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialPicker), defaultValue: null);
+            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialDoublePicker), defaultValue: null);
 
         public string AssistiveText
         {
@@ -113,7 +140,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialDoublePicker), defaultValue: Color.Gray);
 
         public Color LabelTextColor
         {
@@ -122,7 +149,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialDoublePicker), defaultValue: Color.Gray);
 
         public Color FocusedLabelTextColor
         {
@@ -131,7 +158,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialDoublePicker), defaultValue: Color.Gray);
 
         public Color TextColor
         {
@@ -140,7 +167,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialDoublePicker), defaultValue: Color.Gray);
 
         public Color AssistiveTextColor
         {
@@ -149,7 +176,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDoublePicker), defaultValue: Color.LightGray);
 
         public new Color BackgroundColor
         {
@@ -158,7 +185,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialPicker), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialDoublePicker), defaultValue: Font.Default.FontSize);
 
         public double LabelSize
         {
@@ -167,7 +194,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialPicker), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialDoublePicker), defaultValue: Font.Default.FontSize);
 
         public double FontSize
         {
@@ -176,7 +203,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialPicker), defaultValue: null);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialDoublePicker), defaultValue: null);
 
         public string FontFamily
         {
@@ -185,7 +212,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveSizeProperty =
-            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialPicker), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialDoublePicker), defaultValue: Font.Default.FontSize);
 
         public double AssistiveSize
         {
@@ -194,7 +221,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialDoublePicker), defaultValue: Color.LightGray);
 
         public Color BorderColor
         {
@@ -203,7 +230,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedBorderColorProperty =
-            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialDoublePicker), defaultValue: Color.LightGray);
 
         public Color FocusedBorderColor
         {
@@ -212,7 +239,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialPicker), defaultValue: null);
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialDoublePicker), defaultValue: null);
 
         public string LeadingIcon
         {
@@ -226,7 +253,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialPicker), defaultValue: null);
+            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialDoublePicker), defaultValue: null);
 
         public string TrailingIcon
         {
@@ -240,7 +267,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialPicker), defaultValue: false);
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialDoublePicker), defaultValue: false);
 
         public bool AnimateError
         {
@@ -257,7 +284,28 @@ namespace Plugin.MaterialDesignControls
                     var index = 0;
                     foreach (var item in this.ItemsSource)
                     {
-                        if (index.Equals(this.pckOptions.SelectedIndex))
+                        if (index.Equals(this.pckOptions.SelectedIndexes[0]))
+                        {
+                            return index;
+                        }
+                        index++;
+                    }
+                }
+
+                return -1;
+            }
+        }
+
+        public int SecondarySelectedIndex
+        {
+            get
+            {
+                if (this.SecondaryItemsSource != null)
+                {
+                    var index = 0;
+                    foreach (var item in this.SecondaryItemsSource)
+                    {
+                        if (index.Equals(this.pckOptions.SelectedIndexes[1]))
                         {
                             return index;
                         }
@@ -270,7 +318,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty HorizontalTextAlignmentProperty =
-            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(TextAlignment), typeof(MaterialPicker), defaultValue: TextAlignment.Start);
+            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(TextAlignment), typeof(MaterialDoublePicker), defaultValue: TextAlignment.Start);
 
         public TextAlignment HorizontalTextAlignment
         {
@@ -279,7 +327,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty PlaceholderProperty =
-            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialPicker), defaultValue: null);
+            BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialDoublePicker), defaultValue: null);
 
         public string Placeholder
         {
@@ -288,7 +336,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty PlaceholderColorProperty =
-            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(MaterialDoublePicker), defaultValue: Color.Gray);
 
         public Color PlaceholderColor
         {
@@ -302,19 +350,45 @@ namespace Plugin.MaterialDesignControls
 
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialPicker)bindable;
-            control.pckOptions.SelectedItem = (string)newValue;
+            var control = (MaterialDoublePicker)bindable;
+            //control.pckOptions.SelectedItem = (string)newValue;
+            //control.pckOptions.SelectedIndexes = new int[] { control.SelectedIndex, control.SecondarySelectedIndex };
+
+            control.InternalUpdateSelectedIndex();
+        }
+
+        private static void OnSecondarySelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialDoublePicker)bindable;
+            //control.pckOptions.SelectedItem = (string)newValue;
+            //control.pckOptions.SelectedIndexes = new int[] { control.SelectedIndex, control.SecondarySelectedIndex };
+
+            control.InternalUpdateSelectedIndex();
         }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialPicker)bindable;
+            var control = (MaterialDoublePicker)bindable;
             control.pckOptions.Items.Clear();
             if (!Equals(newValue, null) && newValue is IEnumerable)
             {
                 foreach (var item in (IEnumerable)newValue)
                 {
                     control.pckOptions.Items.Add(item.ToString());
+                }
+            }
+            control.InternalUpdateSelectedIndex();
+        }
+
+        private static void OnSecondaryItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialDoublePicker)bindable;
+            control.pckOptions.SecondaryItems.Clear();
+            if (!Equals(newValue, null) && newValue is IEnumerable)
+            {
+                foreach (var item in (IEnumerable)newValue)
+                {
+                    control.pckOptions.SecondaryItems.Add(item.ToString());
                 }
             }
             control.InternalUpdateSelectedIndex();
@@ -336,7 +410,23 @@ namespace Plugin.MaterialDesignControls
                     index++;
                 }
             }
-            this.pckOptions.SelectedIndex = selectedIndex;
+
+            var secondarySelectedIndex = -1;
+            if (this.SecondaryItemsSource != null)
+            {
+                var index = 0;
+                foreach (var item in this.SecondaryItemsSource)
+                {
+                    if (item != null && item.Equals(this.SecondarySelectedItem))
+                    {
+                        secondarySelectedIndex = index;
+                        break;
+                    }
+                    index++;
+                }
+            }
+
+            this.pckOptions.SelectedIndexes = new int[] { selectedIndex, secondarySelectedIndex };
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -468,6 +558,10 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.PlaceholderColor):
                     this.pckOptions.PlaceholderColor = this.PlaceholderColor;
                     break;
+
+                case nameof(this.Separator):
+                    this.pckOptions.Separator = this.Separator;
+                    break;
             }
         }
 
@@ -503,27 +597,47 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-        private void PckOptions_SelectedIndexChanged(object sender, EventArgs e)
+        private void PckOptions_SelectedIndexesChanged(object sender, SelectedIndexesEventArgs e)
         {
             if (this.ItemsSource != null)
             {
                 var index = 0;
                 foreach (var item in this.ItemsSource)
                 {
-                    if (index.Equals(this.pckOptions.SelectedIndex))
+                    if (index.Equals(e.SelectedIndexes[0]))
                     {
                         this.SelectedItem = item.ToString();
-                        if (this.SelectedIndexChanged != null)
-                        {
-                            this.SelectedIndexChanged.Invoke(this, e);
-                        }
                         break;
                     }
                     index++;
                 }
             }
+
+            if (this.SecondaryItemsSource != null)
+            {
+                var index = 0;
+                foreach (var item in this.SecondaryItemsSource)
+                {
+                    if (index.Equals(e.SelectedIndexes[1]))
+                    {
+                        this.SecondarySelectedItem = item.ToString();
+                        break;
+                    }
+                    index++;
+                }
+            }
+
+            if (this.SelectedIndexesChanged != null)
+            {
+                this.SelectedIndexesChanged.Invoke(this, e);
+            }
         }
 
         #endregion Methods
+    }
+
+    public class SelectedIndexesEventArgs : EventArgs
+    {
+        public int[] SelectedIndexes { get; set; }
     }
 }

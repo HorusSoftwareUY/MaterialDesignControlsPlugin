@@ -99,6 +99,11 @@
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="AnimationTypes.cs" />
     <Compile Include="Animations\TouchAndPressAnimation.cs" />
+    <Compile Include="Implementations\DoublePicker.cs" />
+    <Compile Include="Controls\MaterialDoublePicker.xaml.cs">
+      <DependentUpon>MaterialDoublePicker.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

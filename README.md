@@ -111,6 +111,22 @@ Pickers let users select an option.
                          IsRequired="true" RequiredMessage="The color is required" />
 ```
 
+### MaterialDoublePicker
+Double pickers let users select two options in the same dialog.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/doublePickerAndroid.jpg" width="300">
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/doublePickeriOS.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialDoublePicker Type="Filled" LabelText="Double Picker" Separator=" - "
+                               ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}"
+                               SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
+```
+
 ### MaterialEditor
 Text fields let users enter and edit text.
 
