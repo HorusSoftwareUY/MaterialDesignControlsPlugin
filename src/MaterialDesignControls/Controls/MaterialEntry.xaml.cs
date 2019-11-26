@@ -348,6 +348,11 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimateErrorProperty, value); }
         }
 
+        public new bool IsFocused
+        {
+            get { return this.txtEntry.IsFocused; }
+        }
+
         #endregion Properties
 
         #region Events
@@ -536,6 +541,15 @@ namespace Plugin.MaterialDesignControls
                     }
                     break;
             }
+        }
+
+        public new bool Focus()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                this.txtEntry.Focus();
+            });
+            return true;
         }
 
         private void Handle_Focused(object sender, FocusEventArgs e)

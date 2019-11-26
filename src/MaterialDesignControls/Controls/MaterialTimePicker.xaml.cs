@@ -268,6 +268,11 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PlaceholderColorProperty, value); }
         }
 
+        public new bool IsFocused
+        {
+            get { return this.pckTime.IsFocused; }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -411,6 +416,15 @@ namespace Plugin.MaterialDesignControls
                     this.pckTime.PlaceholderColor = this.PlaceholderColor;
                     break;
             }
+        }
+
+        public new bool Focus()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                this.pckTime.Focus();
+            });
+            return true;
         }
 
         private void Handle_Focused(object sender, FocusEventArgs e)

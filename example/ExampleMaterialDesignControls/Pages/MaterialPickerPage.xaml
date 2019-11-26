@@ -33,9 +33,10 @@
                 <Label x:Name="lblSelectedIndexes" Text="SelectedIndexes: -" />
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding Tap2Command}" />
 
-                <material:MaterialDoublePicker Type="Filled" LabelText="Double Picker" Separator=" - "
+                <material:MaterialDoublePicker x:Name="pckDoubleWithFocus" Type="Filled" LabelText="Double Picker" Separator=" - "
                                                ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}"
                                                SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
+                <material:MaterialButton Text="Focus" Command="{Binding Tap3Command}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
