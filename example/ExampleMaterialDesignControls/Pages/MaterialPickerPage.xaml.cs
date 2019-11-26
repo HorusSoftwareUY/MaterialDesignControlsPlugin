@@ -42,6 +42,8 @@ namespace ExampleMaterialDesignControls.Pages
 
             this.Tap2Command = new Command<string>(OnTap2);
 
+            this.Tap3Command = new Command<string>(OnTap3);
+
             this.BindingContext = this;
         }
 
@@ -75,6 +77,13 @@ namespace ExampleMaterialDesignControls.Pages
         public async void OnTap2(object parameter)
         {
             await this.DisplayAlert("Saved", $"{SelectedItem} - {SecondarySelectedItem}", "Ok");
+        }
+
+        public ICommand Tap3Command { get; set; }
+
+        public async void OnTap3(object parameter)
+        {
+            this.pckDoubleWithFocus.Focus();
         }
     }
 }
