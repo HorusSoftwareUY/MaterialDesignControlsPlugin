@@ -244,6 +244,10 @@ namespace Plugin.MaterialDesignControls.iOS
         protected internal virtual void UpdateFont()
         {
             //Control.Font = Element.ToUIFont();
+            if (!string.IsNullOrEmpty(Element.FontFamily))
+                Control.Font = UIFont.FromName(Element.FontFamily, (nfloat)Element.FontSize);
+            else
+                Control.Font = Control.Font.WithSize((nfloat)Element.FontSize);
         }
 
         //readonly Xamarin.Forms.Color _defaultPlaceholderColor = ColorExtensions.SeventyPercentGrey.ToColor();
