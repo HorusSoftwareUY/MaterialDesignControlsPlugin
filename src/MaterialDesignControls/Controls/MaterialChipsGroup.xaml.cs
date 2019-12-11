@@ -41,6 +41,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
+        public static readonly BindableProperty ChipsPaddingProperty =
+            BindableProperty.Create(nameof(ChipsPadding), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(12, 0));
+
+        public Thickness ChipsPadding
+        {
+            get { return (Thickness)GetValue(ChipsPaddingProperty); }
+            set { SetValue(ChipsPaddingProperty, value); }
+        }
+
         public static readonly new BindableProperty IsEnabledProperty =
             BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialChipsGroup), defaultValue: true);
 
@@ -264,7 +273,7 @@ namespace Plugin.MaterialDesignControls
                         FontSize = control.FontSize,
                         FontFamily = control.FontFamily,
                         CornerRadius = control.CornerRadius,
-                        Padding = control.Padding,
+                        Padding = control.ChipsPadding,
                         BackgroundColor = control.BackgroundColor,
                         TextColor = control.TextColor,
                         SelectedBackgroundColor = control.SelectedBackgroundColor,
