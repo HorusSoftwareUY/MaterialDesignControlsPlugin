@@ -28,7 +28,7 @@ namespace Plugin.MaterialDesignControls.Android
 
                 if (this.Element is CustomDatePicker customDatePicker)
                 {
-                    this.Control.Gravity = TextAlignmentHelper.Convert(customDatePicker.HorizontalTextAlignment);
+                    this.Control.Gravity = TextAlignmentHelper.ConvertToGravityFlags(customDatePicker.HorizontalTextAlignment);
 
                     if (!customDatePicker.Date.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
                     {

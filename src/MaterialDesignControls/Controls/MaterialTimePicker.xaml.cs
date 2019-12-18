@@ -405,16 +405,7 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.HorizontalTextAlignment):
                     this.lblLabel.HorizontalTextAlignment = this.HorizontalTextAlignment;
-
-                    if (Device.RuntimePlatform.Equals(Device.Android))
-                    {
-                        this.pckTime.HorizontalOptions = LayoutOptions.CenterAndExpand;
-                    }
-                    else
-                    {
-                        this.pckTime.HorizontalTextAlignment = this.HorizontalTextAlignment;
-                    }
-                    
+                    this.pckTime.HorizontalTextAlignment = this.HorizontalTextAlignment;
                     this.lblAssistive.HorizontalTextAlignment = this.HorizontalTextAlignment;
                     break;
 

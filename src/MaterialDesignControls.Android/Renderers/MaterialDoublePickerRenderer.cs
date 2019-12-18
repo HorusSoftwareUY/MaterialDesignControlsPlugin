@@ -39,7 +39,7 @@ namespace Plugin.MaterialDesignControls.Android
 
                 if (this.Element is DoublePicker doublePicker)
                 {
-                    this.Control.Gravity = TextAlignmentHelper.Convert(doublePicker.HorizontalTextAlignment);
+                    this.Control.Gravity = TextAlignmentHelper.ConvertToGravityFlags(doublePicker.HorizontalTextAlignment);
 
                     if (doublePicker.SelectedItem == null && !string.IsNullOrEmpty(doublePicker.Placeholder))
                     {
