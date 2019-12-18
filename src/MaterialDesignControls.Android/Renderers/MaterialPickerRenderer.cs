@@ -28,7 +28,7 @@ namespace Plugin.MaterialDesignControls.Android
 
                 if (this.Element is CustomPicker customPicker)
                 {
-                    this.Control.Gravity = TextAlignmentHelper.Convert(customPicker.HorizontalTextAlignment);
+                    this.Control.Gravity = TextAlignmentHelper.ConvertToGravityFlags(customPicker.HorizontalTextAlignment);
 
                     if (customPicker.SelectedItem == null && !string.IsNullOrEmpty(customPicker.Placeholder))
                     {
