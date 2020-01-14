@@ -30,7 +30,7 @@ steps:
     configuration: 'Release'
     clean: true
     packageApp: false
-    runNugetRestore: false
+    runNugetRestore: true
     
 - task: XamarinAndroid@1
   inputs:
