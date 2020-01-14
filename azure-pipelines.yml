@@ -22,11 +22,11 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '**/*.sln'
+    restoreSolution: '**/MaterialDesignControls.sln'
 
 - task: XamariniOS@2
   inputs:
-    solutionFile: '**/*.sln'
+    solutionFile: '**/MaterialDesignControls.sln'
     configuration: 'Release'
     clean: true
     packageApp: false
@@ -34,7 +34,7 @@ steps:
     
 - task: XamarinAndroid@1
   inputs:
-    projectFile: '**/*.csproj'
+    projectFile: '**/MaterialDesignControls.Android.csproj'
     createAppPackage: false
     clean: true
     jdkOption: 'JDKVersion'
