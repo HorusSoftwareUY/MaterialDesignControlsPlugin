@@ -84,6 +84,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
+        public static readonly BindableProperty TextMarginProperty =
+            BindableProperty.Create(nameof(TextMargin), typeof(Thickness), typeof(MaterialChips), defaultValue: new Thickness(0, 0));
+
+        public Thickness TextMargin
+        {
+            get { return (Thickness)GetValue(TextMarginProperty); }
+            set { SetValue(TextMarginProperty, value); }
+        }
+
         public static readonly BindableProperty BorderColorProperty =
            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Transparent);
 
@@ -303,6 +312,9 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.Padding):
                     this.frmContainer.Padding = this.Padding;
+                    break;
+                case nameof(this.TextMargin):
+                    this.lblText.Margin = this.TextMargin;
                     break;
                 case nameof(this.CornerRadius):
                     this.frmContainer.CornerRadius = (float)this.CornerRadius;
