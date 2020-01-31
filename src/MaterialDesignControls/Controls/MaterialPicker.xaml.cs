@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -247,6 +247,9 @@ namespace Plugin.MaterialDesignControls
             get { return (bool)GetValue(AnimateErrorProperty); }
             set { SetValue(AnimateErrorProperty, value); }
         }
+
+        public static readonly BindableProperty SelectedIndexProperty = 
+            BindableProperty.Create(nameof(SelectedIndex), typeof(int), typeof(MaterialPicker), defaultValue: 0);
 
         public int SelectedIndex
         {
