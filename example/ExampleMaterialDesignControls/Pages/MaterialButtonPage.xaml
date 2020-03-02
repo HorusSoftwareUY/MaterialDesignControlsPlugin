@@ -7,13 +7,13 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialButton x:Name="btnSave" Text="Save" ToUpper="True" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
+                <material:MaterialButton Text="Save" ToUpper="True" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" />
                 <material:MaterialOutlineButton Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
                 <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
-            
-                <material:MaterialButton IsEnabled="false" Text="Save" Icon="save.png" DisabledIcon="save.png" CornerRadius="20" Command="{Binding TapCommand}" CommandParameter="Saved" />
-                <material:MaterialOutlineButton IsEnabled="false" Text="Cancel" Command="{Binding TapCommand}" CornerRadius="20" CommandParameter="Canceled" />
-                <material:MaterialFlatButton IsEnabled="false" Text="Delete" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
+
+                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Save 2" Icon="save.png" DisabledIcon="save.png" CornerRadius="20" />
+                <material:MaterialOutlineButton IsVisible="{Binding CancelIsVisible}" IsEnabled="false" Text="Cancel 2" Command="{Binding TapCommand}" CornerRadius="20" CommandParameter="Canceled 2" />
+                <material:MaterialFlatButton IsVisible="{Binding DeleteIsVisible}" IsEnabled="false" Text="Delete 2" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted 2" />
 
                 <Label Text="Animations" HorizontalTextAlignment="Center" Margin="0,40,0,0" />
                 <material:MaterialButton Animation="None" Text="None" ToUpper="True" />

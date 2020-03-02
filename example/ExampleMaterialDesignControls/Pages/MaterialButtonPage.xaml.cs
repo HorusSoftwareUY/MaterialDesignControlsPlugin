@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExampleMaterialDesignControls.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -12,27 +13,7 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            this.TapCommand = new Command<string>(OnTap);
-
-            this.BindingContext = this;
-        }
-
-        public ICommand TapCommand { get; set; }
-
-        public async void OnTap(object parameter)
-        {
-            if (parameter != null)
-            {
-                if (parameter is string && ((string)parameter).ToString().Equals("Saved"))
-                {
-                    this.btnSave.IsBusy = true;
-                    await Task.Delay(2000);
-                    this.btnSave.IsBusy = false;
-                }
-
-                string text = parameter.ToString();
-                await this.DisplayAlert("", text, "Ok");
-            }
+            this.BindingContext = new MaterialButtonViewModel { DisplayAlert = this.DisplayAlert };
         }
     }
 }

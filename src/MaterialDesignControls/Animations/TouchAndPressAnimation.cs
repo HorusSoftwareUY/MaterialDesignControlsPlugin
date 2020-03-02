@@ -17,7 +17,7 @@ namespace Plugin.MaterialDesignControls.Animations
                     break;
                 case EventType.Cancelled:
                 case EventType.Released:
-                    if (view.IsEnabled && touchAndPressEffectConsumer.Command != null && touchAndPressEffectConsumer.Command.CanExecute(touchAndPressEffectConsumer.CommandParameter))
+                    if (touchAndPressEffectConsumer.IsEnabled && touchAndPressEffectConsumer.Command != null && touchAndPressEffectConsumer.Command.CanExecute(touchAndPressEffectConsumer.CommandParameter))
                     {
                         touchAndPressEffectConsumer.Command.Execute(touchAndPressEffectConsumer.CommandParameter);
                     }

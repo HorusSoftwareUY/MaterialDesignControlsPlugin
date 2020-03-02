@@ -57,6 +57,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(CommandParameterProperty, value); }
         }
 
+        public static readonly new BindableProperty IsEnabledProperty =
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialButton), defaultValue: true);
+
+        public new bool IsEnabled
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
+        }
+
         public static readonly BindableProperty AnimationProperty =
             BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
 
