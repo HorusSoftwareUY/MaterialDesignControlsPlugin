@@ -193,6 +193,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AssistiveSizeProperty, value); }
         }
 
+        public static readonly BindableProperty LabelLineBreakModeProperty =
+            BindableProperty.Create(nameof(LabelLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
+
+        public LineBreakMode LabelLineBreakMode
+        {
+            get { return (LineBreakMode)GetValue(LabelLineBreakModeProperty); }
+            set { SetValue(LabelLineBreakModeProperty, value); }
+        }
+
+        public static readonly BindableProperty AssistiveLineBreakModeProperty =
+            BindableProperty.Create(nameof(AssistiveLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
+
+        public LineBreakMode AssistiveLineBreakMode
+        {
+            get { return (LineBreakMode)GetValue(AssistiveLineBreakModeProperty); }
+            set { SetValue(AssistiveLineBreakModeProperty, value); }
+        }
+
         public static readonly BindableProperty BorderColorProperty =
             BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.LightGray);
 
@@ -246,6 +264,24 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (bool)GetValue(AnimateErrorProperty); }
             set { SetValue(AnimateErrorProperty, value); }
+        }
+
+        public static readonly BindableProperty MultilineEnabledProperty =
+            BindableProperty.Create(nameof(MultilineEnabled), typeof(bool), typeof(MaterialPicker), defaultValue: false);
+
+        public bool MultilineEnabled
+        {
+            get { return (bool)GetValue(MultilineEnabledProperty); }
+            set { SetValue(MultilineEnabledProperty, value); }
+        }
+
+        public static readonly BindableProperty PickerRowHeightProperty =
+            BindableProperty.Create(nameof(PickerRowHeight), typeof(int), typeof(MaterialPicker), defaultValue: 50);
+
+        public int PickerRowHeight
+        {
+            get { return (int)GetValue(PickerRowHeightProperty); }
+            set { SetValue(PickerRowHeightProperty, value); }
         }
 
         public static readonly BindableProperty SelectedIndexProperty = 
@@ -470,11 +506,26 @@ namespace Plugin.MaterialDesignControls
                     this.lblAssistive.HorizontalTextAlignment = this.HorizontalTextAlignment;
                     break;
 
+                case nameof(this.MultilineEnabled):
+                    this.pckOptions.MultilineEnabled = this.MultilineEnabled;
+                    break;
+
+                case nameof(this.PickerRowHeight):
+                    this.pckOptions.PickerRowHeight = this.PickerRowHeight;
+                    break;
+
                 case nameof(this.Placeholder):
                     this.pckOptions.Placeholder = this.Placeholder;
                     break;
                 case nameof(this.PlaceholderColor):
                     this.pckOptions.PlaceholderColor = this.PlaceholderColor;
+                    break;
+
+                case nameof(this.LabelLineBreakMode):
+                    this.lblLabel.LineBreakMode = this.LabelLineBreakMode;
+                    break;
+                case nameof(this.AssistiveLineBreakMode):
+                    this.lblAssistive.LineBreakMode = this.AssistiveLineBreakMode;
                     break;
             }
         }

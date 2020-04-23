@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using Foundation;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.iOS;
@@ -31,8 +34,59 @@ namespace Plugin.MaterialDesignControls.iOS
                         this.Control.Text = null;
                         this.Control.AttributedPlaceholder = new NSAttributedString(customPicker.Placeholder, foregroundColor: customPicker.PlaceholderColor.ToUIColor());
                     }
+
+                    if (customPicker.MultilineEnabled)
+                    {
+                        var nativePicker = Control.InputView as UIPickerView;
+                        nativePicker.Delegate = new MyPickerDelegate(
+                            () => Element.Items.ToList(),
+                            () => customPicker.PickerRowHeight,
+                            (selectedIndex) => this.Element.SelectedIndex = selectedIndex);
+                    }
                 }
             }
+        }
+    }
+
+    public class MyPickerDelegate : UIPickerViewDelegate
+    {
+        private Func<List<string>> items;
+        private Func<int> rowHeight;
+        private Action<int> onSelectedItem;
+
+        public MyPickerDelegate(Func<List<string>> items, Func<int> rowHeight, Action<int> onSelectedItem)
+        {
+            this.items = items;
+            this.rowHeight = rowHeight;
+            this.onSelectedItem = onSelectedItem;
+        }
+
+        public override UIView GetView(UIPickerView pickerView, nint row, nint component, UIView view)
+        {
+            var label = view as UILabel;
+            if (label == null)
+            {
+                label = new UILabel();
+                label.Lines = 0;
+            }
+
+            label.LineBreakMode = UILineBreakMode.TailTruncation;
+
+            var sourceList = items.Invoke();
+            label.Text = sourceList[(int)row];
+            label.TextAlignment = UITextAlignment.Center;
+
+            return label;
+        }
+
+        public override nfloat GetRowHeight(UIPickerView pickerView, nint component)
+        {
+            return rowHeight.Invoke();
+        }
+
+        public override void Selected(UIPickerView pickerView, nint row, nint component)
+        {
+            onSelectedItem.Invoke((int)row);
         }
     }
 }
