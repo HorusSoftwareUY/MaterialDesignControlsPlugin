@@ -20,8 +20,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
 
             this.txtEntry.Focused += Handle_Focused;
@@ -348,6 +348,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimateErrorProperty, value); }
         }
 
+        public static readonly BindableProperty FieldHeightRequestProperty =
+            BindableProperty.Create(nameof(FieldHeightRequest), typeof(double), typeof(MaterialEntry), defaultValue: 40.0);
+
+        public double FieldHeightRequest
+        {
+            get { return (double)GetValue(FieldHeightRequestProperty); }
+            set { SetValue(FieldHeightRequestProperty, value); }
+        }
+
         public new bool IsFocused
         {
             get { return this.txtEntry.IsFocused; }
@@ -373,8 +382,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
 
             // TODO: Check if you can take out the strong password.
@@ -539,6 +548,10 @@ namespace Plugin.MaterialDesignControls
                             this.FocusNextElement(currentTabIndex);
                         });
                     }
+                    break;
+
+                case nameof(this.FieldHeightRequest):
+                    this.frmContainer.HeightRequest = this.FieldHeightRequest;
                     break;
             }
         }

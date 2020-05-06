@@ -18,8 +18,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
 
             this.txtEditor.Focused += Handle_Focused;
@@ -294,6 +294,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimateErrorProperty, value); }
         }
 
+        public static readonly BindableProperty FieldHeightRequestProperty =
+            BindableProperty.Create(nameof(FieldHeightRequest), typeof(double), typeof(MaterialEditor), defaultValue: 40.0);
+
+        public double FieldHeightRequest
+        {
+            get { return (double)GetValue(FieldHeightRequestProperty); }
+            set { SetValue(FieldHeightRequestProperty, value); }
+        }
+
         public new bool IsFocused
         {
             get { return this.txtEditor.IsFocused; }
@@ -319,8 +328,9 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
+                
 
                 // TODO: add autosize property
                 this.txtEditor.AutoSize = EditorAutoSizeOption.Disabled;
@@ -466,6 +476,10 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.IsTabStop):
                     this.txtEditor.IsTabStop = this.IsTabStop;
+                    break;
+
+                case nameof(this.FieldHeightRequest):
+                    this.frmContainer.HeightRequest = this.FieldHeightRequest;
                     break;
             }
         }

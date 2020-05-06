@@ -14,7 +14,7 @@ MaterialDesignControls Plugin for Xamarin Forms is a collection of Xamarin.Forms
 | ------------------- | :------------------: |
 |Xamarin.iOS|iOS 8+|
 |Xamarin.Android|API 16+|
-|Xamarin.Forms|>= 4.0.0.425677|
+|Xamarin.Forms|>= 4.4.0.991864|
 
 ## API Usage
 

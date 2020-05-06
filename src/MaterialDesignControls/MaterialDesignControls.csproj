@@ -116,6 +116,6 @@
     <Folder Include="Effects\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
   </ItemGroup>
 </Project>

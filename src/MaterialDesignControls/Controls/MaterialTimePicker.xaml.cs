@@ -16,8 +16,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
 
             this.pckTime.Focused += Handle_Focused;
@@ -268,6 +268,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PlaceholderColorProperty, value); }
         }
 
+        public static readonly BindableProperty FieldHeightRequestProperty =
+            BindableProperty.Create(nameof(FieldHeightRequest), typeof(double), typeof(MaterialTimePicker), defaultValue: 40.0);
+
+        public double FieldHeightRequest
+        {
+            get { return (double)GetValue(FieldHeightRequestProperty); }
+            set { SetValue(FieldHeightRequestProperty, value); }
+        }
+
         public new bool IsFocused
         {
             get { return this.pckTime.IsFocused; }
@@ -287,8 +296,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
 
             switch (propertyName)
@@ -414,6 +423,10 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.PlaceholderColor):
                     this.pckTime.PlaceholderColor = this.PlaceholderColor;
+                    break;
+
+                case nameof(this.FieldHeightRequest):
+                    this.frmContainer.HeightRequest = this.FieldHeightRequest;
                     break;
             }
         }

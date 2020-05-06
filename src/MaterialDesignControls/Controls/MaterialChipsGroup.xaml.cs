@@ -17,8 +17,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
         }
 
@@ -326,8 +326,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
 
             switch (propertyName)

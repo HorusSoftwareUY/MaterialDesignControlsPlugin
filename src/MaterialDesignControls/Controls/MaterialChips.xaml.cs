@@ -16,9 +16,10 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
+
             AddMainTapGesture();
         }
 
@@ -294,8 +295,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
 
             switch (propertyName)

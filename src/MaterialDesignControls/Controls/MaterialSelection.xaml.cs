@@ -17,8 +17,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
         }
 
@@ -241,6 +241,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimateErrorProperty, value); }
         }
 
+        public static readonly BindableProperty FieldHeightRequestProperty =
+            BindableProperty.Create(nameof(FieldHeightRequest), typeof(double), typeof(MaterialSelection), defaultValue: 40.0);
+
+        public double FieldHeightRequest
+        {
+            get { return (double)GetValue(FieldHeightRequestProperty); }
+            set { SetValue(FieldHeightRequestProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -280,8 +289,8 @@ namespace Plugin.MaterialDesignControls
         {
             if (!this.initialized)
             {
-                this.InitializeComponent();
                 this.initialized = true;
+                this.InitializeComponent();
             }
 
             switch (propertyName)
@@ -395,6 +404,10 @@ namespace Plugin.MaterialDesignControls
                         this.imgTrailingIcon.Image.Source = this.TrailingIcon;
                     }
                     this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible && this.IsEnabled;
+                    break;
+
+                case nameof(this.FieldHeightRequest):
+                    this.frmContainer.HeightRequest = this.FieldHeightRequest;
                     break;
             }
         }
