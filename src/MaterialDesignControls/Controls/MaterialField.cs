@@ -299,6 +299,9 @@ namespace Plugin.MaterialDesignControls
                         }
                         this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
                         break;
+                    default:
+                        base.OnPropertyChanged(propertyName);
+                        break;
                 }
             }
         }

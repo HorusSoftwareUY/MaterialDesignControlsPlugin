@@ -14,6 +14,7 @@ MaterialDesignControls Plugin for Xamarin Forms is a collection of Xamarin.Forms
 | ------------------- | :------------------: |
 |Xamarin.iOS|iOS 8+|
 |Xamarin.Android|API 16+|
+|Tizen |API 4+|
 |Xamarin.Forms|>= 4.4.0.991864|
 
 ## API Usage
@@ -29,6 +30,12 @@ or if you're using **Android**:
 ```C#
 Plugin.MaterialDesignControls.Android.Renderer.Init();           
 ```
+
+or if you're using **Tizen**:
+```C#
+Plugin.MaterialDesignControls.Tizen.Renderer.Init();
+```
+
 You must add this namespace to your xaml files:
 
 ```XML
