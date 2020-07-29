@@ -349,6 +349,9 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.BorderColor):
                     this.frmContainer.BorderColor = this.BorderColor;
                     break;
+                default:
+                    base.OnPropertyChanged(propertyName);
+                    break;
             }
         }
 

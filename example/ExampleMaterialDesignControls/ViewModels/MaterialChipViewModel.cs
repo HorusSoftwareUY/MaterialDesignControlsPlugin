@@ -49,7 +49,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         private void OnIconTapCommand(string obj)
         {
-            this.DisplayAlert("Chip icon command", obj, "Ok");
+            this.DisplayAlert("Chip icon command", obj??"", "Ok");
         }
 
         public MaterialChipViewModel()

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Tizen.NET.Sdk/1.1.4">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>tizen40</TargetFramework>
+    <CopyLocalRuntimeTargetAssets Condition="'$(CopyLocalRuntimeTargetAssets)' == ''">true</CopyLocalRuntimeTargetAssets>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="lib\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.1180" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\example\ExampleMaterialDesignControls\ExampleMaterialDesignControls.csproj" />
+    <ProjectReference Include="..\..\src\MaterialDesignControls.Tizen\MaterialDesignControls.Tizen.csproj" />
+  </ItemGroup>
+
+  
+
+</Project>

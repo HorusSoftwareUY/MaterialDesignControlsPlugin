@@ -540,6 +540,9 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.FieldHeightRequest):
                     this.frmContainer.HeightRequest = this.FieldHeightRequest;
                     break;
+                default:
+                    base.OnPropertyChanged(propertyName);
+                    break;
             }
         }
 

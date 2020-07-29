@@ -364,7 +364,9 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.AssistiveSize):
                     this.lblAssistive.FontSize = this.AssistiveSize;
                     break;
-
+                default:
+                    base.OnPropertyChanged(propertyName);
+                    break;
             }
         }
 

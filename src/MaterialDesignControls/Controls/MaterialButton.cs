@@ -351,6 +351,9 @@ namespace Plugin.MaterialDesignControls
                         this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
                     }
                     break;
+                default:
+                    base.OnPropertyChanged(propertyName);
+                    break;
             }
         }
 

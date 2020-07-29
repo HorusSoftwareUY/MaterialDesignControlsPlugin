@@ -13,7 +13,7 @@
        <description>MaterialDesignControls Plugin for Xamarin Forms is a collection of Xamarin.Forms controls that apply the Material Design Guidelines</description>
        <releaseNotes></releaseNotes>
        <summary>Material Design Controls for Xamarin Forms</summary>
-       <tags>xamarin, ios, android, forms, xamarin.forms, plugin, materialdesigncontrols, materialdesign, materialcontrols, horus</tags>
+       <tags>xamarin, ios, android, tizen, forms, xamarin.forms, plugin, materialdesigncontrols, materialdesign, materialcontrols, horus</tags>
        <dependencies>
          <group targetFramework="MonoAndroid10">
             <dependency id="Xamarin.Forms" version="4.4.0.991864" />
@@ -22,6 +22,9 @@
             <dependency id="Xamarin.Forms" version="4.4.0.991864" />
          </group>
          <group targetFramework=".NETStandard1.0">
+            <dependency id="Xamarin.Forms" version="4.4.0.991864" />
+         </group>
+         <group targetFramework="tizen40">
             <dependency id="Xamarin.Forms" version="4.4.0.991864" />
          </group>
        </dependencies>
@@ -44,4 +47,12 @@
      <file src="src/MaterialDesignControls/bin/Release/netstandard2.0/Plugin.MaterialDesignControls.dll" target="lib\Xamarin.iOS10\Plugin.MaterialDesignControls.dll" />
      <file src="src/MaterialDesignControls/bin/Release/netstandard2.0/Plugin.MaterialDesignControls.xml" target="lib\Xamarin.iOS10\Plugin.MaterialDesignControls.xml" />
    </files>
+
+   <!--Tizen Unified-->
+     <file src="src/MaterialDesignControls.Tizen/bin/Release/Plugin.MaterialDesignControls.Tizen.dll" target="lib\tizen40\Plugin.MaterialDesignControls.Tizen.dll" />
+     <file src="src/MaterialDesignControls.Tizen/bin/Release/Plugin.MaterialDesignControls.Tizen.xml" target="lib\tizen40\Plugin.MaterialDesignControls.Tizen.xml" />
+     <file src="src/MaterialDesignControls/bin/Release/netstandard2.0/Plugin.MaterialDesignControls.dll" target="lib\tizen40\Plugin.MaterialDesignControls.dll" />
+     <file src="src/MaterialDesignControls/bin/Release/netstandard2.0/Plugin.MaterialDesignControls.xml" target="lib\tizen40\Plugin.MaterialDesignControls.xml" />
+   </files>
+
 </package>

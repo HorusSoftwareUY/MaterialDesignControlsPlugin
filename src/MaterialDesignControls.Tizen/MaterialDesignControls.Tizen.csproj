@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>tizen40</TargetFramework>
+    <TargetFrameworkIdentifier>Tizen</TargetFrameworkIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.1180" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj" />
+  </ItemGroup>
+  
+</Project>
