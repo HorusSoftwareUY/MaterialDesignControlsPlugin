@@ -11,7 +11,7 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialChipsPage()
         {
             InitializeComponent();
-            this.BindingContext = new MaterialChipViewModel() { DisplayAlert = this.DisplayAlert };
+            this.BindingContext = new ProductDetailsViewModel() { DisplayAlert = this.DisplayAlert };
         }
     }
 }

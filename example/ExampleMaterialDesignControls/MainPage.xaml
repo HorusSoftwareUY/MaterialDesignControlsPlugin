@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:pages="clr-namespace:ExampleMaterialDesignControls.Pages;assembly=ExampleMaterialDesignControls"
                   xmlns:root="clr-namespace:ExampleMaterialDesignControls;assembly=ExampleMaterialDesignControls"
-                  x:Class="ExampleMaterialDesignControls.MainPage">
-    <MasterDetailPage.Master>
-        <root:Menu x:Name="masterPage" />
-    </MasterDetailPage.Master>
-    <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                <pages:MaterialEntryPage />
-            </x:Arguments>
-        </NavigationPage>
-    </MasterDetailPage.Detail>
-</MasterDetailPage>
+                  x:Class="ExampleMaterialDesignControls.MainPage"
+                  xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+                  android:TabbedPage.ToolbarPlacement="Bottom"
+                  SelectedTabColor="Red"
+                  UnselectedTabColor="Black"
+                  BarBackgroundColor="White">
+
+</TabbedPage>

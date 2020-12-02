@@ -8,7 +8,7 @@
              Title="Controls">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="listView" x:FieldModifier="public" SeparatorColor="Transparent">
+            <!--<ListView x:Name="listView" x:FieldModifier="public" SeparatorColor="Transparent">
                <ListView.ItemsSource>
                     <x:Array Type="{x:Type root:MasterPageItem}">
                         <root:MasterPageItem Title="MaterialButton" TargetType="{x:Type pages:MaterialButtonPage}" />
@@ -36,7 +36,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

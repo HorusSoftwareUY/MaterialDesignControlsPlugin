@@ -14,15 +14,8 @@
                 <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" TabIndex="3" ReturnType="Next" />
                 <material:MaterialEntry Type="Outlined" LabelText="Con" Placeholder="Enter" IsPassword="true" TabIndex="4" ReturnType="Next" />
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" />
-                <material:MaterialEntry Type="Outlined" LabelText="ZIP code" Placeholder="Enter your ZIP code" Keyboard="Numeric" TabIndex="6" ReturnType="Done">
-                    <material:MaterialEntry.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
-                        </OnPlatform>
-                    </material:MaterialEntry.FontFamily>
-                </material:MaterialEntry>
-                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
+                
+                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

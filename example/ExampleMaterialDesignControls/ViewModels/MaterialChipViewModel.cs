@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.ViewModels
 {
-    public class MaterialChipViewModel : BaseViewModel
+    public class ProductDetailsViewModel : BaseViewModel
     {
         private ObservableCollection<Item> items;
 
@@ -52,7 +52,7 @@ namespace ExampleMaterialDesignControls.ViewModels
             this.DisplayAlert("Chip icon command", obj, "Ok");
         }
 
-        public MaterialChipViewModel()
+        public ProductDetailsViewModel()
         {
             Items = new ObservableCollection<Item>();
             Items.Add(new Item("Test 1", new Command(() => {
@@ -62,7 +62,7 @@ namespace ExampleMaterialDesignControls.ViewModels
                 Items.RemoveAt(0);
             })));
 
-            this.Sizes = new ObservableCollection<string> { "P", "M", "X", "XL" };
+            this.Sizes = new ObservableCollection<string> { "6", "6.5", "7", "7.5", "8" };
         }
 
         private async void OnTapCommand()

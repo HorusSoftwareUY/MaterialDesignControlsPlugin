@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using FFImageLoading.Forms.Platform;
 using Foundation;
 using Plugin.MaterialDesignControls;
 using UIKit;
@@ -25,9 +25,13 @@ namespace ExampleMaterialDesignControls.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+
             Plugin.MaterialDesignControls.iOS.Renderer.Init();
 
             LoadApplication(new App());
+
+            CachedImageRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

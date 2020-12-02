@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms.Skeleton" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
@@ -18,5 +20,40 @@
   <ItemGroup>
     <Folder Include="Pages\" />
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="MasterPageItem.cs" />
+    <Compile Remove="Pages\GoMaterialButton.cs" />
+    <Compile Remove="Pages\newCommand.cs" />
+    <Compile Remove="ViewModels\GoMaterialButtonCommand.cs" />
+    <Compile Remove="Pages\MyPage.cs" />
+    <Compile Remove="Pages\ProductDetailPage.cs" />
+    <Compile Remove="Pages\MaterialButtonPage %28copy%29.xaml.cs" />
+    <Compile Remove="Pages\ProductDetailPage.cs" />
+    <Compile Remove="Pages\MaterialButtonPage %28copy%29.xaml.cs" />
+    <Compile Remove="Pages\MaterialChipsPage %28copy%29.xaml.cs" />
+    <Compile Remove="Pages\MaterialButtonPage %28copy%29.xaml.cs" />
+    <Compile Remove="Pages\MaterialButtonPage %28copy%29.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Pages\MaterialButtonPage %28copy%29.xaml" />
+    <EmbeddedResource Remove="Pages\MaterialButtonPage %28copy%29.xaml" />
+    <EmbeddedResource Remove="Pages\MaterialButtonPage %28copy%29.xaml" />
+    <EmbeddedResource Remove="Pages\MaterialButtonPage %28copy%29.xaml" />
+    <EmbeddedResource Remove="Pages\MaterialButtonPage %28another copy%29.xaml" />
+    <EmbeddedResource Remove="Pages\ProductDetail.xaml" />
+    <EmbeddedResource Remove="Pages\sfdgsd.xaml" />
+    <EmbeddedResource Remove="Pages\MaterialButtonPage %28copy%29.xaml" />
+    <EmbeddedResource Remove="Pages\MaterialButtonPage %28copy%29.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Fonts\Roboto-Bold.ttf" />
+    <None Remove="Resources\Fonts\Roboto-Medium.ttf" />
+    <None Remove="Resources\Fonts\Roboto-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\Roboto-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Roboto-Medium.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Roboto-Regular.ttf" />
   </ItemGroup>
 </Project>

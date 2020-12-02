@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using ExampleMaterialDesignControls.Pages;
+using Xamarin.Forms;
+
+namespace ExampleMaterialDesignControls.ViewModels
+{
+    public class MaterialControlsPageViewModel : BaseViewModel
+    {
+        public ICommand GoMaterialButtonCommand => new Command (async () =>
+        {
+            await Navigation.PushAsync(new MaterialButtonPage());
+        });
+
+        public ICommand GoMaterialChipsCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialChipsPage());
+        });
+
+        public ICommand GoMaterialDatePickerCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialDatePickerPage());
+        });
+
+        public ICommand GoMaterialEditorCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialEditorPage());
+        });
+
+        public ICommand GoMaterialEntryCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialEntryPage());
+        });
+
+        public ICommand GoMaterialFieldCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialFieldPage());
+        });
+
+        public ICommand GoMaterialPickerCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialPickerPage());
+        });
+
+        public ICommand GoMaterialSelectionCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialSelectionPage());
+        });
+
+        public ICommand GoMaterialTimePickerCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialTimePickerPage());
+        });
+    }
+}

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.ViewModels
 {
@@ -30,5 +32,11 @@ namespace ExampleMaterialDesignControls.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public delegate Task DisplayAlertType(string title, string message, string cancel);
+
+        public DisplayAlertType DisplayAlert { get; set; }
+
+        public INavigation Navigation { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace ExampleMaterialDesignControls
 {
     public partial class Menu : ContentPage
     {
-        public ListView ListView { get { return listView; } }
+        //public ListView ListView { get { return listView; } }
 
         public Menu()
         {

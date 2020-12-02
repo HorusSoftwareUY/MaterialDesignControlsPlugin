@@ -41,10 +41,6 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref deleteIsVisible, value); }
         }
 
-        public delegate Task DisplayAlertType(string title, string message, string cancel);
-
-        public DisplayAlertType DisplayAlert { get; set; }
-
         public ICommand TapCommand => new Command<string>(OnTap);
 
         public ICommand TapCommand2 => new Command<string>(OnTap2, (var) => { return IsEnabled; });

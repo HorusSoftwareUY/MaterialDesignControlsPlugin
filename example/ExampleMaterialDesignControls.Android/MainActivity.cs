@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using FFImageLoading.Forms.Platform;
 
 namespace ExampleMaterialDesignControls.Droid
 {
@@ -21,6 +22,10 @@ namespace ExampleMaterialDesignControls.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             Plugin.MaterialDesignControls.Android.Renderer.Init();
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
+
+            CachedImageRenderer.Init(true);
 
             LoadApplication(new App());
         }
