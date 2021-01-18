@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialCodeEntryPage"
+             Title="MaterialCodeEntry">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialCodeEntry Type="Filled" LabelText="Code*" Length="6" Keyboard="Numeric"
+                                        Text="{Binding Code}" AssistiveText="{Binding CodeError}" AnimateError="True"
+                                        TabIndex="1" ReturnType="Next"
+                                            FieldHeightRequest="80"
+                                            FontSize="30"
+                                            BackgroundColor="#F7F6F6"
+                                            BorderColor="Transparent"
+                                            FocusedBorderColor="#b7aeae"/>
+
+                <material:MaterialCodeEntry Type="Outlined" LabelText="Code*" Length="6" Keyboard="Numeric"
+                                        Text="{Binding Code}" AssistiveText="{Binding CodeError}" AnimateError="True"
+                                        TabIndex="1" ReturnType="Next"
+                                            FieldHeightRequest="60"
+                                            FieldWidthRequest="40"
+                                            FontSize="30" />
+
+                <material:MaterialCodeEntry Type="Lined" LabelText="Code 2" Length="6" Keyboard="Numeric" TabIndex="2" ReturnType="Next" />
+                <material:MaterialCodeEntry Type="Outlined" LabelText="Code 3" Length="4" Keyboard="Numeric" TabIndex="3" ReturnType="Next" />
+                <material:MaterialCodeEntry Type="Filled" LabelText="Code 4" Length="6" Keyboard="Text" TabIndex="5" ReturnType="Next" />
+                
+                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

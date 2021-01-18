@@ -1,5 +1,4 @@
-﻿using System;
-using Plugin.MaterialDesignControls.Implementations;
+﻿using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.iOS;
 using UIKit;
 using Xamarin.Forms;
@@ -19,6 +18,15 @@ namespace Plugin.MaterialDesignControls.iOS
             if (this.Control != null)
             {
                 this.Control.BorderStyle = UITextBorderStyle.None;
+
+                CustomEntry customEntry = (CustomEntry)(e.NewElement == null ? e.OldElement : e.NewElement);
+                if (customEntry != null)
+                {
+                    if (customEntry.IsCode && UIDevice.CurrentDevice.CheckSystemVersion(12, 0))
+                    {
+                        this.Control.TextContentType = UITextContentType.OneTimeCode;
+                    }
+                }
             }
         }
     }

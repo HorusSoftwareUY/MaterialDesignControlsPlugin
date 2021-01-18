@@ -104,6 +104,9 @@
       <DependentUpon>MaterialDoublePicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\MaterialCodeEntry.xaml.cs">
+      <DependentUpon>MaterialCodeEntry.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

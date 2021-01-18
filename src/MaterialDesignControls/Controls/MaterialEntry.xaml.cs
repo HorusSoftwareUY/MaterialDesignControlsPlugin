@@ -104,6 +104,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(IsPasswordProperty, value); }
         }
 
+        public static readonly BindableProperty IsCodeProperty =
+            BindableProperty.Create(nameof(IsCode), typeof(bool), typeof(MaterialEntry), defaultValue: false);
+
+        public bool IsCode
+        {
+            get { return (bool)GetValue(IsCodeProperty); }
+            set { SetValue(IsCodeProperty, value); }
+        }
+
         public static readonly BindableProperty KeyboardProperty =
             BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(MaterialEntry), defaultValue: Keyboard.Text);
 
@@ -552,6 +561,10 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.FieldHeightRequest):
                     this.frmContainer.HeightRequest = this.FieldHeightRequest;
+                    break;
+
+                case nameof(this.IsCode):
+                    this.txtEntry.IsCode = this.IsCode;
                     break;
             }
         }

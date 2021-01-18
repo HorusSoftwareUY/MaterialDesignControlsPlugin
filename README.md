@@ -70,8 +70,20 @@ Text fields let users enter and edit text.
 
 **Example**
 ```XML
-<material:MaterialEntry FieldName="Name" Type="Filled" LabelText="Name" Placeholder="Enter your name"
+<material:MaterialEntry Type="Filled" LabelText="Name" Placeholder="Enter your name"
                         IsRequired="true" RequiredMessage="The name is required" MaxLength="12" />
+```
+
+### MaterialCodeEntry
+Code fields let users enter and edit pin codes.
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/codeEntry.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialCodeEntry Type="Filled" LabelText="Code*" Length="6" Keyboard="Numeric" Text="{Binding Code}" />
 ```
 
 ### MaterialDatePicker
@@ -107,7 +119,7 @@ Pickers let users select an option.
 
 **Example**
 ```XML
-<material:MaterialPicker FieldName="Color" Type="Filled" LabelText="Color"
+<material:MaterialPicker Type="Filled" LabelText="Color"
                          IsRequired="true" RequiredMessage="The color is required" />
 ```
 

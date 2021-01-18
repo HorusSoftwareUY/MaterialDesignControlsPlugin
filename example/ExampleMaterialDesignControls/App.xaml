@@ -183,6 +183,20 @@
             <Setter Property="ShowPasswordIcon" Value="showPassword.png" />
         </Style>
 
+        <!-- MaterialCodeEntry -->
+        <Style TargetType="material:MaterialCodeEntry">
+            <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
+        </Style>
+
         <!-- MaterialPicker -->
         <Style TargetType="material:MaterialPicker">
             <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
