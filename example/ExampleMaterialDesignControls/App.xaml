@@ -172,8 +172,11 @@
             <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
             <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FocusedTextColor" Value="{StaticResource TextColor}" />
             <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="FocusedBackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="DisabledBackgroundColor" Value="{StaticResource GrayColor}" />
             <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
             <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />

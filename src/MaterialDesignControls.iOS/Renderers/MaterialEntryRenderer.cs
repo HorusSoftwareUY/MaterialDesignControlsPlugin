@@ -23,9 +23,10 @@ namespace Plugin.MaterialDesignControls.iOS
                 if (customEntry != null)
                 {
                     if (customEntry.IsCode && UIDevice.CurrentDevice.CheckSystemVersion(12, 0))
-                    {
                         this.Control.TextContentType = UITextContentType.OneTimeCode;
-                    }
+
+                    if (customEntry.IsPassword && UIDevice.CurrentDevice.CheckSystemVersion(12, 0))
+                        this.Control.TextContentType = UITextContentType.NewPassword;
                 }
             }
         }

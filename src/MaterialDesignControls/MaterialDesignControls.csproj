@@ -106,7 +106,9 @@
     </Compile>
     <Compile Include="Controls\MaterialCodeEntry.xaml.cs">
       <DependentUpon>MaterialCodeEntry.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\BaseMaterialFieldControl.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
