@@ -51,6 +51,8 @@ namespace Plugin.MaterialDesignControls
 
         public abstract bool IsControlEnabled { get; }
 
+        public abstract Color BackgroundColorControl { get; }
+
         #endregion Properties
 
         #region Text
@@ -320,7 +322,7 @@ namespace Plugin.MaterialDesignControls
                 case FieldTypes.Outlined:
                 case FieldTypes.Filled:
                     if (IsControlEnabled)
-                        frmContainer.BackgroundColor = IsControlFocused ? FocusedBackgroundColor : BackgroundColor;
+                        frmContainer.BackgroundColor = IsControlFocused ? FocusedBackgroundColor : BackgroundColorControl;
                     else
                         frmContainer.BackgroundColor = DisabledBackgroundColor;
 

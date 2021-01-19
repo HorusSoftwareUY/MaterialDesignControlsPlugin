@@ -91,7 +91,6 @@
             <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
             <Setter Property="DisabledBorderColor" Value="{StaticResource DarkGrayColor}" />
 
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="FocusedBackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="DisabledBackgroundColor" Value="{StaticResource GrayColor}" />
         </Style>
@@ -199,6 +198,7 @@
 
         <!-- MaterialEntry -->
         <Style TargetType="material:MaterialEntry" BasedOn="{StaticResource BaseMaterialStyle}">
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="ClearIcon" Value="cancel.png" />
             <Setter Property="ShowPasswordIcon" Value="showPassword.png" />
         </Style>
@@ -278,17 +278,7 @@
 
         <!-- MaterialEditor -->
         <Style TargetType="material:MaterialEditor">
-            <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
-            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
-            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
-            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
-            <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
             <Setter Property="ClearIcon" Value="cancel.png" />
         </Style>
 

@@ -182,12 +182,17 @@ namespace Plugin.MaterialDesignControls
 
         public override bool IsControlFocused
         {
-            get { return this.txtEntry.IsFocused; }
+            get { return txtEntry.IsFocused; }
         }
 
         public override bool IsControlEnabled
         {
             get { return this.IsEnabled; }
+        }
+
+        public override Color BackgroundColorControl
+        {
+            get { return this.BackgroundColor; }
         }
 
         #endregion Properties
@@ -293,7 +298,7 @@ namespace Plugin.MaterialDesignControls
 
         protected override void SetFontSize()
         {
-            this.txtEntry.FontSize = FontSize;
+            txtEntry.FontSize = FontSize;
         }
 
         protected override void SetFontFamily()
