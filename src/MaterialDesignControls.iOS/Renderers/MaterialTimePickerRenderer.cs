@@ -31,6 +31,17 @@ namespace Plugin.MaterialDesignControls.iOS
                         this.Control.Text = null;
                         this.Control.AttributedPlaceholder = new NSAttributedString(customTimePicker.Placeholder, foregroundColor: customTimePicker.PlaceholderColor.ToUIColor());
                     }
+
+                    if (UIDevice.CurrentDevice.CheckSystemVersion(13, 2))
+                    {
+                        try
+                        {
+                            UIDatePicker picker = (UIDatePicker)Control.InputView;
+                            picker.PreferredDatePickerStyle = UIDatePickerStyle.Wheels;
+                        }
+                        catch (Exception)
+                        { }
+                    }
                 }
             }
         }

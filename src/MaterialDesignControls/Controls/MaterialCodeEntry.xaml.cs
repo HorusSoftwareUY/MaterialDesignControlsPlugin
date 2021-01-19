@@ -316,6 +316,10 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.IsCode):
                     this.txtEntry.IsCode = this.IsCode;
                     break;
+
+                case nameof(HorizontalTextAlignment):
+                    SetHorizontalTextAlignment();
+                    break;
             }
         }
 
@@ -371,6 +375,12 @@ namespace Plugin.MaterialDesignControls
         protected override void SetPlaceholderColor()
         {
             throw new NotSupportedException();
+        }
+
+        protected override void SetHorizontalTextAlignment()
+        {
+            lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
+            lblAssistive.HorizontalTextAlignment = HorizontalTextAlignment;
         }
 
         private void SetTypeBackgroundAndBorderColor()

@@ -104,15 +104,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty HorizontalTextAlignmentProperty =
-            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(TextAlignment), typeof(MaterialDatePicker), defaultValue: TextAlignment.Start);
-
-        public TextAlignment HorizontalTextAlignment
-        {
-            get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
-            set { SetValue(HorizontalTextAlignmentProperty, value); }
-        }
-
         public override bool IsControlFocused
         {
             get { return pckDate.IsFocused; }
@@ -162,11 +153,6 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.Format):
                     this.pckDate.Format = this.Format;
                     break;
-                case nameof(this.HorizontalTextAlignment):
-                    this.lblLabel.HorizontalTextAlignment = this.HorizontalTextAlignment;
-                    this.pckDate.HorizontalTextAlignment = this.HorizontalTextAlignment;
-                    this.lblAssistive.HorizontalTextAlignment = this.HorizontalTextAlignment;
-                    break;
             }
         }
 
@@ -206,6 +192,11 @@ namespace Plugin.MaterialDesignControls
         protected override void SetPlaceholderColor()
         {
             pckDate.PlaceholderColor = PlaceholderColor;
+        }
+
+        protected override void SetHorizontalTextAlignment()
+        {
+            pckDate.HorizontalTextAlignment = HorizontalTextAlignment;
         }
 
         public new bool Focus()

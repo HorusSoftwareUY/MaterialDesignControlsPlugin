@@ -239,6 +239,9 @@ namespace Plugin.MaterialDesignControls
             txtEditor.PlaceholderColor = PlaceholderColor;
         }
 
+        protected override void SetHorizontalTextAlignment()
+        { }
+
         public new bool Focus()
         {
             Device.BeginInvokeOnMainThread(() =>

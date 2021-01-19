@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ExampleMaterialDesignControls.ViewModels;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
@@ -12,17 +13,7 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            this.TapCommand = new Command<string>(OnTap);
-
-            this.BindingContext = this;
-        }
-
-        public ICommand TapCommand { get; set; }
-
-        public async void OnTap(object parameter)
-        {
-            string text = parameter.ToString();
-            await this.DisplayAlert("", text, "Ok");
+            this.BindingContext = new MaterialSelectionViewModel { DisplayAlert = this.DisplayAlert };
         }
     }
 }

@@ -14,7 +14,7 @@
                 <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" TabIndex="3" ReturnType="Next" />
                 <material:MaterialEntry Type="Outlined" LabelText="Confirm password" Placeholder="Enter" IsPassword="true" TabIndex="4" ReturnType="Next" CornerRadius="20" />
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next"
-                                        FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" />
+                                        FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" HorizontalTextAlignment="Center" />
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" IsEnabled="False" />
                 
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />

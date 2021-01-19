@@ -316,6 +316,11 @@ namespace Plugin.MaterialDesignControls
             txtEntry.PlaceholderColor = PlaceholderColor;
         }
 
+        protected override void SetHorizontalTextAlignment()
+        {
+            txtEntry.HorizontalTextAlignment = HorizontalTextAlignment;
+        }
+
         public new bool Focus()
         {
             Device.BeginInvokeOnMainThread(() =>

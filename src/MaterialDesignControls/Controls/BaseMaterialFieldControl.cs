@@ -47,6 +47,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimateErrorProperty, value); }
         }
 
+        public static readonly BindableProperty HorizontalTextAlignmentProperty =
+            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(TextAlignment), typeof(BaseMaterialFieldControl), defaultValue: TextAlignment.Start);
+
+        public TextAlignment HorizontalTextAlignment
+        {
+            get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
+            set { SetValue(HorizontalTextAlignmentProperty, value); }
+        }
+
         public abstract bool IsControlFocused { get; }
 
         public abstract bool IsControlEnabled { get; }
@@ -307,6 +316,8 @@ namespace Plugin.MaterialDesignControls
 
         protected abstract void SetPlaceholderColor();
 
+        protected abstract void SetHorizontalTextAlignment();
+
         protected void SetLabelTextColor(Label lblLabel)
         {
             if (IsControlEnabled)
@@ -440,6 +451,12 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(FieldHeightRequest):
                     frmContainer.HeightRequest = FieldHeightRequest;
+                    break;
+
+                case nameof(HorizontalTextAlignment):
+                    SetHorizontalTextAlignment();
+                    lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
+                    lblAssistive.HorizontalTextAlignment = HorizontalTextAlignment;
                     break;
             }
         }

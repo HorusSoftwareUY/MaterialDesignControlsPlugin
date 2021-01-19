@@ -9,6 +9,7 @@
             <StackLayout Padding="16" Spacing="16">
                 <material:MaterialTimePicker Time="{Binding Time}" Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" Placeholder="Select time" PlaceholderColor="Red" />
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
+                <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" IsEnabled="False" />
                 <material:MaterialTimePicker Type="Lined" LabelText="Deadline" Format="H:mm" />
                 <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
                 <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />

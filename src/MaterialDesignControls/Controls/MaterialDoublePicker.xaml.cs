@@ -120,15 +120,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty HorizontalTextAlignmentProperty =
-            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(TextAlignment), typeof(MaterialDoublePicker), defaultValue: TextAlignment.Start);
-
-        public TextAlignment HorizontalTextAlignment
-        {
-            get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
-            set { SetValue(HorizontalTextAlignmentProperty, value); }
-        }
-
         public int SelectedIndex
         {
             get
@@ -286,11 +277,6 @@ namespace Plugin.MaterialDesignControls
                 case nameof(base.TranslationX):
                     base.OnPropertyChanged(propertyName);
                     break;
-                case nameof(this.HorizontalTextAlignment):
-                    this.lblLabel.HorizontalTextAlignment = this.HorizontalTextAlignment;
-                    this.pckOptions.HorizontalTextAlignment = this.HorizontalTextAlignment;
-                    this.lblAssistive.HorizontalTextAlignment = this.HorizontalTextAlignment;
-                    break;
                 case nameof(this.Separator):
                     this.pckOptions.Separator = this.Separator;
                     break;
@@ -333,6 +319,11 @@ namespace Plugin.MaterialDesignControls
         protected override void SetPlaceholderColor()
         {
             pckOptions.PlaceholderColor = PlaceholderColor;
+        }
+
+        protected override void SetHorizontalTextAlignment()
+        {
+            pckOptions.HorizontalTextAlignment = HorizontalTextAlignment;
         }
 
         public new bool Focus()
