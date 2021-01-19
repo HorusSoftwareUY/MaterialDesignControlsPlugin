@@ -182,17 +182,8 @@
         </Style>
 
         <!-- MaterialDatePicker -->
-        <Style TargetType="material:MaterialDatePicker">
-            <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource FocusedLabelTextColor}" />
-            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="FontSize" Value="{StaticResource Body2FontSize}" />
+        <Style TargetType="material:MaterialDatePicker" BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
-            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
-            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
             <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
         </Style>
 
@@ -268,7 +259,7 @@
         </Style>
 
         <!-- MaterialEditor -->
-        <Style TargetType="material:MaterialEditor">
+        <Style TargetType="material:MaterialEditor" BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="ClearIcon" Value="cancel.png" />
         </Style>

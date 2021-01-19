@@ -21,8 +21,8 @@ namespace Plugin.MaterialDesignControls
                 this.InitializeComponent();
             }
 
-            txtEntry.Focused += Handle_Focused;
-            txtEntry.Unfocused += Handle_Unfocused;
+            txtEntry.Focused += HandleFocusChange;
+            txtEntry.Unfocused += HandleFocusChange;
             txtEntry.TextChanged += TxtEntry_TextChanged;
         }
 
@@ -429,14 +429,7 @@ namespace Plugin.MaterialDesignControls
             return true;
         }
 
-        private void Handle_Focused(object sender, FocusEventArgs e)
-        {
-            SetLabelTextColor(lblLabel);
-            SetTextColor();
-            SetTypeBackgroundAndBorderColor();
-        }
-
-        private void Handle_Unfocused(object sender, FocusEventArgs e)
+        private void HandleFocusChange(object sender, FocusEventArgs e)
         {
             SetLabelTextColor(lblLabel);
             SetTextColor();

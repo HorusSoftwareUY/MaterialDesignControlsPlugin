@@ -444,14 +444,7 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-        protected void HandleFocused(Label lblLabel, Frame frmContainer, BoxView bxvLine)
-        {
-            SetLabelTextColor(lblLabel);
-            SetTextColor();
-            SetBorderAndBackgroundColors(frmContainer, bxvLine);
-        }
-
-        protected void HandleUnfocused(Label lblLabel, Frame frmContainer, BoxView bxvLine)
+        protected void SetFocusChange(Label lblLabel, Frame frmContainer, BoxView bxvLine)
         {
             SetLabelTextColor(lblLabel);
             SetTextColor();

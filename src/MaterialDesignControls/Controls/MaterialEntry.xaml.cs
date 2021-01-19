@@ -19,8 +19,8 @@ namespace Plugin.MaterialDesignControls
                 this.InitializeComponent();
             }
 
-            this.txtEntry.Focused += Handle_Focused;
-            this.txtEntry.Unfocused += Handle_Unfocused;
+            this.txtEntry.Focused += HandleFocusChange;
+            this.txtEntry.Unfocused += HandleFocusChange;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
 
             this.imgClearIcon.Tapped = () =>
@@ -325,14 +325,9 @@ namespace Plugin.MaterialDesignControls
             return true;
         }
 
-        private void Handle_Focused(object sender, FocusEventArgs e)
+        private void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            base.HandleFocused(lblLabel, frmContainer, bxvLine);
-        }
-
-        private void Handle_Unfocused(object sender, FocusEventArgs e)
-        {
-            base.HandleUnfocused(lblLabel, frmContainer, bxvLine);
+            base.SetFocusChange(lblLabel, frmContainer, bxvLine);
         }
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)
