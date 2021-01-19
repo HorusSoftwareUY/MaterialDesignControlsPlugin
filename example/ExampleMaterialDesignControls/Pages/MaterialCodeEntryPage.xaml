@@ -13,6 +13,7 @@
                                             FieldHeightRequest="80"
                                             FontSize="30"
                                             BackgroundColor="#F7F6F6"
+                                            FocusedBackgroundColor="#F7F6F6"
                                             BorderColor="Transparent"
                                             FocusedBorderColor="#b7aeae"/>
 
@@ -25,7 +26,7 @@
 
                 <material:MaterialCodeEntry Type="Lined" LabelText="Code 2" Length="6" Keyboard="Numeric" TabIndex="2" ReturnType="Next" />
                 <material:MaterialCodeEntry Type="Outlined" LabelText="Code 3" Length="4" Keyboard="Numeric" TabIndex="3" ReturnType="Next" />
-                <material:MaterialCodeEntry Type="Filled" LabelText="Code 4" Length="6" Keyboard="Text" TabIndex="5" ReturnType="Next" />
+                <material:MaterialCodeEntry Type="Filled" LabelText="Code 4" Length="6" Keyboard="Text" TabIndex="5" ReturnType="Next" IsEnabled="False" />
                 
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
             </StackLayout>

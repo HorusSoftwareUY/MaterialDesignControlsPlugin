@@ -307,7 +307,7 @@ namespace Plugin.MaterialDesignControls
 
         protected abstract void SetPlaceholderColor();
 
-        private void SetLabelTextColor(Label lblLabel)
+        protected void SetLabelTextColor(Label lblLabel)
         {
             if (IsControlEnabled)
                 lblLabel.TextColor = IsControlFocused ? FocusedLabelTextColor : LabelTextColor;
@@ -378,7 +378,7 @@ namespace Plugin.MaterialDesignControls
                     lblLabel.IsVisible = !string.IsNullOrEmpty(LabelText);
                     break;
                 case nameof(LabelTextColor):
-                    lblLabel.TextColor = LabelTextColor;
+                    SetLabelTextColor(lblLabel);
                     break;
                 case nameof(LabelSize):
                     lblLabel.FontSize = LabelSize;
@@ -446,14 +446,14 @@ namespace Plugin.MaterialDesignControls
 
         protected void HandleFocused(Label lblLabel, Frame frmContainer, BoxView bxvLine)
         {
-            lblLabel.TextColor = this.FocusedLabelTextColor;
+            SetLabelTextColor(lblLabel);
             SetTextColor();
             SetBorderAndBackgroundColors(frmContainer, bxvLine);
         }
 
         protected void HandleUnfocused(Label lblLabel, Frame frmContainer, BoxView bxvLine)
         {
-            lblLabel.TextColor = this.LabelTextColor;
+            SetLabelTextColor(lblLabel);
             SetTextColor();
             SetBorderAndBackgroundColors(frmContainer, bxvLine);
         }

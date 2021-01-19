@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialCodeEntry : ContentView
+    public partial class MaterialCodeEntry : BaseMaterialFieldControl
     {
         #region Constructors
 
@@ -39,15 +39,6 @@ namespace Plugin.MaterialDesignControls
         #endregion Attributes
 
         #region Properties
-
-        public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialCodeEntry), defaultValue: FieldTypes.Filled);
-
-        public FieldTypes Type
-        {
-            get { return (FieldTypes)GetValue(TypeProperty); }
-            set { SetValue(TypeProperty, value); }
-        }
 
         public static readonly new BindableProperty PaddingProperty =
             BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialCodeEntry), defaultValue: new Thickness(12, 0));
@@ -94,15 +85,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ReturnTypeProperty, value); }
         }
 
-        public static readonly BindableProperty LabelTextProperty =
-            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialCodeEntry), defaultValue: null);
-
-        public string LabelText
-        {
-            get { return (string)GetValue(LabelTextProperty); }
-            set { SetValue(LabelTextProperty, value); }
-        }
-
         public static readonly BindableProperty TextProperty =
             BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialCodeEntry), defaultValue: null, propertyChanged: OnTextChanged, defaultBindingMode: BindingMode.TwoWay);
 
@@ -110,51 +92,6 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
-        }
-
-        public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialCodeEntry), defaultValue: null);
-
-        public string AssistiveText
-        {
-            get { return (string)GetValue(AssistiveTextProperty); }
-            set { SetValue(AssistiveTextProperty, value); }
-        }
-
-        public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.Gray);
-
-        public Color LabelTextColor
-        {
-            get { return (Color)GetValue(LabelTextColorProperty); }
-            set { SetValue(LabelTextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.Gray);
-
-        public Color FocusedLabelTextColor
-        {
-            get { return (Color)GetValue(FocusedLabelTextColorProperty); }
-            set { SetValue(FocusedLabelTextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.Gray);
-
-        public Color TextColor
-        {
-            get { return (Color)GetValue(TextColorProperty); }
-            set { SetValue(TextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.Gray);
-
-        public Color AssistiveTextColor
-        {
-            get { return (Color)GetValue(AssistiveTextColorProperty); }
-            set { SetValue(AssistiveTextColorProperty, value); }
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
@@ -166,60 +103,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialCodeEntry), defaultValue: Font.Default.FontSize);
-
-        public double LabelSize
-        {
-            get { return (double)GetValue(LabelSizeProperty); }
-            set { SetValue(LabelSizeProperty, value); }
-        }
-
-        public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialCodeEntry), defaultValue: Font.Default.FontSize);
-
-        public double FontSize
-        {
-            get { return (double)GetValue(FontSizeProperty); }
-            set { SetValue(FontSizeProperty, value); }
-        }
-
-        public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialCodeEntry), defaultValue: null);
-
-        public string FontFamily
-        {
-            get { return (string)GetValue(FontFamilyProperty); }
-            set { SetValue(FontFamilyProperty, value); }
-        }
-
-        public static readonly BindableProperty AssistiveSizeProperty =
-            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialCodeEntry), defaultValue: Font.Default.FontSize);
-
-        public double AssistiveSize
-        {
-            get { return (double)GetValue(AssistiveSizeProperty); }
-            set { SetValue(AssistiveSizeProperty, value); }
-        }
-
-        public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.LightGray);
-
-        public Color BorderColor
-        {
-            get { return (Color)GetValue(BorderColorProperty); }
-            set { SetValue(BorderColorProperty, value); }
-        }
-
-        public static readonly BindableProperty FocusedBorderColorProperty =
-            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.LightGray);
-
-        public Color FocusedBorderColor
-        {
-            get { return (Color)GetValue(FocusedBorderColorProperty); }
-            set { SetValue(FocusedBorderColorProperty, value); }
-        }
-
         public static readonly BindableProperty LengthProperty =
             BindableProperty.Create(nameof(Length), typeof(int), typeof(MaterialCodeEntry), propertyChanged: OnLengthChanged, defaultValue: 0);
 
@@ -227,24 +110,6 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (int)GetValue(LengthProperty); }
             set { SetValue(LengthProperty, value); }
-        }
-
-        public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialCodeEntry), defaultValue: false);
-
-        public bool AnimateError
-        {
-            get { return (bool)GetValue(AnimateErrorProperty); }
-            set { SetValue(AnimateErrorProperty, value); }
-        }
-
-        public static readonly BindableProperty FieldHeightRequestProperty =
-            BindableProperty.Create(nameof(FieldHeightRequest), typeof(double), typeof(MaterialCodeEntry), defaultValue: 40.0);
-
-        public double FieldHeightRequest
-        {
-            get { return (double)GetValue(FieldHeightRequestProperty); }
-            set { SetValue(FieldHeightRequestProperty, value); }
         }
 
         public static readonly BindableProperty FieldWidthRequestProperty =
@@ -256,12 +121,19 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(FieldWidthRequestProperty, value); }
         }
 
-        public new bool IsFocused
+        public override bool IsControlFocused
         {
-            get
-            {
-                return this.txtEntry.IsFocused;
-            }
+            get { return txtEntry.IsFocused; }
+        }
+
+        public override bool IsControlEnabled
+        {
+            get { return this.IsEnabled; }
+        }
+
+        public override Color BackgroundColorControl
+        {
+            get { return this.BackgroundColor; }
         }
 
         #endregion Properties
@@ -334,33 +206,22 @@ namespace Plugin.MaterialDesignControls
                 this.InitializeComponent();
             }
 
-            // TODO: Check if you can take out the strong password.
-
             switch (propertyName)
             {
                 case nameof(base.TranslationX):
                     base.OnPropertyChanged(propertyName);
                     break;
                 case nameof(this.IsEnabled):
-                    this.txtEntry.IsEnabled = this.IsEnabled;
+                    SetIsEnabled();
                     break;
                 case nameof(this.TextColor):
-                    if (lblCodes != null)
-                        foreach (var lblCode in lblCodes)
-                            lblCode.TextColor = this.TextColor;
+                    SetTextColor();
                     break;
                 case nameof(this.FontSize):
-                    if (lblCodes != null)
-                        foreach (var lblCode in lblCodes)
-                            lblCode.FontSize = this.FontSize;
+                    SetFontSize();
                     break;
                 case nameof(this.FontFamily):
-                    if (lblCodes != null)
-                        foreach (var lblCode in lblCodes)
-                            lblCode.FontFamily = this.FontFamily;
-
-                    this.lblLabel.FontFamily = this.FontFamily;
-                    this.lblAssistive.FontFamily = this.FontFamily;
+                    SetFontFamily();
                     break;
                 case nameof(this.Keyboard):
                     this.txtEntry.Keyboard = this.Keyboard;
@@ -374,7 +235,7 @@ namespace Plugin.MaterialDesignControls
                     this.lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);
                     break;
                 case nameof(this.LabelTextColor):
-                    this.lblLabel.TextColor = this.LabelTextColor;
+                    SetLabelTextColor(lblLabel);
                     break;
                 case nameof(this.LabelSize):
                     this.lblLabel.FontSize = this.LabelSize;
@@ -382,6 +243,12 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.Padding):
                     this.grdContainer.Padding = this.Padding;
+                    break;
+
+                case nameof(CornerRadius):
+                    if (frmContainers != null)
+                        foreach (var frmContainer in frmContainers)
+                            frmContainer.CornerRadius = Convert.ToInt32(CornerRadius);
                     break;
 
                 case nameof(this.Type):
@@ -452,30 +319,79 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
+        protected override void SetIsEnabled()
+        {
+            txtEntry.IsEnabled = IsEnabled;
+            SetLabelTextColor(lblLabel);
+            SetTextColor();
+            SetTypeBackgroundAndBorderColor();
+        }
+
+        protected override void SetPadding()
+        {
+            grdContainer.Padding = this.Padding;
+        }
+
+        protected override void SetTextColor()
+        {
+            if (lblCodes != null)
+            {
+                foreach (var lblCode in lblCodes)
+                {
+                    if (IsControlEnabled)
+                        lblCode.TextColor = IsControlFocused ? FocusedTextColor : TextColor;
+                    else
+                        lblCode.TextColor = DisabledTextColor;
+                }
+            }
+        }
+
+        protected override void SetFontSize()
+        {
+            if (lblCodes != null)
+                foreach (var lblCode in lblCodes)
+                    lblCode.FontSize = this.FontSize;
+        }
+
+        protected override void SetFontFamily()
+        {
+            if (lblCodes != null)
+                foreach (var lblCode in lblCodes)
+                    lblCode.FontFamily = this.FontFamily;
+
+            this.lblLabel.FontFamily = this.FontFamily;
+            this.lblAssistive.FontFamily = this.FontFamily;
+        }
+
+        protected override void SetPlaceholder()
+        {
+            throw new NotSupportedException();
+        }
+
+        protected override void SetPlaceholderColor()
+        {
+            throw new NotSupportedException();
+        }
+
         private void SetTypeBackgroundAndBorderColor()
         {
             switch (this.Type)
             {
                 case FieldTypes.Filled:
-                    if (frmContainers != null)
-                    {
-                        foreach (var frmContainer in frmContainers)
-                        {
-                            frmContainer.BackgroundColor = this.BackgroundColor;
-                            frmContainer.BorderColor = this.BorderColor;
-                            frmContainer.CornerRadius = 20;
-                        }
-                    }
-                    this.bxvLine.IsVisible = false;
-                    break;
                 case FieldTypes.Outlined:
                     if (frmContainers != null)
                     {
                         foreach (var frmContainer in frmContainers)
                         {
-                            frmContainer.BackgroundColor = this.BackgroundColor;
-                            frmContainer.BorderColor = this.BorderColor;
-                            frmContainer.CornerRadius = 4;
+                            if (IsControlEnabled)
+                                frmContainer.BackgroundColor = IsControlFocused ? FocusedBackgroundColor : BackgroundColorControl;
+                            else
+                                frmContainer.BackgroundColor = DisabledBackgroundColor;
+
+                            if (IsControlEnabled)
+                                frmContainer.BorderColor = IsControlFocused ? FocusedBorderColor : BorderColor;
+                            else
+                                frmContainer.BorderColor = DisabledBorderColor;
                         }
                     }
                     this.bxvLine.IsVisible = false;
@@ -489,8 +405,13 @@ namespace Plugin.MaterialDesignControls
                             frmContainer.BorderColor = Color.Transparent;
                         }
                     }
-                    this.bxvLine.IsVisible = true;
-                    this.bxvLine.Color = this.BorderColor;
+
+                    bxvLine.IsVisible = true;
+                    
+                    if (IsControlEnabled)
+                        bxvLine.Color = IsControlFocused ? FocusedBorderColor : BorderColor;
+                    else
+                        bxvLine.Color = DisabledBorderColor;
 
                     if (frmContainers != null)
                         foreach (var frmContainer in frmContainers)
@@ -510,36 +431,16 @@ namespace Plugin.MaterialDesignControls
 
         private void Handle_Focused(object sender, FocusEventArgs e)
         {
-            this.lblLabel.TextColor = this.FocusedLabelTextColor;
-
-            switch (this.Type)
-            {
-                case FieldTypes.Filled:
-                case FieldTypes.Outlined:
-                    foreach (var frmContainer in frmContainers)
-                        frmContainer.BorderColor = this.FocusedBorderColor;
-                    break;
-                case FieldTypes.Lined:
-                    this.bxvLine.Color = this.FocusedBorderColor;
-                    break;
-            }
+            SetLabelTextColor(lblLabel);
+            SetTextColor();
+            SetTypeBackgroundAndBorderColor();
         }
 
         private void Handle_Unfocused(object sender, FocusEventArgs e)
         {
-            this.lblLabel.TextColor = this.LabelTextColor;
-
-            switch (this.Type)
-            {
-                case FieldTypes.Filled:
-                case FieldTypes.Outlined:
-                    foreach (var frmContainer in frmContainers)
-                        frmContainer.BorderColor = this.BorderColor;
-                    break;
-                case FieldTypes.Lined:
-                    this.bxvLine.Color = this.BorderColor;
-                    break;
-            }
+            SetLabelTextColor(lblLabel);
+            SetTextColor();
+            SetTypeBackgroundAndBorderColor();
         }
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)
