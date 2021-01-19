@@ -76,7 +76,6 @@
     <Compile Include="Renderers.cs" />
     <Compile Include="Renderers\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\MaterialEditorRenderer.cs" />
-    <Compile Include="Renderers\MaterialLabelRenderer.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="Effects.cs" />
     <Compile Include="Utils\TextAlignmentHelper.cs" />

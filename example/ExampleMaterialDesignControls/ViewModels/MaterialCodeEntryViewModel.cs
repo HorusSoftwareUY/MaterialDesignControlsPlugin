@@ -19,7 +19,11 @@ namespace ExampleMaterialDesignControls.ViewModels
         public string CodeError
         {
             get { return codeError; }
-            set { SetProperty(ref codeError, value); }
+            set
+            {
+                codeError = value;
+                OnPropertyChanged();
+            }
         }
 
         public delegate Task DisplayAlertType(string title, string message, string cancel);

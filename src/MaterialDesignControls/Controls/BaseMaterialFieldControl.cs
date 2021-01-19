@@ -187,7 +187,7 @@ namespace Plugin.MaterialDesignControls
         #region AssistiveText
 
         public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null, validateValue: OnAssistiveTextValidate);
 
         public string AssistiveText
         {
@@ -301,6 +301,17 @@ namespace Plugin.MaterialDesignControls
         #endregion Icons
 
         #region Methods
+
+        private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
+        {
+            var control = (BaseMaterialFieldControl)bindable;
+
+            // Used to animate the error when the assistive text doesn't change
+            if (control.AnimateError && !string.IsNullOrEmpty(control.AssistiveText) && control.AssistiveText == (string)value)
+                ShakeAnimation.Animate(control);
+
+            return true;
+        }
 
         protected abstract void SetIsEnabled();
 

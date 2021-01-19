@@ -17,15 +17,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(TextProperty, value); }
         }
 
-        public static readonly BindableProperty LetterSpacingProperty =
-            BindableProperty.Create(nameof(LetterSpacing), typeof(double), typeof(MaterialLabel), defaultValue: 0.0);
-
-        public double LetterSpacing
-        {
-            get { return (double)GetValue(LetterSpacingProperty); }
-            set { SetValue(LetterSpacingProperty, value); }
-        }
-
         public static readonly BindableProperty ToUpperProperty =
             BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialLabel), defaultValue: false);
 
