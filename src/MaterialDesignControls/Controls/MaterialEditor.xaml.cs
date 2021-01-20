@@ -104,6 +104,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ClearIconProperty, value); }
         }
 
+        public static readonly BindableProperty CustomClearIconProperty =
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEditor), defaultValue: null);
+
+        public View CustomClearIcon
+        {
+            get { return (View)GetValue(CustomClearIconProperty); }
+            set { SetValue(CustomClearIconProperty, value); }
+        }
+
         public static readonly BindableProperty ClearIconIsVisibleProperty =
             BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEditor), defaultValue: true);
 
@@ -181,12 +190,19 @@ namespace Plugin.MaterialDesignControls
                     this.txtEditor.MaxLength = this.MaxLength;
                     break;
                 case nameof(this.ClearIcon):
-                case nameof(this.ClearIconIsVisible):
                     if (!string.IsNullOrEmpty(this.ClearIcon))
-                    {
-                        this.imgClearIcon.Image.Source = this.ClearIcon;
-                    }
-                    this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsEnabled && !string.IsNullOrEmpty(this.Text);
+                        imgClearIcon.SetImage(ClearIcon);
+
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(CustomClearIcon):
+                    if (CustomClearIcon != null)
+                        imgClearIcon.SetCustomImage(CustomClearIcon);
+
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(this.ClearIconIsVisible):
+                    SetClearIconIsVisible();
                     break;
                 case nameof(this.TabIndex):
                     if (this.TabIndex != 0)
@@ -199,6 +215,12 @@ namespace Plugin.MaterialDesignControls
                     this.txtEditor.IsTabStop = this.IsTabStop;
                     break;
             }
+        }
+
+        private void SetClearIconIsVisible()
+        {
+            imgClearIcon.IsVisible = ClearIconIsVisible && IsEnabled && !string.IsNullOrEmpty(Text)
+                && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         }
 
         protected override void SetIsEnabled()

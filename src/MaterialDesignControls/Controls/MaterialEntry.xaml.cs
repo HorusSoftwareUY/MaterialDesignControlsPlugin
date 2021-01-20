@@ -144,6 +144,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ClearIconProperty, value); }
         }
 
+        public static readonly BindableProperty CustomClearIconProperty =
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+
+        public View CustomClearIcon
+        {
+            get { return (View)GetValue(CustomClearIconProperty); }
+            set { SetValue(CustomClearIconProperty, value); }
+        }
+
         public static readonly BindableProperty ClearIconIsVisibleProperty =
             BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
 
@@ -160,6 +169,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (string)GetValue(ShowPasswordIconProperty); }
             set { SetValue(ShowPasswordIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomShowPasswordIconProperty =
+            BindableProperty.Create(nameof(CustomShowPasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+
+        public View CustomShowPasswordIcon
+        {
+            get { return (View)GetValue(CustomShowPasswordIconProperty); }
+            set { SetValue(CustomShowPasswordIconProperty, value); }
         }
 
         public static readonly BindableProperty ShowPasswordIconIsVisibleProperty =
@@ -232,24 +250,43 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.MaxLength):
                     this.txtEntry.MaxLength = this.MaxLength;
                     break;
-                case nameof(this.IsPassword):
-                case nameof(this.ShowPasswordIcon):
-                case nameof(this.ShowPasswordIconIsVisible):
-                    this.txtEntry.IsPassword = this.IsPassword;
-                    if (!string.IsNullOrEmpty(this.ShowPasswordIcon))
-                    {
-                        this.imgShowPasswordIcon.Image.Source = this.ShowPasswordIcon;
-                    }
-                    this.imgShowPasswordIcon.IsVisible = this.IsPassword && this.ShowPasswordIconIsVisible && !string.IsNullOrEmpty(this.ShowPasswordIcon);
+
+                case nameof(IsPassword):
+                    this.txtEntry.IsPassword = IsPassword;
+                    SetShowPasswordIconIsVisible();
                     break;
+                case nameof(ShowPasswordIcon):
+                    if (!string.IsNullOrEmpty(ShowPasswordIcon))
+                        imgShowPasswordIcon.SetImage(ShowPasswordIcon);
+
+                    SetShowPasswordIconIsVisible();
+                    break;
+                case nameof(CustomShowPasswordIcon):
+                    if (CustomShowPasswordIcon != null)
+                        imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
+
+                    SetShowPasswordIconIsVisible();
+                    break;
+                case nameof(ShowPasswordIconIsVisible):
+                    SetShowPasswordIconIsVisible();
+                    break;
+                
                 case nameof(this.ClearIcon):
-                case nameof(this.ClearIconIsVisible):
                     if (!string.IsNullOrEmpty(this.ClearIcon))
-                    {
-                        this.imgClearIcon.Image.Source = this.ClearIcon;
-                    }
-                    this.imgClearIcon.IsVisible = this.ClearIconIsVisible && this.IsControlEnabled && !string.IsNullOrEmpty(this.Text);
+                        imgClearIcon.SetImage(ClearIcon);
+
+                    SetClearIconIsVisible();
                     break;
+                case nameof(CustomClearIcon):
+                    if (CustomClearIcon != null)
+                        imgClearIcon.SetCustomImage(CustomClearIcon);
+
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(this.ClearIconIsVisible):
+                    SetClearIconIsVisible();
+                    break;
+
                 case nameof(this.TabIndex):
                     if (this.TabIndex != 0)
                     {
@@ -276,6 +313,18 @@ namespace Plugin.MaterialDesignControls
                     this.txtEntry.IsCode = this.IsCode;
                     break;
             }
+        }
+
+        private void SetShowPasswordIconIsVisible()
+        {
+            imgShowPasswordIcon.IsVisible = IsPassword && ShowPasswordIconIsVisible && IsEnabled
+                && (!string.IsNullOrEmpty(ShowPasswordIcon) || CustomShowPasswordIcon != null);
+        }
+
+        private void SetClearIconIsVisible()
+        {
+            imgClearIcon.IsVisible = ClearIconIsVisible && IsEnabled && !string.IsNullOrEmpty(Text)
+                && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         }
 
         protected override void SetIsEnabled()

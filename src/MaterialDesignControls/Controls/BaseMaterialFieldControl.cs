@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
@@ -279,9 +280,36 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LeadingIconProperty, value); }
         }
 
+        public static readonly BindableProperty CustomLeadingIconProperty =
+            BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public View CustomLeadingIcon
+        {
+            get { return (View)GetValue(CustomLeadingIconProperty); }
+            set { SetValue(CustomLeadingIconProperty, value); }
+        }
+
         public bool LeadingIconIsVisible
         {
-            get { return !string.IsNullOrEmpty(this.LeadingIcon); }
+            get { return !string.IsNullOrEmpty(this.LeadingIcon) || CustomLeadingIcon != null; }
+        }
+
+        public static readonly BindableProperty LeadingIconCommandProperty =
+            BindableProperty.Create(nameof(LeadingIconCommand), typeof(ICommand), typeof(BaseMaterialFieldControl));
+
+        public ICommand LeadingIconCommand
+        {
+            get { return (ICommand)GetValue(LeadingIconCommandProperty); }
+            set { SetValue(LeadingIconCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty LeadingIconCommandParameterProperty =
+            BindableProperty.Create(nameof(LeadingIconCommandParameter), typeof(object), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public object LeadingIconCommandParameter
+        {
+            get { return GetValue(LeadingIconCommandParameterProperty); }
+            set { SetValue(LeadingIconCommandParameterProperty, value); }
         }
 
         public static readonly BindableProperty TrailingIconProperty =
@@ -293,9 +321,36 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(TrailingIconProperty, value); }
         }
 
+        public static readonly BindableProperty CustomTrailingIconProperty =
+            BindableProperty.Create(nameof(CustomTrailingIcon), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public View CustomTrailingIcon
+        {
+            get { return (View)GetValue(CustomTrailingIconProperty); }
+            set { SetValue(CustomTrailingIconProperty, value); }
+        }
+
         public bool TrailingIconIsVisible
         {
-            get { return !string.IsNullOrEmpty(this.TrailingIcon); }
+            get { return !string.IsNullOrEmpty(this.TrailingIcon) || CustomTrailingIcon != null; }
+        }
+
+        public static readonly BindableProperty TrailingIconCommandProperty =
+            BindableProperty.Create(nameof(TrailingIconCommand), typeof(ICommand), typeof(BaseMaterialFieldControl));
+
+        public ICommand TrailingIconCommand
+        {
+            get { return (ICommand)GetValue(TrailingIconCommandProperty); }
+            set { SetValue(TrailingIconCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty TrailingIconCommandParameterProperty =
+            BindableProperty.Create(nameof(TrailingIconCommandParameter), typeof(object), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public object TrailingIconCommandParameter
+        {
+            get { return GetValue(TrailingIconCommandParameterProperty); }
+            set { SetValue(TrailingIconCommandParameterProperty, value); }
         }
 
         #endregion Icons
@@ -447,17 +502,51 @@ namespace Plugin.MaterialDesignControls
                 case nameof(AssistiveSize):
                     lblAssistive.FontSize = AssistiveSize;
                     break;
+
                 case nameof(LeadingIcon):
                     if (!string.IsNullOrEmpty(LeadingIcon))
-                        imgLeadingIcon.Image.Source = LeadingIcon;
+                        imgLeadingIcon.SetImage(LeadingIcon);
 
                     imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
+                case nameof(CustomLeadingIcon):
+                    if (CustomLeadingIcon != null)
+                        imgLeadingIcon.SetCustomImage(CustomLeadingIcon);
+
+                    imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+                    break;
+                case nameof(LeadingIconCommand):
+                    if (LeadingIconCommand != null)
+                    {
+                        imgLeadingIcon.Tapped = () =>
+                        {
+                            if (LeadingIconCommand != null)
+                                LeadingIconCommand.Execute(LeadingIconCommandParameter);
+                        };
+                    }
+                    break;
+
                 case nameof(TrailingIcon):
                     if (!string.IsNullOrEmpty(TrailingIcon))
-                        imgTrailingIcon.Image.Source = TrailingIcon;
+                        imgTrailingIcon.SetImage(TrailingIcon);
 
                     imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    break;
+                case nameof(CustomTrailingIcon):
+                    if (CustomTrailingIcon != null)
+                        imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
+
+                    imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    break;
+                case nameof(TrailingIconCommand):
+                    if (TrailingIconCommand != null)
+                    {
+                        imgTrailingIcon.Tapped = () =>
+                        {
+                            if (TrailingIconCommand != null)
+                                TrailingIconCommand.Execute(TrailingIconCommandParameter);
+                        };
+                    }
                     break;
 
                 case nameof(FieldHeightRequest):

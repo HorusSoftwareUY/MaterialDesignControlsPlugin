@@ -112,6 +112,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LeadingIconProperty, value); }
         }
 
+        public static readonly BindableProperty CustomLeadingIconProperty =
+           BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+
+        public View CustomLeadingIcon
+        {
+            get { return (View)GetValue(CustomLeadingIconProperty); }
+            set { SetValue(CustomLeadingIconProperty, value); }
+        }
+
         public static readonly BindableProperty TrailingIconProperty =
             BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialChips), defaultValue: null);
 
@@ -119,6 +128,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (string)GetValue(TrailingIconProperty); }
             set { SetValue(TrailingIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomTrailingIconProperty =
+            BindableProperty.Create(nameof(CustomTrailingIcon), typeof(View), typeof(MaterialChips), defaultValue: null);
+
+        public View CustomTrailingIcon
+        {
+            get { return (View)GetValue(CustomTrailingIconProperty); }
+            set { SetValue(CustomTrailingIconProperty, value); }
         }
 
         public static readonly BindableProperty LeadingIconCommandProperty =
@@ -332,20 +350,31 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.DisabledBackgroundColor):
                     this.ApplyIsSelected();
                     break;
-                case nameof(this.TrailingIcon):
-                    this.imgTrailingIcon.Image.Source = this.TrailingIcon;
-                    this.imgTrailingIcon.IsVisible = true;
+
+                case nameof(TrailingIcon):
+                    imgTrailingIcon.SetImage(TrailingIcon);
+                    imgTrailingIcon.IsVisible = true;
                     break;
-                case nameof(this.LeadingIcon):
-                    this.imgLeadingIcon.Image.Source = this.LeadingIcon;
-                    this.imgLeadingIcon.IsVisible = true;
+                case nameof(CustomTrailingIcon):
+                    imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
+                    imgTrailingIcon.IsVisible = true;
                     break;
+                case nameof(LeadingIcon):
+                    imgLeadingIcon.SetImage(LeadingIcon);
+                    imgLeadingIcon.IsVisible = true;
+                    break;
+                case nameof(CustomLeadingIcon):
+                    imgLeadingIcon.SetCustomImage(CustomLeadingIcon);
+                    imgLeadingIcon.IsVisible = true;
+                    break;
+
                 case nameof(this.LeadingIconCommand):
                     AddIconTapGesture(false);
                     break;
                 case nameof(this.TrailingIconCommand):
                     AddIconTapGesture(true);
                     break;
+
                 case nameof(this.BorderColor):
                     this.frmContainer.BorderColor = this.BorderColor;
                     break;

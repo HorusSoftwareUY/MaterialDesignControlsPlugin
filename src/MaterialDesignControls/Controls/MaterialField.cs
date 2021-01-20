@@ -39,7 +39,7 @@ namespace Plugin.MaterialDesignControls
             };
             if (this.LeadingIconIsVisible)
             {
-                this.imgLeadingIcon.Image.Source = this.LeadingIcon;
+                imgLeadingIcon.SetImage(LeadingIcon);
                 this.imgLeadingIcon.IsVisible = true;
             }
             secondStackLayout.Children.Add(this.imgLeadingIcon);
@@ -62,7 +62,7 @@ namespace Plugin.MaterialDesignControls
             };
             if (this.TrailingIconIsVisible)
             {
-                this.imgTrailingIcon.Image.Source = this.TrailingIcon;
+                imgTrailingIcon.SetImage(TrailingIcon);
                 this.imgTrailingIcon.IsVisible = true;
             }
             secondStackLayout.Children.Add(this.imgTrailingIcon);
@@ -217,9 +217,18 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LeadingIconProperty, value); }
         }
 
+        public static readonly BindableProperty CustomLeadingIconProperty =
+            BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(MaterialField), defaultValue: null);
+
+        public View CustomLeadingIcon
+        {
+            get { return (View)GetValue(CustomLeadingIconProperty); }
+            set { SetValue(CustomLeadingIconProperty, value); }
+        }
+
         public bool LeadingIconIsVisible
         {
-            get { return !string.IsNullOrEmpty(this.LeadingIcon); }
+            get { return !string.IsNullOrEmpty(this.LeadingIcon) || CustomLeadingIcon != null; }
         }
 
         public static readonly BindableProperty TrailingIconProperty =
@@ -231,9 +240,18 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(TrailingIconProperty, value); }
         }
 
+        public static readonly BindableProperty CustomTrailingIconProperty =
+            BindableProperty.Create(nameof(CustomTrailingIcon), typeof(View), typeof(MaterialField), defaultValue: null);
+
+        public View CustomTrailingIcon
+        {
+            get { return (View)GetValue(CustomTrailingIconProperty); }
+            set { SetValue(CustomTrailingIconProperty, value); }
+        }
+
         public bool TrailingIconIsVisible
         {
-            get { return !string.IsNullOrEmpty(this.TrailingIcon); }
+            get { return !string.IsNullOrEmpty(this.TrailingIcon) || CustomTrailingIcon != null; }
         }
 
         #endregion Properties
@@ -279,25 +297,41 @@ namespace Plugin.MaterialDesignControls
                     case nameof(this.AssistiveSize):
                         this.lblAssistive.FontSize = this.AssistiveSize;
                         break;
-                    case nameof(this.LeadingIcon):
-                        if (!string.IsNullOrEmpty(this.LeadingIcon))
-                        {
-                            this.imgLeadingIcon.Image.Source = this.LeadingIcon;
-                        }
-                        this.imgLeadingIcon.IsVisible = this.LeadingIconIsVisible;
+                    case nameof(LeadingIcon):
+                        if (!string.IsNullOrEmpty(LeadingIcon))
+                            imgLeadingIcon.SetImage(LeadingIcon);
 
-                        if (this.LeadingIconIsVisible)
+                        imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+
+                        if (LeadingIconIsVisible)
                         {
-                            this.lblLabel.Margin = new Thickness(36, 0, 0, 0);
-                            this.lblAssistive.Margin = new Thickness(36, 0, 0, 0);
+                            lblLabel.Margin = new Thickness(36, 0, 0, 0);
+                            lblAssistive.Margin = new Thickness(36, 0, 0, 0);
                         }
                         break;
-                    case nameof(this.TrailingIcon):
-                        if (!string.IsNullOrEmpty(this.TrailingIcon))
+                    case nameof(CustomLeadingIcon):
+                        if (CustomLeadingIcon != null)
+                            imgLeadingIcon.SetCustomImage(CustomLeadingIcon);
+
+                        imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+
+                        if (LeadingIconIsVisible)
                         {
-                            this.imgTrailingIcon.Image.Source = this.TrailingIcon;
+                            lblLabel.Margin = new Thickness(36, 0, 0, 0);
+                            lblAssistive.Margin = new Thickness(36, 0, 0, 0);
                         }
-                        this.imgTrailingIcon.IsVisible = this.TrailingIconIsVisible;
+                        break;
+                    case nameof(TrailingIcon):
+                        if (!string.IsNullOrEmpty(TrailingIcon))
+                            imgTrailingIcon.SetImage(TrailingIcon);
+
+                        imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                        break;
+                    case nameof(CustomTrailingIcon):
+                        if (CustomTrailingIcon != null)
+                            imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
+
+                        imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                         break;
                 }
             }

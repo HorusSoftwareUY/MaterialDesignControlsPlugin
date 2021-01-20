@@ -45,5 +45,12 @@ namespace ExampleMaterialDesignControls.ViewModels
                 this.NameError = "The message is required";
             }
         }
+
+        public ICommand HelpCommand => new Command<string>(OnHelpCommand);
+
+        private async void OnHelpCommand(string parameter)
+        {
+            await this.DisplayAlert.Invoke("Help", parameter, "Ok");
+        }
     }
 }

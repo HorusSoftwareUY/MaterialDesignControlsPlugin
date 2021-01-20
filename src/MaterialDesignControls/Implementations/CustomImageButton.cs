@@ -32,7 +32,9 @@ namespace Plugin.MaterialDesignControls.Implementations
             }
         }
 
-        public Image Image { get; set; }
+        private Image image;
+
+        private View customImage;
 
         public static readonly BindableProperty ImageHeightRequestProperty = BindableProperty.Create(nameof(ImageHeightRequest), typeof(double), typeof(CustomImageButton), defaultValue: 24.0);
 
@@ -54,16 +56,6 @@ namespace Plugin.MaterialDesignControls.Implementations
         {
             this.Padding = 6;
             this.VerticalOptions = LayoutOptions.Center;
-
-            this.Image = new Image
-            {
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
-                WidthRequest = this.ImageWidthRequest,
-                HeightRequest = this.ImageHeightRequest,
-            };
-
-            this.Content = this.Image;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -72,13 +64,43 @@ namespace Plugin.MaterialDesignControls.Implementations
 
             switch (propertyName)
             {
-                case nameof(this.ImageWidthRequest):
-                    this.Image.WidthRequest = this.ImageWidthRequest;
+                case nameof(ImageWidthRequest):
+                    if (image != null)
+                        image.WidthRequest = ImageWidthRequest;
+                    else if (customImage != null)
+                        customImage.WidthRequest = ImageWidthRequest;
                     break;
-                case nameof(this.ImageHeightRequest):
-                    this.Image.HeightRequest = this.ImageHeightRequest;
+                case nameof(ImageHeightRequest):
+                    if (image != null)
+                        image.HeightRequest = ImageHeightRequest;
+                    else if (customImage != null)
+                        customImage.HeightRequest = ImageHeightRequest;
                     break;
             }
+        }
+
+        public void SetImage(string imageSource)
+        {
+            customImage = null;
+            image = new Image
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = ImageWidthRequest,
+                HeightRequest = ImageHeightRequest,
+                Source = imageSource
+            };
+            Content = image;
+        }
+
+        public void SetCustomImage(View view)
+        {
+            image = null;
+            view.VerticalOptions = LayoutOptions.Center;
+            view.HorizontalOptions = LayoutOptions.Center;
+            view.WidthRequest = ImageWidthRequest;
+            view.HeightRequest = ImageHeightRequest;
+            Content = view;
         }
     }
 }

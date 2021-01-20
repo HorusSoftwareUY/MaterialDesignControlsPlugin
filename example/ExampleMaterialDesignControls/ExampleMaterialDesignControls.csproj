@@ -13,6 +13,7 @@
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms.Skeleton" Version="2.0.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
@@ -20,6 +21,7 @@
   <ItemGroup>
     <Folder Include="Pages\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Resources\Svg\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MasterPageItem.cs" />
@@ -47,13 +49,7 @@
     <EmbeddedResource Remove="Pages\MaterialButtonPage %28copy%29.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Resources\Fonts\Roboto-Bold.ttf" />
-    <None Remove="Resources\Fonts\Roboto-Medium.ttf" />
-    <None Remove="Resources\Fonts\Roboto-Regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Fonts\Roboto-Bold.ttf" />
-    <EmbeddedResource Include="Resources\Fonts\Roboto-Medium.ttf" />
-    <EmbeddedResource Include="Resources\Fonts\Roboto-Regular.ttf" />
+    <EmbeddedResource Include="Resources/Fonts/*" />
+    <EmbeddedResource Include="Resources/Svg/*" />
   </ItemGroup>
 </Project>
