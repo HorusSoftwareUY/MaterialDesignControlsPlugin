@@ -22,6 +22,11 @@ namespace Plugin.MaterialDesignControls.Implementations
             }
         }
 
+        public TimeSpan InternalTime
+        {
+            get { return base.Time; }
+        }
+
         public string Placeholder { get; set; }
 
         public Color PlaceholderColor { get; set; }

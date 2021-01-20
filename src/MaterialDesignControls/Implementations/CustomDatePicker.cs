@@ -23,6 +23,11 @@ namespace Plugin.MaterialDesignControls.Implementations
             }
         }
 
+        public DateTime InternalDateTime
+        {
+            get { return base.Date; }
+        }
+
         public string Placeholder { get; set; }
 
         public Color PlaceholderColor { get; set; }

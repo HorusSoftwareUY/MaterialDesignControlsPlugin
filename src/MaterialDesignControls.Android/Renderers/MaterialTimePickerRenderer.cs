@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Plugin.MaterialDesignControls.Android.Utils;
 using Android.Views;
+using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(CustomTimePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialTimePickerRenderer))]
 
@@ -38,6 +39,20 @@ namespace Plugin.MaterialDesignControls.Android
                         this.Control.SetHintTextColor(customTimePicker.PlaceholderColor.ToAndroid());
                     }
                 }
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            // Set the default date if the user doesn't select anything
+            var customTimePicker = (CustomTimePicker)Element;
+            if (e.PropertyName == "IsFocused" && !customTimePicker.IsFocused && !customTimePicker.Time.HasValue)
+            {
+                var auxDateTime = new DateTime(DateTime.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day,
+                    customTimePicker.InternalTime.Hours, customTimePicker.InternalTime.Minutes, customTimePicker.InternalTime.Seconds);
+                Control.Text = auxDateTime.ToString(customTimePicker.Format);
             }
         }
     }

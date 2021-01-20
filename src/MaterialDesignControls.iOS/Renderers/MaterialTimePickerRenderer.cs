@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Foundation;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.iOS;
@@ -43,6 +44,20 @@ namespace Plugin.MaterialDesignControls.iOS
                         { }
                     }
                 }
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            // Set the default date if the user doesn't select anything
+            var customTimePicker = (CustomTimePicker)Element;
+            if (e.PropertyName == "IsFocused" && !customTimePicker.IsFocused && !customTimePicker.Time.HasValue)
+            {
+                var auxDateTime = new DateTime(DateTime.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day,
+                    customTimePicker.InternalTime.Hours, customTimePicker.InternalTime.Minutes, customTimePicker.InternalTime.Seconds);
+                Control.Text = auxDateTime.ToString(customTimePicker.Format);
             }
         }
     }

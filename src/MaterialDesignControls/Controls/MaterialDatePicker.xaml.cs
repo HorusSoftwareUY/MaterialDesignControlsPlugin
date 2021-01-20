@@ -211,6 +211,10 @@ namespace Plugin.MaterialDesignControls
         private void HandleFocusChange(object sender, FocusEventArgs e)
         {
             base.SetFocusChange(lblLabel, frmContainer, bxvLine);
+
+            // Set the default date if the user doesn't select anything
+            if (!IsControlFocused && !pckDate.Date.HasValue)
+                Date = pckDate.InternalDateTime;
         }
 
         #endregion Methods

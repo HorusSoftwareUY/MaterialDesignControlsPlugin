@@ -11,10 +11,10 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
+                <custom:CustomEntry x:Name="txtEntry" IsCode="True" HorizontalOptions="Center" VerticalOptions="Center" />
             </Grid>
             <BoxView x:Name="bxvLine" HeightRequest="1" />
             <controls:MaterialLabel x:Name="lblAssistive" IsVisible="False" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
-            <custom:CustomEntry x:Name="txtEntry" IsVisible="False" IsCode="True" />
         </StackLayout>
     </controls:BaseMaterialFieldControl.Content>
 </controls:BaseMaterialFieldControl>

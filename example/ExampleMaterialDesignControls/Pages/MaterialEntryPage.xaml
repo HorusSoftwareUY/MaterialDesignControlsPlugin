@@ -5,9 +5,6 @@
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryPage"
              Title="MaterialEntry">
-
-
-
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">

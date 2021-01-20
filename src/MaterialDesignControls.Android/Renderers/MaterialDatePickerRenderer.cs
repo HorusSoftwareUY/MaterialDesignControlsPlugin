@@ -6,6 +6,7 @@ using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Plugin.MaterialDesignControls.Android.Utils;
+using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(CustomDatePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialDatePickerRenderer))]
 
@@ -38,6 +39,16 @@ namespace Plugin.MaterialDesignControls.Android
                     }
                 }
             }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            // Set the default date if the user doesn't select anything
+            var customDatePicker = (CustomDatePicker)Element;
+            if (e.PropertyName == "IsFocused" && !customDatePicker.IsFocused && !customDatePicker.Date.HasValue)
+                Control.Text = customDatePicker.InternalDateTime.ToString(customDatePicker.Format);
         }
     }
 }

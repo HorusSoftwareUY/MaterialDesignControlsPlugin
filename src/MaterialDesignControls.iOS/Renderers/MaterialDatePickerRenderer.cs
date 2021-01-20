@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Foundation;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.iOS;
@@ -44,6 +45,16 @@ namespace Plugin.MaterialDesignControls.iOS
                     }
                 }
             }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            // Set the default date if the user doesn't select anything
+            var customDatePicker = (CustomDatePicker)Element;
+            if (e.PropertyName == "IsFocused" && !customDatePicker.IsFocused && !customDatePicker.Date.HasValue)
+                Control.Text = customDatePicker.InternalDateTime.ToString(customDatePicker.Format);
         }
     }
 }
