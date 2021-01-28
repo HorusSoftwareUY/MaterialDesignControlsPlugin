@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
@@ -31,9 +30,13 @@ namespace Plugin.MaterialDesignControls
 
         private Image imgIcon;
 
+        private ContentView cntIcon;
+
         private MaterialLabel lblText;
 
         private ActivityIndicator actIndicator;
+
+        private ContentView cntActivityIndicator;
 
         #endregion Attributes
 
@@ -192,13 +195,13 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledBorderColorProperty, value); }
         }
 
-        public static readonly BindableProperty IconProperty =
-            BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialButton), defaultValue: null);
+        public static readonly BindableProperty CustomIconProperty =
+            BindableProperty.Create(nameof(CustomIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
 
-        public string Icon
+        public View CustomIcon
         {
-            get { return (string)GetValue(IconProperty); }
-            set { SetValue(IconProperty, value); }
+            get { return (View)GetValue(CustomIconProperty); }
+            set { SetValue(CustomIconProperty, value); }
         }
 
         public static readonly BindableProperty DisabledIconProperty =
@@ -210,6 +213,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledIconProperty, value); }
         }
 
+        public static readonly BindableProperty IconProperty =
+            BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialButton), defaultValue: null);
+
+        public string Icon
+        {
+            get { return (string)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
+
+        public static readonly BindableProperty IconSizeProperty =
+            BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 24.0);
+
+        public double IconSize
+        {
+            get { return (double)GetValue(IconSizeProperty); }
+            set { SetValue(IconSizeProperty, value); }
+        }
+
         public static readonly BindableProperty ToUpperProperty =
             BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialButton), defaultValue: false);
 
@@ -219,15 +240,33 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ToUpperProperty, value); }
         }
 
+        public static readonly BindableProperty CustomActivityIndicatorProperty =
+            BindableProperty.Create(nameof(CustomActivityIndicator), typeof(View), typeof(MaterialButton), defaultValue: null);
+
+        public View CustomActivityIndicator
+        {
+            get { return (View)GetValue(CustomActivityIndicatorProperty); }
+            set { SetValue(CustomActivityIndicatorProperty, value); }
+        }
+
+        public static readonly BindableProperty ActivityIndicatorSizeProperty =
+            BindableProperty.Create(nameof(ActivityIndicatorSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 24.0);
+
+        public double ActivityIndicatorSize
+        {
+            get { return (double)GetValue(ActivityIndicatorSizeProperty); }
+            set { SetValue(ActivityIndicatorSizeProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
 
         private void Initialize()
         {
-            this.initialized = true;
+            initialized = true;
 
-            this.frmLayout = new Frame
+            frmLayout = new Frame
             {
                 HasShadow = false,
                 CornerRadius = 4,
@@ -235,43 +274,43 @@ namespace Plugin.MaterialDesignControls
                 HeightRequest = 40,
                 Padding = new Thickness(12, 0)
             };
-            this.Content = this.frmLayout;
+            Content = frmLayout;
 
-            this.stcLayout = new StackLayout
+            stcLayout = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
                 Spacing = 12,
                 HorizontalOptions = LayoutOptions.Center,
             };
-            this.frmLayout.Content = this.stcLayout;
+            frmLayout.Content = stcLayout;
 
-            this.imgIcon = new Image
+            cntIcon = new ContentView
             {
                 VerticalOptions = LayoutOptions.Center,
-                WidthRequest = 24,
-                HeightRequest = 24,
+                WidthRequest = IconSize,
+                HeightRequest = IconSize,
                 IsVisible = false
             };
-            this.stcLayout.Children.Add(this.imgIcon);
+            stcLayout.Children.Add(cntIcon);
 
-            this.lblText = new MaterialLabel
+            lblText = new MaterialLabel
             {
                 LineBreakMode = LineBreakMode.NoWrap,
                 VerticalOptions = LayoutOptions.Center
             };
-            this.stcLayout.Children.Add(this.lblText);
+            stcLayout.Children.Add(lblText);
 
-            this.actIndicator = new ActivityIndicator
+            cntActivityIndicator = new ContentView
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
-                WidthRequest = 24,
-                HeightRequest = 24,
+                WidthRequest = ActivityIndicatorSize,
+                HeightRequest = ActivityIndicatorSize,
                 IsVisible = false
             };
-            this.stcLayout.Children.Add(this.actIndicator);
+            stcLayout.Children.Add(cntActivityIndicator);
 
-            this.Effects.Add(new TouchAndPressEffect());
+            Effects.Add(new TouchAndPressEffect());
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -316,37 +355,107 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.DisabledIcon):
                     if (!string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon))
                     {
-                        this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
+                        if (imgIcon == null)
+                        {
+                            imgIcon = new Image();
+                            cntIcon.Content = imgIcon;
+                            cntIcon.IsVisible = true;
+                        }
+
+                        imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
                     }
+                    break;
+                case nameof(CustomIcon):
+                    if (CustomIcon != null)
+                    {
+                        cntIcon.Content = CustomIcon;
+                        cntIcon.IsVisible = true;
+                    }
+                    break;
+                case nameof(IconSize):
+                    cntIcon.HeightRequest = IconSize;
+                    cntIcon.WidthRequest = IconSize;
                     break;
                 case nameof(this.IsEnabled):
                     this.lblText.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
                     this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
                     this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
-                    if (!string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon))
+
+                    if (imgIcon == null && (!string.IsNullOrEmpty(Icon) || !string.IsNullOrEmpty(DisabledIcon)))
+                        imgIcon.Source = IsEnabled ? Icon : DisabledIcon;
+                    break;
+                case nameof(ActivityIndicatorSize):
+                    cntActivityIndicator.HeightRequest = ActivityIndicatorSize;
+                    cntActivityIndicator.WidthRequest = ActivityIndicatorSize;
+                    break;
+                case nameof(CustomActivityIndicator):
+                    if (CustomActivityIndicator != null)
                     {
-                        this.imgIcon.Source = this.IsEnabled ? this.Icon : this.DisabledIcon;
+                        cntActivityIndicator.Content = CustomActivityIndicator;
                     }
                     break;
                 case nameof(this.BusyColor):
-                    this.actIndicator.Color = this.BusyColor;
+                    if (CustomActivityIndicator == null)
+                    {
+                        if (actIndicator == null)
+                        {
+                            actIndicator = new ActivityIndicator();
+                            cntActivityIndicator.Content = actIndicator;
+                        }
+
+                        actIndicator.Color = this.BusyColor;
+                    }
                     break;
                 case nameof(this.IsBusy):
                     if (this.IsBusy)
                     {
                         this.lblText.IsVisible = false;
-                        this.imgIcon.IsVisible = false;
-                        this.actIndicator.IsVisible = true;
-                        this.actIndicator.IsRunning = true;
+
+                        if (imgIcon != null)
+                            imgIcon.IsVisible = false;
+
+                        cntIcon.IsVisible = false;
+
+                        if (CustomActivityIndicator == null)
+                        {
+                            if (actIndicator == null)
+                            {
+                                actIndicator = new ActivityIndicator();
+                                cntActivityIndicator.Content = actIndicator;
+                            }
+
+                            actIndicator.IsVisible = true;
+                            actIndicator.IsRunning = true;
+                        }
+
+                        cntActivityIndicator.IsVisible = true;
+
                         this.frmLayout.BackgroundColor = Color.Transparent;
                         this.frmLayout.BorderColor = Color.Transparent;
                     }
                     else
                     {
                         this.lblText.IsVisible = true;
-                        this.imgIcon.IsVisible = !string.IsNullOrEmpty(this.Icon) || !string.IsNullOrEmpty(this.DisabledIcon);
-                        this.actIndicator.IsVisible = false;
-                        this.actIndicator.IsRunning = false;
+
+                        if (imgIcon != null)
+                            imgIcon.IsVisible = !string.IsNullOrEmpty(Icon) || !string.IsNullOrEmpty(DisabledIcon);
+
+                        cntIcon.IsVisible = cntIcon.Content != null;
+
+                        if (CustomActivityIndicator == null)
+                        {
+                            if (actIndicator == null)
+                            {
+                                actIndicator = new ActivityIndicator();
+                                cntActivityIndicator.Content = actIndicator;
+                            }
+
+                            actIndicator.IsVisible = false;
+                            actIndicator.IsRunning = false;
+                        }
+
+                        cntActivityIndicator.IsVisible = false;
+
                         this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
                         this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
                     }
