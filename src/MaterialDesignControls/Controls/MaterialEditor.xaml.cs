@@ -268,7 +268,16 @@ namespace Plugin.MaterialDesignControls
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                this.txtEditor.Focus();
+                txtEditor.Focus();
+            });
+            return true;
+        }
+
+        public new bool Unfocus()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                txtEditor.Unfocus();
             });
             return true;
         }

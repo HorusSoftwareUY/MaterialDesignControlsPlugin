@@ -288,7 +288,16 @@ namespace Plugin.MaterialDesignControls
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                this.pckOptions.Focus();
+                pckOptions.Focus();
+            });
+            return true;
+        }
+
+        public new bool Unfocus()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                pckOptions.Unfocus();
             });
             return true;
         }
