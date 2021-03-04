@@ -35,11 +35,23 @@ namespace Plugin.MaterialDesignControls
                 {
                     this.txtEntry.IsPassword = true;
                     this.passwordIsVisible = false;
+
+                    // Display the show password icon
+                    if (CustomShowPasswordIcon != null)
+                        imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
+                    else if (!string.IsNullOrEmpty(ShowPasswordIcon))
+                        imgShowPasswordIcon.SetImage(ShowPasswordIcon);
                 }
                 else
                 {
                     this.txtEntry.IsPassword = false;
                     this.passwordIsVisible = true;
+
+                    // Display the hide password icon
+                    if (CustomHidePasswordIcon != null)
+                        imgShowPasswordIcon.SetCustomImage(CustomHidePasswordIcon);
+                    else if (!string.IsNullOrEmpty(HidePasswordIcon))
+                        imgShowPasswordIcon.SetImage(HidePasswordIcon);
                 }
             };
 
@@ -171,6 +183,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ShowPasswordIconProperty, value); }
         }
 
+        public static readonly BindableProperty HidePasswordIconProperty =
+            BindableProperty.Create(nameof(HidePasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+
+        public string HidePasswordIcon
+        {
+            get { return (string)GetValue(HidePasswordIconProperty); }
+            set { SetValue(HidePasswordIconProperty, value); }
+        }
+
         public static readonly BindableProperty CustomShowPasswordIconProperty =
             BindableProperty.Create(nameof(CustomShowPasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
 
@@ -178,6 +199,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (View)GetValue(CustomShowPasswordIconProperty); }
             set { SetValue(CustomShowPasswordIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomHidePasswordIconProperty =
+            BindableProperty.Create(nameof(CustomHidePasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+
+        public View CustomHidePasswordIcon
+        {
+            get { return (View)GetValue(CustomHidePasswordIconProperty); }
+            set { SetValue(CustomHidePasswordIconProperty, value); }
         }
 
         public static readonly BindableProperty ShowPasswordIconIsVisibleProperty =
