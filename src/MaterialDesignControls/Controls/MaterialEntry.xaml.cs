@@ -120,6 +120,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(KeyboardProperty, value); }
         }
 
+        public static readonly BindableProperty KeyboardFlagsProperty =
+            BindableProperty.Create(nameof(KeyboardFlags), typeof(string), typeof(MaterialEntry), defaultValue: null);
+
+        public string KeyboardFlags
+        {
+            get { return (string)GetValue(KeyboardFlagsProperty); }
+            set { SetValue(KeyboardFlagsProperty, value); }
+        }
+
+        public static readonly BindableProperty TextTransformProperty =
+            BindableProperty.Create(nameof(TextTransform), typeof(TextTransforms), typeof(MaterialEntry), defaultValue: TextTransforms.Default);
+
+        public TextTransforms TextTransform
+        {
+            get { return (TextTransforms)GetValue(TextTransformProperty); }
+            set { SetValue(TextTransformProperty, value); }
+        }
+
         public static readonly BindableProperty ReturnTypeProperty =
             BindableProperty.Create(nameof(ReturnType), typeof(ReturnType), typeof(MaterialEntry), defaultValue: null);
 
@@ -274,9 +292,36 @@ namespace Plugin.MaterialDesignControls
                 case nameof(base.TranslationX):
                     base.OnPropertyChanged(propertyName);
                     break;
+
                 case nameof(this.Keyboard):
                     this.txtEntry.Keyboard = this.Keyboard;
                     break;
+                case nameof(KeyboardFlags):
+                    if (KeyboardFlags != null)
+                    {
+                        try
+                        {
+                            string[] flagNames = ((string)KeyboardFlags).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                            KeyboardFlags allFlags = 0;
+                            foreach (var flagName in flagNames)
+                            {
+                                KeyboardFlags flags = 0;
+                                Enum.TryParse<KeyboardFlags>(flagName.Trim(), out flags);
+                                if (flags != 0)
+                                    allFlags |= flags;
+                            }
+                            txtEntry.Keyboard = Keyboard.Create(allFlags);
+                        }
+                        catch
+                        {
+                            throw new XamlParseException("The keyboard flags are invalid or have a wrong specification.");
+                        }
+                    }
+                    break;
+                case nameof(TextTransform):
+                    ApplyTextTransform();
+                    break;
+
                 case nameof(this.MaxLength):
                     this.txtEntry.MaxLength = this.MaxLength;
                     break;
@@ -430,8 +475,14 @@ namespace Plugin.MaterialDesignControls
                 this.imgClearIcon.IsVisible = !string.IsNullOrEmpty(e.NewTextValue);
             }
 
+            var changedByTextTransform = Text != null && txtEntry.Text != null && Text.ToLower() == txtEntry.Text.ToLower();
+
             this.Text = this.txtEntry.Text;
-            this.TextChanged?.Invoke(this, e);
+
+            if (!changedByTextTransform)
+                this.TextChanged?.Invoke(this, e);
+
+            ApplyTextTransform();
         }
 
         private void FocusNextElement(int currentTabIndex)
@@ -462,6 +513,16 @@ namespace Plugin.MaterialDesignControls
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
+        }
+
+        private void ApplyTextTransform()
+        {
+            if (TextTransform == TextTransforms.Default || txtEntry.Text == null)
+                return;
+            else if (TextTransform == TextTransforms.Lowercase)
+                txtEntry.Text = txtEntry.Text.ToLower();
+            else if (TextTransform == TextTransforms.Uppercase)
+                txtEntry.Text = txtEntry.Text.ToUpper();
         }
 
         #endregion Methods

@@ -77,6 +77,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(KeyboardProperty, value); }
         }
 
+        public static readonly BindableProperty KeyboardFlagsProperty =
+            BindableProperty.Create(nameof(KeyboardFlags), typeof(string), typeof(MaterialEditor), defaultValue: null);
+
+        public string KeyboardFlags
+        {
+            get { return (string)GetValue(KeyboardFlagsProperty); }
+            set { SetValue(KeyboardFlagsProperty, value); }
+        }
+
         public static readonly BindableProperty TextProperty =
             BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialEditor), defaultValue: null, propertyChanged: OnTextChanged, defaultBindingMode: BindingMode.TwoWay);
 
@@ -183,9 +192,33 @@ namespace Plugin.MaterialDesignControls
                 case nameof(base.TranslationX):
                     base.OnPropertyChanged(propertyName);
                     break;
+
                 case nameof(this.Keyboard):
                     this.txtEditor.Keyboard = this.Keyboard;
                     break;
+                case nameof(KeyboardFlags):
+                    if (KeyboardFlags != null)
+                    {
+                        try
+                        {
+                            string[] flagNames = ((string)KeyboardFlags).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                            KeyboardFlags allFlags = 0;
+                            foreach (var flagName in flagNames)
+                            {
+                                KeyboardFlags flags = 0;
+                                Enum.TryParse<KeyboardFlags>(flagName.Trim(), out flags);
+                                if (flags != 0)
+                                    allFlags |= flags;
+                            }
+                            txtEditor.Keyboard = Keyboard.Create(allFlags);
+                        }
+                        catch
+                        {
+                            throw new XamlParseException("The keyboard flags are invalid or have a wrong specification.");
+                        }
+                    }
+                    break;
+
                 case nameof(this.MaxLength):
                     this.txtEditor.MaxLength = this.MaxLength;
                     break;
