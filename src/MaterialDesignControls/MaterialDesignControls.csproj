@@ -113,6 +113,7 @@
     <Compile Include="Controls\MaterialCustomControl.xaml.cs">
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\LoggerHelper.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -123,6 +124,7 @@
     <Folder Include="Implementations\" />
     <Folder Include="Animations\" />
     <Folder Include="Effects\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />

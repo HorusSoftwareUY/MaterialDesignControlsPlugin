@@ -2,6 +2,7 @@
 using Foundation;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.iOS;
+using Plugin.MaterialDesignControls.Utils;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -38,7 +39,14 @@ namespace Plugin.MaterialDesignControls.iOS
 
             if (!string.IsNullOrEmpty(element.FontFamily))
             {
-                this.lblPlaceholder.Font = UIFont.FromName(element.FontFamily, (nfloat)element.FontSize);
+                try
+                {
+                    this.lblPlaceholder.Font = UIFont.FromName(element.FontFamily, (nfloat)element.FontSize);
+                }
+                catch (Exception ex)
+                {
+                    LoggerHelper.Log(ex);
+                }
             }
 
             var edgeInsets = this.Control.TextContainerInset;

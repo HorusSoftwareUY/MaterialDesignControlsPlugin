@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -511,7 +512,7 @@ namespace Plugin.MaterialDesignControls
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                LoggerHelper.Log(ex);
             }
         }
 
