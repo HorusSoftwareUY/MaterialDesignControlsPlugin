@@ -59,5 +59,10 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await Navigation.PushAsync(new MaterialTimePickerPage());
         });
+
+        public ICommand GoMaterialCustomControlCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialCustomControl());
+        });
     }
 }

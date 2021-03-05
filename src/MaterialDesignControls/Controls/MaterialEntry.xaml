@@ -13,7 +13,7 @@
                     <custom:CustomEntry x:Name="txtEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
                     <custom:CustomImageButton x:Name="imgTrailingIcon" IsVisible="false" HorizontalOptions="End" />
                     <custom:CustomImageButton x:Name="imgShowPasswordIcon" IsVisible="false" HorizontalOptions="End" />
-                    <custom:CustomImageButton x:Name="imgClearIcon" IsVisible="false" HorizontalOptions="End" />
+                    <custom:CustomImageButton x:Name="imgClearIcon" IsVisible="false" HorizontalOptions="End" BackgroundColor="Red" />
                 </StackLayout>
             </Frame>
             <BoxView x:Name="bxvLine" HeightRequest="1" />

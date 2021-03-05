@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="Plugin.MaterialDesignControls.MaterialCustomControl">
+    <ContentView.Content>
+        <StackLayout Spacing="2">
+            <controls:MaterialLabel x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
+            <ContentView x:Name="cntCustomControl" />
+            <BoxView x:Name="bxvLine" HeightRequest="1" />
+            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -184,7 +184,7 @@
         <!-- MaterialEntry -->
         <Style TargetType="material:MaterialEntry" BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
-            <Setter Property="ClearIcon" Value="cancel.png" />
+            <!--<Setter Property="ClearIcon" Value="cancel.png" />-->
             <Setter Property="ShowPasswordIcon" Value="showPassword.png" />
         </Style>
 
@@ -227,6 +227,16 @@
         <Style TargetType="material:MaterialSelection" BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="TrailingIcon" Value="chevron_right.png" />
+        </Style>
+
+        <!-- MaterialCustomControl -->
+        <Style TargetType="material:MaterialCustomControl">
+            <Setter Property="AnimateError" Value="True" />
+            <!--<Setter Property="FontFamily" Value="" />-->
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
         </Style>
 
     </Application.Resources>

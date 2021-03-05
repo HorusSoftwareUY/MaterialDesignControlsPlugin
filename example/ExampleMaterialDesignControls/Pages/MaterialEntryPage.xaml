@@ -13,7 +13,7 @@
                                         TabIndex="1" ReturnType="Next" />
                 <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
 
-                <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" TabIndex="3" ReturnType="Next">
+                <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" TabIndex="3" ReturnType="Next" ClearIconIsVisible="False">
                     <material:MaterialEntry.CustomShowPasswordIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg"/> 
                     </material:MaterialEntry.CustomShowPasswordIcon>

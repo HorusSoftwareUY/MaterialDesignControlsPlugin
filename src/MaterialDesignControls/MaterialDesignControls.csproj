@@ -110,6 +110,9 @@
     </Compile>
     <Compile Include="Controls\BaseMaterialFieldControl.cs" />
     <Compile Include="TextTransforms.cs" />
+    <Compile Include="Controls\MaterialCustomControl.xaml.cs">
+      <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
