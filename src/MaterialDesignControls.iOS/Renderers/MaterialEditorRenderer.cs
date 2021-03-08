@@ -37,17 +37,7 @@ namespace Plugin.MaterialDesignControls.iOS
                 BackgroundColor = UIColor.Clear
             };
 
-            if (!string.IsNullOrEmpty(element.FontFamily))
-            {
-                try
-                {
-                    this.lblPlaceholder.Font = UIFont.FromName(element.FontFamily, (nfloat)element.FontSize);
-                }
-                catch (Exception ex)
-                {
-                    LoggerHelper.Log(ex);
-                }
-            }
+            SetFont();
 
             var edgeInsets = this.Control.TextContainerInset;
             var lineFragmentPadding = this.Control.TextContainer.LineFragmentPadding;
@@ -77,9 +67,25 @@ namespace Plugin.MaterialDesignControls.iOS
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == "Text")
-            {
+            if (e.PropertyName == MaterialEditor.TextProperty.PropertyName)
                 lblPlaceholder.Hidden = !string.IsNullOrEmpty(Control.Text);
+            else if (e.PropertyName == MaterialEditor.FontSizeProperty.PropertyName
+                || e.PropertyName == MaterialEditor.FontFamilyProperty.PropertyName)
+                SetFont();
+        }
+
+        private void SetFont()
+        {
+            if (!string.IsNullOrEmpty(Element.FontFamily))
+            {
+                try
+                {
+                    lblPlaceholder.Font = UIFont.FromName(Element.FontFamily, (nfloat)Element.FontSize);
+                }
+                catch (Exception ex)
+                {
+                    LoggerHelper.Log(ex);
+                }
             }
         }
     }
