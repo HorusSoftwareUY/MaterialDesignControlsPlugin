@@ -512,6 +512,10 @@ namespace Plugin.MaterialDesignControls
                             string textInsideInput = nextEntry.Text;
                             nextEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
                         }
+                        else if (nextElement is CustomEditor nextEditor && nextEditor.IsEnabled)
+                        {
+                            nextEditor.Focus();
+                        }
                         else
                         {
                             this.FocusNextElement(currentTabIndex);
