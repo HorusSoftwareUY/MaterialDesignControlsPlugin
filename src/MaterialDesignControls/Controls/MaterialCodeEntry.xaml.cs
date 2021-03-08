@@ -161,6 +161,10 @@ namespace Plugin.MaterialDesignControls
 
         public event EventHandler TextChanged;
 
+        public new event EventHandler<FocusEventArgs> Focused;
+
+        public new event EventHandler<FocusEventArgs> Unfocused;
+
         #endregion Events
 
         #region Methods
@@ -499,6 +503,11 @@ namespace Plugin.MaterialDesignControls
             SetLabelTextColor(lblLabel);
             SetTextColor();
             SetTypeBackgroundAndBorderColor();
+
+            if (IsControlFocused)
+                Focused?.Invoke(this, e);
+            else
+                Unfocused?.Invoke(this, e);
         }
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)

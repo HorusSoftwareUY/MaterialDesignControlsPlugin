@@ -44,6 +44,10 @@ namespace Plugin.MaterialDesignControls
 
         public event EventHandler SelectedIndexChanged;
 
+        public new event EventHandler<FocusEventArgs> Focused;
+
+        public new event EventHandler<FocusEventArgs> Unfocused;
+
         #endregion Events
 
         #region Properties
@@ -305,6 +309,11 @@ namespace Plugin.MaterialDesignControls
         private void HandleFocusChange(object sender, FocusEventArgs e)
         {
             base.SetFocusChange(lblLabel, frmContainer, bxvLine);
+
+            if (IsControlFocused)
+                Focused?.Invoke(this, e);
+            else
+                Unfocused?.Invoke(this, e);
         }
 
         private void PckOptions_SelectedIndexChanged(object sender, EventArgs e)

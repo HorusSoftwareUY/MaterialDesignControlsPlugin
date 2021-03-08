@@ -121,6 +121,14 @@ namespace Plugin.MaterialDesignControls
 
         #endregion Properties
 
+        #region Events
+
+        public new event EventHandler<FocusEventArgs> Focused;
+
+        public new event EventHandler<FocusEventArgs> Unfocused;
+
+        #endregion Events
+
         #region Methods
 
         private static void OnDateChanged(BindableObject bindable, object oldValue, object newValue)
@@ -224,6 +232,11 @@ namespace Plugin.MaterialDesignControls
             // Set the default date if the user doesn't select anything
             if (!IsControlFocused && !pckDate.Date.HasValue)
                 Date = pckDate.InternalDateTime;
+
+            if (IsControlFocused)
+                Focused?.Invoke(this, e);
+            else
+                Unfocused?.Invoke(this, e);
         }
 
         #endregion Methods
