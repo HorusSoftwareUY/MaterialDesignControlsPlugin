@@ -247,6 +247,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(MaxLengthProperty, value); }
         }
 
+        public static readonly BindableProperty CursorPositionProperty =
+            BindableProperty.Create(nameof(CursorPosition), typeof(int), typeof(MaterialEntry), defaultValue: 0);
+
+        public int CursorPosition
+        {
+            get { return (int)GetValue(CursorPositionProperty); }
+            set { SetValue(CursorPositionProperty, value); }
+        }
+
         public override bool IsControlFocused
         {
             get { return txtEntry.IsFocused; }
@@ -329,6 +338,10 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(this.MaxLength):
                     this.txtEntry.MaxLength = this.MaxLength;
+                    break;
+
+                case nameof(this.CursorPosition):
+                    this.txtEntry.CursorPosition = this.CursorPosition;
                     break;
 
                 case nameof(IsPassword):
@@ -473,7 +486,12 @@ namespace Plugin.MaterialDesignControls
             base.SetFocusChange(lblLabel, frmContainer, bxvLine);
 
             if (IsControlFocused)
+            {
                 Focused?.Invoke(this, e);
+
+                var textInsideInput = txtEntry.Text;
+                txtEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
+            }
             else
                 Unfocused?.Invoke(this, e);
         }
