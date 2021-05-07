@@ -13,6 +13,8 @@ namespace Plugin.MaterialDesignControls
         bool IsEnabled { get; set; }
         AnimationTypes Animation { get; set; }
         double? AnimationParameter { get; set; }
+        void ExecuteClicked();
+
     }
 
     public enum EventType

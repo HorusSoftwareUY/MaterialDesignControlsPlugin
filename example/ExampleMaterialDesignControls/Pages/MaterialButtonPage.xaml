@@ -32,6 +32,10 @@
                 <material:MaterialButton Animation="None" Text="None" ToUpper="True" CornerRadius="14" />
                 <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" ToUpper="True" CornerRadius="14" />
                 <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" ToUpper="True" CornerRadius="14" />
+
+                <Label Text="Clicked event" HorizontalTextAlignment="Center" Margin="0,40,0,0" />
+                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="clicked Event" ToUpper="True" CornerRadius="14"  Clicked="Button_Clicked" />
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

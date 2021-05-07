@@ -21,7 +21,7 @@ namespace Plugin.MaterialDesignControls.Animations
                     {
                         touchAndPressEffectConsumer.Command.Execute(touchAndPressEffectConsumer.CommandParameter);
                     }
-
+                    touchAndPressEffectConsumer.ExecuteClicked();
                     RestoreAnimation(view, touchAndPressEffectConsumer);
                     break;
                 case EventType.Ignored:

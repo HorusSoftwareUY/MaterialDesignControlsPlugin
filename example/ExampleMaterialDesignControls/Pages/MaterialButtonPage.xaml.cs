@@ -15,5 +15,10 @@ namespace ExampleMaterialDesignControls.Pages
 
             this.BindingContext = new MaterialButtonViewModel { DisplayAlert = this.DisplayAlert };
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("This", "is a Tapped Event custom", "Pk");
+        }
     }
 }
