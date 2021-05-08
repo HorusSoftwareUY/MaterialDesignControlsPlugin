@@ -57,14 +57,14 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDatePicker), defaultValue: true);
+        //public static readonly new BindableProperty IsEnabledProperty =
+        //    BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDatePicker), defaultValue: true);
 
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
+        //public new bool IsEnabled
+        //{
+        //    get { return (bool)GetValue(IsEnabledProperty); }
+        //    set { SetValue(IsEnabledProperty, value); }
+        //}
 
         public static readonly BindableProperty DateProperty =
             BindableProperty.Create(nameof(Date), typeof(DateTime?), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnDateChanged, defaultBindingMode: BindingMode.TwoWay);
@@ -182,6 +182,9 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.MaximumDate):
                     this.pckDate.MaximumDate = this.MaximumDate;
+                    break;
+                case nameof(this.IsEnabled):
+                    SetIsEnabled();
                     break;
                 case nameof(this.Format):
                     this.pckDate.Format = this.Format;

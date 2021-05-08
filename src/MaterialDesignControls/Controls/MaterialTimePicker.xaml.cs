@@ -57,14 +57,14 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialTimePicker), defaultValue: true);
+        //public static readonly new BindableProperty IsEnabledProperty =
+        //    BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialTimePicker), defaultValue: true);
 
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
+        //public new bool IsEnabled
+        //{
+        //    get { return (bool)GetValue(IsEnabledProperty); }
+        //    set { SetValue(IsEnabledProperty, value); }
+        //}
 
         public static readonly BindableProperty TimeProperty =
             BindableProperty.Create(nameof(Time), typeof(TimeSpan?), typeof(MaterialTimePicker), defaultValue: null, propertyChanged: OnTimeChanged, defaultBindingMode: BindingMode.TwoWay);

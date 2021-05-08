@@ -37,10 +37,6 @@ namespace Plugin.MaterialDesignControls.Android
                         this.Control.Hint = customDatePicker.Placeholder;
                         this.Control.SetHintTextColor(customDatePicker.PlaceholderColor.ToAndroid());
                     }
-
-
-
-
                 }
             }
         }
