@@ -29,6 +29,13 @@ namespace Plugin.MaterialDesignControls
                 this.pckDate.Focus();
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+
+            this.imgClearIcon.Tapped = () =>
+            {
+                Date = null;
+                pckDate.Date = null;
+                SetClearIconIsVisible();
+            };
         }
 
         #endregion Constructors
@@ -65,7 +72,7 @@ namespace Plugin.MaterialDesignControls
         public DateTime? Date
         {
             get { return (DateTime?)GetValue(DateProperty); }
-            set { SetValue(DateProperty, value); }
+            set { SetValue(DateProperty, value); SetClearIconIsVisible(); }
         }
 
         public static readonly BindableProperty MinimumDateProperty =
@@ -102,6 +109,24 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty ClearIconProperty =
+            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+
+        public string ClearIcon
+        {
+            get { return (string)GetValue(ClearIconProperty); }
+            set { SetValue(ClearIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomClearIconProperty =
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+
+        public View CustomClearIcon
+        {
+            get { return (View)GetValue(CustomClearIconProperty); }
+            set { SetValue(CustomClearIconProperty, value); }
         }
 
         public override bool IsControlFocused
@@ -161,7 +186,25 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.Format):
                     this.pckDate.Format = this.Format;
                     break;
+                case nameof(this.ClearIcon):
+                    if (!string.IsNullOrEmpty(this.ClearIcon))
+                        imgClearIcon.SetImage(ClearIcon);
+
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(CustomClearIcon):
+                    if (CustomClearIcon != null)
+                        imgClearIcon.SetCustomImage(CustomClearIcon);
+
+                    SetClearIconIsVisible();
+                    break;
             }
+        }
+
+        private void SetClearIconIsVisible()
+        {
+            imgClearIcon.IsVisible = IsEnabled && pckDate.Date.HasValue
+                && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         }
 
         protected override void SetIsEnabled()

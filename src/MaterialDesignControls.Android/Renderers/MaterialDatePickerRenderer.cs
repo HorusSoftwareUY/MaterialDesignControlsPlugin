@@ -37,6 +37,10 @@ namespace Plugin.MaterialDesignControls.Android
                         this.Control.Hint = customDatePicker.Placeholder;
                         this.Control.SetHintTextColor(customDatePicker.PlaceholderColor.ToAndroid());
                     }
+
+
+
+
                 }
             }
         }
@@ -49,6 +53,19 @@ namespace Plugin.MaterialDesignControls.Android
             var customDatePicker = (CustomDatePicker)Element;
             if (e.PropertyName == "IsFocused" && !customDatePicker.IsFocused && !customDatePicker.Date.HasValue)
                 Control.Text = customDatePicker.InternalDateTime.ToString(customDatePicker.Format);
+
+            if (e.PropertyName == "Width")
+            {
+                if(!customDatePicker.Date.HasValue)
+                {
+                    Control.Text = String.Empty;
+                }
+                else
+                {
+                    Control.Text = customDatePicker.Date.Value.ToString(customDatePicker.Format);
+
+                }
+            }
         }
     }
 }

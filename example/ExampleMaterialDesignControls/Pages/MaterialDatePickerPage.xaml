@@ -24,6 +24,8 @@
                         </OnPlatform>
                     </material:MaterialDatePicker.FontFamily>
                 </material:MaterialDatePicker>
+                <material:MaterialDatePicker Type="Lined" Placeholder="Select Date" HorizontalTextAlignment="Start" Format="dd/MM/yyyy" TrailingIcon="" />
+
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>
