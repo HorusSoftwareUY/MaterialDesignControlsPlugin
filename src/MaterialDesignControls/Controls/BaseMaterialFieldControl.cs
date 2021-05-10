@@ -112,10 +112,10 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(FontFamilyProperty, value); }
         }
 
+        
         #endregion Text
 
         #region Placeholder
-
         public static readonly BindableProperty PlaceholderProperty =
             BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
 
@@ -558,6 +558,7 @@ namespace Plugin.MaterialDesignControls
                     lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
                     lblAssistive.HorizontalTextAlignment = HorizontalTextAlignment;
                     break;
+
             }
         }
 

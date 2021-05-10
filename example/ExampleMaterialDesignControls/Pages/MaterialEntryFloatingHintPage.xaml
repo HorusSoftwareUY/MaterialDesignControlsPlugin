@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryFloatingHintPage"
+             Title="MaterialEntryFloatingHint">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialEntryFloatingHint x:Name="txtName" Type="Filled" LabelText="Name*" MaxLength="12" TitleTextColor="#FF0000" PlaceholderColor="Blue"
+                                        Text="{Binding Name}" AssistiveText="{Binding NameError}"  AnimateError="True" TextTransform="Uppercase" Placeholder="Hola texto prueba"
+                                        TabIndex="1" ReturnType="Next" />
+                <!--<material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />-->
+
+                <!--<material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next"
+                                        TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone">
+                    <material:MaterialEntry.CustomTrailingIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/>
+                    </material:MaterialEntry.CustomTrailingIcon>
+                </material:MaterialEntry>-->
+
+                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

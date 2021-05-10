@@ -181,6 +181,14 @@
             <Setter Property="DisabledSelectedTextColor" Value="{StaticResource WhiteColor}" />
         </Style>
 
+
+        <!--MaterialEntryFloatingHintPlaceholderLabeled-->
+        <Style TargetType="material:MaterialEntryFloatingHint" BasedOn="{StaticResource BaseMaterialStyle}">
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="ClearIcon" Value="cancel.png" />
+            <Setter Property="ShowPasswordIcon" Value="showPassword.png" />
+        </Style>
+
         <!-- MaterialEntry -->
         <Style TargetType="material:MaterialEntry" BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
