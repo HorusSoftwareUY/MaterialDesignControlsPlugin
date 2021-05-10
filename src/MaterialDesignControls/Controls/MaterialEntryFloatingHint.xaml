@@ -10,7 +10,7 @@
                     <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="CenterAndExpand" HeightRequest="46">
                         <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" />
                         <Grid HorizontalOptions="FillAndExpand">
-                            <custom:CustomEntry x:Name="txtEntry" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Blue"/>
+                            <custom:CustomEntry x:Name="txtEntry" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"/>
                             <Label x:Name="lblTitle" LineBreakMode="NoWrap" Padding="0" HeightRequest="40"  VerticalTextAlignment="Center" HorizontalOptions="Start">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Handle_Tapped" />

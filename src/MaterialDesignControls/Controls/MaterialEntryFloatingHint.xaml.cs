@@ -490,7 +490,6 @@ namespace Plugin.MaterialDesignControls
 
         public void SetTranslatex()
         {
-            translateX = 36;
             lblTitle.TranslationX = translateX;
         }
 
