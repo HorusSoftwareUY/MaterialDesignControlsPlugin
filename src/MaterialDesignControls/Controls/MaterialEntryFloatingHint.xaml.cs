@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
@@ -69,10 +70,15 @@ namespace Plugin.MaterialDesignControls
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
 
-            lblTitle.TranslationX = 12;
+            lblTitle.TranslationX = translateX;
+
             lblTitle.FontSize = FontSize;
             lblTitle.TextColor = PlaceholderColor;
-            TransitionTitleAnimation = new TransitionTitleAnimation(lblTitle, FontSize, TitleFontSize, TitleTextColor, PlaceholderColor);
+
+            _placeholderFontSize = FontSize;
+            _titleFontSize = TitleFontSize;
+            _textTitleColor = TitleTextColor;
+            _textPlaceholderColor = PlaceholderColor;
         }
 
         #endregion Constructors
@@ -83,8 +89,13 @@ namespace Plugin.MaterialDesignControls
 
         private bool passwordIsVisible = false;
 
-        private static TransitionTitleAnimation TransitionTitleAnimation;
+        double _placeholderFontSize;
+        double _titleFontSize;
+        Color _textTitleColor;
+        Color _textPlaceholderColor;
 
+        int _topMargin = -15;
+        int translateX = 12;
         #endregion Attributes
 
         #region Properties
@@ -113,7 +124,7 @@ namespace Plugin.MaterialDesignControls
         public new string Placeholder
         {
             get { return (string)GetValue(PlaceholderProperty); }
-            set { SetValue(PlaceholderProperty, LabelText); }
+            set { SetValue(PlaceholderProperty, LabelText.Length > 20 ? LabelText.Substring(0,20) + "..." : LabelText); }
         }
 
         public static readonly new BindableProperty PaddingProperty =
@@ -342,11 +353,11 @@ namespace Plugin.MaterialDesignControls
             {
                 if (!string.IsNullOrEmpty((string)newValue))
                 {
-                    await TransitionTitleAnimation.TransitionToTitle(false);
+                    await control.TransitionToTitle(false);
                 }
                 else
                 {
-                    await TransitionTitleAnimation.TransitionToPlaceholder(false);
+                    await control.TransitionToPlaceholder(false);
                 }
             }
         }
@@ -468,7 +479,19 @@ namespace Plugin.MaterialDesignControls
                 case nameof(TitleTextColor):
                     SetTitleTextColor();
                     break;
+                case nameof(LeadingIcon):
+                    SetTranslatex();
+                    break;
+                case nameof(CustomLeadingIcon):
+                    SetTranslatex();
+                    break;
             }
+        }
+
+        public void SetTranslatex()
+        {
+            translateX = 36;
+            lblTitle.TranslationX = translateX;
         }
 
         private void SetShowPasswordIconIsVisible()
@@ -523,8 +546,7 @@ namespace Plugin.MaterialDesignControls
 
         protected void SetTitleTextColor()
         {
-            TransitionTitleAnimation = new TransitionTitleAnimation(lblTitle, FontSize, TitleFontSize, TitleTextColor, PlaceholderColor);
-
+            _textTitleColor = TitleTextColor;
             if (!String.IsNullOrEmpty(Text))
                 lblTitle.TextColor = TitleTextColor;
         }
@@ -560,7 +582,9 @@ namespace Plugin.MaterialDesignControls
             {
                 Focused?.Invoke(this, e);
                 if(String.IsNullOrEmpty(txtEntry.Text))
-                    await TransitionTitleAnimation.TransitionToTitle(true);
+                    await TransitionToTitle(true);
+                else
+                    lblTitle.TextColor = TitleTextColor;
 
                 var textInsideInput = txtEntry.Text;
                 txtEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
@@ -569,13 +593,10 @@ namespace Plugin.MaterialDesignControls
             {
                 Unfocused?.Invoke(this, e);
                 if (String.IsNullOrEmpty(txtEntry.Text))
-                    await TransitionTitleAnimation.TransitionToPlaceholder(true);
+                    await TransitionToPlaceholder(true);
+                else
+                    lblTitle.TextColor = TitleTextColor;
             }
-
-            if(String.IsNullOrEmpty(txtEntry.Text))
-                lblTitle.TextColor = PlaceholderColor;
-            else
-                lblTitle.TextColor = TitleTextColor;
 
         }
 
@@ -638,6 +659,62 @@ namespace Plugin.MaterialDesignControls
                 txtEntry.Text = txtEntry.Text.ToLower();
             else if (TextTransform == TextTransforms.Uppercase)
                 txtEntry.Text = txtEntry.Text.ToUpper();
+        }
+
+        public Task SizeTo(double fontSize)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+
+            // setup information for animation
+            Action<double> callback = input => { lblTitle.FontSize = input; };
+            double startingHeight = lblTitle.FontSize;
+            double endingHeight = fontSize;
+            uint rate = 5;
+            uint length = 100;
+            Easing easing = Easing.Linear;
+
+            // now start animation with all the setup information
+            lblTitle.Animate("invis", callback, startingHeight, endingHeight, rate, length, easing, (v, c) => taskCompletionSource.SetResult(c));
+
+            return taskCompletionSource.Task;
+        }
+
+        public async Task TransitionToPlaceholder(bool animated)
+        {
+            lblTitle.FontSize = _placeholderFontSize;
+            lblTitle.TextColor = _textPlaceholderColor;
+
+            if (animated)
+            {
+                var t1 = lblTitle.TranslateTo(translateX, 0, 100);
+                var t2 = SizeTo(_placeholderFontSize);
+                await Task.WhenAll(t1, t2);
+            }
+            else
+            {
+                lblTitle.TranslationX = translateX;
+                lblTitle.TranslationY = 0;
+            }
+
+        }
+
+        public async Task TransitionToTitle(bool animated)
+        {
+            lblTitle.FontSize = _titleFontSize;
+            lblTitle.TextColor = _textTitleColor;
+
+            if (animated)
+            {
+                var t1 = lblTitle.TranslateTo(0, _topMargin, 100);
+                var t2 = SizeTo(_titleFontSize);
+                await Task.WhenAll(t1, t2);
+            }
+            else
+            {
+                lblTitle.TranslationX = 0;
+                lblTitle.TranslationY = _topMargin;
+            }
+
         }
 
         #endregion Methods

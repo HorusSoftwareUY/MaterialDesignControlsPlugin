@@ -413,6 +413,7 @@ namespace Plugin.MaterialDesignControls
                 case FieldTypes.Lined:
                     frmContainer.BackgroundColor = Color.Transparent;
                     frmContainer.BorderColor = Color.Transparent;
+                    frmContainer.HeightRequest = 56;
                     bxvLine.IsVisible = true;
 
                     if (IsControlEnabled)

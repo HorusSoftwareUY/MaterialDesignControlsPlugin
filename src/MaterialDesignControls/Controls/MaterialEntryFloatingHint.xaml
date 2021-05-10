@@ -3,29 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
-             x:Class="Plugin.MaterialDesignControls.MaterialEntryFloatingHint
-             ">
+             x:Class="Plugin.MaterialDesignControls.MaterialEntryFloatingHint">
     <controls:BaseMaterialFieldControl.Content>
-        <StackLayout HeightRequest="56">
+        <StackLayout Spacing="2" >
             <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="46" VerticalOptions="CenterAndExpand" Padding="12,0">
-                <Grid>
-                    <StackLayout Orientation="Horizontal" Spacing="0">
+                    <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="CenterAndExpand" HeightRequest="46">
                         <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" />
-                        <custom:CustomEntry x:Name="txtEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder=""/>
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <custom:CustomEntry x:Name="txtEntry" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Blue"/>
+                            <Label x:Name="lblTitle" LineBreakMode="NoWrap" Padding="0" HeightRequest="40"  VerticalTextAlignment="Center" HorizontalOptions="Start">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
                         <custom:CustomImageButton x:Name="imgTrailingIcon" IsVisible="false" HorizontalOptions="End" />
                         <custom:CustomImageButton x:Name="imgShowPasswordIcon" IsVisible="false" HorizontalOptions="End" />
                         <custom:CustomImageButton x:Name="imgClearIcon" IsVisible="false" HorizontalOptions="End" />
                     </StackLayout>
-                   
-                </Grid>
             </Frame>
-            <Label x:Name="lblTitle" LineBreakMode="NoWrap" Margin="0,-60,0,0" TextColor="Gray" HeightRequest="40" VerticalTextAlignment="Center">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Handle_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
+            
             <BoxView x:Name="bxvLine" HeightRequest="1" />
-            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false"   LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
             
         </StackLayout>
     </controls:BaseMaterialFieldControl.Content>

@@ -51,7 +51,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Animations\TransitionTitleAnimation.cs" />
     <Compile Include="Controls\MaterialEntryFloatingHint.xaml.cs" />
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
