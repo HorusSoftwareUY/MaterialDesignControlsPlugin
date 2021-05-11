@@ -46,6 +46,24 @@ namespace Plugin.MaterialDesignControls.iOS
                 }
             }
         }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+            var CustomPicker = (CustomPicker)Element;
+            if (e.PropertyName == "Width")
+            {
+                if (CustomPicker.SelectedIndex == -1)
+                {
+                    this.Control.Text = null;
+                    this.Control.AttributedPlaceholder = new NSAttributedString(CustomPicker.Placeholder, foregroundColor: CustomPicker.PlaceholderColor.ToUIColor());
+                }
+                else
+                {
+                    Control.Text = Element.Items[CustomPicker.SelectedIndex].ToString();
+                }
+            }
+        }
     }
 
     public class MyPickerDelegate : UIPickerViewDelegate

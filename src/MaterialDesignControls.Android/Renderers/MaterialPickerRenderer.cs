@@ -6,6 +6,7 @@ using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Plugin.MaterialDesignControls.Android.Utils;
+using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(Plugin.MaterialDesignControls.Android.MaterialPickerRenderer))]
 
@@ -36,6 +37,24 @@ namespace Plugin.MaterialDesignControls.Android
                         this.Control.Hint = customPicker.Placeholder;
                         this.Control.SetHintTextColor(customPicker.PlaceholderColor.ToAndroid());
                     }
+                }
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+            var CustomPicker = (CustomPicker)Element;
+            if (e.PropertyName == "Width")
+            {
+                if (CustomPicker.SelectedIndex == -1)
+                {
+                    this.Control.Text = null;
+                    this.Control.Hint = CustomPicker.Placeholder;
+                }
+                else
+                {
+                    Control.Text = Element.Items[CustomPicker.SelectedIndex].ToString();
                 }
             }
         }

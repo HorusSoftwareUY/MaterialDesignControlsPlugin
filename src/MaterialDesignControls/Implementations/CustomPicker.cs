@@ -1,5 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
 {
@@ -14,5 +13,6 @@ namespace Plugin.MaterialDesignControls.Implementations
         public bool MultilineEnabled { get; set; } = false;
 
         public int PickerRowHeight { get; set; } = 50;
+
     }
 }

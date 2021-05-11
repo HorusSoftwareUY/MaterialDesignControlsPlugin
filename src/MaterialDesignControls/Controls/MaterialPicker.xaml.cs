@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -30,6 +29,13 @@ namespace Plugin.MaterialDesignControls
                 this.pckOptions.Focus();
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+
+            this.imgClearIcon.Tapped = () =>
+            {
+                this.pckOptions.SelectedIndex = -1;
+                this.SelectedItem = null;
+                SetClearIconIsVisible();
+            };
         }
 
         #endregion Constructors
@@ -52,6 +58,33 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
+        public static readonly BindableProperty ClearIconIsVisibleProperty =
+              BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialPicker), defaultValue: true);
+
+        public bool ClearIconIsVisible
+        {
+            get { return (bool)GetValue(ClearIconIsVisibleProperty); }
+            set { SetValue(ClearIconIsVisibleProperty, value); }
+        }
+
+        public static readonly BindableProperty ClearIconProperty =
+           BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialPicker), defaultValue: null);
+
+        public string ClearIcon
+        {
+            get { return (string)GetValue(ClearIconProperty); }
+            set { SetValue(ClearIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomClearIconProperty =
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialPicker), defaultValue: null);
+
+        public View CustomClearIcon
+        {
+            get { return (View)GetValue(CustomClearIconProperty); }
+            set { SetValue(CustomClearIconProperty, value); }
+        }
+
         public static readonly new BindableProperty PaddingProperty =
             BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialPicker), defaultValue: new Thickness(12, 0));
 
@@ -61,14 +94,14 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialPicker), defaultValue: true);
+        //public static readonly new BindableProperty IsEnabledProperty =
+        //    BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialPicker), defaultValue: true);
 
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
+        //public new bool IsEnabled
+        //{
+        //    get { return (bool)GetValue(IsEnabledProperty); }
+        //    set { SetValue(IsEnabledProperty, value); }
+        //}
 
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnItemsSourceChanged);
@@ -213,6 +246,7 @@ namespace Plugin.MaterialDesignControls
                 }
             }
             this.pckOptions.SelectedIndex = selectedIndex;
+            SetClearIconIsVisible();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -242,7 +276,27 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.AssistiveLineBreakMode):
                     this.lblAssistive.LineBreakMode = this.AssistiveLineBreakMode;
                     break;
+                case nameof(this.ClearIcon):
+                    if (!string.IsNullOrEmpty(this.ClearIcon))
+                        imgClearIcon.SetImage(ClearIcon);
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(CustomClearIcon):
+                    if (CustomClearIcon != null)
+                        imgClearIcon.SetCustomImage(CustomClearIcon);
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(SelectedItem):
+                    SetClearIconIsVisible();
+                    break;
+
             }
+        }
+
+        private void SetClearIconIsVisible()
+        {
+            imgClearIcon.IsVisible = IsEnabled && ClearIconIsVisible && this.pckOptions.SelectedItem != null
+                && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         }
 
         protected override void SetIsEnabled()

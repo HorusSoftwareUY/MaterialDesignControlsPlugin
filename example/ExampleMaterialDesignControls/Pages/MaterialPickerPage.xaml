@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialPicker x:Name="pckColors" Type="Filled" LabelText="Color" AnimateError="True" />
+                <material:MaterialPicker x:Name="pckColors" Type="Filled" LabelText="Color" AnimateError="True" ClearIconIsVisible="False" />
                 <material:MaterialPicker Type="Filled" LabelText="Color" AnimateError="True" IsEnabled="False" />
                 <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Outlined" LabelText="Size" Placeholder="Select option" PlaceholderColor="Red" />
                 <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" />
@@ -28,7 +28,7 @@
                     </material:MaterialPicker.FontFamily>
                 </material:MaterialPicker>
 
-                <material:MaterialDoublePicker x:Name="pckDouble" Type="Filled" LabelText="Double Picker"
+                <material:MaterialDoublePicker x:Name="pckDouble" Type="Filled" LabelText="Double Picker" ClearIconIsVisible="False"
                                                ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}"
                                                SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
 
