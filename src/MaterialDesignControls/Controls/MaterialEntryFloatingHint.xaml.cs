@@ -89,6 +89,15 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
+        public static readonly BindableProperty BackgroundTitleTextColorProperty =
+           BindableProperty.Create(nameof(BackgroundTitleTextColor), typeof(Color), typeof(MaterialEntryFloatingHint), defaultValue: Color.White);
+
+        public Color BackgroundTitleTextColor
+        {
+            get { return (Color)GetValue(BackgroundTitleTextColorProperty); }
+            set { SetValue(BackgroundTitleTextColorProperty, value); }
+        }
+
         public static readonly BindableProperty TitleTextColorProperty =
             BindableProperty.Create(nameof(TitleTextColor), typeof(Color), typeof(MaterialEntryFloatingHint), defaultValue: Color.Black);
 
@@ -113,7 +122,7 @@ namespace Plugin.MaterialDesignControls
         public new string Placeholder
         {
             get { return (string)GetValue(PlaceholderProperty); }
-            set { SetValue(PlaceholderProperty, LabelText); }
+            set { SetValue(PlaceholderProperty, LabelText.Length > 20 ? LabelText.Substring(0, 20) + "..." : LabelText); }
         }
 
         public static readonly new BindableProperty PaddingProperty =
@@ -324,7 +333,6 @@ namespace Plugin.MaterialDesignControls
         #endregion Events
 
         #region Methods
-
         void Handle_Tapped(object sender, EventArgs e)
         {
             if (IsEnabled)
@@ -468,8 +476,20 @@ namespace Plugin.MaterialDesignControls
                 case nameof(TitleTextColor):
                     SetTitleTextColor();
                     break;
+                case nameof(LeadingIcon):
+                    SetTranslatex();
+                    break;
+                case nameof(CustomLeadingIcon):
+                    SetTranslatex();
+                    break;
             }
         }
+
+        public void SetTranslatex()
+        {
+            TransitionTitleAnimation._translateX = 24;
+        }
+
 
         private void SetShowPasswordIconIsVisible()
         {
@@ -514,16 +534,19 @@ namespace Plugin.MaterialDesignControls
         protected override void SetPlaceholder()
         {
             //txtEntry.Placeholder = "";
+
         }
 
         protected override void SetPlaceholderColor()
         {
             lblTitle.TextColor = PlaceholderColor;
+            if(TransitionTitleAnimation != null)
+                TransitionTitleAnimation._textPlaceholderColor = PlaceholderColor;
         }
 
         protected void SetTitleTextColor()
         {
-            TransitionTitleAnimation = new TransitionTitleAnimation(lblTitle, FontSize, TitleFontSize, TitleTextColor, PlaceholderColor);
+            TransitionTitleAnimation._textTitleColor = TitleTextColor;
 
             if (!String.IsNullOrEmpty(Text))
                 lblTitle.TextColor = TitleTextColor;
@@ -561,6 +584,8 @@ namespace Plugin.MaterialDesignControls
                 Focused?.Invoke(this, e);
                 if(String.IsNullOrEmpty(txtEntry.Text))
                     await TransitionTitleAnimation.TransitionToTitle(true);
+                else
+                    lblTitle.TextColor = TitleTextColor;
 
                 var textInsideInput = txtEntry.Text;
                 txtEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
@@ -570,13 +595,9 @@ namespace Plugin.MaterialDesignControls
                 Unfocused?.Invoke(this, e);
                 if (String.IsNullOrEmpty(txtEntry.Text))
                     await TransitionTitleAnimation.TransitionToPlaceholder(true);
+                else
+                    lblTitle.TextColor = TitleTextColor;
             }
-
-            if(String.IsNullOrEmpty(txtEntry.Text))
-                lblTitle.TextColor = PlaceholderColor;
-            else
-                lblTitle.TextColor = TitleTextColor;
-
         }
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)

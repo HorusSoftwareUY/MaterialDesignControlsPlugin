@@ -414,6 +414,7 @@ namespace Plugin.MaterialDesignControls
                     frmContainer.BackgroundColor = Color.Transparent;
                     frmContainer.BorderColor = Color.Transparent;
                     bxvLine.IsVisible = true;
+                    frmContainer.HeightRequest = 56;
 
                     if (IsControlEnabled)
                         bxvLine.Color = IsControlFocused ? FocusedBorderColor : BorderColor;

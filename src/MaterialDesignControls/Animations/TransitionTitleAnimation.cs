@@ -4,18 +4,17 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Animations
 {
-
     public class TransitionTitleAnimation
     {
         double _placeholderFontSize;
         double _titleFontSize;
-        Color _textTitleColor;
-        Color _textPlaceholderColor;
+        public Color _textTitleColor;
+        public Color _textPlaceholderColor;
 
-
-        int _topMargin = -35;
+        int _topMargin = -25;
 
         private Label _materialLabel;
+        public int _translateX = 12;
 
         public TransitionTitleAnimation(Label materialLabel, double placeHolderFontSize, double titleFontSize, Color textTitleColor, Color textPlaceholderColor)
         {
@@ -24,23 +23,6 @@ namespace Plugin.MaterialDesignControls.Animations
             _titleFontSize = titleFontSize;
             _textTitleColor = textTitleColor;
             _textPlaceholderColor = textPlaceholderColor;
-        }
-
-        public async Task Animate(bool animated)
-        {
-            if (animated)
-            {
-                var t1 = _materialLabel.TranslateTo(0, _topMargin, 100);
-                var t2 = SizeTo(_titleFontSize);
-                await Task.WhenAll(t1, t2);
-            }
-            else
-            {
-                _materialLabel.TranslationX = 0;
-                _materialLabel.TranslationY = _topMargin;
-            }
-            _materialLabel.FontSize = _titleFontSize;
-            _materialLabel.TextColor = _textTitleColor;
         }
 
         public Task SizeTo(double fontSize)
@@ -63,36 +45,42 @@ namespace Plugin.MaterialDesignControls.Animations
 
         public async Task TransitionToPlaceholder( bool animated)
         {
+            _materialLabel.FontSize = _placeholderFontSize;
+            _materialLabel.TextColor = _textPlaceholderColor;
+            _materialLabel.BackgroundColor = Color.Transparent;
+
             if (animated)
             {
-                var t1 = _materialLabel.TranslateTo(12, 0, 100);
+                var t1 = _materialLabel.TranslateTo(_translateX, 0, 100);
                 var t2 = SizeTo( _placeholderFontSize);
                 await Task.WhenAll(t1, t2);
             }
             else
             {
-                _materialLabel.TranslationX = 12;
+                _materialLabel.TranslationX = _translateX;
                 _materialLabel.TranslationY = 0;
             }
-            _materialLabel.FontSize = _placeholderFontSize;
-            _materialLabel.TextColor = _textPlaceholderColor;
+
         }
 
-        public async Task TransitionToTitle( bool animated)
+        public async Task TransitionToTitle(bool animated)
         {
+            _materialLabel.FontSize = _titleFontSize;
+            _materialLabel.TextColor = _textTitleColor;
+            //background color custom
+
             if (animated)
             {
-                var t1 = _materialLabel.TranslateTo(0, _topMargin, 100);
+                var t1 = _materialLabel.TranslateTo(5, _topMargin, 100);
                 var t2 = SizeTo( _titleFontSize);
                 await Task.WhenAll(t1, t2);
             }
             else
             {
-                _materialLabel.TranslationX = 0;
+                _materialLabel.TranslationX = 5;
                 _materialLabel.TranslationY = _topMargin;
             }
-            _materialLabel.FontSize = _titleFontSize;
-            _materialLabel.TextColor = _textTitleColor;
+
         }
     }
 }

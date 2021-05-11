@@ -3,12 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
-             x:Class="Plugin.MaterialDesignControls.MaterialEntryFloatingHint
-             ">
+             x:Class="Plugin.MaterialDesignControls.MaterialEntryFloatingHint">
     <controls:BaseMaterialFieldControl.Content>
-        <StackLayout HeightRequest="56">
-            <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="46" VerticalOptions="CenterAndExpand" Padding="12,0">
-                <Grid>
+        <AbsoluteLayout HeightRequest="56" HorizontalOptions="StartAndExpand">
+            <Frame AbsoluteLayout.LayoutBounds="0, 0.5, 0, 0" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" x:Name="frmContainer" HasShadow="false" HeightRequest="46" VerticalOptions="CenterAndExpand" Padding="12,0">
                     <StackLayout Orientation="Horizontal" Spacing="0">
                         <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" />
                         <custom:CustomEntry x:Name="txtEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder=""/>
@@ -16,10 +14,8 @@
                         <custom:CustomImageButton x:Name="imgShowPasswordIcon" IsVisible="false" HorizontalOptions="End" />
                         <custom:CustomImageButton x:Name="imgClearIcon" IsVisible="false" HorizontalOptions="End" />
                     </StackLayout>
-                   
-                </Grid>
             </Frame>
-            <Label x:Name="lblTitle" LineBreakMode="NoWrap" Margin="0,-60,0,0" TextColor="Gray" HeightRequest="40" VerticalTextAlignment="Center">
+            <Label AbsoluteLayout.LayoutBounds="0, 0.5, 0, 0" AbsoluteLayout.LayoutFlags="PositionProportional" x:Name="lblTitle" LineBreakMode="NoWrap" HorizontalOptions="Start" Padding="5,0,5,0" VerticalTextAlignment="Center">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Handle_Tapped" />
                 </Label.GestureRecognizers>
@@ -27,6 +23,6 @@
             <BoxView x:Name="bxvLine" HeightRequest="1" />
             <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
             
-        </StackLayout>
+        </AbsoluteLayout>
     </controls:BaseMaterialFieldControl.Content>
 </controls:BaseMaterialFieldControl>
