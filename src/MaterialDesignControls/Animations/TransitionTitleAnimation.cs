@@ -10,19 +10,22 @@ namespace Plugin.MaterialDesignControls.Animations
         double _titleFontSize;
         public Color _textTitleColor;
         public Color _textPlaceholderColor;
+        public Color _titleBackgroundColor;
+
 
         int _topMargin = -25;
 
         private Label _materialLabel;
         public int _translateX = 12;
 
-        public TransitionTitleAnimation(Label materialLabel, double placeHolderFontSize, double titleFontSize, Color textTitleColor, Color textPlaceholderColor)
+        public TransitionTitleAnimation(Label materialLabel, double placeHolderFontSize, double titleFontSize, Color textTitleColor, Color textPlaceholderColor, Color titleBackgroundColor)
         {
             _materialLabel = materialLabel;
             _placeholderFontSize = placeHolderFontSize;
             _titleFontSize = titleFontSize;
             _textTitleColor = textTitleColor;
             _textPlaceholderColor = textPlaceholderColor;
+            _titleBackgroundColor = titleBackgroundColor;
         }
 
         public Task SizeTo(double fontSize)
@@ -67,7 +70,7 @@ namespace Plugin.MaterialDesignControls.Animations
         {
             _materialLabel.FontSize = _titleFontSize;
             _materialLabel.TextColor = _textTitleColor;
-            //background color custom
+            _materialLabel.BackgroundColor = _titleBackgroundColor;
 
             if (animated)
             {

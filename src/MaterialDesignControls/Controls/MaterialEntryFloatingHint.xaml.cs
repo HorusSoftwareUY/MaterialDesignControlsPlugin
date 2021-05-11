@@ -72,7 +72,7 @@ namespace Plugin.MaterialDesignControls
             lblTitle.TranslationX = 12;
             lblTitle.FontSize = FontSize;
             lblTitle.TextColor = PlaceholderColor;
-            TransitionTitleAnimation = new TransitionTitleAnimation(lblTitle, FontSize, TitleFontSize, TitleTextColor, PlaceholderColor);
+            TransitionTitleAnimation = new TransitionTitleAnimation(lblTitle, FontSize, TitleFontSize, TitleTextColor, PlaceholderColor, BackgroundTitleTextColor);
         }
 
         #endregion Constructors
@@ -482,7 +482,15 @@ namespace Plugin.MaterialDesignControls
                 case nameof(CustomLeadingIcon):
                     SetTranslatex();
                     break;
+                case nameof(BackgroundTitleTextColor):
+                    SetBackgroundTitleTextColor();
+                    break;
             }
+        }
+
+        public void SetBackgroundTitleTextColor()
+        {
+            TransitionTitleAnimation._titleBackgroundColor = BackgroundTitleTextColor;
         }
 
         public void SetTranslatex()

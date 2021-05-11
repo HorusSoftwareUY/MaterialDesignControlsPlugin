@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialEntryFloatingHint x:Name="txtName" Type="Filled" LabelText="Name*" MaxLength="12" TitleTextColor="#FF0000" PlaceholderColor="#FF0000"
+                <material:MaterialEntryFloatingHint x:Name="txtName" Type="Lined" LabelText="Name*" MaxLength="12" TitleTextColor="#FF0000" PlaceholderColor="#FF0000"
                                                     BackgroundTitleTextColor="White"
                                         Text="{Binding Name}" AssistiveText="{Binding NameError}"  AnimateError="True" TextTransform="Uppercase" Placeholder="Hola texto prueba"
                                         TabIndex="1" ReturnType="Next" />
