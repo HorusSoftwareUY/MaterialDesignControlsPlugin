@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryFloatingHintPage"
+             Title="MaterialEntryFloatingHint">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialEntryFloatingHint x:Name="txtName" Type="Filled" LabelText="Name*" MaxLength="12" TitleTextColor="#FF0000" PlaceholderColor="#FF0000"
+                                        Text="{Binding Name}" AssistiveText="Hola"  AnimateError="True" TextTransform="Uppercase" Placeholder="Hola texto prueba"
+                                        TabIndex="1" ReturnType="Next" />
+                <material:MaterialEntryFloatingHint Type="Lined" LabelText="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
+
+                <material:MaterialEntryFloatingHint Type="Lined" LabelText="Password" IsPassword="true" TabIndex="3" ReturnType="Next" ClearIconIsVisible="False" >
+                    <material:MaterialEntryFloatingHint.CustomShowPasswordIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg"/>
+                    </material:MaterialEntryFloatingHint.CustomShowPasswordIcon>
+                    <material:MaterialEntryFloatingHint.CustomHidePasswordIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg"/>
+                    </material:MaterialEntryFloatingHint.CustomHidePasswordIcon>
+                </material:MaterialEntryFloatingHint>
+
+                <material:MaterialEntryFloatingHint Type="Outlined" LabelText="Confirm password"  IsPassword="true" TabIndex="4" ReturnType="Next" CornerRadius="20" />
+                <material:MaterialEntryFloatingHint Type="Filled"  LabelText="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next"
+                                        FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" HorizontalTextAlignment="Center" />
+                <material:MaterialEntryFloatingHint Type="Filled" LabelText="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" IsEnabled="False" />
+
+                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
