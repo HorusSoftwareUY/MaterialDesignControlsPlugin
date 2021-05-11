@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -58,8 +57,17 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
+        public static readonly BindableProperty ClearIconIsVisibleProperty =
+                BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialDoublePicker), defaultValue: true);
+
+        public bool ClearIconIsVisible
+        {
+            get { return (bool)GetValue(ClearIconIsVisibleProperty); }
+            set { SetValue(ClearIconIsVisibleProperty, value); }
+        }
+
         public static readonly BindableProperty ClearIconProperty =
-          BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+          BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialDoublePicker), defaultValue: null);
 
         public string ClearIcon
         {
@@ -68,7 +76,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CustomClearIconProperty =
-            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialDoublePicker), defaultValue: null);
 
         public View CustomClearIcon
         {
@@ -372,11 +380,7 @@ namespace Plugin.MaterialDesignControls
 
         private void SetClearIconIsVisible()
         {
-            var sI = SelectedItem;
-            var sI2 = SecondarySelectedItem;
-            var a = SecondarySelectedIndex;
-
-            imgClearIcon.IsVisible = IsEnabled && this.pckOptions.SelectedIndexes != null
+            imgClearIcon.IsVisible = IsEnabled && ClearIconIsVisible && this.pckOptions.SelectedIndexes != null
                 && this.pckOptions.SelectedIndexes.Length > 0
                 && this.pckOptions.SelectedIndexes[0] >= 0
                 && this.pckOptions.SelectedIndexes[1] >= 0

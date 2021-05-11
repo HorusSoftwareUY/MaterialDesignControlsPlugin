@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -59,8 +58,17 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
+        public static readonly BindableProperty ClearIconIsVisibleProperty =
+              BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialPicker), defaultValue: true);
+
+        public bool ClearIconIsVisible
+        {
+            get { return (bool)GetValue(ClearIconIsVisibleProperty); }
+            set { SetValue(ClearIconIsVisibleProperty, value); }
+        }
+
         public static readonly BindableProperty ClearIconProperty =
-           BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+           BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialPicker), defaultValue: null);
 
         public string ClearIcon
         {
@@ -69,7 +77,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CustomClearIconProperty =
-            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialPicker), defaultValue: null);
 
         public View CustomClearIcon
         {
@@ -287,7 +295,7 @@ namespace Plugin.MaterialDesignControls
 
         private void SetClearIconIsVisible()
         {
-            imgClearIcon.IsVisible = IsEnabled && this.pckOptions.SelectedItem != null
+            imgClearIcon.IsVisible = IsEnabled && ClearIconIsVisible && this.pckOptions.SelectedItem != null
                 && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         }
 
