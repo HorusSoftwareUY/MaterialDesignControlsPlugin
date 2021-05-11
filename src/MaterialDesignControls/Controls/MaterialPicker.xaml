@@ -13,10 +13,12 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <custom:CustomImageButton Grid.Column="0" x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" />
-                    <custom:CustomPicker Grid.Column="1" x:Name="pckOptions" VerticalOptions="Center" HorizontalOptions="FillAndExpand" PlaceholderColor="Gray" />
+                    <custom:CustomPicker  Grid.Column="1" x:Name="pckOptions" VerticalOptions="Center" HorizontalOptions="FillAndExpand" PlaceholderColor="Gray" />
                     <custom:CustomImageButton Grid.Column="2" x:Name="imgTrailingIcon" IsVisible="false" HorizontalOptions="End" />
+                    <custom:CustomImageButton Grid.Column="3" x:Name="imgClearIcon" IsVisible="false" HorizontalOptions="End" />
                 </Grid>
             </Frame>
             <BoxView x:Name="bxvLine" HeightRequest="1" />

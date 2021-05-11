@@ -172,6 +172,8 @@
     <ProjectReference Include="..\..\src\MaterialDesignControls.iOS\MaterialDesignControls.iOS.csproj">
       <Project>{2BFC48FE-5BE1-4482-8469-77DDA82D13C8}</Project>
       <Name>MaterialDesignControls.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
