@@ -8,6 +8,7 @@
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
                 <material:MaterialDatePicker Date="{Binding Date}" Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" Placeholder="Select date" PlaceholderColor="Red" />
+                <material:MaterialDatePicker ClearIconIsVisible="False" Type="Filled" LabelText="Start dat clearIcon is not visible" Format="yyyy-MM-dd" LeadingIcon="calendar.png" Placeholder="Select date" PlaceholderColor="Red" />
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" IsEnabled="False"  />
                 <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />
