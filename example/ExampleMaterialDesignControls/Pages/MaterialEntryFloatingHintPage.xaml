@@ -8,18 +8,24 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialEntryFloatingHint x:Name="txtName" Type="Lined" LabelText="Name*" MaxLength="12" TitleTextColor="#FF0000" PlaceholderColor="#FF0000"
-                                                    BackgroundTitleTextColor="White"
-                                        Text="{Binding Name}" AssistiveText="{Binding NameError}"  AnimateError="True" TextTransform="Uppercase" Placeholder="Hola texto prueba"
+                <material:MaterialEntryFloatingHint x:Name="txtName" Type="Filled" LabelText="Name*" MaxLength="12" TitleTextColor="#FF0000" PlaceholderColor="#FF0000"
+                                        Text="{Binding Name}" AssistiveText="Hola"  AnimateError="True" TextTransform="Uppercase" Placeholder="Hola texto prueba"
                                         TabIndex="1" ReturnType="Next" />
-                <!--<material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />-->
+                <material:MaterialEntryFloatingHint Type="Lined" LabelText="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
 
-                <!--<material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next"
-                                        TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone">
-                    <material:MaterialEntry.CustomTrailingIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/>
-                    </material:MaterialEntry.CustomTrailingIcon>
-                </material:MaterialEntry>-->
+                <material:MaterialEntryFloatingHint Type="Lined" LabelText="Password" IsPassword="true" TabIndex="3" ReturnType="Next" ClearIconIsVisible="False" >
+                    <material:MaterialEntryFloatingHint.CustomShowPasswordIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg"/>
+                    </material:MaterialEntryFloatingHint.CustomShowPasswordIcon>
+                    <material:MaterialEntryFloatingHint.CustomHidePasswordIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg"/>
+                    </material:MaterialEntryFloatingHint.CustomHidePasswordIcon>
+                </material:MaterialEntryFloatingHint>
+
+                <material:MaterialEntryFloatingHint Type="Outlined" LabelText="Confirm password"  IsPassword="true" TabIndex="4" ReturnType="Next" CornerRadius="20" />
+                <material:MaterialEntryFloatingHint Type="Filled"  LabelText="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next"
+                                        FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" HorizontalTextAlignment="Center" />
+                <material:MaterialEntryFloatingHint Type="Filled" LabelText="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" IsEnabled="False" />
 
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
             </StackLayout>

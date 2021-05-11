@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
@@ -11,7 +12,10 @@ namespace Plugin.MaterialDesignControls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialEntryFloatingHint : BaseMaterialFieldControl
     {
+        /*
 
+        
+        */
         #region Constructors
 
         public MaterialEntryFloatingHint()
@@ -69,10 +73,15 @@ namespace Plugin.MaterialDesignControls
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
 
-            lblTitle.TranslationX = 12;
+            lblTitle.TranslationX = _translateX;
             lblTitle.FontSize = FontSize;
             lblTitle.TextColor = PlaceholderColor;
-            TransitionTitleAnimation = new TransitionTitleAnimation(lblTitle, FontSize, TitleFontSize, TitleTextColor, PlaceholderColor, BackgroundTitleTextColor);
+            _placeholderFontSize = FontSize;
+            _titleFontSize = TitleFontSize;
+            _textTitleColor = TitleTextColor;
+            _textPlaceholderColor = PlaceholderColor;
+            _titleBackgroundColor = BackgroundColor;
+
         }
 
         #endregion Constructors
@@ -83,20 +92,18 @@ namespace Plugin.MaterialDesignControls
 
         private bool passwordIsVisible = false;
 
-        private static TransitionTitleAnimation TransitionTitleAnimation;
+        double _placeholderFontSize;
+        double _titleFontSize;
+        Color _textTitleColor;
+        Color _textPlaceholderColor;
+        Color _titleBackgroundColor;
 
+        int _topMargin = -25;
+        int _translateX = 12;
+        int _translateXNormal = 5;
         #endregion Attributes
 
         #region Properties
-
-        public static readonly BindableProperty BackgroundTitleTextColorProperty =
-           BindableProperty.Create(nameof(BackgroundTitleTextColor), typeof(Color), typeof(MaterialEntryFloatingHint), defaultValue: Color.White);
-
-        public Color BackgroundTitleTextColor
-        {
-            get { return (Color)GetValue(BackgroundTitleTextColorProperty); }
-            set { SetValue(BackgroundTitleTextColorProperty, value); }
-        }
 
         public static readonly BindableProperty TitleTextColorProperty =
             BindableProperty.Create(nameof(TitleTextColor), typeof(Color), typeof(MaterialEntryFloatingHint), defaultValue: Color.Black);
@@ -350,11 +357,11 @@ namespace Plugin.MaterialDesignControls
             {
                 if (!string.IsNullOrEmpty((string)newValue))
                 {
-                    await TransitionTitleAnimation.TransitionToTitle(false);
+                    await control.TransitionToTitle(false);
                 }
                 else
                 {
-                    await TransitionTitleAnimation.TransitionToPlaceholder(false);
+                    await control.TransitionToPlaceholder(false);
                 }
             }
         }
@@ -482,7 +489,13 @@ namespace Plugin.MaterialDesignControls
                 case nameof(CustomLeadingIcon):
                     SetTranslatex();
                     break;
-                case nameof(BackgroundTitleTextColor):
+                case nameof(TrailingIcon):
+                    SetTranslatex();
+                    break;
+                case nameof(CustomTrailingIcon):
+                    SetTranslatex();
+                    break;
+                case nameof(BackgroundColor):
                     SetBackgroundTitleTextColor();
                     break;
             }
@@ -490,12 +503,14 @@ namespace Plugin.MaterialDesignControls
 
         public void SetBackgroundTitleTextColor()
         {
-            TransitionTitleAnimation._titleBackgroundColor = BackgroundTitleTextColor;
+            _titleBackgroundColor = BackgroundColor;
         }
 
         public void SetTranslatex()
         {
-            TransitionTitleAnimation._translateX = 24;
+            _translateX = 36;
+            lblTitle.TranslationX = _translateX;
+            _translateXNormal = 0;
         }
 
 
@@ -548,13 +563,12 @@ namespace Plugin.MaterialDesignControls
         protected override void SetPlaceholderColor()
         {
             lblTitle.TextColor = PlaceholderColor;
-            if(TransitionTitleAnimation != null)
-                TransitionTitleAnimation._textPlaceholderColor = PlaceholderColor;
+            _textPlaceholderColor = PlaceholderColor;
         }
 
         protected void SetTitleTextColor()
         {
-            TransitionTitleAnimation._textTitleColor = TitleTextColor;
+            _textTitleColor = TitleTextColor;
 
             if (!String.IsNullOrEmpty(Text))
                 lblTitle.TextColor = TitleTextColor;
@@ -591,7 +605,7 @@ namespace Plugin.MaterialDesignControls
             {
                 Focused?.Invoke(this, e);
                 if(String.IsNullOrEmpty(txtEntry.Text))
-                    await TransitionTitleAnimation.TransitionToTitle(true);
+                    await TransitionToTitle(true);
                 else
                     lblTitle.TextColor = TitleTextColor;
 
@@ -602,7 +616,7 @@ namespace Plugin.MaterialDesignControls
             {
                 Unfocused?.Invoke(this, e);
                 if (String.IsNullOrEmpty(txtEntry.Text))
-                    await TransitionTitleAnimation.TransitionToPlaceholder(true);
+                    await TransitionToPlaceholder(true);
                 else
                     lblTitle.TextColor = TitleTextColor;
             }
@@ -667,6 +681,63 @@ namespace Plugin.MaterialDesignControls
                 txtEntry.Text = txtEntry.Text.ToLower();
             else if (TextTransform == TextTransforms.Uppercase)
                 txtEntry.Text = txtEntry.Text.ToUpper();
+        }
+
+        public Task SizeTo(double fontSize)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+
+            // setup information for animation
+            Action<double> callback = input => { lblTitle.FontSize = input; };
+            double startingHeight = lblTitle.FontSize;
+            double endingHeight = fontSize;
+            uint rate = 5;
+            uint length = 100;
+            Easing easing = Easing.Linear;
+
+            // now start animation with all the setup information
+            lblTitle.Animate("invis", callback, startingHeight, endingHeight, rate, length, easing, (v, c) => taskCompletionSource.SetResult(c));
+
+            return taskCompletionSource.Task;
+        }
+
+        public async Task TransitionToPlaceholder(bool animated)
+        {
+            lblTitle.FontSize = _placeholderFontSize;
+            lblTitle.TextColor = _textPlaceholderColor;
+            lblTitle.BackgroundColor = Color.Transparent;
+
+            if (animated)
+            {
+                var t1 = lblTitle.TranslateTo(_translateX, 0, 100);
+                var t2 = SizeTo(_placeholderFontSize);
+                await Task.WhenAll(t1, t2);
+            }
+            else
+            {
+                lblTitle.TranslationX = _translateX;
+                lblTitle.TranslationY = 0;
+            }
+
+        }
+
+        public async Task TransitionToTitle(bool animated)
+        {
+            lblTitle.FontSize = _titleFontSize;
+            lblTitle.TextColor = _textTitleColor;
+            lblTitle.BackgroundColor = _titleBackgroundColor;
+
+            if (animated)
+            {
+                var t1 = lblTitle.TranslateTo(_translateXNormal, _topMargin, 100);
+                var t2 = SizeTo(_titleFontSize);
+                await Task.WhenAll(t1, t2);
+            }
+            else
+            {
+                lblTitle.TranslationX = _translateXNormal;
+                lblTitle.TranslationY = _topMargin;
+            }
         }
 
         #endregion Methods

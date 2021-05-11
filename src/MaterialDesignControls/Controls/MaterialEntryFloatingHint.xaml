@@ -5,8 +5,8 @@
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
              x:Class="Plugin.MaterialDesignControls.MaterialEntryFloatingHint">
     <controls:BaseMaterialFieldControl.Content>
-            <AbsoluteLayout BackgroundColor="Green">
-                <Frame AbsoluteLayout.LayoutBounds="0, 0.5, -1, -1" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="PositionProportional" x:Name="frmContainer" HasShadow="false" HeightRequest="46" VerticalOptions="CenterAndExpand" Padding="12,0">
+            <AbsoluteLayout Padding="10">
+                <Frame AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" x:Name="frmContainer" HasShadow="false" HeightRequest="46" VerticalOptions="CenterAndExpand" Padding="12,0">
                     <StackLayout Orientation="Horizontal" Spacing="0">
                         <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" />
                         <custom:CustomEntry x:Name="txtEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
@@ -15,14 +15,13 @@
                         <custom:CustomImageButton x:Name="imgClearIcon" IsVisible="false" HorizontalOptions="End" />
                     </StackLayout>
                 </Frame>
-                <Label AbsoluteLayout.LayoutBounds="0, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional" x:Name="lblTitle" LineBreakMode="NoWrap" HorizontalOptions="Start" Padding="5,0,5,0" VerticalTextAlignment="Center">
+                <Label AbsoluteLayout.LayoutBounds="0, 0.5, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional" x:Name="lblTitle" LineBreakMode="NoWrap" HorizontalOptions="Start" Padding="2,0,2,0" VerticalTextAlignment="Center">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Handle_Tapped" />
                     </Label.GestureRecognizers>
                 </Label>
-                <BoxView x:Name="bxvLine" HeightRequest="1" AbsoluteLayout.LayoutBounds="0, 0.9, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional" />
-            <controls:MaterialLabel x:Name="lblAssistive" AbsoluteLayout.LayoutBounds="0, 1 , -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
-
-            </AbsoluteLayout>
+                <BoxView x:Name="bxvLine" HeightRequest="1" AbsoluteLayout.LayoutBounds="0, 0.9, 1, 1" AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" />
+            <controls:MaterialLabel x:Name="lblAssistive" VerticalOptions="End" AbsoluteLayout.LayoutBounds="0, 1, 1, 1" AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional,HeightProportional" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+        </AbsoluteLayout>
     </controls:BaseMaterialFieldControl.Content>
 </controls:BaseMaterialFieldControl>
