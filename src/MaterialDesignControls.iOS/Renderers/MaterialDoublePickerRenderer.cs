@@ -42,6 +42,34 @@ namespace Plugin.MaterialDesignControls.iOS
             }
         }
 
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+            var CustomPicker = (DoublePicker)Element;
+            if (e.PropertyName == "Width")
+            {
+                if (CustomPicker.SelectedIndexes != null &&
+                    (CustomPicker.SelectedIndexes[0] == -1 ||
+                    CustomPicker.SelectedIndexes[1] == -1))
+                {
+                    this.Control.Text = null;
+                    this.Control.AttributedPlaceholder = new NSAttributedString(CustomPicker.Placeholder, foregroundColor: CustomPicker.PlaceholderColor.ToUIColor());
+                }
+                else
+                {
+                    string text = null;
+
+                    if (CustomPicker.Items.Count > 0 && CustomPicker.SelectedIndexes[0] >= 0)
+                        text = Element.Items[CustomPicker.SelectedIndexes[0]];
+
+                    if (CustomPicker.SecondaryItems.Count > 0 && CustomPicker.SelectedIndexes[1] >= 0)
+                        text = $"{text}{CustomPicker.Separator}{CustomPicker.SecondaryItems[CustomPicker.SelectedIndexes[1]]}".Trim();
+
+                    Control.Text = text;
+                }
+            }
+        }
+
         protected override UITextField CreateNativeControl()
         {
             return new ReadOnlyField { BorderStyle = UITextBorderStyle.RoundedRect };

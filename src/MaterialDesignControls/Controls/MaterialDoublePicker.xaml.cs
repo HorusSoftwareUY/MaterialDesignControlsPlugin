@@ -30,6 +30,16 @@ namespace Plugin.MaterialDesignControls
                 this.pckOptions.Focus();
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+
+            this.imgClearIcon.Tapped = () =>
+            {
+                this.pckOptions.SelectedIndexes = new int[]{-1, -1};
+                SelectedItem = null;
+                SecondarySelectedItem = null;
+                SetClearIconIsVisible();
+            };
+
+            SetClearIconIsVisible();
         }
 
         #endregion Constructors
@@ -48,6 +58,24 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
+        public static readonly BindableProperty ClearIconProperty =
+          BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+
+        public string ClearIcon
+        {
+            get { return (string)GetValue(ClearIconProperty); }
+            set { SetValue(ClearIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomClearIconProperty =
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+
+        public View CustomClearIcon
+        {
+            get { return (View)GetValue(CustomClearIconProperty); }
+            set { SetValue(CustomClearIconProperty, value); }
+        }
+
         public static readonly new BindableProperty PaddingProperty =
             BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialDoublePicker), defaultValue: new Thickness(12, 0));
 
@@ -57,14 +85,14 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDoublePicker), defaultValue: true);
+        //public static readonly new BindableProperty IsEnabledProperty =
+        //    BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDoublePicker), defaultValue: true);
 
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
+        //public new bool IsEnabled
+        //{
+        //    get { return (bool)GetValue(IsEnabledProperty); }
+        //    set { SetValue(IsEnabledProperty, value); }
+        //}
 
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnItemsSourceChanged);
@@ -90,7 +118,7 @@ namespace Plugin.MaterialDesignControls
         public string SelectedItem
         {
             get { return (string)GetValue(SelectedItemProperty); }
-            set { SetValue(SelectedItemProperty, value); }
+            set { SetValue(SelectedItemProperty, value); SetSelectedItemIndexes(1); }
         }
 
         public static readonly BindableProperty SecondarySelectedItemProperty =
@@ -99,7 +127,7 @@ namespace Plugin.MaterialDesignControls
         public string SecondarySelectedItem
         {
             get { return (string)GetValue(SecondarySelectedItemProperty); }
-            set { SetValue(SecondarySelectedItemProperty, value); }
+            set { SetValue(SecondarySelectedItemProperty, value); SetSelectedItemIndexes(2); }
         }
 
         public static readonly BindableProperty SeparatorProperty =
@@ -188,6 +216,39 @@ namespace Plugin.MaterialDesignControls
         #endregion Events
 
         #region Methods
+
+        private void SetSelectedItemIndexes(int source)
+        {
+            int index = 0;
+            if (source == 1)
+            {
+                if(SelectedItem != null)
+                {
+                    for (int i = 0; i < pckOptions.Items.Count; i++)
+                        if (pckOptions.Items[i].Equals(SelectedItem.ToString()))
+                        {
+                            index = i;
+                            break;
+                        }
+                    this.pckOptions.SelectedIndexes[0] = index;
+                }
+                
+            }
+            else
+            {
+                if(SecondarySelectedItem != null )
+                {
+                    for (int i = 0; i < pckOptions.SecondaryItems.Count; i++)
+                        if (pckOptions.SecondaryItems[i].Equals(SecondarySelectedItem.ToString()))
+                        {
+                            index = i;
+                            break;
+                        }
+                    this.pckOptions.SelectedIndexes[1] = index;
+                }
+                
+            }
+        }
 
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -288,7 +349,38 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.Separator):
                     this.pckOptions.Separator = this.Separator;
                     break;
+                case nameof(this.ClearIcon):
+                    if (!string.IsNullOrEmpty(this.ClearIcon))
+                        imgClearIcon.SetImage(ClearIcon);
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(CustomClearIcon):
+                    if (CustomClearIcon != null)
+                        imgClearIcon.SetCustomImage(CustomClearIcon);
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(SelectedItem):
+                    SetSelectedItemIndexes(1);
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(SecondarySelectedItem):
+                    SetSelectedItemIndexes(2);
+                    SetClearIconIsVisible();
+                    break;
             }
+        }
+
+        private void SetClearIconIsVisible()
+        {
+            var sI = SelectedItem;
+            var sI2 = SecondarySelectedItem;
+            var a = SecondarySelectedIndex;
+
+            imgClearIcon.IsVisible = IsEnabled && this.pckOptions.SelectedIndexes != null
+                && this.pckOptions.SelectedIndexes.Length > 0
+                && this.pckOptions.SelectedIndexes[0] >= 0
+                && this.pckOptions.SelectedIndexes[1] >= 0
+                && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         }
 
         protected override void SetIsEnabled()

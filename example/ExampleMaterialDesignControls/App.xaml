@@ -210,6 +210,7 @@
         <Style TargetType="material:MaterialDoublePicker" BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
+            <Setter Property="ClearIcon" Value="cancel.png" />
         </Style>
 
         <!-- MaterialDatePicker -->
