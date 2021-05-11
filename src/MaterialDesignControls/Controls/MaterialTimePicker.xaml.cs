@@ -29,6 +29,13 @@ namespace Plugin.MaterialDesignControls
                 this.pckTime.Focus();
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+
+            this.imgClearIcon.Tapped = () =>
+            {
+                Time = null;
+                pckTime.Time = null;
+                SetClearIconIsVisible();
+            };
         }
 
         #endregion Constructors
@@ -50,13 +57,13 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialTimePicker), defaultValue: true);
+        public static readonly BindableProperty ClearIconIsVisibleProperty =
+                BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialTimePicker), defaultValue: true);
 
-        public new bool IsEnabled
+        public bool ClearIconIsVisible
         {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
+            get { return (bool)GetValue(ClearIconIsVisibleProperty); }
+            set { SetValue(ClearIconIsVisibleProperty, value); }
         }
 
         public static readonly BindableProperty TimeProperty =
@@ -65,7 +72,7 @@ namespace Plugin.MaterialDesignControls
         public TimeSpan? Time
         {
             get { return (TimeSpan?)GetValue(TimeProperty); }
-            set { SetValue(TimeProperty, value); }
+            set { SetValue(TimeProperty, value); SetClearIconIsVisible(); }
         }
 
         public static readonly BindableProperty FormatProperty =
@@ -84,6 +91,24 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty ClearIconProperty =
+            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialTimePicker), defaultValue: null);
+
+        public string ClearIcon
+        {
+            get { return (string)GetValue(ClearIconProperty); }
+            set { SetValue(ClearIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomClearIconProperty =
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialTimePicker), defaultValue: null);
+
+        public View CustomClearIcon
+        {
+            get { return (View)GetValue(CustomClearIconProperty); }
+            set { SetValue(CustomClearIconProperty, value); }
         }
 
         public override bool IsControlFocused
@@ -137,7 +162,25 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.Format):
                     this.pckTime.Format = this.Format;
                     break;
+                case nameof(this.ClearIcon):
+                    if (!string.IsNullOrEmpty(this.ClearIcon))
+                        imgClearIcon.SetImage(ClearIcon);
+
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(CustomClearIcon):
+                    if (CustomClearIcon != null)
+                        imgClearIcon.SetCustomImage(CustomClearIcon);
+
+                    SetClearIconIsVisible();
+                    break;
             }
+        }
+
+        private void SetClearIconIsVisible()
+        {
+            imgClearIcon.IsVisible = IsEnabled && ClearIconIsVisible &&  pckTime.Time.HasValue
+                && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         }
 
         protected override void SetIsEnabled()

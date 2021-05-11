@@ -8,6 +8,7 @@
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
                 <material:MaterialTimePicker Time="{Binding Time}" Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" Placeholder="Select time" PlaceholderColor="Red" />
+                <material:MaterialTimePicker Type="Filled" LabelText="Start time clear icon is not visible" Format="HH:mm" LeadingIcon="calendar.png" ClearIconIsVisible="False" Placeholder="Select time" PlaceholderColor="Red" />
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" IsEnabled="False" />
                 <material:MaterialTimePicker Type="Lined" LabelText="Deadline" Format="H:mm" />

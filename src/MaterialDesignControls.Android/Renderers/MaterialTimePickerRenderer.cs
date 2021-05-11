@@ -54,6 +54,21 @@ namespace Plugin.MaterialDesignControls.Android
                     customTimePicker.InternalTime.Hours, customTimePicker.InternalTime.Minutes, customTimePicker.InternalTime.Seconds);
                 Control.Text = auxDateTime.ToString(customTimePicker.Format);
             }
+
+            if (e.PropertyName == "Width")
+            {
+                if (!customTimePicker.Time.HasValue)
+                {
+                    Control.Text = String.Empty;
+                }
+                else
+                {
+                    var auxDateTime = new DateTime(DateTime.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day,
+                    customTimePicker.InternalTime.Hours, customTimePicker.InternalTime.Minutes, customTimePicker.InternalTime.Seconds);
+                    Control.Text = auxDateTime.ToString(customTimePicker.Format);
+
+                }
+            }
         }
     }
 }

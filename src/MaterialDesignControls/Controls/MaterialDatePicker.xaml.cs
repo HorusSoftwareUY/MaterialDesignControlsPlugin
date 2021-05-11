@@ -29,6 +29,13 @@ namespace Plugin.MaterialDesignControls
                 this.pckDate.Focus();
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+
+            this.imgClearIcon.Tapped = () =>
+            {
+                Date = null;
+                pckDate.Date = null;
+                SetClearIconIsVisible();
+            };
         }
 
         #endregion Constructors
@@ -50,13 +57,13 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDatePicker), defaultValue: true);
+        public static readonly BindableProperty ClearIconIsVisibleProperty =
+                BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialDatePicker), defaultValue: true);
 
-        public new bool IsEnabled
+        public bool ClearIconIsVisible
         {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
+            get { return (bool)GetValue(ClearIconIsVisibleProperty); }
+            set { SetValue(ClearIconIsVisibleProperty, value); }
         }
 
         public static readonly BindableProperty DateProperty =
@@ -65,7 +72,7 @@ namespace Plugin.MaterialDesignControls
         public DateTime? Date
         {
             get { return (DateTime?)GetValue(DateProperty); }
-            set { SetValue(DateProperty, value); }
+            set { SetValue(DateProperty, value); SetClearIconIsVisible(); }
         }
 
         public static readonly BindableProperty MinimumDateProperty =
@@ -102,6 +109,24 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty ClearIconProperty =
+            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialDatePicker), defaultValue: null);
+
+        public string ClearIcon
+        {
+            get { return (string)GetValue(ClearIconProperty); }
+            set { SetValue(ClearIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomClearIconProperty =
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialDatePicker), defaultValue: null);
+
+        public View CustomClearIcon
+        {
+            get { return (View)GetValue(CustomClearIconProperty); }
+            set { SetValue(CustomClearIconProperty, value); }
         }
 
         public override bool IsControlFocused
@@ -158,10 +183,31 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.MaximumDate):
                     this.pckDate.MaximumDate = this.MaximumDate;
                     break;
+                case nameof(this.IsEnabled):
+                    SetIsEnabled();
+                    break;
                 case nameof(this.Format):
                     this.pckDate.Format = this.Format;
                     break;
+                case nameof(this.ClearIcon):
+                    if (!string.IsNullOrEmpty(this.ClearIcon))
+                        imgClearIcon.SetImage(ClearIcon);
+
+                    SetClearIconIsVisible();
+                    break;
+                case nameof(CustomClearIcon):
+                    if (CustomClearIcon != null)
+                        imgClearIcon.SetCustomImage(CustomClearIcon);
+
+                    SetClearIconIsVisible();
+                    break;
             }
+        }
+
+        private void SetClearIconIsVisible()
+        {
+            imgClearIcon.IsVisible = IsEnabled && ClearIconIsVisible && pckDate.Date.HasValue
+                && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         }
 
         protected override void SetIsEnabled()

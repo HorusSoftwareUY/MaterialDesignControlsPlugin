@@ -12,6 +12,7 @@
                     <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" />
                     <custom:CustomTimePicker x:Name="pckTime" VerticalOptions="Center" HorizontalOptions="FillAndExpand" PlaceholderColor="Gray" />
                     <custom:CustomImageButton x:Name="imgTrailingIcon" IsVisible="false" HorizontalOptions="End" />
+                    <custom:CustomImageButton x:Name="imgClearIcon" IsVisible="false" HorizontalOptions="End" />
                 </StackLayout>
             </Frame>
             <BoxView x:Name="bxvLine" HeightRequest="1" />
