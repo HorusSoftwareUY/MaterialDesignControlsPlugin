@@ -57,14 +57,14 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(PaddingProperty, value); }
         }
 
-        //public static readonly new BindableProperty IsEnabledProperty =
-        //    BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDatePicker), defaultValue: true);
+        public static readonly BindableProperty ClearIconIsVisibleProperty =
+                BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
 
-        //public new bool IsEnabled
-        //{
-        //    get { return (bool)GetValue(IsEnabledProperty); }
-        //    set { SetValue(IsEnabledProperty, value); }
-        //}
+        public bool ClearIconIsVisible
+        {
+            get { return (bool)GetValue(ClearIconIsVisibleProperty); }
+            set { SetValue(ClearIconIsVisibleProperty, value); }
+        }
 
         public static readonly BindableProperty DateProperty =
             BindableProperty.Create(nameof(Date), typeof(DateTime?), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnDateChanged, defaultBindingMode: BindingMode.TwoWay);
@@ -206,7 +206,7 @@ namespace Plugin.MaterialDesignControls
 
         private void SetClearIconIsVisible()
         {
-            imgClearIcon.IsVisible = IsEnabled && pckDate.Date.HasValue
+            imgClearIcon.IsVisible = IsEnabled && ClearIconIsVisible && pckDate.Date.HasValue
                 && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         }
 
