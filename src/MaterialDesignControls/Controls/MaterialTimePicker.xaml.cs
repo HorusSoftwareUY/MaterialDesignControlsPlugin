@@ -58,7 +58,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ClearIconIsVisibleProperty =
-                BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
+                BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialTimePicker), defaultValue: true);
 
         public bool ClearIconIsVisible
         {
@@ -94,7 +94,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ClearIconProperty =
-            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialTimePicker), defaultValue: null);
 
         public string ClearIcon
         {
@@ -103,7 +103,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CustomClearIconProperty =
-            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialTimePicker), defaultValue: null);
 
         public View CustomClearIcon
         {
