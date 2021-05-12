@@ -58,6 +58,8 @@ namespace Plugin.MaterialDesignControls.Implementations
             this.VerticalOptions = LayoutOptions.Center;
         }
 
+        public int? Value = null;
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);

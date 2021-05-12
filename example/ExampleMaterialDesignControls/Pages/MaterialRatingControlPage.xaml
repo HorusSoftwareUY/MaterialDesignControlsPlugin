@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialRatingControlPage"
+             Title="MaterialRatingControl">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialRatingControl x:Name="mrcWithoutSelectionPng"  LabelText="How do you rate the service? (png icons)"   ItemSize="5"
+                                                ItemsByRow="5"
+                                                SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
+                                        TabIndex="1"  />
+                <material:MaterialRatingControl x:Name="mrcWithSelectionPng"   LabelText="How do you rate the service? (preselect value)"    ItemSize="6"
+                                                ItemsByRow="6"
+                                                Value="2"
+                                                SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
+                                        TabIndex="2"  />
+                <material:MaterialRatingControl x:Name="mrcWithoutSelectionSvg"  LabelText="How do you rate the food quality? (svg icons)"   ItemSize="4"
+                                                ItemsByRow="4"
+                                        TabIndex="3">
+                    <material:MaterialRatingControl.CustomSelectedIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.startSelected.svg"/>
+                    </material:MaterialRatingControl.CustomSelectedIcon>
+                    <material:MaterialRatingControl.CustomUnSelectedIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starUnselected.svg"/>
+                    </material:MaterialRatingControl.CustomUnSelectedIcon>
+                </material:MaterialRatingControl>
+
+                <material:MaterialRatingControl x:Name="mrcWithSelectionSvg"  LabelText="How do you rate the food quality? (preselect value, svg icons)"   ItemSize="4"
+                                                ItemsByRow="4"
+                                                Value="3"
+                                        TabIndex="4">
+                    <material:MaterialRatingControl.CustomSelectedIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.startSelected.svg"/>
+                    </material:MaterialRatingControl.CustomSelectedIcon>
+                    <material:MaterialRatingControl.CustomUnSelectedIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starUnselected.svg"/>
+                    </material:MaterialRatingControl.CustomUnSelectedIcon>
+                </material:MaterialRatingControl>
+
+                <material:MaterialRatingControl x:Name="mcrBackground"   LabelText="How do you rate the service? (preselect value with backgroundcolor)"    ItemSize="6"
+                                                ItemsByRow="6"
+                                                Value="2"
+                                                BorderColor="Black"
+                                                CornerRadius="15"
+                                                BackgroundColor="Red"
+                                                BackgroundColorItem="Yellow"
+                                                SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
+                                        TabIndex="5"  />
+
+
+                <material:MaterialRatingControl x:Name="mcrAssistiveText"   LabelText="How do you rate the service?"    ItemSize="6"
+                                                ItemsByRow="6"
+                                                Value="{Binding Value}"
+                                                AssistiveText="{Binding NameError}"
+                                                AnimateError="True"
+                                                SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
+                                        TabIndex="5"  />
+
+                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

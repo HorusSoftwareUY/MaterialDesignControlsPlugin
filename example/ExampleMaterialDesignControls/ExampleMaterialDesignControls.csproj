@@ -19,11 +19,6 @@
     <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Resources\Svg\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Remove="MasterPageItem.cs" />
     <Compile Remove="Pages\GoMaterialButton.cs" />
     <Compile Remove="Pages\newCommand.cs" />
@@ -51,5 +46,14 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources/Fonts/*" />
     <EmbeddedResource Include="Resources/Svg/*" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Svg\startSelected.svg" />
+    <None Remove="Resources\Svg\starUnselected.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\MaterialRatingControlPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
