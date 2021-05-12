@@ -27,23 +27,7 @@ namespace Plugin.MaterialDesignControls
         #endregion
 
         #region properties
-        public static readonly new BindableProperty BackgroundColorProperty =
-           BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialRatingControl), defaultValue: Color.Transparent);
-
-        public new Color BackgroundColor
-        {
-            get { return (Color)GetValue(BackgroundColorProperty); }
-            set { SetValue(BackgroundColorProperty, value); }
-        }
-
-        public static readonly new BindableProperty BackgroundColorItemProperty =
-          BindableProperty.Create(nameof(BackgroundColorItem), typeof(Color), typeof(MaterialRatingControl), defaultValue: Color.Transparent);
-
-        public new Color BackgroundColorItem
-        {
-            get { return (Color)GetValue(BackgroundColorItemProperty); }
-            set { SetValue(BackgroundColorItemProperty, value); }
-        }
+        
 
         public static readonly BindableProperty SelectedIconProperty =
             BindableProperty.Create(nameof(SelectedIcon), typeof(string), typeof(MaterialRatingControl), defaultValue: null);
@@ -55,11 +39,11 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CustomSelectedIconProperty =
-            BindableProperty.Create(nameof(CustomSelectedIcon), typeof(View), typeof(MaterialRatingControl), defaultValue: null);
+            BindableProperty.Create(nameof(CustomSelectedIcon), typeof(DataTemplate), typeof(MaterialRatingControl), defaultValue: null);
 
-        public View CustomSelectedIcon
+        public DataTemplate CustomSelectedIcon
         {
-            get { return (View)GetValue(CustomSelectedIconProperty); }
+            get { return (DataTemplate)GetValue(CustomSelectedIconProperty); }
             set { SetValue(CustomSelectedIconProperty, value); }
         }
 
@@ -73,11 +57,11 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CustomUnSelectedIconProperty =
-            BindableProperty.Create(nameof(CustomUnSelectedIcon), typeof(View), typeof(MaterialRatingControl), defaultValue: null);
+            BindableProperty.Create(nameof(CustomUnSelectedIcon), typeof(DataTemplate), typeof(MaterialRatingControl), defaultValue: null);
 
-        public View CustomUnSelectedIcon
+        public DataTemplate CustomUnSelectedIcon
         {
-            get { return (View)GetValue(CustomUnSelectedIconProperty); }
+            get { return (DataTemplate)GetValue(CustomUnSelectedIconProperty); }
             set { SetValue(CustomUnSelectedIconProperty, value); }
         }
 
@@ -110,7 +94,7 @@ namespace Plugin.MaterialDesignControls
 
         public static readonly BindableProperty ValueProperty =
            BindableProperty.Create(nameof(Value), typeof(int), typeof(MaterialRatingControl)
-               , defaultBindingMode: BindingMode.TwoWay, defaultValue: 0, propertyChanged: OnValuePropertyChanged);
+               , defaultBindingMode: BindingMode.TwoWay, defaultValue: -1, propertyChanged: OnValuePropertyChanged);
 
         public int Value
         {
@@ -187,39 +171,6 @@ namespace Plugin.MaterialDesignControls
         }
 
         #endregion AssistiveText
-
-        #region Border
-
-        public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
-
-        public Color BorderColor
-        {
-            get { return (Color)GetValue(BorderColorProperty); }
-            set { SetValue(BorderColorProperty, value); }
-        }
-
-        public static readonly BindableProperty DisabledBorderColorProperty =
-            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialRatingControl), defaultValue: Color.LightGray);
-
-        public Color DisabledBorderColor
-        {
-            get { return (Color)GetValue(DisabledBorderColorProperty); }
-            set { SetValue(DisabledBorderColorProperty, value); }
-        }
-
-        #endregion Border
-
-
-        public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialRatingControl), defaultValue: 4.0);
-
-        public double CornerRadius
-        {
-            get { return (double)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
         #endregion
 
         #region methods
@@ -233,25 +184,6 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
-                case nameof(this.BackgroundColor):
-                    frmContainer.BackgroundColor = BackgroundColor;
-                    break;
-                case nameof(this.CornerRadius):
-                    frmContainer.CornerRadius = Convert.ToInt32(CornerRadius);
-                    break;
-                case nameof(this.BorderColor):
-                    if (IsEnabled)
-                        frmContainer.BorderColor = BorderColor;
-                    else
-                        frmContainer.BorderColor = DisabledBorderColor;
-                    break;
-                case nameof(this.DisabledBorderColor):
-                    if (IsEnabled)
-                        frmContainer.BorderColor = BorderColor;
-                    else
-                        frmContainer.BorderColor = DisabledBorderColor;
-                    break;
-                case nameof(this.BackgroundColorItem):
                 case nameof(this.ItemSize):
                 case nameof(this.ItemsByRow):
                 case nameof(UnSelectedIcon):
@@ -331,35 +263,22 @@ namespace Plugin.MaterialDesignControls
                             ImageHeightRequest = 34,
                             ImageWidthRequest = 34,
                             Padding = 6,
-                            BackgroundColor = BackgroundColorItem
+                            BackgroundColor = Color.Transparent,
+                            IsVisible = true
                         };
 
                         customImageButton.SetValue(Grid.RowProperty, i);
                         customImageButton.SetValue(Grid.ColumnProperty, j);
-                        ++populatedObjects;
                         int value = populatedObjects;
-                        customImageButton.Value = populatedObjects;
+                        customImageButton.Value = value;
+
+                        ++populatedObjects;
                         customImageButton.Tapped = () =>
                         {
                             OnTapped(value);
                         };
 
-                        // selected or unselected when Value is preset
-                        if(value <= Value)
-                        {
-                            if (!string.IsNullOrEmpty(this.SelectedIcon))
-                                customImageButton.SetImage(SelectedIcon);
-                            else if (CustomSelectedIcon != null)
-                                customImageButton.SetCustomImage(CustomSelectedIcon);
-                        }
-                        else
-                        {
-                            if (!string.IsNullOrEmpty(this.UnSelectedIcon))
-                                customImageButton.SetImage(UnSelectedIcon);
-                            else if (CustomUnSelectedIcon != null)
-                                customImageButton.SetCustomImage(CustomUnSelectedIcon);
-                        }
-                        
+                        SetIconsRatingControl(customImageButton, Value, this);
                             
                         grid.Children.Add(customImageButton);
                     }
@@ -378,7 +297,7 @@ namespace Plugin.MaterialDesignControls
             {
                 if (Value == value)
                 {
-                    Value = 0;
+                    Value = -1;
                 }
                 else
                 {
@@ -411,23 +330,29 @@ namespace Plugin.MaterialDesignControls
             {
                 foreach (CustomImageButton item in control.grid.Children)
                 {
-                    if (item.Value.HasValue && item.Value.Value <= value)
-                    {
-                        if (!string.IsNullOrEmpty(control.SelectedIcon))
-                            item.SetImage(control.SelectedIcon);
-                        else if (control.CustomSelectedIcon != null)
-                            item.SetCustomImage(control.CustomSelectedIcon);
-                    }
-                    else
-                    {
-                        if (!string.IsNullOrEmpty(control.UnSelectedIcon))
-                            item.SetImage(control.UnSelectedIcon);
-                        else if (control.CustomUnSelectedIcon != null)
-                            item.SetCustomImage(control.CustomUnSelectedIcon);
-                    }
+                    SetIconsRatingControl(item, value, control);
                 }
             }
         }
+
+        public static void SetIconsRatingControl(CustomImageButton item, int value, MaterialRatingControl control)
+        {
+            if (item.Value.HasValue && item.Value.Value <= value)
+            {
+                if (!string.IsNullOrEmpty(control.SelectedIcon))
+                    item.SetImage(control.SelectedIcon);
+                else if (control.CustomSelectedIcon != null)
+                    item.SetCustomImage(control.CustomSelectedIcon.CreateContent() as View);
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(control.UnSelectedIcon))
+                    item.SetImage(control.UnSelectedIcon);
+                else if (control.CustomUnSelectedIcon != null)
+                    item.SetCustomImage(control.CustomUnSelectedIcon.CreateContent() as View);
+            }
+        }
+
         #endregion
     }
 }

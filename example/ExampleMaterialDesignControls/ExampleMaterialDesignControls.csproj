@@ -48,7 +48,7 @@
     <EmbeddedResource Include="Resources/Svg/*" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Resources\Svg\startSelected.svg" />
+    <None Remove="Resources\Svg\starSelected.svg" />
     <None Remove="Resources\Svg\starUnselected.svg" />
   </ItemGroup>
   <ItemGroup>
