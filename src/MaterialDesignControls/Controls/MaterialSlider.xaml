@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+             x:Class="Plugin.MaterialDesignControls.MaterialSlider">
+    <ContentView.Content>
+        <StackLayout Spacing="2">
+            <controls:MaterialLabel x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="14,0,54,2" HorizontalTextAlignment="Start" />
+            <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="0">
+                <Grid Padding="0">
+                    <Image Source="cancel.png" Aspect="AspectFill"/>
+                    <StackLayout Orientation="Horizontal" >
+                        <controls:MaterialLabel x:Name="lblMinimum" IsVisible="false" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="White" />
+                        <custom:CustomSlider x:Name="slider" VerticalOptions="Center" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent" ThumbColor="Yellow" MaximumTrackColor="Gray" InactiveTrackColor="Blue" ActiveTrackColor="Green"  Maximum="10"  Minimum="0"/>
+                        <controls:MaterialLabel x:Name="lblMaximum" IsVisible="false" HorizontalOptions="End" VerticalOptions="Center" BackgroundColor="Red" />
+                    </StackLayout>
+                </Grid>
+                
+            </Frame>
+            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

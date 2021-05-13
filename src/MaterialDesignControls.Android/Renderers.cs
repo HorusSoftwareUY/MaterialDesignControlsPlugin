@@ -11,6 +11,8 @@
             MaterialDoublePickerRenderer.Init();
             MaterialTimePickerRenderer.Init();
             MaterialEditorRenderer.Init();
+            MaterialSliderRenderer.Init();
+
         }
     }
 }

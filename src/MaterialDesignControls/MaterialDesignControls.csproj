@@ -51,10 +51,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Controls\MaterialSlider.xaml.cs" />
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
     <Compile Include="Implementations\CustomPicker.cs" />
     <Compile Include="FieldTypes.cs" />
+    <Compile Include="Implementations\CustomSlider.cs" />
     <Compile Include="Implementations\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomEditor.cs" />
     <Compile Include="Controls\MaterialChips.xaml.cs">
@@ -120,13 +122,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\" />
-    <Folder Include="Implementations\" />
     <Folder Include="Animations\" />
     <Folder Include="Effects\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\MaterialSlider.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
