@@ -8,18 +8,18 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialRatingControl x:Name="mrcWithoutSelectionPng"  LabelText="How do you rate the service? (png icons)"   ItemSize="5"
-                                                ItemsByRow="5"
+                <material:MaterialRatingControl x:Name="mrcWithoutSelectionPng"  LabelText="How do you rate...?(png icons)"   ItemSize="5"
+                                                ItemsByRow="5" Animation="Fade" AnimationParameter="0.9" 
                                                 SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
                                         TabIndex="1"  />
-                <material:MaterialRatingControl x:Name="mrcWithSelectionPng"   LabelText="How do you rate the service? (preselect value)"    ItemSize="6"
+                <material:MaterialRatingControl x:Name="mrcWithSelectionPng"   LabelText="How do you...?(preselect value)"    ItemSize="6"
                                                 ItemsByRow="6"
                                                 Value="2"
                                                 SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
                                         TabIndex="2"  />
 
 
-                <material:MaterialRatingControl x:Name="mrcWithoutSelectionSvgs"  LabelText="How do you rate the food quality? (svg icons)"   ItemSize="2"
+                <material:MaterialRatingControl x:Name="mrcWithoutSelectionSvgs"  LabelText="How do you...?(svg icons)"   ItemSize="2"
                                                 ItemsByRow="2"
                                         TabIndex="3">
                     <material:MaterialRatingControl.CustomSelectedIcon>
@@ -34,28 +34,31 @@
                     </material:MaterialRatingControl.CustomUnSelectedIcon>
                 </material:MaterialRatingControl>
 
-                <material:MaterialRatingControl x:Name="mrcWithSelectionSvg"  LabelText="How do you rate the food quality? (preselect value, svg icons)"   ItemSize="4"
-                                                ItemsByRow="4"
-                                                Value="3"
-                                                SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
-                                        TabIndex="4">
-                    <material:MaterialRatingControl.CustomSelectedIcon>
-                        <DataTemplate>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starSelected.svg"/>
-                        </DataTemplate>
-                    </material:MaterialRatingControl.CustomSelectedIcon>
-                    <material:MaterialRatingControl.CustomUnSelectedIcon>
-                        <DataTemplate>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starUnselected.svg"/>
-                        </DataTemplate>
-                    </material:MaterialRatingControl.CustomUnSelectedIcon>
-                </material:MaterialRatingControl>
-
-
-                <material:MaterialRatingControl x:Name="mcrMultipleRow"   LabelText="How do you rate the service?(multiple rows)"    ItemSize="10"
+                <material:MaterialRatingControl x:Name="mcrMultipleRow"   LabelText="How do you rate...?(multiple rows)"    ItemSize="10"
                                                 ItemsByRow="5"
                                                 SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
+                                        TabIndex="4"  />
+
+                <Label Text="Animations" HorizontalTextAlignment="Start" Margin="0,20,0,0" TextColor="Blue" FontSize="Large" />
+
+                <material:MaterialRatingControl x:Name="mrcNone"  LabelText="How do you rate...?(none)"   ItemSize="5"
+                                                ItemsByRow="5" 
+                                                SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
                                         TabIndex="5"  />
+
+                <material:MaterialRatingControl x:Name="mrcFade"  LabelText="How do you...? (fade)"   ItemSize="5"
+                                                ItemsByRow="5" Animation="Fade" AnimationParameter="0.9" 
+                                                SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
+                                                BackgroundColor="Gray"
+                                        TabIndex="6"  />
+
+                <material:MaterialRatingControl x:Name="mrcScale"  LabelText="How do you...? (scale)"   ItemSize="5"
+                                                ItemsByRow="5" Animation="Scale" AnimationParameter="1.5" 
+                                                SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
+                                        TabIndex="7"  />
+
+                <Label Text="Assistive Text" HorizontalTextAlignment="Start" Margin="0,20,0,0" TextColor="Blue" FontSize="Large" />
+
 
                 <material:MaterialRatingControl x:Name="mcrAssistiveText"   LabelText="How do you rate the service?"    ItemSize="6"
                                                 ItemsByRow="6"
@@ -64,7 +67,7 @@
                                                 AnimateError="True"
                                                 AssistiveTextColor="Red"
                                                 SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
-                                        TabIndex="6"  />
+                                        TabIndex="9"  />
 
                
 

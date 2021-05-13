@@ -102,6 +102,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ValueProperty, value); }
         }
 
+        public static readonly BindableProperty AnimationProperty =
+                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
+
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
+        }
+
         #region LabelText
         public static readonly BindableProperty LabelTextProperty =
             BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialRatingControl), defaultValue: null);
@@ -190,6 +208,8 @@ namespace Plugin.MaterialDesignControls
                 case nameof(CustomSelectedIcon):
                 case nameof(SelectedIcon):
                 case nameof(CustomUnSelectedIcon):
+                case nameof(AnimationParameter):
+                case nameof(Animation):
                     SetGridContent();
                     break;
                 case nameof(LabelText):
@@ -255,6 +275,10 @@ namespace Plugin.MaterialDesignControls
                             break;
                         }
 
+                        int value = populatedObjects;
+
+                        ++populatedObjects;
+
                         // add element at i,j position on grid
                         CustomImageButton customImageButton = new CustomImageButton()
                         {
@@ -264,19 +288,17 @@ namespace Plugin.MaterialDesignControls
                             ImageWidthRequest = 34,
                             Padding = 6,
                             BackgroundColor = Color.Transparent,
-                            IsVisible = true
+                            IsVisible = true,
+                            Command = new Command((e) => OnTapped((int)(e))),
+                            CommandParameter = value,
+                            Animation = Animation,
                         };
+
+                        if (AnimationParameter.HasValue)
+                            customImageButton.AnimationParameter = AnimationParameter;
 
                         customImageButton.SetValue(Grid.RowProperty, i);
                         customImageButton.SetValue(Grid.ColumnProperty, j);
-                        int value = populatedObjects;
-                        customImageButton.Value = value;
-
-                        ++populatedObjects;
-                        customImageButton.Tapped = () =>
-                        {
-                            OnTapped(value);
-                        };
 
                         SetIconsRatingControl(customImageButton, Value, this);
                             
@@ -337,7 +359,7 @@ namespace Plugin.MaterialDesignControls
 
         public static void SetIconsRatingControl(CustomImageButton item, int value, MaterialRatingControl control)
         {
-            if (item.Value.HasValue && item.Value.Value <= value)
+            if (item.CommandParameter != null && (int)item.CommandParameter <= value)
             {
                 if (!string.IsNullOrEmpty(control.SelectedIcon))
                     item.SetImage(control.SelectedIcon);

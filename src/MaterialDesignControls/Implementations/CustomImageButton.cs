@@ -1,13 +1,27 @@
-﻿using System;
+﻿using Plugin.MaterialDesignControls.Animations;
+using System;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
 {
-    public class CustomImageButton : ContentView
+    public class CustomImageButton : ContentView, ITouchAndPressEffectConsumer
     {
-        private Action tapped;
+        #region constructors
+        public CustomImageButton()
+        {
+            this.Padding = 6;
+            this.VerticalOptions = LayoutOptions.Center;
 
+            Effects.Add(new TouchAndPressEffect());
+        }
+
+        #endregion constructors
+
+        #region attributes
+
+        private Action tapped;
         public Action Tapped
         {
             get { return this.tapped; }
@@ -36,6 +50,9 @@ namespace Plugin.MaterialDesignControls.Implementations
 
         private View customImage;
 
+        #endregion attributes
+
+        #region properties
         public static readonly BindableProperty ImageHeightRequestProperty = BindableProperty.Create(nameof(ImageHeightRequest), typeof(double), typeof(CustomImageButton), defaultValue: 24.0);
 
         public double ImageHeightRequest
@@ -52,14 +69,44 @@ namespace Plugin.MaterialDesignControls.Implementations
             set { SetValue(ImageWidthRequestProperty, value); }
         }
 
-        public CustomImageButton()
+        public static readonly BindableProperty CommandProperty =
+           BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialButton), defaultValue: null);
+
+        public ICommand Command
         {
-            this.Padding = 6;
-            this.VerticalOptions = LayoutOptions.Center;
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
         }
 
-        public int? Value = null;
+        public static readonly BindableProperty CommandParameterProperty =
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialButton), defaultValue: null);
 
+        public object CommandParameter
+        {
+            get { return (object)GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationProperty =
+                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
+
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
+        }
+        #endregion properties
+
+        #region methods
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
@@ -104,5 +151,20 @@ namespace Plugin.MaterialDesignControls.Implementations
             view.HeightRequest = ImageHeightRequest;
             Content = view;
         }
+
+        public void ConsumeEvent(EventType gestureType)
+        {
+            TouchAndPressAnimation.Animate(this, gestureType);
+        }
+        #endregion methods
+
+
+
+
+
+
+        
+
+       
     }
 }
