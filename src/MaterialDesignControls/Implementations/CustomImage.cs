@@ -20,7 +20,7 @@ namespace Plugin.MaterialDesignControls.Implementations
             customImage = null;
             image = new Image
             {
-                Aspect = Aspect.AspectFill,
+                Aspect = Aspect.AspectFit,
                 Source = imageSource
             };
             Content = image;

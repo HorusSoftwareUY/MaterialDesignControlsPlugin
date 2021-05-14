@@ -216,4 +216,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\mute.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scale.png" />
+  </ItemGroup>
 </Project>

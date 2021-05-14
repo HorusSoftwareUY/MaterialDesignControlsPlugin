@@ -11103,16 +11103,19 @@ namespace ExampleMaterialDesignControls.Droid
 			public const int save = 2131165504;
 			
 			// aapt resource value: 0x7F070141
-			public const int showPassword = 2131165505;
+			public const int scale = 2131165505;
 			
 			// aapt resource value: 0x7F070142
-			public const int tooltip_frame_dark = 2131165506;
+			public const int showPassword = 2131165506;
 			
 			// aapt resource value: 0x7F070143
-			public const int tooltip_frame_light = 2131165507;
+			public const int tooltip_frame_dark = 2131165507;
 			
 			// aapt resource value: 0x7F070144
-			public const int volume = 2131165508;
+			public const int tooltip_frame_light = 2131165508;
+			
+			// aapt resource value: 0x7F070145
+			public const int volume = 2131165509;
 			
 			static Drawable()
 			{

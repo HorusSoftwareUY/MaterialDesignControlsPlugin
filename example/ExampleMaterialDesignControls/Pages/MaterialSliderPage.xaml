@@ -73,7 +73,7 @@
                     MinimumValue="0" 
                     MaximumValue="100" 
                     ThumbColor="BlueViolet" 
-                    BackgroundImage="email.png" 
+                    BackgroundImage="scale.png" 
                     LabelText="Slider whit backgroundimage(png)" 
                     ActiveTrackColor="Transparent" 
                     InactiveTrackColor="Transparent"/>
@@ -86,7 +86,7 @@
                     ActiveTrackColor="Transparent" 
                     InactiveTrackColor="Transparent">
                     <material:MaterialSlider.CustomBackgroundImage>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg"/>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.scale.svg"/>
                     </material:MaterialSlider.CustomBackgroundImage>
                 </material:MaterialSlider>
                 <material:MaterialSlider 
