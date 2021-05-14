@@ -22,11 +22,21 @@
                     MinimumValue="0" 
                     MaximumValue="10" 
                     IsEnabled="False"
+                    ThumbImage="color.png" 
                     LabelText="Disabled slider"
                     Value="5"
                     LabelMinimumText="0" 
                     LabelMaximumText="10" />
-
+                <material:MaterialSlider 
+                    x:Name="slider10" 
+                    MinimumValue="0" 
+                    MaximumValue="10" 
+                    IsEnabled="True"
+                    ThumbImage="color.png" 
+                    LabelText="Thumb icon"
+                    Value="5"
+                    LabelMinimumText="0" 
+                    LabelMaximumText="10" />
                 <material:MaterialSlider 
                     x:Name="slider1" 
                     MinimumValue="0" 
@@ -44,7 +54,6 @@
                     MinimumValue="0" 
                     MaximumValue="100" 
                     ThumbColor="BlueViolet" 
-                    ThumbImage="color.png" 
                     MaximumIcon="volume.png" 
                     MinimumIcon="mute.png" 
                     LabelText="Slider whit image(png)"
@@ -56,7 +65,6 @@
                     MinimumValue="0" 
                     MaximumValue="100" 
                     ThumbColor="BlueViolet" 
-                    ThumbImage="color.png" 
                     LabelText="Slider whit image(svg)" 
                     ActiveTrackColor="BlueViolet" 
                     ShowIcons="True"
@@ -72,7 +80,7 @@
                     x:Name="slider4" 
                     MinimumValue="0" 
                     MaximumValue="100" 
-                    ThumbColor="BlueViolet" 
+                    ThumbColor="Black" 
                     BackgroundImage="scale.png" 
                     LabelText="Slider whit backgroundimage(png)" 
                     ActiveTrackColor="Transparent" 
@@ -81,7 +89,7 @@
                     x:Name="slider5" 
                     MinimumValue="0" 
                     MaximumValue="100" 
-                    ThumbColor="BlueViolet" 
+                    ThumbColor="Black" 
                     LabelText="Slider whit backgroundimage(svg)" 
                     ActiveTrackColor="Transparent" 
                     InactiveTrackColor="Transparent">
