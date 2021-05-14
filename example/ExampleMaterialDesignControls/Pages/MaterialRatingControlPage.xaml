@@ -47,9 +47,8 @@
                                         TabIndex="5"  />
 
                 <material:MaterialRatingControl x:Name="mrcFade"  LabelText="How do you...? (fade)"   ItemSize="5"
-                                                ItemsByRow="5" Animation="Fade" AnimationParameter="0.9" 
+                                                ItemsByRow="5" Animation="Fade" AnimationParameter="0.1" 
                                                 SelectedIcon="startSelected.png" UnSelectedIcon="starUnselected.png"
-                                                BackgroundColor="Gray"
                                         TabIndex="6"  />
 
                 <material:MaterialRatingControl x:Name="mrcScale"  LabelText="How do you...? (scale)"   ItemSize="5"
