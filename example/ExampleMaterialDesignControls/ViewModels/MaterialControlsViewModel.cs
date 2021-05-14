@@ -15,6 +15,11 @@ namespace ExampleMaterialDesignControls.ViewModels
             await Navigation.PushAsync(new MaterialButtonPage());
         });
 
+        public ICommand GoMaterialRatingControlCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialRatingControlPage());
+        });
+
         public ICommand GoMaterialChipsCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialChipsPage());

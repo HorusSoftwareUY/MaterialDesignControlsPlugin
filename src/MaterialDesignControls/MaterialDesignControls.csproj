@@ -51,6 +51,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Controls\MaterialRatingControl.xaml.cs" />
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
     <Compile Include="Implementations\CustomPicker.cs" />
@@ -120,7 +121,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="Implementations\" />
     <Folder Include="Animations\" />
     <Folder Include="Effects\" />
@@ -128,5 +128,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\MaterialRatingControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
