@@ -25,7 +25,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         private async void OnTapCommand()
         {
-            await this.DisplayAlert.Invoke("", $"value= {Value}", "Ok");
+            await this.DisplayAlert.Invoke("", $"Opacity= {Value}", "Ok");
         }
     }
 }

@@ -6,8 +6,8 @@
              x:Class="Plugin.MaterialDesignControls.MaterialSlider">
     <ContentView.Content>
         <StackLayout Spacing="2">
-            <controls:MaterialLabel x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="0,0,54,2" HorizontalTextAlignment="Start" />
-            <Grid Padding="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="50">
+            <controls:MaterialLabel x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="0,0,14,2" HorizontalTextAlignment="Start" />
+            <Grid Padding="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="50" Margin="0">
                 <custom:CustomImage x:Name="bckgImage" IsVisible="false"  />
                 <StackLayout Orientation="Horizontal"  VerticalOptions="FillAndExpand" >
                     <custom:CustomImageButton x:Name="imgMinimum" IsVisible="false" HorizontalOptions="Start" />
@@ -17,7 +17,7 @@
                     <custom:CustomImageButton x:Name="imgMaximum" IsVisible="false" HorizontalOptions="End" />
                 </StackLayout>
             </Grid>
-            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="0,2,14,0" HorizontalTextAlignment="Start" />
+            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="0,0,14,0" HorizontalTextAlignment="Start" />
         </StackLayout>
     </ContentView.Content>
 </ContentView>

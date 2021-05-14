@@ -28,7 +28,7 @@ namespace Plugin.MaterialDesignControls
         #endregion attributes
 
         #region properties
-        public event EventHandler ValueChanged;
+        public event EventHandler<ValueChangedEventArgs> ValueChanged;
 
         #region LabelText
         public static readonly BindableProperty LabelTextProperty =
@@ -351,16 +351,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(UserInteractionEnabledProperty, value); }
         }
 
-
-        public static new readonly BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(UserInteractionEnabled), typeof(bool), typeof(MaterialSlider), defaultValue: true);
-
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
-
         public static readonly BindableProperty ShowIconsProperty =
                 BindableProperty.Create(nameof(ShowIcons), typeof(bool), typeof(MaterialSlider), defaultValue: false);
 
@@ -368,6 +358,34 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (bool)GetValue(ShowIconsProperty); }
             set { SetValue(ShowIconsProperty, value); }
+        }
+
+        
+        public static readonly BindableProperty DisabledActiveTrackColorProperty =
+            BindableProperty.Create(nameof(DisabledActiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: Color.Gray);
+
+        public Color DisabledActiveTrackColor
+        {
+            get { return (Color)GetValue(DisabledActiveTrackColorProperty); }
+            set { SetValue(DisabledActiveTrackColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledInactiveTrackColorProperty =
+            BindableProperty.Create(nameof(DisabledInactiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: Color.LightGray);
+
+        public Color DisabledInactiveTrackColor
+        {
+            get { return (Color)GetValue(DisabledInactiveTrackColorProperty); }
+            set { SetValue(DisabledInactiveTrackColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledThumbColorProperty =
+            BindableProperty.Create(nameof(DisabledThumbColor), typeof(Color), typeof(MaterialSlider), defaultValue: Color.Gray);
+
+        public Color DisabledThumbColor
+        {
+            get { return (Color)GetValue(DisabledThumbColorProperty); }
+            set { SetValue(DisabledThumbColorProperty, value); }
         }
 
         #endregion properties
@@ -394,6 +412,7 @@ namespace Plugin.MaterialDesignControls
         {
             this.Value = e.NewValue;
             this.OldValue = e.OldValue;
+            ExecuteChanged();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -486,7 +505,7 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(CustomMaximumIcon):
                     if (CustomMaximumIcon != null)
-                        imgMinimum.SetCustomImage(CustomMaximumIcon);
+                        imgMaximum.SetCustomImage(CustomMaximumIcon);
 
                     SetMaximumIconIsVisible();
                     break;
@@ -577,18 +596,26 @@ namespace Plugin.MaterialDesignControls
 
         public void SetEnable()
         {
-            slider.IsEnabled = IsEnabled;
+            //slider.IsEnabled = IsEnabled;
             if(!IsEnabled)
             {
                 lblLabel.TextColor = DisabledLabelTextColor;
                 lblMinimum.TextColor = DisabledLabelMinimumTextColor;
                 lblMaximum.TextColor = DisabledLabelMaximumTextColor;
+
+                slider.ActiveTrackColor = DisabledActiveTrackColor;
+                slider.InactiveTrackColor = DisabledInactiveTrackColor;
+                slider.ThumbColor = DisabledThumbColor;
             }
             else
             {
                 lblLabel.TextColor = LabelTextColor;
                 lblMinimum.TextColor = LabelMinimumTextColor;
                 lblMaximum.TextColor = LabelMaximumTextColor;
+
+                slider.ActiveTrackColor = ActiveTrackColor;
+                slider.InactiveTrackColor = InactiveTrackColor;
+                slider.ThumbColor = ThumbColor;
             }
 
         }

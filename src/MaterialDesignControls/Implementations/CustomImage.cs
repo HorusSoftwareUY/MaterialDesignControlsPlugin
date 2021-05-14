@@ -12,6 +12,7 @@ namespace Plugin.MaterialDesignControls.Implementations
         {
             this.HorizontalOptions = LayoutOptions.FillAndExpand;
             this.VerticalOptions = LayoutOptions.FillAndExpand;
+            Margin = new Thickness(0);
         }
 
         public void SetImage(string imageSource)
