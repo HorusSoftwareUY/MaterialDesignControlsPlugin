@@ -75,13 +75,6 @@ namespace Plugin.MaterialDesignControls.Android
                     Control.Thumb.Mutate().SetAlpha(0);
                     Control.Enabled = false;
                 }
-
-                //ShapeDrawable th = new ShapeDrawable(new OvalShape());
-                //th.SetIntrinsicWidth(30);
-                //th.SetIntrinsicHeight(30);
-                //th.SetColorFilter(Android.Graphics.Color.Red, Android.Graphics.PorterDuff.Mode.SrcOver);
-                //Control.SetThumb(th);
-
             }
         }
 
@@ -109,6 +102,5 @@ namespace Plugin.MaterialDesignControls.Android
             DisplayMetrics metrics = Context.Resources.DisplayMetrics;
             return TypedValue.ApplyDimension(ComplexUnitType.Dip, valueInDp, metrics);
         }
-
     }
 }

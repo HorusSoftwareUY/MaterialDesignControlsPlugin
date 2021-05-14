@@ -6,8 +6,8 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="16" Spacing="16">
-                <material:MaterialSlider x:Name="pckColors"/>
-
+                <material:MaterialSlider x:Name="slider" MinimumValue="0" AssistiveText="El valor" MaximumValue="100" ThumbColor="White" BackgroundImage="email.png" ThumbImage="color.png" Value="{Binding Value}" MaximumIcon="cancel.png" MinimumIcon="calendar.png" LabelText="Prueba" ActiveTrackColor="Aqua" LabelMinimumText="0" LabelMaximumText="100" InactiveTrackColor="Red"/>
+                <Label Text="{Binding Value}"/>
                 <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>

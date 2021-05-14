@@ -6,6 +6,16 @@ namespace ExampleMaterialDesignControls.ViewModels
 {
     public class MaterialSliderViewModel : BaseViewModel
     {
+        public double _value;
+        public double Value
+        {
+            get { return _value; }
+            set
+            {
+                _value = value;
+                OnPropertyChanged();
+            }
+        }
 
         public delegate Task DisplayAlertType(string title, string message, string cancel);
 
@@ -15,7 +25,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         private async void OnTapCommand()
         {
-            await this.DisplayAlert.Invoke("", "value: ", "Ok");
+            await this.DisplayAlert.Invoke("", $"value= {Value}", "Ok");
         }
     }
 }
