@@ -73,7 +73,6 @@
             <!--<Setter Property="FontFamily" Value="" />-->
 
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="FocusedTextColor" Value="{StaticResource TextColor}" />
             <Setter Property="DisabledTextColor" Value="{StaticResource DarkGrayColor}" />
             <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             
@@ -91,7 +90,6 @@
             <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
             <Setter Property="DisabledBorderColor" Value="{StaticResource DarkGrayColor}" />
 
-            <Setter Property="FocusedBackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="DisabledBackgroundColor" Value="{StaticResource GrayColor}" />
         </Style>
 
