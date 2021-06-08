@@ -48,11 +48,9 @@
         <x:Double x:Key="OverlineFontSize">10</x:Double>
 
         <Color x:Key="LabelTextColor">#0d1a26</Color>
-        <Color x:Key="FocusedLabelTextColor">#c92726</Color>
         <Color x:Key="TextColor">#0d1a26</Color>
         <Color x:Key="BackgroundColor">#ffffff</Color>
         <Color x:Key="BorderColor">#b0b0b0</Color>
-        <Color x:Key="FocusedBorderColor">#c92726</Color>
         <Color x:Key="AssistiveTextColor">#c92726</Color>
         <Color x:Key="PlaceholderColor">#c6c6c5</Color>
 
@@ -73,14 +71,12 @@
             <!--<Setter Property="FontFamily" Value="" />-->
 
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="FocusedTextColor" Value="{StaticResource TextColor}" />
             <Setter Property="DisabledTextColor" Value="{StaticResource DarkGrayColor}" />
             <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             
             <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
 
             <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource LabelTextColor}" />
             <Setter Property="DisabledLabelTextColor" Value="{StaticResource DarkGrayColor}" />
             <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
 
@@ -88,10 +84,8 @@
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
 
             <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
             <Setter Property="DisabledBorderColor" Value="{StaticResource DarkGrayColor}" />
 
-            <Setter Property="FocusedBackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="DisabledBackgroundColor" Value="{StaticResource GrayColor}" />
         </Style>
 

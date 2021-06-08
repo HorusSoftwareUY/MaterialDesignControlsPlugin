@@ -393,7 +393,7 @@ namespace Plugin.MaterialDesignControls
                 foreach (var lblCode in lblCodes)
                 {
                     if (IsControlEnabled)
-                        lblCode.TextColor = IsControlFocused ? FocusedTextColor : TextColor;
+                        lblCode.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
                     else
                         lblCode.TextColor = DisabledTextColor;
                 }
