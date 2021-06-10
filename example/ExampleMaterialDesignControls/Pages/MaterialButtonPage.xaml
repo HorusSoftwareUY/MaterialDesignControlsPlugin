@@ -13,7 +13,7 @@
             <StackLayout Padding="16" Spacing="16">
                 <material:MaterialButton Text="Save" ToUpper="True" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" CornerRadius="14" />
 
-                <material:MaterialOutlineButton Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" IsBusy="{Binding IsBusy}" CornerRadius="14" IconSize="34" ActivityIndicatorSize="34">
+                <material:MaterialOutlineButton Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" CornerRadius="14" IconSize="34" ActivityIndicatorSize="34">
                     <material:MaterialButton.CustomIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
                     </material:MaterialButton.CustomIcon>
@@ -34,7 +34,7 @@
                 <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" ToUpper="True" CornerRadius="14" />
 
                 <Label Text="Clicked event" HorizontalTextAlignment="Center" Margin="0,40,0,0" />
-                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="clicked Event" ToUpper="True" CornerRadius="14"  Clicked="Button_Clicked" />
+                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Clicked" ToUpper="True" CornerRadius="14" Clicked="Button_Clicked" />
 
             </StackLayout>
         </ScrollView>

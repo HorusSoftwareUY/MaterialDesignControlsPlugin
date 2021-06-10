@@ -258,7 +258,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ActivityIndicatorSizeProperty, value); }
         }
 
-        //EventHandler ITouchAndPressEffectConsumer.Clicked { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public event EventHandler Clicked;
 
         #endregion Properties
@@ -471,9 +470,13 @@ namespace Plugin.MaterialDesignControls
             TouchAndPressAnimation.Animate(this, gestureType);
         }
 
-        public void ExecuteClicked()
+        public void ExecuteAction()
         {
-            Clicked?.Invoke(this, null);
+            if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
+                Command.Execute(CommandParameter);
+
+            if (IsEnabled && Clicked != null)
+                Clicked.Invoke(this, null);
         }
 
         #endregion Methods

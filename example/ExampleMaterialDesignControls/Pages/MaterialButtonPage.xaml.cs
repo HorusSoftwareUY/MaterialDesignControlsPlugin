@@ -18,7 +18,7 @@ namespace ExampleMaterialDesignControls.Pages
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("This", "is a Tapped Event custom", "Pk");
+            DisplayAlert("Clicked Event", "Executing the click event in the code behind", "Ok");
         }
     }
 }
