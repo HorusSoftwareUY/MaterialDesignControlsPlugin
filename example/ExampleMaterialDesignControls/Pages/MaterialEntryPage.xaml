@@ -10,7 +10,6 @@
             <StackLayout Padding="16" Spacing="16">
                 <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12"
                                         Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TextTransform="Uppercase"
-                                        TextColor="Blue"
                                         TabIndex="1" ReturnType="Next" />
                 <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
 
