@@ -77,7 +77,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedTextColorProperty =
-            BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
 
         public Color FocusedTextColor
         {
@@ -157,7 +157,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
 
         public Color FocusedLabelTextColor
         {
@@ -228,7 +228,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedBorderColorProperty =
-            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
 
         public Color FocusedBorderColor
         {
@@ -387,7 +387,7 @@ namespace Plugin.MaterialDesignControls
         protected void SetLabelTextColor(Label lblLabel)
         {
             if (IsControlEnabled)
-                lblLabel.TextColor = IsControlFocused ? FocusedLabelTextColor : LabelTextColor;
+                lblLabel.TextColor = IsControlFocused && FocusedLabelTextColor != Color.Transparent ? FocusedLabelTextColor : LabelTextColor;
             else
                 lblLabel.TextColor = DisabledLabelTextColor;
         }
@@ -399,12 +399,12 @@ namespace Plugin.MaterialDesignControls
                 case FieldTypes.Outlined:
                 case FieldTypes.Filled:
                     if (IsControlEnabled)
-                        frmContainer.BackgroundColor = IsControlFocused ? FocusedBackgroundColor : BackgroundColorControl;
+                        frmContainer.BackgroundColor = IsControlFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : BackgroundColorControl;
                     else
                         frmContainer.BackgroundColor = DisabledBackgroundColor;
 
                     if (IsControlEnabled)
-                        frmContainer.BorderColor = IsControlFocused ? FocusedBorderColor : BorderColor;
+                        frmContainer.BorderColor = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
                     else
                         frmContainer.BorderColor = DisabledBorderColor;
 
@@ -416,7 +416,7 @@ namespace Plugin.MaterialDesignControls
                     bxvLine.IsVisible = true;
 
                     if (IsControlEnabled)
-                        bxvLine.Color = IsControlFocused ? FocusedBorderColor : BorderColor;
+                        bxvLine.Color = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
                     else
                         bxvLine.Color = DisabledBorderColor;
                     break;

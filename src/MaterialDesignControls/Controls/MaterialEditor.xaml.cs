@@ -273,7 +273,7 @@ namespace Plugin.MaterialDesignControls
         protected override void SetTextColor()
         {
             if (IsControlEnabled)
-                txtEditor.TextColor = IsControlFocused ? FocusedTextColor : TextColor;
+                txtEditor.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
             else
                 txtEditor.TextColor = DisabledTextColor;
         }
