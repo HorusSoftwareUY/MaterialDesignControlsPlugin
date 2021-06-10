@@ -258,6 +258,8 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ActivityIndicatorSizeProperty, value); }
         }
 
+        public event EventHandler Clicked;
+
         #endregion Properties
 
         #region Methods
@@ -466,6 +468,15 @@ namespace Plugin.MaterialDesignControls
         public void ConsumeEvent(EventType gestureType)
         {
             TouchAndPressAnimation.Animate(this, gestureType);
+        }
+
+        public void ExecuteAction()
+        {
+            if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
+                Command.Execute(CommandParameter);
+
+            if (IsEnabled && Clicked != null)
+                Clicked.Invoke(this, null);
         }
 
         #endregion Methods
