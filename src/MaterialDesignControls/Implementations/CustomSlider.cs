@@ -23,7 +23,7 @@ namespace Plugin.MaterialDesignControls.Implementations
         }
 
         public static new readonly BindableProperty ThumbColorProperty =
-            BindableProperty.Create(nameof(ThumbColor), typeof(Color), typeof(CustomSlider), defaultValue: Color.Black);
+            BindableProperty.Create(nameof(ThumbColor), typeof(Color), typeof(CustomSlider), defaultValue: Color.Transparent);
 
         public new Color ThumbColor
         {

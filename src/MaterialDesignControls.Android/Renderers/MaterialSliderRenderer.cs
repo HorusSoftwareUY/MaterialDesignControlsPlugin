@@ -28,7 +28,8 @@ namespace Plugin.MaterialDesignControls.Android
             {
                 var customSlider = (CustomSlider)Element;
 
-                Control.Thumb.SetColorFilter(customSlider.ThumbColor.ToAndroid(), PorterDuff.Mode.SrcIn);
+                if (customSlider.ThumbColor != Xamarin.Forms.Color.Transparent)
+                    Control.Thumb.SetColorFilter(customSlider.ThumbColor.ToAndroid(), PorterDuff.Mode.SrcIn);
 
                 BuildVersionCodes androidVersion = Build.VERSION.SdkInt;
 

@@ -10,7 +10,8 @@ namespace Plugin.MaterialDesignControls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialSlider : ContentView
     {
-        #region constructors
+        #region Constructors
+
         public MaterialSlider()
         {
 
@@ -20,17 +21,22 @@ namespace Plugin.MaterialDesignControls
                 this.InitializeComponent();
             }
         }
-        #endregion constructors
 
-        #region attributes
+        #endregion Constructors
+
+        #region Attributes
+
         private bool initialized = false;
         public double OldValue;
-        #endregion attributes
 
-        #region properties
+        #endregion Attributes
+
+        #region Properties
+
         public event EventHandler<ValueChangedEventArgs> ValueChanged;
 
         #region LabelText
+
         public static readonly BindableProperty LabelTextProperty =
             BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialSlider), defaultValue: null);
 
@@ -66,9 +72,11 @@ namespace Plugin.MaterialDesignControls
             get { return (double)GetValue(LabelSizeProperty); }
             set { SetValue(LabelSizeProperty, value); }
         }
+
         #endregion LabelText
 
         #region LabelMinimum
+
         public static readonly BindableProperty LabelMinimumTextProperty =
             BindableProperty.Create(nameof(LabelMinimumText), typeof(string), typeof(MaterialSlider), defaultValue: null);
 
@@ -104,9 +112,11 @@ namespace Plugin.MaterialDesignControls
             get { return (double)GetValue(LabelMinimumSizeProperty); }
             set { SetValue(LabelMinimumSizeProperty, value); }
         }
+
         #endregion LabelMinimumText
 
         #region LabelMaximum
+
         public static readonly BindableProperty LabelMaximumTextProperty =
             BindableProperty.Create(nameof(LabelMaximumText), typeof(string), typeof(MaterialSlider), defaultValue: null);
 
@@ -142,6 +152,7 @@ namespace Plugin.MaterialDesignControls
             get { return (double)GetValue(LabelMaximumSizeProperty); }
             set { SetValue(LabelMaximumSizeProperty, value); }
         }
+
         #endregion LabelMaximumText
 
         #region AssistiveText
@@ -185,6 +196,7 @@ namespace Plugin.MaterialDesignControls
         #endregion AssistiveText
 
         #region ImageMinimum
+
         public static readonly BindableProperty MinimumIconProperty =
             BindableProperty.Create(nameof(MinimumIcon), typeof(string), typeof(MaterialSlider), defaultValue: null);
 
@@ -207,10 +219,11 @@ namespace Plugin.MaterialDesignControls
         {
             get { return !string.IsNullOrEmpty(this.MinimumIcon) || CustomMinimumIcon != null; }
         }
+
         #endregion ImageMinimum
 
-
         #region ImageMaximum
+
         public static readonly BindableProperty MaximumIconProperty =
             BindableProperty.Create(nameof(MaximumIcon), typeof(string), typeof(MaterialSlider), defaultValue: null);
 
@@ -233,10 +246,11 @@ namespace Plugin.MaterialDesignControls
         {
             get { return !string.IsNullOrEmpty(this.MaximumIcon) || CustomMaximumIcon != null; }
         }
+
         #endregion ImageMaximum
 
-
         #region BackGroundImage
+
         public static readonly BindableProperty BackgroundImageProperty =
            BindableProperty.Create(nameof(BackgroundImage), typeof(string), typeof(MaterialSlider), defaultValue: null);
 
@@ -254,9 +268,11 @@ namespace Plugin.MaterialDesignControls
             get { return (View)GetValue(CustomBackgroundImageProperty); }
             set { SetValue(CustomBackgroundImageProperty, value); }
         }
+
         #endregion BackGroundImage
 
         #region ThumbImage
+
         public static readonly BindableProperty ThumbImageProperty =
             BindableProperty.Create(nameof(ThumbImage), typeof(string), typeof(MaterialSlider), defaultValue: null);
 
@@ -265,10 +281,11 @@ namespace Plugin.MaterialDesignControls
             get { return (string)GetValue(ThumbImageProperty); }
             set { SetValue(ThumbImageProperty, value); }
         }
+
         #endregion ThumbImage
 
-
         #region Values
+
         public static readonly BindableProperty ValueProperty =
             BindableProperty.Create(nameof(Value), typeof(double), typeof(MaterialSlider), defaultValue: 0.0, defaultBindingMode: BindingMode.TwoWay, propertyChanged: OnValuePropertyChanged);
 
@@ -295,6 +312,7 @@ namespace Plugin.MaterialDesignControls
             get { return (double)GetValue(MaximumValueProperty); }
             set { SetValue(MaximumValueProperty, value); }
         }
+
         #endregion Values
 
         public static readonly BindableProperty ActiveTrackColorProperty =
@@ -388,9 +406,10 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledThumbColorProperty, value); }
         }
 
-        #endregion properties
+        #endregion Properties
 
-        #region methods
+        #region Methods
+
         public void ExecuteChanged()
         {
             ValueChangedEventArgs args = new ValueChangedEventArgs(OldValue, Value);
@@ -570,7 +589,6 @@ namespace Plugin.MaterialDesignControls
             }
 
             base.OnPropertyChanged(propertyName);
-
         }
 
         private void SetMinimumIconIsVisible()
@@ -620,6 +638,6 @@ namespace Plugin.MaterialDesignControls
 
         }
 
-        #endregion methods
+        #endregion Methods
     }
 }

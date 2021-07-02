@@ -12,10 +12,10 @@
                     x:Name="slider" 
                     MinimumValue="0" 
                     MaximumValue="100" 
-                    ThumbColor="BlueViolet"
+                    ThumbColor="Blue"
                     LabelText="Slider"
-                    ActiveTrackColor="BlueViolet"
-                    InactiveTrackColor="LightPink"/>
+                    ActiveTrackColor="Blue"
+                    InactiveTrackColor="LightBlue"/>
 
                 <material:MaterialSlider 
                     x:Name="slider0" 
@@ -89,7 +89,7 @@
                     x:Name="slider5" 
                     MinimumValue="0" 
                     MaximumValue="100" 
-                    ThumbColor="Black" 
+                    ThumbColor="Black"
                     LabelText="Slider whit backgroundimage(svg)" 
                     ActiveTrackColor="Transparent" 
                     InactiveTrackColor="Transparent">
@@ -101,10 +101,11 @@
                     x:Name="slider6" 
                     MinimumValue="0" 
                     AssistiveText="Slide to change the opacity value" 
-                    MaximumValue="10" ThumbColor="BlueViolet" 
+                    MaximumValue="10"
+                    ThumbColor="Blue" 
                     Value="{Binding Value}" 
                     LabelText="Select the opacity" 
-                    ActiveTrackColor="BlueViolet" 
+                    ActiveTrackColor="Blue"
                     LabelMinimumText="0" 
                     LabelMaximumText="10"
                     InactiveTrackColor="LightPink"/>

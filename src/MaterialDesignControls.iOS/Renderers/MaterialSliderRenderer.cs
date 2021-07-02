@@ -1,5 +1,4 @@
 ﻿using Plugin.MaterialDesignControls.Implementations;
-using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -17,15 +16,14 @@ namespace Plugin.MaterialDesignControls.iOS
             if (Control != null)
             {
                 var customSlider = (CustomSlider)Element;
+
                 Element.MinimumTrackColor = customSlider.ActiveTrackColor;
                 Element.MaximumTrackColor = customSlider.InactiveTrackColor;
 
                 Control.UserInteractionEnabled = customSlider.UserInteractionEnabled;
 
-                if (customSlider.UserInteractionEnabled)
-                    Control.SetThumbImage(UIImage.FromBundle(((FileImageSource)customSlider.ThumbImageSource).File), UIControlState.Normal);
-                else
-                    Control.SetThumbImage(new UIImage(), UIControlState.Normal);
+                if (customSlider.ThumbColor != Color.Transparent)
+                    Control.ThumbTintColor = customSlider.ThumbColor.ToUIColor();
             }
         }
     }
