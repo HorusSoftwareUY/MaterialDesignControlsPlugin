@@ -16,8 +16,7 @@ namespace ExampleMaterialDesignControls
             InitializeComponent();
             this.Children.Add(new ProductDetailsPage());
             this.Children.Add(new AddCardPage());
-            this.Children.Add(new MaterialDatePickerPage());
-            this.Children.Add(new NavigationPage(new MaterialControlsPage()) { Title="Controls", IconImageSource="" });
+            this.Children.Add(new NavigationPage(new MaterialControlsPage()) { Title = "Controls", IconImageSource = "Product.png" });
 
             //masterPage.ListView.ItemSelected += OnItemSelected;
         }

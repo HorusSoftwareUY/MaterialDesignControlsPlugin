@@ -16,9 +16,6 @@
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Pages\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Resources\Svg\" />
@@ -51,5 +48,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources/Fonts/*" />
     <EmbeddedResource Include="Resources/Svg/*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
   </ItemGroup>
 </Project>

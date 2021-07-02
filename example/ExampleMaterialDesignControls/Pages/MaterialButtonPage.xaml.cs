@@ -15,5 +15,10 @@ namespace ExampleMaterialDesignControls.Pages
 
             this.BindingContext = new MaterialButtonViewModel { DisplayAlert = this.DisplayAlert };
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Clicked Event", "Executing the click event in the code behind", "Ok");
+        }
     }
 }
