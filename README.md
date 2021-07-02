@@ -163,6 +163,27 @@ Selection let users select an option.
                             Command="{Binding TapCommand}" CommandParameter="User selection" />
 ```
 
+
+### MaterialSliderControl
+Displays a slider control<br/>
+[View documentation](MaterialSliderControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/material_slider.jpg" width="300">
+
+**Example**
+```XML
+ <material:MaterialSlider 
+                    x:Name="slider" 
+                    MinimumValue="0" 
+                    MaximumValue="100" 
+                    ThumbColor="BlueViolet"
+                    LabelText="Slider"
+                    ActiveTrackColor="BlueViolet"
+                    InactiveTrackColor="LightPink"/>
+```
+
 ### MaterialField
 Displays a value with its respective label in read-only format.
 

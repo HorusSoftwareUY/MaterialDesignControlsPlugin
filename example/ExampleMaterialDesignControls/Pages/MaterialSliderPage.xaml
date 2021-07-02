@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialSliderPage"
+             Title="MaterialSlider">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialSlider 
+                    x:Name="slider" 
+                    MinimumValue="0" 
+                    MaximumValue="100" 
+                    ThumbColor="Blue"
+                    LabelText="Slider"
+                    ActiveTrackColor="Blue"
+                    InactiveTrackColor="LightBlue"/>
+
+                <material:MaterialSlider 
+                    x:Name="slider0" 
+                    MinimumValue="0" 
+                    MaximumValue="10" 
+                    IsEnabled="False"
+                    ThumbImage="color.png" 
+                    LabelText="Disabled slider"
+                    Value="5"
+                    LabelMinimumText="0" 
+                    LabelMaximumText="10" />
+                <material:MaterialSlider 
+                    x:Name="slider10" 
+                    MinimumValue="0" 
+                    MaximumValue="10" 
+                    IsEnabled="True"
+                    ThumbImage="color.png" 
+                    LabelText="Thumb icon"
+                    Value="5"
+                    LabelMinimumText="0" 
+                    LabelMaximumText="10" />
+                <material:MaterialSlider 
+                    x:Name="slider1" 
+                    MinimumValue="0" 
+                    MaximumValue="10"
+                    ThumbColor="BlueViolet"
+                    LabelText="Slider with event ValueChanged" 
+                    ActiveTrackColor="BlueViolet" 
+                    LabelMinimumText="0"
+                    LabelMaximumText="10" 
+                    ValueChanged="slider1_ValueChanged"
+                    InactiveTrackColor="LightPink"/>
+                <Label x:Name="lblSlider1" TextColor="Gray"/>
+                <material:MaterialSlider 
+                    x:Name="slider2" 
+                    MinimumValue="0" 
+                    MaximumValue="100" 
+                    ThumbColor="BlueViolet" 
+                    MaximumIcon="volume.png" 
+                    MinimumIcon="mute.png" 
+                    LabelText="Slider whit image(png)"
+                    ShowIcons="True"
+                    ActiveTrackColor="BlueViolet" 
+                    InactiveTrackColor="LightPink"/>
+                <material:MaterialSlider 
+                    x:Name="slider3" 
+                    MinimumValue="0" 
+                    MaximumValue="100" 
+                    ThumbColor="BlueViolet" 
+                    LabelText="Slider whit image(svg)" 
+                    ActiveTrackColor="BlueViolet" 
+                    ShowIcons="True"
+                    InactiveTrackColor="LightPink">
+                    <material:MaterialSlider.CustomMinimumIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg"/>
+                    </material:MaterialSlider.CustomMinimumIcon>
+                    <material:MaterialSlider.CustomMaximumIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.volume.svg"/>
+                    </material:MaterialSlider.CustomMaximumIcon>
+                </material:MaterialSlider>
+                <material:MaterialSlider 
+                    x:Name="slider4" 
+                    MinimumValue="0" 
+                    MaximumValue="100" 
+                    ThumbColor="Black" 
+                    BackgroundImage="scale.png" 
+                    LabelText="Slider whit backgroundimage(png)" 
+                    ActiveTrackColor="Transparent" 
+                    InactiveTrackColor="Transparent"/>
+                <material:MaterialSlider 
+                    x:Name="slider5" 
+                    MinimumValue="0" 
+                    MaximumValue="100" 
+                    ThumbColor="Black"
+                    LabelText="Slider whit backgroundimage(svg)" 
+                    ActiveTrackColor="Transparent" 
+                    InactiveTrackColor="Transparent">
+                    <material:MaterialSlider.CustomBackgroundImage>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.scale.svg"/>
+                    </material:MaterialSlider.CustomBackgroundImage>
+                </material:MaterialSlider>
+                <material:MaterialSlider 
+                    x:Name="slider6" 
+                    MinimumValue="0" 
+                    AssistiveText="Slide to change the opacity value" 
+                    MaximumValue="10"
+                    ThumbColor="Blue" 
+                    Value="{Binding Value}" 
+                    LabelText="Select the opacity" 
+                    ActiveTrackColor="Blue"
+                    LabelMinimumText="0" 
+                    LabelMaximumText="10"
+                    InactiveTrackColor="LightPink"/>
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

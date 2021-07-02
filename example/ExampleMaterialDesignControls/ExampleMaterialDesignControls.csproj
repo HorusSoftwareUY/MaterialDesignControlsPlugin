@@ -50,6 +50,11 @@
     <EmbeddedResource Include="Resources/Svg/*" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\Svg\mute.svg" />
+    <None Remove="Resources\Svg\scale.svg" />
+    <None Remove="Resources\Svg\volume.svg" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
   </ItemGroup>
 </Project>

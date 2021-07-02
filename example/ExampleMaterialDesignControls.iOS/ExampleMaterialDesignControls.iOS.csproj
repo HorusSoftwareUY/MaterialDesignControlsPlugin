@@ -210,4 +210,13 @@
       <Link>Resources\Fonts\font_semi_bold.ttf</Link>
     </BundleResource>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\volume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scale.png" />
+  </ItemGroup>
 </Project>

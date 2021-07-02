@@ -21,6 +21,8 @@
                 <material:MaterialButton Command="{Binding GoMaterialSelectionCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Selection" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
                 <material:MaterialButton Command="{Binding GoMaterialTimePickerCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Time Picker" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
                 <material:MaterialButton Command="{Binding GoMaterialCustomControlCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Custom Control" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
+                <material:MaterialButton Command="{Binding GoMaterialSliderCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Slider" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
