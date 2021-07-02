@@ -184,7 +184,8 @@
         <!-- MaterialEntry -->
         <Style TargetType="material:MaterialEntry" BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
-            <!--<Setter Property="ClearIcon" Value="cancel.png" />-->
+            <Setter Property="ClearIcon" Value="cancel.png" />
+            <Setter Property="ClearIconIsVisible" Value="True" />
             <Setter Property="ShowPasswordIcon" Value="showPassword.png" />
         </Style>
 
