@@ -17,11 +17,7 @@ namespace Plugin.MaterialDesignControls.Animations
                     break;
                 case EventType.Cancelled:
                 case EventType.Released:
-                    if (touchAndPressEffectConsumer.IsEnabled && touchAndPressEffectConsumer.Command != null && touchAndPressEffectConsumer.Command.CanExecute(touchAndPressEffectConsumer.CommandParameter))
-                    {
-                        touchAndPressEffectConsumer.Command.Execute(touchAndPressEffectConsumer.CommandParameter);
-                    }
-
+                    touchAndPressEffectConsumer.ExecuteAction();
                     RestoreAnimation(view, touchAndPressEffectConsumer);
                     break;
                 case EventType.Ignored:
@@ -34,7 +30,7 @@ namespace Plugin.MaterialDesignControls.Animations
 
         private static void SetAnimation(View view, ITouchAndPressEffectConsumer touchAndPressEffectConsumer)
         {
-            if (touchAndPressEffectConsumer.Animation != AnimationTypes.None && view.IsEnabled && (touchAndPressEffectConsumer.Command == null || touchAndPressEffectConsumer.Command.CanExecute(touchAndPressEffectConsumer.CommandParameter)))
+            if (touchAndPressEffectConsumer.Animation != AnimationTypes.None && touchAndPressEffectConsumer.IsEnabled)
             {
                 Task.Run(async () =>
                 {
@@ -69,4 +65,3 @@ namespace Plugin.MaterialDesignControls.Animations
         }
     }
 }
-

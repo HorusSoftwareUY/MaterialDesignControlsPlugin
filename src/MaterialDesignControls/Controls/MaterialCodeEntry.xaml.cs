@@ -393,7 +393,7 @@ namespace Plugin.MaterialDesignControls
                 foreach (var lblCode in lblCodes)
                 {
                     if (IsControlEnabled)
-                        lblCode.TextColor = IsControlFocused ? FocusedTextColor : TextColor;
+                        lblCode.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
                     else
                         lblCode.TextColor = DisabledTextColor;
                 }
@@ -444,12 +444,12 @@ namespace Plugin.MaterialDesignControls
                         foreach (var frmContainer in frmContainers)
                         {
                             if (IsControlEnabled)
-                                frmContainer.BackgroundColor = IsControlFocused ? FocusedBackgroundColor : BackgroundColorControl;
+                                frmContainer.BackgroundColor = IsControlFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : BackgroundColorControl;
                             else
                                 frmContainer.BackgroundColor = DisabledBackgroundColor;
 
                             if (IsControlEnabled)
-                                frmContainer.BorderColor = IsControlFocused ? FocusedBorderColor : BorderColor;
+                                frmContainer.BorderColor = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
                             else
                                 frmContainer.BorderColor = DisabledBorderColor;
                         }
@@ -469,7 +469,7 @@ namespace Plugin.MaterialDesignControls
                     bxvLine.IsVisible = true;
                     
                     if (IsControlEnabled)
-                        bxvLine.Color = IsControlFocused ? FocusedBorderColor : BorderColor;
+                        bxvLine.Color = IsControlFocused &&  FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
                     else
                         bxvLine.Color = DisabledBorderColor;
 
