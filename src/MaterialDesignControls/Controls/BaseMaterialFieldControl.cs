@@ -183,6 +183,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LabelSizeProperty, value); }
         }
 
+        public static readonly BindableProperty LabelMarginProperty =
+            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(14, 0, 14, 2));
+
+        public Thickness LabelMargin
+        {
+            get { return (Thickness)GetValue(LabelMarginProperty); }
+            set { SetValue(LabelMarginProperty, value); }
+        }
+
         #endregion LabelText
 
         #region AssistiveText
@@ -212,6 +221,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (double)GetValue(AssistiveSizeProperty); }
             set { SetValue(AssistiveSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty AssistiveMarginProperty =
+            BindableProperty.Create(nameof(AssistiveMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(14, 2, 14, 0));
+
+        public Thickness AssistiveMargin
+        {
+            get { return (Thickness)GetValue(AssistiveMarginProperty); }
+            set { SetValue(AssistiveMarginProperty, value); }
         }
 
         #endregion AssistiveText
@@ -460,6 +478,9 @@ namespace Plugin.MaterialDesignControls
                 case nameof(LabelSize):
                     lblLabel.FontSize = LabelSize;
                     break;
+                case nameof(LabelMargin):
+                    lblLabel.Margin = LabelMargin;
+                    break;
                 case nameof(Padding):
                     SetPadding();
                     break;
@@ -501,6 +522,9 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(AssistiveSize):
                     lblAssistive.FontSize = AssistiveSize;
+                    break;
+                case nameof(AssistiveMargin):
+                    lblAssistive.Margin = AssistiveMargin;
                     break;
 
                 case nameof(LeadingIcon):

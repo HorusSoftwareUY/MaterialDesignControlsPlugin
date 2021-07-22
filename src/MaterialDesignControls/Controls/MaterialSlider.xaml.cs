@@ -75,6 +75,55 @@ namespace Plugin.MaterialDesignControls
 
         #endregion LabelText
 
+        #region LabelValue
+
+        public static readonly BindableProperty LabelValueFormatProperty =
+            BindableProperty.Create(nameof(LabelValueFormat), typeof(string), typeof(MaterialSlider), defaultValue: null);
+
+        public string LabelValueFormat
+        {
+            get { return (string)GetValue(LabelValueFormatProperty); }
+            set { SetValue(LabelValueFormatProperty, value); }
+        }
+
+        public static readonly BindableProperty LabelValueColorProperty =
+            BindableProperty.Create(nameof(LabelValueColor), typeof(Color), typeof(MaterialSlider), defaultValue: Color.Gray);
+
+        public Color LabelValueColor
+        {
+            get { return (Color)GetValue(LabelValueColorProperty); }
+            set { SetValue(LabelValueColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledLabelValueColorProperty =
+            BindableProperty.Create(nameof(DisabledLabelValueColor), typeof(Color), typeof(MaterialSlider), defaultValue: Color.Gray);
+
+        public Color DisabledLabelValueColor
+        {
+            get { return (Color)GetValue(DisabledLabelValueColorProperty); }
+            set { SetValue(DisabledLabelValueColorProperty, value); }
+        }
+
+        public static readonly BindableProperty LabelValueSizeProperty =
+            BindableProperty.Create(nameof(LabelValueSize), typeof(double), typeof(MaterialSlider), defaultValue: Font.Default.FontSize);
+
+        public double LabelValueSize
+        {
+            get { return (double)GetValue(LabelValueSizeProperty); }
+            set { SetValue(LabelValueSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty LabelValueIsVisibleProperty =
+            BindableProperty.Create(nameof(LabelValueIsVisible), typeof(bool), typeof(MaterialSlider), defaultValue: false);
+
+        public bool LabelValueIsVisible
+        {
+            get { return (bool)GetValue(LabelValueIsVisibleProperty); }
+            set { SetValue(LabelValueIsVisibleProperty, value); }
+        }
+
+        #endregion LabelValue
+
         #region LabelMinimum
 
         public static readonly BindableProperty LabelMinimumTextProperty =
@@ -431,6 +480,10 @@ namespace Plugin.MaterialDesignControls
         {
             this.Value = e.NewValue;
             this.OldValue = e.OldValue;
+
+            if (LabelValueIsVisible)
+                lblValue.Text = Value.ToString(LabelValueFormat);
+
             ExecuteChanged();
         }
 
@@ -460,6 +513,24 @@ namespace Plugin.MaterialDesignControls
                 case nameof(LabelSize):
                     lblLabel.FontSize = LabelSize;
                     break;
+
+                case nameof(LabelValueFormat):
+                    lblValue.Text = Value.ToString(LabelValueFormat);
+                    break;
+                case nameof(LabelValueColor):
+                    lblValue.TextColor = LabelValueColor;
+                    break;
+                case nameof(DisabledLabelValueColor):
+                    lblValue.TextColor = IsEnabled ? LabelValueColor : DisabledLabelValueColor;
+                    break;
+                case nameof(LabelValueSize):
+                    lblValue.FontSize = LabelValueSize;
+                    break;
+                case nameof(LabelValueIsVisible):
+                    lblValue.IsVisible = LabelValueIsVisible;
+                    lblValue.Text = Value.ToString(LabelValueFormat);
+                    break;
+
                 case nameof(LabelMinimumText):
                     lblMinimum.Text = LabelMinimumText;
                     lblMinimum.IsVisible = !string.IsNullOrEmpty(LabelMinimumText) && (!ShowIcons || !MinimumIconIsVisible);
@@ -614,10 +685,10 @@ namespace Plugin.MaterialDesignControls
 
         public void SetEnable()
         {
-            //slider.IsEnabled = IsEnabled;
             if(!IsEnabled)
             {
                 lblLabel.TextColor = DisabledLabelTextColor;
+                lblValue.TextColor = DisabledLabelValueColor;
                 lblMinimum.TextColor = DisabledLabelMinimumTextColor;
                 lblMaximum.TextColor = DisabledLabelMaximumTextColor;
 
@@ -628,6 +699,7 @@ namespace Plugin.MaterialDesignControls
             else
             {
                 lblLabel.TextColor = LabelTextColor;
+                lblValue.TextColor = LabelValueColor;
                 lblMinimum.TextColor = LabelMinimumTextColor;
                 lblMaximum.TextColor = LabelMaximumTextColor;
 
@@ -635,7 +707,6 @@ namespace Plugin.MaterialDesignControls
                 slider.InactiveTrackColor = InactiveTrackColor;
                 slider.ThumbColor = ThumbColor;
             }
-
         }
 
         #endregion Methods

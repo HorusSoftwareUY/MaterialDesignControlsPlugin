@@ -15,7 +15,11 @@
                     ThumbColor="Blue"
                     LabelText="Slider"
                     ActiveTrackColor="Blue"
-                    InactiveTrackColor="LightBlue"/>
+                    InactiveTrackColor="LightBlue"
+                    LabelValueIsVisible="True"
+                    LabelValueFormat="0.00 km"
+                    LabelValueSize="12"
+                    LabelValueColor="Blue" />
 
                 <material:MaterialSlider 
                     x:Name="slider0" 

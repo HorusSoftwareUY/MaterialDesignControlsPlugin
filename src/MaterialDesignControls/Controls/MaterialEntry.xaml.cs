@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using Xamarin.Forms;
@@ -146,6 +147,24 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (ReturnType)GetValue(ReturnTypeProperty); }
             set { SetValue(ReturnTypeProperty, value); }
+        }
+
+        public static readonly BindableProperty ReturnCommandProperty =
+            BindableProperty.Create(nameof(ReturnCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+
+        public ICommand ReturnCommand
+        {
+            get { return (ICommand)GetValue(ReturnCommandProperty); }
+            set { SetValue(ReturnCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty ReturnCommandParameterProperty =
+            BindableProperty.Create(nameof(ReturnCommandParameter), typeof(object), typeof(MaterialEntry), defaultValue: null);
+
+        public object ReturnCommandParameter
+        {
+            get { return (object)GetValue(ReturnCommandParameterProperty); }
+            set { SetValue(ReturnCommandParameterProperty, value); }
         }
 
         public static readonly BindableProperty TextProperty =
@@ -393,7 +412,7 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.ReturnType):
                     this.txtEntry.ReturnType = this.ReturnType;
 
-                    if (this.ReturnType.Equals(Xamarin.Forms.ReturnType.Next))
+                    if (this.ReturnType.Equals(Xamarin.Forms.ReturnType.Next) && this.ReturnCommand == null)
                     {
                         this.txtEntry.ReturnCommand = new Command(() =>
                         {
@@ -401,6 +420,12 @@ namespace Plugin.MaterialDesignControls
                             this.FocusNextElement(currentTabIndex);
                         });
                     }
+                    break;
+                case nameof(this.ReturnCommand):
+                    this.txtEntry.ReturnCommand = this.ReturnCommand;
+                    break;
+                case nameof(this.ReturnCommandParameter):
+                    this.txtEntry.ReturnCommandParameter = this.ReturnCommandParameter;
                     break;
                 case nameof(this.IsCode):
                     this.txtEntry.IsCode = this.IsCode;

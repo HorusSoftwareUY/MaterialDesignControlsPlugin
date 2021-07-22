@@ -13,7 +13,9 @@
             <StackLayout Padding="16" Spacing="16">
                 <material:MaterialButton Text="Save" ToUpper="True" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" CornerRadius="14" />
 
-                <material:MaterialOutlineButton Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" CornerRadius="14" IconSize="34" ActivityIndicatorSize="34">
+                <material:MaterialOutlineButton Text="Cancel action" Command="{Binding TapCommand}" CommandParameter="Canceled" CornerRadius="14"
+                                                IconSize="34" ActivityIndicatorSize="34"
+                                                Padding="16,0" ContentIsExpanded="True" Spacing="0" WidthRequest="295" HorizontalOptions="Center">
                     <material:MaterialButton.CustomIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
                     </material:MaterialButton.CustomIcon>

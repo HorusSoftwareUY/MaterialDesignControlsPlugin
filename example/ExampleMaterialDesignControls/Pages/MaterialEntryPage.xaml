@@ -22,13 +22,15 @@
                     </material:MaterialEntry.CustomHidePasswordIcon>
                 </material:MaterialEntry>
 
-                <material:MaterialEntry Type="Outlined" LabelText="Confirm password" Placeholder="Enter" IsPassword="true" TabIndex="4" ReturnType="Next" CornerRadius="20" />
+                <material:MaterialEntry Type="Outlined" LabelText="Confirm password" Placeholder="Enter" IsPassword="true" TabIndex="4" CornerRadius="20"
+                                        ReturnType="Done" ReturnCommand="{Binding TapCommand}" />
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next"
                                         FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" HorizontalTextAlignment="Center" />
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" IsEnabled="False" />
 
-                <material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next"
-                                        TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone">
+                <material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5"
+                                        TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone"
+                                        LabelMargin="0,0,0,2" AssistiveMargin="0,2,0,0" AssistiveText="Testing">
                     <material:MaterialEntry.CustomTrailingIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
                     </material:MaterialEntry.CustomTrailingIcon>

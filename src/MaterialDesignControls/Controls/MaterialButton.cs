@@ -223,7 +223,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty IconSizeProperty =
-            BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 24.0);
+            BindableProperty.Create(nameof(IconSize), typeof(double), typeof(MaterialButton), defaultValue: 24.0);
 
         public double IconSize
         {
@@ -250,12 +250,39 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ActivityIndicatorSizeProperty =
-            BindableProperty.Create(nameof(ActivityIndicatorSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 24.0);
+            BindableProperty.Create(nameof(ActivityIndicatorSize), typeof(double), typeof(MaterialButton), defaultValue: 24.0);
 
         public double ActivityIndicatorSize
         {
             get { return (double)GetValue(ActivityIndicatorSizeProperty); }
             set { SetValue(ActivityIndicatorSizeProperty, value); }
+        }
+
+        public static readonly new BindableProperty PaddingProperty =
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialButton), defaultValue: new Thickness(12, 0));
+
+        public new Thickness Padding
+        {
+            get { return (Thickness)GetValue(PaddingProperty); }
+            set { SetValue(PaddingProperty, value); }
+        }
+
+        public static readonly BindableProperty SpacingProperty =
+            BindableProperty.Create(nameof(Spacing), typeof(int), typeof(MaterialButton), defaultValue: 12);
+
+        public int Spacing
+        {
+            get { return (int)GetValue(SpacingProperty); }
+            set { SetValue(SpacingProperty, value); }
+        }
+
+        public static readonly BindableProperty ContentIsExpandedProperty =
+            BindableProperty.Create(nameof(ContentIsExpanded), typeof(bool), typeof(MaterialButton), defaultValue: false);
+
+        public bool ContentIsExpanded
+        {
+            get { return (bool)GetValue(ContentIsExpandedProperty); }
+            set { SetValue(ContentIsExpandedProperty, value); }
         }
 
         public event EventHandler Clicked;
@@ -274,15 +301,15 @@ namespace Plugin.MaterialDesignControls
                 CornerRadius = 4,
                 MinimumHeightRequest = 40,
                 HeightRequest = 40,
-                Padding = new Thickness(12, 0)
+                Padding = this.Padding
             };
             Content = frmLayout;
 
             stcLayout = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                Spacing = 12,
-                HorizontalOptions = LayoutOptions.Center,
+                Spacing = this.Spacing,
+                HorizontalOptions = this.ContentIsExpanded ? LayoutOptions.FillAndExpand : LayoutOptions.Center,
             };
             frmLayout.Content = stcLayout;
 
@@ -298,7 +325,8 @@ namespace Plugin.MaterialDesignControls
             lblText = new MaterialLabel
             {
                 LineBreakMode = LineBreakMode.NoWrap,
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = this.ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center
             };
             stcLayout.Children.Add(lblText);
 
@@ -461,6 +489,17 @@ namespace Plugin.MaterialDesignControls
                         this.frmLayout.BackgroundColor = this.IsEnabled ? this.BackgroundColor : this.DisabledBackgroundColor;
                         this.frmLayout.BorderColor = this.IsEnabled ? this.BorderColor : this.DisabledBorderColor;
                     }
+                    break;
+
+                case nameof(this.Padding):
+                    frmLayout.Padding = this.Padding;
+                    break;
+                case nameof(this.Spacing):
+                    stcLayout.Spacing = this.Spacing;
+                    break;
+                case nameof(ContentIsExpanded):
+                    stcLayout.HorizontalOptions = this.ContentIsExpanded ? LayoutOptions.FillAndExpand : LayoutOptions.Center;
+                    lblText.HorizontalOptions = this.ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center;
                     break;
             }
         }
