@@ -337,6 +337,12 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
+        public void ClearSelectedItem()
+        {
+            SelectedItem = null;
+            pckOptions.SelectedIndex = -1;
+        }
+
         #endregion Methods
     }
 }
