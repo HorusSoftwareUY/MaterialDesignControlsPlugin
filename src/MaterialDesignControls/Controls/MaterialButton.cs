@@ -333,7 +333,7 @@ namespace Plugin.MaterialDesignControls
             cntActivityIndicator = new ContentView
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = ActivityIndicatorSize,
                 HeightRequest = ActivityIndicatorSize,
                 IsVisible = false
