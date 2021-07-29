@@ -34,6 +34,18 @@
                     <material:MaterialEntry.CustomTrailingIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
                     </material:MaterialEntry.CustomTrailingIcon>
+                    <material:MaterialEntry.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.Android>monospace</OnPlatform.Android>
+                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                        </OnPlatform>
+                    </material:MaterialEntry.FontFamily>
+                    <material:MaterialEntry.LabelFontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.Android>sans-serif-black</OnPlatform.Android>
+                            <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                        </OnPlatform>
+                    </material:MaterialEntry.LabelFontFamily>
                 </material:MaterialEntry>
 
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
