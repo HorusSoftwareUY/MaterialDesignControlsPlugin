@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -32,6 +32,22 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref selectedSizes, value); }
         }
 
+        private ObservableCollection<string> colors;
+
+        public ObservableCollection<string> Colors
+        {
+            get { return colors; }
+            set { SetProperty(ref colors, value); }
+        }
+
+        private List<string> selectedColors;
+
+        public List<string> SelectedColors
+        {
+            get { return selectedColors; }
+            set { SetProperty(ref selectedColors, value); }
+        }
+
         private string error;
 
         public string Error
@@ -63,6 +79,8 @@ namespace ExampleMaterialDesignControls.ViewModels
             })));
 
             this.Sizes = new ObservableCollection<string> { "6", "6.5", "7", "7.5", "8" };
+
+            this.Colors = new ObservableCollection<string> { "Red", "White", "Green", "Sky blue", "Black", "Gray", "Light Gray" };
         }
 
         private async void OnTapCommand()
@@ -70,7 +88,8 @@ namespace ExampleMaterialDesignControls.ViewModels
             if (!string.IsNullOrEmpty(this.SelectedSizes))
             {
                 this.Error = null;
-                await this.DisplayAlert.Invoke("", "Saved", "Ok");
+                var colors = SelectedColors != null ? string.Join(", ", SelectedColors) : string.Empty;
+                await this.DisplayAlert.Invoke("Saved", $"Size: {SelectedSizes} - Colors: {colors}", "Ok");
             }
             else
             {

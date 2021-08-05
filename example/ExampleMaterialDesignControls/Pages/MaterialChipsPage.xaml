@@ -25,8 +25,32 @@
                     <material:MaterialChips Grid.Column="2" Grid.Row="1" IsSelected="false" IsEnabled="false" Text="Option F" />
 
                 </Grid>
-                <material:MaterialLabel Text="Chips group control" Margin="0,24,0,0" />
-                <material:MaterialChipsGroup LabelText="Sizes" SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" />
+
+                <BoxView
+                    HeightRequest="1"
+                    BackgroundColor="LightGray" />
+
+                <material:MaterialLabel
+                    Text="Chips group control"
+                    Margin="0,24,0,0" />
+
+                <material:MaterialChipsGroup
+                    LabelText="Sizes"
+                    SelectedItem="{Binding SelectedSizes}"
+                    ItemsSource="{Binding Sizes}"
+                    AssistiveText="{Binding Error}"
+                    AnimateError="True"
+                    ChipsFlexLayoutPercentageBasis="0.33"/>
+
+                <material:MaterialChipsGroup
+                    LabelText="Colors"
+                    IsMultipleSelection="True"
+                    SelectedItems="{Binding SelectedColors}"
+                    ItemsSource="{Binding Colors}" />
+
+                <BoxView
+                    HeightRequest="1"
+                    BackgroundColor="LightGray" />
 
                 <material:MaterialLabel Text="Filters" Margin="0,24,0,0" />
                 <FlexLayout Wrap="Wrap" Direction="Row" HorizontalOptions="FillAndExpand">

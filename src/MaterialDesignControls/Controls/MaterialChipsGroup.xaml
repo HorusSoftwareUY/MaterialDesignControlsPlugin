@@ -6,10 +6,12 @@
     <ContentView.Content>
         <StackLayout Spacing="2">
             <controls:MaterialLabel x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
-            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                <StackLayout x:Name="stcContainer" Orientation="Horizontal" Spacing="12" Padding="12,0">
-                </StackLayout>
-            </ScrollView>
+            <FlexLayout
+                x:Name="flexContainer"
+                Wrap="Wrap"
+                Direction="Row"
+                JustifyContent="Start"
+                AlignContent="Start" />
             <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
         </StackLayout>
     </ContentView.Content>
