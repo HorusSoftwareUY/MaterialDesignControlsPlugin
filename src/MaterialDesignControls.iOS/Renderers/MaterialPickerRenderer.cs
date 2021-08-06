@@ -21,6 +21,7 @@ namespace Plugin.MaterialDesignControls.iOS
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Picker> e)
         {
             base.OnElementChanged(e);
+
             if (this.Control != null)
             {
                 this.Control.BorderStyle = UITextBorderStyle.None;
@@ -54,7 +55,7 @@ namespace Plugin.MaterialDesignControls.iOS
             var customPicker = (CustomPicker)Element;
             if (e.PropertyName == nameof(customPicker.SelectedIndex))
             {
-                if (customPicker.SelectedItem == null && !string.IsNullOrEmpty(customPicker.Placeholder))
+                if (customPicker.SelectedItem == null && Control.Text == null && !string.IsNullOrEmpty(customPicker.Placeholder))
                 {
                     this.Control.Text = null;
                     this.Control.AttributedPlaceholder = new NSAttributedString(customPicker.Placeholder, foregroundColor: customPicker.PlaceholderColor.ToUIColor());
