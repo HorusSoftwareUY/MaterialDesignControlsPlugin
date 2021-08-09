@@ -60,6 +60,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ChipsMarginProperty, value); }
         }
 
+        public static readonly BindableProperty ChipsHeightRequestProperty =
+            BindableProperty.Create(nameof(ChipsHeightRequest), typeof(double), typeof(MaterialChipsGroup), defaultValue: 0.0);
+
+        public double ChipsHeightRequest
+        {
+            get { return (double)GetValue(ChipsHeightRequestProperty); }
+            set { SetValue(ChipsHeightRequestProperty, value); }
+        }
+
         public static readonly BindableProperty ChipsFlexLayoutBasisPercentageProperty =
             BindableProperty.Create(nameof(ChipsFlexLayoutPercentageBasis), typeof(double), typeof(MaterialChipsGroup), defaultValue: 0.0);
 
@@ -316,8 +325,6 @@ namespace Plugin.MaterialDesignControls
             {
                 foreach (var item in (IEnumerable)newValue)
                 {
-                    // TODO: apply ChipsFlexLayoutBasis???
-
                     var materialChips = new MaterialChips
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -336,6 +343,9 @@ namespace Plugin.MaterialDesignControls
                         DisabledSelectedBackgroundColor = control.DisabledSelectedBackgroundColor,
                         DisabledSelectedTextColor = control.DisabledSelectedTextColor
                     };
+
+                    if (control.ChipsHeightRequest != (double)ChipsHeightRequestProperty.DefaultValue)
+                        materialChips.HeightRequest = control.ChipsHeightRequest;
 
                     if (control.IsMultipleSelection)
                     {
@@ -370,24 +380,6 @@ namespace Plugin.MaterialDesignControls
                         SelectedItems.Add(((MaterialChips)sender).Text);
                     else
                         SelectedItems.Remove(((MaterialChips)sender).Text);
-
-                    //bool hasSelected = false;
-                    //if (this.flexContainer.Children != null)
-                    //{
-                    //    foreach (var item in this.flexContainer.Children)
-                    //    {
-                    //        if (item != null && item is MaterialChips && ((MaterialChips)item).IsSelected)
-                    //        {
-                    //            hasSelected = true;
-                    //            break;
-                    //        }
-                    //    }
-                    //}
-
-                    //if (!hasSelected)
-                    //{
-                    //    ((MaterialChips)sender).IsSelected = true;
-                    //}
                 }
                 else
                 {

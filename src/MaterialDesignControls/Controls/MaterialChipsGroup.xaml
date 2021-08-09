@@ -10,8 +10,7 @@
                 x:Name="flexContainer"
                 Wrap="Wrap"
                 Direction="Row"
-                JustifyContent="Start"
-                AlignContent="Start" />
+                JustifyContent="Start" />
             <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
         </StackLayout>
     </ContentView.Content>
