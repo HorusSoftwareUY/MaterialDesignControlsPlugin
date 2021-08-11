@@ -46,7 +46,9 @@
                     LabelText="Colors"
                     IsMultipleSelection="True"
                     SelectedItems="{Binding SelectedColors}"
-                    ItemsSource="{Binding Colors}" />
+                    ItemsSource="{Binding Colors}"
+                    ChipsPadding="16,0"
+                    ChipsHeightRequest="32" />
 
                 <BoxView
                     HeightRequest="1"

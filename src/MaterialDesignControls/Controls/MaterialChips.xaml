@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls" x:Class="Plugin.MaterialDesignControls.MaterialChips">
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+    x:Class="Plugin.MaterialDesignControls.MaterialChips">
     <ContentView.Content>
-        <Frame x:Name="frmContainer" HasShadow="false" CornerRadius="16" Padding="12,0" MinimumHeightRequest="32" HeightRequest="32">
-            <StackLayout Spacing="0" HorizontalOptions="Center" Orientation="Horizontal">
-                <custom:CustomImageButton x:Name="imgLeadingIcon" IsVisible="false" HorizontalOptions="Start" Padding="0,0,4,0" ImageWidthRequest="18" ImageHeightRequest="18" VerticalOptions="Center"/>
-                <controls:MaterialLabel x:Name="lblText" HorizontalOptions="CenterAndExpand" LineBreakMode="NoWrap" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                <custom:CustomImageButton x:Name="imgTrailingIcon" IsVisible="false" HorizontalOptions="End" Padding="4,0,0,0" ImageWidthRequest="18" ImageHeightRequest="18" VerticalOptions="Center" />
+        <Frame
+            x:Name="frmContainer"
+            HasShadow="false"
+            CornerRadius="16"
+            Padding="12,0"
+            MinimumHeightRequest="32"
+            HeightRequest="32">
+            <StackLayout
+                Spacing="0"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <custom:CustomImageButton
+                    x:Name="imgLeadingIcon"
+                    IsVisible="false"
+                    HorizontalOptions="Start"
+                    Padding="0,0,4,0"
+                    ImageWidthRequest="18"
+                    ImageHeightRequest="18"
+                    VerticalOptions="Center"/>
+                <Label
+                    x:Name="lblText"
+                    HorizontalOptions="CenterAndExpand"
+                    LineBreakMode="NoWrap" VerticalOptions="Center"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center" />
+                <custom:CustomImageButton
+                    x:Name="imgTrailingIcon"
+                    IsVisible="false"
+                    HorizontalOptions="End"
+                    Padding="4,0,0,0"
+                    ImageWidthRequest="18"
+                    ImageHeightRequest="18"
+                    VerticalOptions="Center" />
             </StackLayout>
         </Frame>
     </ContentView.Content>

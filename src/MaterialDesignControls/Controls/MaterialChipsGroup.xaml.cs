@@ -124,7 +124,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null);
+            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null, validateValue: OnAssistiveTextValidate);
 
         public string AssistiveText
         {
@@ -289,6 +289,17 @@ namespace Plugin.MaterialDesignControls
 
         #region Methods
 
+        private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
+        {
+            var control = (MaterialChipsGroup)bindable;
+
+            // Used to animate the error when the assistive text doesn't change
+            if (control.AnimateError && !string.IsNullOrEmpty(control.AssistiveText) && control.AssistiveText == (string)value)
+                ShakeAnimation.Animate(control);
+
+            return true;
+        }
+
         // Single selection
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -357,8 +368,9 @@ namespace Plugin.MaterialDesignControls
                         if (control.SelectedItem != null)
                             materialChips.IsSelected = materialChips.Text.Equals(control.SelectedItem);
                     }
-                    
-                    materialChips.IsSelectedChanged  += control.MaterialChips_IsSelectedChanged;
+
+                    materialChips.Command = new Command(() => SelectionCommand(control, materialChips));
+
                     control.flexContainer.Children.Add(materialChips);
 
                     if (control.ChipsFlexLayoutPercentageBasis > 0 && control.ChipsFlexLayoutPercentageBasis <= 1)
@@ -367,44 +379,33 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-        private void MaterialChips_IsSelectedChanged(object sender, EventArgs e)
+        private static void SelectionCommand(MaterialChipsGroup materialChipsGroup, MaterialChips materialChips)
         {
-            if (sender is MaterialChips)
+            if (materialChips is MaterialChips)
             {
-                if (IsMultipleSelection)
+                if (materialChipsGroup.IsMultipleSelection)
                 {
-                    if (SelectedItems == null)
-                        SelectedItems = new List<string>();
+                    var selectedItems = materialChipsGroup.SelectedItems == null ? new List<string>() : materialChipsGroup.SelectedItems.Select(x => x).ToList();
 
-                    if (((MaterialChips)sender).IsSelected)
-                        SelectedItems.Add(((MaterialChips)sender).Text);
-                    else
-                        SelectedItems.Remove(((MaterialChips)sender).Text);
+                    materialChips.IsSelected = !materialChips.IsSelected;
+
+                    if (materialChips.IsSelected && !selectedItems.Contains(materialChips.Text))
+                        selectedItems.Add(materialChips.Text);
+                    else if (selectedItems.Contains(materialChips.Text))
+                        selectedItems.Remove(materialChips.Text);
+
+                    materialChipsGroup.SelectedItems = selectedItems;
                 }
                 else
                 {
-                    if (((MaterialChips)sender).IsSelected)
+                    foreach (var item in materialChipsGroup.flexContainer.Children)
                     {
-                        this.SelectedItem = ((MaterialChips)sender).Text;
+                        ((MaterialChips)item).IsSelected = false;
                     }
 
-                    bool hasSelected = false;
-                    if (this.flexContainer.Children != null)
-                    {
-                        foreach (var item in this.flexContainer.Children)
-                        {
-                            if (item != null && item is MaterialChips && ((MaterialChips)item).IsSelected)
-                            {
-                                hasSelected = true;
-                                break;
-                            }
-                        }
-                    }
+                    materialChips.IsSelected = !materialChips.IsSelected;
 
-                    if (!hasSelected)
-                    {
-                        ((MaterialChips)sender).IsSelected = true;
-                    }
+                    materialChipsGroup.SelectedItem = materialChips.Text;
                 }
             }
         }

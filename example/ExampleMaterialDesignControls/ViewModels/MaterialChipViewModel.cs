@@ -53,7 +53,11 @@ namespace ExampleMaterialDesignControls.ViewModels
         public string Error
         {
             get { return error; }
-            set { SetProperty(ref error, value); }
+            set
+            {
+                error = value;
+                OnPropertyChanged();
+            }
         }
 
         public delegate Task DisplayAlertType(string title, string message, string cancel);
