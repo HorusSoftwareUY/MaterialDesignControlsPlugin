@@ -54,7 +54,7 @@
         <Color x:Key="BorderColor">#b0b0b0</Color>
         <Color x:Key="FocusedBorderColor">#c92726</Color>
         <Color x:Key="AssistiveTextColor">#c92726</Color>
-        <Color x:Key="PlaceholderColor">#c6c6c5</Color>
+        <Color x:Key="PlaceholderColor">#828282</Color>
 
         <Color x:Key="DarkBlueColor">#222e3c</Color>
         <Color x:Key="BlackColorTransparent">#1A0d1a26</Color>
@@ -100,7 +100,7 @@
         <!-- BaseMaterialStyle -->
         <Style TargetType="material:BaseMaterialFieldControl" x:Key="BaseMaterialStyle">
             <Setter Property="Type" Value="Outlined" />
-            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="CornerRadius" Value="6" />
             <Setter Property="AnimateError" Value="True" />
             <!--<Setter Property="FontFamily" Value="" />-->
 
@@ -216,6 +216,7 @@
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
             <Setter Property="DisabledSelectedBackgroundColor" Value="#c6c6c5" />
             <Setter Property="DisabledSelectedTextColor" Value="{StaticResource WhiteColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
         </Style>
 
         <!-- MaterialEntry -->
