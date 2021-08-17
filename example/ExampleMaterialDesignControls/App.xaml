@@ -236,6 +236,7 @@
         <!-- MaterialCodeEntry -->
         <Style TargetType="material:MaterialCodeEntry" BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="CornerRadius" Value="16" />
         </Style>
 
         <!-- MaterialPicker -->

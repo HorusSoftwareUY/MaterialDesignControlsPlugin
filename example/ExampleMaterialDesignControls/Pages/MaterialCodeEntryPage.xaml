@@ -3,32 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialCodeEntryPage"
-             Title="MaterialCodeEntry">
+             Title="Material Code Entry">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
+            <StackLayout Padding="20" Spacing="20">
                 <material:MaterialCodeEntry Type="Filled" LabelText="Code*" Length="6" Keyboard="Numeric"
                                         Text="{Binding Code}" AssistiveText="{Binding CodeError}" AnimateError="True"
                                         TabIndex="1" ReturnType="Next"
                                             FieldHeightRequest="80"
-                                            FontSize="30"
-                                            BackgroundColor="#F7F6F6"
-                                            FocusedBackgroundColor="#F7F6F6"
+                                            FontSize="{StaticResource H5FontSize}"
+                                            BackgroundColor="{StaticResource LightGrayColor}"
+                                            FocusedBackgroundColor="{StaticResource LightGrayColor}"
                                             BorderColor="Transparent"
-                                            FocusedBorderColor="#b7aeae"/>
+                                            FocusedBorderColor="{StaticResource DarkGrayColor}"/>
 
                 <material:MaterialCodeEntry Type="Outlined" LabelText="Code*" Length="6" Keyboard="Numeric"
-                                        Text="{Binding Code}" AssistiveText="{Binding CodeError}" AnimateError="True"
-                                        TabIndex="1" ReturnType="Next"
+                                            Text="{Binding Code}" AssistiveText="{Binding CodeError}" AnimateError="True"
+                                            TabIndex="1" ReturnType="Next"
                                             FieldHeightRequest="60"
                                             FieldWidthRequest="40"
-                                            FontSize="30" />
+                                            FontSize="{StaticResource H5FontSize}" />
 
                 <material:MaterialCodeEntry Type="Outlined" LabelText="Code 3" Length="4" Keyboard="Numeric" TabIndex="3" ReturnType="Next" />
+
                 <material:MaterialCodeEntry Type="Filled" LabelText="Code 4" Length="6" Keyboard="Text" TabIndex="5" ReturnType="Next" IsEnabled="False" />
+
                 <material:MaterialCodeEntry Type="Filled" LabelText="Code 4" Length="6" Keyboard="Text" KeyboardFlags="CapitalizeCharacter" TextTransform="Uppercase" TabIndex="5" ReturnType="Next" HorizontalTextAlignment="Center" />
                 
-                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
