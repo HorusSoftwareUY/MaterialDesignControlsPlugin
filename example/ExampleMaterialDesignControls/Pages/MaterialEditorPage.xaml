@@ -3,25 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialEditorPage"
-             Title="MaterialEditor">
+             Title="Material Editor">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
-                <material:MaterialEditor x:Name="txtEditor" Type="Filled" LabelText="Message*" Placeholder="Enter your message"
-                                         AnimateError="True" TabIndex="1" KeyboardFlags="Spellcheck,Suggestions" />
-                <material:MaterialEditor Type="Lined" LabelText="Observation" Placeholder="Enter your observation" TabIndex="2"
-                                         KeyboardFlags="CapitalizeSentence" />
-                <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" TabIndex="3" HorizontalTextAlignment="Center" />
+            <StackLayout Padding="20" Spacing="20">
+                <material:MaterialEditor x:Name="txtEditor" Type="Filled" LabelText="Message*" Placeholder="Enter your message" AnimateError="True" TabIndex="1" KeyboardFlags="Spellcheck,Suggestions" />
+                <material:MaterialEditor Type="Lined" LabelText="Observation" Placeholder="Enter your observation" TabIndex="2" KeyboardFlags="CapitalizeSentence" />
+                <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" TabIndex="3" />
                 <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" TabIndex="4" IsEnabled="False" />
                 <material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" LeadingIcon="email.png" HeightRequest="200" TabIndex="5">
                     <material:MaterialEditor.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                            <OnPlatform.iOS>CourierNewPSMT</OnPlatform.iOS>
                         </OnPlatform>
                     </material:MaterialEditor.FontFamily>
                 </material:MaterialEditor>
-                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
