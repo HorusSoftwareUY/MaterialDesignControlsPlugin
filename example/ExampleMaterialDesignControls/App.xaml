@@ -196,6 +196,7 @@
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
             <Setter Property="DisabledSelectedBackgroundColor" Value="#c6c6c5" />
             <Setter Property="DisabledSelectedTextColor" Value="{StaticResource WhiteColor}" />
+            <Setter Property="FontFamily" Value="{StaticResource RegularFont}" />
         </Style>
 
         <!-- MaterialChipsGroup -->
