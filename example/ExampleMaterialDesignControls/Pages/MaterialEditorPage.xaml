@@ -15,7 +15,7 @@
                     <material:MaterialEditor.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>CourierNewPSMT</OnPlatform.iOS>
+                            <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                         </OnPlatform>
                     </material:MaterialEditor.FontFamily>
                 </material:MaterialEditor>
