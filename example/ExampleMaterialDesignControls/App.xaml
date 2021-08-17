@@ -57,13 +57,56 @@
         <Color x:Key="PlaceholderColor">#c6c6c5</Color>
 
         <Color x:Key="DarkBlueColor">#222e3c</Color>
+        <Color x:Key="BlackColorTransparent">#1A0d1a26</Color>
         <Color x:Key="BlueColor">#4c6277</Color>
         <Color x:Key="BlackColor">#0d1a26</Color>
         <Color x:Key="RedColor">#e73d3b</Color>
         <Color x:Key="DarkRedColor">#c92726</Color>
         <Color x:Key="DarkGrayColor">#828282</Color>
         <Color x:Key="GrayColor">#E3E3E3</Color>
+        <Color x:Key="LightGrayColor">#F2F2F2</Color>
         <Color x:Key="WhiteColor">#ffffff</Color>
+
+        <!-- GradientColors -->
+        <Color x:Key="GradientColor1">#12c2e9</Color>
+        <Color x:Key="GradientColorTransparent1">#1A12c2e9</Color>
+
+        <Color x:Key="GradientColor2">#30b4ea</Color>
+        <Color x:Key="GradientColorTransparent2">#1A30b4ea</Color>
+
+        <Color x:Key="GradientColor3">#4da7ea</Color>
+        <Color x:Key="GradientColorTransparent3">#1A4da7ea</Color>
+
+        <Color x:Key="GradientColor4">#6b9aeb</Color>
+        <Color x:Key="GradientColorTransparent4">#1A6b9aeb</Color>
+
+        <Color x:Key="GradientColor5">#898cec</Color>
+        <Color x:Key="GradientColorTransparent5">#1A898cec</Color>
+
+        <Color x:Key="GradientColor6">#a67fec</Color>
+        <Color x:Key="GradientColorTransparent6">#1Aa67fec</Color>
+
+        <Color x:Key="GradientColor7">#c471ed</Color>
+        <Color x:Key="GradientColorTransparent7">#1Ac471ed</Color>
+
+        <Color x:Key="GradientColor8">#cc6bd4</Color>
+        <Color x:Key="GradientColorTransparent8">#1Acc6bd4</Color>
+
+        <Color x:Key="GradientColor9">#d566bc</Color>
+        <Color x:Key="GradientColorTransparent9">#1Ad566bc</Color>
+
+        <Color x:Key="GradientColor10">#dd60a3</Color>
+        <Color x:Key="GradientColorTransparent10">#1Add60a3</Color>
+
+        <Color x:Key="GradientColor11">#e55a8a</Color>
+        <Color x:Key="GradientColorTransparent11">#1Ae55a8a</Color>
+
+        <Color x:Key="GradientColor12">#ee5572</Color>
+        <Color x:Key="GradientColorTransparent12">#1Aee5572</Color>
+
+
+
+
 
         <!-- BaseMaterialStyle -->
         <Style TargetType="material:BaseMaterialFieldControl" x:Key="BaseMaterialStyle">

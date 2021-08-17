@@ -41,7 +41,7 @@
                         </Grid>
 
         
-        <Frame BackgroundColor="{StaticResource BlackColor}" HeightRequest="220" HorizontalOptions="FillAndExpand" CornerRadius="30" HasShadow="False" Padding="0" Margin="0,0,0,30">
+        <Frame BackgroundColor="{StaticResource BlackColor}" HeightRequest="220" HorizontalOptions="FillAndExpand" CornerRadius="25" HasShadow="False" Padding="0" Margin="0,0,0,30" IsClippedToBounds="True">
             <AbsoluteLayout>
                 <ffimageloading:CachedImage
                                     Source="BackCard.jpg"
@@ -94,7 +94,7 @@
             </StackLayout>
 
         <StackLayout VerticalOptions="EndAndExpand">
-            <material:MaterialButton Text="Add card" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" CornerRadius="14"  />
+            <material:MaterialButton Text="Add Card" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" CornerRadius="14"  />
         </StackLayout>
             
 
