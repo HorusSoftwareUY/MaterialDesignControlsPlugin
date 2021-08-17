@@ -70,37 +70,26 @@
         <!-- GradientColors -->
         <Color x:Key="GradientColor1">#12c2e9</Color>
         <Color x:Key="GradientColorTransparent1">#1A12c2e9</Color>
-
         <Color x:Key="GradientColor2">#30b4ea</Color>
         <Color x:Key="GradientColorTransparent2">#1A30b4ea</Color>
-
         <Color x:Key="GradientColor3">#4da7ea</Color>
         <Color x:Key="GradientColorTransparent3">#1A4da7ea</Color>
-
         <Color x:Key="GradientColor4">#6b9aeb</Color>
         <Color x:Key="GradientColorTransparent4">#1A6b9aeb</Color>
-
         <Color x:Key="GradientColor5">#898cec</Color>
         <Color x:Key="GradientColorTransparent5">#1A898cec</Color>
-
         <Color x:Key="GradientColor6">#a67fec</Color>
         <Color x:Key="GradientColorTransparent6">#1Aa67fec</Color>
-
         <Color x:Key="GradientColor7">#c471ed</Color>
         <Color x:Key="GradientColorTransparent7">#1Ac471ed</Color>
-
         <Color x:Key="GradientColor8">#cc6bd4</Color>
         <Color x:Key="GradientColorTransparent8">#1Acc6bd4</Color>
-
         <Color x:Key="GradientColor9">#d566bc</Color>
         <Color x:Key="GradientColorTransparent9">#1Ad566bc</Color>
-
         <Color x:Key="GradientColor10">#dd60a3</Color>
         <Color x:Key="GradientColorTransparent10">#1Add60a3</Color>
-
         <Color x:Key="GradientColor11">#e55a8a</Color>
         <Color x:Key="GradientColorTransparent11">#1Ae55a8a</Color>
-
         <Color x:Key="GradientColor12">#ee5572</Color>
         <Color x:Key="GradientColorTransparent12">#1Aee5572</Color>
 
@@ -165,8 +154,8 @@
             <Setter Property="BusyColor" Value="{StaticResource BlackColor}" />
             <Setter Property="ToUpper" Value="False" />
             <Setter Property="HeightRequest" Value="48" />
-            <Setter Property="CornerRadius" Value="14" />
-            <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="FontFamily" Value="{StaticResource SemiBoldFont}" />
         </Style>
 
         <!-- MaterialOutlineButton -->
@@ -176,8 +165,10 @@
             <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
             <Setter Property="BorderColor" Value="{StaticResource BlackColor}" />
             <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
+            <Setter Property="ToUpper" Value="False" />
             <Setter Property="HeightRequest" Value="48" />
-            <Setter Property="CornerRadius" Value="14" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="FontFamily" Value="{StaticResource SemiBoldFont}" />
         </Style>
 
         <!-- MaterialFlatButton -->
@@ -185,8 +176,10 @@
             <Setter Property="TextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
             <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
+            <Setter Property="ToUpper" Value="False" />
             <Setter Property="HeightRequest" Value="48" />
-            <Setter Property="CornerRadius" Value="14" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="FontFamily" Value="{StaticResource SemiBoldFont}" />
         </Style>
 
         <!-- MaterialChips -->
