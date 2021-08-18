@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialCustomControl"
-             Title="MaterialCustomControl">
+             Title="Material Custom Control">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
+            <StackLayout Padding="20" Spacing="20">
                 <material:MaterialCustomControl LabelText="Value" AssistiveText="{Binding AssistiveText}" AnimateError="True">
                     <material:MaterialCustomControl.CustomControl>
                         <Slider />
@@ -15,11 +15,11 @@
 
                 <material:MaterialCustomControl LabelText="Item" AssistiveText="{Binding AssistiveText}" AnimateError="True">
                     <material:MaterialCustomControl.CustomControl>
-                        <material:MaterialButton Text="Select item" ToUpper="True" CornerRadius="14" />
+                        <material:MaterialButton Text="Select item" />
                     </material:MaterialCustomControl.CustomControl>
                 </material:MaterialCustomControl>
                 
-                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
