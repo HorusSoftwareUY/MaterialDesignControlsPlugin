@@ -12,7 +12,7 @@
              IconImageSource="Payment.png">
     <StackLayout Margin="30,0,30,20">
 
-        <Grid 
+                        <Grid 
                             x:Name="mainGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="48"/>
@@ -22,7 +22,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="48"/>
                             </Grid.ColumnDefinitions>
-            <material:MaterialLabel Text="Add Card" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource H6FontSize}" Grid.Column="1" />
+
+                            <material:MaterialLabel Text="Add Card" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource H6FontSize}" Grid.Column="1" />
                             
                             <ContentView Grid.Column="2" Grid.Row="0">
                                 <ContentView.GestureRecognizers>
@@ -31,8 +32,8 @@
                                 <ffimageloading:CachedImage
                                     Source="Cross.png"
                                     Aspect="AspectFit"
-                                    HeightRequest="32"
-                                    WidthRequest="32"
+                                    HeightRequest="26"
+                                    WidthRequest="26"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"
                                     sk:Skeleton.IsBusy="{Binding IsBusy}"

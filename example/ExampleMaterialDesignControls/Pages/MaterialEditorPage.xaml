@@ -5,7 +5,7 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialEditorPage"
              Title="Material Editor">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
                 <material:MaterialEditor x:Name="txtEditor" Type="Filled" LabelText="Message*" Placeholder="Enter your message" AnimateError="True" TabIndex="1" KeyboardFlags="Spellcheck,Suggestions" />
                 <material:MaterialEditor Type="Lined" LabelText="Observation" Placeholder="Enter your observation" TabIndex="2" KeyboardFlags="CapitalizeSentence" />

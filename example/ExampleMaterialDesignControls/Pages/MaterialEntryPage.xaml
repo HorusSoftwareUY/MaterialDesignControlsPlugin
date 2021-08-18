@@ -6,7 +6,7 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryPage"
              Title="Material Entry">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
                 <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12"
                                         Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TextTransform="Uppercase"

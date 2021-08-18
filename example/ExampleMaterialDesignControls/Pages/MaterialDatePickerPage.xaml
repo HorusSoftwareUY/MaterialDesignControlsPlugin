@@ -5,7 +5,7 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialDatePickerPage"
              Title="Material Date Picker">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
                 <material:MaterialDatePicker Date="{Binding Date}" Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" Placeholder="Select date" PlaceholderColor="{StaticResource PlaceholderColor}" />
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />

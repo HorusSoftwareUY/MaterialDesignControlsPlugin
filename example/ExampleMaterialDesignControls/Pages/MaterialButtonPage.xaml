@@ -9,7 +9,7 @@
              ios:Page.UseSafeArea="True"
              IconImageSource="calendar.png">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
                 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}"/>
 

@@ -6,7 +6,7 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
              Title="Material Selection">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
                 <material:MaterialSelection Type="Filled" LeadingIcon="calendar.png" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection">
                     <material:MaterialSelection.CustomTrailingIcon>

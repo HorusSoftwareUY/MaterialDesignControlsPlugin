@@ -5,7 +5,7 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialPickerPage"
              Title="Material Picker">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
                 <material:MaterialPicker x:Name="pckColors" Type="Filled" LabelText="Color" AnimateError="True" Placeholder="Select a Color" ItemsSource="{Binding ItemsSourceColors}" SelectedItem="{Binding SelectedItemColor}" />
                 <Grid

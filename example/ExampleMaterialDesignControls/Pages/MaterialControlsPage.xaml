@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
              x:Class="ExampleMaterialDesignControls.Pages.MaterialControlsPage"
              Title="Material Controls"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
              IconImageSource="Controls.png">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="16" Spacing="16" >
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="20" Spacing="16" >
 
                 <!--<material:MaterialButton Command="{Binding GoMaterialButtonCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Button" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}" />
                 <material:MaterialButton Command="{Binding GoMaterialChipsCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Chips" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}" />

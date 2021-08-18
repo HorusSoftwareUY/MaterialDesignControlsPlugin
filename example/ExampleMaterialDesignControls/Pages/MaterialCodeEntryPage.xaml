@@ -5,7 +5,7 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialCodeEntryPage"
              Title="Material Code Entry">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
                 <material:MaterialCodeEntry Type="Filled" LabelText="Code*" Length="6" Keyboard="Numeric"
                                         Text="{Binding Code}" AssistiveText="{Binding CodeError}" AnimateError="True"

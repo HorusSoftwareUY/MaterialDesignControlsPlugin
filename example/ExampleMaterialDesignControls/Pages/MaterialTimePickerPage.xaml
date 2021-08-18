@@ -5,7 +5,7 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialTimePickerPage"
              Title="Material Time Picker">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
                 <material:MaterialTimePicker Time="{Binding Time}" Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" Placeholder="Select time" />
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
