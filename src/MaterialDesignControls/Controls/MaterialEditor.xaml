@@ -5,12 +5,41 @@
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
              x:Class="Plugin.MaterialDesignControls.MaterialEditor">
     <controls:BaseMaterialFieldControl.Content>
-        <StackLayout Spacing="2">
-            <controls:MaterialLabel x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start" />
-            <Frame x:Name="frmContainer" HasShadow="false" HeightRequest="40" Padding="12,0" VerticalOptions="FillAndExpand">
-                <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="FillAndExpand">
-                    <custom:CustomImageButton x:Name="imgLeadingIcon" Margin="0,2,0,0" IsVisible="false" VerticalOptions="Start" HorizontalOptions="Start" />
-                    <custom:CustomEditor x:Name="txtEditor" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <StackLayout
+            Spacing="2">
+            <controls:MaterialLabel
+                x:Name="lblLabel"
+                IsVisible="false"
+                LineBreakMode="NoWrap"
+                Margin="14,0,14,2" HorizontalTextAlignment="Start" />
+            <Frame
+                x:Name="frmContainer"
+                HasShadow="false"
+                Padding="12,0"
+                VerticalOptions="FillAndExpand">
+                <Grid
+                    ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="rowDefinition" Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <custom:CustomImageButton
+                        x:Name="imgLeadingIcon"
+                        Margin="0,2,0,0"
+                        IsVisible="false"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start" />
+                    <custom:CustomEditor
+                        Grid.Column="1"
+                        x:Name="txtEditor"
+                        BackgroundColor="Transparent"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
                         <custom:CustomEditor.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <OnPlatform.Platforms>
@@ -20,12 +49,31 @@
                             </OnPlatform>
                         </custom:CustomEditor.Margin>
                     </custom:CustomEditor>
-                    <custom:CustomImageButton x:Name="imgTrailingIcon" Margin="0,2,0,0" IsVisible="false" VerticalOptions="Start" HorizontalOptions="End" />
-                    <custom:CustomImageButton x:Name="imgClearIcon" Margin="0,2,0,0" IsVisible="false" VerticalOptions="Start" HorizontalOptions="End" />
-                </StackLayout>
+                    <custom:CustomImageButton
+                        Grid.Column="2"
+                        x:Name="imgTrailingIcon"
+                        Margin="0,2,0,0"
+                        IsVisible="false"
+                        VerticalOptions="Start"
+                        HorizontalOptions="End" />
+                    <custom:CustomImageButton
+                        Grid.Column="3"
+                        x:Name="imgClearIcon"
+                        Margin="0,2,0,0"
+                        IsVisible="false"
+                        VerticalOptions="Start"
+                        HorizontalOptions="End" />
+                </Grid>
             </Frame>
-            <BoxView x:Name="bxvLine" HeightRequest="1" />
-            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+            <BoxView
+                x:Name="bxvLine"
+                HeightRequest="1" />
+            <controls:MaterialLabel
+                x:Name="lblAssistive"
+                IsVisible="false"
+                LineBreakMode="NoWrap"
+                Margin="14,2,14,0"
+                HorizontalTextAlignment="Start" />
         </StackLayout>
     </controls:BaseMaterialFieldControl.Content>
 </controls:BaseMaterialFieldControl>

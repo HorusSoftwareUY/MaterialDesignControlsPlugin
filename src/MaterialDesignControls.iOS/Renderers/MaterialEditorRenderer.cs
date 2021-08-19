@@ -23,41 +23,43 @@ namespace Plugin.MaterialDesignControls.iOS
 
             if (this.Control == null) return;
 
-            if (this.lblPlaceholder != null) return;
+            if (lblPlaceholder != null) return;
 
             var element = Element as CustomEditor;
             this.Control.ScrollEnabled = true;
 
             // TODO: fix small padding on the left.
 
-            this.lblPlaceholder = new UILabel
+            lblPlaceholder = new UILabel
             {
                 Text = element?.Placeholder,
                 TextColor = element.PlaceholderColor.ToUIColor(),
                 BackgroundColor = UIColor.Clear
             };
 
+            lblPlaceholder.Hidden = !string.IsNullOrEmpty(element.Text);
+
             SetFont();
 
             var edgeInsets = this.Control.TextContainerInset;
             var lineFragmentPadding = this.Control.TextContainer.LineFragmentPadding;
 
-            this.Control.AddSubview(this.lblPlaceholder);
+            this.Control.AddSubview(lblPlaceholder);
 
             var vConstraints = NSLayoutConstraint.FromVisualFormat(
                 "V:|-" + edgeInsets.Top + "-[PlaceholderLabel]-" + edgeInsets.Bottom + "-|", 0, new NSDictionary(),
                 NSDictionary.FromObjectsAndKeys(
-                    new NSObject[] { this.lblPlaceholder }, new NSObject[] { new NSString("PlaceholderLabel") })
+                    new NSObject[] { lblPlaceholder }, new NSObject[] { new NSString("PlaceholderLabel") })
             );
 
             var hConstraints = NSLayoutConstraint.FromVisualFormat(
                 "H:|-" + lineFragmentPadding + "-[PlaceholderLabel]-" + lineFragmentPadding + "-|",
                 0, new NSDictionary(),
                 NSDictionary.FromObjectsAndKeys(
-                    new NSObject[] { this.lblPlaceholder }, new NSObject[] { new NSString("PlaceholderLabel") })
+                    new NSObject[] { lblPlaceholder }, new NSObject[] { new NSString("PlaceholderLabel") })
             );
 
-            this.lblPlaceholder.TranslatesAutoresizingMaskIntoConstraints = false;
+            lblPlaceholder.TranslatesAutoresizingMaskIntoConstraints = false;
 
             this.Control.AddConstraints(hConstraints);
             this.Control.AddConstraints(vConstraints);

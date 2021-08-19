@@ -140,6 +140,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(MaxLengthProperty, value); }
         }
 
+        public static readonly BindableProperty AutoSizeProperty =
+            BindableProperty.Create(nameof(AutoSize), typeof(EditorAutoSizeOption), typeof(MaterialEditor), defaultValue: EditorAutoSizeOption.Disabled);
+
+        public EditorAutoSizeOption AutoSize
+        {
+            get { return (EditorAutoSizeOption)GetValue(AutoSizeProperty); }
+            set { SetValue(AutoSizeProperty, value); }
+        }
+
         public override bool IsControlFocused
         {
             get { return txtEditor.IsFocused; }
@@ -181,12 +190,6 @@ namespace Plugin.MaterialDesignControls
             {
                 this.initialized = true;
                 this.InitializeComponent();
-                
-
-                // TODO: add autosize property
-                this.txtEditor.AutoSize = EditorAutoSizeOption.Disabled;
-
-                // TODO: apply the height of the control.
             }
 
             UpdateLayout(propertyName, lblLabel, lblAssistive, frmContainer, bxvLine, imgLeadingIcon, imgTrailingIcon);
@@ -250,6 +253,15 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.IsTabStop):
                     this.txtEditor.IsTabStop = this.IsTabStop;
+                    break;
+
+                case nameof(AutoSize):
+                    this.txtEditor.AutoSize = AutoSize;
+                    break;
+
+                case nameof(FieldHeightRequest):
+                    rowDefinition.Height = new GridLength(FieldHeightRequest);
+                    txtEditor.HeightRequest = FieldHeightRequest;
                     break;
             }
         }
