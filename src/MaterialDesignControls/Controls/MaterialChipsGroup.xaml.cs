@@ -352,7 +352,8 @@ namespace Plugin.MaterialDesignControls
                         DisabledBackgroundColor = control.DisabledBackgroundColor,
                         DisabledTextColor = control.DisabledTextColor,
                         DisabledSelectedBackgroundColor = control.DisabledSelectedBackgroundColor,
-                        DisabledSelectedTextColor = control.DisabledSelectedTextColor
+                        DisabledSelectedTextColor = control.DisabledSelectedTextColor,
+                        IsEnabled = control.IsEnabled
                     };
 
                     if (control.ChipsHeightRequest != (double)ChipsHeightRequestProperty.DefaultValue)
@@ -381,6 +382,9 @@ namespace Plugin.MaterialDesignControls
 
         private static void SelectionCommand(MaterialChipsGroup materialChipsGroup, MaterialChips materialChips)
         {
+            if (!materialChipsGroup.IsEnabled)
+                return;
+
             if (materialChips is MaterialChips)
             {
                 if (materialChipsGroup.IsMultipleSelection)
@@ -451,6 +455,14 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(this.AssistiveSize):
                     this.lblAssistive.FontSize = this.AssistiveSize;
+                    break;
+
+                case nameof(IsEnabled):
+                    foreach (var view in flexContainer.Children)
+                    {
+                        if (view is MaterialChips materialChips)
+                            materialChips.IsEnabled = IsEnabled;
+                    }
                     break;
             }
         }

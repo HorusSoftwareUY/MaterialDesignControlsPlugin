@@ -26,7 +26,8 @@ namespace Plugin.MaterialDesignControls
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
             {
-                this.pckTime.Focus();
+                if (IsControlEnabled)
+                    this.pckTime.Focus();
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }

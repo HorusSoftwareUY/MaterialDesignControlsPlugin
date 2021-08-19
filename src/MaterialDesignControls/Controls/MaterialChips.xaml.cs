@@ -66,6 +66,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(CommandParameterProperty, value); }
         }
 
+        public static readonly new BindableProperty IsEnabledProperty =
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialChips), defaultValue: true);
+
+        public new bool IsEnabled
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
+        }
+
         public static readonly BindableProperty IsSelectedProperty =
             BindableProperty.Create(nameof(IsSelected), typeof(bool), typeof(MaterialChips), defaultValue: null, propertyChanged: OnIsSelectedChanged);
 
@@ -103,7 +112,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LeadingIconProperty =
-           BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+           BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialChips), defaultValue: null);
 
         public string LeadingIcon
         {
@@ -112,7 +121,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CustomLeadingIconProperty =
-           BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+           BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(MaterialChips), defaultValue: null);
 
         public View CustomLeadingIcon
         {

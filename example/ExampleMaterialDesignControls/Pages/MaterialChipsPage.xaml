@@ -48,7 +48,18 @@
                     SelectedItems="{Binding SelectedColors}"
                     ItemsSource="{Binding Colors}"
                     ChipsPadding="16,0"
-                    ChipsHeightRequest="32" />
+                    ChipsHeightRequest="32"
+                    IsEnabled="{Binding IsColorSelectionEnabled}" />
+
+                <StackLayout
+                    Orientation="Horizontal"
+                    Spacing="16">
+                    <Switch
+                        IsToggled="{Binding IsColorSelectionEnabled}" />
+                    <material:MaterialLabel
+                        Text="Color selection enabled"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
 
                 <BoxView
                     HeightRequest="1"
