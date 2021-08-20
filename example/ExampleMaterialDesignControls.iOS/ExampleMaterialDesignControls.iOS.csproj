@@ -209,6 +209,16 @@
     <BundleResource Include="..\..\Resources\Fonts\font_semi_bold.ttf">
       <Link>Resources\Fonts\font_semi_bold.ttf</Link>
     </BundleResource>
+    <BundleResource Include="Resources\Payment%403x.png" />
+    <BundleResource Include="Resources\Payment%402x.png" />
+    <BundleResource Include="Resources\Shipping.png" />
+    <BundleResource Include="Resources\Shipping%403x.png" />
+    <BundleResource Include="Resources\Shipping%402x.png" />
+    <BundleResource Include="Resources\Product%403x.png" />
+    <BundleResource Include="Resources\Product%402x.png" />
+    <BundleResource Include="Resources\Home.png" />
+    <BundleResource Include="Resources\Home%402x.png" />
+    <BundleResource Include="Resources\Home%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\volume.png" />

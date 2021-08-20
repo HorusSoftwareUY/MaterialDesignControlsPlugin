@@ -13,5 +13,6 @@ namespace ExampleMaterialDesignControls.Pages
             InitializeComponent();
             this.BindingContext = new AddCardViewModel() { DisplayAlert = this.DisplayAlert };
         }
+
     }
 }

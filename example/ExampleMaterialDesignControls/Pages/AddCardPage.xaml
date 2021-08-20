@@ -10,95 +10,76 @@
              xmlns:controls="clr-namespace:SkeletonExample.Controls" 
              ios:Page.UseSafeArea="True"
              IconImageSource="Payment.png">
-    <StackLayout Margin="30,0,30,20">
 
-                        <Grid 
-                            x:Name="mainGrid">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="48"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="48"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="48"/>
-                            </Grid.ColumnDefinitions>
+        <Grid VerticalOptions="FillAndExpand" RowSpacing="0" Margin="30,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-                            <material:MaterialLabel Text="Add Card" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource H6FontSize}" Grid.Column="1" />
-                            
-                            <ContentView Grid.Column="2" Grid.Row="0">
-                                <ContentView.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding LoadCommand}" />
-                                </ContentView.GestureRecognizers>
+            <material:MaterialLabel Text="Add Card" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Subtitle1FontSize}"/>
+
+            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                <StackLayout>
+
+                    <Frame BackgroundColor="{StaticResource BlackColor}" HeightRequest="220" HorizontalOptions="FillAndExpand" CornerRadius="25" HasShadow="False" Padding="0" Margin="0,0,0,30" IsClippedToBounds="True">
+                        <AbsoluteLayout>
+                            <ffimageloading:CachedImage
+                                                Source="BackCard.jpg"
+                                                Aspect="AspectFill"
+                                                AbsoluteLayout.LayoutFlags="All"
+                                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                                sk:Skeleton.IsBusy="{Binding IsBusy}"
+                                                sk:Skeleton.Hide="True"/>
+
+                            <Grid ColumnSpacing="30" Margin="30" Padding="0" RowSpacing="10" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="20"/>
+                                </Grid.RowDefinitions>
+                    
                                 <ffimageloading:CachedImage
-                                    Source="Cross.png"
+                                    Grid.Column="1"
+                                    Grid.Row="0"
                                     Aspect="AspectFit"
-                                    HeightRequest="26"
-                                    WidthRequest="26"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"
+                                    VerticalOptions="FillAndExpand"
+                                    Source="Visa.png"
+                                    WidthRequest="10"
                                     sk:Skeleton.IsBusy="{Binding IsBusy}"
                                     sk:Skeleton.Hide="True"/>
-                            </ContentView>
+
+                                <material:MaterialLabel Text="5213 6450 5408 7516" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource H5FontSize}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
+                                <material:MaterialLabel Text="Jhon Horus" ToUpper="True" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Grid.Column="0" Grid.Row="3" />
+                                <material:MaterialLabel Text="11/25" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="3"/>
+                            </Grid>
+                        </AbsoluteLayout>
+                    </Frame>
+
+                    <StackLayout Spacing="30">
+                        <material:MaterialEntry Type="Lined" LabelText="Name" Placeholder="Enter your name" Keyboard="Email" TabIndex="2" ReturnType="Next" />
+                        <material:MaterialEntry Type="Lined" LabelText="Card number" Placeholder="XXXX XXXX XXXX XXXX" Keyboard="Telephone" TabIndex="2" ReturnType="Next" />
+                        <Grid ColumnSpacing="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <material:MaterialDatePicker Type="Lined" LabelText="Expiry" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" Grid.Column="0" />
+                            <material:MaterialEntry Type="Lined" LabelText="CVV" Placeholder="XXX" Keyboard="Telephone" TabIndex="2" ReturnType="Next" Grid.Column="1"/>
                         </Grid>
+                    </StackLayout>
 
-        
-        <Frame BackgroundColor="{StaticResource BlackColor}" HeightRequest="220" HorizontalOptions="FillAndExpand" CornerRadius="25" HasShadow="False" Padding="0" Margin="0,0,0,30" IsClippedToBounds="True">
-            <AbsoluteLayout>
-                <ffimageloading:CachedImage
-                                    Source="BackCard.jpg"
-                                    Aspect="AspectFill"
-                    AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0,0,1,1"
-                                    sk:Skeleton.IsBusy="{Binding IsBusy}"
-                                    sk:Skeleton.Hide="True"/>
+                </StackLayout>
+            </ScrollView>
 
-                <Grid ColumnSpacing="30" Margin="30" Padding="0" RowSpacing="10" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="60"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="20"/>
-                    </Grid.RowDefinitions>
+            <material:MaterialButton Text="Add Card" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" VerticalOptions="EndAndExpand" Margin="0,20" Grid.Row="2"/>
 
-                    <ffimageloading:CachedImage
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        Aspect="AspectFit"
-                        VerticalOptions="FillAndExpand"
-                        Source="Visa.png"
-                        WidthRequest="10"
-                        sk:Skeleton.IsBusy="{Binding IsBusy}"
-                        sk:Skeleton.Hide="True"/>
-
-                    <material:MaterialLabel Text="5213 6450 5408 7516" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource H5FontSize}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
-                    <material:MaterialLabel Text="Jhon horus" ToUpper="True" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Grid.Column="0" Grid.Row="3" />
-                    <material:MaterialLabel Text="11/24" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="3"/>
-                </Grid>
-            </AbsoluteLayout>
-        </Frame>
-
-        <StackLayout Spacing="30">
-        <material:MaterialEntry Type="Lined" LabelText="Name" Placeholder="Enter your name" Keyboard="Email" TabIndex="2" ReturnType="Next" />
-        <material:MaterialEntry Type="Lined" LabelText="Card number" Placeholder="XXXX XXXX XXXX XXXX" Keyboard="Telephone" TabIndex="2" ReturnType="Next" />
-        <Grid ColumnSpacing="30">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <material:MaterialDatePicker Type="Lined" LabelText="Expiry" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" Grid.Column="0" />
-            <material:MaterialEntry Type="Lined" LabelText="CVV" Placeholder="XXX" Keyboard="Telephone" TabIndex="2" ReturnType="Next" Grid.Column="1"/>
-        </Grid>
-            </StackLayout>
-
-        <StackLayout VerticalOptions="EndAndExpand">
-            <material:MaterialButton Text="Add Card" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" CornerRadius="14"  />
-        </StackLayout>
-            
-
-    </StackLayout>
+        </Grid>    
 
 </ContentPage>
