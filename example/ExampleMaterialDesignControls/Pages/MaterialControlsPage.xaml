@@ -37,7 +37,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent1}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_button.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Button" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor1}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Button" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor1}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -49,7 +49,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent2}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_chip.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Chips" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor2}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Chips" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor2}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -61,7 +61,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent3}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_date.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Date Picker" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor3}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Date Picker" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor3}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -73,7 +73,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent4}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_editor.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Editor" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor4}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Editor" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor4}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -85,7 +85,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent5}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_entry.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Entry" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor5}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Entry" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor5}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -97,7 +97,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent6}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_code.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Code Entry" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor6}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Code Entry" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor6}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -109,7 +109,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent7}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_field.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Field" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor7}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Field" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor7}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -121,7 +121,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent8}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_picker.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Picker" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor8}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Picker" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor8}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -133,7 +133,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent9}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_selection.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Selection" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor9}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Selection" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor9}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -145,7 +145,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent10}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_time.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Time Picker" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor10}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Time Picker" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor10}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -157,7 +157,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent11}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_custom.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Custom" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Custom" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 
@@ -169,7 +169,7 @@
                             <Frame BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                 <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_slider.svg"/>
                             </Frame>
-                            <material:MaterialLabel Text="Material Slider" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                            <material:MaterialLabel Text="Material Slider" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                         </StackLayout>
                     </Frame>
 

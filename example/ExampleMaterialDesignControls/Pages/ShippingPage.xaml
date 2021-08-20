@@ -24,7 +24,7 @@
 
                 <StackLayout Spacing="30">
 
-                    <Frame BackgroundColor="{StaticResource GradientColorTransparent1}" HeightRequest="80" HasShadow="False" CornerRadius="20" Padding="15">
+                    <Frame BackgroundColor="{StaticResource GradientColorTransparent1}" HeightRequest="90" HasShadow="False" CornerRadius="20" Padding="15">
                         <StackLayout Orientation="Horizontal" Spacing="15">
                             <Frame HasShadow="False" CornerRadius="20" WidthRequest="120" HorizontalOptions="Start" Padding="0" IsClippedToBounds="True">
                                 <ffimageloading:CachedImage
