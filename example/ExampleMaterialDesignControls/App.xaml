@@ -120,7 +120,7 @@
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
 
             <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource FocusedBorderColor}" />
+            <Setter Property="FocusedBorderColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="DisabledBorderColor" Value="{StaticResource DarkGrayColor}" />
 
             <Setter Property="FocusedBackgroundColor" Value="{StaticResource BackgroundColor}" />
@@ -147,9 +147,9 @@
             <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
             <Setter Property="DisabledTextColor" Value="{StaticResource WhiteColor}"/>
             <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource BlackColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="DisabledBackgroundColor" Value="#c6c6c5" />
-            <Setter Property="BorderColor" Value="{StaticResource BlackColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
             <Setter Property="BusyColor" Value="{StaticResource BlackColor}" />
             <Setter Property="ToUpper" Value="False" />
@@ -160,10 +160,10 @@
 
         <!-- MaterialOutlineButton -->
         <Style TargetType="material:MaterialOutlineButton">
-            <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+            <Setter Property="TextColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
             <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
-            <Setter Property="BorderColor" Value="{StaticResource BlackColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
             <Setter Property="ToUpper" Value="False" />
             <Setter Property="HeightRequest" Value="48" />
@@ -173,7 +173,7 @@
 
         <!-- MaterialFlatButton -->
         <Style TargetType="material:MaterialFlatButton">
-            <Setter Property="TextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="TextColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
             <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
             <Setter Property="ToUpper" Value="False" />
@@ -190,7 +190,7 @@
             <Setter Property="Padding" Value="12,0" />
             <Setter Property="BackgroundColor" Value="#f2f2f2" />
             <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
-            <Setter Property="SelectedBackgroundColor" Value="{StaticResource BlackColor}" />
+            <Setter Property="SelectedBackgroundColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="SelectedTextColor" Value="{StaticResource WhiteColor}" />
             <Setter Property="DisabledBackgroundColor" Value="{StaticResource WhiteColor}" />
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
@@ -210,7 +210,7 @@
             <Setter Property="Padding" Value="0" />
             <Setter Property="BackgroundColor" Value="#f2f2f2" />
             <Setter Property="TextColor" Value="{StaticResource BlackColor}"  />
-            <Setter Property="SelectedBackgroundColor" Value="{StaticResource BlackColor}"  />
+            <Setter Property="SelectedBackgroundColor" Value="{StaticResource GradientColor1}"  />
             <Setter Property="SelectedTextColor" Value="{StaticResource WhiteColor}" />
             <Setter Property="DisabledBackgroundColor" Value="{StaticResource WhiteColor}" />
             <Setter Property="DisabledTextColor" Value="#c6c6c5" />
