@@ -21,15 +21,11 @@
             <material:MaterialLabel Text="Shipping" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Subtitle1FontSize}" Grid.Row="0" />
 
             <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
-
                 <StackLayout Spacing="30">
-
                     <Frame BackgroundColor="{StaticResource GradientColorTransparent1}" HeightRequest="90" HasShadow="False" CornerRadius="20" Padding="15">
                         <StackLayout Orientation="Horizontal" Spacing="15">
                             <Frame HasShadow="False" CornerRadius="20" WidthRequest="120" HorizontalOptions="Start" Padding="0" IsClippedToBounds="True">
-                                <ffimageloading:CachedImage
-                                        Source="shoes_1.jpg"
-                                        Aspect="AspectFill"/>
+                                <ffimageloading:CachedImage Source="shoes_1.jpg" Aspect="AspectFill"/>
                             </Frame>
                             <StackLayout>
                                 <material:MaterialLabel Text="Nike - Air Max 97" TextColor="{StaticResource BlackColor}" FontSize="{StaticResource Body1FontSize}" FontFamily="{StaticResource SemiBoldFont}"/>
@@ -38,9 +34,7 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-
                     <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Lined" LabelText="Country" Placeholder="Select your country" TabIndex="2"/>
-
                     <Grid ColumnSpacing="30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -49,9 +43,7 @@
                             <material:MaterialEntry Type="Lined" LabelText="City" Placeholder="Enter your city"  HorizontalOptions="FillAndExpand" Grid.Column="0" />
                             <material:MaterialEntry Type="Lined" LabelText="Postal Code" Placeholder="10001" Grid.Column="1"/>
                     </Grid>
-
                     <material:MaterialEntry Type="Lined" LabelText="Address" Placeholder="Enter your address" Keyboard="Text" ReturnType="Next" />
-
                     <Grid ColumnSpacing="30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -60,15 +52,11 @@
                             <material:MaterialDatePicker Type="Lined" LabelText="Date" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" Grid.Column="0" />
                             <material:MaterialTimePicker Type="Lined" LabelText="Time" Grid.Column="1"/>
                     </Grid>
-
                     <material:MaterialEditor Type="Lined" LabelText="Comments" Placeholder="Add comments" HeightRequest="80"/>
-
                 </StackLayout>
-
             </ScrollView>
 
             <material:MaterialButton Text="Check Out" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" VerticalOptions="EndAndExpand" Margin="0,20" Grid.Row="2"/>
 
         </Grid>
-
 </ContentPage>

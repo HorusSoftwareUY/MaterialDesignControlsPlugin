@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace ExampleMaterialDesignControls.Droid
 {
-    [Activity(Label = "ExampleMaterialDesignControls", Theme = "@style/MyTheme.Splash",
+    [Activity(Label = "Material Design Controls", Theme = "@style/MyTheme.Splash",
         MainLauncher = true, NoHistory = true, ConfigurationChanges = Android.Content.PM.ConfigChanges.ScreenSize)]
     public class SplashActivity : Activity
     {

@@ -8,9 +8,7 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
-                <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12"
-                                        Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TextTransform="Uppercase"
-                                        TabIndex="1" ReturnType="Next" />
+                <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12" Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TextTransform="Uppercase" TabIndex="1" ReturnType="Next" />
                 <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
 
                 <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" TabIndex="3" ReturnType="Next" ClearIconIsVisible="False">
@@ -34,9 +32,7 @@
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" HorizontalTextAlignment="Center"/>
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" IsEnabled="False" />
 
-                <material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5"
-                                        TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone"
-                                        LabelMargin="0,0,0,2" AssistiveMargin="0,2,0,0" AssistiveText="Testing">
+                <material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone" LabelMargin="0,0,0,2" AssistiveMargin="0,2,0,0" AssistiveText="Testing">
                     <material:MaterialEntry.CustomTrailingIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
                     </material:MaterialEntry.CustomTrailingIcon>

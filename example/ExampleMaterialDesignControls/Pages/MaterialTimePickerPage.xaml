@@ -15,7 +15,6 @@
                 <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
 
                 <Label Text="Horizontal Text Alignment" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
-
                 <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Start" TrailingIcon="" />
                 <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Center" TrailingIcon="" Placeholder="Select time" AssistiveText="Required field" LabelText="Time" />
                 <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="End" TrailingIcon="">
