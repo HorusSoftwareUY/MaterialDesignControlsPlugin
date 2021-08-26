@@ -41,7 +41,7 @@
             </controls:StickyHeader.Header>
 
             <controls:StickyHeader.Content>
-                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" Margin="30,30,30,20" Spacing="20">
+                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" Margin="30,30,30,20" Spacing="10">
                     <StackLayout Orientation="Horizontal">
                         <StackLayout>
                             <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}">
@@ -59,7 +59,7 @@
                         <material:MaterialLabel Text="Inspired by Japanese bullet trains and carrying the same ripple design as the original, the Nike Air Max 97 lets you push your style full-speed ahead. We took the revolutionary full-length Nike Air unit that shook up the running world and added fresh textiles inspired by Americana to add some pop to the first-class comfort you've come to know." TextColor="{StaticResource DarkGrayColor}" FontSize="{StaticResource Body2FontSize}"/>
                     </Frame>
                     <material:MaterialLabel Text="Size" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Margin="0,0,0,-10"/>
-                    <material:MaterialChipsGroup SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" SelectedBackgroundColor="{StaticResource RedColor}"  />
+                    <material:MaterialChipsGroup SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" />
                     <material:MaterialButton Text="Add to Bag" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" CornerRadius="14" VerticalOptions="EndAndExpand" />
                 </StackLayout>
             </controls:StickyHeader.Content>
