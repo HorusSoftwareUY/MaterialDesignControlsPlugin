@@ -42,9 +42,9 @@ Buttons allow users to take actions, and make choices, with a single tap.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/design_xaml/screenshots/buttons.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button.jpg" width="300">
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/buttons.png" width="300">
 
 **Example**
 ```XML
