@@ -36,10 +36,7 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 ```
 
 ## Sample
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/controls.png" width="300">
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/product.png" width="300">
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/card.png" width="300">
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/shipping.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/controls.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/product.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/card.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/shipping.png" width="300">
 
 ## Controls
 
@@ -136,7 +133,8 @@ Double pickers let users select two options in the same dialog.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/doublePickerAndroid.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/double_picker.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/double_picker.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/double_picker_android.png" width="300">
 
 **Example**
 ```XML
