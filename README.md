@@ -58,6 +58,10 @@ Chips are compact elements that represent an action.
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chip.jpg" width="300">
 
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.png" width="300">
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/design_xaml/screenshots/chips.png" width="300">
+
 **Example**
 ```XML
 <material:MaterialChips IsSelected="true" IsEnabled="true" Text="Option A" />
