@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
-                <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12" Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TextTransform="Uppercase" TabIndex="1" ReturnType="Next" />
+                <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12" Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TabIndex="1" ReturnType="Next" />
                 <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
 
                 <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" TabIndex="3" ReturnType="Next" ClearIconIsVisible="False">
@@ -50,7 +50,7 @@
                     </material:MaterialEntry.LabelFontFamily>
                 </material:MaterialEntry>
 
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

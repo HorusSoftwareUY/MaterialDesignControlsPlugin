@@ -19,7 +19,7 @@
                         </OnPlatform>
                     </material:MaterialEditor.FontFamily>
                 </material:MaterialEditor>
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
