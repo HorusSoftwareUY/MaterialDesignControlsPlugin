@@ -38,6 +38,10 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 ## Sample
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/controls.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/product.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/card.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/shipping.png" width="300">
 
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/Controls.png" width="300">
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/Control_Final.png" width="300">
+
 ## Controls
 
 ### MaterialButton
