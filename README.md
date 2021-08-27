@@ -133,8 +133,7 @@ Double pickers let users select two options in the same dialog.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/double_picker.png" width="300">
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/double_picker_android.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/double_picker.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/feature/design_xaml/screenshots/double_picker_android.png" width="300">
 
 **Example**
 ```XML
