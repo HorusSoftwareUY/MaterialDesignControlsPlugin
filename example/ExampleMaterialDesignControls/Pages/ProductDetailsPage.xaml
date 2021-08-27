@@ -13,8 +13,8 @@
     <ContentPage.Content>
 
         <controls:StickyHeader
-            HeaderHeight="350"
-            MinimumHeaderHeight="250"
+            HeaderHeight="300"
+            MinimumHeaderHeight="200"
             Animation="Resize"
             ios:ScrollView.ShouldDelayContentTouches="False">
 
@@ -41,26 +41,24 @@
             </controls:StickyHeader.Header>
 
             <controls:StickyHeader.Content>
-                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" Margin="30,30,30,20" Spacing="10">
+                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" Margin="30,30,30,20" Spacing="0">
                     <StackLayout Orientation="Horizontal">
-                        <StackLayout>
-                            <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}">
-                                <material:MaterialLabel Text="Nike" TextColor="{StaticResource GradientColor1}" FontAttributes="Bold" FontSize="{StaticResource H5FontSize}" FontFamily="{StaticResource SemiBoldFont}"/>
-                            </Frame>
-                            <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}">
-                                <material:MaterialLabel Text="Air Max 97" TextColor="{StaticResource BlackColor}" FontSize="{StaticResource H4FontSize}" FontFamily="{StaticResource BoldFont}"/>
-                            </Frame>
-                        </StackLayout>
-                        <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" HorizontalOptions="EndAndExpand" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}">
+                        <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}" Margin="0">
+                            <material:MaterialLabel Text="Nike" TextColor="{StaticResource GradientColor1}" FontAttributes="Bold" FontSize="{StaticResource H5FontSize}" FontFamily="{StaticResource SemiBoldFont}"/>
+                        </Frame>
+                        <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" HorizontalOptions="EndAndExpand" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}" Margin="0">
                             <material:MaterialLabel Text="$170" TextColor="{StaticResource GradientColor1}" FontSize="{StaticResource H5FontSize}" FontFamily="{StaticResource BoldFont}"/>
                         </Frame>
                     </StackLayout>
-                    <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}">
+                    <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}" Margin="0,0,0,0">
+                        <material:MaterialLabel Text="Air Max 97" TextColor="{StaticResource BlackColor}" FontSize="{StaticResource H4FontSize}" FontFamily="{StaticResource BoldFont}"/>
+                    </Frame>
+                    <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}" Margin="0,10,0,20">
                         <material:MaterialLabel Text="Inspired by Japanese bullet trains and carrying the same ripple design as the original, the Nike Air Max 97 lets you push your style full-speed ahead. We took the revolutionary full-length Nike Air unit that shook up the running world and added fresh textiles inspired by Americana to add some pop to the first-class comfort you've come to know." TextColor="{StaticResource DarkGrayColor}" FontSize="{StaticResource Body2FontSize}"/>
                     </Frame>
-                    <material:MaterialLabel Text="Size" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Margin="0,0,0,-10"/>
+                    <material:MaterialLabel Text="Size" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Margin="0,0,0,5"/>
                     <material:MaterialChipsGroup SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" />
-                    <material:MaterialButton Text="Add to Bag" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" CornerRadius="14" VerticalOptions="EndAndExpand" />
+                    <material:MaterialButton Text="Add to Bag" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" VerticalOptions="EndAndExpand" />
                 </StackLayout>
             </controls:StickyHeader.Content>
 
