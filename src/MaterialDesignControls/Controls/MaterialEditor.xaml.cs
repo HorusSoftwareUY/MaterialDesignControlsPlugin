@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
-using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -274,7 +270,13 @@ namespace Plugin.MaterialDesignControls
 
         protected override void SetIsEnabled()
         {
-            txtEditor.IsEnabled = IsEnabled;
+            if (Device.RuntimePlatform == Device.iOS)
+                txtEditor.IsEnabled = IsEnabled;
+            else
+            {
+                // Workaround to a disabled text color issue in Android
+                txtEditor.IsReadOnly = !IsEnabled;
+            }
         }
 
         protected override void SetPadding()

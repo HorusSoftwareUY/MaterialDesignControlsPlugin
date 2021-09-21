@@ -49,6 +49,7 @@
                     Placeholder="Enter your description"
                     LeadingIcon="email.png"
                     TabIndex="4"
+                    Text="Testing description"
                     IsEnabled="False" />
 
                 <material:MaterialEditor

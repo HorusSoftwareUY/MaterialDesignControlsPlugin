@@ -447,7 +447,13 @@ namespace Plugin.MaterialDesignControls
 
         protected override void SetIsEnabled()
         {
-            txtEntry.IsEnabled = IsEnabled;
+            if (Device.RuntimePlatform == Device.iOS)
+                txtEntry.IsEnabled = IsEnabled;
+            else
+            {
+                // Workaround to a disabled text color issue in Android
+                txtEntry.IsReadOnly = !IsEnabled;
+            }
         }
 
         protected override void SetPadding()
@@ -549,13 +555,13 @@ namespace Plugin.MaterialDesignControls
                     var nextElement = this.FindNextElement(true, tabIndexes, ref currentTabIndex);
                     if (nextElement != null)
                     {
-                        if (nextElement is CustomEntry nextEntry && nextEntry.IsEnabled)
+                        if (nextElement is CustomEntry nextEntry && nextEntry.IsEnabled && !nextEntry.IsReadOnly)
                         {
                             nextEntry.Focus();
                             string textInsideInput = nextEntry.Text;
                             nextEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
                         }
-                        else if (nextElement is CustomEditor nextEditor && nextEditor.IsEnabled)
+                        else if (nextElement is CustomEditor nextEditor && nextEditor.IsEnabled && !nextEditor.IsReadOnly)
                         {
                             nextEditor.Focus();
                         }

@@ -26,7 +26,16 @@
                                         ReturnType="Done" ReturnCommand="{Binding TapCommand}" />
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next"
                                         FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" HorizontalTextAlignment="Center" />
-                <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" IsEnabled="False" />
+
+                <material:MaterialEntry
+                    Type="Filled"
+                    LabelText="Phone"
+                    Placeholder="Enter your phone"
+                    Keyboard="Telephone"
+                    TabIndex="5"
+                    ReturnType="Next"
+                    Text="+598099123456"
+                    IsEnabled="False" />
 
                 <material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5"
                                         TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone"
