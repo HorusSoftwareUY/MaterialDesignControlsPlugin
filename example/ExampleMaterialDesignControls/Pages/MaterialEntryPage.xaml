@@ -21,7 +21,7 @@
                 </material:MaterialEntry>
 
                 <material:MaterialEntry Type="Outlined" LabelText="Confirm password" Placeholder="Confirm password" IsPassword="true" TabIndex="4" CornerRadius="20" ReturnType="Done" ReturnCommand="{Binding TapCommand}">
-                <material:MaterialEntry.CustomShowPasswordIcon>
+                    <material:MaterialEntry.CustomShowPasswordIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg"/> 
                     </material:MaterialEntry.CustomShowPasswordIcon>
                     <material:MaterialEntry.CustomHidePasswordIcon>

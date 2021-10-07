@@ -33,6 +33,29 @@
 
                 <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
 
+                <material:MaterialChipsGroup
+                    LabelText="Colors"
+                    IsMultipleSelection="True"
+                    SelectedItems="{Binding SelectedColors}"
+                    ItemsSource="{Binding Colors}"
+                    ChipsPadding="16,0"
+                    ChipsHeightRequest="32"
+                    IsEnabled="{Binding IsColorSelectionEnabled}" />
+
+                <StackLayout
+                    Orientation="Horizontal"
+                    Spacing="16">
+                    <Switch
+                        IsToggled="{Binding IsColorSelectionEnabled}" />
+                    <material:MaterialLabel
+                        Text="Color selection enabled"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+
+                <BoxView
+                    HeightRequest="1"
+                    BackgroundColor="LightGray" />
+
                 <material:MaterialLabel Text="Filters" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center"  />
                 <FlexLayout Wrap="Wrap" Direction="Row" HorizontalOptions="FillAndExpand">
                     <StackLayout>

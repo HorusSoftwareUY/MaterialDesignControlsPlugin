@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
-using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -140,6 +136,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(MaxLengthProperty, value); }
         }
 
+        public static readonly BindableProperty AutoSizeProperty =
+            BindableProperty.Create(nameof(AutoSize), typeof(EditorAutoSizeOption), typeof(MaterialEditor), defaultValue: EditorAutoSizeOption.Disabled);
+
+        public EditorAutoSizeOption AutoSize
+        {
+            get { return (EditorAutoSizeOption)GetValue(AutoSizeProperty); }
+            set { SetValue(AutoSizeProperty, value); }
+        }
+
         public override bool IsControlFocused
         {
             get { return txtEditor.IsFocused; }
@@ -181,12 +186,6 @@ namespace Plugin.MaterialDesignControls
             {
                 this.initialized = true;
                 this.InitializeComponent();
-                
-
-                // TODO: add autosize property
-                this.txtEditor.AutoSize = EditorAutoSizeOption.Disabled;
-
-                // TODO: apply the height of the control.
             }
 
             UpdateLayout(propertyName, lblLabel, lblAssistive, frmContainer, bxvLine, imgLeadingIcon, imgTrailingIcon);
@@ -251,6 +250,15 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.IsTabStop):
                     this.txtEditor.IsTabStop = this.IsTabStop;
                     break;
+
+                case nameof(AutoSize):
+                    this.txtEditor.AutoSize = AutoSize;
+                    break;
+
+                case nameof(FieldHeightRequest):
+                    rowDefinition.Height = new GridLength(FieldHeightRequest);
+                    txtEditor.HeightRequest = FieldHeightRequest;
+                    break;
             }
         }
 
@@ -262,7 +270,13 @@ namespace Plugin.MaterialDesignControls
 
         protected override void SetIsEnabled()
         {
-            txtEditor.IsEnabled = IsEnabled;
+            if (Device.RuntimePlatform == Device.iOS)
+                txtEditor.IsEnabled = IsEnabled;
+            else
+            {
+                // Workaround to a disabled text color issue in Android
+                txtEditor.IsReadOnly = !IsEnabled;
+            }
         }
 
         protected override void SetPadding()
