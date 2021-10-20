@@ -112,7 +112,6 @@
     <AndroidResource Include="Resources\drawable\calendar.png" />
     <AndroidResource Include="Resources\drawable\color.png" />
     <AndroidResource Include="Resources\drawable\delete.png" />
-    <AndroidResource Include="Resources\drawable\save.png" />
     <AndroidResource Include="Resources\drawable\showPassword.png" />
     <AndroidResource Include="Resources\drawable\BackCard.jpg">
       <SubType></SubType>
