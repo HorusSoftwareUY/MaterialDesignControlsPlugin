@@ -3,28 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialDatePickerPage"
-             Title="MaterialDatePicker">
+             Title="Material Date Picker">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
-                <material:MaterialDatePicker Date="{Binding Date}" Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" Placeholder="Select date" PlaceholderColor="Red" />
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="20" Spacing="20">
+                <material:MaterialDatePicker Date="{Binding Date}" Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" Placeholder="Select date" PlaceholderColor="{StaticResource PlaceholderColor}" />
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" IsEnabled="False" />
                 <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />
-                <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
-                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />
-                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon=""
-                                             Placeholder="Select date" PlaceholderColor="Red"
-                                             AssistiveText="Required field" LabelText="Date" />
-                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="">
+
+                <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
+
+                <material:MaterialLabel Text="Horizontal Text Alignment" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="{StaticResource LightGrayColor}" />
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="{StaticResource LightGrayColor}" Placeholder="Select date" PlaceholderColor="{StaticResource PlaceholderColor}" AssistiveText="Required field" LabelText="Date" />
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="{StaticResource LightGrayColor}">
                     <material:MaterialDatePicker.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                            <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                         </OnPlatform>
                     </material:MaterialDatePicker.FontFamily>
                 </material:MaterialDatePicker>
-                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

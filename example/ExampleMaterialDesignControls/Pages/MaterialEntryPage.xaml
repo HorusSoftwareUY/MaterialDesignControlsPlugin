@@ -4,13 +4,11 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryPage"
-             Title="MaterialEntry">
+             Title="Material Entry">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
-                <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12"
-                                        Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TextTransform="Uppercase"
-                                        TabIndex="1" ReturnType="Next" />
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="20" Spacing="20">
+                <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12" Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TabIndex="1" ReturnType="Next" />
                 <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
 
                 <material:MaterialEntry Type="Lined" LabelText="Password" Placeholder="Enter your password" IsPassword="true" TabIndex="3" ReturnType="Next" ClearIconIsVisible="False">
@@ -22,31 +20,26 @@
                     </material:MaterialEntry.CustomHidePasswordIcon>
                 </material:MaterialEntry>
 
-                <material:MaterialEntry Type="Outlined" LabelText="Confirm password" Placeholder="Enter" IsPassword="true" TabIndex="4" CornerRadius="20"
-                                        ReturnType="Done" ReturnCommand="{Binding TapCommand}" />
-                <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next"
-                                        FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" HorizontalTextAlignment="Center" />
+                <material:MaterialEntry Type="Outlined" LabelText="Confirm password" Placeholder="Confirm password" IsPassword="true" TabIndex="4" CornerRadius="20" ReturnType="Done" ReturnCommand="{Binding TapCommand}">
+                    <material:MaterialEntry.CustomShowPasswordIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg"/> 
+                    </material:MaterialEntry.CustomShowPasswordIcon>
+                    <material:MaterialEntry.CustomHidePasswordIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg"/> 
+                    </material:MaterialEntry.CustomHidePasswordIcon>
+                </material:MaterialEntry>
 
-                <material:MaterialEntry
-                    Type="Filled"
-                    LabelText="Phone"
-                    Placeholder="Enter your phone"
-                    Keyboard="Telephone"
-                    TabIndex="5"
-                    ReturnType="Next"
-                    Text="+598099123456"
-                    IsEnabled="False" />
+                <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" HorizontalTextAlignment="Center"/>
+                <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" IsEnabled="False" />
 
-                <material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5"
-                                        TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone"
-                                        LabelMargin="0,0,0,2" AssistiveMargin="0,2,0,0" AssistiveText="Testing">
+                <material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone" LabelMargin="0,0,0,2" AssistiveMargin="0,2,0,0" AssistiveText="Testing">
                     <material:MaterialEntry.CustomTrailingIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
                     </material:MaterialEntry.CustomTrailingIcon>
                     <material:MaterialEntry.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                            <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                         </OnPlatform>
                     </material:MaterialEntry.FontFamily>
                     <material:MaterialEntry.LabelFontFamily>
@@ -57,7 +50,7 @@
                     </material:MaterialEntry.LabelFontFamily>
                 </material:MaterialEntry>
 
-                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" Margin="0,0,0,20" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

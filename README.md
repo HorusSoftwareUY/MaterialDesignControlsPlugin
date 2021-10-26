@@ -35,14 +35,17 @@ You must add this namespace to your xaml files:
 xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
 ```
 
+## Sample
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls.gif" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls_Final.gif" width="300">
+
 ## Controls
 
 ### MaterialButton
 Buttons allow users to take actions, and make choices, with a single tap.
 
 **Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button.png" width="300">
 
 **Example**
 ```XML
@@ -54,7 +57,7 @@ Chips are compact elements that represent an action.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chip.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.png" width="300">
 
 **Example**
 ```XML
@@ -66,7 +69,7 @@ Text fields let users enter and edit text.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.png" width="300">
 
 **Example**
 ```XML
@@ -79,7 +82,7 @@ Code fields let users enter and edit pin codes.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/codeEntry.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/code.png" width="300">
 
 **Example**
 ```XML
@@ -91,7 +94,7 @@ Date pickers let users select a date.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/datepicker.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/date_picker.png" width="300">
 
 **Example**
 ```XML
@@ -103,7 +106,7 @@ Time pickers let users select a time.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/timepicker.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/time_picker.png" width="300">
 
 **Example**
 ```XML
@@ -115,7 +118,7 @@ Pickers let users select an option.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/picker.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/picker.png" width="300">
 
 **Example**
 ```XML
@@ -128,7 +131,7 @@ Double pickers let users select two options in the same dialog.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/doublePickerAndroid.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/doublePickeriOS.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_android.png" width="300">
 
 **Example**
 ```XML
@@ -142,7 +145,7 @@ Text fields let users enter and edit text.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/editor.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/editor.png" width="300">
 
 **Example**
 ```XML
@@ -155,7 +158,7 @@ Selection let users select an option.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/selection.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/selection.png" width="300">
 
 **Example**
 ```XML
@@ -170,7 +173,7 @@ Displays a slider control<br/>
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/material_slider.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/slider.png" width="300">
 
 **Example**
 ```XML
@@ -189,7 +192,7 @@ Displays a value with its respective label in read-only format.
 
 **Screenshot**
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/field.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/field.png" width="300">
 
 **Example**
 ```XML
