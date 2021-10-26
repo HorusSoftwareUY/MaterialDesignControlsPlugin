@@ -2,58 +2,172 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialControlsPage"
-             Title="Controls"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             Title="Material Controls"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              ios:Page.UseSafeArea="True"
-             IconImageSource="Controls.png">
+             IconImageSource="Home.png">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="16" Spacing="16" >
-                <material:MaterialButton Command="{Binding GoMaterialButtonCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Button" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}" />
-                <material:MaterialButton Command="{Binding GoMaterialChipsCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Chips" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}" />
-                <material:MaterialButton Command="{Binding GoMaterialDatePickerCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Date Picker" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}" />
-                <material:MaterialButton Command="{Binding GoMaterialEditorCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Editor" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
-                <material:MaterialButton Command="{Binding GoMaterialEntryCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Entry" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
-                <material:MaterialButton Command="{Binding GoMaterialCodeEntryCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Code Entry" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
-                <material:MaterialButton Command="{Binding GoMaterialFieldCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Field" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
-                <material:MaterialButton Command="{Binding GoMaterialPickerCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Picker" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
-                <material:MaterialButton Command="{Binding GoMaterialSelectionCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Selection" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
-                <material:MaterialButton Command="{Binding GoMaterialTimePickerCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Time Picker" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
-                <material:MaterialButton Command="{Binding GoMaterialCustomControlCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Custom Control" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
-                <material:MaterialButton Command="{Binding GoMaterialSliderCommand}" Animation="Scale" AnimationParameter="0.98" Text="Material Slider" ToUpper="True" CornerRadius="14" BackgroundColor="{StaticResource GrayColor}" BorderColor="{StaticResource GrayColor}" TextColor="{StaticResource BlackColor}"/>
+        <Grid x:Name="mainGrid" Margin="20,0,20,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-            </StackLayout>
-        </ScrollView>
+            <ffimageloading:CachedImage Grid.Row="0" Source="horus.png" Margin="0" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="36"/>
+                               
+            <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="1">
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="150,150,150,150,150,150" RowSpacing="10" ColumnSpacing="10" Padding="0,0,0,20">
+
+                        <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent1}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialButtonCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent1}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_button.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Button" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor1}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent2}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialChipsCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent2}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_chip.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Chips" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor2}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent3}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialDatePickerCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent3}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_date.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Date Picker" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor3}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent4}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialEditorCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent4}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_editor.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Editor" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor4}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent5}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialEntryCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent5}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_entry.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Entry" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor5}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent6}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialCodeEntryCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent6}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_code.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Code Entry" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor6}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="3" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent7}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialFieldCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent7}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_field.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Field" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor7}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="3" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent8}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialPickerCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent8}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_picker.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Picker" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor8}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="4" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent9}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialSelectionCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent9}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_selection.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Selection" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor9}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="4" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent10}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialTimePickerCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent10}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_time.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Time Picker" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor10}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="5" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent11}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialCustomControlCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent11}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_custom.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Custom" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="5" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialSliderCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_slider.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Slider" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                    </Grid>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
-
-    <!--
-        <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
-                <material:MaterialButton Text="Save" ToUpper="True" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" />
-                <material:MaterialOutlineButton Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
-                <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
-
-                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Save 2" Icon="save.png" DisabledIcon="save.png" CornerRadius="20" />
-                <material:MaterialOutlineButton IsVisible="{Binding CancelIsVisible}" IsEnabled="false" Text="Cancel 2" Command="{Binding TapCommand}" CornerRadius="20" CommandParameter="Canceled 2" />
-                <material:MaterialFlatButton IsVisible="{Binding DeleteIsVisible}" IsEnabled="false" Text="Delete 2" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted 2" />
-
-                <Label Text="Animations" HorizontalTextAlignment="Center" Margin="0,40,0,0" />
-                <material:MaterialButton Animation="None" Text="None" ToUpper="True" />
-                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" ToUpper="True" />
-                <material:MaterialButton Animation="Fade" AnimationParameter="0.2" Text="Fade" ToUpper="True" />
-                <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" ToUpper="True" />
-                <material:MaterialButton Animation="Scale" AnimationParameter="0.7" Text="Scale" ToUpper="True">
-                    <material:MaterialButton.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
-                        </OnPlatform>
-                    </material:MaterialButton.FontFamily>
-                </material:MaterialButton>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>-->
-
 </ContentPage>

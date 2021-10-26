@@ -8,44 +8,22 @@
              Title="Product Details"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:controls="clr-namespace:SkeletonExample.Controls" 
-             ios:Page.UseSafeArea="False"
+             ios:Page.UseSafeArea="True"
              IconImageSource="Product.png">
     <ContentPage.Content>
 
         <controls:StickyHeader
-            HeaderHeight="400"
-            MinimumHeaderHeight="250"
-            Animation="Resize">
+            HeaderHeight="300"
+            MinimumHeaderHeight="200"
+            Animation="Resize"
+            ios:ScrollView.ShouldDelayContentTouches="False">
+
             <controls:StickyHeader.Header>
-                <Frame
-                    HasShadow="False"
-                    IsClippedToBounds="True"
-                    Padding="0"
-                    CornerRadius="30"
-                    BackgroundColor="#f5f5f5"
-                    sk:Skeleton.IsParent="True"
-                    sk:Skeleton.IsBusy="{Binding IsBusy}"
-                    sk:Skeleton.BackgroundColor="{StaticResource GrayColor}"
-                    sk:Skeleton.Animation="{sk:DefaultAnimation None}">
+                <Frame HasShadow="False" IsClippedToBounds="True" Padding="0" CornerRadius="30" BackgroundColor="#f5f5f5" sk:Skeleton.IsParent="True" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource GrayColor}" sk:Skeleton.Animation="{sk:DefaultAnimation None}">
                     <AbsoluteLayout>
-                        <ffimageloading:CachedImage
-                            AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.9"
-                            Source="shoes_1.jpg"
-                            Aspect="AspectFill"
-                            sk:Skeleton.IsBusy="{Binding IsBusy}"
-                            sk:Skeleton.Hide="True"/>
-                        <ffimageloading:CachedImage
-                            Source="back_gradient.png"
-                            Aspect="AspectFill"
-                            AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0,0,1,1"
-                            sk:Skeleton.IsBusy="{Binding IsBusy}"
-                            sk:Skeleton.Hide="True" />
-                        <Grid 
-                            AbsoluteLayout.LayoutFlags="All"
-                            AbsoluteLayout.LayoutBounds="0,0,1,1"
-                            x:Name="mainGrid" Margin="30,40,30,0">
+                        <ffimageloading:CachedImage AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" Source="shoes_1.jpg" Aspect="AspectFill" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.Hide="True"/>
+                        <ffimageloading:CachedImage Source="back_gradient.png" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.Hide="True" />
+                        <Grid AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" x:Name="mainGrid" Margin="20,0,20,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="48"/>
                                 <RowDefinition Height="*"/>
@@ -55,81 +33,35 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="48"/>
                             </Grid.ColumnDefinitions>
-                            <ffimageloading:CachedImage
-                                Grid.Column="1"
-                                Grid.Row="0"
-                                Source="horus.png"
-                                Margin="0"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFit"
-                                HeightRequest="36"
-                                sk:Skeleton.IsBusy="{Binding IsBusy}"
-                                sk:Skeleton.Hide="True"/>
-                            <ContentView Grid.Column="2" Grid.Row="0">
-                                <ContentView.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding LoadCommand}" />
-                                </ContentView.GestureRecognizers>
-                                <ffimageloading:CachedImage
-                                    Source="health_fill.png"
-                                    Aspect="AspectFit"
-                                    HeightRequest="32"
-                                    WidthRequest="32"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"
-                                    sk:Skeleton.IsBusy="{Binding IsBusy}"
-                                    sk:Skeleton.Hide="True"/>
-                            </ContentView>
+                            <ffimageloading:CachedImage Grid.Column="1" Grid.Row="0" Source="horus.png" Margin="0" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="36" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.Hide="True"/>
+                                <ffimageloading:CachedImage Grid.Column="2" Grid.Row="0" Source="health_fill.png" Aspect="AspectFit" HeightRequest="26" WidthRequest="26" HorizontalOptions="Center" VerticalOptions="Center" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.Hide="True"/>
                         </Grid>
                     </AbsoluteLayout>
                 </Frame>
             </controls:StickyHeader.Header>
+
             <controls:StickyHeader.Content>
-                <StackLayout Grid.Column="0"
-                             Grid.Row="1"
-                             Grid.ColumnSpan="2"
-                             VerticalOptions="FillAndExpand"
-                             Margin="30,30,30,20"
-                             Spacing="20">
-
+                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" Margin="30,30,30,20" Spacing="0">
                     <StackLayout Orientation="Horizontal">
-
-                        <StackLayout>
-                            <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0"
-                                    sk:Skeleton.IsBusy="{Binding IsBusy}"
-                                    sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}">
-                                <Label Text="Nike2" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource H5FontSize}" FontFamily="{StaticResource SemiBoldFont}"/>
-                            </Frame>
-
-                            <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0"
-                                    sk:Skeleton.IsBusy="{Binding IsBusy}"
-                                    sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}">
-                                <Label Text="Air Max 97" TextColor="{StaticResource BlackColor}" FontSize="{StaticResource H4FontSize}" FontFamily="{StaticResource BoldFont}"/>
-                            </Frame>
-                        </StackLayout>
-
-                        <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" HorizontalOptions="EndAndExpand"
-                                    sk:Skeleton.IsBusy="{Binding IsBusy}"
-                                    sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}">
-                            <Label Text="$170" TextColor="{StaticResource RedColor}" FontSize="{StaticResource H4FontSize}" FontFamily="{StaticResource BoldFont}"/>
+                        <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}" Margin="0">
+                            <material:MaterialLabel Text="Nike" TextColor="{StaticResource GradientColor1}" FontAttributes="Bold" FontSize="{StaticResource H5FontSize}" FontFamily="{StaticResource SemiBoldFont}"/>
                         </Frame>
-
+                        <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" HorizontalOptions="EndAndExpand" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}" Margin="0">
+                            <material:MaterialLabel Text="$170" TextColor="{StaticResource GradientColor1}" FontSize="{StaticResource H5FontSize}" FontFamily="{StaticResource BoldFont}"/>
+                        </Frame>
                     </StackLayout>
-
-                    <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0"
-                                    sk:Skeleton.IsBusy="{Binding IsBusy}"
-                                    sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}">
-                        <Label Text="Rediseñado a partir del OG que agitó el mundo del running con su revolucionaria unidad Max Air de largo completo, el Nike Air Max 97 reinventa el ícono. La confección de cuero, cuero sintético y tela ofrece un look elegante y una sensación ligera." TextColor="{StaticResource DarkGrayColor}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}"/>
+                    <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}" Margin="0,0,0,0">
+                        <material:MaterialLabel Text="Air Max 97" TextColor="{StaticResource BlackColor}" FontSize="{StaticResource H4FontSize}" FontFamily="{StaticResource BoldFont}"/>
                     </Frame>
-
-                    <material:MaterialLabel Text="Size" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Margin="0,0,0,-10"/>
-                    <material:MaterialChipsGroup SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" SelectedBackgroundColor="{StaticResource RedColor}"  />
-                    <material:MaterialButton Text="Add to bag" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" CornerRadius="14" VerticalOptions="EndAndExpand" />
+                    <Frame BackgroundColor="Transparent" HasShadow="False" CornerRadius="5" Padding="0" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.BackgroundColor="{StaticResource WhiteColor}" Margin="0,10,0,20">
+                        <material:MaterialLabel Text="Inspired by Japanese bullet trains and carrying the same ripple design as the original, the Nike Air Max 97 lets you push your style full-speed ahead. We took the revolutionary full-length Nike Air unit that shook up the running world and added fresh textiles inspired by Americana to add some pop to the first-class comfort you've come to know." TextColor="{StaticResource DarkGrayColor}" FontSize="{StaticResource Body2FontSize}"/>
+                    </Frame>
+                    <material:MaterialLabel Text="Size" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Margin="0,0,0,5"/>
+                    <material:MaterialChipsGroup SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" />
+                    <material:MaterialButton Text="Add to Bag" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" VerticalOptions="EndAndExpand" />
                 </StackLayout>
-
             </controls:StickyHeader.Content>
 
         </controls:StickyHeader>
-
     </ContentPage.Content>
-
 </ContentPage>

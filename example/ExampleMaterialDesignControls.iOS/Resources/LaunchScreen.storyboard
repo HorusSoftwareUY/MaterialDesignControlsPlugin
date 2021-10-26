@@ -18,20 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" image="power.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
-                                <rect key="frame" x="158" y="763" width="99" height="99"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="icon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                                <rect key="frame" x="124" y="327" width="128" height="129"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="icon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="vwe-cg-Yop">
-                                <rect key="frame" x="158" y="360" width="99" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="power.png" translatesAutoresizingMaskIntoConstraints="NO" id="gZ2-GT-Vgv" misplaced="YES">
+                                <rect key="frame" x="164" y="727" width="85" height="85"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                <constraints>
+                                    <constraint id="2253" firstAttribute="width" constant="95"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.054901960784313725" green="0.10196078431372549" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.054901960784313725" green="0.10196078431372549" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39"/>
+                            <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39" constant="-40"/>
                             <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41"/>
+                            <constraint id="1639" firstItem="gZ2-GT-Vgv" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX"/>
+                            <constraint id="1847" firstItem="9ZL-r4-8FZ" firstAttribute="top" secondItem="gZ2-GT-Vgv" secondAttribute="bottom" constant="10"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,7 +46,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon2.png" width="1008" height="1008"/>
-        <image name="power.png" width="1218.4615478515625" height="537.23077392578125"/>
+        <image name="icon2.png" width="140" height="140"/>
+        <image name="power.png" width="220" height="97"/>
     </resources>
 </document>
