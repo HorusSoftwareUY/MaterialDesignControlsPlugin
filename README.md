@@ -45,6 +45,7 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 Buttons allow users to take actions, and make choices, with a single tap.
 
 **Screenshot**
+
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button.png" width="300">
 
 **Example**
