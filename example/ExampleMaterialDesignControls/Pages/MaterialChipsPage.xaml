@@ -27,8 +27,11 @@
                 </Grid>
 
                 <BoxView
-                    HeightRequest="1"
-                    BackgroundColor="LightGray" />
+                    BackgroundColor="LightGray" CornerRadius="10"/>
+                <BoxView BackgroundColor="Red" HeightRequest="1"/>
+                <material:MaterialDivider BackgroundColor="Red" HeightRequest="2"/>
+                <material:MaterialDivider BackgroundColor="Green" HeightRequest="10" CornerRadius="5"/>
+                <material:MaterialDivider BackgroundColor="Blue" HeightRequest="1" Margin="0,50,0,0"/>
 
                 <material:MaterialLabel
                     Text="Chips group control"

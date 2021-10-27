@@ -51,7 +51,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Controls\MaterialSlider.xaml.cs" />
+    <Compile Include="Controls\MaterialSlider.xaml.cs">
+      <DependentUpon>MaterialSlider.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
     <Compile Include="Implementations\CustomPicker.cs" />
@@ -115,8 +118,10 @@
     <Compile Include="TextTransforms.cs" />
     <Compile Include="Controls\MaterialCustomControl.xaml.cs">
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utils\LoggerHelper.cs" />
+    <Compile Include="Controls\MaterialDivider.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -134,5 +139,8 @@
     <EmbeddedResource Update="Controls\MaterialSlider.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Plugin.MaterialDesignControls" />
   </ItemGroup>
 </Project>

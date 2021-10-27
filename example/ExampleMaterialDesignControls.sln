@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleMaterialDesignContro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleMaterialDesignControls", "ExampleMaterialDesignControls\ExampleMaterialDesignControls.csproj", "{439F7D85-7EF9-404C-AA78-98A755644B6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaterialDesignControls", "..\src\MaterialDesignControls\MaterialDesignControls.csproj", "{2DD667DD-DC54-4CA6-B167-B0B4C1CE72D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialDesignControls", "..\src\MaterialDesignControls\MaterialDesignControls.csproj", "{2DD667DD-DC54-4CA6-B167-B0B4C1CE72D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialDesignControls.Android", "..\src\MaterialDesignControls.Android\MaterialDesignControls.Android.csproj", "{771F5490-1C4C-4BFF-A829-E532336552F8}"
 EndProject
