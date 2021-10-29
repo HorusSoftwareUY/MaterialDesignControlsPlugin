@@ -2,8 +2,15 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialFloatingButtonPage"
     Title="Material Floating Button">
     <ContentPage.Content>
+        <StackLayout>
+            <material:MaterialFloatingButton CornerRadius="28" Padding="0" HasShadow="True" ShadowColor="LightGray"
+                iOSShadowOpacity="0.7" iOSShadowRadius="6" iOSShadowOffset="0,2" Text="clay" FontSize="12" TextColor="White" 
+                                             BackgroundColor="Blue" Icon="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg"
+					 HeightRequest="56" Margin="16" HorizontalOptions="Center"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
