@@ -8,7 +8,8 @@ namespace Plugin.MaterialDesignControls.Implementations
 {
     public class CustomImageButton : ContentView, ITouchAndPressEffectConsumer
     {
-        #region constructors
+        #region Constructors
+
         public CustomImageButton()
         {
             this.Padding = 6;
@@ -17,9 +18,9 @@ namespace Plugin.MaterialDesignControls.Implementations
             Effects.Add(new TouchAndPressEffect());
         }
 
-        #endregion constructors
+        #endregion Constructors
 
-        #region attributes
+        #region Attributes
 
         private Action tapped;
         public Action Tapped
@@ -50,10 +51,12 @@ namespace Plugin.MaterialDesignControls.Implementations
 
         private View customImage;
 
-        #endregion attributes
+        #endregion Attributes
 
-        #region properties
-        public static readonly BindableProperty ImageHeightRequestProperty = BindableProperty.Create(nameof(ImageHeightRequest), typeof(double), typeof(CustomImageButton), defaultValue: 24.0);
+        #region Properties
+
+        public static readonly BindableProperty ImageHeightRequestProperty =
+            BindableProperty.Create(nameof(ImageHeightRequest), typeof(double), typeof(CustomImageButton), defaultValue: 24.0);
 
         public double ImageHeightRequest
         {
@@ -61,7 +64,8 @@ namespace Plugin.MaterialDesignControls.Implementations
             set { SetValue(ImageHeightRequestProperty, value); }
         }
 
-        public static readonly BindableProperty ImageWidthRequestProperty = BindableProperty.Create(nameof(ImageWidthRequest), typeof(double), typeof(CustomImageButton), defaultValue: 24.0);
+        public static readonly BindableProperty ImageWidthRequestProperty =
+            BindableProperty.Create(nameof(ImageWidthRequest), typeof(double), typeof(CustomImageButton), defaultValue: 24.0);
 
         public double ImageWidthRequest
         {
@@ -70,7 +74,7 @@ namespace Plugin.MaterialDesignControls.Implementations
         }
 
         public static readonly BindableProperty CommandProperty =
-           BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialButton), defaultValue: null);
+           BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(CustomImageButton), defaultValue: null);
 
         public ICommand Command
         {
@@ -79,7 +83,7 @@ namespace Plugin.MaterialDesignControls.Implementations
         }
 
         public static readonly BindableProperty CommandParameterProperty =
-            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(CustomImageButton), defaultValue: null);
 
         public object CommandParameter
         {
@@ -88,7 +92,7 @@ namespace Plugin.MaterialDesignControls.Implementations
         }
 
         public static readonly BindableProperty AnimationProperty =
-                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(CustomImageButton), defaultValue: AnimationTypes.None);
 
         public AnimationTypes Animation
         {
@@ -97,16 +101,18 @@ namespace Plugin.MaterialDesignControls.Implementations
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(CustomImageButton), defaultValue: null);
 
         public double? AnimationParameter
         {
             get { return (double?)GetValue(AnimationParameterProperty); }
             set { SetValue(AnimationParameterProperty, value); }
         }
-        #endregion properties
 
-        #region methods
+        #endregion Properties
+
+        #region Methods
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
@@ -156,15 +162,13 @@ namespace Plugin.MaterialDesignControls.Implementations
         {
             TouchAndPressAnimation.Animate(this, gestureType);
         }
-        #endregion methods
 
+        public void ExecuteAction()
+        {
+            if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
+                Command.Execute(CommandParameter);
+        }
 
-
-
-
-
-        
-
-       
+        #endregion Methods
     }
 }

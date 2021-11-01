@@ -6,7 +6,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 {
     public class MaterialRatingControlViewModel : BaseViewModel
     {
-        public int _value;
+        public int _value = 2;
 
         public int Value
         {
@@ -33,19 +33,14 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public DisplayAlertType DisplayAlert { get; set; }
 
-        public ICommand TapCommand => new Command(OnTapCommand);
-
-        private async void OnTapCommand()
+        public ICommand ClearCommand => new Command(() =>
         {
-            if (Value != 0)
-            {
-                this.NameError = null;
-                await this.DisplayAlert.Invoke("", "Saved", "Ok");
-            }
-            else
-            {
-                this.NameError = "You must rate the service";
-            }
-        }
+            Value = 0;
+        });
+
+        public ICommand ShowCommand => new Command(async () =>
+        {
+            await DisplayAlert("Selected value", Value.ToString(), "Ok");
+        });
     }
 }

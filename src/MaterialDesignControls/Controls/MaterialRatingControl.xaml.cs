@@ -2,7 +2,6 @@
 using Plugin.MaterialDesignControls.Implementations;
 using System;
 using System.Runtime.CompilerServices;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,6 +11,7 @@ namespace Plugin.MaterialDesignControls
     public partial class MaterialRatingControl : ContentView
     {
         #region Constructors
+
         public MaterialRatingControl()
         {
             if (!this.initialized)
@@ -20,14 +20,16 @@ namespace Plugin.MaterialDesignControls
                 this.InitializeComponent();
             }
         }
-        #endregion
 
-        #region attributes
+        #endregion Constructors
+
+        #region Attributes
+
         private bool initialized = false;
-        #endregion
 
-        #region properties
-        
+        #endregion Attributes
+
+        #region Properties
 
         public static readonly BindableProperty SelectedIconProperty =
             BindableProperty.Create(nameof(SelectedIcon), typeof(string), typeof(MaterialRatingControl), defaultValue: null);
@@ -93,8 +95,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ValueProperty =
-           BindableProperty.Create(nameof(Value), typeof(int), typeof(MaterialRatingControl)
-               , defaultBindingMode: BindingMode.TwoWay, defaultValue: -1, propertyChanged: OnValuePropertyChanged);
+           BindableProperty.Create(nameof(Value), typeof(int), typeof(MaterialRatingControl), defaultBindingMode: BindingMode.TwoWay, defaultValue: -1, propertyChanged: OnValuePropertyChanged);
 
         public int Value
         {
@@ -103,7 +104,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimationProperty =
-                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialRatingControl), defaultValue: AnimationTypes.None);
 
         public AnimationTypes Animation
         {
@@ -112,7 +113,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialRatingControl), defaultValue: null);
 
         public double? AnimationParameter
         {
@@ -121,6 +122,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         #region LabelText
+
         public static readonly BindableProperty LabelTextProperty =
             BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialRatingControl), defaultValue: null);
 
@@ -147,7 +149,8 @@ namespace Plugin.MaterialDesignControls
             get { return (double)GetValue(LabelSizeProperty); }
             set { SetValue(LabelSizeProperty, value); }
         }
-        #endregion
+
+        #endregion LabelText
 
         #region AssistiveText
 
@@ -178,7 +181,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AssistiveSizeProperty, value); }
         }
 
-
         public static readonly BindableProperty AnimateErrorProperty =
            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialRatingControl), defaultValue: false);
 
@@ -189,9 +191,11 @@ namespace Plugin.MaterialDesignControls
         }
 
         #endregion AssistiveText
-        #endregion
 
-        #region methods
+        #endregion Properties
+
+        #region Methods
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (!this.initialized)
@@ -237,7 +241,6 @@ namespace Plugin.MaterialDesignControls
             }
 
             base.OnPropertyChanged(propertyName);
-
         }
 
         private void SetGridContent()
@@ -249,7 +252,7 @@ namespace Plugin.MaterialDesignControls
                     || !ItemsByRow.HasValue)
                     return;
 
-                //populate grid
+                // Populate grid
                 int rows = (int)Math.Ceiling(ItemSize.Value * 1.0 / ItemsByRow.Value * 1.0);
                 int populatedObjects = 0;
                 double valuePerItem = 100.0 / (ItemSize.Value * 1.0);
@@ -258,7 +261,7 @@ namespace Plugin.MaterialDesignControls
                 grid.ColumnDefinitions = new ColumnDefinitionCollection();
                 grid.Children.Clear();
 
-                // set definitions of grid
+                // Set definitions of grid
                 for (int i = 0; i < rows; i++)
                     grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
@@ -279,7 +282,7 @@ namespace Plugin.MaterialDesignControls
 
                         ++populatedObjects;
 
-                        // add element at i,j position on grid
+                        // Add element at i,j position on grid
                         CustomImageButton customImageButton = new CustomImageButton()
                         {
                             HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -290,7 +293,7 @@ namespace Plugin.MaterialDesignControls
                             BackgroundColor = Color.Transparent,
                             IsVisible = true,
                             Command = new Command((e) => OnTapped((int)(e))),
-                            CommandParameter = value,
+                            CommandParameter = value + 1,
                             Animation = Animation,
                         };
 
@@ -317,16 +320,11 @@ namespace Plugin.MaterialDesignControls
         {
             if(IsEnabled)
             {
-                if (Value == value)
-                {
-                    Value = -1;
-                }
+                if (Value == 1 && value == 1)
+                    Value = 0;
                 else
-                {
                     Value = value;
-                }
             }
-            
         }
 
         private void SetLabelTextColor()
@@ -344,7 +342,6 @@ namespace Plugin.MaterialDesignControls
 
             return true;
         }
-
 
         public static void OnValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -375,6 +372,6 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-        #endregion
+        #endregion Methods
     }
 }
