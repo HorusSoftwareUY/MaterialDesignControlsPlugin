@@ -27,7 +27,7 @@ namespace Plugin.MaterialDesignControls.iOS
                 {
                     this.Control.TextAlignment = TextAlignmentHelper.Convert(customDatePicker.HorizontalTextAlignment);
 
-                    if (!customDatePicker.Date.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
+                    if (!customDatePicker.CustomDate.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
                     {
                         this.Control.Text = null;
                         this.Control.AttributedPlaceholder = new NSAttributedString(customDatePicker.Placeholder, foregroundColor: customDatePicker.PlaceholderColor.ToUIColor());
@@ -53,8 +53,16 @@ namespace Plugin.MaterialDesignControls.iOS
 
             // Set the default date if the user doesn't select anything
             var customDatePicker = (CustomDatePicker)Element;
-            if (e.PropertyName == "IsFocused" && !customDatePicker.IsFocused && !customDatePicker.Date.HasValue)
+            if (e.PropertyName == "IsFocused" && !customDatePicker.IsFocused && !customDatePicker.CustomDate.HasValue)
                 Control.Text = customDatePicker.InternalDateTime.ToString(customDatePicker.Format);
+            else if (e.PropertyName == nameof(customDatePicker.CustomDate) || e.PropertyName == nameof(customDatePicker.EmptyDate))
+            {
+                if (!customDatePicker.CustomDate.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
+                {
+                    Control.Text = null;
+                    Control.AttributedPlaceholder = new NSAttributedString(customDatePicker.Placeholder, foregroundColor: customDatePicker.PlaceholderColor.ToUIColor());
+                }
+            }
         }
     }
 }

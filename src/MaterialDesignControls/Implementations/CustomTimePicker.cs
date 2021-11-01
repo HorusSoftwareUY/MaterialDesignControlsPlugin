@@ -21,9 +21,7 @@ namespace Plugin.MaterialDesignControls.Implementations
                     EmptyTime = false;
                 }
                 else
-                {
                     EmptyTime = true;
-                }
             }
         }
 
@@ -37,7 +35,7 @@ namespace Plugin.MaterialDesignControls.Implementations
         public Color PlaceholderColor { get; set; }
 
         public static readonly BindableProperty EmptyTimeProperty =
-            BindableProperty.Create(nameof(EmptyTime), typeof(bool), typeof(MaterialTimePicker), defaultValue: true);
+            BindableProperty.Create(nameof(EmptyTime), typeof(bool), typeof(CustomTimePicker), defaultValue: true);
 
         public bool EmptyTime
         {

@@ -7,7 +7,18 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
-                <material:MaterialDatePicker Date="{Binding Date}" Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" Placeholder="Select date" PlaceholderColor="{StaticResource PlaceholderColor}" />
+                <material:MaterialDatePicker Date="{Binding Date}" Type="Filled" LabelText="Start date" Format="yyyy-MM-dd"
+                                             LeadingIcon="calendar.png" Placeholder="Select date" PlaceholderColor="{StaticResource PlaceholderColor}" />
+                <Grid
+                    ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <material:MaterialFlatButton Text="Clear" Command="{Binding ClearCommand}" />
+                    <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
+                </Grid>
+
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" IsEnabled="False" />
                 <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />

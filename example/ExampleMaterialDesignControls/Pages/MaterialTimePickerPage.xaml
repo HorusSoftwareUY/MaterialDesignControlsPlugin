@@ -7,9 +7,8 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
-                <material:MaterialTimePicker x:Name="pickerStartTime" Time="{Binding Time}" Type="Filled"
+                <material:MaterialTimePicker Time="{Binding Time}" Type="Filled"
                                              LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" Placeholder="Select time" />
-
                 <Grid
                     ColumnSpacing="16">
                     <Grid.ColumnDefinitions>

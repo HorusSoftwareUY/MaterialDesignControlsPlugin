@@ -15,8 +15,6 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref time, value); }
         }
 
-        public Action ClearPicker { get; set; }
-
         public delegate Task DisplayAlertType(string title, string message, string cancel);
 
         public DisplayAlertType DisplayAlert { get; set; }
