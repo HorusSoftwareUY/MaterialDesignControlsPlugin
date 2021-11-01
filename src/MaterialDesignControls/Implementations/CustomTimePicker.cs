@@ -7,17 +7,22 @@ namespace Plugin.MaterialDesignControls.Implementations
     {
         public TextAlignment HorizontalTextAlignment { get; set; }
 
-        private TimeSpan? time;
+        private TimeSpan? customTime;
 
-        public new TimeSpan? Time
+        public TimeSpan? CustomTime
         {
-            get { return this.time; }
+            get { return this.customTime; }
             set
             {
-                this.time = value;
-                if (this.Time.HasValue)
+                this.customTime = value;
+                if (this.customTime.HasValue)
                 {
-                    base.Time = this.Time.Value;
+                    base.Time = this.customTime.Value;
+                    EmptyTime = false;
+                }
+                else
+                {
+                    EmptyTime = true;
                 }
             }
         }
@@ -30,5 +35,14 @@ namespace Plugin.MaterialDesignControls.Implementations
         public string Placeholder { get; set; }
 
         public Color PlaceholderColor { get; set; }
+
+        public static readonly BindableProperty EmptyTimeProperty =
+            BindableProperty.Create(nameof(EmptyTime), typeof(bool), typeof(MaterialTimePicker), defaultValue: true);
+
+        public bool EmptyTime
+        {
+            get { return (bool)GetValue(EmptyTimeProperty); }
+            set { SetValue(EmptyTimeProperty, value); }
+        }
     }
 }

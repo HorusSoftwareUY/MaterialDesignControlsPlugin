@@ -7,7 +7,19 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
-                <material:MaterialTimePicker Time="{Binding Time}" Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" Placeholder="Select time" />
+                <material:MaterialTimePicker x:Name="pickerStartTime" Time="{Binding Time}" Type="Filled"
+                                             LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" Placeholder="Select time" />
+
+                <Grid
+                    ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <material:MaterialFlatButton Text="Clear" Command="{Binding ClearCommand}" />
+                    <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
+                </Grid>
+
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" IsEnabled="False" />
                 <material:MaterialTimePicker Type="Lined" LabelText="Deadline" Format="H:mm" />

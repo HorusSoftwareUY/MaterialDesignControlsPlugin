@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -117,7 +116,7 @@ namespace Plugin.MaterialDesignControls
         private static void OnTimeChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialTimePicker)bindable;
-            control.pckTime.Time = (TimeSpan?)newValue;
+            control.pckTime.CustomTime = (TimeSpan?)newValue;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -207,7 +206,7 @@ namespace Plugin.MaterialDesignControls
             base.SetFocusChange(lblLabel, frmContainer, bxvLine);
 
             // Set the default date if the user doesn't select anything
-            if (!IsControlFocused && !pckTime.Time.HasValue)
+            if (!IsControlFocused && !pckTime.CustomTime.HasValue)
                 Time = pckTime.InternalTime;
 
             if (IsControlFocused)
