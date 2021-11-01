@@ -18,13 +18,13 @@ namespace ExampleMaterialDesignControls.ViewModels
             }
         }
 
-        public string nameError;
-        public string NameError
+        public string error;
+        public string Error
         {
-            get { return nameError; }
+            get { return error; }
             set
             {
-                nameError = value;
+                error = value;
                 OnPropertyChanged();
             }
         }
@@ -36,11 +36,14 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand ClearCommand => new Command(() =>
         {
             Value = 0;
+            Error = null;
         });
 
         public ICommand ShowCommand => new Command(async () =>
         {
             await DisplayAlert("Selected value", Value.ToString(), "Ok");
+
+            Error = Value == 0 ? "Required field" : null;
         });
     }
 }

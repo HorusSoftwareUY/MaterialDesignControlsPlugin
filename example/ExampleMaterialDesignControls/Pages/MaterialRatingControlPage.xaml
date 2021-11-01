@@ -96,7 +96,7 @@
                     ItemSize="6"
                     ItemsByRow="6"
                     Value="{Binding Value}"
-                    AssistiveText="{Binding NameError}"
+                    AssistiveText="{Binding Error}"
                     AnimateError="True"
                     AssistiveTextColor="Red"
                     SelectedIcon="startSelected.png"
