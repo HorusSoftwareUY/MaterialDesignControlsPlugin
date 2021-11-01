@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+             x:Class="Plugin.MaterialDesignControls.MaterialSlider">
+    <ContentView.Content>
+        <StackLayout Spacing="2">
+            <StackLayout x:Name="stcHeader" Margin="0,0,14,2" Orientation="Horizontal">
+                <controls:MaterialLabel
+                    x:Name="lblLabel"
+                    IsVisible="false"
+                    LineBreakMode="NoWrap"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center" />
+                <controls:MaterialLabel
+                    x:Name="lblValue"
+                    IsVisible="false"
+                    LineBreakMode="NoWrap"
+                    HorizontalTextAlignment="End"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+            <Grid Padding="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="50" Margin="0">
+                <custom:CustomImage x:Name="bckgImage" IsVisible="false" Padding="10,0"  />
+                <StackLayout Orientation="Horizontal"  VerticalOptions="FillAndExpand" >
+                    <custom:CustomImageButton x:Name="imgMinimum" IsVisible="false" HorizontalOptions="Start" />
+                    <controls:MaterialLabel x:Name="lblMinimum" IsVisible="false" HorizontalOptions="Start" VerticalOptions="Center" />
+                    <custom:CustomSlider x:Name="slider" VerticalOptions="Center" Margin="0,10,0,10"  HorizontalOptions="FillAndExpand" ValueChanged="OnValueChanged"  />
+                    <controls:MaterialLabel x:Name="lblMaximum" IsVisible="false" HorizontalOptions="End" VerticalOptions="Center"  />
+                    <custom:CustomImageButton x:Name="imgMaximum" IsVisible="false" HorizontalOptions="End" />
+                </StackLayout>
+            </Grid>
+            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="0,0,14,0" HorizontalTextAlignment="Start" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

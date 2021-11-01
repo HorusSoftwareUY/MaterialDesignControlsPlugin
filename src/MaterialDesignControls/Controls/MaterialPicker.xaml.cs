@@ -27,7 +27,8 @@ namespace Plugin.MaterialDesignControls
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
             {
-                this.pckOptions.Focus();
+                if (IsControlEnabled)
+                    this.pckOptions.Focus();
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
@@ -258,7 +259,7 @@ namespace Plugin.MaterialDesignControls
         protected override void SetTextColor()
         {
             if (IsControlEnabled)
-                pckOptions.TextColor = IsControlFocused ? FocusedTextColor : TextColor;
+                pckOptions.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
             else
                 pckOptions.TextColor = DisabledTextColor;
         }
@@ -335,6 +336,12 @@ namespace Plugin.MaterialDesignControls
                     index++;
                 }
             }
+        }
+
+        public void ClearSelectedItem()
+        {
+            SelectedItem = null;
+            pckOptions.SelectedIndex = -1;
         }
 
         #endregion Methods

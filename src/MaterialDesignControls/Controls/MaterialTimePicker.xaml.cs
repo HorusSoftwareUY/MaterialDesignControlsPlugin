@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,7 +25,8 @@ namespace Plugin.MaterialDesignControls
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
             {
-                this.pckTime.Focus();
+                if (IsControlEnabled)
+                    this.pckTime.Focus();
             };
             this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
@@ -116,7 +116,7 @@ namespace Plugin.MaterialDesignControls
         private static void OnTimeChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialTimePicker)bindable;
-            control.pckTime.Time = (TimeSpan?)newValue;
+            control.pckTime.CustomTime = (TimeSpan?)newValue;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -153,7 +153,7 @@ namespace Plugin.MaterialDesignControls
         protected override void SetTextColor()
         {
             if (IsControlEnabled)
-                pckTime.TextColor = IsControlFocused ? FocusedTextColor : TextColor;
+                pckTime.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
             else
                 pckTime.TextColor = DisabledTextColor;
         }
@@ -206,7 +206,7 @@ namespace Plugin.MaterialDesignControls
             base.SetFocusChange(lblLabel, frmContainer, bxvLine);
 
             // Set the default date if the user doesn't select anything
-            if (!IsControlFocused && !pckTime.Time.HasValue)
+            if (!IsControlFocused && !pckTime.CustomTime.HasValue)
                 Time = pckTime.InternalTime;
 
             if (IsControlFocused)

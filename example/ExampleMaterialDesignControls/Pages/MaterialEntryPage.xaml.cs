@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Mail;
-using System.Windows.Input;
-using ExampleMaterialDesignControls.ViewModels;
+﻿using ExampleMaterialDesignControls.ViewModels;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages

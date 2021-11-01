@@ -8,6 +8,10 @@ namespace ExampleMaterialDesignControls.Pages
 {
     public partial class MaterialPickerPage : ContentPage
     {
+        public List<string> ItemsSourceColors { get; set; }
+
+        public string SelectedItemColor { get; set; }
+
         public string SelectedSizes { get; set; }
 
         public string SelectedItem { get; set; }
@@ -22,7 +26,8 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            this.pckColors.ItemsSource = new List<string> { "Red", "Blue", "Green" };
+            ItemsSourceColors = new List<string> { "Red", "Blue", "Green" };
+
             this.pckSizes.ItemsSource = new List<string> { "P", "M", "X", "XL" };
 
             this.pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
@@ -43,6 +48,19 @@ namespace ExampleMaterialDesignControls.Pages
             this.Tap2Command = new Command<string>(OnTap2);
 
             this.Tap3Command = new Command<string>(OnTap3);
+
+            ClearCommand = new Command(() =>
+            {
+                pckColors.ClearSelectedItem();
+            });
+
+            ShowCommand = new Command(async () =>
+            {
+                if (!string.IsNullOrEmpty(SelectedItemColor))
+                    await DisplayAlert("Color", SelectedItemColor, "Ok");
+                else
+                    await DisplayAlert("Color", "No color selected", "Ok");
+            });
 
             this.BindingContext = this;
         }
@@ -85,5 +103,9 @@ namespace ExampleMaterialDesignControls.Pages
         {
             this.pckDoubleWithFocus.Focus();
         }
+
+        public ICommand ClearCommand { get; set; }
+
+        public ICommand ShowCommand { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
@@ -50,6 +51,33 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(ChipsPaddingProperty, value); }
         }
 
+        public static readonly BindableProperty ChipsMarginProperty =
+            BindableProperty.Create(nameof(ChipsMargin), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(6));
+
+        public Thickness ChipsMargin
+        {
+            get { return (Thickness)GetValue(ChipsMarginProperty); }
+            set { SetValue(ChipsMarginProperty, value); }
+        }
+
+        public static readonly BindableProperty ChipsHeightRequestProperty =
+            BindableProperty.Create(nameof(ChipsHeightRequest), typeof(double), typeof(MaterialChipsGroup), defaultValue: 0.0);
+
+        public double ChipsHeightRequest
+        {
+            get { return (double)GetValue(ChipsHeightRequestProperty); }
+            set { SetValue(ChipsHeightRequestProperty, value); }
+        }
+
+        public static readonly BindableProperty ChipsFlexLayoutBasisPercentageProperty =
+            BindableProperty.Create(nameof(ChipsFlexLayoutPercentageBasis), typeof(double), typeof(MaterialChipsGroup), defaultValue: 0.0);
+
+        public double ChipsFlexLayoutPercentageBasis
+        {
+            get { return (double)GetValue(ChipsFlexLayoutBasisPercentageProperty); }
+            set { SetValue(ChipsFlexLayoutBasisPercentageProperty, value); }
+        }
+
         public static readonly new BindableProperty IsEnabledProperty =
             BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialChipsGroup), defaultValue: true);
 
@@ -69,11 +97,11 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ItemsSourceProperty =
-            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(MaterialChipsGroup), defaultValue: null, propertyChanged: OnItemsSourceChanged);
+            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<string>), typeof(MaterialChipsGroup), defaultValue: null, propertyChanged: OnItemsSourceChanged);
 
-        public IEnumerable ItemsSource
+        public IEnumerable<string> ItemsSource
         {
-            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
+            get { return (IEnumerable<string>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
@@ -86,8 +114,17 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(SelectedItemProperty, value); }
         }
 
+        public static readonly BindableProperty SelectedItemsProperty =
+            BindableProperty.Create(nameof(SelectedItems), typeof(List<string>), typeof(MaterialChipsGroup), defaultValue: null, propertyChanged: OnSelectedItemsChanged, defaultBindingMode: BindingMode.TwoWay);
+
+        public List<string> SelectedItems
+        {
+            get { return (List<string>)GetValue(SelectedItemsProperty); }
+            set { SetValue(SelectedItemsProperty, value); }
+        }
+
         public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null);
+            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null, validateValue: OnAssistiveTextValidate);
 
         public string AssistiveText
         {
@@ -239,21 +276,54 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimateErrorProperty, value); }
         }
 
+        public static readonly BindableProperty IsMultipleSelectionProperty =
+            BindableProperty.Create(nameof(IsMultipleSelection), typeof(bool), typeof(MaterialChipsGroup), defaultValue: false);
+
+        public bool IsMultipleSelection
+        {
+            get { return (bool)GetValue(IsMultipleSelectionProperty); }
+            set { SetValue(IsMultipleSelectionProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
 
+        private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
+        {
+            var control = (MaterialChipsGroup)bindable;
+
+            // Used to animate the error when the assistive text doesn't change
+            if (control.AnimateError && !string.IsNullOrEmpty(control.AssistiveText) && control.AssistiveText == (string)value)
+                ShakeAnimation.Animate(control);
+
+            return true;
+        }
+
+        // Single selection
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialChipsGroup)bindable;
-            if (control.stcContainer.Children != null)
+            if (control.flexContainer.Children != null && control.SelectedItem != null)
             {
-                foreach (var item in control.stcContainer.Children)
+                foreach (var item in control.flexContainer.Children)
                 {
                     if (item != null && item is MaterialChips)
-                    {
                         ((MaterialChips)item).IsSelected = ((MaterialChips)item).Text.Equals(control.SelectedItem);
-                    }
+                }
+            }
+        }
+
+        // Multiple selection
+        private static void OnSelectedItemsChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialChipsGroup)bindable;
+            if (control.flexContainer.Children != null && control.SelectedItems != null && control.SelectedItems.Any())
+            {
+                foreach (var item in control.flexContainer.Children)
+                {
+                    if (item != null && item is MaterialChips)
+                        ((MaterialChips)item).IsSelected = control.SelectedItems.Contains(((MaterialChips)item).Text);
                 }
             }
         }
@@ -261,7 +331,7 @@ namespace Plugin.MaterialDesignControls
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialChipsGroup)bindable;
-            control.stcContainer.Children.Clear();
+            control.flexContainer.Children.Clear();
             if (!Equals(newValue, null) && newValue is IEnumerable)
             {
                 foreach (var item in (IEnumerable)newValue)
@@ -274,6 +344,7 @@ namespace Plugin.MaterialDesignControls
                         FontFamily = control.FontFamily,
                         CornerRadius = control.CornerRadius,
                         Padding = control.ChipsPadding,
+                        Margin = control.ChipsMargin,
                         BackgroundColor = control.BackgroundColor,
                         TextColor = control.TextColor,
                         SelectedBackgroundColor = control.SelectedBackgroundColor,
@@ -281,43 +352,64 @@ namespace Plugin.MaterialDesignControls
                         DisabledBackgroundColor = control.DisabledBackgroundColor,
                         DisabledTextColor = control.DisabledTextColor,
                         DisabledSelectedBackgroundColor = control.DisabledSelectedBackgroundColor,
-                        DisabledSelectedTextColor = control.DisabledSelectedTextColor
+                        DisabledSelectedTextColor = control.DisabledSelectedTextColor,
+                        IsEnabled = control.IsEnabled
                     };
-                    if (control.SelectedItem != null)
+
+                    if (control.ChipsHeightRequest != (double)ChipsHeightRequestProperty.DefaultValue)
+                        materialChips.HeightRequest = control.ChipsHeightRequest;
+
+                    if (control.IsMultipleSelection)
                     {
-                        materialChips.IsSelected = materialChips.Text.Equals(control.SelectedItem);
+                        if (control.SelectedItems != null && control.SelectedItems.Any())
+                            materialChips.IsSelected = control.SelectedItems.Contains(materialChips.Text);
                     }
-                    materialChips.IsSelectedChanged  += control.MaterialChips_IsSelectedChanged;
-                    control.stcContainer.Children.Add(materialChips);
+                    else
+                    {
+                        if (control.SelectedItem != null)
+                            materialChips.IsSelected = materialChips.Text.Equals(control.SelectedItem);
+                    }
+
+                    materialChips.Command = new Command(() => SelectionCommand(control, materialChips));
+
+                    control.flexContainer.Children.Add(materialChips);
+
+                    if (control.ChipsFlexLayoutPercentageBasis > 0 && control.ChipsFlexLayoutPercentageBasis <= 1)
+                        FlexLayout.SetBasis(materialChips, new FlexBasis((float)control.ChipsFlexLayoutPercentageBasis, true));
                 }
             }
         }
 
-        private void MaterialChips_IsSelectedChanged(object sender, EventArgs e)
+        private static void SelectionCommand(MaterialChipsGroup materialChipsGroup, MaterialChips materialChips)
         {
-            if (sender is MaterialChips)
+            if (!materialChipsGroup.IsEnabled)
+                return;
+
+            if (materialChips is MaterialChips)
             {
-                if (((MaterialChips)sender).IsSelected)
+                if (materialChipsGroup.IsMultipleSelection)
                 {
-                    this.SelectedItem = ((MaterialChips)sender).Text;
-                }
+                    var selectedItems = materialChipsGroup.SelectedItems == null ? new List<string>() : materialChipsGroup.SelectedItems.Select(x => x).ToList();
 
-                bool hasSelected = false;
-                if (this.stcContainer.Children != null)
+                    materialChips.IsSelected = !materialChips.IsSelected;
+
+                    if (materialChips.IsSelected && !selectedItems.Contains(materialChips.Text))
+                        selectedItems.Add(materialChips.Text);
+                    else if (selectedItems.Contains(materialChips.Text))
+                        selectedItems.Remove(materialChips.Text);
+
+                    materialChipsGroup.SelectedItems = selectedItems;
+                }
+                else
                 {
-                    foreach (var item in this.stcContainer.Children)
+                    foreach (var item in materialChipsGroup.flexContainer.Children)
                     {
-                        if (item != null && item is MaterialChips && ((MaterialChips)item).IsSelected)
-                        {
-                            hasSelected = true;
-                            break;
-                        }
+                        ((MaterialChips)item).IsSelected = false;
                     }
-                }
 
-                if (!hasSelected)
-                {
-                    ((MaterialChips)sender).IsSelected = true;
+                    materialChips.IsSelected = !materialChips.IsSelected;
+
+                    materialChipsGroup.SelectedItem = materialChips.Text;
                 }
             }
         }
@@ -347,7 +439,7 @@ namespace Plugin.MaterialDesignControls
                     break;
 
                 case nameof(this.Padding):
-                    this.stcContainer.Padding = this.Padding;
+                    this.flexContainer.Padding = this.Padding;
                     break;
 
                 case nameof(this.AssistiveText):
@@ -365,6 +457,13 @@ namespace Plugin.MaterialDesignControls
                     this.lblAssistive.FontSize = this.AssistiveSize;
                     break;
 
+                case nameof(IsEnabled):
+                    foreach (var view in flexContainer.Children)
+                    {
+                        if (view is MaterialChips materialChips)
+                            materialChips.IsEnabled = IsEnabled;
+                    }
+                    break;
             }
         }
 

@@ -77,7 +77,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedTextColorProperty =
-            BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
 
         public Color FocusedTextColor
         {
@@ -157,7 +157,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
 
         public Color FocusedLabelTextColor
         {
@@ -181,6 +181,24 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (double)GetValue(LabelSizeProperty); }
             set { SetValue(LabelSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty LabelFontFamilyProperty =
+            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public string LabelFontFamily
+        {
+            get { return (string)GetValue(LabelFontFamilyProperty); }
+            set { SetValue(LabelFontFamilyProperty, value); }
+        }
+
+        public static readonly BindableProperty LabelMarginProperty =
+            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(14, 0, 14, 2));
+
+        public Thickness LabelMargin
+        {
+            get { return (Thickness)GetValue(LabelMarginProperty); }
+            set { SetValue(LabelMarginProperty, value); }
         }
 
         #endregion LabelText
@@ -214,6 +232,24 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AssistiveSizeProperty, value); }
         }
 
+        public static readonly BindableProperty AssistiveFontFamilyProperty =
+            BindableProperty.Create(nameof(AssistiveFontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public string AssistiveFontFamily
+        {
+            get { return (string)GetValue(AssistiveFontFamilyProperty); }
+            set { SetValue(AssistiveFontFamilyProperty, value); }
+        }
+
+        public static readonly BindableProperty AssistiveMarginProperty =
+            BindableProperty.Create(nameof(AssistiveMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(14, 2, 14, 0));
+
+        public Thickness AssistiveMargin
+        {
+            get { return (Thickness)GetValue(AssistiveMarginProperty); }
+            set { SetValue(AssistiveMarginProperty, value); }
+        }
+
         #endregion AssistiveText
 
         #region Border
@@ -228,7 +264,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FocusedBorderColorProperty =
-            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
 
         public Color FocusedBorderColor
         {
@@ -387,7 +423,7 @@ namespace Plugin.MaterialDesignControls
         protected void SetLabelTextColor(Label lblLabel)
         {
             if (IsControlEnabled)
-                lblLabel.TextColor = IsControlFocused ? FocusedLabelTextColor : LabelTextColor;
+                lblLabel.TextColor = IsControlFocused && FocusedLabelTextColor != Color.Transparent ? FocusedLabelTextColor : LabelTextColor;
             else
                 lblLabel.TextColor = DisabledLabelTextColor;
         }
@@ -399,12 +435,12 @@ namespace Plugin.MaterialDesignControls
                 case FieldTypes.Outlined:
                 case FieldTypes.Filled:
                     if (IsControlEnabled)
-                        frmContainer.BackgroundColor = IsControlFocused ? FocusedBackgroundColor : BackgroundColorControl;
+                        frmContainer.BackgroundColor = IsControlFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : BackgroundColorControl;
                     else
                         frmContainer.BackgroundColor = DisabledBackgroundColor;
 
                     if (IsControlEnabled)
-                        frmContainer.BorderColor = IsControlFocused ? FocusedBorderColor : BorderColor;
+                        frmContainer.BorderColor = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
                     else
                         frmContainer.BorderColor = DisabledBorderColor;
 
@@ -416,7 +452,7 @@ namespace Plugin.MaterialDesignControls
                     bxvLine.IsVisible = true;
 
                     if (IsControlEnabled)
-                        bxvLine.Color = IsControlFocused ? FocusedBorderColor : BorderColor;
+                        bxvLine.Color = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
                     else
                         bxvLine.Color = DisabledBorderColor;
                     break;
@@ -440,9 +476,23 @@ namespace Plugin.MaterialDesignControls
                     SetFontSize();
                     break;
                 case nameof(FontFamily):
+                case nameof(LabelFontFamily):
+                case nameof(AssistiveFontFamily):
                     SetFontFamily();
-                    lblLabel.FontFamily = FontFamily;
-                    lblAssistive.FontFamily = FontFamily;
+
+                    if (LabelFontFamily != null)
+                        lblLabel.FontFamily = LabelFontFamily;
+                    else if (LabelFontFamily == null && FontFamily != null)
+                        lblLabel.FontFamily = FontFamily;
+
+                    if (AssistiveFontFamily != null)
+                        lblAssistive.FontFamily = AssistiveFontFamily;
+                    else if (AssistiveFontFamily == null && FontFamily != null)
+                        lblAssistive.FontFamily = FontFamily;
+
+
+                    //lblLabel.FontFamily = FontFamily;
+                    //lblAssistive.FontFamily = FontFamily;
                     break;
                 case nameof(Placeholder):
                     SetPlaceholder();
@@ -459,6 +509,9 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(LabelSize):
                     lblLabel.FontSize = LabelSize;
+                    break;
+                case nameof(LabelMargin):
+                    lblLabel.Margin = LabelMargin;
                     break;
                 case nameof(Padding):
                     SetPadding();
@@ -501,6 +554,9 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(AssistiveSize):
                     lblAssistive.FontSize = AssistiveSize;
+                    break;
+                case nameof(AssistiveMargin):
+                    lblAssistive.Margin = AssistiveMargin;
                     break;
 
                 case nameof(LeadingIcon):

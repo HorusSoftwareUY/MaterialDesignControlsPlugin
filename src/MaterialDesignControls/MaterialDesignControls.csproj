@@ -51,11 +51,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Controls\MaterialRatingControl.xaml.cs" />
+    <Compile Include="Controls\MaterialRatingControl.xaml.cs">
+      <DependentUpon>MaterialSlider.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialSlider.xaml.cs">
+      <DependentUpon>MaterialSlider.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
     <Compile Include="Implementations\CustomPicker.cs" />
     <Compile Include="FieldTypes.cs" />
+    <Compile Include="Implementations\CustomSlider.cs" />
     <Compile Include="Implementations\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomEditor.cs" />
     <Compile Include="Controls\MaterialChips.xaml.cs">
@@ -100,6 +108,7 @@
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="AnimationTypes.cs" />
     <Compile Include="Animations\TouchAndPressAnimation.cs" />
+    <Compile Include="Implementations\CustomImage.cs" />
     <Compile Include="Implementations\DoublePicker.cs" />
     <Compile Include="Controls\MaterialDoublePicker.xaml.cs">
       <DependentUpon>MaterialDoublePicker.xaml</DependentUpon>
@@ -113,6 +122,7 @@
     <Compile Include="TextTransforms.cs" />
     <Compile Include="Controls\MaterialCustomControl.xaml.cs">
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utils\LoggerHelper.cs" />
   </ItemGroup>
@@ -128,10 +138,5 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Controls\MaterialRatingControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

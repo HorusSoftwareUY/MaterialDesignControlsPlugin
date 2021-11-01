@@ -14,10 +14,10 @@ namespace ExampleMaterialDesignControls
         public MainPage()
         {
             InitializeComponent();
+            this.Children.Add(new NavigationPage(new MaterialControlsPage()) { Title = "Controls", IconImageSource = "Home.png" });
             this.Children.Add(new ProductDetailsPage());
             this.Children.Add(new AddCardPage());
-            this.Children.Add(new MaterialDatePickerPage());
-            this.Children.Add(new NavigationPage(new MaterialControlsPage()) { Title="Controls", IconImageSource="" });
+            this.Children.Add(new ShippingPage());
 
             //masterPage.ListView.ItemSelected += OnItemSelected;
         }

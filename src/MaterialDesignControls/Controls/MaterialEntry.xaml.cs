@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using Xamarin.Forms;
@@ -146,6 +147,24 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (ReturnType)GetValue(ReturnTypeProperty); }
             set { SetValue(ReturnTypeProperty, value); }
+        }
+
+        public static readonly BindableProperty ReturnCommandProperty =
+            BindableProperty.Create(nameof(ReturnCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+
+        public ICommand ReturnCommand
+        {
+            get { return (ICommand)GetValue(ReturnCommandProperty); }
+            set { SetValue(ReturnCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty ReturnCommandParameterProperty =
+            BindableProperty.Create(nameof(ReturnCommandParameter), typeof(object), typeof(MaterialEntry), defaultValue: null);
+
+        public object ReturnCommandParameter
+        {
+            get { return (object)GetValue(ReturnCommandParameterProperty); }
+            set { SetValue(ReturnCommandParameterProperty, value); }
         }
 
         public static readonly BindableProperty TextProperty =
@@ -393,7 +412,7 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.ReturnType):
                     this.txtEntry.ReturnType = this.ReturnType;
 
-                    if (this.ReturnType.Equals(Xamarin.Forms.ReturnType.Next))
+                    if (this.ReturnType.Equals(Xamarin.Forms.ReturnType.Next) && this.ReturnCommand == null)
                     {
                         this.txtEntry.ReturnCommand = new Command(() =>
                         {
@@ -401,6 +420,12 @@ namespace Plugin.MaterialDesignControls
                             this.FocusNextElement(currentTabIndex);
                         });
                     }
+                    break;
+                case nameof(this.ReturnCommand):
+                    this.txtEntry.ReturnCommand = this.ReturnCommand;
+                    break;
+                case nameof(this.ReturnCommandParameter):
+                    this.txtEntry.ReturnCommandParameter = this.ReturnCommandParameter;
                     break;
                 case nameof(this.IsCode):
                     this.txtEntry.IsCode = this.IsCode;
@@ -422,7 +447,13 @@ namespace Plugin.MaterialDesignControls
 
         protected override void SetIsEnabled()
         {
-            txtEntry.IsEnabled = IsEnabled;
+            if (Device.RuntimePlatform == Device.iOS)
+                txtEntry.IsEnabled = IsEnabled;
+            else
+            {
+                // Workaround to a disabled text color issue in Android
+                txtEntry.IsReadOnly = !IsEnabled;
+            }
         }
 
         protected override void SetPadding()
@@ -433,7 +464,7 @@ namespace Plugin.MaterialDesignControls
         protected override void SetTextColor()
         {
             if (IsControlEnabled)
-                txtEntry.TextColor = IsControlFocused ? FocusedTextColor : TextColor;
+                txtEntry.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
             else
                 txtEntry.TextColor = DisabledTextColor;
         }
@@ -524,13 +555,13 @@ namespace Plugin.MaterialDesignControls
                     var nextElement = this.FindNextElement(true, tabIndexes, ref currentTabIndex);
                     if (nextElement != null)
                     {
-                        if (nextElement is CustomEntry nextEntry && nextEntry.IsEnabled)
+                        if (nextElement is CustomEntry nextEntry && nextEntry.IsEnabled && !nextEntry.IsReadOnly)
                         {
                             nextEntry.Focus();
                             string textInsideInput = nextEntry.Text;
                             nextEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
                         }
-                        else if (nextElement is CustomEditor nextEditor && nextEditor.IsEnabled)
+                        else if (nextElement is CustomEditor nextEditor && nextEditor.IsEnabled && !nextEditor.IsReadOnly)
                         {
                             nextEditor.Focus();
                         }

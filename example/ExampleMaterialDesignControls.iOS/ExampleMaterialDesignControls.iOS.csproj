@@ -148,7 +148,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
@@ -183,8 +183,6 @@
     <BundleResource Include="Resources\calendar.png" />
     <BundleResource Include="Resources\color.png" />
     <BundleResource Include="Resources\delete.png" />
-    <BundleResource Include="Resources\save.png" />
-    <BundleResource Include="Resources\showPassword.png" />
     <BundleResource Include="Resources\icon2.png" />
     <BundleResource Include="Resources\power.png" />
     <BundleResource Include="Resources\icon.png" />
@@ -194,7 +192,6 @@
     <BundleResource Include="Resources\BackCard.jpg" />
     <BundleResource Include="Resources\Visa.png" />
     <BundleResource Include="Resources\Cross.png" />
-    <BundleResource Include="Resources\Controls.png" />
     <BundleResource Include="Resources\Product.png" />
     <BundleResource Include="Resources\Payment.png" />
     <BundleResource Include="..\..\Resources\Fonts\font_bold.ttf">
@@ -209,6 +206,27 @@
     <BundleResource Include="..\..\Resources\Fonts\font_semi_bold.ttf">
       <Link>Resources\Fonts\font_semi_bold.ttf</Link>
     </BundleResource>
+    <BundleResource Include="Resources\Payment%403x.png" />
+    <BundleResource Include="Resources\Payment%402x.png" />
+    <BundleResource Include="Resources\Shipping.png" />
+    <BundleResource Include="Resources\Shipping%403x.png" />
+    <BundleResource Include="Resources\Shipping%402x.png" />
+    <BundleResource Include="Resources\Product%403x.png" />
+    <BundleResource Include="Resources\Product%402x.png" />
+    <BundleResource Include="Resources\Home.png" />
+    <BundleResource Include="Resources\Home%402x.png" />
+    <BundleResource Include="Resources\Home%403x.png" />
+    <BundleResource Include="Resources\download.png" />
+    <BundleResource Include="Resources\showPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\volume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scale.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\starUnselected.png" />

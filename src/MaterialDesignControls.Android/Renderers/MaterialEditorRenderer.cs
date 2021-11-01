@@ -4,6 +4,7 @@ using AndroidGraphics = Android.Graphics;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Android.Views.InputMethods;
 
 [assembly: ExportRenderer(typeof(CustomEditor), typeof(Plugin.MaterialDesignControls.Android.MaterialEditorRenderer))]
 
@@ -19,17 +20,19 @@ namespace Plugin.MaterialDesignControls.Android
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
             base.OnElementChanged(e);
-            if (this.Control != null)
+
+            if (Control != null)
             {
-                this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
-                this.Control.SetPadding(4, 0, 0, 0);
+                Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
+                Control.SetPadding(4, 0, 0, 0);
+                Control.ImeOptions = (ImeAction)ImeFlags.NoExtractUi;
             }
 
             if (e.NewElement != null)
             {
                 var element = e.NewElement as CustomEditor;
-                this.Control.Hint = element.Placeholder;
-                this.Control.SetHintTextColor(element.PlaceholderColor.ToAndroid());
+                Control.Hint = element.Placeholder;
+                Control.SetHintTextColor(element.PlaceholderColor.ToAndroid());
             }
         }
     }

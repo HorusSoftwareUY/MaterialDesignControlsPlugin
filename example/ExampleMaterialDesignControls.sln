@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleMaterialDesignControls.Android", "ExampleMaterialDesignControls.Android\ExampleMaterialDesignControls.Android.csproj", "{1E4E88F1-A058-44F5-A441-EAD9F534EF91}"
 EndProject
@@ -182,6 +182,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8F5D9056-5B6D-495E-8161-1684EDA0C14D}
+		SolutionGuid = {1E12E2C0-ED60-4F44-872B-7615F1D8AF03}
 	EndGlobalSection
 EndGlobal

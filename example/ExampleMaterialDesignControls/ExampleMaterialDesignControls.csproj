@@ -10,13 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms.Skeleton" Version="2.0.0" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
+    <Folder Include="Pages\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Resources\Svg\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MasterPageItem.cs" />
@@ -52,8 +54,11 @@
     <None Remove="Resources\Svg\starUnselected.svg" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Pages\MaterialRatingControlPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <None Remove="Resources\Svg\mute.svg" />
+    <None Remove="Resources\Svg\scale.svg" />
+    <None Remove="Resources\Svg\volume.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" x:Class="ExampleMaterialDesignControls.Pages.MaterialChipsPage" Title="MaterialChips">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialChipsPage"
+             Title="Material Chips"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="20" Spacing="16">
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="20" Spacing="20">
                 <Grid RowSpacing="16">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -12,8 +16,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <material:MaterialChips Grid.Column="0" Grid.Row="0" IsSelected="true" IsEnabled="true" Text="Option A" />
                     <material:MaterialChips Grid.Column="1" Grid.Row="0" IsSelected="false" IsEnabled="true" Text="Option B" />
@@ -21,12 +23,40 @@
                     <material:MaterialChips Grid.Column="0" Grid.Row="1" IsSelected="true" IsEnabled="false" Text="Option D" />
                     <material:MaterialChips Grid.Column="1" Grid.Row="1" IsSelected="false" IsEnabled="false" Text="Option E" />
                     <material:MaterialChips Grid.Column="2" Grid.Row="1" IsSelected="false" IsEnabled="false" Text="Option F" />
-
                 </Grid>
-                <material:MaterialLabel Text="Chips group control" Margin="0,24,0,0" />
-                <material:MaterialChipsGroup LabelText="Sizes" SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" />
 
-                <material:MaterialLabel Text="Filters" Margin="0,24,0,0" />
+                <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
+
+                <material:MaterialLabel Text="Chips group control" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center"  />
+                <material:MaterialChipsGroup LabelText="Sizes" SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" ChipsFlexLayoutPercentageBasis="0.33"/>
+                <material:MaterialChipsGroup LabelText="Colors" IsMultipleSelection="True" SelectedItems="{Binding SelectedColors}" ItemsSource="{Binding Colors}" ChipsPadding="16,0" ChipsHeightRequest="32" />
+
+                <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
+
+                <material:MaterialChipsGroup
+                    LabelText="Colors"
+                    IsMultipleSelection="True"
+                    SelectedItems="{Binding SelectedColors}"
+                    ItemsSource="{Binding Colors}"
+                    ChipsPadding="16,0"
+                    ChipsHeightRequest="32"
+                    IsEnabled="{Binding IsColorSelectionEnabled}" />
+
+                <StackLayout
+                    Orientation="Horizontal"
+                    Spacing="16">
+                    <Switch
+                        IsToggled="{Binding IsColorSelectionEnabled}" />
+                    <material:MaterialLabel
+                        Text="Color selection enabled"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+
+                <BoxView
+                    HeightRequest="1"
+                    BackgroundColor="LightGray" />
+
+                <material:MaterialLabel Text="Filters" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center"  />
                 <FlexLayout Wrap="Wrap" Direction="Row" HorizontalOptions="FillAndExpand">
                     <StackLayout>
                         <material:MaterialChips Margin="0,10,10,0" TrailingIcon="cancel.png" TrailingIconCommand="{Binding IconTapCommand}" IsSelected="false" IsEnabled="true" Text="Opt J" ToUpper="True" />
@@ -40,8 +70,22 @@
                     <StackLayout>
                         <material:MaterialChips Margin="0,10,10,0" LeadingIcon="delete.png" LeadingIconCommand="{Binding IconTapCommand}" LeadingIconCommandParameter="Delete command!" IsSelected="false" IsEnabled="true" Text="Option M" ToUpper="True" />
                     </StackLayout>
+                    <StackLayout>
+                        <material:MaterialChips Margin="0,10,10,0" TrailingIconCommand="{Binding IconTapCommand}" IsSelected="false" IsEnabled="true" Text="Opt A" ToUpper="True" >
+                            <material:MaterialChips.CustomTrailingIcon>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg"/>
+                            </material:MaterialChips.CustomTrailingIcon>
+                        </material:MaterialChips>
+                    </StackLayout>
+                    <StackLayout>
+                        <material:MaterialChips Margin="0,10,10,0"  LeadingIconCommand="{Binding IconTapCommand}" LeadingIconCommandParameter="Delete command!" IsSelected="false" IsEnabled="true" Text="Opt Z" ToUpper="True" >
+                            <material:MaterialChips.CustomLeadingIcon>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg"/>
+                            </material:MaterialChips.CustomLeadingIcon>
+                        </material:MaterialChips>
+                    </StackLayout>
                 </FlexLayout>
-                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" Margin="0,0,0,20" VerticalOptions="EndAndExpand" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" Margin="0,20,0,0" VerticalOptions="EndAndExpand" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -2,12 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
-             Title="MaterialSelection">
+             Title="Material Selection">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
-                <material:MaterialSelection Type="Filled" LeadingIcon="calendar.png" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection" />
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="20" Spacing="20">
+                <material:MaterialSelection Type="Filled" LeadingIcon="calendar.png" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection">
+                    <material:MaterialSelection.CustomTrailingIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg"/>
+                    </material:MaterialSelection.CustomTrailingIcon>
+                </material:MaterialSelection>
                 <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection" />
                 <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection" IsEnabled="False" />
                 <material:MaterialSelection Type="Outlined" LabelText="Product" Placeholder="Select product" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="Product selection" HorizontalTextAlignment="Center" />
@@ -15,7 +20,7 @@
                     <material:MaterialSelection.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                            <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                         </OnPlatform>
                     </material:MaterialSelection.FontFamily>
                 </material:MaterialSelection>
