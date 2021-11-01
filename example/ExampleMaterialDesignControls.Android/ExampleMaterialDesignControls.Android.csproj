@@ -217,6 +217,12 @@
     </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\starUnselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\startSelected.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\volume.png" />
   </ItemGroup>
   <ItemGroup>

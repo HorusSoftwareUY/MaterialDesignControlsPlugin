@@ -167,6 +167,24 @@ Selection let users select an option.
                             Command="{Binding TapCommand}" CommandParameter="User selection" />
 ```
 
+### MaterialRatingControl
+Displays a rating control<br/>
+[View documentation](MaterialRatingControlDoc.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/material_rating.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialRatingControl x:Name="mrcWithoutSelectionPng"  LabelText="How do you rate...?(png icons)"   
+    ItemSize="5"                                             
+    ItemsByRow="5" 
+    Animation="Fade" 
+    AnimationParameter="0.1" 
+    SelectedIcon="startSelected.png" 
+    UnSelectedIcon="starUnselected.png"  />
+```
 
 ### MaterialSliderControl
 Displays a slider control<br/>
@@ -179,13 +197,13 @@ Displays a slider control<br/>
 **Example**
 ```XML
  <material:MaterialSlider 
-                    x:Name="slider" 
-                    MinimumValue="0" 
-                    MaximumValue="100" 
-                    ThumbColor="BlueViolet"
-                    LabelText="Slider"
-                    ActiveTrackColor="BlueViolet"
-                    InactiveTrackColor="LightPink"/>
+    x:Name="slider" 
+    MinimumValue="0" 
+    MaximumValue="100" 
+    ThumbColor="BlueViolet"
+    LabelText="Slider"
+    ActiveTrackColor="BlueViolet"
+    InactiveTrackColor="LightPink"/>
 ```
 
 ### MaterialField

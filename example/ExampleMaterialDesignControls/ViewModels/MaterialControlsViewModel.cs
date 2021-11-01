@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using ExampleMaterialDesignControls.Pages;
 using Xamarin.Forms;
 
@@ -18,6 +14,11 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialSliderCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialSliderPage());
+        });
+
+        public ICommand GoMaterialRatingCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialRatingControlPage());
         });
 
         public ICommand GoMaterialChipsCommand => new Command(async () =>

@@ -20,7 +20,7 @@
             <ffimageloading:CachedImage Grid.Row="0" Source="horus.png" Margin="0" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="36"/>
                                
             <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="1">
-                    <Grid ColumnDefinitions="*,*" RowDefinitions="150,150,150,150,150,150" RowSpacing="10" ColumnSpacing="10" Padding="0,0,0,20">
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="150,150,150,150,150,150,150" RowSpacing="10" ColumnSpacing="10" Padding="0,0,0,20">
 
                         <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent1}" HasShadow="False" CornerRadius="16" Padding="15">
                             <Frame.GestureRecognizers>
@@ -144,13 +144,13 @@
 
                         <Frame Grid.Row="5" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent11}" HasShadow="False" CornerRadius="16" Padding="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoMaterialCustomControlCommand}"/>
+                                <TapGestureRecognizer Command="{Binding GoMaterialRatingCommand}"/>
                             </Frame.GestureRecognizers>
                             <StackLayout>
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent11}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_custom.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Custom" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Rating" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 
@@ -163,6 +163,18 @@
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_slider.svg"/>
                                 </Frame>
                                 <material:MaterialLabel Text="Material Slider" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Row="6" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialCustomControlCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_custom.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Custom" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 

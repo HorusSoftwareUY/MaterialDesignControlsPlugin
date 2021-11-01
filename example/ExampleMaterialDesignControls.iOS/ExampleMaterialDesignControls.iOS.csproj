@@ -228,4 +228,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\scale.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\starUnselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\startSelected.png" />
+  </ItemGroup>
 </Project>

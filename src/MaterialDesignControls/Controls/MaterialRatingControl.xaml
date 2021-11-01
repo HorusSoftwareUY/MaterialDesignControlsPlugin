@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="Plugin.MaterialDesignControls.MaterialRatingControl">
+    <ContentView.Content>
+            <Grid x:Name="gridMain" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <controls:MaterialLabel Grid.Row="0" x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Center" />
+                <Grid x:Name="grid" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10,0"/>
+                <controls:MaterialLabel x:Name="lblAssistive"  Grid.Row="2" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+            </Grid>
+    </ContentView.Content>
+</ContentView>
