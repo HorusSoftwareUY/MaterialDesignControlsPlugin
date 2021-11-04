@@ -1,11 +1,11 @@
 ﻿using Android.Content;
 using Android.OS;
 using Plugin.MaterialDesignControls.Android.Renderers;
-using Plugin.MaterialDesignControls.Implementation;
-using Xamarin.Forms;
+using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms.Platform.Android;
+using Xamarin.Forms;
 
-[assembly: ExportRenderer(typeof(CustomFrame), typeof(CustomFrameRenderer))]
+[assembly: Xamarin.Forms.ExportRenderer(typeof(CustomFrame), typeof(CustomFrameRenderer))]
 namespace Plugin.MaterialDesignControls.Android.Renderers
 {
     public class CustomFrameRenderer : Xamarin.Forms.Platform.Android.FastRenderers.FrameRenderer
@@ -20,7 +20,7 @@ namespace Plugin.MaterialDesignControls.Android.Renderers
 
             var customFrame = (CustomFrame)Element;
             if (customFrame != null)
-            { 
+            {
                 if (customFrame.HasShadow)
                 {
                     if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
@@ -33,9 +33,26 @@ namespace Plugin.MaterialDesignControls.Android.Renderers
                     {
                         var borderColor = customFrame.ShadowColor.MultiplyAlpha(customFrame.AndroidBorderAlpha);
                         Element.BorderColor = borderColor;
-		            }
+                    }
                 }
             }
         }
+        //protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Frame> e)
+        //{
+        //    base.OnElementChanged(e);
+        //    //var customFrame = (CustomFrame)Element;
+        //    if (e.NewElement.HasShadow)
+        //    {
+        //        if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
+        //        {
+        //            SetOutlineSpotShadowColor(Color.Blue);
+        //            Elevation =10.0f;
+        //            TranslationZ = 30.0f;
+        //            //CardElevation = 0.0f;
+        //            SetZ(30f);
+        //            SetOutlineAmbientShadowColor(Color.Red);
+        //        }
+        //    }
+        //}
     }
 }

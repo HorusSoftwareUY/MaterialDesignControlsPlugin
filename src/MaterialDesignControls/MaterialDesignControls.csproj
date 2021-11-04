@@ -126,6 +126,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Implementations\CustomFrame.cs" />
+    <Compile Include="FloatingButtonSize.cs" />
+    <Compile Include="IconSide.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

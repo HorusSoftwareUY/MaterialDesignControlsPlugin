@@ -218,6 +218,8 @@
     <BundleResource Include="Resources\Home%403x.png" />
     <BundleResource Include="Resources\download.png" />
     <BundleResource Include="Resources\showPassword.png" />
+    <BundleResource Include="Resources\add_b.png" />
+    <BundleResource Include="Resources\add_w.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\volume.png" />

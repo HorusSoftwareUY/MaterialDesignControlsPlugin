@@ -3,15 +3,27 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
        xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-       x:Class="Plugin.MaterialDesignControls.MaterialFloatingButton" >
-    <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-	    </Grid.ColumnDefinitions>
-        <custom:CustomImageButton Grid.Column="0" x:Name="imgLeft" IsVisible="False" HorizontalOptions="Start"/>
-        <controls:MaterialLabel Grid.Column="1" x:Name="lblText" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <custom:CustomImageButton Grid.Column="2" x:Name="imgRight" IsVisible="False" HorizontalOptions="End"/>
-    </Grid>
-</custom:CustomFrame>
+       x:Class="Plugin.MaterialDesignControls.MaterialFloatingButton"
+					IsClippedToBounds="True"
+	   x:Name="Parent" >
+    <StackLayout 
+		VerticalOptions="Center"
+		Spacing="0" 
+		HorizontalOptions="CenterAndExpand"
+		Orientation="Horizontal">
+        <Image 
+	        x:Name="imgLeft" 
+	        IsVisible="False" 
+	        Margin="0"
+	        VerticalOptions="Center"/>
+        <controls:MaterialLabel 
+	        x:Name="lblText" 
+	        IsVisible="False" 
+			HorizontalOptions="Center"
+	        VerticalTextAlignment="Center"/>
+        <Image
+			x:Name="imgRight" 
+			IsVisible="False" 
+			HorizontalOptions="End"/>
+    </StackLayout>
+</custom:CustomFrame >

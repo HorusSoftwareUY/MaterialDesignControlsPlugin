@@ -4,13 +4,48 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialFloatingButtonPage"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    BackgroundColor="White"
     Title="Material Floating Button">
     <ContentPage.Content>
-        <StackLayout>
-            <material:MaterialFloatingButton CornerRadius="28" Padding="0" HasShadow="True" ShadowColor="LightGray"
-                iOSShadowOpacity="0.7" iOSShadowRadius="6" iOSShadowOffset="0,2" Text="clay" FontSize="12" TextColor="White" 
-                                             BackgroundColor="Blue" Icon="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg"
-					 HeightRequest="56" Margin="16" HorizontalOptions="Center"/>
+        <StackLayout Spacing="10">
+            <Label Text="Regular"/>
+            <StackLayout Orientation="Horizontal">
+
+                <material:MaterialFloatingButton HasShadow="True" ShadowColor="Black"
+                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" FontSize="12"
+                Icon="add_b.png" BackgroundColor="#FAF9D5" IsEnabled="False" Clicked="MaterialFloatingButton_Clicked" Animation="Scale"
+					 HorizontalOptions="Center"/>
+
+                <material:MaterialFloatingButton HasShadow="True" ShadowColor="Black"
+                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" FontSize="12"
+                Icon="add_b.png" BackgroundColor="#F5B8B8" IsEnabled="False" Clicked="MaterialFloatingButton_Clicked" Animation="Scale"
+					 HorizontalOptions="Center"/>
+
+            </StackLayout>
+            <Label Text="Mini"/>
+            <material:MaterialFloatingButton HasShadow="True" ShadowColor="Black"
+                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" FontSize="12" 
+                         BackgroundColor="White" Icon="add_b.png" ButtonSize="Mini" Clicked="MaterialFloatingButton_Clicked" Animation="Scale" IsEnabled="False"
+					 HorizontalOptions="Center"/>
+
+            <Label Text="Extended Icon left"/>
+            <material:MaterialFloatingButton HasShadow="True" ShadowColor="Blue"
+                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" Text="add" FontSize="12" TextColor="White" 
+                         BackgroundColor="Blue" Icon="add_w.png" ButtonSize="Extended" Clicked="MaterialFloatingButton_Clicked" Animation="Fade"
+					 HorizontalOptions="Center"/>
+
+            <Label Text="Extended icon right"/>
+            <material:MaterialFloatingButton HasShadow="True" ShadowColor="Blue"
+                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" Text="add" FontSize="12" TextColor="White" 
+                         BackgroundColor="Blue" Icon="add_w.png" ButtonSize="Extended" IconSide="Right"
+					 HorizontalOptions="Center" Clicked="MaterialFloatingButton_Clicked"/>
+
+            <Label Text="Extended without icon"/>
+            <material:MaterialFloatingButton HasShadow="True" ShadowColor="Blue"
+                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" Text="add" FontSize="16" TextColor="White" 
+                         BackgroundColor="Blue" ButtonSize="Extended"
+					 HorizontalOptions="Center" Clicked="MaterialFloatingButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
