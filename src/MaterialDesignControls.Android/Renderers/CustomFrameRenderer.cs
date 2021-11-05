@@ -37,22 +37,5 @@ namespace Plugin.MaterialDesignControls.Android.Renderers
                 }
             }
         }
-        //protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Frame> e)
-        //{
-        //    base.OnElementChanged(e);
-        //    //var customFrame = (CustomFrame)Element;
-        //    if (e.NewElement.HasShadow)
-        //    {
-        //        if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
-        //        {
-        //            SetOutlineSpotShadowColor(Color.Blue);
-        //            Elevation =10.0f;
-        //            TranslationZ = 30.0f;
-        //            //CardElevation = 0.0f;
-        //            SetZ(30f);
-        //            SetOutlineAmbientShadowColor(Color.Red);
-        //        }
-        //    }
-        //}
     }
 }

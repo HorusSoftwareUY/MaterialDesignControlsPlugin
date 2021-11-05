@@ -22,8 +22,26 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
+        public static readonly BindableProperty CustomIconProperty =
+            BindableProperty.Create(nameof(CustomIcon), typeof(DataTemplate), typeof(MaterialFloatingButton), defaultValue: null);
+
+        public DataTemplate CustomIcon
+        {
+            get { return (DataTemplate)GetValue(CustomIconProperty); }
+            set { SetValue(CustomIconProperty, value); }
+        }
+
+        public static new readonly BindableProperty HasShadowProperty =
+            BindableProperty.Create(nameof(HasShadow), typeof(bool), typeof(MaterialFloatingButton), defaultValue: true);
+
+        public new bool HasShadow
+        {
+            get { return (bool)GetValue(HasShadowProperty); }
+            set { SetValue(HasShadowProperty, value); }
+        }
+
         public static readonly BindableProperty CommandProperty =
-            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialFloatingButton), defaultValue: null);
 
         public ICommand Command
         {
@@ -32,7 +50,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CommandParameterProperty =
-            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialFloatingButton), defaultValue: null);
 
         public object CommandParameter
         {
@@ -197,6 +215,9 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(HasShadow):
+                    base.HasShadow = HasShadow;
+                    break;
                 case nameof(Padding):
                     base.Padding = Padding;
                     break;
@@ -221,20 +242,34 @@ namespace Plugin.MaterialDesignControls
                 case nameof(Icon):
                     if (Icon == null)
                         break;
-                    imgLeft.Source = Icon;
+                    imgLeft.SetImage(Icon);
                     imgLeft.IsVisible = true;
+                    break;
+                case nameof(CustomIcon):
+                    if (CustomIcon == null)
+                        break;
+                    if (IconSide == IconSide.Left)
+                    {
+                        imgLeft.SetCustomImage(this.CustomIcon.CreateContent() as View);
+                        imgLeft.IsVisible = true;
+                    }
+                    else 
+		            { 
+                        imgRight.SetCustomImage(this.CustomIcon.CreateContent() as View);
+                        imgRight.IsVisible = true;
+		            }
                     break;
                 case nameof(IconSide):
                     if (IconSide == IconSide.Left)
                     {
                         imgLeft.IsVisible = true;
-                        imgLeft.Source = Icon;
+                        imgLeft.SetImage(Icon);
                     }
                     else
                     {
                         imgLeft.IsVisible = false;
                         imgRight.IsVisible = true;
-                        imgRight.Source = Icon;
+                        imgRight.SetImage(Icon);
                         lblText.Margin = new Thickness(0, 0, 6, 0);
                         Padding = new Thickness(16, 0, 16, 0);
                     }
@@ -258,7 +293,7 @@ namespace Plugin.MaterialDesignControls
         {
             imgLeft.HeightRequest = IconHeightRequest;
             imgLeft.WidthRequest = IconWidthRequest;
-            imgLeft.Source = Icon;
+            imgLeft.SetImage(Icon);
             imgLeft.IsVisible = true;
             if (ButtonSize == FloatingButtonSize.Mini)
             {
@@ -286,6 +321,7 @@ namespace Plugin.MaterialDesignControls
 
         private void Initialize()
         {
+            base.HasShadow = HasShadow;
             base.Padding = Padding;
             base.HeightRequest = HeightRequest;
             base.WidthRequest = WidthRequest;
