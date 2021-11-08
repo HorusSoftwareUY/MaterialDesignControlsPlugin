@@ -188,6 +188,24 @@ Displays a slider control<br/>
                     InactiveTrackColor="LightPink"/>
 ```
 
+### MaterialFloatingButton
+Displays a floating button<br/>
+[View documentation](MaterialFloatingButton.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/MaterialFloatingButton.png" width="300">
+
+**Example**
+```XML
+<material:MaterialFloatingButton
+    Icon="add_b.png"
+    BackgroundColor="#FAF9D5"
+    Animation="Scale"
+    FontSize="12"
+    ShadowColor="Black"/>
+```
+
 ### MaterialField
 Displays a value with its respective label in read-only format.
 
