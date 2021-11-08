@@ -22,6 +22,12 @@ This property is to set the shadow color
 ### Property Icon:
 This property is to set the icon of the button
 
+### Property IconHeightRequest:
+This property is to set the HeightRequest of the icon
+
+### Property IconWidthRequest:
+This property is to set the WidthRequest of the icon
+
 ### Property BackgroundColor:
 This property is to set the color of the button
 
@@ -31,100 +37,44 @@ This property is to set the button's animation. It could be: None, Fade or Scale
 ### Property FontSize:
 This property is to set the fontsize of the text
 
+### Property FontFamily:
+This property is to set the fontfamily of the text
+
 ### Property ButtonSize:
 This property is to set the size of button. It coulb be: Regular, Mini or Extended. By default is Regular
 
 ### Property Text:
-This property is to set the text of the button. This only appears when ButtonSize is Extended.
+This property is to set the text of the button. This only appears when ButtonSize is Extended
 
-### Property DisabledLabelMinimumTextColor:
-This property is to set the color of the label minimum when control is disable
+### Property TextColor:
+This property is to set the color of the text
 
-### Property LabelMinimumSize:
-This property is to set the font size of the label minimum
+### Property IconSide:
+This property is to set if the icon will be in the right or left side. This only applies when ButtonSize is extended
 
-### Property LabelMaximumText:
-This property is to set the label maximum text value on the control.
+### Property CornerRadius:
+This property is to set corner radius of the button
 
-### Property LabelMaximumTextColor:
-This property is to set the label maximum text color value on the control enabled 
+### Property CustomIcon
+This property is to set icon of the button, this allows .svg
 
-### Property DisabledLabelMaximumTextColor:
-This property is to set the label text maximum color value on the control.  when the control is disabled
+### Property HasShadow 
+This property is to set if the button will have shadow or not
 
-### Property AssistiveText:
-This property is to set the error text on the control. 
+### Property HeightRequest
+This property is to set HeightRequest of the button
 
-### Property AssistiveTextColor:
-This property is to set the error text color value on the control. By default is gray. 
+### Property WidthRequest
+This property is to set WidthRequest of the button
 
-### Property AssistiveSize:
-This property is to set the error text font size value on the control. By default is gray. 
+### Property Padding
+This property is to set Padding of the button
 
-### Property AnimateError:
-This property is to set if you can show a ShakeAnimation when there is a error with control.
+### Property Clicked
+This property is to add a event when button is clicked
 
-### Property MinimumIcon:
-This property is to set the image to minimum to types of images like png, jpg.
-
-### Property CustomMinimumIcon:
-This property is to set the image to minimum with support to svg. 
-
-### Property MaximumIcon:
-This property is to set the image to maximum to types of images like png, jpg.
-
-### Property CustomMaximumIcon:
-This property is to set the image to maximum with support to svg.
-
-### Property BackgroundImage:
-This property is to set the background image to control, this allow jpg, png.
-
-### Property CustomBackgroundImage:
-This property is to set the background image to control, this allow svg.
-
-### Property ThumbImage:
-This property is to set the thumb with a image.
-
-### Property Value:
-This property is to set the value of the control, by default is the minimum.
-
-### Property MinimumValue:
-This property is to set the minimum value, by default is 0.
-
-### Property MaximumValue:
-This property is to set the minimum value, by default is 1.
-
-### Property ActiveTrackColor:
-This property is to set the active tracker color
-
-### Property InactiveTrackColor:
-This property is to set the inactive tracker color.
-
-### Property ThumbColor:
-This property is to set the color of thumb
-
-### Property TrackHeight:
-This property is to set the height of the thumb
-
-### Property TrackCornerRadius:
-This property is to set the corner radious of the track
-
-### Property UserInteractionEnabled:
-This property is to set the if the interaction of the user is enabled
-
-### Property ShowIcons:
-This property is to set if show or not the icons.
-
-### Property DisabledActiveTrackColor:
-This property is to set the disabled active track color, when the control is disabled.
-
-### Property DisabledInactiveTrackColor:
-This property is to set the disabled inactive track color, when the control is disabled.
-
-### Property DisabledThumbColor:
-This property is to set the disabled thumb color, whe the control is disabled.
-
-
+### Property Command
+This property is to bind 
 
 
 
