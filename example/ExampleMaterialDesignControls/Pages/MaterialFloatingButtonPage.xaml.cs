@@ -11,7 +11,7 @@ namespace ExampleMaterialDesignControls.Pages
 
         void MaterialFloatingButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            DisplayAlert("Mensaje","este es un mensaje del boton","ok");
+            DisplayAlert("Message","Message test","ok");
         }
     }
 }

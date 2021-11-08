@@ -16,7 +16,8 @@
                 Icon="add_b.png" 
 		        BackgroundColor="#FAF9D5" 
 		        Animation="Scale"
-				HorizontalOptions="Center"/>
+				HorizontalOptions="Center"
+				Clicked="MaterialFloatingButton_Clicked"/>
 
             <Label Text="Mini"/>
             <material:MaterialFloatingButton 

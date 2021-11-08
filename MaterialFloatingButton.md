@@ -74,7 +74,10 @@ This property is to set Padding of the button
 This property is to add a event when button is clicked
 
 ### Property Command
-This property is to bind 
+This property is to bind on the viewmodel
+
+### Property CommandParameter
+This property is to set the parameter of the Command property
 
 
 
