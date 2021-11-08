@@ -158,7 +158,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static new readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(float), defaultValue: 28.0F);
+            BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(MaterialFloatingButton), defaultValue: 28.0F);
 
         public new float CornerRadius
         {
@@ -176,7 +176,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialFloatingButton), defaultValue: AnimationTypes.None);
 
         public AnimationTypes Animation
         {
@@ -185,7 +185,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialFloatingButton), defaultValue: null);
 
         public double? AnimationParameter
         {

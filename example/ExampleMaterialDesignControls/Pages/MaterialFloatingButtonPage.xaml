@@ -11,23 +11,31 @@
     <ContentPage.Content>
         <StackLayout Spacing="10">
             <Label Text="Regular"/>
-
-            <material:MaterialFloatingButton ShadowColor="Black"
-                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" FontSize="12"
-                Icon="add_b.png" BackgroundColor="#FAF9D5" Animation="Scale"
-					 HorizontalOptions="Center"/>
+            <material:MaterialFloatingButton 
+		        ShadowColor="Black"
+                Icon="add_b.png" 
+		        BackgroundColor="#FAF9D5" 
+		        Animation="Scale"
+				HorizontalOptions="Center"/>
 
             <Label Text="Mini"/>
-            <material:MaterialFloatingButton ShadowColor="Black"
-                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" FontSize="12" 
-                         BackgroundColor="White" Icon="add_b.png" ButtonSize="Mini" Animation="Scale"
-					 HorizontalOptions="Center"/>
+            <material:MaterialFloatingButton 
+		        ShadowColor="Black" 
+		        FontSize="12" 
+                BackgroundColor="White" 
+		        Icon="add_b.png" 
+		        ButtonSize="Mini" 
+		        Animation="Scale"
+				HorizontalOptions="Center"/>
 
             <Label Text="Mini with svg image"/>
-            <material:MaterialFloatingButton  ShadowColor="Black"
-                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" FontSize="12" 
-                         BackgroundColor="White" ButtonSize="Mini" Animation="Scale"
-					 HorizontalOptions="Center">
+            <material:MaterialFloatingButton  
+		        ShadowColor="Black" 
+		        FontSize="12" 
+                BackgroundColor="White" 
+		        ButtonSize="Mini" 
+		        Animation="Scale"
+				HorizontalOptions="Center">
                 <material:MaterialFloatingButton.CustomIcon>
                     <DataTemplate>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add_b.svg"/>
@@ -36,22 +44,43 @@
             </material:MaterialFloatingButton>
 
             <Label Text="Extended left icon"/>
-            <material:MaterialFloatingButton ShadowColor="Black"
-                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" Text="add" FontSize="12" TextColor="White" 
-                         BackgroundColor="#B9DBF8" Icon="add_w.png" ButtonSize="Extended" Animation="Fade"
-					 HorizontalOptions="Center"/>
+            <material:MaterialFloatingButton 
+		        ShadowColor="Black"
+                Text="add" 
+		        FontSize="12" 
+		        TextColor="White" 
+                BackgroundColor="#B9DBF8" 
+		        Icon="add_w.png" 
+		        ButtonSize="Extended" 
+		        Animation="Fade"
+				HorizontalOptions="Center"/>
 
             <Label Text="Extended right icon"/>
-            <material:MaterialFloatingButton ShadowColor="Black"
-                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" Text="add" FontSize="12" TextColor="White" 
-                         BackgroundColor="#B9DBF8" Icon="add_w.png" ButtonSize="Extended" IconSide="Right" Animation="Scale"
-					 HorizontalOptions="Center"/>
+            <material:MaterialFloatingButton 
+		        ShadowColor="Black"
+                Text="add" 
+		        FontSize="12" 
+		        TextColor="White" 
+                BackgroundColor="#B9DBF8" 
+		        Icon="add_w.png" 
+		        ButtonSize="Extended" 
+		        IconSide="Right" 
+		        Animation="Scale"
+				HorizontalOptions="Center"/>
 
             <Label Text="Extended without icon"/>
-            <material:MaterialFloatingButton ShadowColor="Black"
-                iOSShadowOpacity="0.3" iOSShadowRadius="6" iOSShadowOffset="0,5" Text="add" FontSize="16" TextColor="White" 
-                         BackgroundColor="#B9DBF8" ButtonSize="Extended" Animation="Fade"
-					 HorizontalOptions="Center"/>
+            <material:MaterialFloatingButton 
+		        ShadowColor="Black"
+                iOSShadowOpacity="0.3" 
+		        iOSShadowRadius="6" 
+		        iOSShadowOffset="0,5" 
+		        Text="add" 
+		        FontSize="16" 
+		        TextColor="White" 
+                BackgroundColor="#B9DBF8" 
+				ButtonSize="Extended" 
+				Animation="Fade"
+				HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
