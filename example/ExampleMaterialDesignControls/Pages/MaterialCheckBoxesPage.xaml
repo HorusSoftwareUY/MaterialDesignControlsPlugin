@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialCheckBoxesPage"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    Title="MaterialCheckbox">
+    <ContentPage.Content>
+        <StackLayout>
+            <material:MaterialCheckbox 
+		        Text="Hola mundo" 
+		        Color="{StaticResource GradientColor1}" 
+		        UnselectedIcon="checkbox_unchecked.png" 
+                SelectedIcon="checkbox_checked.png"
+		        IconHeightRequest="20" 
+		        IconWidthRequest="20" 
+                IsChecked="False"
+		        TextSide="Left"/>
+            <material:MaterialCheckbox
+		        Text="Hola mundo" 
+		        Color="{StaticResource GradientColor1}" 
+		        TextSide="Left"/>
+            <material:MaterialCheckbox
+		        Text="Hola mundo" 
+		        Color="{StaticResource GradientColor1}" 
+                IsChecked="True"
+		        TextSide="Left">
+                <material:MaterialCheckbox.CustomSelectedIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg"/>
+                </material:MaterialCheckbox.CustomSelectedIcon>
+                <material:MaterialCheckbox.CustomUnselectedIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg"/>
+                </material:MaterialCheckbox.CustomUnselectedIcon>
+            </material:MaterialCheckbox>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

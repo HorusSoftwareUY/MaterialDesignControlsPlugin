@@ -218,6 +218,8 @@
     <BundleResource Include="Resources\Home%403x.png" />
     <BundleResource Include="Resources\download.png" />
     <BundleResource Include="Resources\showPassword.png" />
+    <BundleResource Include="Resources\checkbox_checked.png" />
+    <BundleResource Include="Resources\checkbox_unchecked.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\volume.png" />

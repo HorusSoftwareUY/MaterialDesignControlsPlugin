@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<controls:BaseMaterialCheckboxes
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Plugin.MaterialDesignControls"
+    xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+    x:Class="Plugin.MaterialDesignControls.MaterialCheckbox"
+    >
+    <ContentView.Content>
+        <StackLayout x:Name="container" Orientation="Horizontal">
+            <controls:MaterialLabel x:Name="lblLeftText" VerticalTextAlignment="Center" IsVisible="False"/>
+            <CheckBox x:Name="chk" HeightRequest="25" WidthRequest="25"/>
+            <custom:CustomImageButton x:Name="customIcon" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="False"/>
+            <controls:MaterialLabel x:Name="lblRightText" VerticalTextAlignment="Center"/>
+        </StackLayout>
+    </ContentView.Content>
+</controls:BaseMaterialCheckboxes>

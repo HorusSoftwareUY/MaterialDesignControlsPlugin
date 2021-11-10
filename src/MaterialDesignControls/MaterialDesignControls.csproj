@@ -121,6 +121,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utils\LoggerHelper.cs" />
+    <Compile Include="Controls\MaterialCheckbox.xaml.cs">
+      <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BaseMaterialCheckboxes.cs" />
+    <Compile Include="TextSide.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
