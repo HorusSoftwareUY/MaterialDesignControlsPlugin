@@ -148,7 +148,7 @@
                             </Frame.GestureRecognizers>
                             <StackLayout>
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent11}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_custom.svg"/>
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_rating.svg"/>
                                 </Frame>
                                 <material:MaterialLabel Text="Material Rating" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
@@ -174,7 +174,7 @@
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent11}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_custom.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Custom" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Custom" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 
@@ -188,7 +188,7 @@
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent10}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_segmented.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Segmented" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Segmented" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor10}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 
@@ -200,7 +200,7 @@
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent9}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_search.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Search" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Search" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor9}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 
@@ -212,7 +212,7 @@
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent8}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_divider.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Divider" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Divider" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor8}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 
@@ -224,7 +224,7 @@
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent7}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_radio.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Radio Button" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Radio Button" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor7}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 
@@ -236,7 +236,7 @@
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent6}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_floating.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Floating" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Floating" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor6}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 
@@ -248,7 +248,7 @@
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent5}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_checkbox.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Checkbox" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor11}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Checkbox" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor5}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 
