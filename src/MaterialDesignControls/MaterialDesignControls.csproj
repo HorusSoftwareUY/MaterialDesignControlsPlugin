@@ -123,9 +123,13 @@
     <Compile Include="Utils\LoggerHelper.cs" />
     <Compile Include="Controls\MaterialCheckbox.xaml.cs">
       <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\BaseMaterialCheckboxes.cs" />
     <Compile Include="TextSide.cs" />
+    <Compile Include="Controls\MaterialRadioButtons.xaml.cs">
+      <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
