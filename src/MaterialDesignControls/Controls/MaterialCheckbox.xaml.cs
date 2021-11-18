@@ -164,11 +164,19 @@ namespace Plugin.MaterialDesignControls
         private void AddTapGesture()
         {
             TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += (s, e) => 
-	        {
+            //   ClickGestureRecognizer clickGestureRecognizer = new ClickGestureRecognizer();
+            //   clickGestureRecognizer.Clicked += (s, e) => 
+            //{ 
+            //       if (IsEnabled)
+            //           IsChecked = !IsChecked;
+            //};
+            tapGestureRecognizer.Tapped += (s, e) =>
+            {
                 if (IsEnabled)
                     IsChecked = !IsChecked;
-	        };
+            };
+            //lblRightText.GestureRecognizers.Add(tapGestureRecognizer);
+            //container.GestureRecognizers.Add(tapGestureRecognizer);
             this.GestureRecognizers.Add(tapGestureRecognizer);
 	    }
 

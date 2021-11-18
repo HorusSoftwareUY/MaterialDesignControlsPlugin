@@ -19,18 +19,6 @@
                 <custom:CustomImageButton x:Name="customIcon" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="False"/>
                 <controls:MaterialLabel x:Name="lblRightText" VerticalOptions="Center" VerticalTextAlignment="Center"/>
             </StackLayout>
-            <!--<Grid x:Name="container" RowSpacing="0" BackgroundColor="Green">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-		        </Grid.ColumnDefinitions>
-                <controls:MaterialLabel x:Name="lblLeftText" Grid.Column="0" VerticalTextAlignment="Center" VerticalOptions="Center" IsVisible="False" BackgroundColor="AliceBlue"/>
-                <CheckBox x:Name="chk" Grid.Column="1" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" BackgroundColor="Yellow"/>
-                <custom:CustomImageButton x:Name="customIcon" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="False" BackgroundColor="Yellow"/>
-                <controls:MaterialLabel x:Name="lblRightText" Grid.Column="2" VerticalTextAlignment="Center" VerticalOptions="Center" BackgroundColor="AliceBlue"/>
-                <BoxView Grid.Column="1" WidthRequest="25" HeightRequest="25"/>
-	        </Grid>-->
             <BoxView x:Name="bxvLine" HeightRequest="1" />
             <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
         </StackLayout>

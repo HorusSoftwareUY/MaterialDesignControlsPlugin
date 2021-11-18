@@ -218,12 +218,12 @@ namespace Plugin.MaterialDesignControls
                     if (control.SelectedItem != null)
                         materialCheckbox.IsSelected = materialCheckbox.Text.Equals(control.SelectedItem);
 
-                    materialChips.Command = new Command(() => SelectionCommand(control, materialChips));
+                    //materialChips.Command = new Command(() => SelectionCommand(control, materialChips));
 
-                    control.container.Children.Add(materialChips);
+                    control.container.Children.Add(materialCheckbox);
 
-                    if (control.ChipsFlexLayoutPercentageBasis > 0 && control.ChipsFlexLayoutPercentageBasis <= 1)
-                        FlexLayout.SetBasis(materialChips, new FlexBasis((float)control.ChipsFlexLayoutPercentageBasis, true));
+                    //if (control.ChipsFlexLayoutPercentageBasis > 0 && control.ChipsFlexLayoutPercentageBasis <= 1)
+                    //    FlexLayout.SetBasis(materialChips, new FlexBasis((float)control.ChipsFlexLayoutPercentageBasis, true));
                 }
             }
         }
@@ -235,8 +235,8 @@ namespace Plugin.MaterialDesignControls
             {
                 foreach (var item in control.container.Children)
                 {
-                    if (item != null && item is MaterialChips)
-                        ((MaterialChips)item).IsSelected = ((MaterialChips)item).Text.Equals(control.SelectedItem);
+                    if (item != null && item is MaterialCheckbox)
+                        ((MaterialCheckbox)item).IsChecked = ((MaterialCheckbox)item).Text.Equals(control.SelectedItem);
                 }
             }
         }
@@ -252,39 +252,39 @@ namespace Plugin.MaterialDesignControls
             return true;
         }
 
-        private static void SelectionCommand(MaterialChipsGroup materialChipsGroup, MaterialChips materialChips)
-        {
-            if (!materialChipsGroup.IsEnabled)
-                return;
+        //private static void SelectionCommand(MaterialRadioButtons materialRadioButtons, MaterialCheckbox materialCheckbox)
+        //{
+        //    if (!materialChipsGroup.IsEnabled)
+        //        return;
 
-            if (materialChips is MaterialChips)
-            {
-                if (materialChipsGroup.IsMultipleSelection)
-                {
-                    var selectedItems = materialChipsGroup.SelectedItems == null ? new List<string>() : materialChipsGroup.SelectedItems.Select(x => x).ToList();
+        //    if (materialChips is MaterialRadioButtons)
+        //    {
+        //        if (materialChipsGroup.IsMultipleSelection)
+        //        {
+        //            var selectedItems = materialChipsGroup.SelectedItems == null ? new List<string>() : materialChipsGroup.SelectedItems.Select(x => x).ToList();
 
-                    materialChips.IsSelected = !materialChips.IsSelected;
+        //            materialChips.IsSelected = !materialChips.IsSelected;
 
-                    if (materialChips.IsSelected && !selectedItems.Contains(materialChips.Text))
-                        selectedItems.Add(materialChips.Text);
-                    else if (selectedItems.Contains(materialChips.Text))
-                        selectedItems.Remove(materialChips.Text);
+        //            if (materialChips.IsSelected && !selectedItems.Contains(materialChips.Text))
+        //                selectedItems.Add(materialChips.Text);
+        //            else if (selectedItems.Contains(materialChips.Text))
+        //                selectedItems.Remove(materialChips.Text);
 
-                    materialChipsGroup.SelectedItems = selectedItems;
-                }
-                else
-                {
-                    foreach (var item in materialChipsGroup.flexContainer.Children)
-                    {
-                        ((MaterialChips)item).IsSelected = false;
-                    }
+        //            materialChipsGroup.SelectedItems = selectedItems;
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in materialChipsGroup.flexContainer.Children)
+        //            {
+        //                ((MaterialChips)item).IsSelected = false;
+        //            }
 
-                    materialChips.IsSelected = !materialChips.IsSelected;
+        //            materialChips.IsSelected = !materialChips.IsSelected;
 
-                    materialChipsGroup.SelectedItem = materialChips.Text;
-                }
-            }
-        }
+        //            materialChipsGroup.SelectedItem = materialChips.Text;
+        //        }
+        //    }
+        //}
 
         #endregion Methods
     }
