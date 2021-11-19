@@ -18,7 +18,6 @@ namespace Plugin.MaterialDesignControls
             {
                 Initialized = true;
                 Initialize();
-                AddTapGesture();
             };
         }
 
@@ -161,31 +160,16 @@ namespace Plugin.MaterialDesignControls
 	        }
         }
 
-        private void AddTapGesture()
-        {
-            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-            //   ClickGestureRecognizer clickGestureRecognizer = new ClickGestureRecognizer();
-            //   clickGestureRecognizer.Clicked += (s, e) => 
-            //{ 
-            //       if (IsEnabled)
-            //           IsChecked = !IsChecked;
-            //};
-            tapGestureRecognizer.Tapped += (s, e) =>
-            {
-                if (IsEnabled)
-                    IsChecked = !IsChecked;
-            };
-            //lblRightText.GestureRecognizers.Add(tapGestureRecognizer);
-            //container.GestureRecognizers.Add(tapGestureRecognizer);
-            this.GestureRecognizers.Add(tapGestureRecognizer);
-	    }
-
         public void ConsumeEvent(EventType gestureType)
         {
             TouchAndPressAnimation.Animate(this, gestureType);
         }
 
-        public void ExecuteAction(){}
+        public void ExecuteAction()
+	    {
+            if (IsEnabled)
+                IsChecked = !IsChecked;
+	    }
 
         #endregion Methods
     }
