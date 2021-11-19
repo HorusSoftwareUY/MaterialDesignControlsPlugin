@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using ExampleMaterialDesignControls.ViewModels;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
@@ -10,6 +8,7 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialRadioButtonsPage()
         {
             InitializeComponent();
+            this.BindingContext = new MaterialRadioButtonsViewModel { DisplayAlert = this.DisplayAlert };
         }
     }
 }

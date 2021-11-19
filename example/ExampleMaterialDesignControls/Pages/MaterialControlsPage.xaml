@@ -177,7 +177,17 @@
                                 <material:MaterialLabel Text="Material Checkboxes" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
-
+                        <Frame Grid.Row="6" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialRadioButtonsCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_radioButton.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material RadioButtons" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
                     </Grid>
             </ScrollView>
         </Grid>

@@ -2,8 +2,13 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialRadioButtonsPage">
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialRadioButtonsPage"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    Title="Material RadioButtons">
     <ContentPage.Content>
-        
+        <StackLayout>
+            <material:MaterialRadioButtons/>
+	    </StackLayout>
     </ContentPage.Content>
 </ContentPage>
