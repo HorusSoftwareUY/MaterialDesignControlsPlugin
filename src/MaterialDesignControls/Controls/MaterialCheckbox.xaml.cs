@@ -1,5 +1,5 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -24,7 +24,7 @@ namespace Plugin.MaterialDesignControls
         #region Properties
 
         public static readonly BindableProperty ColorProperty =
-            BindableProperty.Create(nameof(Color), typeof(Color), typeof(MaterialCheckbox), defaultValue: Color.Blue);
+            BindableProperty.Create(nameof(Color), typeof(Color), typeof(MaterialCheckbox), defaultValue: Color.FromHex("#2E85CC"));
 
         public Color Color
         {
@@ -36,36 +36,27 @@ namespace Plugin.MaterialDesignControls
             BindableProperty.Create(nameof(DisabledColor), typeof(Color), typeof(MaterialCheckbox), defaultValue: Color.LightGray);
 
         public Color DisabledColor
-	    {
+        {
             get { return (Color)GetValue(DisabledColorProperty); }
             set { SetValue(DisabledColorProperty, value); }
         }
 
-        public static readonly BindableProperty SelectionHorizontalOptionsProperty =
-            BindableProperty.Create(nameof(SelectionHorizontalOptions), typeof(LayoutOptions), typeof(MaterialCheckbox), defaultValue: LayoutOptions.Start);
+        public static readonly BindableProperty CommandProperty =
+            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(BaseMaterialCheckboxes));
 
-        public LayoutOptions SelectionHorizontalOptions
+        public ICommand Command
         {
-            get { return (LayoutOptions)GetValue(SelectionHorizontalOptionsProperty); }
-            set { SetValue(SelectionHorizontalOptionsProperty, value); }
-	    }
-
-        public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
-
-        public AnimationTypes Animation
-        {
-            get { return (AnimationTypes)GetValue(AnimationProperty); }
-            set { SetValue(AnimationProperty, value); }
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
         }
 
-        public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+        public static readonly BindableProperty CommandParameterProperty =
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
-        public double? AnimationParameter
+        public object CommandParameter
         {
-            get { return (double?)GetValue(AnimationParameterProperty); }
-            set { SetValue(AnimationParameterProperty, value); }
+            get { return GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
         }
 
         #endregion Properties
@@ -76,22 +67,64 @@ namespace Plugin.MaterialDesignControls
         {
             base.OnPropertyChanged(propertyName);
 
-            UpdateLayout(propertyName,lblLeftText,lblRightText, container, customIcon, lblAssistive);
+            UpdateLayout(propertyName, container, lblAssistive);
 
             switch (propertyName)
             {
+                case nameof(Text):
+                    lblRightText.Text = Text;
+                    break;
+                case nameof(TextColor):
+                    lblLeftText.TextColor = TextColor;
+                    lblRightText.TextColor = TextColor;
+                    break;
+                case nameof(DisabledTextColor):
+                    if (!IsEnabled)
+                    {
+                        lblLeftText.TextColor = DisabledTextColor;
+                        lblRightText.TextColor = DisabledTextColor;
+                    }
+                    break;
+                case nameof(FontSize):
+                    lblLeftText.FontSize = FontSize;
+                    lblRightText.FontSize = FontSize;
+                    break;
+                case nameof(FontFamily):
+                    lblLeftText.FontFamily = FontFamily;
+                    lblRightText.FontFamily = FontFamily;
+                    break;
+                case nameof(TextSide):
+                    if (TextSide == TextSide.Left)
+                    {
+                        lblLeftText.Text = Text;
+                        lblLeftText.IsVisible = true;
+                        lblRightText.IsVisible = false;
+                    }
+                    break;
+                case nameof(TextHorizontalOptions):
+                    if (TextSide == TextSide.Left)
+                        lblLeftText.HorizontalOptions = TextHorizontalOptions;
+                    else
+                        lblRightText.HorizontalOptions = TextHorizontalOptions;
+                    break;
+                case nameof(IconHeightRequest):
+                    customIcon.ImageHeightRequest = IconHeightRequest;
+                    break;
+                case nameof(IconWidthRequest):
+                    customIcon.ImageWidthRequest = IconWidthRequest;
+                    break;
                 case nameof(Color):
                 case nameof(DisabledColor):
                     chk.Color = IsEnabled ? Color : DisabledColor;
                     break;
                 case nameof(SelectionHorizontalOptions):
-                    chk.HorizontalOptions = SelectionHorizontalOptions;
+                    chkContainer.HorizontalOptions = SelectionHorizontalOptions;
                     customIcon.HorizontalOptions = SelectionHorizontalOptions;
                     break;
                 case nameof(IsEnabled):
                     SetIsEnabled();
                     break;
-	        }
+            }
         }
 
         private void Initialize()
@@ -105,38 +138,10 @@ namespace Plugin.MaterialDesignControls
             customIcon.ImageWidthRequest = IconWidthRequest;
             customIcon.Padding = 0;
             Effects.Add(new TouchAndPressEffect());
-	    }
-
-        protected override void SetIcon()
-        {
-            chkContainer.IsVisible = false;
-            customIcon.IsVisible = true;
-            SetIsChecked();
-            SetIsEnabled();
         }
 
-        protected override void SetIsChecked()
-        {
-            chk.IsChecked = IsChecked;
-            if (IsChecked)
-                if (CustomSelectedIcon != null)
-                    customIcon.SetCustomImage(CustomSelectedIcon);
-                else
-                    customIcon.SetImage(SelectedIcon);
-            else
-                if (CustomUnselectedIcon != null)
-                    customIcon.SetCustomImage(CustomUnselectedIcon);
-                else
-                    customIcon.SetImage(UnselectedIcon);
-        }
-
-        protected override void SetIsEnabled()
-        {
-            chk.IsEnabled = IsEnabled;
-            chk.Color = IsEnabled ? Color : DisabledColor;
-            lblLeftText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
-            lblRightText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
-
+        private void SetCustomIcon()
+        { 
             if (!IsEnabled)
             { 
                 if (IsChecked)
@@ -145,8 +150,10 @@ namespace Plugin.MaterialDesignControls
                         customIcon.SetCustomImage(CustomDisabledSelectedIcon);
                     else if (CustomSelectedIcon != null)
                         customIcon.SetCustomImage(CustomSelectedIcon);
-                    else
+                    else if (UnselectedIcon != null)
                         customIcon.SetImage(DisabledSelectedIcon);
+                    else
+                        customIcon.SetImage(SelectedIcon);
 		        }
                 else 
 		        {
@@ -158,6 +165,74 @@ namespace Plugin.MaterialDesignControls
                         customIcon.SetImage(DisabledUnselectedIcon);
 		        }
 	        }
+            else 
+	        {
+                if (IsChecked)
+                {
+                    if (CustomSelectedIcon != null)
+                    {
+                        customIcon.SetCustomImage(CustomSelectedIcon);
+                        //Debug.WriteLine("----Custom selected icon");
+                        //Debug.WriteLine($"Option: {Text}");
+                        //Debug.WriteLine($"icon visible: {customIcon.IsVisible}");
+                    }
+                    else
+                    { 
+                        customIcon.SetImage(SelectedIcon);
+                        //Debug.WriteLine("----selected icon}");
+                        //Debug.WriteLine($"Option: {Text}");
+                        //Debug.WriteLine($"icon visible: {customIcon.IsVisible}");
+                    }
+                }
+                else 
+		        {
+                    if (CustomUnselectedIcon != null)
+                    { 
+                        customIcon.SetCustomImage(CustomUnselectedIcon);
+                        //Debug.WriteLine("----custom unselected icon");
+                        //Debug.WriteLine($"Option: {Text}");
+                        //Debug.WriteLine($"icon visible: {customIcon.IsVisible}");
+
+                    }
+                    else
+                    { 
+                        customIcon.SetImage(UnselectedIcon);
+                        //Debug.WriteLine($"----Unselected icon");
+                        //Debug.WriteLine($"Option: {Text}");
+                        //Debug.WriteLine($"icon visible: {customIcon.IsVisible}");
+                    }
+                }
+            }
+	    }
+
+        protected override void SetIcon()
+        {
+            //var text = Text;
+            //Debug.WriteLine($"SetIcon {text}");
+            customIcon.IsVisible = true;
+            chkContainer.IsVisible = false;
+            SetCustomIcon();
+        }
+
+        protected override void SetIsChecked()
+        {
+            //var text = Text;
+            //Debug.WriteLine($"SetIsChecked {text}");
+            if (CustomSelectedIcon != null || SelectedIcon != null)
+                SetIcon();
+
+            chk.IsChecked = IsChecked;
+        }
+
+        protected override void SetIsEnabled()
+        {
+            if (CustomSelectedIcon != null || SelectedIcon != null)
+                SetIcon();
+
+            chk.IsEnabled = IsEnabled;
+            chk.Color = IsEnabled ? Color : DisabledColor;
+            lblLeftText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+            lblRightText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
         }
 
         public void ConsumeEvent(EventType gestureType)
@@ -169,6 +244,9 @@ namespace Plugin.MaterialDesignControls
 	    {
             if (IsEnabled)
                 IsChecked = !IsChecked;
+
+            if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
+                Command.Execute(CommandParameter);
 	    }
 
         #endregion Methods

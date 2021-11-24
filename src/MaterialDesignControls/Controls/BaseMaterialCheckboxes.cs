@@ -1,4 +1,6 @@
-﻿using Plugin.MaterialDesignControls.Animations;
+﻿using System;
+using System.Windows.Input;
+using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -6,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public abstract class BaseMaterialCheckboxes: ContentView
+    public abstract class BaseMaterialCheckboxes : ContentView
     {
 
         #region Text
@@ -17,7 +19,7 @@ namespace Plugin.MaterialDesignControls
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextColorProperty, value); }
+            set { SetValue(TextProperty, value); }
         }
 
 
@@ -190,28 +192,28 @@ namespace Plugin.MaterialDesignControls
             BindableProperty.Create(nameof(UnselectedIcon), typeof(string), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
         public string UnselectedIcon
-	    {
-            get { return (string)GetValue(UnselectedIconProperty ); }
-            set { SetValue(UnselectedIconProperty , value); }
-	    }
+        {
+            get { return (string)GetValue(UnselectedIconProperty); }
+            set { SetValue(UnselectedIconProperty, value); }
+        }
 
         public static readonly BindableProperty SelectedIconProperty =
             BindableProperty.Create(nameof(SelectedIcon), typeof(string), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
         public string SelectedIcon
         {
-            get { return (string)GetValue(SelectedIconProperty ); }
-            set { SetValue(SelectedIconProperty , value); }
-	    }
+            get { return (string)GetValue(SelectedIconProperty); }
+            set { SetValue(SelectedIconProperty, value); }
+        }
 
         public static readonly BindableProperty DisabledUnselectedIconProperty =
             BindableProperty.Create(nameof(DisabledUnselectedIcon), typeof(string), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
         public string DisabledUnselectedIcon
-	    {
-            get { return (string)GetValue(DisabledUnselectedIconProperty ); }
-            set { SetValue(DisabledUnselectedIconProperty , value); }
-	    }
+        {
+            get { return (string)GetValue(DisabledUnselectedIconProperty); }
+            set { SetValue(DisabledUnselectedIconProperty, value); }
+        }
 
         public static readonly BindableProperty DisabledSelectedIconProperty =
             BindableProperty.Create(nameof(DisabledSelectedIcon), typeof(string), typeof(BaseMaterialCheckboxes), defaultValue: null);
@@ -219,8 +221,8 @@ namespace Plugin.MaterialDesignControls
         public string DisabledSelectedIcon
         {
             get { return (string)GetValue(DisabledSelectedIconProperty); }
-            set { SetValue(DisabledSelectedIconProperty , value); }
-	    }
+            set { SetValue(DisabledSelectedIconProperty, value); }
+        }
 
         public static readonly BindableProperty CustomUnselectedIconProperty =
             BindableProperty.Create(nameof(CustomUnselectedIcon), typeof(View), typeof(BaseMaterialCheckboxes), defaultValue: null);
@@ -229,7 +231,7 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (View)GetValue(CustomUnselectedIconProperty); }
             set { SetValue(CustomUnselectedIconProperty, value); }
-	    }
+        }
 
         public static readonly BindableProperty CustomSelectedIconProperty =
             BindableProperty.Create(nameof(CustomSelectedIcon), typeof(View), typeof(BaseMaterialCheckboxes), defaultValue: null);
@@ -238,7 +240,7 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (View)GetValue(CustomSelectedIconProperty); }
             set { SetValue(CustomSelectedIconProperty, value); }
-	    }
+        }
 
         public static readonly BindableProperty CustomDisabledUnselectedIconProperty =
             BindableProperty.Create(nameof(CustomDisabledUnselectedIcon), typeof(View), typeof(BaseMaterialCheckboxes), defaultValue: null);
@@ -247,16 +249,16 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (View)GetValue(CustomDisabledUnselectedIconProperty); }
             set { SetValue(CustomDisabledUnselectedIconProperty, value); }
-	    }
+        }
 
         public static readonly BindableProperty CustomDisabledSelectedIconProperty =
             BindableProperty.Create(nameof(CustomDisabledSelectedIcon), typeof(View), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
         public View CustomDisabledSelectedIcon
-	    {
+        {
             get { return (View)GetValue(CustomDisabledSelectedIconProperty); }
             set { SetValue(CustomDisabledSelectedIconProperty, value); }
-	    }
+        }
 
         public static readonly BindableProperty IconHeightRequestProperty =
             BindableProperty.Create(nameof(IconHeightRequest), typeof(double), typeof(BaseMaterialCheckboxes), defaultValue: 24.0);
@@ -265,16 +267,16 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (double)GetValue(IconHeightRequestProperty); }
             set { SetValue(IconHeightRequestProperty, value); }
-	    }
+        }
 
         public static readonly BindableProperty IconWidthRequestProperty =
             BindableProperty.Create(nameof(IconWidthRequest), typeof(double), typeof(BaseMaterialCheckboxes), defaultValue: 24.0);
 
         public double IconWidthRequest
         {
-            get { return (double)GetValue(IconWidthRequestProperty ); }
-            set { SetValue(IconWidthRequestProperty , value); }
-	    }
+            get { return (double)GetValue(IconWidthRequestProperty); }
+            set { SetValue(IconWidthRequestProperty, value); }
+        }
 
         #endregion Icon
 
@@ -285,7 +287,7 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (TextSide)GetValue(TextSideProperty); }
             set { SetValue(TextSideProperty, value); }
-	    }
+        }
 
         public static readonly BindableProperty TextHorizontalOptionsProperty =
             BindableProperty.Create(nameof(TextHorizontalOptions), typeof(LayoutOptions), typeof(BaseMaterialCheckboxes), defaultValue: LayoutOptions.Start);
@@ -294,6 +296,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (LayoutOptions)GetValue(TextHorizontalOptionsProperty); }
             set { SetValue(TextHorizontalOptionsProperty, value); }
+        }
+
+        public static readonly BindableProperty SelectionHorizontalOptionsProperty =
+            BindableProperty.Create(nameof(SelectionHorizontalOptions), typeof(LayoutOptions), typeof(MaterialCheckbox), defaultValue: LayoutOptions.Start);
+
+        public LayoutOptions SelectionHorizontalOptions
+        {
+            get { return (LayoutOptions)GetValue(SelectionHorizontalOptionsProperty); }
+            set { SetValue(SelectionHorizontalOptionsProperty, value); }
 	    }
 
         public static readonly BindableProperty SpacingProperty =
@@ -303,16 +314,16 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (double)GetValue(SpacingProperty); }
             set { SetValue(SpacingProperty, value); }
-	    }
+        }
 
         public static readonly BindableProperty IsCheckedProperty =
-            BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(BaseMaterialCheckboxes), defaultValue: false, defaultBindingMode: BindingMode.TwoWay);
+            BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(BaseMaterialCheckboxes), defaultValue: false, defaultBindingMode: BindingMode.TwoWay, propertyChanged: OnIsCheckedChanged);
 
         public bool IsChecked
         {
             get { return (bool)GetValue(IsCheckedProperty); }
             set { SetValue(IsCheckedProperty, value); }
-	    }
+        }
 
         public static new readonly BindableProperty IsEnabledProperty =
             BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(BaseMaterialCheckboxes), defaultValue: true);
@@ -323,41 +334,37 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(IsEnabledProperty, value); }
         }
 
+        public static readonly BindableProperty AnimationProperty =
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
+
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
+        }
+
+        #region Events
+
+        public event EventHandler IsCheckedChanged;
+
+        #endregion Events
+
+
         #region Methods
 
-        protected void UpdateLayout(string propertyName, Label lblLeftText, Label lblRightText, StackLayout container, CustomImageButton customIcon, Label lblAssistive)
-        { 
+        protected void UpdateLayout(string propertyName, StackLayout container, Label lblAssistive)
+        {
             switch (propertyName)
             {
-                case nameof(Text):
-                    lblRightText.Text = Text;
-                    break;
-                case nameof(TextColor):
-                    lblLeftText.TextColor = TextColor;
-                    break;
-                case nameof(DisabledTextColor):
-                    lblLeftText.TextColor = TextColor;
-                    break;
-                case nameof(FontSize):
-                    lblLeftText.FontSize = FontSize;
-                    break;
-                case nameof(FontFamily):
-                    lblLeftText.FontFamily = FontFamily;
-                    break;
-                case nameof(TextSide):
-                    if (TextSide == TextSide.Left)
-                    { 
-                        lblLeftText.Text = Text;
-                        lblLeftText.IsVisible = true;
-                        lblRightText.IsVisible = false;
-                    }
-                    break;
-                case nameof(TextHorizontalOptions):
-                    if (TextSide == TextSide.Left)
-                        lblLeftText.HorizontalOptions = TextHorizontalOptions;
-                    else
-                        lblRightText.HorizontalOptions = TextHorizontalOptions;
-                    break;
                 case nameof(Spacing):
                     container.Spacing = Spacing;
                     break;
@@ -370,12 +377,6 @@ namespace Plugin.MaterialDesignControls
                 case nameof(CustomDisabledSelectedIcon):
                 case nameof(CustomDisabledUnselectedIcon):
                     SetIcon();
-                    break;
-                case nameof(IconHeightRequest):
-                    customIcon.ImageHeightRequest = IconHeightRequest;
-                    break;
-                case nameof(IconWidthRequest):
-                    customIcon.ImageWidthRequest = IconWidthRequest;
                     break;
                 case nameof(IsChecked):
                     SetIsChecked();
@@ -399,8 +400,15 @@ namespace Plugin.MaterialDesignControls
                     lblAssistive.Margin = AssistiveMargin;
                     break;
 
-	        }
-	    }
+            }
+        }
+
+        private static void OnIsCheckedChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (BaseMaterialCheckboxes)bindable;
+            control.SetIsChecked();
+            control.IsCheckedChanged?.Invoke(control, null);
+        }
 
         private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
         {

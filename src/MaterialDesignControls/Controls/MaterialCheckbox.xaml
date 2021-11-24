@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Plugin.MaterialDesignControls"
     xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
-    x:Class="Plugin.MaterialDesignControls.MaterialCheckbox" >
+    x:Class="Plugin.MaterialDesignControls.MaterialCheckbox">
     <ContentView.Content>
         <StackLayout Spacing="0" VerticalOptions="Center">
-            <StackLayout x:Name="container" Orientation="Horizontal">
+            <StackLayout x:Name="container" Orientation="Horizontal" >
                 <controls:MaterialLabel x:Name="lblLeftText" VerticalOptions="Center" VerticalTextAlignment="Center" IsVisible="False"/>
                 <Grid x:Name="chkContainer" ColumnSpacing="0" RowSpacing="0" VerticalOptions="Center" HorizontalOptions="Center">
                     <Grid.ColumnDefinitions>

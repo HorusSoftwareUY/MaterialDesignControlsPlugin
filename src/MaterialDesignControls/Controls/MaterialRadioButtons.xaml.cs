@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Plugin.MaterialDesignControls.Animations;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialRadioButtons : ContentView
+    public partial class MaterialRadioButtons : BaseMaterialCheckboxes
     {
         #region Attributes
 
@@ -30,24 +30,6 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialRadioButtons), defaultValue: true);
-
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
-
-        public static readonly BindableProperty LabelTextProperty =
-            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialRadioButtons), defaultValue: null);
-
-        public string LabelText
-        {
-            get { return (string)GetValue(LabelTextProperty); }
-            set { SetValue(LabelTextProperty, value); }
-        }
-
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<string>), typeof(MaterialRadioButtons), defaultValue: null, propertyChanged: OnItemsSourceChanged);
 
@@ -66,60 +48,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(SelectedItemProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialRadioButtons), defaultValue: null, validateValue: OnAssistiveTextValidate);
-
-        public string AssistiveText
-        {
-            get { return (string)GetValue(AssistiveTextProperty); }
-            set { SetValue(AssistiveTextProperty, value); }
-        }
-
-        public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.Gray);
-
-        public Color LabelTextColor
-        {
-            get { return (Color)GetValue(LabelTextColorProperty); }
-            set { SetValue(LabelTextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.Gray);
-
-        public Color AssistiveTextColor
-        {
-            get { return (Color)GetValue(AssistiveTextColorProperty); }
-            set { SetValue(AssistiveTextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: Font.Default.FontSize);
-
-        public double LabelSize
-        {
-            get { return (double)GetValue(LabelSizeProperty); }
-            set { SetValue(LabelSizeProperty, value); }
-        }
-
-        public static readonly BindableProperty AssistiveSizeProperty =
-            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: Font.Default.FontSize);
-
-        public double AssistiveSize
-        {
-            get { return (double)GetValue(AssistiveSizeProperty); }
-            set { SetValue(AssistiveSizeProperty, value); }
-        }
-
-        public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.Gray);
-
-        public Color TextColor
-        {
-            get { return (Color)GetValue(TextColorProperty); }
-            set { SetValue(TextColorProperty, value); }
-        }
-
         public static readonly BindableProperty SelectedTextColorProperty =
             BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.Black);
 
@@ -127,15 +55,6 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (Color)GetValue(SelectedTextColorProperty); }
             set { SetValue(SelectedTextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.LightGray);
-
-        public Color DisabledTextColor
-        {
-            get { return (Color)GetValue(DisabledTextColorProperty); }
-            set { SetValue(DisabledTextColorProperty, value); }
         }
 
         public static readonly BindableProperty DisabledSelectedTextColorProperty =
@@ -147,45 +66,51 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledSelectedTextColorProperty, value); }
         }
 
-        public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: Font.Default.FontSize);
+        public static readonly BindableProperty ColorProperty =
+            BindableProperty.Create(nameof(Color), typeof(Color), typeof(MaterialCheckbox), defaultValue: Color.Blue);
 
-        public double FontSize
+        public Color Color
         {
-            get { return (double)GetValue(FontSizeProperty); }
-            set { SetValue(FontSizeProperty, value); }
+            get { return (Color)GetValue(ColorProperty); }
+            set { SetValue(ColorProperty, value); }
         }
 
-        public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialRadioButtons), defaultValue: null);
+        public static readonly BindableProperty DisabledColorProperty =
+            BindableProperty.Create(nameof(DisabledColor), typeof(Color), typeof(MaterialCheckbox), defaultValue: Color.LightGray);
 
-        public string FontFamily
-        {
-            get { return (string)GetValue(FontFamilyProperty); }
-            set { SetValue(FontFamilyProperty, value); }
-        }
-
-        public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialRadioButtons), defaultValue: false);
-
-        public bool AnimateError
-        {
-            get { return (bool)GetValue(AnimateErrorProperty); }
-            set { SetValue(AnimateErrorProperty, value); }
-        }
-
-        public static readonly BindableProperty IsMultipleSelectionProperty =
-            BindableProperty.Create(nameof(IsMultipleSelection), typeof(bool), typeof(MaterialRadioButtons), defaultValue: false);
-
-        public bool IsMultipleSelection
-        {
-            get { return (bool)GetValue(IsMultipleSelectionProperty); }
-            set { SetValue(IsMultipleSelectionProperty, value); }
+        public Color DisabledColor
+	    {
+            get { return (Color)GetValue(DisabledColorProperty); }
+            set { SetValue(DisabledColorProperty, value); }
         }
 
         #endregion Properties
 
         #region Methods
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            UpdateLayout(propertyName, container, lblAssistive);
+
+            switch (propertyName) 
+	        { 
+                case nameof(LabelText):
+                    lblLabel.Text = LabelText;
+                    if (!string.IsNullOrEmpty(LabelText))
+                        lblLabel.IsVisible = true;
+                    break;
+                case nameof(IsEnabled):
+                    foreach (var view in container.Children)
+                    {
+                        if (view is MaterialCheckbox materialCheckbox)
+                            materialCheckbox.IsEnabled = IsEnabled;
+                    }
+                    break;
+            }
+
+        }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -195,36 +120,62 @@ namespace Plugin.MaterialDesignControls
             {
                 foreach (var item in (IEnumerable)newValue)
                 {
-                    var materialCheckbox = new MaterialChips
-                    {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        Text = item.ToString(),
-                        FontSize = control.FontSize,
-                        FontFamily = control.FontFamily,
-                        //CornerRadius = control.CornerRadius,
-                        //Padding = control.ChipsPadding,
-                        //Margin = control.ChipsMargin,
-                        BackgroundColor = control.BackgroundColor,
-                        TextColor = control.TextColor,
-                        //SelectedBackgroundColor = control.SelectedBackgroundColor,
-                        SelectedTextColor = control.SelectedTextColor,
-                        //DisabledBackgroundColor = control.DisabledBackgroundColor,
-                        DisabledTextColor = control.DisabledTextColor,
-                        //DisabledSelectedBackgroundColor = control.DisabledSelectedBackgroundColor,
-                        DisabledSelectedTextColor = control.DisabledSelectedTextColor,
-                        IsEnabled = control.IsEnabled
-                    };
+                    var materialCheckbox = new MaterialCheckbox();
+                    materialCheckbox.Text = item.ToString();
+                    materialCheckbox.Command = new Command(() => SelectionCommand(control, materialCheckbox));
+                    materialCheckbox.Color = control.Color;
+                    materialCheckbox.TextColor = control.TextColor;
+                    materialCheckbox.FontSize = control.FontSize;
+                    materialCheckbox.FontFamily = control.FontFamily;
+                    materialCheckbox.BackgroundColor = control.BackgroundColor;
+                    materialCheckbox.IsEnabled = control.IsEnabled;
+		            materialCheckbox.DisabledColor = control.DisabledColor;
+                    materialCheckbox.DisabledTextColor = control.DisabledTextColor;
+                    materialCheckbox.TextSide = control.TextSide;
+                    materialCheckbox.TextHorizontalOptions = control.TextHorizontalOptions;
+                    materialCheckbox.SelectionHorizontalOptions = control.SelectionHorizontalOptions;
+                    materialCheckbox.IconHeightRequest = control.IconHeightRequest;
+                    materialCheckbox.IconWidthRequest = control.IconWidthRequest;
+                    materialCheckbox.SelectedIcon = control.SelectedIcon;
+                    materialCheckbox.UnselectedIcon = control.UnselectedIcon;
+                    materialCheckbox.DisabledSelectedIcon = control.DisabledSelectedIcon;
+                    materialCheckbox.DisabledUnselectedIcon = control.DisabledUnselectedIcon;
+                    materialCheckbox.CustomSelectedIcon = control.CustomSelectedIcon;
+                    materialCheckbox.CustomUnselectedIcon = control.CustomUnselectedIcon;
+                    materialCheckbox.CustomDisabledSelectedIcon = control.CustomDisabledSelectedIcon;
+                    materialCheckbox.CustomDisabledUnselectedIcon = control.CustomDisabledUnselectedIcon;
+                    materialCheckbox.Animation = control.Animation;
+                    materialCheckbox.AnimationParameter = control.AnimationParameter;
 
                     if (control.SelectedItem != null)
-                        materialCheckbox.IsSelected = materialCheckbox.Text.Equals(control.SelectedItem);
-
-                    //materialChips.Command = new Command(() => SelectionCommand(control, materialChips));
+                        materialCheckbox.IsChecked = materialCheckbox.Text.Equals(control.SelectedItem);
 
                     control.container.Children.Add(materialCheckbox);
-
-                    //if (control.ChipsFlexLayoutPercentageBasis > 0 && control.ChipsFlexLayoutPercentageBasis <= 1)
-                    //    FlexLayout.SetBasis(materialChips, new FlexBasis((float)control.ChipsFlexLayoutPercentageBasis, true));
                 }
+            }
+        }
+
+        private static void SelectionCommand(MaterialRadioButtons materialRadioButtons, MaterialCheckbox materialCheckbox)
+        {
+            if (!materialRadioButtons.IsEnabled)
+                return;
+
+            if (materialRadioButtons is MaterialRadioButtons)
+            {
+		        //Debug.WriteLine("----SelectionCommand----");
+                foreach (var item in materialRadioButtons.container.Children)
+                    ((MaterialCheckbox)item).IsChecked = false;
+                //{
+                //    var text = ((MaterialCheckbox)item).Text;
+                //    var ischecked =((MaterialCheckbox)item).IsChecked;
+                //    Debug.WriteLine($"command Option: {text}");
+                //    Debug.WriteLine($"command is checked: {ischecked}");
+                //}
+
+                materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
+                materialRadioButtons.SelectedItem = materialCheckbox.Text;
+                //Debug.WriteLine($"materialCheckbox text: {materialCheckbox.Text}");
+                //Debug.WriteLine($"materialCheckbox is checked: {materialCheckbox.IsChecked}");
             }
         }
 
@@ -233,58 +184,25 @@ namespace Plugin.MaterialDesignControls
             var control = (MaterialRadioButtons)bindable;
             if (control.container.Children != null && control.SelectedItem != null)
             {
+                //Debug.WriteLine("----OnSelectedItemChanged----");
                 foreach (var item in control.container.Children)
-                {
                     if (item != null && item is MaterialCheckbox)
                         ((MaterialCheckbox)item).IsChecked = ((MaterialCheckbox)item).Text.Equals(control.SelectedItem);
-                }
+                //{
+                //    var checkbox = ((MaterialCheckbox)item);
+                //    var text = ((MaterialCheckbox)item).Text;
+                //    var ischecked =((MaterialCheckbox)item).IsChecked;
+                //    Debug.WriteLine($"itemchanged Option: {text}");
+                //    Debug.WriteLine($"itemchanged Is checked: {ischecked}");
+                //}
             }
         }
 
-        private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
-        {
-            var control = (MaterialChipsGroup)bindable;
+        protected override void SetIcon() { }
 
-            // Used to animate the error when the assistive text doesn't change
-            if (control.AnimateError && !string.IsNullOrEmpty(control.AssistiveText) && control.AssistiveText == (string)value)
-                ShakeAnimation.Animate(control);
+        protected override void SetIsChecked() { }
 
-            return true;
-        }
-
-        //private static void SelectionCommand(MaterialRadioButtons materialRadioButtons, MaterialCheckbox materialCheckbox)
-        //{
-        //    if (!materialChipsGroup.IsEnabled)
-        //        return;
-
-        //    if (materialChips is MaterialRadioButtons)
-        //    {
-        //        if (materialChipsGroup.IsMultipleSelection)
-        //        {
-        //            var selectedItems = materialChipsGroup.SelectedItems == null ? new List<string>() : materialChipsGroup.SelectedItems.Select(x => x).ToList();
-
-        //            materialChips.IsSelected = !materialChips.IsSelected;
-
-        //            if (materialChips.IsSelected && !selectedItems.Contains(materialChips.Text))
-        //                selectedItems.Add(materialChips.Text);
-        //            else if (selectedItems.Contains(materialChips.Text))
-        //                selectedItems.Remove(materialChips.Text);
-
-        //            materialChipsGroup.SelectedItems = selectedItems;
-        //        }
-        //        else
-        //        {
-        //            foreach (var item in materialChipsGroup.flexContainer.Children)
-        //            {
-        //                ((MaterialChips)item).IsSelected = false;
-        //            }
-
-        //            materialChips.IsSelected = !materialChips.IsSelected;
-
-        //            materialChipsGroup.SelectedItem = materialChips.Text;
-        //        }
-        //    }
-        //}
+        protected override void SetIsEnabled() { }
 
         #endregion Methods
     }

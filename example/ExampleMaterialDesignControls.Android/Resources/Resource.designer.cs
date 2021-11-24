@@ -14628,34 +14628,46 @@ namespace ExampleMaterialDesignControls.Droid
 			public const int Product = 2131165550;
 			
 			// aapt resource value: 0x7F07016F
-			public const int scale = 2131165551;
+			public const int radioButton_checked = 2131165551;
 			
 			// aapt resource value: 0x7F070170
-			public const int Shipping = 2131165552;
+			public const int radioButton_disabledChecked = 2131165552;
 			
 			// aapt resource value: 0x7F070171
-			public const int shoes_1 = 2131165553;
+			public const int radioButton_disabledUnchecked = 2131165553;
 			
 			// aapt resource value: 0x7F070172
-			public const int showPassword = 2131165554;
+			public const int radioButton_unchecked = 2131165554;
 			
 			// aapt resource value: 0x7F070173
-			public const int splash_screen = 2131165555;
+			public const int scale = 2131165555;
 			
 			// aapt resource value: 0x7F070174
-			public const int test_custom_background = 2131165556;
+			public const int Shipping = 2131165556;
 			
 			// aapt resource value: 0x7F070175
-			public const int tooltip_frame_dark = 2131165557;
+			public const int shoes_1 = 2131165557;
 			
 			// aapt resource value: 0x7F070176
-			public const int tooltip_frame_light = 2131165558;
+			public const int showPassword = 2131165558;
 			
 			// aapt resource value: 0x7F070177
-			public const int Visa = 2131165559;
+			public const int splash_screen = 2131165559;
 			
 			// aapt resource value: 0x7F070178
-			public const int volume = 2131165560;
+			public const int test_custom_background = 2131165560;
+			
+			// aapt resource value: 0x7F070179
+			public const int tooltip_frame_dark = 2131165561;
+			
+			// aapt resource value: 0x7F07017A
+			public const int tooltip_frame_light = 2131165562;
+			
+			// aapt resource value: 0x7F07017B
+			public const int Visa = 2131165563;
+			
+			// aapt resource value: 0x7F07017C
+			public const int volume = 2131165564;
 			
 			static Drawable()
 			{

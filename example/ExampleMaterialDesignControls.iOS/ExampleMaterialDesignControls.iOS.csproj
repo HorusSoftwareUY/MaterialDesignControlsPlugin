@@ -222,6 +222,10 @@
     <BundleResource Include="Resources\checkbox_unchecked.png" />
     <BundleResource Include="Resources\checkbox_disabledChecked.png" />
     <BundleResource Include="Resources\checkbox_disabledUnchecked.png" />
+    <BundleResource Include="Resources\radioButton_checked.png" />
+    <BundleResource Include="Resources\radioButton_disabledChecked.png" />
+    <BundleResource Include="Resources\radioButton_disabledUnchecked.png" />
+    <BundleResource Include="Resources\radioButton_unchecked.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\volume.png" />
