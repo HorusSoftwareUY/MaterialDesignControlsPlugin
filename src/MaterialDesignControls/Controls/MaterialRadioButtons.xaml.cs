@@ -23,6 +23,7 @@ namespace Plugin.MaterialDesignControls
             {
                 this.initialized = true;
                 this.InitializeComponent();
+                Initialize();
             }
         }
 
@@ -48,45 +49,72 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(SelectedItemProperty, value); }
         }
 
-        public static readonly BindableProperty SelectedTextColorProperty =
-            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.Black);
+        #region LabelText
 
-        public Color SelectedTextColor
+        public static readonly BindableProperty LabelTextProperty =
+            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(MaterialRadioButtons), defaultValue: null);
+
+        public string LabelText
         {
-            get { return (Color)GetValue(SelectedTextColorProperty); }
-            set { SetValue(SelectedTextColorProperty, value); }
+            get { return (string)GetValue(LabelTextProperty); }
+            set { SetValue(LabelTextProperty, value); }
         }
 
-        public static readonly BindableProperty DisabledSelectedTextColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.White);
+        public static readonly BindableProperty LabelTextColorProperty =
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.Black);
 
-        public Color DisabledSelectedTextColor
+        public Color LabelTextColor
         {
-            get { return (Color)GetValue(DisabledSelectedTextColorProperty); }
-            set { SetValue(DisabledSelectedTextColorProperty, value); }
+            get { return (Color)GetValue(LabelTextColorProperty); }
+            set { SetValue(LabelTextColorProperty, value); }
         }
 
-        public static readonly BindableProperty ColorProperty =
-            BindableProperty.Create(nameof(Color), typeof(Color), typeof(MaterialCheckbox), defaultValue: Color.Blue);
+        public static readonly BindableProperty DisabledLabelTextColorProperty =
+            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.LightGray);
 
-        public Color Color
+        public Color DisabledLabelTextColor
         {
-            get { return (Color)GetValue(ColorProperty); }
-            set { SetValue(ColorProperty, value); }
+            get { return (Color)GetValue(DisabledLabelTextColorProperty); }
+            set { SetValue(DisabledLabelTextColorProperty, value); }
         }
 
-        public static readonly BindableProperty DisabledColorProperty =
-            BindableProperty.Create(nameof(DisabledColor), typeof(Color), typeof(MaterialCheckbox), defaultValue: Color.LightGray);
+        public static readonly BindableProperty LabelSizeProperty =
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: Font.Default.FontSize);
 
-        public Color DisabledColor
-	    {
-            get { return (Color)GetValue(DisabledColorProperty); }
-            set { SetValue(DisabledColorProperty, value); }
+        public double LabelSize
+        {
+            get { return (double)GetValue(LabelSizeProperty); }
+            set { SetValue(LabelSizeProperty, value); }
         }
+
+        public static readonly BindableProperty LabelFontFamilyProperty =
+            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(MaterialRadioButtons), defaultValue: null);
+
+        public string LabelFontFamily
+        {
+            get { return (string)GetValue(LabelFontFamilyProperty); }
+            set { SetValue(LabelFontFamilyProperty, value); }
+        }
+
+        public static readonly BindableProperty LabelMarginProperty =
+            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(MaterialRadioButtons), defaultValue: new Thickness(14, 0, 14, 2));
+
+        public Thickness LabelMargin
+        {
+            get { return (Thickness)GetValue(LabelMarginProperty); }
+            set { SetValue(LabelMarginProperty, value); }
+        }
+
+        #endregion LabelText
 
         #endregion Properties
 
         #region Methods
+
+        private void Initialize()
+        {
+            lblLabel.TextColor = LabelTextColor;
+        }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -101,12 +129,21 @@ namespace Plugin.MaterialDesignControls
                     if (!string.IsNullOrEmpty(LabelText))
                         lblLabel.IsVisible = true;
                     break;
+                case nameof(LabelFontFamily):
+                    lblLabel.FontFamily = LabelFontFamily;
+                    break;
+                case nameof(LabelMargin):
+                    lblLabel.Margin = LabelMargin;
+                    break;
+                case nameof(LabelSize):
+                    lblLabel.FontSize = LabelSize;
+                    break;
+                case nameof(LabelTextColor):
+                case nameof(DisabledLabelTextColor):
+                    lblLabel.TextColor = IsEnabled ? LabelTextColor : DisabledLabelTextColor;
+                    break;
                 case nameof(IsEnabled):
-                    foreach (var view in container.Children)
-                    {
-                        if (view is MaterialCheckbox materialCheckbox)
-                            materialCheckbox.IsEnabled = IsEnabled;
-                    }
+                    lblLabel.TextColor = IsEnabled? LabelTextColor: DisabledLabelTextColor;
                     break;
             }
 

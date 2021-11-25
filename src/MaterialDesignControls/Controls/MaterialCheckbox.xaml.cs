@@ -23,24 +23,6 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
-        public static readonly BindableProperty ColorProperty =
-            BindableProperty.Create(nameof(Color), typeof(Color), typeof(MaterialCheckbox), defaultValue: Color.FromHex("#2E85CC"));
-
-        public Color Color
-        {
-            get { return (Color)GetValue(ColorProperty); }
-            set { SetValue(ColorProperty, value); }
-        }
-
-        public static readonly BindableProperty DisabledColorProperty =
-            BindableProperty.Create(nameof(DisabledColor), typeof(Color), typeof(MaterialCheckbox), defaultValue: Color.LightGray);
-
-        public Color DisabledColor
-        {
-            get { return (Color)GetValue(DisabledColorProperty); }
-            set { SetValue(DisabledColorProperty, value); }
-        }
-
         public static readonly BindableProperty CommandProperty =
             BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(BaseMaterialCheckboxes));
 

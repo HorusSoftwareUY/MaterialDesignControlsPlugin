@@ -54,6 +54,8 @@
 				DisabledSelectedIcon="radioButton_disabledChecked.png"
 				DisabledUnselectedIcon="radioButton_disabledUnchecked.png"
 				Animation="Scale"
+				IconHeightRequest="18"
+				IconWidthRequest="18"
 		        SelectedItem="{Binding SelectedPlace}" />
 
             <!--<material:MaterialRadioButtons 

@@ -109,7 +109,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(BaseMaterialFieldControl), defaultValue: false);
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(BaseMaterialCheckboxes), defaultValue: false);
 
         public bool AnimateError
         {
@@ -118,73 +118,6 @@ namespace Plugin.MaterialDesignControls
         }
 
         #endregion AssistiveText
-
-        #region LabelText
-
-        public static readonly BindableProperty LabelTextProperty =
-            BindableProperty.Create(nameof(LabelText), typeof(string), typeof(BaseMaterialCheckboxes), defaultValue: null);
-
-        public string LabelText
-        {
-            get { return (string)GetValue(LabelTextProperty); }
-            set { SetValue(LabelTextProperty, value); }
-        }
-
-        public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: Color.Gray);
-
-        public Color LabelTextColor
-        {
-            get { return (Color)GetValue(LabelTextColorProperty); }
-            set { SetValue(LabelTextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: Color.Transparent);
-
-        public Color FocusedLabelTextColor
-        {
-            get { return (Color)GetValue(FocusedLabelTextColorProperty); }
-            set { SetValue(FocusedLabelTextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty DisabledLabelTextColorProperty =
-            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: Color.Gray);
-
-        public Color DisabledLabelTextColor
-        {
-            get { return (Color)GetValue(DisabledLabelTextColorProperty); }
-            set { SetValue(DisabledLabelTextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(BaseMaterialCheckboxes), defaultValue: Font.Default.FontSize);
-
-        public double LabelSize
-        {
-            get { return (double)GetValue(LabelSizeProperty); }
-            set { SetValue(LabelSizeProperty, value); }
-        }
-
-        public static readonly BindableProperty LabelFontFamilyProperty =
-            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(BaseMaterialCheckboxes), defaultValue: null);
-
-        public string LabelFontFamily
-        {
-            get { return (string)GetValue(LabelFontFamilyProperty); }
-            set { SetValue(LabelFontFamilyProperty, value); }
-        }
-
-        public static readonly BindableProperty LabelMarginProperty =
-            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(BaseMaterialCheckboxes), defaultValue: new Thickness(14, 0, 14, 2));
-
-        public Thickness LabelMargin
-        {
-            get { return (Thickness)GetValue(LabelMarginProperty); }
-            set { SetValue(LabelMarginProperty, value); }
-        }
-
-        #endregion LabelText
 
         #region Icon
 
@@ -299,7 +232,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectionHorizontalOptionsProperty =
-            BindableProperty.Create(nameof(SelectionHorizontalOptions), typeof(LayoutOptions), typeof(MaterialCheckbox), defaultValue: LayoutOptions.Start);
+            BindableProperty.Create(nameof(SelectionHorizontalOptions), typeof(LayoutOptions), typeof(BaseMaterialCheckboxes), defaultValue: LayoutOptions.Start);
 
         public LayoutOptions SelectionHorizontalOptions
         {
@@ -335,7 +268,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: AnimationTypes.None);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(BaseMaterialCheckboxes), defaultValue: AnimationTypes.None);
 
         public AnimationTypes Animation
         {
@@ -344,12 +277,30 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
         public double? AnimationParameter
         {
             get { return (double?)GetValue(AnimationParameterProperty); }
             set { SetValue(AnimationParameterProperty, value); }
+        }
+
+        public static readonly BindableProperty ColorProperty =
+            BindableProperty.Create(nameof(Color), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: Color.Blue);
+
+        public Color Color
+        {
+            get { return (Color)GetValue(ColorProperty); }
+            set { SetValue(ColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledColorProperty =
+            BindableProperty.Create(nameof(DisabledColor), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: Color.LightGray);
+
+        public Color DisabledColor
+	    {
+            get { return (Color)GetValue(DisabledColorProperty); }
+            set { SetValue(DisabledColorProperty, value); }
         }
 
         #region Events
@@ -395,6 +346,9 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(AssistiveSize):
                     lblAssistive.FontSize = AssistiveSize;
+                    break;
+                case nameof(AssistiveFontFamily):
+                    lblAssistive.FontFamily = AssistiveFontFamily;
                     break;
                 case nameof(AssistiveMargin):
                     lblAssistive.Margin = AssistiveMargin;
