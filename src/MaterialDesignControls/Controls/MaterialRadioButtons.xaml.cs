@@ -146,7 +146,6 @@ namespace Plugin.MaterialDesignControls
                     lblLabel.TextColor = IsEnabled? LabelTextColor: DisabledLabelTextColor;
                     break;
             }
-
         }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
@@ -199,20 +198,11 @@ namespace Plugin.MaterialDesignControls
 
             if (materialRadioButtons is MaterialRadioButtons)
             {
-		        //Debug.WriteLine("----SelectionCommand----");
                 foreach (var item in materialRadioButtons.container.Children)
                     ((MaterialCheckbox)item).IsChecked = false;
-                //{
-                //    var text = ((MaterialCheckbox)item).Text;
-                //    var ischecked =((MaterialCheckbox)item).IsChecked;
-                //    Debug.WriteLine($"command Option: {text}");
-                //    Debug.WriteLine($"command is checked: {ischecked}");
-                //}
 
                 materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
                 materialRadioButtons.SelectedItem = materialCheckbox.Text;
-                //Debug.WriteLine($"materialCheckbox text: {materialCheckbox.Text}");
-                //Debug.WriteLine($"materialCheckbox is checked: {materialCheckbox.IsChecked}");
             }
         }
 
@@ -221,17 +211,9 @@ namespace Plugin.MaterialDesignControls
             var control = (MaterialRadioButtons)bindable;
             if (control.container.Children != null && control.SelectedItem != null)
             {
-                //Debug.WriteLine("----OnSelectedItemChanged----");
                 foreach (var item in control.container.Children)
                     if (item != null && item is MaterialCheckbox)
                         ((MaterialCheckbox)item).IsChecked = ((MaterialCheckbox)item).Text.Equals(control.SelectedItem);
-                //{
-                //    var checkbox = ((MaterialCheckbox)item);
-                //    var text = ((MaterialCheckbox)item).Text;
-                //    var ischecked =((MaterialCheckbox)item).IsChecked;
-                //    Debug.WriteLine($"itemchanged Option: {text}");
-                //    Debug.WriteLine($"itemchanged Is checked: {ischecked}");
-                //}
             }
         }
 

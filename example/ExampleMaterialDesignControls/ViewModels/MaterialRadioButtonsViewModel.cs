@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -31,10 +30,8 @@ namespace ExampleMaterialDesignControls.ViewModels
         public MaterialRadioButtonsViewModel()
         {
             this.Sizes = new ObservableCollection<string> { "6", "6.5", "7", "7.5", "8" };
-            //this.Sizes = new ObservableCollection<string> { "6", "6.5"};
             this.Rigtones = new ObservableCollection<string> {"Callisto","Ganymede","Luna"};
             this.Places = new ObservableCollection<string> {"Home","Work"};
-            //SelectedPlace = "Work";
         }
 
         private string selectedSize;

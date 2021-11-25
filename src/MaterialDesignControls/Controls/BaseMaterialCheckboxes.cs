@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,7 +19,6 @@ namespace Plugin.MaterialDesignControls
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-
 
         public static readonly BindableProperty TextColorProperty =
             BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: Color.Gray);

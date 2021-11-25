@@ -152,45 +152,22 @@ namespace Plugin.MaterialDesignControls
                 if (IsChecked)
                 {
                     if (CustomSelectedIcon != null)
-                    {
                         customIcon.SetCustomImage(CustomSelectedIcon);
-                        //Debug.WriteLine("----Custom selected icon");
-                        //Debug.WriteLine($"Option: {Text}");
-                        //Debug.WriteLine($"icon visible: {customIcon.IsVisible}");
-                    }
                     else
-                    { 
                         customIcon.SetImage(SelectedIcon);
-                        //Debug.WriteLine("----selected icon}");
-                        //Debug.WriteLine($"Option: {Text}");
-                        //Debug.WriteLine($"icon visible: {customIcon.IsVisible}");
-                    }
                 }
                 else 
 		        {
                     if (CustomUnselectedIcon != null)
-                    { 
                         customIcon.SetCustomImage(CustomUnselectedIcon);
-                        //Debug.WriteLine("----custom unselected icon");
-                        //Debug.WriteLine($"Option: {Text}");
-                        //Debug.WriteLine($"icon visible: {customIcon.IsVisible}");
-
-                    }
                     else
-                    { 
                         customIcon.SetImage(UnselectedIcon);
-                        //Debug.WriteLine($"----Unselected icon");
-                        //Debug.WriteLine($"Option: {Text}");
-                        //Debug.WriteLine($"icon visible: {customIcon.IsVisible}");
-                    }
                 }
             }
 	    }
 
         protected override void SetIcon()
         {
-            //var text = Text;
-            //Debug.WriteLine($"SetIcon {text}");
             customIcon.IsVisible = true;
             chkContainer.IsVisible = false;
             SetCustomIcon();
@@ -198,8 +175,6 @@ namespace Plugin.MaterialDesignControls
 
         protected override void SetIsChecked()
         {
-            //var text = Text;
-            //Debug.WriteLine($"SetIsChecked {text}");
             if (CustomSelectedIcon != null || SelectedIcon != null)
                 SetIcon();
 

@@ -58,6 +58,7 @@
 				IconWidthRequest="18"
 		        SelectedItem="{Binding SelectedPlace}" />
 
+			<!--TODO//Is missing implement with .svg files-->
             <!--<material:MaterialRadioButtons 
 				HorizontalOptions="FillAndExpand"
 				Spacing="0"
