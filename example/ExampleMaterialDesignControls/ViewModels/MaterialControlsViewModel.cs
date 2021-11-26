@@ -79,5 +79,10 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await Navigation.PushAsync(new MaterialRadioButtonsPage());
         });
+
+        public ICommand GoMaterialSwitchCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialSwitchPage());
+        });
     }
 }

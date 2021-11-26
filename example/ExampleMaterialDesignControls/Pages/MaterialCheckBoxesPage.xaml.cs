@@ -12,5 +12,10 @@ namespace ExampleMaterialDesignControls.Pages
             InitializeComponent();
             this.BindingContext = new MaterialCheckboxViewModel { DisplayAlert = this.DisplayAlert };
         }
+
+        private void Checkbox_IsCheckedChanged(object sender, EventArgs eventArgs)
+        {
+            DisplayAlert("Message","Checkbox checked changed","Ok");
+	    }
     }
 }

@@ -20,7 +20,7 @@
             <ffimageloading:CachedImage Grid.Row="0" Source="horus.png" Margin="0" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="36"/>
                                
             <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="1">
-                    <Grid ColumnDefinitions="*,*" RowDefinitions="150,150,150,150,150,150,150" RowSpacing="10" ColumnSpacing="10" Padding="0,0,0,20">
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="150,150,150,150,150,150,150,150" RowSpacing="10" ColumnSpacing="10" Padding="0,0,0,20">
 
                         <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent1}" HasShadow="False" CornerRadius="16" Padding="15">
                             <Frame.GestureRecognizers>
@@ -186,6 +186,17 @@
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_radioButton.svg"/>
                                 </Frame>
                                 <material:MaterialLabel Text="Material RadioButtons" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="7" Grid.Column="0" BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" CornerRadius="16" Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoMaterialSwitchCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_switch.svg"/>
+                                </Frame>
+                                <material:MaterialLabel Text="Material Switch" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
                     </Grid>
