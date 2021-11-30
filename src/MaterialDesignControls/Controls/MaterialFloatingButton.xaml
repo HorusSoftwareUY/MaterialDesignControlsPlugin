@@ -10,18 +10,18 @@
 		Spacing="0" 
 		HorizontalOptions="CenterAndExpand"
 		Orientation="Horizontal">
-        <custom:CustomImageButton 
+        <custom:CustomImage 
 	        x:Name="imgLeft" 
-	        IsVisible="False" 
+			IsVisible="False" 
 	        VerticalOptions="Center"/>
         <controls:MaterialLabel 
 	        x:Name="lblText" 
 	        IsVisible="False" 
 			HorizontalOptions="Center"
 	        VerticalTextAlignment="Center"/>
-        <custom:CustomImageButton
+        <custom:CustomImage
 			x:Name="imgRight" 
-			IsVisible="False" 
+			IsVisible="False"
 			HorizontalOptions="Center"/>
     </StackLayout>
 </custom:CustomFrame >

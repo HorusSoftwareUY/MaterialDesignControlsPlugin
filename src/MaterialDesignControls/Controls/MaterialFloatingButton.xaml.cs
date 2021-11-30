@@ -22,13 +22,58 @@ namespace Plugin.MaterialDesignControls
 
         #region Properties
 
-        public static readonly BindableProperty CustomIconProperty =
-            BindableProperty.Create(nameof(CustomIcon), typeof(DataTemplate), typeof(MaterialFloatingButton), defaultValue: null);
+        public static readonly BindableProperty IconProperty =
+            BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialFloatingButton), defaultValue: null);
 
-        public DataTemplate CustomIcon
+        public string Icon
         {
-            get { return (DataTemplate)GetValue(CustomIconProperty); }
+            get { return (string)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledIconProperty =
+            BindableProperty.Create(nameof(DisabledIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
+
+        public string DisabledIcon
+        {
+            get { return (string)GetValue(DisabledIconProperty); }
+            set { SetValue(DisabledIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomIconProperty =
+            BindableProperty.Create(nameof(CustomIcon), typeof(View), typeof(MaterialFloatingButton), defaultValue: null);
+
+        public View CustomIcon
+        {
+            get { return (View)GetValue(CustomIconProperty); }
             set { SetValue(CustomIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomDisabledIconProperty =
+            BindableProperty.Create(nameof(CustomDisabledIcon), typeof(View), typeof(MaterialFloatingButton), defaultValue: null);
+
+        public View CustomDisabledIcon
+        {
+            get { return (View)GetValue(CustomDisabledIconProperty); }
+            set { SetValue(CustomDisabledIconProperty, value); }
+        }
+
+        public static readonly BindableProperty IconHeightRequestProperty =
+            BindableProperty.Create(nameof(IconHeightRequest), typeof(double), typeof(MaterialFloatingButton), defaultValue: 24.0);
+
+        public double IconHeightRequest
+        {
+            get { return (double)GetValue(IconHeightRequestProperty); }
+            set { SetValue(IconHeightRequestProperty, value); }
+        }
+
+        public static readonly BindableProperty IconWidthRequestProperty =
+            BindableProperty.Create(nameof(IconWidthRequest), typeof(double), typeof(MaterialFloatingButton), defaultValue: 24.0);
+
+        public double IconWidthRequest
+        {
+            get { return (double)GetValue(IconWidthRequestProperty ); }
+            set { SetValue(IconWidthRequestProperty , value); }
         }
 
         public static new readonly BindableProperty HasShadowProperty =
@@ -94,31 +139,31 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(TextColorProperty, value); }
         }
 
-        public static readonly BindableProperty IconProperty =
-            BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialFloatingButton), defaultValue: null);
+        public static readonly BindableProperty FontAttributesProperty =
+            BindableProperty.Create(nameof(FontAttributes), typeof(FontAttributes), typeof(MaterialFloatingButton), defaultValue: FontAttributes.None);
 
-        public string Icon
+        public FontAttributes FontAttributes
         {
-            get { return (string)GetValue(IconProperty); }
-            set { SetValue(IconProperty, value); }
+            get { return (FontAttributes )GetValue(FontAttributesProperty); }
+            set { SetValue(FontAttributesProperty, value); }
         }
 
-        public static readonly BindableProperty IconHeightRequestProperty =
-            BindableProperty.Create(nameof(IconHeightRequest), typeof(double), typeof(MaterialFloatingButton), defaultValue: 24.0);
+        public static readonly BindableProperty DisabledTextColorProperty =
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: Color.White);
 
-        public double IconHeightRequest
+        public Color DisabledTextColor
         {
-            get { return (double)GetValue(IconHeightRequestProperty); }
-            set { SetValue(IconHeightRequestProperty, value); }
+            get { return (Color)GetValue(DisabledTextColorProperty ); }
+            set { SetValue(DisabledTextColorProperty, value); }
         }
 
-        public static readonly BindableProperty IconWidthRequestProperty =
-            BindableProperty.Create(nameof(IconWidthRequest), typeof(double), typeof(MaterialFloatingButton), defaultValue: 24.0);
+        public static readonly BindableProperty ToUpperProperty =
+            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialButton), defaultValue: false);
 
-        public double IconWidthRequest
+        public bool ToUpper
         {
-            get { return (double)GetValue(IconWidthRequestProperty ); }
-            set { SetValue(IconWidthRequestProperty , value); }
+            get { return (bool)GetValue(ToUpperProperty); }
+            set { SetValue(ToUpperProperty, value); }
         }
 
         public static new readonly BindableProperty HeightRequestProperty =
@@ -193,16 +238,38 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimationParameterProperty, value); }
         }
 
+        public static new readonly BindableProperty BackgroundColorProperty =
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: Color.FromHex("#2e85cc"));
+
+
+        public new Color BackgroundColor
+        {
+            get { return (Color)GetValue(BackgroundColorProperty); }
+            set { SetValue(BackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledBackgroundColorProperty =
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: Color.LightGray);
+
+        public Color DisabledBackgroundColor
+        {
+            get { return (Color)GetValue(DisabledBackgroundColorProperty); }
+            set { SetValue(DisabledBackgroundColorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Constructors
 
         public MaterialFloatingButton()
         {
-            InitializeComponent();
 
             if (!this.initilized)
+            {
+                initilized = true;
+                InitializeComponent();
                 Initialize();
+            }
         }
 
         #endregion Constructors
@@ -211,10 +278,19 @@ namespace Plugin.MaterialDesignControls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            base.OnPropertyChanged(propertyName);
+            if (!this.initilized)
+            {
+                initilized = true;
+                InitializeComponent();
+                Initialize();
+            }
 
             switch (propertyName)
             {
+                case nameof(Text):
+                case nameof(ToUpper):
+                    this.lblText.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
+                    break;
                 case nameof(HasShadow):
                     base.HasShadow = HasShadow;
                     break;
@@ -233,46 +309,23 @@ namespace Plugin.MaterialDesignControls
                 case nameof(FontFamily):
                     lblText.FontFamily = FontFamily;
                     break;
+                case nameof(FontAttributes):
+                    lblText.FontAttributes = FontAttributes;
+                    break;
                 case nameof(TextColor):
-                    lblText.TextColor = TextColor;
+                case nameof(DisabledTextColor):
+                    lblText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
                     break;
                 case nameof(ButtonSize):
                     SetButtonSize();
                     break;
                 case nameof(Icon):
-                    if (Icon == null)
-                        break;
-                    imgLeft.SetImage(Icon);
-                    imgLeft.IsVisible = true;
-                    break;
+                case nameof(DisabledIcon):
                 case nameof(CustomIcon):
-                    if (CustomIcon == null)
-                        break;
-                    if (IconSide == IconSide.Left)
-                    {
-                        imgLeft.SetCustomImage(this.CustomIcon.CreateContent() as View);
-                        imgLeft.IsVisible = true;
-                    }
-                    else 
-		            { 
-                        imgRight.SetCustomImage(this.CustomIcon.CreateContent() as View);
-                        imgRight.IsVisible = true;
-		            }
-                    break;
+                case nameof(CustomDisabledIcon):
                 case nameof(IconSide):
-                    if (IconSide == IconSide.Left)
-                    {
-                        imgLeft.IsVisible = true;
-                        imgLeft.SetImage(Icon);
-                    }
-                    else
-                    {
-                        imgLeft.IsVisible = false;
-                        imgRight.IsVisible = true;
-                        imgRight.SetImage(Icon);
-                        lblText.Margin = new Thickness(0, 0, 6, 0);
-                        Padding = new Thickness(16, 0, 16, 0);
-                    }
+                    SetIconSide();
+                    SetIcon();
                     break;
                 case nameof(CornerRadius):
                     base.CornerRadius = CornerRadius;
@@ -285,6 +338,78 @@ namespace Plugin.MaterialDesignControls
                     imgLeft.WidthRequest = IconWidthRequest;
                     imgRight.WidthRequest = IconWidthRequest;
                     break;
+                case nameof(BackgroundColor):
+                case nameof(DisabledBackgroundColor):
+                case nameof(IsEnabled):
+                    base.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
+                    lblText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+                    SetIcon();
+                    break;
+            }
+        }
+
+        private void SetIconSide()
+        {
+            if (IconSide == IconSide.Left)
+                imgLeft.IsVisible = true;
+            else
+            {
+                imgLeft.IsVisible = false;
+                imgRight.IsVisible = true;
+                lblText.Margin = new Thickness(0, 0, 6, 0);
+                Padding = new Thickness(16, 0, 16, 0);
+            }
+        }
+
+        private void SetIcon()
+        {
+            if (IsEnabled)
+            {
+                if (CustomIcon != null)
+                {
+                    if (IconSide == IconSide.Left)
+                        imgLeft.SetCustomImage(CustomIcon);
+                    else
+                        imgRight.SetCustomImage(CustomIcon);
+                }
+                else
+                {
+                    if (IconSide == IconSide.Left)
+                        imgLeft.SetImage(Icon);
+                    else
+                        imgRight.SetImage(Icon);
+                }
+            }
+            else
+            {
+                if (CustomDisabledIcon != null)
+                {
+                    if (IconSide == IconSide.Left)
+                        imgLeft.SetCustomImage(CustomDisabledIcon);
+                    else
+                        imgRight.SetCustomImage(CustomDisabledIcon);
+                }
+                else if (CustomIcon != null)
+                {
+                    if (IconSide == IconSide.Left)
+                        imgLeft.SetCustomImage(CustomIcon);
+                    else
+                        imgRight.SetCustomImage(CustomIcon);
+                }
+                else if (DisabledIcon != null)
+                {
+                    if (IconSide == IconSide.Left)
+                        imgLeft.SetImage(DisabledIcon);
+                    else
+                        imgRight.SetImage(DisabledIcon);
+                }
+                else
+                {
+                    if (IconSide == IconSide.Left)
+                        imgLeft.SetImage(Icon);
+                    else
+                        imgRight.SetImage(Icon);
+                }
             }
         }
 
@@ -293,8 +418,9 @@ namespace Plugin.MaterialDesignControls
         {
             imgLeft.HeightRequest = IconHeightRequest;
             imgLeft.WidthRequest = IconWidthRequest;
-            imgLeft.SetImage(Icon);
-            imgLeft.IsVisible = true;
+            imgRight.HeightRequest = IconHeightRequest;
+            imgRight.WidthRequest = IconWidthRequest;
+
             if (ButtonSize == FloatingButtonSize.Mini)
             {
                 HeightRequest = 40;
@@ -305,14 +431,15 @@ namespace Plugin.MaterialDesignControls
             {
                 if (!string.IsNullOrEmpty(Text))
                     lblText.IsVisible = true;
-                if (string.IsNullOrEmpty(Icon))
+                if (string.IsNullOrEmpty(Icon) && CustomIcon == null)
+                { 
                     imgLeft.IsVisible = false;
+                    imgRight.IsVisible = false;
+                }
 
-                lblText.Text = Text.ToUpper();
                 HeightRequest = 48;
                 WidthRequest = -1;
                 CornerRadius = 24;
-                lblText.FontAttributes = FontAttributes.Bold;
                 lblText.HorizontalTextAlignment = TextAlignment.Center;
                 lblText.Margin = new Thickness(6, 0, 0, 0);
                 Padding = new Thickness(12, 0, 20, 0);
@@ -321,13 +448,19 @@ namespace Plugin.MaterialDesignControls
 
         private void Initialize()
         {
+            imgLeft.Padding = 0;
+            imgRight.Padding = 0;
             base.HasShadow = HasShadow;
             base.Padding = Padding;
             base.HeightRequest = HeightRequest;
             base.WidthRequest = WidthRequest;
             base.CornerRadius = CornerRadius;
+            base.BackgroundColor = BackgroundColor;
             imgLeft.HeightRequest = IconHeightRequest;
             imgLeft.WidthRequest = IconWidthRequest;
+            imgRight.HeightRequest = IconHeightRequest;
+            imgRight.WidthRequest = IconWidthRequest;
+            imgLeft.IsVisible = true;
             Effects.Add(new TouchAndPressEffect());
 	    }
 

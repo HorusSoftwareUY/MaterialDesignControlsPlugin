@@ -21,7 +21,7 @@
                     </material:MaterialButton.CustomActivityIndicator>
                 </material:MaterialOutlineButton>
                 <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
-                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Download" Icon="download.png" CornerRadius="16" />
+                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Download" Icon="download.png" CornerRadius="16"/>
                 <material:MaterialOutlineButton IsVisible="{Binding CancelIsVisible}" IsEnabled="false" Text="Cancel 2" Command="{Binding TapCommand}" CommandParameter="Canceled 2" />
                 <material:MaterialFlatButton IsVisible="{Binding DeleteIsVisible}" IsEnabled="false" Text="Delete 2" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted 2" />
 

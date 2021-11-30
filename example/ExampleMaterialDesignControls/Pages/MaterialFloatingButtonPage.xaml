@@ -12,76 +12,81 @@
         <StackLayout Spacing="10">
             <Label Text="Regular"/>
             <material:MaterialFloatingButton 
-		        ShadowColor="Black"
-                Icon="add_b.png" 
-		        BackgroundColor="#FAF9D5" 
+                Icon="add_w.png" 
 		        Animation="Scale"
 				HorizontalOptions="Center"
 				Clicked="MaterialFloatingButton_Clicked"/>
 
             <Label Text="Mini"/>
             <material:MaterialFloatingButton 
-		        ShadowColor="Black" 
-		        FontSize="12" 
-                BackgroundColor="White" 
-		        Icon="add_b.png" 
+		        Icon="add_w.png" 
 		        ButtonSize="Mini" 
 		        Animation="Scale"
 				HorizontalOptions="Center"/>
 
-            <Label Text="Mini with svg image"/>
-            <material:MaterialFloatingButton  
-		        ShadowColor="Black" 
-		        FontSize="12" 
-                BackgroundColor="White" 
+            <Label Text="Mini (Disabled)"/>
+            <material:MaterialFloatingButton 
+		        Icon="add_w.png" 
+				IsEnabled="False"
 		        ButtonSize="Mini" 
+		        Animation="Scale"
+				HorizontalOptions="Center"/>
+
+            <Label Text="Mini (.svg)"/>
+            <material:MaterialFloatingButton  
+		        ButtonSize="Mini" 
+				IsEnabled="False"
 		        Animation="Scale"
 				HorizontalOptions="Center">
                 <material:MaterialFloatingButton.CustomIcon>
-                    <DataTemplate>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add_b.svg"/>
-		            </DataTemplate>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add_b.svg"/>
                 </material:MaterialFloatingButton.CustomIcon>
+                <material:MaterialFloatingButton.CustomDisabledIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg"/>
+                </material:MaterialFloatingButton.CustomDisabledIcon>
             </material:MaterialFloatingButton>
 
-            <Label Text="Extended left icon"/>
+            <Label Text="Extended (Left icon)"/>
             <material:MaterialFloatingButton 
-		        ShadowColor="Black"
                 Text="add" 
-		        FontSize="12" 
-		        TextColor="White" 
-                BackgroundColor="#B9DBF8" 
+		        FontSize="16" 
 		        Icon="add_w.png" 
 		        ButtonSize="Extended" 
 		        Animation="Fade"
+				Command="{Binding TapCommand}"
+				CommandParameter="Floating button command!"
 				HorizontalOptions="Center"/>
 
-            <Label Text="Extended right icon"/>
+            <Label Text="Extended (Right icon)"/>
             <material:MaterialFloatingButton 
-		        ShadowColor="Black"
                 Text="add" 
-		        FontSize="12" 
-		        TextColor="White" 
-                BackgroundColor="#B9DBF8" 
-		        Icon="add_w.png" 
+		        FontSize="16" 
 		        ButtonSize="Extended" 
+		        Icon="add_w.png" 
 		        IconSide="Right" 
 		        Animation="Scale"
 				HorizontalOptions="Center"/>
 
-            <Label Text="Extended without icon"/>
-            <material:MaterialFloatingButton 
-		        ShadowColor="Black"
-                iOSShadowOpacity="0.3" 
-		        iOSShadowRadius="6" 
-		        iOSShadowOffset="0,5" 
-		        Text="add" 
-		        FontSize="16" 
-		        TextColor="White" 
-                BackgroundColor="#B9DBF8" 
-				ButtonSize="Extended" 
-				Animation="Fade"
-				HorizontalOptions="Center"/>
+            <Label Text="Extended"/>
+			<StackLayout Orientation="Horizontal">
+                <material:MaterialFloatingButton 
+					iOSShadowOpacity="0.3" 
+		        	iOSShadowRadius="6" 
+					iOSShadowOffset="0,5" 
+		        	Text="Add new item" 
+					FontSize="16" 
+					FontAttributes="Bold"
+					ButtonSize="Extended" 
+					Animation="Fade"
+					HorizontalOptions="Center"/>
+                <material:MaterialFloatingButton 
+					Text="Add new item" 
+					ToUpper="True"
+					FontSize="16" 
+					ButtonSize="Extended" 
+					Animation="Fade"
+					HorizontalOptions="Center"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

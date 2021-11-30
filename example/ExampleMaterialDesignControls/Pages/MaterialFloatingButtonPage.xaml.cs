@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using ExampleMaterialDesignControls.ViewModels;
+using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
 {
@@ -7,11 +8,12 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialFloatingButtonPage()
         {
             InitializeComponent();
+            this.BindingContext = new MaterialFloatingButtonViewModel { DisplayAlert = this.DisplayAlert };
         }
 
         void MaterialFloatingButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            DisplayAlert("Message","Message test","ok");
+            DisplayAlert("Message","Floating button clicked!","ok");
         }
     }
 }
