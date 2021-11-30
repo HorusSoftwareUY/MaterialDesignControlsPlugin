@@ -2,7 +2,7 @@
 This control is a custom implementation of a floating action button. You can customize some properties that we show in Documentation topic. 
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/MaterialFloatingButton.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.png" width="300">
 
 ## how use?
 ```XML
