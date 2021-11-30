@@ -12,14 +12,14 @@
             <material:MaterialLabel Text="Xamarin forms native control" HorizontalOptions="Center" FontAttributes="Bold"/>
             <material:MaterialLabel Text="Extras"/>
             <material:MaterialCheckbox
-		        Text="Pickles" 
-		        Color="{StaticResource GradientColor1}"/>
+                IsCheckedChanged="Checkbox_IsCheckedChanged"
+		        Text="Pickles"/>
             <material:MaterialCheckbox
-		        Text="Tomato" 
-		        Color="{StaticResource GradientColor1}"/>
+                IsCheckedChanged="Checkbox_IsCheckedChanged"
+		        Text="Tomato"/>
             <material:MaterialCheckbox
-		        Text="Lettuce" 
-		        Color="{StaticResource GradientColor1}"/>
+                IsCheckedChanged="Checkbox_IsCheckedChanged"
+		        Text="Lettuce"/>
 
             <BoxView HeightRequest="0.5" Color="LightGray" Margin="0,10,0,10"/>
 
@@ -45,7 +45,6 @@
             <StackLayout Margin="5,0">
                 <material:MaterialCheckbox 
 		            Text="Pickles" 
-		            Color="{StaticResource GradientColor1}" 
 		            UnselectedIcon="checkbox_unchecked.png" 
                     SelectedIcon="checkbox_checked.png"
                     DisabledSelectedIcon="checkbox_disabledChecked.png"
@@ -54,7 +53,6 @@
 		            TextSide="Left"/>
                 <material:MaterialCheckbox 
 		            Text="Tomato" 
-		            Color="{StaticResource GradientColor1}" 
 		            UnselectedIcon="checkbox_unchecked.png" 
                     SelectedIcon="checkbox_checked.png"
                     DisabledSelectedIcon="checkbox_disabledChecked.png"
@@ -63,7 +61,6 @@
 		            TextSide="Left"/>
                 <material:MaterialCheckbox 
 		            Text="Lettuce" 
-		            Color="{StaticResource GradientColor1}" 
 		            UnselectedIcon="checkbox_unchecked.png" 
                     SelectedIcon="checkbox_checked.png"
                     DisabledSelectedIcon="checkbox_disabledChecked.png"
@@ -147,18 +144,16 @@
                 </material:MaterialCheckbox>
             </StackLayout>
 
-            <BoxView HeightRequest="0.5" Color="LightGray" Margin="0,10,0,10"/>
+                <BoxView HeightRequest="0.5" Color="LightGray" Margin="0,10,0,10"/>
 
-            <material:MaterialCheckbox
-		        UnselectedIcon="checkbox_unchecked.png" 
-                SelectedIcon="checkbox_checked.png"
-                Animation="Scale"
-                AssistiveText="{Binding NameError}"
-                AssistiveTextColor="Red"
-                AssistiveSize="12"
-                IsChecked="{Binding IsChecked}"
-                AnimateError="True"
-		        Text="I agree to the terms of service for this site"/>
+                <material:MaterialCheckbox
+		            UnselectedIcon="checkbox_unchecked.png" 
+                    SelectedIcon="checkbox_checked.png"
+                    IsEnabled="False"
+                    Animation="Scale"
+                    AssistiveText="{Binding NameError}"
+                    IsChecked="{Binding IsChecked}"
+		            Text="I agree to the terms of service for this site"/>
 
                 <material:MaterialButton HorizontalOptions="Center" Text="Save" WidthRequest="100" Command="{Binding SaveCommand}"/>
             </StackLayout>

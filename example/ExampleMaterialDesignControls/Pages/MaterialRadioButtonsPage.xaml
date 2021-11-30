@@ -11,7 +11,7 @@
 			<material:MaterialLabel FontAttributes="Bold" Text="xamarin native control selection" HorizontalOptions="Center"/>
             <material:MaterialRadioButtons 
 				Spacing="0"
-		        ItemsSource="{Binding Rigtones}" 
+		        ItemsSource="{Binding Rigtones}"
 		        LabelText="Rigtones" 
 		        SelectedItem="{Binding SelectedRigtone}"/>
 
@@ -37,11 +37,8 @@
 				DisabledUnselectedIcon="radioButton_disabledUnchecked.png"
 		        SelectedItem="{Binding SelectedSize}"
 		        AssistiveText="{Binding Error}"
-		        AssistiveTextColor="Red"
-				AssistiveSize="12"
 				TextSide="Left"
-				SelectionHorizontalOptions="EndAndExpand"
-		        AnimateError="True"/>
+				SelectionHorizontalOptions="EndAndExpand"/>
 
 			<BoxView BackgroundColor="LightGray" HeightRequest="0.5"/>
 			<material:MaterialLabel FontAttributes="Bold" Text=".png files and Animation" HorizontalOptions="Center"/>

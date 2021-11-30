@@ -118,7 +118,12 @@ namespace Plugin.MaterialDesignControls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            base.OnPropertyChanged(propertyName);
+            if (!this.initialized)
+            {
+                this.initialized = true;
+                this.InitializeComponent();
+                Initialize();
+            }
 
             UpdateLayout(propertyName, container, lblAssistive);
 

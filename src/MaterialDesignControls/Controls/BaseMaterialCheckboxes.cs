@@ -283,7 +283,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ColorProperty =
-            BindableProperty.Create(nameof(Color), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: Color.Blue);
+            BindableProperty.Create(nameof(Color), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: Color.FromHex("#2e85cc"));
 
         public Color Color
         {
@@ -299,13 +299,6 @@ namespace Plugin.MaterialDesignControls
             get { return (Color)GetValue(DisabledColorProperty); }
             set { SetValue(DisabledColorProperty, value); }
         }
-
-        #region Events
-
-        public event EventHandler IsCheckedChanged;
-
-        #endregion Events
-
 
         #region Methods
 
@@ -358,7 +351,6 @@ namespace Plugin.MaterialDesignControls
         {
             var control = (BaseMaterialCheckboxes)bindable;
             control.SetIsChecked();
-            control.IsCheckedChanged?.Invoke(control, null);
         }
 
         private static bool OnAssistiveTextValidate(BindableObject bindable, object value)

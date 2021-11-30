@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
@@ -13,18 +14,18 @@ namespace Plugin.MaterialDesignControls
 
         public MaterialCheckbox()
         {
-            InitializeComponent();
-            if (!Initialized)
+            if (!this.Initialized)
             {
-                Initialized = true;
+                this.Initialized = true;
+                this.InitializeComponent();
                 Initialize();
-            };
+            }
         }
 
         #region Properties
 
         public static readonly BindableProperty CommandProperty =
-            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(BaseMaterialCheckboxes));
+            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialCheckbox));
 
         public ICommand Command
         {
@@ -33,7 +34,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CommandParameterProperty =
-            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(BaseMaterialCheckboxes), defaultValue: null);
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialCheckbox), defaultValue: null);
 
         public object CommandParameter
         {
@@ -43,11 +44,22 @@ namespace Plugin.MaterialDesignControls
 
         #endregion Properties
 
+        #region Events
+
+        public event EventHandler IsCheckedChanged;
+
+        #endregion Events
+
         #region Methods
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            base.OnPropertyChanged(propertyName);
+            if (!this.Initialized)
+            {
+                this.Initialized = true;
+                this.InitializeComponent();
+                Initialize();
+            }
 
             UpdateLayout(propertyName, container, lblAssistive);
 
@@ -111,9 +123,9 @@ namespace Plugin.MaterialDesignControls
 
         private void Initialize()
         {
-            Spacing = Spacing;
-            TextSide = TextSide;
-            SelectionHorizontalOptions = SelectionHorizontalOptions;
+            container.Spacing = Spacing;
+            //TextSide = TextSide;
+            //SelectionHorizontalOptions = SelectionHorizontalOptions;
             chk.IsEnabled = IsEnabled;
             chk.Color = Color;
             customIcon.ImageHeightRequest = IconHeightRequest;
@@ -132,7 +144,7 @@ namespace Plugin.MaterialDesignControls
                         customIcon.SetCustomImage(CustomDisabledSelectedIcon);
                     else if (CustomSelectedIcon != null)
                         customIcon.SetCustomImage(CustomSelectedIcon);
-                    else if (UnselectedIcon != null)
+                    else if (DisabledUnselectedIcon != null)
                         customIcon.SetImage(DisabledSelectedIcon);
                     else
                         customIcon.SetImage(SelectedIcon);
@@ -143,8 +155,10 @@ namespace Plugin.MaterialDesignControls
                         customIcon.SetCustomImage(CustomDisabledUnselectedIcon);
                     else if (CustomUnselectedIcon != null)
                         customIcon.SetCustomImage(CustomUnselectedIcon);
-                    else
+                    else if (DisabledUnselectedIcon != null)
                         customIcon.SetImage(DisabledUnselectedIcon);
+                    else
+                        customIcon.SetImage(UnselectedIcon);
 		        }
 	        }
             else 
@@ -200,7 +214,10 @@ namespace Plugin.MaterialDesignControls
         public void ExecuteAction()
 	    {
             if (IsEnabled)
+            {
+                IsCheckedChanged?.Invoke(this, null);
                 IsChecked = !IsChecked;
+            }
 
             if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
                 Command.Execute(CommandParameter);
