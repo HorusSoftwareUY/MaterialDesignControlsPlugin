@@ -10,7 +10,8 @@ This control is a custom implementation of a floating action button. You can cus
     Icon="add_b.png"
     BackgroundColor="#FAF9D5"
     Animation="Scale"
-    FontSize="12"
+
+    FontSize="14"
     ShadowColor="Black"/>
 ```
 
