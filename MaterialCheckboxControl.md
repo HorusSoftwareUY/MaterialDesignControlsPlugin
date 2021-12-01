@@ -1,130 +1,119 @@
-# MaterialSliderControl
-This control is a custom implementation of a slider. You can customize some properties that we show in Documentation topic. 
+# MaterialCheckboxControl
+This control is a custom implementation of a Checkbox. You can customize some properties that we show in Documentation topic. 
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/material_slider.jpg" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/checkbox.jpg" width="300">
 
 ## how use?
 ```XML
  <material:MaterialSlider 
-    x:Name="slider" 
-    MinimumValue="0" 
-    MaximumValue="100" 
-    ThumbColor="BlueViolet"
-    LabelText="Slider"
-    ActiveTrackColor="BlueViolet"
-    InactiveTrackColor="LightPink"/>
+                    x:Name="checkbox" 
+                    Text="Pickles"
+                    IsChecked="True" 
+                    Color="Blue"
+                    Animation="Scale"/>
 ```
 
 ## Documentation
 
-### Property ValueChanged
+### Property IsCheckedChanged
 This property is to add an event when the value change on the control
 
-### Property LabelText:
-This property is to set the label text value
+### Property Text:
+This property is to set the text value
 
-### Property LabelTextColor:
-This property is to set the color of the label text when the control is enabled
+### Property TextColor:
+This property is to set the color of the text when the control is enabled
 
-### Property DisabledLabelTextColor:
-This property is to set the color of the label text when the control is disabled
+### Property DisabledTextColor:
+This property is to set the color of the text when the control is disabled
 
-### Property LabelSize:
-This property is to set the fontsize of the label text
+### Property FontSize:
+This property is to set the fontsize of the text
 
-### Property LabelMinimumText:
-This property is to set the label minimum value
-
-### Property LabelMinimumTextColor:
-This property is to set the color of the label minimum when control is enabled
-
-### Property DisabledLabelMinimumTextColor:
-This property is to set the color of the label minimum when control is disable
-
-### Property LabelMinimumSize:
-This property is to set the font size of the label minimum
-
-### Property LabelMaximumText:
-This property is to set the label maximum text value on the control.
-
-### Property LabelMaximumTextColor:
-This property is to set the label maximum text color value on the control enabled 
-
-### Property DisabledLabelMaximumTextColor:
-This property is to set the label text maximum color value on the control.  when the control is disabled
+### Property FontFamily
+This propperty is to set the fontfamily of the text
 
 ### Property AssistiveText:
 This property is to set the error text on the control. 
 
 ### Property AssistiveTextColor:
-This property is to set the error text color value on the control. By default is gray. 
+This property is to set the error text color value on the control.
 
 ### Property AssistiveSize:
-This property is to set the error text font size value on the control. By default is gray. 
+This property is to set the error text font size value on the control. 
+
+### Property AssistiveFontFamily:
+This property is to set the error text font family value on the control.
+
+### Property AssistiveMargin:
+This property is to set the error text margin value on the control.
 
 ### Property AnimateError:
 This property is to set if you can show a ShakeAnimation when there is a error with control.
 
-### Property MinimumIcon:
-This property is to set the image to minimum to types of images like png, jpg.
+### Property SelectedIcon
+This property is to set the icon with .png when the control is enabled and it is checked
 
-### Property CustomMinimumIcon:
-This property is to set the image to minimum with support to svg. 
+### Property UnselectedIcon
+This property is to set the icon with .png when the control is enabled and it is unchecked
 
-### Property MaximumIcon:
-This property is to set the image to maximum to types of images like png, jpg.
+### Property DisabledSelectedIcon
+This property is to set the icon with .png when the control is disabled and it is checked
 
-### Property CustomMaximumIcon:
-This property is to set the image to maximum with support to svg.
+### Property DisabledUnselectedIcon
+This property is to set the icon with .png when the control is disabled and it is unchecked
 
-### Property BackgroundImage:
-This property is to set the background image to control, this allow jpg, png.
+### Property CustomSelectedIcon
+This property is to set the icon with .svg when the control is enabled and it is checked
 
-### Property CustomBackgroundImage:
-This property is to set the background image to control, this allow svg.
+### Property CustomUnselectedIcon
+This property is to set the icon with .svg when the control is enabled and it is unchecked
 
-### Property ThumbImage:
-This property is to set the thumb with a image.
+### Property CustomDisabledSelectedIcon
+This property is to set the icon with .svg when the control is disabled and it is checked
 
-### Property Value:
-This property is to set the value of the control, by default is the minimum.
+### Property CustomDisabledUnselectedIcon
+This property is to set the icon with .svg when the control is disabled and it is unchecked
 
-### Property MinimumValue:
-This property is to set the minimum value, by default is 0.
+### Property IconHeightRequest
+This property is to set the HeightRequest of the icon. By default is 24
 
-### Property MaximumValue:
-This property is to set the minimum value, by default is 1.
+### Property IconWidthRequest
+This property is to set the WidthRequest of the icon. By default is 24
 
-### Property ActiveTrackColor:
-This property is to set the active tracker color
+### Property TextSide
+This property is to set the side of the text, it could be: Right or Left. By default is Right
 
-### Property InactiveTrackColor:
-This property is to set the inactive tracker color.
+### Property TextHorizontalOptions
+This property is to set the HorizontalOptions of the text. By default is Start
 
-### Property ThumbColor:
-This property is to set the color of thumb
+### Property SelectionHorizontalOptions
+This property is to set the HorizonatlOptions of the icon. By default is start
 
-### Property TrackHeight:
-This property is to set the height of the thumb
+### Property Spacing
+This property is to set the space between icon and the text. By default is 10
 
-### Property TrackCornerRadius:
-This property is to set the corner radious of the track
+### Property IsChecked
+This property is to set if the control is checked or not. By default is False
 
-### Property UserInteractionEnabled:
-This property is to set the if the interaction of the user is enabled
+### Property IsEnabled
+This property is to set if the control is enabled or not. By default is True
 
-### Property ShowIcons:
-This property is to set if show or not the icons.
+### Property Animation
+This property is to set the animation of the control: Scale, Fade, None. By default is None
 
-### Property DisabledActiveTrackColor:
-This property is to set the disabled active track color, when the control is disabled.
+### Property Color
+This property is to set the color of the checkbox when it is enabled. It only applies when the Icon is not set.
 
-### Property DisabledInactiveTrackColor:
-This property is to set the disabled inactive track color, when the control is disabled.
+### Property DisabledColor
+This property is to set the color of the checkbox when it is disabled. It only applies when the Icon is not set.
 
-### Property DisabledThumbColor:
-This property is to set the disabled thumb color, whe the control is disabled.
+### Property Command
+This property is to bind to viewmodel when it the value changed.
+
+### Property CommandParameter
+This property is to send the parameter through Command.
 
 
 
