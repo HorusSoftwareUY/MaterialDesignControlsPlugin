@@ -205,7 +205,7 @@ namespace Plugin.MaterialDesignControls
 	    }
 
         public static readonly BindableProperty SpacingProperty =
-            BindableProperty.Create(nameof(Spacing), typeof(double), typeof(BaseMaterialCheckboxes), defaultValue: 10.0);
+            BindableProperty.Create(nameof(Spacing), typeof(double), typeof(MaterialSwitch), defaultValue: 10.0);
 
         public double Spacing
         {
@@ -215,23 +215,21 @@ namespace Plugin.MaterialDesignControls
 
         #endregion Properties
 
-        #region events
+        #region Events
 
         public event EventHandler Toggled;
 
-        #endregion events
+        #endregion Events
 
         #region Methods
 
         private void Initialize()
         {
-            //sw.HorizontalOptions = LayoutOptions.EndAndExpand;
             lblLeft.VerticalOptions = TextVerticalOptions;
             lblRight.VerticalOptions = TextVerticalOptions;
             sw.OnColor = OnColor;
             sw.ThumbColor = ThumbColor;
             container.Spacing = Spacing;
-            //SwitchHorizontalOptions = SwitchHorizontalOptions;
 	    }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -248,7 +246,6 @@ namespace Plugin.MaterialDesignControls
                 case nameof(Text):
                     lblLeft.Text = Text;
                     lblRight.Text = Text;
-                    //lblRight.IsVisible = !string.IsNullOrEmpty(Text);
                     break;
                 case nameof(TextColor):
                 case nameof(DisabledTextColor):
@@ -273,15 +270,12 @@ namespace Plugin.MaterialDesignControls
                         lblLeft.IsVisible = false;
                         lblRight.Text = Text;
                         lblRight.IsVisible = true;
-                        //sw.HorizontalOptions = LayoutOptions.StartAndExpand;
-                        //lblRight.HorizontalOptions = LayoutOptions.EndAndExpand;
                     }
                     else
                     {
                         lblRight.IsVisible = false;
                         lblLeft.Text = Text;
                         lblLeft.IsVisible = true;
-                        //sw.HorizontalOptions = LayoutOptions.EndAndExpand;
                     }
                     break;
                 case nameof(OnColor):
