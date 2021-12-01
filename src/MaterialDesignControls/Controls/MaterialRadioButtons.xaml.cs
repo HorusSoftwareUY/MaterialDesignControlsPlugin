@@ -168,7 +168,8 @@ namespace Plugin.MaterialDesignControls
                     materialCheckbox.TextColor = control.TextColor;
                     materialCheckbox.FontSize = control.FontSize;
                     materialCheckbox.FontFamily = control.FontFamily;
-                    materialCheckbox.BackgroundColor = control.BackgroundColor;
+                    materialCheckbox.BackgroundColor = Color.Yellow;
+                    //materialCheckbox.BackgroundColor = control.BackgroundColor;
                     materialCheckbox.IsEnabled = control.IsEnabled;
 		            materialCheckbox.DisabledColor = control.DisabledColor;
                     materialCheckbox.DisabledTextColor = control.DisabledTextColor;
@@ -203,10 +204,10 @@ namespace Plugin.MaterialDesignControls
 
             if (materialRadioButtons is MaterialRadioButtons)
             {
-                foreach (var item in materialRadioButtons.container.Children)
-                    ((MaterialCheckbox)item).IsChecked = false;
+                //foreach (var item in materialRadioButtons.container.Children)
+                //    ((MaterialCheckbox)item).IsChecked = false;
 
-                materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
+                //materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
                 materialRadioButtons.SelectedItem = materialCheckbox.Text;
             }
         }

@@ -31,7 +31,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             this.Sizes = new ObservableCollection<string> { "6", "6.5", "7", "7.5", "8" };
             this.Rigtones = new ObservableCollection<string> {"Callisto","Ganymede","Luna"};
-            this.Places = new ObservableCollection<string> {"Home","Work"};
+            this.Places = new ObservableCollection<string> {"Home","Work","House"};
         }
 
         private string selectedSize;

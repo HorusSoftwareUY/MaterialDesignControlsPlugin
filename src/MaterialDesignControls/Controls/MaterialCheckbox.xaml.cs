@@ -130,12 +130,14 @@ namespace Plugin.MaterialDesignControls
             chk.Color = Color;
             customIcon.ImageHeightRequest = IconHeightRequest;
             customIcon.ImageWidthRequest = IconWidthRequest;
+            customIcon.BackgroundColor = Color.Green;
             customIcon.Padding = 0;
             Effects.Add(new TouchAndPressEffect());
         }
 
         private void SetCustomIcon()
-        { 
+        {
+            var text = Text;
             if (!IsEnabled)
             { 
                 if (IsChecked)
