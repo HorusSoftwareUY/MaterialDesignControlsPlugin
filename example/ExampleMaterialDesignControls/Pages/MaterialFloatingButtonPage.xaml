@@ -9,7 +9,8 @@
     Padding="10,0"
     Title="Material Floating Button">
     <ContentPage.Content>
-        <StackLayout Spacing="10">
+		<ScrollView>
+        <StackLayout Spacing="10" Padding="0,10" >
             <Label Text="Regular"/>
             <material:MaterialFloatingButton 
                 Icon="add_w.png" 
@@ -88,5 +89,6 @@
 					HorizontalOptions="Center"/>
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

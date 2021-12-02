@@ -287,6 +287,10 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(Opacity):
+                case nameof(Scale):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(Text):
                 case nameof(ToUpper):
                     this.lblText.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
