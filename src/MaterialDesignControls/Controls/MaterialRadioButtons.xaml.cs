@@ -168,8 +168,7 @@ namespace Plugin.MaterialDesignControls
                     materialCheckbox.TextColor = control.TextColor;
                     materialCheckbox.FontSize = control.FontSize;
                     materialCheckbox.FontFamily = control.FontFamily;
-                    materialCheckbox.BackgroundColor = Color.Yellow;
-                    //materialCheckbox.BackgroundColor = control.BackgroundColor;
+                    materialCheckbox.BackgroundColor = control.BackgroundColor;
                     materialCheckbox.IsEnabled = control.IsEnabled;
 		            materialCheckbox.DisabledColor = control.DisabledColor;
                     materialCheckbox.DisabledTextColor = control.DisabledTextColor;

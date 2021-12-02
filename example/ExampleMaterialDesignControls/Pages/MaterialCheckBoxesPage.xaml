@@ -149,7 +149,6 @@
                 <material:MaterialCheckbox
 		            UnselectedIcon="checkbox_unchecked.png" 
                     SelectedIcon="checkbox_checked.png"
-                    IsEnabled="False"
                     Animation="Scale"
                     AssistiveText="{Binding NameError}"
                     IsChecked="{Binding IsChecked}"

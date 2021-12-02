@@ -300,6 +300,12 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledColorProperty, value); }
         }
 
+        #region Events
+
+        public event EventHandler IsCheckedChanged;
+
+        #endregion Events
+
         #region Methods
 
         protected void UpdateLayout(string propertyName, StackLayout container, Label lblAssistive)
@@ -351,6 +357,7 @@ namespace Plugin.MaterialDesignControls
         {
             var control = (BaseMaterialCheckboxes)bindable;
             control.SetIsChecked();
+            control.IsCheckedChanged?.Invoke(control, null);
         }
 
         private static bool OnAssistiveTextValidate(BindableObject bindable, object value)

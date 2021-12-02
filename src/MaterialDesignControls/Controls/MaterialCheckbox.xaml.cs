@@ -44,11 +44,6 @@ namespace Plugin.MaterialDesignControls
 
         #endregion Properties
 
-        #region Events
-
-        public event EventHandler IsCheckedChanged;
-
-        #endregion Events
 
         #region Methods
 
@@ -124,13 +119,10 @@ namespace Plugin.MaterialDesignControls
         private void Initialize()
         {
             container.Spacing = Spacing;
-            //TextSide = TextSide;
-            //SelectionHorizontalOptions = SelectionHorizontalOptions;
             chk.IsEnabled = IsEnabled;
             chk.Color = Color;
             customIcon.ImageHeightRequest = IconHeightRequest;
             customIcon.ImageWidthRequest = IconWidthRequest;
-            customIcon.BackgroundColor = Color.Green;
             customIcon.Padding = 0;
             Effects.Add(new TouchAndPressEffect());
         }
@@ -216,10 +208,7 @@ namespace Plugin.MaterialDesignControls
         public void ExecuteAction()
 	    {
             if (IsEnabled)
-            {
-                IsCheckedChanged?.Invoke(this, null);
                 IsChecked = !IsChecked;
-            }
 
             if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
                 Command.Execute(CommandParameter);
