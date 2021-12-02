@@ -283,7 +283,6 @@
         <Style TargetType="material:MaterialCheckbox">
             <Setter Property="Color" Value="{StaticResource GradientColor1}"/>
             <Setter Property="AnimateError" Value="True" />
-            <!--<Setter Property="FontFamily" Value="" />-->
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
         </Style>

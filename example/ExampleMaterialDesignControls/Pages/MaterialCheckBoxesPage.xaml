@@ -150,6 +150,7 @@
 		            UnselectedIcon="checkbox_unchecked.png" 
                     SelectedIcon="checkbox_checked.png"
                     Animation="Scale"
+                    AnimateError="True"
                     AssistiveText="{Binding NameError}"
                     IsChecked="{Binding IsChecked}"
 		            Text="I agree to the terms of service for this site"/>

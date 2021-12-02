@@ -335,7 +335,7 @@ namespace Plugin.MaterialDesignControls
                     lblAssistive.Text = AssistiveText;
                     lblAssistive.IsVisible = !string.IsNullOrEmpty(AssistiveText);
                     if (AnimateError && !string.IsNullOrEmpty(AssistiveText))
-                        ShakeAnimation.Animate(this);
+                        Device.BeginInvokeOnMainThread( ()=> { ShakeAnimation.Animate(this); });
                     break;
                 case nameof(AssistiveTextColor):
                     lblAssistive.TextColor = AssistiveTextColor;

@@ -129,7 +129,6 @@ namespace Plugin.MaterialDesignControls
 
         private void SetCustomIcon()
         {
-            var text = Text;
             if (!IsEnabled)
             { 
                 if (IsChecked)

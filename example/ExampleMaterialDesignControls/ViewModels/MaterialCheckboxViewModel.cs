@@ -14,7 +14,7 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref isChecked, value); }
         }
 
-        private string nameError;
+        private string nameError="algo";
 
         public string NameError
         {
