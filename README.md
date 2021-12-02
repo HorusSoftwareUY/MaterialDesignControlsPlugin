@@ -209,11 +209,28 @@ Displays a checkbox control<br/>
 
 **Example**
 ```XML
- <material:MaterialSlider 
+ <material:MaterialCheckbox 
                     x:Name="checkbox" 
                     Text="Pickles"
                     IsChecked="True" 
                     Color="Blue"
+                    Animation="Scale"/>
+```
+
+### MaterialRadioButtons
+Displays a radiobuttons control<br/>
+[View documentation](MaterialRadioButtonsControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialRadioButtons
+                    x:Name="radiobuttons" 
+                    LabelText="Rigtones" 
+                    ItemsSource="{Binding Rigtones}"
                     Animation="Scale"/>
 ```
 
