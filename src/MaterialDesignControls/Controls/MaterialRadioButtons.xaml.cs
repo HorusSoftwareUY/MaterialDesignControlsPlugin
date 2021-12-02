@@ -129,6 +129,9 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName) 
 	        { 
+                case nameof(TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(LabelText):
                     lblLabel.Text = LabelText;
                     if (!string.IsNullOrEmpty(LabelText))
@@ -203,10 +206,10 @@ namespace Plugin.MaterialDesignControls
 
             if (materialRadioButtons is MaterialRadioButtons)
             {
-                //foreach (var item in materialRadioButtons.container.Children)
-                //    ((MaterialCheckbox)item).IsChecked = false;
+                foreach (var item in materialRadioButtons.container.Children)
+                    ((MaterialCheckbox)item).IsChecked = false;
 
-                //materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
+                materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
                 materialRadioButtons.SelectedItem = materialCheckbox.Text;
             }
         }

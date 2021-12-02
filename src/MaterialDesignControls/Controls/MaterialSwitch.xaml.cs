@@ -243,6 +243,9 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName) 
 	        {
+                case nameof(TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(Text):
                     lblLeft.Text = Text;
                     lblRight.Text = Text;

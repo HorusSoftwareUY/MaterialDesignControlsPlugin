@@ -60,6 +60,11 @@ namespace Plugin.MaterialDesignControls
 
             switch (propertyName)
             {
+                case nameof(TranslationX):
+                case nameof(Scale):
+                case nameof(Opacity):
+                    base.OnPropertyChanged(propertyName);
+                    break;
                 case nameof(Text):
                     lblRightText.Text = Text;
                     break;
@@ -134,9 +139,9 @@ namespace Plugin.MaterialDesignControls
                 if (IsChecked)
                 {
                     if (CustomDisabledSelectedIcon != null)
-                        customIcon.SetCustomImage(CustomDisabledSelectedIcon);
+                        customIcon.SetCustomImage(CustomDisabledSelectedIcon.CreateContent() as View);
                     else if (CustomSelectedIcon != null)
-                        customIcon.SetCustomImage(CustomSelectedIcon);
+                        customIcon.SetCustomImage(CustomSelectedIcon.CreateContent() as View);
                     else if (DisabledUnselectedIcon != null)
                         customIcon.SetImage(DisabledSelectedIcon);
                     else
@@ -145,9 +150,9 @@ namespace Plugin.MaterialDesignControls
                 else 
 		        {
                     if (CustomDisabledUnselectedIcon != null)
-                        customIcon.SetCustomImage(CustomDisabledUnselectedIcon);
+                        customIcon.SetCustomImage(CustomDisabledUnselectedIcon.CreateContent() as View);
                     else if (CustomUnselectedIcon != null)
-                        customIcon.SetCustomImage(CustomUnselectedIcon);
+                        customIcon.SetCustomImage(CustomUnselectedIcon.CreateContent() as View);
                     else if (DisabledUnselectedIcon != null)
                         customIcon.SetImage(DisabledUnselectedIcon);
                     else
@@ -159,14 +164,14 @@ namespace Plugin.MaterialDesignControls
                 if (IsChecked)
                 {
                     if (CustomSelectedIcon != null)
-                        customIcon.SetCustomImage(CustomSelectedIcon);
+                        customIcon.SetCustomImage(CustomSelectedIcon.CreateContent() as View);
                     else
                         customIcon.SetImage(SelectedIcon);
                 }
                 else 
 		        {
                     if (CustomUnselectedIcon != null)
-                        customIcon.SetCustomImage(CustomUnselectedIcon);
+                        customIcon.SetCustomImage(CustomUnselectedIcon.CreateContent() as View);
                     else
                         customIcon.SetImage(UnselectedIcon);
                 }

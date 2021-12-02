@@ -13,7 +13,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
 		            </Grid.ColumnDefinitions>
-                    <CheckBox Grid.Column="0" x:Name="chk" VerticalOptions="Center"  HeightRequest="25" WidthRequest="25"/>
+                    <CheckBox Grid.Column="0" x:Name="chk" VerticalOptions="Center"  HeightRequest="25" WidthRequest="25" />
                     <BoxView Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="25" HeightRequest="25"/>
                 </Grid>
                 <custom:CustomImageButton x:Name="customIcon" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="False"/>

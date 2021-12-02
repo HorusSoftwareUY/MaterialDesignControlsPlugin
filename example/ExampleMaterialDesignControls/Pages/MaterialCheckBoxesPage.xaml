@@ -27,16 +27,13 @@
             <material:MaterialCheckbox
 		        Text="Pickles" 
                 IsEnabled="False"
-                IsChecked="True"
-		        Color="{StaticResource GradientColor1}"/>
+                IsChecked="True"/>
             <material:MaterialCheckbox
 		        Text="Tomato" 
-                IsEnabled="False"
-		        Color="{StaticResource GradientColor1}"/>
+                IsEnabled="False"/>
             <material:MaterialCheckbox
 		        Text="Lettuce" 
-                IsEnabled="False"
-		        Color="{StaticResource GradientColor1}"/>
+                IsEnabled="False"/>
 
             <BoxView HeightRequest="0.5" Color="LightGray" Margin="0,10,0,10"/>
 
@@ -72,77 +69,58 @@
 
             <BoxView HeightRequest="0.5" Color="LightGray" Margin="0,10,0,10"/>
 
-            <material:MaterialLabel Text="Custom icon with .svg file" HorizontalOptions="Center" FontAttributes="Bold"/>
-            <StackLayout Margin="5,0,0,0">
-                <material:MaterialCheckbox
+                <material:MaterialLabel Text="Custom icon with .svg file" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <StackLayout Margin="5,0,0,0">
+                    <material:MaterialCheckbox
 		            Text="Checkbox 1" 
                     Animation="Fade"
                     IsChecked="True">
-                    <material:MaterialCheckbox.CustomSelectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg"/>
-                    </material:MaterialCheckbox.CustomSelectedIcon>
-                    <material:MaterialCheckbox.CustomUnselectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg"/>
-                    </material:MaterialCheckbox.CustomUnselectedIcon>
-                    <material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg"/>
-                    </material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                    <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg"/>
-                    </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                </material:MaterialCheckbox>
-                <material:MaterialCheckbox
+                        <material:MaterialCheckbox.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomSelectedIcon>
+                        <material:MaterialCheckbox.CustomUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomUnselectedIcon>
+                        <material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                        <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                    </material:MaterialCheckbox>
+                    <material:MaterialCheckbox
                     Animation="Scale"
 		            Text="Checkbox 2">
-                    <material:MaterialCheckbox.CustomSelectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg"/>
-                    </material:MaterialCheckbox.CustomSelectedIcon>
-                    <material:MaterialCheckbox.CustomUnselectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg"/>
-                    </material:MaterialCheckbox.CustomUnselectedIcon>
-                    <material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg"/>
-                    </material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                    <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg"/>
-                    </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                </material:MaterialCheckbox>
-                <material:MaterialCheckbox
-		            Text="Checkbox 3" 
-                    Animation="Scale"
-		            IsEnabled="False">
-                    <material:MaterialCheckbox.CustomSelectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg"/>
-                    </material:MaterialCheckbox.CustomSelectedIcon>
-                    <material:MaterialCheckbox.CustomUnselectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg"/>
-                    </material:MaterialCheckbox.CustomUnselectedIcon>
-                    <material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg"/>
-                    </material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                    <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg"/>
-                    </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                </material:MaterialCheckbox>
-                <material:MaterialCheckbox
-		            Text="Checkbox 4" 
-                    IsEnabled="False"
-                    Animation="Fade"
-                    IsChecked="True">
-                    <material:MaterialCheckbox.CustomSelectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg"/>
-                    </material:MaterialCheckbox.CustomSelectedIcon>
-                    <material:MaterialCheckbox.CustomUnselectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg"/>
-                    </material:MaterialCheckbox.CustomUnselectedIcon>
-                    <material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg"/>
-                    </material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                    <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg"/>
-                    </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                </material:MaterialCheckbox>
-            </StackLayout>
+                        <material:MaterialCheckbox.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomSelectedIcon>
+                        <material:MaterialCheckbox.CustomUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomUnselectedIcon>
+                        <material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                        <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                    </material:MaterialCheckbox>
+                </StackLayout> 
 
                 <BoxView HeightRequest="0.5" Color="LightGray" Margin="0,10,0,10"/>
 

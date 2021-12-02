@@ -42,21 +42,7 @@
 				SelectionHorizontalOptions="EndAndExpand"/>
 
 			<BoxView BackgroundColor="LightGray" HeightRequest="0.5"/>
-			<!--<material:MaterialLabel FontAttributes="Bold" Text=".png files and Animation" HorizontalOptions="Center"/>
-            <material:MaterialRadioButtons 
-				Spacing="0"
-		        ItemsSource="{Binding Places}" 
-		        LabelText="Ship to: (.png and Animation)" 
-				SelectedIcon="radioButton_checked.png"
-				UnselectedIcon="radioButton_unchecked.png"
-				DisabledSelectedIcon="radioButton_disabledChecked.png"
-				DisabledUnselectedIcon="radioButton_disabledUnchecked.png"
-				Animation="Scale"
-				IconHeightRequest="18"
-				IconWidthRequest="18"
-		        SelectedItem="{Binding SelectedPlace}" />-->
 
-			<!--TODO//Is missing implement with .svg files-->
             <material:MaterialRadioButtons 
 				HorizontalOptions="FillAndExpand"
 				Spacing="0"
@@ -64,19 +50,28 @@
 		        ItemsSource="{Binding Places}" 
 		        LabelText="Ship to (.svg):" 
 		        SelectedItem="{Binding SelectedPlace}">
-				<material:MaterialRadioButtons.CustomSelectedIcon>
-                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_checked.svg"/>
-                </material:MaterialRadioButtons.CustomSelectedIcon>
-				<material:MaterialRadioButtons.CustomUnselectedIcon>
-                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_unchecked.svg"/>
-                </material:MaterialRadioButtons.CustomUnselectedIcon>
-				<material:MaterialRadioButtons.CustomDisabledSelectedIcon>
-                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledChecked.svg"/>
-                </material:MaterialRadioButtons.CustomDisabledSelectedIcon>
-				<material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
-                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledUnchecked.svg"/>
-                </material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
-            </material:MaterialRadioButtons>
+                    <material:MaterialRadioButtons.CustomSelectedIcon>
+                        <DataTemplate>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_checked.svg"/>
+                        </DataTemplate>
+                    </material:MaterialRadioButtons.CustomSelectedIcon>
+                    <material:MaterialRadioButtons.CustomUnselectedIcon>
+                        <DataTemplate>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_unchecked.svg"/>
+                        </DataTemplate>
+                    </material:MaterialRadioButtons.CustomUnselectedIcon>
+                    <material:MaterialRadioButtons.CustomDisabledSelectedIcon>
+                        <DataTemplate>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledChecked.svg"/>
+                            <!--<ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_unchecked.svg"/>-->
+                        </DataTemplate>
+                    </material:MaterialRadioButtons.CustomDisabledSelectedIcon>
+                    <material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
+                        <DataTemplate>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledUnchecked.svg"/>
+                        </DataTemplate>
+                    </material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
+                </material:MaterialRadioButtons>
 
             <material:MaterialButton Text="Save" HorizontalOptions="Center" WidthRequest="150" Command="{Binding SaveSizeCommand}" />
         </StackLayout>

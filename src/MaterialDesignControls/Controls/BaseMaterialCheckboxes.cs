@@ -155,38 +155,38 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty CustomUnselectedIconProperty =
-            BindableProperty.Create(nameof(CustomUnselectedIcon), typeof(View), typeof(BaseMaterialCheckboxes), defaultValue: null);
+            BindableProperty.Create(nameof(CustomUnselectedIcon), typeof(DataTemplate ), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
-        public View CustomUnselectedIcon
+        public DataTemplate CustomUnselectedIcon
         {
-            get { return (View)GetValue(CustomUnselectedIconProperty); }
+            get { return (DataTemplate )GetValue(CustomUnselectedIconProperty); }
             set { SetValue(CustomUnselectedIconProperty, value); }
         }
 
         public static readonly BindableProperty CustomSelectedIconProperty =
-            BindableProperty.Create(nameof(CustomSelectedIcon), typeof(View), typeof(BaseMaterialCheckboxes), defaultValue: null);
+            BindableProperty.Create(nameof(CustomSelectedIcon), typeof(DataTemplate), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
-        public View CustomSelectedIcon
+        public DataTemplate CustomSelectedIcon
         {
-            get { return (View)GetValue(CustomSelectedIconProperty); }
+            get { return (DataTemplate)GetValue(CustomSelectedIconProperty); }
             set { SetValue(CustomSelectedIconProperty, value); }
         }
 
         public static readonly BindableProperty CustomDisabledUnselectedIconProperty =
-            BindableProperty.Create(nameof(CustomDisabledUnselectedIcon), typeof(View), typeof(BaseMaterialCheckboxes), defaultValue: null);
+            BindableProperty.Create(nameof(CustomDisabledUnselectedIcon), typeof(DataTemplate ), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
-        public View CustomDisabledUnselectedIcon
+        public DataTemplate CustomDisabledUnselectedIcon
         {
-            get { return (View)GetValue(CustomDisabledUnselectedIconProperty); }
+            get { return (DataTemplate )GetValue(CustomDisabledUnselectedIconProperty); }
             set { SetValue(CustomDisabledUnselectedIconProperty, value); }
         }
 
         public static readonly BindableProperty CustomDisabledSelectedIconProperty =
-            BindableProperty.Create(nameof(CustomDisabledSelectedIcon), typeof(View), typeof(BaseMaterialCheckboxes), defaultValue: null);
+            BindableProperty.Create(nameof(CustomDisabledSelectedIcon), typeof(DataTemplate ), typeof(BaseMaterialCheckboxes), defaultValue: null);
 
-        public View CustomDisabledSelectedIcon
+        public DataTemplate CustomDisabledSelectedIcon
         {
-            get { return (View)GetValue(CustomDisabledSelectedIconProperty); }
+            get { return (DataTemplate )GetValue(CustomDisabledSelectedIconProperty); }
             set { SetValue(CustomDisabledSelectedIconProperty, value); }
         }
 
