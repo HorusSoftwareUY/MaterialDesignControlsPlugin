@@ -234,6 +234,19 @@ Displays a radiobuttons control<br/>
                     Animation="Scale"/>
 ```
 
+### MaterialSwitch
+Displays a switch control<br/>
+[View documentation](MaterialSwitchControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialSwitch x:Name="switch" Text="Wifi" IsToggled="True"/>
+```
+
 ## Effects
 
 ### TouchAndPressEffect
