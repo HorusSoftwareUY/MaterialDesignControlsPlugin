@@ -22,7 +22,7 @@
                 <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Outlined" LabelText="Size" Placeholder="Select Option"/>
                 <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" />
                 <Label x:Name="lblSelectedIndex" Text="Selected Index: -" />
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}"/>
 
                 <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
 

@@ -226,6 +226,8 @@
     <BundleResource Include="Resources\radioButton_disabledChecked.png" />
     <BundleResource Include="Resources\radioButton_disabledUnchecked.png" />
     <BundleResource Include="Resources\radioButton_unchecked.png" />
+    <BundleResource Include="Resources\add_b.png" />
+    <BundleResource Include="Resources\add_w.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\volume.png" />

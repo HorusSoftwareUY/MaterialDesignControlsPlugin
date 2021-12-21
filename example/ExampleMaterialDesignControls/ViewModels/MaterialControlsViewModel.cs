@@ -66,7 +66,6 @@ namespace ExampleMaterialDesignControls.ViewModels
             await Navigation.PushAsync(new MaterialCustomControl());
         });
 
-
         public ICommand GoMaterialCheckboxesCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialCheckBoxesPage());
@@ -85,6 +84,11 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialSegmentedCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialSegmentedPage());
+        });
+
+        public ICommand GoMaterialFloatingButtonCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialFloatingButtonPage());
         });
     }
 }
