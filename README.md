@@ -199,6 +199,54 @@ Displays a value with its respective label in read-only format.
 ```XML
 <material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
 ```
+### MaterialCheckbox
+Displays a checkbox control<br/>
+[View documentation](MaterialCheckboxControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/checkbox.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialCheckbox 
+                    x:Name="checkbox" 
+                    Text="Pickles"
+                    IsChecked="True" 
+                    Color="Blue"
+                    Animation="Scale"/>
+```
+
+### MaterialRadioButtons
+Displays a radiobuttons control<br/>
+[View documentation](MaterialRadioButtonsControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialRadioButtons
+                    x:Name="radiobuttons" 
+                    LabelText="Rigtones" 
+                    ItemsSource="{Binding Rigtones}"
+                    Animation="Scale"/>
+```
+
+### MaterialSwitch
+Displays a switch control<br/>
+[View documentation](MaterialSwitchControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialSwitch x:Name="switch" Text="Wifi" IsToggled="True"/>
+```
+
 ## Effects
 
 ### TouchAndPressEffect

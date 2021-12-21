@@ -69,6 +69,20 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialSegmentedCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialSegmentedPage());
+
+        public ICommand GoMaterialCheckboxesCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialCheckBoxesPage());
+        });
+
+        public ICommand GoMaterialRadioButtonsCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialRadioButtonsPage());
+        });
+
+        public ICommand GoMaterialSwitchCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialSwitchPage());
         });
     }
 }

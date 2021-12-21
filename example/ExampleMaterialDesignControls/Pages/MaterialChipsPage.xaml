@@ -9,9 +9,9 @@
             <StackLayout Padding="20" Spacing="20">
                 <Grid RowSpacing="16">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -42,6 +42,8 @@
                     ChipsHeightRequest="32"
                     IsEnabled="{Binding IsColorSelectionEnabled}" />
 
+                <material:MaterialChipsGroup/>
+
                 <StackLayout
                     Orientation="Horizontal"
                     Spacing="16">
@@ -54,9 +56,9 @@
 
                 <BoxView
                     HeightRequest="1"
-                    BackgroundColor="LightGray" />
+                    BackgroundColor="LightGray"/>
 
-                <material:MaterialLabel Text="Filters" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center"  />
+                <material:MaterialLabel Text="Filters" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center"/>
                 <FlexLayout Wrap="Wrap" Direction="Row" HorizontalOptions="FillAndExpand">
                     <StackLayout>
                         <material:MaterialChips Margin="0,10,10,0" TrailingIcon="cancel.png" TrailingIconCommand="{Binding IconTapCommand}" IsSelected="false" IsEnabled="true" Text="Opt J" ToUpper="True" />
