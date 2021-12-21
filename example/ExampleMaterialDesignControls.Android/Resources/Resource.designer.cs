@@ -14616,34 +14616,6 @@ namespace ExampleMaterialDesignControls.Droid
 			public const int notify_panel_notification_icon_bg = 2131165546;
 			
 			// aapt resource value: 0x7F07016B
-			public const int scale = 2131165547;
-			
-			// aapt resource value: 0x7F07016C
-			public const int Shipping = 2131165548;
-			
-			// aapt resource value: 0x7F07016D
-			public const int shoes_1 = 2131165549;
-			
-			// aapt resource value: 0x7F07016E
-			public const int showPassword = 2131165550;
-			
-			// aapt resource value: 0x7F07016F
-			public const int splash_screen = 2131165551;
-			
-			// aapt resource value: 0x7F070170
-			public const int test_custom_background = 2131165552;
-			
-			// aapt resource value: 0x7F070171
-			public const int tooltip_frame_dark = 2131165553;
-			
-			// aapt resource value: 0x7F070172
-			public const int tooltip_frame_light = 2131165554;
-			
-			// aapt resource value: 0x7F070173
-			public const int Visa = 2131165555;
-			
-			// aapt resource value: 0x7F070174
-			public const int volume = 2131165556;
 			public const int Payment = 2131165547;
 			
 			// aapt resource value: 0x7F07016C

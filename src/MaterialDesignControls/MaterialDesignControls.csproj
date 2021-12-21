@@ -123,6 +123,8 @@
     <Compile Include="Utils\LoggerHelper.cs" />
     <Compile Include="Controls\MaterialSegmented.xaml.cs">
       <DependentUpon>MaterialSegmented.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controls\MaterialCheckbox.xaml.cs">
       <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
       <SubType>Code</SubType>

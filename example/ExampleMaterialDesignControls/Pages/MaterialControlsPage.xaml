@@ -208,6 +208,8 @@
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_segmented.svg"/>
                                 </Frame>
                                 <material:MaterialLabel Text="Material Segmented" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>        
                     </Grid>
             </ScrollView>
         </Grid>

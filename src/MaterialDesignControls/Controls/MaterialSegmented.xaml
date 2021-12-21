@@ -10,7 +10,7 @@
             MinimumHeightRequest="32"
             HeightRequest="32"
 	        HasShadow="False" Padding="0" BackgroundColor="LightGray" CornerRadius="16" VerticalOptions="Start">
-            <Grid x:Name="grid" ColumnSpacing="0">
+            <Grid x:Name="grid" ColumnSpacing="0"/>
                 <!--<Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -25,7 +25,6 @@
                 <Frame Grid.Column="2" HorizontalOptions="Fill" Padding="10,5" Margin="2" CornerRadius="18" HasShadow="False" BackgroundColor="LightGray">
                     <Label Text="ceviche" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
                 </Frame>-->
-            </Grid>
 	    </Frame>
     </ContentView.Content>
 </ContentView>
