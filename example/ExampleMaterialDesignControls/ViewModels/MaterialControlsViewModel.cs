@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using ExampleMaterialDesignControls.Pages;
 using Xamarin.Forms;
 
@@ -68,6 +64,11 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialCustomControlCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialCustomControl());
+        });
+
+        public ICommand GoMaterialSegmentedCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialSegmentedPage());
         });
     }
 }

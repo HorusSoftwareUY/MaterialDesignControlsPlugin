@@ -14616,37 +14616,34 @@ namespace ExampleMaterialDesignControls.Droid
 			public const int Product = 2131165546;
 			
 			// aapt resource value: 0x7F07016B
-			public const int save = 2131165547;
+			public const int scale = 2131165547;
 			
 			// aapt resource value: 0x7F07016C
-			public const int scale = 2131165548;
+			public const int Shipping = 2131165548;
 			
 			// aapt resource value: 0x7F07016D
-			public const int Shipping = 2131165549;
+			public const int shoes_1 = 2131165549;
 			
 			// aapt resource value: 0x7F07016E
-			public const int shoes_1 = 2131165550;
+			public const int showPassword = 2131165550;
 			
 			// aapt resource value: 0x7F07016F
-			public const int showPassword = 2131165551;
+			public const int splash_screen = 2131165551;
 			
 			// aapt resource value: 0x7F070170
-			public const int splash_screen = 2131165552;
+			public const int test_custom_background = 2131165552;
 			
 			// aapt resource value: 0x7F070171
-			public const int test_custom_background = 2131165553;
+			public const int tooltip_frame_dark = 2131165553;
 			
 			// aapt resource value: 0x7F070172
-			public const int tooltip_frame_dark = 2131165554;
+			public const int tooltip_frame_light = 2131165554;
 			
 			// aapt resource value: 0x7F070173
-			public const int tooltip_frame_light = 2131165555;
+			public const int Visa = 2131165555;
 			
 			// aapt resource value: 0x7F070174
-			public const int Visa = 2131165556;
-			
-			// aapt resource value: 0x7F070175
-			public const int volume = 2131165557;
+			public const int volume = 2131165556;
 			
 			static Drawable()
 			{
