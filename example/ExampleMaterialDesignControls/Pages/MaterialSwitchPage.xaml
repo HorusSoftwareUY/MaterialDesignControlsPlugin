@@ -3,7 +3,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage">
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage"
+    Title="Material Switch">
     <ContentPage.Content>
         <StackLayout Spacing="15">
             <material:MaterialSwitch Text="Wifi" Toggled="Switch_toggled"/>

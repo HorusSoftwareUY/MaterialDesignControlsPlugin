@@ -14,8 +14,6 @@
 
             <material:MaterialSegmented 
                 CornerRadius="0"
-                BackgroundColor="White"
-                UnselectedColor="White"
                 HeightRequest="40"
 		        ItemsSource="{Binding Items}" 
                 SelectedColor="#F0A297"

@@ -92,7 +92,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledUnselectedColorProperty, value); }
         }
 
-
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<string>), typeof(MaterialSegmented), defaultValue: null, propertyChanged: OnItemsSourceChanged);
 
