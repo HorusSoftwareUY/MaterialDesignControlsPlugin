@@ -265,6 +265,27 @@ Displays a switch control<br/>
  <material:MaterialSwitch x:Name="switch" Text="Wifi" IsToggled="True"/>
 ```
 
+### MaterialSegmented
+Displays a segmented control<br/>
+[View documentation](MaterialSegmentedControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/segmented.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialSegmented 
+    x:Name="segmented" 
+    HeightRequest="40"
+    BackgroundColor="#58555A"
+    ItemsSource="{Binding Backlight}"
+    UnselectedColor="#58555A"
+    SelectedColor="#D9D277"
+    UnselectedTextColor="#D9D277"
+    CornerRadius="10"/>
+```
+
 ## Effects
 
 ### TouchAndPressEffect
