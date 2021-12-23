@@ -10,5 +10,10 @@ namespace ExampleMaterialDesignControls.Pages
             InitializeComponent();
             this.BindingContext = new MaterialSegmentedViewModel() { DisplayAlert = this.DisplayAlert };
         }
+
+        void MaterialSegmented_IsSelectedChanged(System.Object sender, System.EventArgs e)
+        {
+            DisplayAlert("Message","Segment Is Selected Changed","OK");
+        }
     }
 }
