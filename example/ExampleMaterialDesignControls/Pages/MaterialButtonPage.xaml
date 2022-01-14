@@ -4,18 +4,15 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialButtonPage"
-             Title="MaterialButton"
+             Title="Material Button"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="True"
              IconImageSource="calendar.png">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
-                <material:MaterialButton Text="Save" ToUpper="True" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" CornerRadius="14" />
-
-                <material:MaterialOutlineButton Text="Cancel action" Command="{Binding TapCommand}" CommandParameter="Canceled" CornerRadius="14"
-                                                IconSize="34" ActivityIndicatorSize="34"
-                                                Padding="16,0" ContentIsExpanded="True" Spacing="0" WidthRequest="295" HorizontalOptions="Center">
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="20" Spacing="20">
+                <material:MaterialButton Text="Download" Icon="download.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}"/>
+                <material:MaterialOutlineButton Text="Cancel Action" Command="{Binding TapCommand}" CommandParameter="Canceled" IconSize="26" ActivityIndicatorSize="26" Padding="16,0" ContentIsExpanded="True" Spacing="0" WidthRequest="400" HorizontalOptions="CenterAndExpand">
                     <material:MaterialButton.CustomIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
                     </material:MaterialButton.CustomIcon>
@@ -23,52 +20,24 @@
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
                     </material:MaterialButton.CustomActivityIndicator>
                 </material:MaterialOutlineButton>
-
                 <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
-
-                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Save 2" Icon="save.png" DisabledIcon="save.png" CornerRadius="20" />
-                <material:MaterialOutlineButton IsVisible="{Binding CancelIsVisible}" IsEnabled="false" Text="Cancel 2" Command="{Binding TapCommand}" CornerRadius="20" CommandParameter="Canceled 2" />
+                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Download" Icon="download.png" CornerRadius="16"/>
+                <material:MaterialOutlineButton IsVisible="{Binding CancelIsVisible}" IsEnabled="false" Text="Cancel 2" Command="{Binding TapCommand}" CommandParameter="Canceled 2" />
                 <material:MaterialFlatButton IsVisible="{Binding DeleteIsVisible}" IsEnabled="false" Text="Delete 2" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted 2" />
 
-                <Label Text="Animations" HorizontalTextAlignment="Center" Margin="0,40,0,0" />
-                <material:MaterialButton Animation="None" Text="None" ToUpper="True" CornerRadius="14" />
-                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" ToUpper="True" CornerRadius="14" />
-                <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" ToUpper="True" CornerRadius="14" />
+                <material:MaterialDivider Margin="0,10" />
 
-                <Label Text="Clicked event" HorizontalTextAlignment="Center" Margin="0,40,0,0" />
-                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Clicked" ToUpper="True" CornerRadius="14" Clicked="Button_Clicked" />
+                <Label Text="Animations" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                <material:MaterialButton Animation="None" Text="None" />
+                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" />
+                <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" />
 
+                <material:MaterialDivider Margin="0,10" />
+
+                <Label Text="Clicked event" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Clicked" Clicked="Button_Clicked" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
-
-    <!--
-        <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
-                <material:MaterialButton Text="Save" ToUpper="True" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" />
-                <material:MaterialOutlineButton Text="Cancel" Command="{Binding TapCommand}" CommandParameter="Canceled" />
-                <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
-
-                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Save 2" Icon="save.png" DisabledIcon="save.png" CornerRadius="20" />
-                <material:MaterialOutlineButton IsVisible="{Binding CancelIsVisible}" IsEnabled="false" Text="Cancel 2" Command="{Binding TapCommand}" CornerRadius="20" CommandParameter="Canceled 2" />
-                <material:MaterialFlatButton IsVisible="{Binding DeleteIsVisible}" IsEnabled="false" Text="Delete 2" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted 2" />
-
-                <Label Text="Animations" HorizontalTextAlignment="Center" Margin="0,40,0,0" />
-                <material:MaterialButton Animation="None" Text="None" ToUpper="True" />
-                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" ToUpper="True" />
-                <material:MaterialButton Animation="Fade" AnimationParameter="0.2" Text="Fade" ToUpper="True" />
-                <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" ToUpper="True" />
-                <material:MaterialButton Animation="Scale" AnimationParameter="0.7" Text="Scale" ToUpper="True">
-                    <material:MaterialButton.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
-                        </OnPlatform>
-                    </material:MaterialButton.FontFamily>
-                </material:MaterialButton>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>-->
 
 </ContentPage>

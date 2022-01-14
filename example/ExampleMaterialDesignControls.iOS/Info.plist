@@ -23,7 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>ExampleMaterialDesignControls</string>
+	<string>Material Design Controls</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.horus.examplematerialdesigncontrols</string>
 	<key>CFBundleVersion</key>

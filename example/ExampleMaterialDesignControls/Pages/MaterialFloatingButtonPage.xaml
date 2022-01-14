@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialFloatingButtonPage"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    BackgroundColor="White"
+    Padding="10,0"
+    Title="Material Floating Button">
+    <ContentPage.Content>
+		<ScrollView>
+        <StackLayout Spacing="10" Padding="0,10" >
+            <Label Text="Regular"/>
+            <material:MaterialFloatingButton 
+                Icon="add_w.png" 
+		        Animation="Scale"
+				HorizontalOptions="Center"
+				Clicked="MaterialFloatingButton_Clicked"
+				BackgroundColor="{StaticResource GradientColor1}" />
+
+            <Label Text="Mini"/>
+            <material:MaterialFloatingButton 
+		        Icon="add_w.png" 
+		        ButtonSize="Mini" 
+		        Animation="Scale"
+				HorizontalOptions="Center"
+				BackgroundColor="{StaticResource GradientColor2}" />
+
+            <Label Text="Mini (Disabled)"/>
+            <material:MaterialFloatingButton 
+		        Icon="add_w.png" 
+				IsEnabled="False"
+		        ButtonSize="Mini" 
+		        Animation="Scale"
+				HorizontalOptions="Center"
+				BackgroundColor="{StaticResource GradientColor3}" />
+
+            <Label Text="Mini (.svg)"/>
+            <material:MaterialFloatingButton  
+		        ButtonSize="Mini" 
+		        Animation="Scale"
+				Command="{Binding TapCommand}"
+				CommandParameter="Floating button tapped!"
+				HorizontalOptions="Center"
+				BackgroundColor="{StaticResource GradientColorTransparent11}"
+				BorderColor="{StaticResource GradientColor11}"
+				TextColor="{StaticResource GradientColor11}">
+                <material:MaterialFloatingButton.CustomIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_custom.svg"/>
+                </material:MaterialFloatingButton.CustomIcon>
+            </material:MaterialFloatingButton>
+
+            <Label Text="Extended (Left icon)"/>
+            <material:MaterialFloatingButton 
+                Text="Enable/Disable" 
+		        FontSize="16" 
+		        Icon="add_w.png" 
+		        ButtonSize="Extended" 
+		        Animation="Fade"
+				Command="{Binding EnableCommand}"
+				HorizontalOptions="Center"
+				BackgroundColor="{StaticResource GradientColorTransparent11}"
+				BorderColor="{StaticResource GradientColor11}"
+				TextColor="{StaticResource GradientColor11}">
+				<material:MaterialFloatingButton.CustomIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_custom.svg"/>
+                </material:MaterialFloatingButton.CustomIcon>
+			</material:MaterialFloatingButton>
+
+            <Label Text="Extended (Right icon) / Enable and disable styles"/>
+            <material:MaterialFloatingButton 
+                Text="Add" 
+		        FontSize="16" 
+		        ButtonSize="Extended"
+				IsEnabled="{Binding IsEnabled}"
+				Command="{Binding TapCommand}"
+				CommandParameter="Floating button tapped!"
+		        Icon="add_w.png" 
+		        IconSide="Right" 
+		        Animation="Scale"
+				HorizontalOptions="Center"
+				BackgroundColor="{StaticResource GradientColorTransparent11}"
+				BorderColor="{StaticResource GradientColor11}"
+				TextColor="{StaticResource GradientColor11}"
+				DisabledBackgroundColor="LightGray"
+				DisabledTextColor="Gray">
+				<material:MaterialFloatingButton.CustomIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starSelected.svg"/>
+                </material:MaterialFloatingButton.CustomIcon>
+                <material:MaterialFloatingButton.CustomDisabledIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starUnselected.svg"/>
+                </material:MaterialFloatingButton.CustomDisabledIcon>
+			</material:MaterialFloatingButton>
+
+            <Label Text="Extended"/>
+			<StackLayout Orientation="Horizontal">
+                <material:MaterialFloatingButton 
+					iOSShadowOpacity="0.3" 
+		        	iOSShadowRadius="6" 
+					iOSShadowOffset="0,5" 
+		        	Text="Add new item" 
+					FontSize="16" 
+					FontAttributes="Bold"
+					ButtonSize="Extended" 
+					Animation="Fade"
+					HorizontalOptions="Center"
+					BackgroundColor="{StaticResource GradientColorTransparent4}"
+					TextColor="{StaticResource GradientColor4}"
+					/>
+                <material:MaterialFloatingButton 
+					Text="Add new item" 
+					ToUpper="True"
+					FontSize="16" 
+					ButtonSize="Extended" 
+					Animation="Fade"
+					HorizontalOptions="Center"
+					BackgroundColor="{StaticResource GradientColor5}" />
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

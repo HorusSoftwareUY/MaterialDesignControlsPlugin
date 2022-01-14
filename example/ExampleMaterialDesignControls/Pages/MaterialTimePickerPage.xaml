@@ -3,28 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialTimePickerPage"
-             Title="MaterialTimePicker">
+             Title="Material Time Picker">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
-                <material:MaterialTimePicker Time="{Binding Time}" Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" Placeholder="Select time" PlaceholderColor="Red" />
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="20" Spacing="20">
+                <material:MaterialTimePicker Time="{Binding Time}" Type="Filled"
+                                             LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" Placeholder="Select time" />
+                <Grid
+                    ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <material:MaterialFlatButton Text="Clear" Command="{Binding ClearCommand}" />
+                    <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
+                </Grid>
+
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" IsEnabled="False" />
                 <material:MaterialTimePicker Type="Lined" LabelText="Deadline" Format="H:mm" />
-                <material:MaterialLabel Text="HorizontalTextAlignment" Margin="0,16,0,0" />
-                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="LightGray" TrailingIcon="" />
-                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="LightGray" TrailingIcon=""
-                                             Placeholder="Select time" PlaceholderColor="Red"
-                                             AssistiveText="Required field" LabelText="Time" />
-                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="LightGray" TrailingIcon="">
+
+                <material:MaterialDivider Margin="0,10" />
+
+                <Label Text="Horizontal Text Alignment" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Start" TrailingIcon="" />
+                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="Center" TrailingIcon="" Placeholder="Select time" AssistiveText="Required field" LabelText="Time" />
+                <material:MaterialTimePicker Type="Filled" HorizontalTextAlignment="End" TrailingIcon="">
                     <material:MaterialTimePicker.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                            <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                         </OnPlatform>
                     </material:MaterialTimePicker.FontFamily>
                 </material:MaterialTimePicker>
-                <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

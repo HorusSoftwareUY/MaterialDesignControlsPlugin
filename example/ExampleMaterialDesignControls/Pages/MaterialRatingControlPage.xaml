@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialRatingControlPage"
+             Title="MaterialRatingControl">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+                <material:MaterialRatingControl
+                    LabelText="How do you rate...?(png icons)"
+                    ItemSize="5"
+                    ItemsByRow="5"
+                    Animation="Fade"
+                    AnimationParameter="0.1" 
+                    SelectedIcon="startSelected.png"
+                    UnSelectedIcon="starUnselected.png" />
+                
+                <material:MaterialRatingControl
+                    LabelText="How do you...?(preselect value)"
+                    ItemSize="6"
+                    ItemsByRow="6"
+                    Value="2"
+                    SelectedIcon="startSelected.png"
+                    UnSelectedIcon="starUnselected.png" />
+
+                <material:MaterialRatingControl
+                    LabelText="How do you...?(svg icons)"
+                    ItemSize="2"
+                    ItemsByRow="2"
+                    TabIndex="3">
+                    <material:MaterialRatingControl.CustomSelectedIcon>
+                        <DataTemplate>
+                            <ffimageloadingsvg:SvgCachedImage
+                                Source="resource://ExampleMaterialDesignControls.Resources.Svg.starSelected.svg"/>
+                        </DataTemplate>
+                    </material:MaterialRatingControl.CustomSelectedIcon>
+                    <material:MaterialRatingControl.CustomUnSelectedIcon>
+                        <DataTemplate>
+                            <ffimageloadingsvg:SvgCachedImage
+                                Source="resource://ExampleMaterialDesignControls.Resources.Svg.starUnselected.svg"/>
+                        </DataTemplate>
+                    </material:MaterialRatingControl.CustomUnSelectedIcon>
+                </material:MaterialRatingControl>
+
+                <material:MaterialRatingControl
+                    LabelText="How do you rate...?(multiple rows)"
+                    ItemSize="10"
+                    ItemsByRow="5"
+                    SelectedIcon="startSelected.png"
+                    UnSelectedIcon="starUnselected.png" />
+
+                <Label
+                    Text="Animations"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,20,0,0"
+                    TextColor="Blue"
+                    FontSize="Large" />
+
+                <material:MaterialRatingControl
+                    LabelText="How do you rate...?(none)"
+                    ItemSize="5"
+                    ItemsByRow="5"
+                    SelectedIcon="startSelected.png"
+                    UnSelectedIcon="starUnselected.png" />
+
+                <material:MaterialRatingControl
+                    LabelText="How do you...? (fade)"
+                    ItemSize="5"
+                    ItemsByRow="5"
+                    Animation="Fade"
+                    AnimationParameter="0.1"
+                    SelectedIcon="startSelected.png"
+                    UnSelectedIcon="starUnselected.png" />
+
+                <material:MaterialRatingControl
+                    LabelText="How do you...? (scale)"
+                    ItemSize="5"
+                    ItemsByRow="5"
+                    Animation="Scale"
+                    AnimationParameter="1.5"
+                    SelectedIcon="startSelected.png"
+                    UnSelectedIcon="starUnselected.png" />
+
+                <Label
+                    Text="Assistive Text"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,20,0,0"
+                    TextColor="Blue"
+                    FontSize="Large" />
+
+
+                <material:MaterialRatingControl
+                    LabelText="How do you rate the service?"
+                    ItemSize="6"
+                    ItemsByRow="6"
+                    Value="{Binding Value}"
+                    AssistiveText="{Binding Error}"
+                    AnimateError="True"
+                    AssistiveTextColor="Red"
+                    SelectedIcon="startSelected.png"
+                    UnSelectedIcon="starUnselected.png" />
+                <Grid
+                    ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <material:MaterialFlatButton Text="Clear" Command="{Binding ClearCommand}" />
+                    <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

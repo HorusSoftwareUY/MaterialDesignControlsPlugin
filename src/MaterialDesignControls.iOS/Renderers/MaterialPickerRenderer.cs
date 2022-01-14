@@ -55,7 +55,7 @@ namespace Plugin.MaterialDesignControls.iOS
             var customPicker = (CustomPicker)Element;
             if (e.PropertyName == nameof(customPicker.SelectedIndex))
             {
-                if (customPicker.SelectedItem == null && Control.Text == null && !string.IsNullOrEmpty(customPicker.Placeholder))
+                if (customPicker.SelectedItem == null && string.IsNullOrEmpty(Control.Text) && !string.IsNullOrEmpty(customPicker.Placeholder))
                 {
                     this.Control.Text = null;
                     this.Control.AttributedPlaceholder = new NSAttributedString(customPicker.Placeholder, foregroundColor: customPicker.PlaceholderColor.ToUIColor());

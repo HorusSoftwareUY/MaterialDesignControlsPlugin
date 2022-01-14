@@ -93,10 +93,6 @@
         <Color x:Key="GradientColor12">#c83044</Color>
         <Color x:Key="GradientColorTransparent12">#1Ac83044</Color>
 
-
-
-
-
         <!-- BaseMaterialStyle -->
         <Style TargetType="material:BaseMaterialFieldControl" x:Key="BaseMaterialStyle">
             <Setter Property="Type" Value="Outlined" />
@@ -310,5 +306,11 @@
             <Setter Property="HeightRequest" Value="1" />
 	    </Style>
 
+        <!-- MaterialFloatingButton -->
+        <Style TargetType="material:MaterialFloatingButton">
+            <Setter Property="BackgroundColor" Value="{StaticResource GradientColor1}" />
+            <Setter Property="ShadowColor" Value="Black" />
+            <Setter Property="TextColor" Value="White" />
+	    </Style>
     </Application.Resources>
 </Application>

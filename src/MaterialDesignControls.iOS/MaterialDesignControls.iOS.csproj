@@ -82,6 +82,7 @@
     <Compile Include="Effects.cs" />
     <Compile Include="Utils\TextAlignmentHelper.cs" />
     <Compile Include="Renderers\MaterialDoublePickerRenderer.cs" />
+    <Compile Include="Renderers\CustomFrameRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

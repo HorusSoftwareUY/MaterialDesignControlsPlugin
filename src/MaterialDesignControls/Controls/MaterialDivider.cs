@@ -33,7 +33,7 @@ namespace Plugin.MaterialDesignControls
 	    }
 
         public static new readonly BindableProperty HeightRequestProperty =
-            BindableProperty.Create(nameof(HeightRequest), typeof(double), typeof(MaterialDivider), defaultValue: 0.5);
+            BindableProperty.Create(nameof(HeightRequest), typeof(double), typeof(MaterialDivider), defaultValue: 1.0);
 
         public new double HeightRequest 
 	    {
