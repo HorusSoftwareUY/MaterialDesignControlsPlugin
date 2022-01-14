@@ -70,5 +70,10 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await Navigation.PushAsync(new MaterialCustomControl());
         });
+
+        public ICommand GoMaterialFloatingButtonCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialFloatingButtonPage());
+        });
     }
 }

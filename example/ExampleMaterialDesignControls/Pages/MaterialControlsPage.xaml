@@ -178,8 +178,6 @@
                             </StackLayout>
                         </Frame>
 
-                        <!---->
-
                         <Frame Grid.Row="6" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent10}" HasShadow="False" CornerRadius="16" Padding="15">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding GoMaterialRatingCommand}"/>
@@ -230,13 +228,13 @@
 
                         <Frame Grid.Row="8" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent6}" HasShadow="False" CornerRadius="16" Padding="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoMaterialRatingCommand}"/>
+                                <TapGestureRecognizer Command="{Binding GoMaterialFloatingButtonCommand}"/>
                             </Frame.GestureRecognizers>
                             <StackLayout>
                                 <Frame BackgroundColor="{StaticResource GradientColorTransparent6}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_floating.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Floating" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor6}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Floating Button" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor6}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 

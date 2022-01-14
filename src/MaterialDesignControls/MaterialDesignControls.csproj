@@ -125,6 +125,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utils\LoggerHelper.cs" />
+    <Compile Include="Controls\MaterialFloatingButton.xaml.cs">
+      <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Implementations\CustomFrame.cs" />
+    <Compile Include="FloatingButtonSize.cs" />
+    <Compile Include="IconSide.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
