@@ -1,5 +1,4 @@
-﻿using System;
-using Android.Content;
+﻿using Android.Content;
 using Android.Graphics.Drawables;
 using AndroidGraphics = Android.Graphics;
 using Plugin.MaterialDesignControls.Implementations;
@@ -31,7 +30,7 @@ namespace Plugin.MaterialDesignControls.Android
                 {
                     this.Control.Gravity = TextAlignmentHelper.ConvertToGravityFlags(customDatePicker.HorizontalTextAlignment);
 
-                    if (!customDatePicker.Date.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
+                    if (!customDatePicker.CustomDate.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
                     {
                         this.Control.Text = null;
                         this.Control.Hint = customDatePicker.Placeholder;
@@ -47,8 +46,17 @@ namespace Plugin.MaterialDesignControls.Android
 
             // Set the default date if the user doesn't select anything
             var customDatePicker = (CustomDatePicker)Element;
-            if (e.PropertyName == "IsFocused" && !customDatePicker.IsFocused && !customDatePicker.Date.HasValue)
+            if (e.PropertyName == "IsFocused" && !customDatePicker.IsFocused && !customDatePicker.CustomDate.HasValue)
                 Control.Text = customDatePicker.InternalDateTime.ToString(customDatePicker.Format);
+            else if (e.PropertyName == nameof(customDatePicker.CustomDate) || e.PropertyName == nameof(customDatePicker.EmptyDate))
+            {
+                if (!customDatePicker.CustomDate.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
+                {
+                    this.Control.Text = null;
+                    this.Control.Hint = customDatePicker.Placeholder;
+                    this.Control.SetHintTextColor(customDatePicker.PlaceholderColor.ToAndroid());
+                }
+            }
         }
     }
 }

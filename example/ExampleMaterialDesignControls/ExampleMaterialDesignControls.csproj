@@ -50,6 +50,10 @@
     <EmbeddedResource Include="Resources/Svg/*" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\Svg\starSelected.svg" />
+    <None Remove="Resources\Svg\starUnselected.svg" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Resources\Svg\mute.svg" />
     <None Remove="Resources\Svg\scale.svg" />
     <None Remove="Resources\Svg\volume.svg" />

@@ -417,7 +417,6 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-
         private void SetButtonSize()
         {
             imgLeft.HeightRequest = IconHeightRequest;

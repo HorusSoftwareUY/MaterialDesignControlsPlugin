@@ -24,4 +24,4 @@
 			IsVisible="False"
 			HorizontalOptions="Center"/>
     </StackLayout>
-</custom:CustomFrame >
+</custom:CustomFrame>
