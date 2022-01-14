@@ -235,6 +235,7 @@ Displays a value with its respective label in read-only format.
 ```XML
 <material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
 ```
+
 ## Effects
 
 ### TouchAndPressEffect

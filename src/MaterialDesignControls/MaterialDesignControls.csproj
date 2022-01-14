@@ -52,7 +52,7 @@
 
   <ItemGroup>
     <Compile Include="Controls\MaterialRatingControl.xaml.cs">
-      <DependentUpon>MaterialSlider.xaml</DependentUpon>
+      <DependentUpon>MaterialRatingControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\MaterialSlider.xaml.cs">
@@ -125,6 +125,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utils\LoggerHelper.cs" />
+    <Compile Include="Controls\MaterialDivider.cs" />
     <Compile Include="Controls\MaterialFloatingButton.xaml.cs">
       <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
       <SubType>Code</SubType>

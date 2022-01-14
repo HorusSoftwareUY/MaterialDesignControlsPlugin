@@ -16,14 +16,16 @@
                 Icon="add_w.png" 
 		        Animation="Scale"
 				HorizontalOptions="Center"
-				Clicked="MaterialFloatingButton_Clicked"/>
+				Clicked="MaterialFloatingButton_Clicked"
+				BackgroundColor="{StaticResource GradientColor1}" />
 
             <Label Text="Mini"/>
             <material:MaterialFloatingButton 
 		        Icon="add_w.png" 
 		        ButtonSize="Mini" 
 		        Animation="Scale"
-				HorizontalOptions="Center"/>
+				HorizontalOptions="Center"
+				BackgroundColor="{StaticResource GradientColor2}" />
 
             <Label Text="Mini (Disabled)"/>
             <material:MaterialFloatingButton 
@@ -31,7 +33,8 @@
 				IsEnabled="False"
 		        ButtonSize="Mini" 
 		        Animation="Scale"
-				HorizontalOptions="Center"/>
+				HorizontalOptions="Center"
+				BackgroundColor="{StaticResource GradientColor3}" />
 
             <Label Text="Mini (.svg)"/>
             <material:MaterialFloatingButton  
@@ -101,14 +104,18 @@
 					FontAttributes="Bold"
 					ButtonSize="Extended" 
 					Animation="Fade"
-					HorizontalOptions="Center"/>
+					HorizontalOptions="Center"
+					BackgroundColor="{StaticResource GradientColorTransparent4}"
+					TextColor="{StaticResource GradientColor4}"
+					/>
                 <material:MaterialFloatingButton 
 					Text="Add new item" 
 					ToUpper="True"
 					FontSize="16" 
 					ButtonSize="Extended" 
 					Animation="Fade"
-					HorizontalOptions="Center"/>
+					HorizontalOptions="Center"
+					BackgroundColor="{StaticResource GradientColor5}" />
             </StackLayout>
         </StackLayout>
         </ScrollView>
