@@ -51,6 +51,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Controls\MaterialRatingControl.xaml.cs">
+      <DependentUpon>MaterialRatingControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controls\MaterialSlider.xaml.cs">
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -138,6 +142,7 @@
     <Compile Include="Controls\MaterialSwitch.xaml.cs">
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MaterialDivider.cs" />
     <Compile Include="Controls\MaterialFloatingButton.xaml.cs">
       <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -151,16 +156,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Implementations\" />
     <Folder Include="Animations\" />
     <Folder Include="Effects\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Controls\MaterialSlider.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

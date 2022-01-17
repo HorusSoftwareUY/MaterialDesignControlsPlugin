@@ -25,5 +25,18 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await this.DisplayAlert.Invoke("", this.Date.HasValue ? this.Date.Value.ToShortDateString() : "Select date", "Ok");
         }
+
+        public ICommand ClearCommand => new Command(() =>
+        {
+            Date = null;
+        });
+
+        public ICommand ShowCommand => new Command(async () =>
+        {
+            if (Date.HasValue)
+                await DisplayAlert("Date", Date.ToString(), "Ok");
+            else
+                await DisplayAlert("Date", "No date selected", "Ok");
+        });
     }
 }

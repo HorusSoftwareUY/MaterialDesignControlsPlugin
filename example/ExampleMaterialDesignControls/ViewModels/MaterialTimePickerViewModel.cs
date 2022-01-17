@@ -25,5 +25,18 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await this.DisplayAlert.Invoke("", this.Time.HasValue ? this.Time.Value.ToString() : "Select time", "Ok");
         }
+
+        public ICommand ClearCommand => new Command(() =>
+        {
+            Time = null;
+        });
+
+        public ICommand ShowCommand => new Command(async () =>
+        {
+            if (Time.HasValue)
+                await DisplayAlert("Time", Time.ToString(), "Ok");
+            else
+                await DisplayAlert("Time", "No time selected", "Ok");
+        });
     }
 }

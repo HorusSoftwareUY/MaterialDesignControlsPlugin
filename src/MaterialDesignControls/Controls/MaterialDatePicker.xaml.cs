@@ -135,7 +135,7 @@ namespace Plugin.MaterialDesignControls
         private static void OnDateChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialDatePicker)bindable;
-            control.pckDate.Date = (DateTime?)newValue;
+            control.pckDate.CustomDate = (DateTime?)newValue;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -231,7 +231,7 @@ namespace Plugin.MaterialDesignControls
             base.SetFocusChange(lblLabel, frmContainer, bxvLine);
 
             // Set the default date if the user doesn't select anything
-            if (!IsControlFocused && !pckDate.Date.HasValue)
+            if (!IsControlFocused && !pckDate.CustomDate.HasValue)
                 Date = pckDate.InternalDateTime;
 
             if (IsControlFocused)
