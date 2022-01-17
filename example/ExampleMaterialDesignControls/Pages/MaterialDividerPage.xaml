@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialDividerPage"
+    Title="Material Divider">
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="20" Spacing="20">
+                <Label Text="Section 1" HorizontalTextAlignment="Center" />
+                <Label Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." LineBreakMode="WordWrap" />
+
+                <material:MaterialDivider />
+
+                <Label Text="Section 2" HorizontalTextAlignment="Center" />
+                <Label Text="It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged." LineBreakMode="WordWrap" />
+
+                <material:MaterialDivider />
+
+                <Label Text="Section 3" HorizontalTextAlignment="Center" />
+                <Label Text="It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." LineBreakMode="WordWrap" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

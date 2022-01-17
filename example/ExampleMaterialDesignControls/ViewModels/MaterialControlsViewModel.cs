@@ -95,5 +95,16 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await Navigation.PushAsync(new MaterialFloatingButtonPage());
         });
+
+        public ICommand GoMaterialSearchBarCommand => new Command(async () =>
+        {
+            await DisplayAlert("Material Search Bar", "Comming Soon!", "Ok");
+        });
+
+        public ICommand GoMaterialDividerCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialDividerPage());
+            //await DisplayAlert("Material Divider", "Comming Soon!", "Ok");
+        });
     }
 }
