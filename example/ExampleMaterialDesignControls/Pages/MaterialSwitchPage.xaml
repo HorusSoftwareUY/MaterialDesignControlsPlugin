@@ -12,9 +12,8 @@
             <material:MaterialSwitch Text="Bluetooth" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
             <material:MaterialSwitch Text="Bluetooth" IsEnabled="False" IsToggled="True" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
 
-            <BoxView HeightRequest="0.5" BackgroundColor="LightGray"/>
+            <material:MaterialDivider />
             
-
             <material:MaterialSwitch 
 		        IsToggled="{Binding IsOn}" 
 		        Text="Night mode" 

@@ -8,6 +8,51 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
+
+                <material:MaterialEntry
+                    Type="Filled"
+                    LabelText="Email *"
+                    Placeholder="Enter your email"
+                    MaxLength="50"
+                    Text="{Binding Email}"
+                    AssistiveText="Email is required"
+                    AnimateError="True"
+                    TabIndex="1"
+                    ReturnType="Next"
+                    LabelTextColor="{StaticResource GradientColor5}"
+                    TextColor="{StaticResource GradientColor5}"
+                    PlaceholderColor="{StaticResource GradientColor5}"
+                    BackgroundColor="{StaticResource GradientColorTransparent5}"
+                    BorderColor="{StaticResource GradientColor5}"
+                    AssistiveTextColor="Red" />
+
+                <material:MaterialEntry
+                    Type="Filled"
+                    LabelText="Password *"
+                    Placeholder="Enter your password"
+                    MaxLength="50"
+                    Text="{Binding Password}"
+                    IsPassword="True"
+                    ClearIconIsVisible="False"
+                    AnimateError="True"
+                    TabIndex="2"
+                    ReturnType="Done"
+                    LabelTextColor="{StaticResource GradientColor5}"
+                    TextColor="{StaticResource GradientColor5}"
+                    PlaceholderColor="{StaticResource GradientColor5}"
+                    BackgroundColor="{StaticResource GradientColorTransparent5}"
+                    BorderColor="{StaticResource GradientColor5}"
+                    AssistiveTextColor="Red">
+                    <material:MaterialEntry.CustomShowPasswordIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg"/> 
+                    </material:MaterialEntry.CustomShowPasswordIcon>
+                    <material:MaterialEntry.CustomHidePasswordIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg"/> 
+                    </material:MaterialEntry.CustomHidePasswordIcon>
+                </material:MaterialEntry>
+
+                <material:MaterialDivider />
+
                 <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12" Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TabIndex="1" ReturnType="Next" />
                 <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
 

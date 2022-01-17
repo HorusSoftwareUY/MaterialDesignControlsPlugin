@@ -36,7 +36,6 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 ```
 
 ## Sample
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls.gif" width="300">
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls_Final.gif" width="300">
 
 ## Controls
@@ -65,18 +64,20 @@ Chips are compact elements that represent an action.
 <material:MaterialChips IsSelected="true" IsEnabled="true" Text="Option A" />
 ```
 
+---
+
 ### MaterialEntry
 Text fields let users enter and edit text.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry_preview.png" width="300">
+<br/>
+[View documentation](MaterialEntryControl.md)
 
-**Screenshot**
+---
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.png" width="300">
 
-**Example**
-```XML
-<material:MaterialEntry Type="Filled" LabelText="Name" Placeholder="Enter your name"
-                        IsRequired="true" RequiredMessage="The name is required" MaxLength="12" />
-```
+
+
 
 ### MaterialCodeEntry
 Code fields let users enter and edit pin codes.

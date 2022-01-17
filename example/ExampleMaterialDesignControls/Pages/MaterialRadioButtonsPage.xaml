@@ -16,7 +16,7 @@
 		        LabelText="Rigtones" 
 		        SelectedItem="{Binding SelectedRigtone}"/>
 
-			<BoxView BackgroundColor="LightGray" HeightRequest="0.5"/>
+			<material:MaterialDivider />
 			<material:MaterialLabel FontAttributes="Bold" Text="xamarin native control selection (Disabled)" HorizontalOptions="Center"/>
 
             <material:MaterialRadioButtons 
@@ -26,7 +26,7 @@
 		        LabelText="Rigtones" 
 		        SelectedItem="{Binding SelectedRigtone}"/>
 
-			<BoxView BackgroundColor="LightGray" HeightRequest="0.5"/>
+			<material:MaterialDivider />
 			<material:MaterialLabel FontAttributes="Bold" Text=".png files" HorizontalOptions="Center"/>
 
             <material:MaterialRadioButtons 
@@ -41,7 +41,7 @@
 				TextSide="Left"
 				SelectionHorizontalOptions="EndAndExpand"/>
 
-			<BoxView BackgroundColor="LightGray" HeightRequest="0.5"/>
+			<material:MaterialDivider />
 
             <material:MaterialRadioButtons 
 				HorizontalOptions="FillAndExpand"
