@@ -71,9 +71,40 @@ namespace ExampleMaterialDesignControls.ViewModels
             await Navigation.PushAsync(new MaterialCustomControl());
         });
 
+        public ICommand GoMaterialCheckboxesCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialCheckBoxesPage());
+        });
+
+        public ICommand GoMaterialRadioButtonsCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialRadioButtonsPage());
+        });
+
+        public ICommand GoMaterialSwitchCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialSwitchPage());
+        });
+
+        public ICommand GoMaterialSegmentedCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialSegmentedPage());
+        });
+
         public ICommand GoMaterialFloatingButtonCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialFloatingButtonPage());
+        });
+
+        public ICommand GoMaterialSearchBarCommand => new Command(async () =>
+        {
+            await DisplayAlert("Material Search Bar", "Comming Soon!", "Ok");
+        });
+
+        public ICommand GoMaterialDividerCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialDividerPage());
+            //await DisplayAlert("Material Divider", "Comming Soon!", "Ok");
         });
     }
 }

@@ -287,6 +287,7 @@ namespace Plugin.MaterialDesignControls
 
         #endregion Properties
 
+
         #region Methods
 
         private static bool OnAssistiveTextValidate(BindableObject bindable, object value)

@@ -36,7 +36,6 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 ```
 
 ## Sample
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls.gif" width="300">
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls_Final.gif" width="300">
 
 ## Controls
@@ -65,18 +64,16 @@ Chips are compact elements that represent an action.
 <material:MaterialChips IsSelected="true" IsEnabled="true" Text="Option A" />
 ```
 
+---
+
 ### MaterialEntry
 Text fields let users enter and edit text.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry_preview.png" width="300">
+<br/>
+[View documentation](MaterialEntryControl.md)
 
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.png" width="300">
-
-**Example**
-```XML
-<material:MaterialEntry Type="Filled" LabelText="Name" Placeholder="Enter your name"
-                        IsRequired="true" RequiredMessage="The name is required" MaxLength="12" />
-```
+---
 
 ### MaterialCodeEntry
 Code fields let users enter and edit pin codes.
@@ -224,6 +221,24 @@ Displays a floating button<br/>
     ShadowColor="Black"/>
 ```
 
+### MaterialFloatingButton
+Displays a floating button<br/>
+[View documentation](MaterialFloatingButton.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.png" width="300">
+
+**Example**
+```XML
+<material:MaterialFloatingButton
+    Icon="add_b.png"
+    BackgroundColor="#FAF9D5"
+    Animation="Scale"
+    FontSize="12"
+    ShadowColor="Black"/>
+```
+
 ### MaterialField
 Displays a value with its respective label in read-only format.
 
@@ -234,6 +249,74 @@ Displays a value with its respective label in read-only format.
 **Example**
 ```XML
 <material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
+```
+### MaterialCheckbox
+Displays a checkbox control<br/>
+[View documentation](MaterialCheckboxControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/checkbox.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialCheckbox 
+                    x:Name="checkbox" 
+                    Text="Pickles"
+                    IsChecked="True" 
+                    Color="Blue"
+                    Animation="Scale"/>
+```
+
+### MaterialRadioButtons
+Displays a radiobuttons control<br/>
+[View documentation](MaterialRadioButtonsControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialRadioButtons
+                    x:Name="radiobuttons" 
+                    LabelText="Rigtones" 
+                    ItemsSource="{Binding Rigtones}"
+                    Animation="Scale"/>
+```
+
+### MaterialSwitch
+Displays a switch control<br/>
+[View documentation](MaterialSwitchControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialSwitch x:Name="switch" Text="Wifi" IsToggled="True"/>
+```
+
+### MaterialSegmented
+Displays a segmented control<br/>
+[View documentation](MaterialSegmentedControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/segmented.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialSegmented 
+    x:Name="segmented" 
+    HeightRequest="40"
+    BackgroundColor="#58555A"
+    ItemsSource="{Binding Backlight}"
+    UnselectedColor="#58555A"
+    SelectedColor="#D9D277"
+    UnselectedTextColor="#D9D277"
+    CornerRadius="10"/>
 ```
 
 ## Effects

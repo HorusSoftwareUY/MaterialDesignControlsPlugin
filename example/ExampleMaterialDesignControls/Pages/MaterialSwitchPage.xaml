@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage"
+    Title="Material Switch">
+    <ContentPage.Content>
+        <StackLayout Spacing="15">
+            <material:MaterialSwitch Text="Wifi" Toggled="Switch_toggled"/>
+            <material:MaterialSwitch Text="Wifi" IsToggled="True" TextColor="{StaticResource GradientColor1}" TextHorizontalOptions="EndAndExpand"/>
+            <material:MaterialSwitch Text="Bluetooth" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
+            <material:MaterialSwitch Text="Bluetooth" IsEnabled="False" IsToggled="True" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
+
+            <material:MaterialDivider />
+            
+            <material:MaterialSwitch 
+		        IsToggled="{Binding IsOn}" 
+		        Text="Night mode" 
+		        AssistiveText="{Binding Error}"/>
+
+            <material:MaterialButton Text="Save" WidthRequest="150" HorizontalOptions="Center" Command="{Binding SaveCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -125,6 +125,23 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utils\LoggerHelper.cs" />
+    <Compile Include="Controls\MaterialSegmented.xaml.cs">
+      <DependentUpon>MaterialSegmented.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialCheckbox.xaml.cs">
+      <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\BaseMaterialCheckboxes.cs" />
+    <Compile Include="TextSide.cs" />
+    <Compile Include="Controls\MaterialRadioButtons.xaml.cs">
+      <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialSwitch.xaml.cs">
+      <DependentUpon>MaterialSwitch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MaterialDivider.cs" />
     <Compile Include="Controls\MaterialFloatingButton.xaml.cs">
       <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
