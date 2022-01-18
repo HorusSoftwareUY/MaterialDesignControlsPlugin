@@ -75,10 +75,6 @@ Text fields let users enter and edit text.
 
 ---
 
-
-
-
-
 ### MaterialCodeEntry
 Code fields let users enter and edit pin codes.
 
