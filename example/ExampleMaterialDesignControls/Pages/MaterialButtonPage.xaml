@@ -21,18 +21,18 @@
                     </material:MaterialButton.CustomActivityIndicator>
                 </material:MaterialOutlineButton>
                 <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
-                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Download" Icon="download.png" CornerRadius="16" />
+                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Download" Icon="download.png" CornerRadius="16"/>
                 <material:MaterialOutlineButton IsVisible="{Binding CancelIsVisible}" IsEnabled="false" Text="Cancel 2" Command="{Binding TapCommand}" CommandParameter="Canceled 2" />
                 <material:MaterialFlatButton IsVisible="{Binding DeleteIsVisible}" IsEnabled="false" Text="Delete 2" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted 2" />
 
-                <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
+                <material:MaterialDivider Margin="0,10" />
 
                 <Label Text="Animations" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialButton Animation="None" Text="None" />
                 <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" />
                 <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" />
 
-                <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
+                <material:MaterialDivider Margin="0,10" />
 
                 <Label Text="Clicked event" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Clicked" Clicked="Button_Clicked" />

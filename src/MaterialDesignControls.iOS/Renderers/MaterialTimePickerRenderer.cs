@@ -27,7 +27,7 @@ namespace Plugin.MaterialDesignControls.iOS
                 {
                     this.Control.TextAlignment = TextAlignmentHelper.Convert(customTimePicker.HorizontalTextAlignment);
 
-                    if (!customTimePicker.Time.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
+                    if (!customTimePicker.CustomTime.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
                     {
                         this.Control.Text = null;
                         this.Control.AttributedPlaceholder = new NSAttributedString(customTimePicker.Placeholder, foregroundColor: customTimePicker.PlaceholderColor.ToUIColor());
@@ -53,11 +53,19 @@ namespace Plugin.MaterialDesignControls.iOS
 
             // Set the default date if the user doesn't select anything
             var customTimePicker = (CustomTimePicker)Element;
-            if (e.PropertyName == "IsFocused" && !customTimePicker.IsFocused && !customTimePicker.Time.HasValue)
+            if (e.PropertyName == "IsFocused" && !customTimePicker.IsFocused && !customTimePicker.CustomTime.HasValue)
             {
                 var auxDateTime = new DateTime(DateTime.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day,
                     customTimePicker.InternalTime.Hours, customTimePicker.InternalTime.Minutes, customTimePicker.InternalTime.Seconds);
                 Control.Text = auxDateTime.ToString(customTimePicker.Format);
+            }
+            else if (e.PropertyName == nameof(customTimePicker.CustomTime) || e.PropertyName == nameof(customTimePicker.EmptyTime))
+            {
+                if (!customTimePicker.CustomTime.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
+                {
+                    Control.Text = null;
+                    Control.AttributedPlaceholder = new NSAttributedString(customTimePicker.Placeholder, foregroundColor: customTimePicker.PlaceholderColor.ToUIColor());
+                }
             }
         }
     }

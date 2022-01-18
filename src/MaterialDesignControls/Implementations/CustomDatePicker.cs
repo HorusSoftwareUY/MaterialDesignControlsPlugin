@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
@@ -8,18 +7,21 @@ namespace Plugin.MaterialDesignControls.Implementations
     {
         public TextAlignment HorizontalTextAlignment { get; set; }
 
-        private DateTime? date;
+        private DateTime? customDate;
 
-        public new DateTime? Date
+        public DateTime? CustomDate
         {
-            get { return this.date; }
+            get { return this.customDate; }
             set
             {
-                this.date = value;
-                if (this.Date.HasValue)
+                this.customDate = value;
+                if (this.customDate.HasValue)
                 {
-                    base.Date = this.Date.Value;
+                    base.Date = this.customDate.Value;
+                    EmptyDate = false;
                 }
+                else
+                    EmptyDate = true;
             }
         }
 
@@ -31,5 +33,14 @@ namespace Plugin.MaterialDesignControls.Implementations
         public string Placeholder { get; set; }
 
         public Color PlaceholderColor { get; set; }
+
+        public static readonly BindableProperty EmptyDateProperty =
+            BindableProperty.Create(nameof(EmptyDate), typeof(bool), typeof(CustomDatePicker), defaultValue: true);
+
+        public bool EmptyDate
+        {
+            get { return (bool)GetValue(EmptyDateProperty); }
+            set { SetValue(EmptyDateProperty, value); }
+        }
     }
 }

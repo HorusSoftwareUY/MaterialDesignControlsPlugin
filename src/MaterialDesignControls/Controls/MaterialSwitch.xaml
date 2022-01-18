@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Plugin.MaterialDesignControls"
+    x:Class="Plugin.MaterialDesignControls.MaterialSwitch">
+    <ContentView.Content>
+        <StackLayout>
+            <StackLayout x:Name="container" Orientation="Horizontal">
+                <controls:MaterialLabel x:Name="lblLeft" IsVisible="False" />
+                <Switch x:Name="sw"/>
+                <controls:MaterialLabel x:Name="lblRight" />
+            </StackLayout>
+            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

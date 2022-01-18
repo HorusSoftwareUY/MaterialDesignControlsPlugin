@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using ExampleMaterialDesignControls.Pages;
 using Xamarin.Forms;
 
@@ -18,6 +14,11 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialSliderCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialSliderPage());
+        });
+
+        public ICommand GoMaterialRatingCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialRatingControlPage());
         });
 
         public ICommand GoMaterialChipsCommand => new Command(async () =>
@@ -68,6 +69,42 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialCustomControlCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialCustomControl());
+        });
+
+        public ICommand GoMaterialCheckboxesCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialCheckBoxesPage());
+        });
+
+        public ICommand GoMaterialRadioButtonsCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialRadioButtonsPage());
+        });
+
+        public ICommand GoMaterialSwitchCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialSwitchPage());
+        });
+
+        public ICommand GoMaterialSegmentedCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialSegmentedPage());
+        });
+
+        public ICommand GoMaterialFloatingButtonCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialFloatingButtonPage());
+        });
+
+        public ICommand GoMaterialSearchBarCommand => new Command(async () =>
+        {
+            await DisplayAlert("Material Search Bar", "Comming Soon!", "Ok");
+        });
+
+        public ICommand GoMaterialDividerCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialDividerPage());
+            //await DisplayAlert("Material Divider", "Comming Soon!", "Ok");
         });
     }
 }

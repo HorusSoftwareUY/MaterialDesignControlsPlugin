@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialSegmentedPage"
+    BackgroundColor="#F5F5F5" Title="Material Segmented" >
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Padding="20">
+            <material:MaterialSegmented 
+		        SelectedItem="{Binding SelectedItem}" 
+		        ItemsSource="{Binding Items}" />
+
+            <material:MaterialSegmented 
+                CornerRadius="0"
+                HeightRequest="40"
+		        ItemsSource="{Binding Items}" 
+                SelectedColor="#F0A297"
+                UnselectedTextColor="#F0A297"
+                SegmentMargin="3"/>
+
+            <material:MaterialSegmented 
+                HeightRequest="50"
+                SegmentMargin="4"
+                BackgroundColor="White"
+		        ItemsSource="{Binding Items}"
+                UnselectedColor="White"
+                SelectedColor="#FA9D06"
+                UnselectedTextColor="#FA9D06"
+                CornerRadius="20"/>
+
+            <material:MaterialSegmented 
+                HeightRequest="50"
+                BackgroundColor="White"
+                SelectedItem="{Binding SelectedSize}"
+		        ItemsSource="{Binding Sizes}"
+                UnselectedColor="White"
+                SelectedColor="#FA9D06"
+                UnselectedTextColor="#FA9D06"
+                Command="{Binding SelectCommand}"
+                CornerRadius="20"/>
+
+            <material:MaterialSegmented 
+                HeightRequest="50"
+                BackgroundColor="White"
+		        ItemsSource="{Binding Sizes}"
+                UnselectedColor="White"
+                SelectedColor="#FA9D06"
+                UnselectedTextColor="#FA9D06"
+                IsEnabled="False"
+                CornerRadius="25"/>
+            
+            <material:MaterialSegmented 
+                HeightRequest="40"
+                BackgroundColor="#58555A"
+		        ItemsSource="{Binding Backlight}"
+                UnselectedColor="#58555A"
+                SelectedColor="#D9D277"
+                UnselectedTextColor="#D9D277"
+                CornerRadius="10"/>
+
+            <material:MaterialSegmented 
+                HeightRequest="50"
+                SegmentMargin="4"
+                BackgroundColor="#F5F5F5"
+		        ItemsSource="{Binding Frecuently}"
+                UnselectedColor="#F5F5F5"
+                SelectedColor="#3EB595"
+                UnselectedTextColor="#3EB595"
+                CornerRadius="20"/>
+
+            <StackLayout Orientation="Horizontal">
+                <material:MaterialLabel 
+                    VerticalOptions="Center"
+		            Text="Notifications"/>
+                <material:MaterialSegmented
+                    HorizontalOptions="EndAndExpand"
+                    ItemsSource="{Binding OnOff}"
+                    IsSelectedChanged="MaterialSegmented_IsSelectedChanged"
+                    SelectedColor="#59D986" />
+            </StackLayout>
+            <material:MaterialButton Text="Save" Command="{Binding SaveCommand}" VerticalOptions="EndAndExpand" HorizontalOptions="Fill"/>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

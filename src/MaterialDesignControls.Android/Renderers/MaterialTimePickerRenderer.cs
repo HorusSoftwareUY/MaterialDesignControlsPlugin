@@ -6,7 +6,6 @@ using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Plugin.MaterialDesignControls.Android.Utils;
-using Android.Views;
 using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(CustomTimePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialTimePickerRenderer))]
@@ -32,7 +31,7 @@ namespace Plugin.MaterialDesignControls.Android
                 {
                     this.Control.TextAlignment = TextAlignmentHelper.ConvertToAndroid(customTimePicker.HorizontalTextAlignment);
 
-                    if (!customTimePicker.Time.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
+                    if (!customTimePicker.CustomTime.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
                     {
                         this.Control.Text = null;
                         this.Control.Hint = customTimePicker.Placeholder;
@@ -48,11 +47,20 @@ namespace Plugin.MaterialDesignControls.Android
 
             // Set the default date if the user doesn't select anything
             var customTimePicker = (CustomTimePicker)Element;
-            if (e.PropertyName == "IsFocused" && !customTimePicker.IsFocused && !customTimePicker.Time.HasValue)
+            if (e.PropertyName == "IsFocused" && !customTimePicker.IsFocused && !customTimePicker.CustomTime.HasValue)
             {
                 var auxDateTime = new DateTime(DateTime.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day,
                     customTimePicker.InternalTime.Hours, customTimePicker.InternalTime.Minutes, customTimePicker.InternalTime.Seconds);
                 Control.Text = auxDateTime.ToString(customTimePicker.Format);
+            }
+            else if (e.PropertyName == nameof(customTimePicker.CustomTime) || e.PropertyName == nameof(customTimePicker.EmptyTime))
+            {
+                if (!customTimePicker.CustomTime.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
+                {
+                    this.Control.Text = null;
+                    this.Control.Hint = customTimePicker.Placeholder;
+                    this.Control.SetHintTextColor(customTimePicker.PlaceholderColor.ToAndroid());
+                }
             }
         }
     }

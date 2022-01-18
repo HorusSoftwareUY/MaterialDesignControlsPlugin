@@ -218,6 +218,16 @@
     <BundleResource Include="Resources\Home%403x.png" />
     <BundleResource Include="Resources\download.png" />
     <BundleResource Include="Resources\showPassword.png" />
+    <BundleResource Include="Resources\checkbox_checked.png" />
+    <BundleResource Include="Resources\checkbox_unchecked.png" />
+    <BundleResource Include="Resources\checkbox_disabledChecked.png" />
+    <BundleResource Include="Resources\checkbox_disabledUnchecked.png" />
+    <BundleResource Include="Resources\radioButton_checked.png" />
+    <BundleResource Include="Resources\radioButton_disabledChecked.png" />
+    <BundleResource Include="Resources\radioButton_disabledUnchecked.png" />
+    <BundleResource Include="Resources\radioButton_unchecked.png" />
+    <BundleResource Include="Resources\add_b.png" />
+    <BundleResource Include="Resources\add_w.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\volume.png" />
@@ -227,5 +237,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\scale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\starUnselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\startSelected.png" />
   </ItemGroup>
 </Project>

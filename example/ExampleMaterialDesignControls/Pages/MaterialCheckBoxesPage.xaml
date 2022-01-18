@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialCheckBoxesPage"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    Title="MaterialCheckbox">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="0">
+                <material:MaterialLabel Text="Xamarin forms native control" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <material:MaterialLabel Text="Extras"/>
+                <material:MaterialCheckbox
+                    IsCheckedChanged="Checkbox_IsCheckedChanged"
+		            Text="Pickles"/>
+                <material:MaterialCheckbox
+                    IsCheckedChanged="Checkbox_IsCheckedChanged"
+		            Text="Tomato"/>
+                <material:MaterialCheckbox
+                    IsCheckedChanged="Checkbox_IsCheckedChanged"
+		            Text="Lettuce"/>
+
+                <material:MaterialDivider Margin="0,10"/>
+
+                <material:MaterialLabel Text="Extras"/>
+                <material:MaterialCheckbox
+		            Text="Pickles" 
+                    IsEnabled="False"
+                    IsChecked="True"/>
+                <material:MaterialCheckbox
+		            Text="Tomato" 
+                    IsEnabled="False"/>
+                <material:MaterialCheckbox
+		            Text="Lettuce" 
+                    IsEnabled="False"/>
+
+                <material:MaterialDivider Margin="0,10"/>
+
+                <material:MaterialLabel Text="Custom icon with .png file" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <material:MaterialLabel Text="Extras"/>
+                <StackLayout Margin="5,0">
+                    <material:MaterialCheckbox 
+		                Text="Pickles" 
+		                UnselectedIcon="checkbox_unchecked.png" 
+                        SelectedIcon="checkbox_checked.png"
+                        DisabledSelectedIcon="checkbox_disabledChecked.png"
+                        DisabledUnselectedIcon="checkbox_disabledUnchecked.png"
+                        SelectionHorizontalOptions="EndAndExpand"
+		                TextSide="Left"/>
+                    <material:MaterialCheckbox 
+		                Text="Tomato" 
+		                UnselectedIcon="checkbox_unchecked.png" 
+                        SelectedIcon="checkbox_checked.png"
+                        DisabledSelectedIcon="checkbox_disabledChecked.png"
+                        DisabledUnselectedIcon="checkbox_disabledUnchecked.png"
+                        SelectionHorizontalOptions="EndAndExpand"
+		                TextSide="Left"/>
+                    <material:MaterialCheckbox 
+		                Text="Lettuce" 
+		                UnselectedIcon="checkbox_unchecked.png" 
+                        SelectedIcon="checkbox_checked.png"
+                        DisabledSelectedIcon="checkbox_disabledChecked.png"
+                        DisabledUnselectedIcon="checkbox_disabledUnchecked.png"
+                        SelectionHorizontalOptions="EndAndExpand"
+                        IsChecked="True"
+		                TextSide="Left"/>
+                </StackLayout>
+
+                <material:MaterialDivider Margin="0,10"/>
+
+                <material:MaterialLabel Text="Custom icon with .svg file" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <StackLayout Margin="5,0,0,0">
+                    <material:MaterialCheckbox
+		            Text="Checkbox 1" 
+                    Animation="Fade"
+                    IsChecked="True">
+                        <material:MaterialCheckbox.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomSelectedIcon>
+                        <material:MaterialCheckbox.CustomUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomUnselectedIcon>
+                        <material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                        <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                    </material:MaterialCheckbox>
+                    <material:MaterialCheckbox
+                    Animation="Scale"
+		            Text="Checkbox 2">
+                        <material:MaterialCheckbox.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomSelectedIcon>
+                        <material:MaterialCheckbox.CustomUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomUnselectedIcon>
+                        <material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                        <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg"/>
+                            </DataTemplate>
+                        </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                    </material:MaterialCheckbox>
+                </StackLayout> 
+
+                <material:MaterialDivider Margin="0,10"/>
+
+                <material:MaterialCheckbox
+		            UnselectedIcon="checkbox_unchecked.png" 
+                    SelectedIcon="checkbox_checked.png"
+                    Animation="Scale"
+                    AnimateError="True"
+                    AssistiveText="{Binding NameError}"
+                    IsChecked="{Binding IsChecked}"
+		            Text="I agree to the terms of service for this site"/>
+
+                <material:MaterialButton HorizontalOptions="Center" Text="Save" WidthRequest="100" Command="{Binding SaveCommand}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

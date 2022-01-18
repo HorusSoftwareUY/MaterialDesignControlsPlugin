@@ -22,9 +22,9 @@
                 <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Outlined" LabelText="Size" Placeholder="Select Option"/>
                 <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" />
                 <Label x:Name="lblSelectedIndex" Text="Selected Index: -" />
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}"/>
 
-                <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
+                <material:MaterialDivider Margin="0,10" />
 
                 <Label Text="Horizontal Text Alignment" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialPicker x:Name="pckModels2" Type="Filled" HorizontalTextAlignment="Start" Placeholder="Select Option" LabelText="Option" TrailingIcon="" />
@@ -41,7 +41,7 @@
                 <Label x:Name="lblSelectedIndexes" Text="Selected Indexes: -" />
                 <material:MaterialButton Text="Save" Command="{Binding Tap2Command}" />
 
-                <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10"/>
+                <material:MaterialDivider Margin="0,10" />
 
                 <Label Text="Double Picker" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialDoublePicker x:Name="pckDoubleWithFocus" Type="Filled" LabelText="Double Picker" Separator=" - " ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}" SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />

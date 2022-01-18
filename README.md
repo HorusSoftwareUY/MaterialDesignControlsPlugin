@@ -36,7 +36,6 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 ```
 
 ## Sample
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls.gif" width="300">
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls_Final.gif" width="300">
 
 ## Controls
@@ -53,30 +52,25 @@ Buttons allow users to take actions, and make choices, with a single tap.
 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
 ```
 
-### MaterialChip
-Chips are compact elements that represent an action.
+---
 
-**Screenshot**
+### MaterialChips & MaterialChipsGroup
+Chips are compact elements that represent an input, attribute, or action.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips_preview.png" width="300">
+<br/>
+[View documentation](MaterialChipsControl.md)
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.png" width="300">
-
-**Example**
-```XML
-<material:MaterialChips IsSelected="true" IsEnabled="true" Text="Option A" />
-```
+---
 
 ### MaterialEntry
 Text fields let users enter and edit text.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry_preview.png" width="300">
+<br/>
+[View documentation](MaterialEntryControl.md)
 
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.png" width="300">
-
-**Example**
-```XML
-<material:MaterialEntry Type="Filled" LabelText="Name" Placeholder="Enter your name"
-                        IsRequired="true" RequiredMessage="The name is required" MaxLength="12" />
-```
+---
 
 ### MaterialCodeEntry
 Code fields let users enter and edit pin codes.
@@ -167,6 +161,24 @@ Selection let users select an option.
                             Command="{Binding TapCommand}" CommandParameter="User selection" />
 ```
 
+### MaterialRatingControl
+Displays a rating control<br/>
+[View documentation](MaterialRatingControlDoc.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/material_rating.jpg" width="300">
+
+**Example**
+```XML
+<material:MaterialRatingControl x:Name="mrcWithoutSelectionPng"  LabelText="How do you rate...?(png icons)"   
+    ItemSize="5"                                             
+    ItemsByRow="5" 
+    Animation="Fade" 
+    AnimationParameter="0.1" 
+    SelectedIcon="startSelected.png" 
+    UnSelectedIcon="starUnselected.png"  />
+```
 
 ### MaterialSliderControl
 Displays a slider control<br/>
@@ -179,13 +191,49 @@ Displays a slider control<br/>
 **Example**
 ```XML
  <material:MaterialSlider 
-                    x:Name="slider" 
-                    MinimumValue="0" 
-                    MaximumValue="100" 
-                    ThumbColor="BlueViolet"
-                    LabelText="Slider"
-                    ActiveTrackColor="BlueViolet"
-                    InactiveTrackColor="LightPink"/>
+    x:Name="slider" 
+    MinimumValue="0" 
+    MaximumValue="100" 
+    ThumbColor="BlueViolet"
+    LabelText="Slider"
+    ActiveTrackColor="BlueViolet"
+    InactiveTrackColor="LightPink"/>
+```
+
+### MaterialFloatingButton
+Displays a floating button<br/>
+[View documentation](MaterialFloatingButton.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.png" width="300">
+
+**Example**
+```XML
+<material:MaterialFloatingButton
+    Icon="add_b.png"
+    BackgroundColor="#FAF9D5"
+    Animation="Scale"
+    FontSize="12"
+    ShadowColor="Black"/>
+```
+
+### MaterialFloatingButton
+Displays a floating button<br/>
+[View documentation](MaterialFloatingButton.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.png" width="300">
+
+**Example**
+```XML
+<material:MaterialFloatingButton
+    Icon="add_b.png"
+    BackgroundColor="#FAF9D5"
+    Animation="Scale"
+    FontSize="12"
+    ShadowColor="Black"/>
 ```
 
 ### MaterialField
@@ -199,6 +247,73 @@ Displays a value with its respective label in read-only format.
 ```XML
 <material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
 ```
+### MaterialCheckbox
+Displays a checkbox control<br/>
+[View documentation](MaterialCheckboxControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/checkbox.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialCheckbox 
+                    x:Name="checkbox" 
+                    Text="Pickles"
+                    IsChecked="True" 
+                    Color="Blue"
+                    Animation="Scale"/>
+```
+
+### MaterialRadioButtons
+Displays a radiobuttons control<br/>
+[View documentation](MaterialRadioButtonsControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialRadioButtons
+                    x:Name="radiobuttons" 
+                    LabelText="Rigtones" 
+                    ItemsSource="{Binding Rigtones}"
+                    Animation="Scale"/>
+```
+
+---
+
+### MaterialSwitch
+Switches toggle the state of a single item on or off.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch_preview.png" width="300">
+<br/>
+[View documentation](MaterialSwitchControl.md)
+
+---
+
+### MaterialSegmented
+Displays a segmented control<br/>
+[View documentation](MaterialSegmentedControl.md)
+
+**Screenshot**
+
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/segmented.png" width="300">
+
+**Example**
+```XML
+ <material:MaterialSegmented 
+    x:Name="segmented" 
+    HeightRequest="40"
+    BackgroundColor="#58555A"
+    ItemsSource="{Binding Backlight}"
+    UnselectedColor="#58555A"
+    SelectedColor="#D9D277"
+    UnselectedTextColor="#D9D277"
+    CornerRadius="10"/>
+```
+
 ## Effects
 
 ### TouchAndPressEffect

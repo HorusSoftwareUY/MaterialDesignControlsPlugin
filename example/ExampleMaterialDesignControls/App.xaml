@@ -93,10 +93,6 @@
         <Color x:Key="GradientColor12">#c83044</Color>
         <Color x:Key="GradientColorTransparent12">#1Ac83044</Color>
 
-
-
-
-
         <!-- BaseMaterialStyle -->
         <Style TargetType="material:BaseMaterialFieldControl" x:Key="BaseMaterialStyle">
             <Setter Property="Type" Value="Outlined" />
@@ -279,5 +275,42 @@
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
         </Style>
 
+        <!-- MaterialCheckbox -->
+        <Style TargetType="material:MaterialCheckbox">
+            <Setter Property="Color" Value="{StaticResource GradientColor1}"/>
+            <Setter Property="AnimateError" Value="True" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
+        </Style>
+
+        <!-- MaterialRadioButtons -->
+        <Style TargetType="material:MaterialRadioButtons">
+            <Setter Property="Color" Value="{StaticResource GradientColor1}"/>
+            <Setter Property="AnimateError" Value="True" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
+            <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+	    </Style>
+
+        <!-- MaterialSwitch -->
+        <Style TargetType="material:MaterialSwitch">
+            <Setter Property="AnimateError" Value="True" />
+            <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
+        </Style>
+
+        <!-- MaterialDivider-->
+        <Style TargetType="material:MaterialDivider">
+            <Setter Property="BackgroundColor" Value="LightGray" />
+            <Setter Property="HeightRequest" Value="1" />
+	    </Style>
+
+        <!-- MaterialFloatingButton -->
+        <Style TargetType="material:MaterialFloatingButton">
+            <Setter Property="BackgroundColor" Value="{StaticResource GradientColor1}" />
+            <Setter Property="ShadowColor" Value="Black" />
+            <Setter Property="TextColor" Value="White" />
+	    </Style>
     </Application.Resources>
 </Application>

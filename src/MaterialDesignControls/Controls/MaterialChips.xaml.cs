@@ -129,6 +129,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(CustomLeadingIconProperty, value); }
         }
 
+        public static readonly BindableProperty LeadingIconIsVisibleProperty =
+           BindableProperty.Create(nameof(LeadingIconIsVisible), typeof(bool), typeof(MaterialChips), defaultValue: true);
+
+        public bool LeadingIconIsVisible
+        {
+            get { return (bool)GetValue(LeadingIconIsVisibleProperty); }
+            set { SetValue(LeadingIconIsVisibleProperty, value); }
+        }
+
         public static readonly BindableProperty TrailingIconProperty =
             BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialChips), defaultValue: null);
 
@@ -145,6 +154,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (View)GetValue(CustomTrailingIconProperty); }
             set { SetValue(CustomTrailingIconProperty, value); }
+        }
+
+        public static readonly BindableProperty TrailingIconIsVisibleProperty =
+           BindableProperty.Create(nameof(TrailingIconIsVisible), typeof(bool), typeof(MaterialChips), defaultValue: true);
+
+        public bool TrailingIconIsVisible
+        {
+            get { return (bool)GetValue(TrailingIconIsVisibleProperty); }
+            set { SetValue(TrailingIconIsVisibleProperty, value); }
         }
 
         public static readonly BindableProperty LeadingIconCommandProperty =
@@ -361,19 +379,26 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(TrailingIcon):
                     imgTrailingIcon.SetImage(TrailingIcon);
-                    imgTrailingIcon.IsVisible = true;
+                    imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(CustomTrailingIcon):
                     imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
-                    imgTrailingIcon.IsVisible = true;
+                    imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(LeadingIcon):
                     imgLeadingIcon.SetImage(LeadingIcon);
-                    imgLeadingIcon.IsVisible = true;
+                    imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(CustomLeadingIcon):
                     imgLeadingIcon.SetCustomImage(CustomLeadingIcon);
-                    imgLeadingIcon.IsVisible = true;
+                    imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+                    break;
+
+                case nameof(TrailingIconIsVisible):
+                    imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    break;
+                case nameof(LeadingIconIsVisible):
+                    imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
 
                 case nameof(this.LeadingIconCommand):

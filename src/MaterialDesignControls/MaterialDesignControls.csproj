@@ -51,6 +51,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Controls\MaterialRatingControl.xaml.cs">
+      <DependentUpon>MaterialRatingControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controls\MaterialSlider.xaml.cs">
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -121,22 +125,43 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utils\LoggerHelper.cs" />
+    <Compile Include="Controls\MaterialSegmented.xaml.cs">
+      <DependentUpon>MaterialSegmented.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialCheckbox.xaml.cs">
+      <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\BaseMaterialCheckboxes.cs" />
+    <Compile Include="TextSide.cs" />
+    <Compile Include="Controls\MaterialRadioButtons.xaml.cs">
+      <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialSwitch.xaml.cs">
+      <DependentUpon>MaterialSwitch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MaterialDivider.cs" />
+    <Compile Include="Controls\MaterialFloatingButton.xaml.cs">
+      <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Implementations\CustomFrame.cs" />
+    <Compile Include="FloatingButtonSize.cs" />
+    <Compile Include="IconSide.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Implementations\" />
     <Folder Include="Animations\" />
     <Folder Include="Effects\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Controls\MaterialSlider.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

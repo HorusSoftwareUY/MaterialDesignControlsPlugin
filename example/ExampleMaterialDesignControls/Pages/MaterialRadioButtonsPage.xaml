@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialRadioButtonsPage"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    Title="Material RadioButtons">
+    <ContentPage.Content>
+			<ScrollView>
+        <StackLayout>
+			<material:MaterialLabel FontAttributes="Bold" Text="xamarin native control selection" HorizontalOptions="Center"/>
+            <material:MaterialRadioButtons 
+				Spacing="0"
+		        ItemsSource="{Binding Rigtones}"
+		        LabelText="Rigtones" 
+		        SelectedItem="{Binding SelectedRigtone}"/>
+
+			<material:MaterialDivider />
+			<material:MaterialLabel FontAttributes="Bold" Text="xamarin native control selection (Disabled)" HorizontalOptions="Center"/>
+
+            <material:MaterialRadioButtons 
+				Spacing="0"
+				IsEnabled="False"
+		        ItemsSource="{Binding Rigtones}" 
+		        LabelText="Rigtones" 
+		        SelectedItem="{Binding SelectedRigtone}"/>
+
+			<material:MaterialDivider />
+			<material:MaterialLabel FontAttributes="Bold" Text=".png files" HorizontalOptions="Center"/>
+
+            <material:MaterialRadioButtons 
+		        ItemsSource="{Binding Sizes}" 
+		        LabelText="Select your size (.png)" 
+				SelectedIcon="radioButton_checked.png"
+				UnselectedIcon="radioButton_unchecked.png"
+				DisabledSelectedIcon="radioButton_disabledChecked.png"
+				DisabledUnselectedIcon="radioButton_disabledUnchecked.png"
+		        SelectedItem="{Binding SelectedSize}"
+		        AssistiveText="{Binding Error}"
+				TextSide="Left"
+				SelectionHorizontalOptions="EndAndExpand"/>
+
+			<material:MaterialDivider />
+
+            <material:MaterialRadioButtons 
+				HorizontalOptions="FillAndExpand"
+				Spacing="0"
+				Animation="Scale"
+		        ItemsSource="{Binding Places}" 
+		        LabelText="Ship to (.svg):" 
+		        SelectedItem="{Binding SelectedPlace}">
+                    <material:MaterialRadioButtons.CustomSelectedIcon>
+                        <DataTemplate>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_checked.svg"/>
+                        </DataTemplate>
+                    </material:MaterialRadioButtons.CustomSelectedIcon>
+                    <material:MaterialRadioButtons.CustomUnselectedIcon>
+                        <DataTemplate>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_unchecked.svg"/>
+                        </DataTemplate>
+                    </material:MaterialRadioButtons.CustomUnselectedIcon>
+                    <material:MaterialRadioButtons.CustomDisabledSelectedIcon>
+                        <DataTemplate>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledChecked.svg"/>
+                            <!--<ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_unchecked.svg"/>-->
+                        </DataTemplate>
+                    </material:MaterialRadioButtons.CustomDisabledSelectedIcon>
+                    <material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
+                        <DataTemplate>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledUnchecked.svg"/>
+                        </DataTemplate>
+                    </material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
+                </material:MaterialRadioButtons>
+
+            <material:MaterialButton Text="Save" HorizontalOptions="Center" WidthRequest="150" Command="{Binding SaveSizeCommand}" />
+        </StackLayout>
+            </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
