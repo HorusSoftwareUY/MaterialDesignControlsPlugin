@@ -1,15 +1,21 @@
-# MaterialRadioButtonsControl
-This control is a custom implementation of a radiobuttons. You can customize some properties that we show in Documentation topic. 
+# MaterialSwitch
+Switches toggle the state of a single item on or off.
+<br/>
+[View Material Design documentation](https://material.io/components/switches)
 
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.jpg" width="300">
 
-## how use?
+## Example
 ```XML
- <material:MaterialRadioButtons
-                    x:Name="radiobuttons" 
-                    LabelText="Rigtones" 
-                    ItemsSource="{Binding Rigtones}"
+ <material:MaterialSwitch
+    Text="Bluetooth *"
+    IsToggled="False"
+    TextColor="{StaticResource GradientColor4}"
+    ThumbColor="{StaticResource GradientColor4}"
+    OnColor="#aca3db"
+    AssistiveTextColor="Red"
+    AssistiveText="Bluetooth is required"/>
 ```
 
 ## Documentation
@@ -79,4 +85,3 @@ This property is to set the color when the switch is toggled
 
 ### Property ThumbColor
 This property is to define the switch color when it is toggled
-

@@ -97,7 +97,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextVerticalOptionsProperty =
-            BindableProperty.Create(nameof(TextVerticalOptions), typeof(LayoutOptions), typeof(MaterialSwitch), defaultValue: LayoutOptions.End);
+            BindableProperty.Create(nameof(TextVerticalOptions), typeof(LayoutOptions), typeof(MaterialSwitch), defaultValue: LayoutOptions.Center);
 
         public LayoutOptions TextVerticalOptions
 	    {

@@ -6,7 +6,26 @@
     x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage"
     Title="Material Switch">
     <ContentPage.Content>
-        <StackLayout Spacing="15">
+        <StackLayout Spacing="15" Padding="20">
+
+            <material:MaterialSwitch
+                Text="WIFI"
+                IsToggled="True"
+                TextColor="{StaticResource GradientColor4}"
+                ThumbColor="{StaticResource GradientColor4}"
+                OnColor="#aca3db" />
+
+            <material:MaterialSwitch
+                Text="Bluetooth *"
+                IsToggled="False"
+                TextColor="{StaticResource GradientColor4}"
+                ThumbColor="{StaticResource GradientColor4}"
+                OnColor="#aca3db"
+                AssistiveTextColor="Red"
+                AssistiveText="Bluetooth is required"/>
+
+            <material:MaterialDivider />
+
             <material:MaterialSwitch Text="Wifi" Toggled="Switch_toggled"/>
             <material:MaterialSwitch Text="Wifi" IsToggled="True" TextColor="{StaticResource GradientColor1}" TextHorizontalOptions="EndAndExpand"/>
             <material:MaterialSwitch Text="Bluetooth" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
@@ -20,6 +39,21 @@
 		        AssistiveText="{Binding Error}"/>
 
             <material:MaterialButton Text="Save" WidthRequest="150" HorizontalOptions="Center" Command="{Binding SaveCommand}"/>
+
+            <material:MaterialDivider />
+
+            <material:MaterialSwitch 
+		        IsToggled="{Binding PropertyA}"
+                Text="Default True"
+		        AssistiveText="{Binding PropertyA}"
+                AnimateError="False" />
+
+            <material:MaterialSwitch 
+		        IsToggled="{Binding PropertyB}"
+                Text="Default False"
+		        AssistiveText="{Binding PropertyB}"
+                AnimateError="False" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

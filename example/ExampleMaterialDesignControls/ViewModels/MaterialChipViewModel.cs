@@ -68,6 +68,14 @@ namespace ExampleMaterialDesignControls.ViewModels
             }
         }
 
+        private bool isChipIconVisible;
+
+        public bool IsChipIconVisible
+        {
+            get { return isChipIconVisible; }
+            set { SetProperty(ref isChipIconVisible, value); }
+        }
+
         public delegate Task DisplayAlertType(string title, string message, string cancel);
 
         public DisplayAlertType DisplayAlert { get; set; }

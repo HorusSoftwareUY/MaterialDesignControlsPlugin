@@ -52,17 +52,14 @@ Buttons allow users to take actions, and make choices, with a single tap.
 <material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
 ```
 
-### MaterialChip
-Chips are compact elements that represent an action.
+---
 
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.png" width="300">
-
-**Example**
-```XML
-<material:MaterialChips IsSelected="true" IsEnabled="true" Text="Option A" />
-```
+### MaterialChips & MaterialChipsGroup
+Chips are compact elements that represent an input, attribute, or action.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips_preview.png" width="300">
+<br/>
+[View documentation](MaterialChipsControl.md)
 
 ---
 
@@ -285,18 +282,16 @@ Displays a radiobuttons control<br/>
                     Animation="Scale"/>
 ```
 
+---
+
 ### MaterialSwitch
-Displays a switch control<br/>
+Switches toggle the state of a single item on or off.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch_preview.png" width="300">
+<br/>
 [View documentation](MaterialSwitchControl.md)
 
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch.png" width="300">
-
-**Example**
-```XML
- <material:MaterialSwitch x:Name="switch" Text="Wifi" IsToggled="True"/>
-```
+---
 
 ### MaterialSegmented
 Displays a segmented control<br/>

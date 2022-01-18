@@ -250,16 +250,15 @@
                             </StackLayout>
                         </Frame>
 
-
-                        <Frame Grid.Row="9" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" CornerRadius="16" Padding="15">
+                        <Frame Grid.Row="9" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent4}" HasShadow="False" CornerRadius="16" Padding="15">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding GoMaterialSwitchCommand}"/>
                             </Frame.GestureRecognizers>
                             <StackLayout>
-                                <Frame BackgroundColor="{StaticResource GradientColorTransparent12}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                <Frame BackgroundColor="{StaticResource GradientColorTransparent4}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_switch.svg"/>
                                 </Frame>
-                                <material:MaterialLabel Text="Material Switch" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor12}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <material:MaterialLabel Text="Material Switch" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor4}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
 

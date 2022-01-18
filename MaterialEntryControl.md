@@ -1,5 +1,7 @@
 # MaterialEntry
 Text fields let users enter and edit text.
+<br/>
+[View Material Design documentation](https://material.io/components/text-fields)
 
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.png" width="300">

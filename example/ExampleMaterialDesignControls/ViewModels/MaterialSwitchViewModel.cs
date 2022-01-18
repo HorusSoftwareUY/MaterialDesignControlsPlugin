@@ -1,11 +1,26 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.ViewModels
 {
     public class MaterialSwitchViewModel : BaseViewModel
     {
+        private bool propertyA = true;
+
+        public bool PropertyA
+        {
+            get { return propertyA; }
+            set { SetProperty(ref propertyA, value); }
+        }
+
+        private bool propertyB = false;
+
+        public bool PropertyB
+        {
+            get { return propertyB; }
+            set { SetProperty(ref propertyB, value); }
+        }
+
         private bool isOn;
 
         public bool IsOn
