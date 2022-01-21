@@ -141,7 +141,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ReturnTypeProperty =
-            BindableProperty.Create(nameof(ReturnType), typeof(ReturnType), typeof(MaterialEntry), defaultValue: null);
+            BindableProperty.Create(nameof(ReturnType), typeof(ReturnType), typeof(MaterialEntry), defaultValue: ReturnType.Default);
 
         public ReturnType ReturnType
         {
@@ -567,7 +567,7 @@ namespace Plugin.MaterialDesignControls
                         }
                         else
                         {
-                            this.FocusNextElement(currentTabIndex);
+                            this.FocusNextElement(++currentTabIndex);
                         }
                     }
                 }

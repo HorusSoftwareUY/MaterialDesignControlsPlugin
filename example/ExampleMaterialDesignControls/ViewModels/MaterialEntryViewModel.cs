@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -51,6 +50,21 @@ namespace ExampleMaterialDesignControls.ViewModels
         private async void OnHelpCommand(string parameter)
         {
             await this.DisplayAlert.Invoke("Help", parameter, "Ok");
+        }
+
+        private string searchText;
+
+        public string SearchText
+        {
+            get { return searchText; }
+            set { SetProperty(ref searchText, value); }
+        }
+
+        public ICommand SearchCommand => new Command(OnSearchCommand);
+
+        private async void OnSearchCommand()
+        {
+            await this.DisplayAlert.Invoke("Search", SearchText, "Ok");
         }
     }
 }
