@@ -7,17 +7,17 @@
     BackgroundColor="#F5F5F5" Title="Material Segmented" >
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Padding="20">
+        <StackLayout Padding="20" Spacing="20">
             <material:MaterialSegmented 
 		        SelectedItem="{Binding SelectedItem}" 
 		        ItemsSource="{Binding Items}" />
 
             <material:MaterialSegmented 
-                CornerRadius="0"
+                CornerRadius="4"
                 HeightRequest="40"
 		        ItemsSource="{Binding Items}" 
-                SelectedColor="#F0A297"
-                UnselectedTextColor="#F0A297"
+                SelectedColor="{StaticResource GradientColor3}"
+                UnselectedTextColor="{StaticResource GradientColor3}"
                 SegmentMargin="3"/>
 
             <material:MaterialSegmented 
@@ -26,9 +26,11 @@
                 BackgroundColor="White"
 		        ItemsSource="{Binding Items}"
                 UnselectedColor="White"
-                SelectedColor="#FA9D06"
-                UnselectedTextColor="#FA9D06"
+                SelectedColor="{StaticResource GradientColor5}"
+                UnselectedTextColor="{StaticResource GradientColor5}"
                 CornerRadius="20"/>
+
+            <material:MaterialDivider Margin="0,10" />
 
             <material:MaterialSegmented 
                 HeightRequest="50"
@@ -36,8 +38,8 @@
                 SelectedItem="{Binding SelectedSize}"
 		        ItemsSource="{Binding Sizes}"
                 UnselectedColor="White"
-                SelectedColor="#FA9D06"
-                UnselectedTextColor="#FA9D06"
+                SelectedColor="{StaticResource GradientColor7}"
+                UnselectedTextColor="{StaticResource GradientColor7}"
                 Command="{Binding SelectCommand}"
                 CornerRadius="20"/>
 
@@ -46,18 +48,18 @@
                 BackgroundColor="White"
 		        ItemsSource="{Binding Sizes}"
                 UnselectedColor="White"
-                SelectedColor="#FA9D06"
-                UnselectedTextColor="#FA9D06"
+                SelectedColor="{StaticResource GradientColor9}"
+                UnselectedTextColor="{StaticResource GradientColor9}"
                 IsEnabled="False"
                 CornerRadius="25"/>
             
             <material:MaterialSegmented 
                 HeightRequest="40"
-                BackgroundColor="#58555A"
+                BackgroundColor="{StaticResource GradientColorTransparent11}"
 		        ItemsSource="{Binding Backlight}"
-                UnselectedColor="#58555A"
-                SelectedColor="#D9D277"
-                UnselectedTextColor="#D9D277"
+                UnselectedColor="Transparent"
+                SelectedColor="{StaticResource GradientColor11}"
+                UnselectedTextColor="{StaticResource GradientColor11}"
                 CornerRadius="10"/>
 
             <material:MaterialSegmented 
@@ -66,8 +68,8 @@
                 BackgroundColor="#F5F5F5"
 		        ItemsSource="{Binding Frecuently}"
                 UnselectedColor="#F5F5F5"
-                SelectedColor="#3EB595"
-                UnselectedTextColor="#3EB595"
+                SelectedColor="{StaticResource GradientColor9}"
+                UnselectedTextColor="{StaticResource GradientColor9}"
                 CornerRadius="20"/>
 
             <StackLayout Orientation="Horizontal">
@@ -78,7 +80,7 @@
                     HorizontalOptions="EndAndExpand"
                     ItemsSource="{Binding OnOff}"
                     IsSelectedChanged="MaterialSegmented_IsSelectedChanged"
-                    SelectedColor="#59D986" />
+                    SelectedColor="{StaticResource GradientColor1}" />
             </StackLayout>
             <material:MaterialButton Text="Save" Command="{Binding SaveCommand}" VerticalOptions="EndAndExpand" HorizontalOptions="Fill"/>
         </StackLayout>

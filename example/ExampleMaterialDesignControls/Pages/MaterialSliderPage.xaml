@@ -25,6 +25,8 @@
 
                 <material:MaterialSlider x:Name="slider10" Style="{StaticResource SliderStyle}" MinimumValue="0"  MaximumValue="10"  IsEnabled="True" ThumbImage="color.png"  LabelText="Thumb icon" Value="5" LabelMinimumText="0"  LabelMaximumText="10" />
 
+                <material:MaterialDivider Margin="0,10" />
+
                 <material:MaterialSlider x:Name="slider1" Style="{StaticResource SliderStyle}" MinimumValue="0"  MaximumValue="10" ThumbColor="{StaticResource GradientColor6}" LabelText="Slider with event ValueChanged"  ActiveTrackColor="{StaticResource GradientColor6}"  LabelMinimumText="0" LabelMaximumText="10"  ValueChanged="slider1_ValueChanged" InactiveTrackColor="{StaticResource GradientColorTransparent6}"/>
 
                 <Label x:Name="lblSlider1" TextColor="{StaticResource DarkGrayColor}"/>

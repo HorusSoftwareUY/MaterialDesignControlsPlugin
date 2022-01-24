@@ -14,6 +14,9 @@
                     </material:MaterialSelection.CustomTrailingIcon>
                 </material:MaterialSelection>
                 <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection" />
+
+                <material:MaterialDivider Margin="0,10" />
+
                 <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection" IsEnabled="False" />
                 <material:MaterialSelection Type="Outlined" LabelText="Product" Placeholder="Select product" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="Product selection" HorizontalTextAlignment="Center" />
                 <material:MaterialSelection Type="Lined" TrailingIcon="arrow_drop_down.png" LabelText="Model" Placeholder="Select model" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="Model selection">

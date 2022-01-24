@@ -1,3 +1,1 @@
-<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2 0C0.897 0 0 0.897 0 2V12C0 13.103 0.897 14 2 14H12C13.103 14 14 13.103 14 12V2C14 0.897 13.103 0 12 0H2ZM2 12V2H12L12.002 12H2Z" fill="#D3D3D3"/>
-</svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><defs><style>.cls-1{fill:#d8d8d8;}</style></defs><title>checkbox_disabledUnchecked</title><path class="cls-1" d="M20,6V20H6V6H20m0-2H6A2,2,0,0,0,4,6V20a2,2,0,0,0,2,2H20a2,2,0,0,0,2-2V6A2,2,0,0,0,20,4Z"/></svg>

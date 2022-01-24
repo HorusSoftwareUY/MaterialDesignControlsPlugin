@@ -7,20 +7,21 @@
     Title="Material Divider">
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Padding="20" Spacing="20">
-                <Label Text="Section 1" HorizontalTextAlignment="Center" />
-                <Label Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." LineBreakMode="WordWrap" />
+            <StackLayout Padding="20" Spacing="10">
+                <Label Text="Section 1" HorizontalTextAlignment="Center" FontFamily="{StaticResource SemiBoldFont}" />
+                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi est sit amet facilisis magna etiam. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus." LineBreakMode="WordWrap" FontSize="{StaticResource Body2FontSize}" />
 
-                <material:MaterialDivider />
+                <material:MaterialDivider Margin="0,10" />
 
-                <Label Text="Section 2" HorizontalTextAlignment="Center" />
-                <Label Text="It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged." LineBreakMode="WordWrap" />
+                <Label Text="Section 2" HorizontalTextAlignment="Center" FontFamily="{StaticResource SemiBoldFont}" />
+                <Label Text="Quam viverra orci sagittis eu volutpat odio. Elementum pulvinar etiam non quam lacus suspendisse. Quam pellentesque nec nam aliquam sem et tortor. Amet risus nullam eget felis eget nunc." LineBreakMode="WordWrap" FontSize="{StaticResource Body2FontSize}" />
 
-                <material:MaterialDivider />
+                <material:MaterialDivider Margin="0,10" />
 
-                <Label Text="Section 3" HorizontalTextAlignment="Center" />
-                <Label Text="It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." LineBreakMode="WordWrap" />
-            </StackLayout>
+                <Label Text="Section 3" HorizontalTextAlignment="Center" FontFamily="{StaticResource SemiBoldFont}" />
+                <Label Text="Ac auctor augue mauris augue neque gravida in fermentum et. Ultricies lacus sed turpis tincidunt id aliquet risus. Sed id semper risus in hendrerit gravida. A lacus vestibulum sed arcu non odio euismod." LineBreakMode="WordWrap" FontSize="{StaticResource Body2FontSize}" />
+
+                </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

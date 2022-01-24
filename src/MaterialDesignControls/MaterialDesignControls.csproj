@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Controls\MaterialSwitch.xaml.cs">
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\MaterialDivider.cs" />
     <Compile Include="Controls\MaterialFloatingButton.xaml.cs">

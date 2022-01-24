@@ -228,6 +228,7 @@
     <BundleResource Include="Resources\radioButton_unchecked.png" />
     <BundleResource Include="Resources\add_b.png" />
     <BundleResource Include="Resources\add_w.png" />
+    <BundleResource Include="Resources\starSelected.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\volume.png" />
@@ -240,8 +241,5 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\starUnselected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\startSelected.png" />
   </ItemGroup>
 </Project>

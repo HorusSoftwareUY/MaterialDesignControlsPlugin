@@ -105,21 +105,21 @@
             <Setter Property="DisabledTextColor" Value="{StaticResource DarkGrayColor}" />
             <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             
-            <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource GradientColor1}" />
 
-            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
-            <Setter Property="FocusedLabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource GradientColor1}" />
+            <Setter Property="FocusedLabelTextColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="DisabledLabelTextColor" Value="{StaticResource DarkGrayColor}" />
             <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
 
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
 
-            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="FocusedBorderColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="DisabledBorderColor" Value="{StaticResource DarkGrayColor}" />
 
-            <Setter Property="FocusedBackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="FocusedBackgroundColor" Value="{StaticResource GradientColorTransparent1}" />
             <Setter Property="DisabledBackgroundColor" Value="{StaticResource GrayColor}" />
         </Style>
 
@@ -131,7 +131,7 @@
         <!-- MaterialField -->
         <Style TargetType="material:MaterialField">
             <Setter Property="LabelSize" Value="{StaticResource Body4FontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
@@ -184,8 +184,8 @@
             <Setter Property="CornerRadius" Value="16" />
             <Setter Property="HeightRequest" Value="32" />
             <Setter Property="Padding" Value="12,0" />
-            <Setter Property="BackgroundColor" Value="#f2f2f2" />
-            <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource GradientColorTransparent1}" />
+            <Setter Property="TextColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="SelectedBackgroundColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="SelectedTextColor" Value="{StaticResource WhiteColor}" />
             <Setter Property="DisabledBackgroundColor" Value="{StaticResource WhiteColor}" />
@@ -198,14 +198,14 @@
         <!-- MaterialChipsGroup -->
         <Style TargetType="material:MaterialChipsGroup">
             <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
-            <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="LabelTextColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
             <Setter Property="FontSize" Value="{StaticResource Body2FontSize}" />
             <Setter Property="CornerRadius" Value="16" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="BackgroundColor" Value="#f2f2f2" />
-            <Setter Property="TextColor" Value="{StaticResource BlackColor}"  />
+            <Setter Property="BackgroundColor" Value="{StaticResource GradientColorTransparent1}" />
+            <Setter Property="TextColor" Value="{StaticResource GradientColor1}"  />
             <Setter Property="SelectedBackgroundColor" Value="{StaticResource GradientColor1}"  />
             <Setter Property="SelectedTextColor" Value="{StaticResource WhiteColor}" />
             <Setter Property="DisabledBackgroundColor" Value="{StaticResource WhiteColor}" />
@@ -251,6 +251,7 @@
         <Style TargetType="material:MaterialDatePicker" BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
             <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
+            <Setter Property="DisabledTextColor" Value="{StaticResource DarkGrayColor}" />
         </Style>
 
         <!-- MaterialTimePicker -->
@@ -298,6 +299,9 @@
             <Setter Property="AnimateError" Value="True" />
             <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
+            <Setter Property="ThumbColor" Value="{StaticResource GradientColor1}" />
+            <Setter Property="TextColor" Value="{StaticResource LabelTextColor}" />
+            <Setter Property="OnColor" Value="#b9d6ee" />
         </Style>
 
         <!-- MaterialDivider-->
@@ -309,6 +313,8 @@
         <!-- MaterialFloatingButton -->
         <Style TargetType="material:MaterialFloatingButton">
             <Setter Property="BackgroundColor" Value="{StaticResource GradientColor1}" />
+            <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
+            <Setter Property="FontFamily" Value="{StaticResource SemiBoldFont}" />
             <Setter Property="ShadowColor" Value="Black" />
             <Setter Property="TextColor" Value="White" />
 	    </Style>

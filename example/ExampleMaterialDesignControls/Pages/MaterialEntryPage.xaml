@@ -18,13 +18,7 @@
                     AssistiveText="Email is required"
                     AnimateError="True"
                     TabIndex="1"
-                    ReturnType="Next"
-                    LabelTextColor="{StaticResource GradientColor5}"
-                    TextColor="{StaticResource GradientColor5}"
-                    PlaceholderColor="{StaticResource GradientColor5}"
-                    BackgroundColor="{StaticResource GradientColorTransparent5}"
-                    BorderColor="{StaticResource GradientColor5}"
-                    AssistiveTextColor="Red" />
+                    ReturnType="Next"/>
 
                 <material:MaterialEntry
                     Type="Filled"
@@ -36,13 +30,7 @@
                     ClearIconIsVisible="False"
                     AnimateError="True"
                     TabIndex="2"
-                    ReturnType="Done"
-                    LabelTextColor="{StaticResource GradientColor5}"
-                    TextColor="{StaticResource GradientColor5}"
-                    PlaceholderColor="{StaticResource GradientColor5}"
-                    BackgroundColor="{StaticResource GradientColorTransparent5}"
-                    BorderColor="{StaticResource GradientColor5}"
-                    AssistiveTextColor="Red">
+                    ReturnType="Done">
                     <material:MaterialEntry.CustomShowPasswordIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg"/> 
                     </material:MaterialEntry.CustomShowPasswordIcon>
@@ -51,7 +39,7 @@
                     </material:MaterialEntry.CustomHidePasswordIcon>
                 </material:MaterialEntry>
 
-                <material:MaterialDivider />
+                <material:MaterialDivider Margin="0,10" />
 
                 <material:MaterialEntry x:Name="txtName" Type="Filled" LabelText="Name*" Placeholder="Enter your name" MaxLength="12" Text="{Binding Name}" AssistiveText="{Binding NameError}" AnimateError="True" TabIndex="1" ReturnType="Next" />
                 <material:MaterialEntry Type="Lined" LabelText="Email" Placeholder="Enter your email" LeadingIcon="email.png" Keyboard="Email" TabIndex="2" ReturnType="Next" />
@@ -74,7 +62,7 @@
                     </material:MaterialEntry.CustomHidePasswordIcon>
                 </material:MaterialEntry>
 
-                <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" FocusedBorderColor="LightGreen" FocusedTextColor="Green" FocusedLabelTextColor="Green" HorizontalTextAlignment="Center"/>
+                <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" HorizontalTextAlignment="Center"/>
                 <material:MaterialEntry Type="Filled" LabelText="Phone" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" ReturnType="Next" IsEnabled="False" />
 
                 <material:MaterialEntry Type="Filled" LabelText="Phone (SVG trailing icon)" Placeholder="Enter your phone" Keyboard="Telephone" TabIndex="5" TrailingIconCommand="{Binding HelpCommand}" TrailingIconCommandParameter="Enter your phone" LabelMargin="0,0,0,2" AssistiveMargin="0,2,0,0" AssistiveText="Testing">

@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
-                <material:MaterialPicker x:Name="pckColors" Type="Filled" LabelText="Color" AnimateError="True" Placeholder="Select a Color" ItemsSource="{Binding ItemsSourceColors}" SelectedItem="{Binding SelectedItemColor}" />
+                <material:MaterialPicker x:Name="pckColors" Type="Filled" LabelText="Color" AnimateError="True" Placeholder="Select a Color" ItemsSource="{Binding ItemsSourceColors}" SelectedItem="{Binding SelectedItemColor}" LabelTextColor="{StaticResource GradientColor1}" TextColor="{StaticResource GradientColor1}" PlaceholderColor="{StaticResource GradientColor1}" BackgroundColor="{StaticResource GradientColorTransparent1}" BorderColor="{StaticResource GradientColor1}" FocusedBorderColor="{StaticResource GradientColor1}"/>
                 <Grid
                     ColumnSpacing="16">
                     <Grid.ColumnDefinitions>
@@ -18,9 +18,9 @@
                     <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
                 </Grid>
 
-                <material:MaterialPicker Type="Filled" LabelText="Color" AnimateError="True" IsEnabled="False" />
-                <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Outlined" LabelText="Size" Placeholder="Select Option"/>
-                <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" />
+                <material:MaterialPicker Type="Filled" LabelText="Color" AnimateError="True" IsEnabled="False" LabelTextColor="{StaticResource GradientColor1}" TextColor="{StaticResource GradientColor1}" PlaceholderColor="{StaticResource GradientColor1}" BackgroundColor="{StaticResource GradientColorTransparent1}" BorderColor="{StaticResource GradientColor1}" FocusedBorderColor="{StaticResource GradientColor1}"/>
+                <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Outlined" LabelText="Size" Placeholder="Select Option" LabelTextColor="{StaticResource GradientColor1}" TextColor="{StaticResource GradientColor1}" PlaceholderColor="{StaticResource GradientColor1}" BackgroundColor="{StaticResource GradientColorTransparent1}" BorderColor="{StaticResource GradientColor1}" FocusedBorderColor="{StaticResource GradientColor1}"/>
+                <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" LabelTextColor="{StaticResource GradientColor1}" TextColor="{StaticResource GradientColor1}" PlaceholderColor="{StaticResource GradientColor1}" BackgroundColor="{StaticResource GradientColorTransparent1}" BorderColor="{StaticResource GradientColor1}" FocusedBorderColor="{StaticResource GradientColor1}"/>
                 <Label x:Name="lblSelectedIndex" Text="Selected Index: -" />
                 <material:MaterialButton Text="Save" Command="{Binding TapCommand}"/>
 

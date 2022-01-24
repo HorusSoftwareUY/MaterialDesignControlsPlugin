@@ -14,19 +14,22 @@
                     ItemsByRow="5"
                     Animation="Fade"
                     AnimationParameter="0.1" 
-                    SelectedIcon="startSelected.png"
-                    UnSelectedIcon="starUnselected.png" />
+                    SelectedIcon="starSelected.png"
+                    UnSelectedIcon="starUnselected.png"
+                    LabelSize="{StaticResource ButtonFontSize}"/>
                 
                 <material:MaterialRatingControl
                     LabelText="How do you...?(preselect value)"
                     ItemSize="6"
                     ItemsByRow="6"
                     Value="2"
-                    SelectedIcon="startSelected.png"
-                    UnSelectedIcon="starUnselected.png" />
+                    SelectedIcon="starSelected.png"
+                    UnSelectedIcon="starUnselected.png"
+                    LabelSize="{StaticResource ButtonFontSize}"/>
 
                 <material:MaterialRatingControl
                     LabelText="How do you...?(svg icons)"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="2"
                     ItemsByRow="2"
                     TabIndex="3">
@@ -46,60 +49,59 @@
 
                 <material:MaterialRatingControl
                     LabelText="How do you rate...?(multiple rows)"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="10"
                     ItemsByRow="5"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
 
-                <Label
-                    Text="Animations"
-                    HorizontalTextAlignment="Start"
-                    Margin="0,20,0,0"
-                    TextColor="Blue"
-                    FontSize="Large" />
+                <material:MaterialDivider Margin="0,10" />
+
+                <Label Text="Animations" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
                 <material:MaterialRatingControl
                     LabelText="How do you rate...?(none)"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="5"
                     ItemsByRow="5"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
 
                 <material:MaterialRatingControl
                     LabelText="How do you...? (fade)"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="5"
                     ItemsByRow="5"
                     Animation="Fade"
                     AnimationParameter="0.1"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
 
                 <material:MaterialRatingControl
                     LabelText="How do you...? (scale)"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="5"
                     ItemsByRow="5"
                     Animation="Scale"
                     AnimationParameter="1.5"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
 
-                <Label
-                    Text="Assistive Text"
-                    HorizontalTextAlignment="Start"
-                    Margin="0,20,0,0"
-                    TextColor="Blue"
-                    FontSize="Large" />
+                <material:MaterialDivider Margin="0,10" />
+
+                <Label Text="Assistive Text" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
 
                 <material:MaterialRatingControl
                     LabelText="How do you rate the service?"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="6"
                     ItemsByRow="6"
                     Value="{Binding Value}"
                     AssistiveText="{Binding Error}"
                     AnimateError="True"
                     AssistiveTextColor="Red"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
                 <Grid
                     ColumnSpacing="16">

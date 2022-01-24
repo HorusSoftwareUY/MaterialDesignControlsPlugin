@@ -60,7 +60,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public MaterialSegmentedViewModel()
         {
-            Items = new ObservableCollection<string> { "Men","Women","Others"};
+            Items = new ObservableCollection<string> { "Complete","Incomplete","Pending"};
             SelectedItem = "Others";
             Sizes = new ObservableCollection<string> { "XS","S","M","L","XL"};
             OnOff = new ObservableCollection<string> { "On","Off"};
