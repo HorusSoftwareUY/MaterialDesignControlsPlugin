@@ -84,6 +84,29 @@
                 </material:MaterialEntry>
 
                 <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" />
+
+                <material:MaterialDivider />
+
+                <material:MaterialEntry
+                    Type="Filled"
+                    LabelText="Return type Search"
+                    Placeholder="Enter search text"
+                    Text="{Binding SearchText}"
+                    ReturnType="Search"
+                    ReturnCommand="{Binding SearchCommand}" />
+
+                <material:MaterialEntry
+                    Type="Filled"
+                    LabelText="Return type Next"
+                    Placeholder="Enter text"
+                    ReturnType="Next" />
+
+                <material:MaterialEntry
+                    Type="Filled"
+                    LabelText="Return type Done"
+                    Placeholder="Enter text"
+                    ReturnType="Done" />
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
