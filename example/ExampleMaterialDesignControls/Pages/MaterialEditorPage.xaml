@@ -23,8 +23,12 @@
                     Placeholder="Enter your observation"
                     Text="{Binding Observation}"
                     TabIndex="2"
-                    AutoSize="TextChanges"
-                    KeyboardFlags="CapitalizeSentence"/>
+                    FieldHeightRequest="120"
+                    KeyboardFlags="CapitalizeSentence" />
+
+                <material:MaterialDivider Margin="0,10" />
+
+                <material:MaterialLabel Text="Auto Size" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
                 <material:MaterialEditor
                     Type="Outlined"
@@ -32,10 +36,12 @@
                     Placeholder="Enter your observation"
                     Text="{Binding Observation}"
                     TabIndex="2"
-                    FieldHeightRequest="120"
-                    KeyboardFlags="CapitalizeSentence" />
+                    AutoSize="TextChanges"
+                    KeyboardFlags="CapitalizeSentence"/>
 
                 <material:MaterialDivider Margin="0,10" />
+
+                <material:MaterialLabel Text="Types" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
                 <material:MaterialEditor
                     Type="Lined"

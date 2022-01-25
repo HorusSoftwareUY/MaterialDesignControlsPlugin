@@ -54,7 +54,9 @@
         <Color x:Key="BorderColor">#b0b0b0</Color>
         <Color x:Key="FocusedBorderColor">#c92726</Color>
         <Color x:Key="AssistiveTextColor">#c92726</Color>
-        <Color x:Key="PlaceholderColor">#828282</Color>
+        <Color x:Key="PlaceholderColor">#66839b</Color>
+        <Color x:Key="BackgroundMaterialColor">#0d2e85cc</Color>
+        <Color x:Key="BorderMaterialColor">#1f5988</Color>
 
         <Color x:Key="DarkBlueColor">#222e3c</Color>
         <Color x:Key="BlackColorTransparent">#1A0d1a26</Color>
@@ -105,7 +107,7 @@
             <Setter Property="DisabledTextColor" Value="{StaticResource DarkGrayColor}" />
             <Setter Property="FontSize" Value="{StaticResource Body1FontSize}" />
             
-            <Setter Property="PlaceholderColor" Value="{StaticResource GradientColor1}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource PlaceholderColor}" />
 
             <Setter Property="LabelTextColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="FocusedLabelTextColor" Value="{StaticResource GradientColor1}" />
@@ -116,7 +118,7 @@
             <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
 
             <Setter Property="BorderColor" Value="{StaticResource GradientColor1}" />
-            <Setter Property="FocusedBorderColor" Value="{StaticResource GradientColor1}" />
+            <Setter Property="FocusedBorderColor" Value="{StaticResource BorderMaterialColor}" />
             <Setter Property="DisabledBorderColor" Value="{StaticResource DarkGrayColor}" />
 
             <Setter Property="FocusedBackgroundColor" Value="{StaticResource GradientColorTransparent1}" />
@@ -217,7 +219,7 @@
 
         <!-- MaterialEntry -->
         <Style TargetType="material:MaterialEntry" BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="ClearIcon" Value="cancel.png" />
             <Setter Property="ClearIconIsVisible" Value="True" />
             <Setter Property="ShowPasswordIcon" Value="showPassword.png" />
@@ -225,44 +227,44 @@
 
         <!-- MaterialEditor -->
         <Style TargetType="material:MaterialEditor" BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="ClearIcon" Value="cancel.png" />
         </Style>
 
         <!-- MaterialCodeEntry -->
         <Style TargetType="material:MaterialCodeEntry" BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="CornerRadius" Value="16" />
         </Style>
 
         <!-- MaterialPicker -->
         <Style TargetType="material:MaterialPicker" BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
         </Style>
 
         <!-- MaterialDoublePicker -->
         <Style TargetType="material:MaterialDoublePicker" BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
         </Style>
 
         <!-- MaterialDatePicker -->
         <Style TargetType="material:MaterialDatePicker" BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
             <Setter Property="DisabledTextColor" Value="{StaticResource DarkGrayColor}" />
         </Style>
 
         <!-- MaterialTimePicker -->
         <Style TargetType="material:MaterialTimePicker" BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="TrailingIcon" Value="arrow_drop_down.png" />
         </Style>
 
         <!-- MaterialSelection -->
         <Style TargetType="material:MaterialSelection" BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="TrailingIcon" Value="chevron_right.png" />
         </Style>
 

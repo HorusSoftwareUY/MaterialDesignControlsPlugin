@@ -10,15 +10,19 @@
         <StackLayout Padding="20" Spacing="20">
             <material:MaterialSegmented 
 		        SelectedItem="{Binding SelectedItem}" 
-		        ItemsSource="{Binding Items}" />
+		        ItemsSource="{Binding Items}"
+                UnselectedTextColor="{StaticResource GradientColor1}"
+                HeightRequest="50"
+                SegmentMargin="0"/>
+
 
             <material:MaterialSegmented 
-                CornerRadius="4"
-                HeightRequest="40"
+                CornerRadius="10"
+                HeightRequest="50"
 		        ItemsSource="{Binding Items}" 
                 SelectedColor="{StaticResource GradientColor3}"
                 UnselectedTextColor="{StaticResource GradientColor3}"
-                SegmentMargin="3"/>
+                SegmentMargin="4"/>
 
             <material:MaterialSegmented 
                 HeightRequest="50"
@@ -28,9 +32,11 @@
                 UnselectedColor="White"
                 SelectedColor="{StaticResource GradientColor5}"
                 UnselectedTextColor="{StaticResource GradientColor5}"
-                CornerRadius="20"/>
+                CornerRadius="25"/>
 
             <material:MaterialDivider Margin="0,10" />
+
+            <material:MaterialLabel Text="Five Items" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
             <material:MaterialSegmented 
                 HeightRequest="50"
@@ -52,15 +58,26 @@
                 UnselectedTextColor="{StaticResource GradientColor9}"
                 IsEnabled="False"
                 CornerRadius="25"/>
+
+            <material:MaterialDivider Margin="0,10" />
+
+            <material:MaterialLabel Text="Four Items" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
             
             <material:MaterialSegmented 
-                HeightRequest="40"
-                BackgroundColor="{StaticResource GradientColorTransparent11}"
-		        ItemsSource="{Binding Backlight}"
+                HeightRequest="50"
+                SegmentMargin="0"
+                BackgroundColor="{StaticResource GradientColorTransparent5}"
+		        ItemsSource="{Binding Items2}"
                 UnselectedColor="Transparent"
-                SelectedColor="{StaticResource GradientColor11}"
-                UnselectedTextColor="{StaticResource GradientColor11}"
-                CornerRadius="10"/>
+                SelectedColor="{StaticResource GradientColor5}"
+                UnselectedTextColor="{StaticResource GradientColor5}"
+                CornerRadius="20"/>
+
+            
+
+            <material:MaterialDivider Margin="0,10" />
+
+            <material:MaterialLabel Text="Three Items" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
             <material:MaterialSegmented 
                 HeightRequest="50"
@@ -72,7 +89,20 @@
                 UnselectedTextColor="{StaticResource GradientColor9}"
                 CornerRadius="20"/>
 
-            <StackLayout Orientation="Horizontal">
+            <material:MaterialDivider Margin="0,10" />
+
+            <material:MaterialLabel Text="Two Items" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+
+            <material:MaterialSegmented 
+                HeightRequest="50"
+                BackgroundColor="{StaticResource GradientColorTransparent11}"
+		        ItemsSource="{Binding Backlight}"
+                UnselectedColor="Transparent"
+                SelectedColor="{StaticResource GradientColor11}"
+                UnselectedTextColor="{StaticResource GradientColor11}"
+                CornerRadius="10"/>
+
+            <StackLayout Orientation="Horizontal" Margin="0,10" >
                 <material:MaterialLabel 
                     VerticalOptions="Center"
 		            Text="Notifications"/>

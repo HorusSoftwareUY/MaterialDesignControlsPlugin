@@ -29,6 +29,14 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref items, value); }
         }
 
+        private ObservableCollection<string> items2;
+
+        public ObservableCollection<string> Items2
+        {
+            get { return items2; }
+            set { SetProperty(ref items2, value); }
+        }
+
         private ObservableCollection<string> sizes;
 
         public ObservableCollection<string> Sizes
@@ -61,9 +69,10 @@ namespace ExampleMaterialDesignControls.ViewModels
         public MaterialSegmentedViewModel()
         {
             Items = new ObservableCollection<string> { "Complete","Incomplete","Pending"};
-            SelectedItem = "Others";
+            SelectedItem = "Complete";
+            Items2 = new ObservableCollection<string> { "Music", "Photos", "Movies", "Apps" };
             Sizes = new ObservableCollection<string> { "XS","S","M","L","XL"};
-            OnOff = new ObservableCollection<string> { "On","Off"};
+            OnOff = new ObservableCollection<string> { "Off","On"};
             Backlight = new ObservableCollection<string> { "Backlight On","Backlight Off"};
             Frecuently = new ObservableCollection<string> { "Day","Week","Month"};
         }

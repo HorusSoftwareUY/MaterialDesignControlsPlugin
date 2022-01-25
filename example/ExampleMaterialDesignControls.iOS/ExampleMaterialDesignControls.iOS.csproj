@@ -229,6 +229,7 @@
     <BundleResource Include="Resources\add_b.png" />
     <BundleResource Include="Resources\add_w.png" />
     <BundleResource Include="Resources\starSelected.png" />
+    <BundleResource Include="Resources\color_c.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\volume.png" />
