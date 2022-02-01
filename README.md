@@ -4,6 +4,27 @@
 
 MaterialDesignControls Plugin for Xamarin Forms is a collection of Xamarin.Forms controls that apply the [Material Design Guidelines](https://material.io/design/components/selection-controls.html)
 
+## Controls Index
+- [MaterialButton](#materialbutton)
+- [MaterialChips & MaterialChipsGroup](#materialchips_&_materialchipsgroup)
+- [MaterialDatePicker](#materialdatepicker)
+- [MaterialEditor](#materialeditor)
+- [MaterialEntry](#materialentry)
+- [MaterialCodeEntry](#materialcodeentry)
+- [MaterialField](#materialfield)
+- [MaterialPicker](#materialpicker)
+- [MaterialDoublePicker](#materialdoublepicker)
+- [MaterialSelection](#materialselection)
+- [MaterialTimePicker](#materialtimepicker)
+- [MaterialRatingControl](#materialratingcontrol)
+- [MaterialSliderControl](#materialslidercontrol)
+- [MaterialSegmented](#materialsegmented)
+- [MaterialDivider](#materialdivider)
+- [MaterialRadioButtons](#materialradiobuttons)
+- [MaterialFloatingButton](#materialfloatingbutton)
+- [MaterialCheckbox](#materialcheckbox)
+- [MaterialSwitch](#materialswitch)
+
 ## Setup
 * Available on NuGet: [Plugin.MaterialDesignControls](https://www.nuget.org/packages/Plugin.MaterialDesignControls/) [![NuGet](https://img.shields.io/nuget/v/Plugin.MaterialDesignControls.svg?label=NuGet)](https://www.nuget.org/packages/Plugin.MaterialDesignControls/)
 * Install into your PCL project and Client projects.
@@ -42,15 +63,10 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 
 ### MaterialButton
 Buttons allow users to take actions, and make choices, with a single tap.
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button.png" width="300">
-
-**Example**
-```XML
-<material:MaterialButton Text="Save" Icon="save.png" Command="{Binding TapCommand}" CommandParameter="Saved" />
-```
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button_preview.png" width="300">
+<br/>
+[View documentation](MaterialButtonControl.md)
 
 ---
 
@@ -60,6 +76,24 @@ Chips are compact elements that represent an input, attribute, or action.
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips_preview.png" width="300">
 <br/>
 [View documentation](MaterialChipsControl.md)
+
+---
+
+### MaterialDatePicker
+Date pickers let users select a date.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/date_picker_preview.png" width="300">
+<br/>
+[View documentation](MaterialDatePickerControl.md)
+
+---
+
+### MaterialEditor
+Text fields let users enter and edit text.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/editor_preview.png" width="300">
+<br/>
+[View documentation](MaterialEditorControl.md)
 
 ---
 
@@ -74,213 +108,118 @@ Text fields let users enter and edit text.
 
 ### MaterialCodeEntry
 Code fields let users enter and edit pin codes.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/code_preview.png" width="300">
+<br/>
+[View documentation](MaterialCodeEntryControl.md)
 
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/code.png" width="300">
-
-**Example**
-```XML
-<material:MaterialCodeEntry Type="Filled" LabelText="Code*" Length="6" Keyboard="Numeric" Text="{Binding Code}" />
-```
-
-### MaterialDatePicker
-Date pickers let users select a date.
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/date_picker.png" width="300">
-
-**Example**
-```XML
-<material:MaterialDatePicker Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" />
-```
-
-### MaterialTimePicker
-Time pickers let users select a time.
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/time_picker.png" width="300">
-
-**Example**
-```XML
-<material:MaterialTimePicker Type="Filled" LabelText="Start time" Format="HH:mm" LeadingIcon="calendar.png" />
-```
-
-### MaterialPicker
-Pickers let users select an option.
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/picker.png" width="300">
-
-**Example**
-```XML
-<material:MaterialPicker Type="Filled" LabelText="Color"
-                         IsRequired="true" RequiredMessage="The color is required" />
-```
-
-### MaterialDoublePicker
-Double pickers let users select two options in the same dialog.
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_android.png" width="300">
-
-**Example**
-```XML
-<material:MaterialDoublePicker Type="Filled" LabelText="Double Picker" Separator=" - "
-                               ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}"
-                               SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
-```
-
-### MaterialEditor
-Text fields let users enter and edit text.
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/editor.png" width="300">
-
-**Example**
-```XML
-<material:MaterialEditor Type="Outlined" LabelText="Description" Placeholder="Enter your description" 
-                         LeadingIcon="email.png" HeightRequest="200" />
-```
-
-### MaterialSelection
-Selection let users select an option.
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/selection.png" width="300">
-
-**Example**
-```XML
-<material:MaterialSelection Type="Filled" LeadingIcon="calendar.png" LabelText="User" Placeholder="Select user" Text="User A" 
-                            Command="{Binding TapCommand}" CommandParameter="User selection" />
-```
-
-### MaterialRatingControl
-Displays a rating control<br/>
-[View documentation](MaterialRatingControlDoc.md)
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/material_rating.jpg" width="300">
-
-**Example**
-```XML
-<material:MaterialRatingControl x:Name="mrcWithoutSelectionPng"  LabelText="How do you rate...?(png icons)"   
-    ItemSize="5"                                             
-    ItemsByRow="5" 
-    Animation="Fade" 
-    AnimationParameter="0.1" 
-    SelectedIcon="startSelected.png" 
-    UnSelectedIcon="starUnselected.png"  />
-```
-
-### MaterialSliderControl
-Displays a slider control<br/>
-[View documentation](MaterialSliderControl.md)
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/slider.png" width="300">
-
-**Example**
-```XML
- <material:MaterialSlider 
-    x:Name="slider" 
-    MinimumValue="0" 
-    MaximumValue="100" 
-    ThumbColor="BlueViolet"
-    LabelText="Slider"
-    ActiveTrackColor="BlueViolet"
-    InactiveTrackColor="LightPink"/>
-```
-
-### MaterialFloatingButton
-Displays a floating button<br/>
-[View documentation](MaterialFloatingButton.md)
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.png" width="300">
-
-**Example**
-```XML
-<material:MaterialFloatingButton
-    Icon="add_b.png"
-    BackgroundColor="#FAF9D5"
-    Animation="Scale"
-    FontSize="12"
-    ShadowColor="Black"/>
-```
-
-### MaterialFloatingButton
-Displays a floating button<br/>
-[View documentation](MaterialFloatingButton.md)
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.png" width="300">
-
-**Example**
-```XML
-<material:MaterialFloatingButton
-    Icon="add_b.png"
-    BackgroundColor="#FAF9D5"
-    Animation="Scale"
-    FontSize="12"
-    ShadowColor="Black"/>
-```
+---
 
 ### MaterialField
 Displays a value with its respective label in read-only format.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/field_preview.png" width="300">
+<br/>
+[View documentation](MaterialFieldControl.md)
 
-**Screenshot**
+---
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/field.png" width="300">
+### MaterialPicker
+Pickers let users select an option.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/picker_preview.png" width="300">
+<br/>
+[View documentation](MaterialPickerControl.md)
 
-**Example**
-```XML
-<material:MaterialField LabelText="Mail" Text="michael.jordan@hotmail.com" LeadingIcon="email.png" />
-```
-### MaterialCheckbox
-Displays a checkbox control<br/>
-[View documentation](MaterialCheckboxControl.md)
+---
 
-**Screenshot**
+### MaterialDoublePicker
+Double pickers let users select two options in the same dialog.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_preview.png" width="300">
+<br/>
+[View documentation](MaterialDoublePickerControl.md)
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/checkbox.png" width="300">
+---
 
-**Example**
-```XML
- <material:MaterialCheckbox 
-                    x:Name="checkbox" 
-                    Text="Pickles"
-                    IsChecked="True" 
-                    Color="Blue"
-                    Animation="Scale"/>
-```
+### MaterialSelection
+Selection let users select an option.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/selection_preview.png" width="300">
+<br/>
+[View documentation](MaterialSelectionControl.md)
+
+---
+
+### MaterialTimePicker
+Time pickers let users select a time.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/time_picker_preview.png" width="300">
+<br/>
+[View documentation](MaterialTimePickerControl.md)
+
+---
+
+### MaterialRatingControl
+Displays a rating control
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/rating_preview" width="300">
+<br/>
+[View documentation](MaterialRatingControl.md)
+
+---
+
+### MaterialSliderControl
+Displays a slider control
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/slider_preview.png" width="300">
+<br/>
+[View documentation](MaterialSliderControl.md)
+
+---
+
+### MaterialSegmented
+Displays a segmented control
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/segmented_preview.png" width="300">
+<br/>
+[View documentation](MaterialSegmentedControl.md)
+
+---
+
+### MaterialDivider
+A divider is a thin line that groups content in lists and layouts.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/divider_preview.png" width="300">
+<br/>
+[View documentation](MaterialDividerControl.md)
+
+---
 
 ### MaterialRadioButtons
-Displays a radiobuttons control<br/>
+Displays a radiobuttons control
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radio_preview.png" width="300">
+<br/>
 [View documentation](MaterialRadioButtonsControl.md)
 
-**Screenshot**
+---
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.png" width="300">
+### MaterialFloatingButton
+Displays a floating button
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button_preview.png" width="300">
+<br/>
+[View documentation](MaterialFloatingButton.md)
 
-**Example**
-```XML
- <material:MaterialRadioButtons
-                    x:Name="radiobuttons" 
-                    LabelText="Rigtones" 
-                    ItemsSource="{Binding Rigtones}"
-                    Animation="Scale"/>
-```
+---
+
+### MaterialCheckbox
+Displays a checkbox control
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/checkbox_preview.png" width="300">
+<br/>
+[View documentation](MaterialCheckboxControl.md)
 
 ---
 
@@ -293,26 +232,7 @@ Switches toggle the state of a single item on or off.
 
 ---
 
-### MaterialSegmented
-Displays a segmented control<br/>
-[View documentation](MaterialSegmentedControl.md)
-
-**Screenshot**
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/segmented.png" width="300">
-
-**Example**
-```XML
- <material:MaterialSegmented 
-    x:Name="segmented" 
-    HeightRequest="40"
-    BackgroundColor="#58555A"
-    ItemsSource="{Binding Backlight}"
-    UnselectedColor="#58555A"
-    SelectedColor="#D9D277"
-    UnselectedTextColor="#D9D277"
-    CornerRadius="10"/>
-```
+<br/>
 
 ## Effects
 
@@ -336,16 +256,20 @@ public class MyControl : ContentView, ITouchAndPressEffectConsumer
 }
 ```
 
+
 ## Demo
 https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/tree/master/example
- 
+
+
 ## Developed by
 <a href="http://horus.com.uy" ><img src="https://horus.com.uy/img/logo_horus.png" width="128"></a>
+
 
 ## Contributions
 Contributions are welcome! If you find a bug want a feature added please report it.
 
 If you want to contribute code please file an issue, create a branch, and file a pull request.
+
 
 ## License 
 MIT License - see LICENSE.txt
