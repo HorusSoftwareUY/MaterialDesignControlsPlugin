@@ -4,6 +4,8 @@
 
 MaterialDesignControls Plugin for Xamarin Forms is a collection of Xamarin.Forms controls that apply the [Material Design Guidelines](https://material.io/design/components/selection-controls.html)
 
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls_Final.gif" width="300">
+
 ## Controls Index
 - [MaterialButton](#materialbutton)
 - [MaterialChips & MaterialChipsGroup](#materialchips_&_materialchipsgroup)
@@ -55,9 +57,6 @@ You must add this namespace to your xaml files:
 ```XML
 xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
 ```
-
-## Sample
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls_Final.gif" width="300">
 
 ## Controls
 
@@ -163,7 +162,7 @@ Time pickers let users select a time.
 ### MaterialRating
 Displays a rating control
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/rating_preview" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/rating_preview.png" width="300">
 <br/>
 [View documentation](MaterialRatingControl.md)
 

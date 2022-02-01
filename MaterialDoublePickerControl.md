@@ -3,9 +3,11 @@ Double pickers let users select two options in the same dialog.
 
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker.gif" width="300">
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker.png" width="300"><img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_android.png" width="300">
 
-## Example MaterialDoubleickers
+## Android Screenshot
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_android.png" width="300">
+
+## Example MaterialDoublePickers
 ```XML
 <material:MaterialDoublePicker 
     Type="Filled" LabelText="Double Picker" 
