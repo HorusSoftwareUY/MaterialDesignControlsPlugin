@@ -16,8 +16,8 @@ MaterialDesignControls Plugin for Xamarin Forms is a collection of Xamarin.Forms
 - [MaterialDoublePicker](#materialdoublepicker)
 - [MaterialSelection](#materialselection)
 - [MaterialTimePicker](#materialtimepicker)
-- [MaterialRatingControl](#materialratingcontrol)
-- [MaterialSliderControl](#materialslidercontrol)
+- [MaterialRating](#materialrating)
+- [MaterialSlider](#materialslider)
 - [MaterialSegmented](#materialsegmented)
 - [MaterialDivider](#materialdivider)
 - [MaterialRadioButtons](#materialradiobuttons)
@@ -160,7 +160,7 @@ Time pickers let users select a time.
 
 ---
 
-### MaterialRatingControl
+### MaterialRating
 Displays a rating control
 <br/>
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/rating_preview" width="300">
@@ -169,7 +169,7 @@ Displays a rating control
 
 ---
 
-### MaterialSliderControl
+### MaterialSlider
 Displays a slider control
 <br/>
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/slider_preview.png" width="300">
