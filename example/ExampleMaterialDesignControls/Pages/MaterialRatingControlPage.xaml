@@ -7,28 +7,41 @@
              Title="MaterialRatingControl">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="16" Spacing="16">
+            <StackLayout Padding="20" Spacing="20">
+
+                <material:MaterialRatingControl
+                    LabelText="How do you rate the service?"
+                    ItemSize="5"
+                    ItemsByRow="5"
+                    Value="4"
+                    SelectedIcon="starSelected.png"
+                    UnSelectedIcon="starUnselected.png"
+                    LabelSize="{StaticResource ButtonFontSize}"/>
+
+                <material:MaterialDivider Margin="0,0,0,10" />
+
+                <material:MaterialLabel Text="Png Icons" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+
                 <material:MaterialRatingControl
                     LabelText="How do you rate...?(png icons)"
                     ItemSize="5"
                     ItemsByRow="5"
                     Animation="Fade"
                     AnimationParameter="0.1" 
-                    SelectedIcon="startSelected.png"
-                    UnSelectedIcon="starUnselected.png" />
+                    SelectedIcon="starSelected.png"
+                    UnSelectedIcon="starUnselected.png"
+                    LabelSize="{StaticResource ButtonFontSize}"/>
                 
-                <material:MaterialRatingControl
-                    LabelText="How do you...?(preselect value)"
-                    ItemSize="6"
-                    ItemsByRow="6"
-                    Value="2"
-                    SelectedIcon="startSelected.png"
-                    UnSelectedIcon="starUnselected.png" />
+
+                <material:MaterialDivider Margin="0,0,0,10" />
+
+                <material:MaterialLabel Text="Svg Icons" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
                 <material:MaterialRatingControl
                     LabelText="How do you...?(svg icons)"
-                    ItemSize="2"
-                    ItemsByRow="2"
+                    LabelSize="{StaticResource ButtonFontSize}"
+                    ItemSize="5"
+                    ItemsByRow="5"
                     TabIndex="3">
                     <material:MaterialRatingControl.CustomSelectedIcon>
                         <DataTemplate>
@@ -44,62 +57,65 @@
                     </material:MaterialRatingControl.CustomUnSelectedIcon>
                 </material:MaterialRatingControl>
 
+                <material:MaterialDivider Margin="0,0,0,10" />
+
+                <material:MaterialLabel Text="Multiple Rows" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+
                 <material:MaterialRatingControl
                     LabelText="How do you rate...?(multiple rows)"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="10"
                     ItemsByRow="5"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
 
-                <Label
-                    Text="Animations"
-                    HorizontalTextAlignment="Start"
-                    Margin="0,20,0,0"
-                    TextColor="Blue"
-                    FontSize="Large" />
+                <material:MaterialDivider Margin="0,0,0,10" />
+
+                <material:MaterialLabel Text="Animations" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
                 <material:MaterialRatingControl
                     LabelText="How do you rate...?(none)"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="5"
                     ItemsByRow="5"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
 
                 <material:MaterialRatingControl
                     LabelText="How do you...? (fade)"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="5"
                     ItemsByRow="5"
                     Animation="Fade"
                     AnimationParameter="0.1"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
 
                 <material:MaterialRatingControl
                     LabelText="How do you...? (scale)"
+                    LabelSize="{StaticResource ButtonFontSize}"
                     ItemSize="5"
                     ItemsByRow="5"
                     Animation="Scale"
                     AnimationParameter="1.5"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
 
-                <Label
-                    Text="Assistive Text"
-                    HorizontalTextAlignment="Start"
-                    Margin="0,20,0,0"
-                    TextColor="Blue"
-                    FontSize="Large" />
+                <material:MaterialDivider Margin="0,0,0,10" />
+
+                <material:MaterialLabel Text="Assistive Text" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
 
                 <material:MaterialRatingControl
                     LabelText="How do you rate the service?"
-                    ItemSize="6"
-                    ItemsByRow="6"
+                    LabelSize="{StaticResource ButtonFontSize}"
+                    ItemSize="5"
+                    ItemsByRow="5"
                     Value="{Binding Value}"
                     AssistiveText="{Binding Error}"
                     AnimateError="True"
                     AssistiveTextColor="Red"
-                    SelectedIcon="startSelected.png"
+                    SelectedIcon="starSelected.png"
                     UnSelectedIcon="starUnselected.png" />
                 <Grid
                     ColumnSpacing="16">

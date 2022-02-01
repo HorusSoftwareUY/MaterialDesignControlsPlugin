@@ -47,11 +47,11 @@ namespace ExampleMaterialDesignControls.ViewModels
             if (IsOn)
             {
                 this.Error = null;
-                await this.DisplayAlert.Invoke("Saved", $"Night mode activated", "Ok");
+                await this.DisplayAlert.Invoke("Saved", $"Dark mode activated", "Ok");
             }
             else
             {
-                this.Error = "The night mode is required";
+                this.Error = "The dark mode is required";
             }
         }
     }

@@ -7,14 +7,15 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
-                <material:MaterialCodeEntry Type="Filled" LabelText="Code*" Length="6" Keyboard="Numeric" Text="{Binding Code}" AssistiveText="{Binding CodeError}" AnimateError="True" TabIndex="1" ReturnType="Next" FieldHeightRequest="80" FontSize="{StaticResource H5FontSize}" BackgroundColor="{StaticResource LightGrayColor}" FocusedBackgroundColor="{StaticResource GradientColorTransparent1}" BorderColor="Transparent" FocusedBorderColor="{StaticResource GradientColor1}" />
-
+                <material:MaterialCodeEntry Type="Filled" LabelText="Code*" Length="6" Keyboard="Numeric" Text="{Binding Code}" AssistiveText="{Binding CodeError}" AnimateError="True" TabIndex="1" ReturnType="Next" FieldHeightRequest="80" FontSize="{StaticResource H5FontSize}" BorderColor="Transparent" BackgroundColor="{StaticResource GradientColorTransparent1}" />
                 <material:MaterialCodeEntry Type="Outlined" LabelText="Code*" Length="6" Keyboard="Numeric" Text="{Binding Code}" AssistiveText="{Binding CodeError}" AnimateError="True" TabIndex="1" ReturnType="Next" FieldHeightRequest="60" FieldWidthRequest="40" FontSize="{StaticResource H5FontSize}" />
 
+                <material:MaterialDivider Margin="0,10" />
+
+                <material:MaterialLabel Text="Types" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+
                 <material:MaterialCodeEntry Type="Outlined" LabelText="Code 3" Length="4" Keyboard="Numeric" TabIndex="3" ReturnType="Next"/>
-
                 <material:MaterialCodeEntry Type="Filled" LabelText="Code 4" Length="6" Keyboard="Text" TabIndex="5" ReturnType="Next" IsEnabled="False"/>
-
                 <material:MaterialCodeEntry Type="Filled" LabelText="Code 4" Length="6" Keyboard="Text" KeyboardFlags="CapitalizeCharacter" TextTransform="Uppercase" TabIndex="5" ReturnType="Next" HorizontalTextAlignment="Center" />
                 
                 <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" />

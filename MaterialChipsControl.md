@@ -4,7 +4,7 @@ Chips are compact elements that represent an input, attribute, or action.
 [View Material Design documentation](https://material.io/components/chips)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.gif" width="300">
 
 ## Example MaterialChips
 ```XML

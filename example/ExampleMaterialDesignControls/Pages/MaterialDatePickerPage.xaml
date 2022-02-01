@@ -7,10 +7,9 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
-                <material:MaterialDatePicker Date="{Binding Date}" Type="Filled" LabelText="Start date" Format="yyyy-MM-dd"
-                                             LeadingIcon="calendar.png" Placeholder="Select date" PlaceholderColor="{StaticResource PlaceholderColor}" />
-                <Grid
-                    ColumnSpacing="16">
+                <material:MaterialDatePicker Date="{Binding Date}" Type="Filled" LabelText="Start date" Format="yyyy-MM-dd" LeadingIcon="calendar.png" Placeholder="Select date"/>
+
+                <Grid ColumnSpacing="16">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -19,16 +18,20 @@
                     <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
                 </Grid>
 
-                <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" />
-                <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" IsEnabled="False" />
-                <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy" />
+                <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy"/>
+                <material:MaterialDatePicker Type="Lined" LabelText="Deadline" Format="dd/MM/yyyy"/>
+
+                <material:MaterialDivider Margin="0,10" />
+
+                <material:MaterialLabel Text="Disabled" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy" IsEnabled="False"/>
 
                 <material:MaterialDivider Margin="0,10" />
 
                 <material:MaterialLabel Text="Horizontal Text Alignment" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
-                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Start" BackgroundColor="{StaticResource LightGrayColor}" />
-                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Center" BackgroundColor="{StaticResource LightGrayColor}" Placeholder="Select date" PlaceholderColor="{StaticResource PlaceholderColor}" AssistiveText="Required field" LabelText="Date" />
-                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="End" BackgroundColor="{StaticResource LightGrayColor}">
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Start"/>
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="Center" Placeholder="Select date" AssistiveText="Required field" LabelText="Date" />
+                <material:MaterialDatePicker Type="Filled" HorizontalTextAlignment="End" >
                     <material:MaterialDatePicker.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <OnPlatform.Android>monospace</OnPlatform.Android>

@@ -20,7 +20,6 @@
                 </Grid>
 
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
-                <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" IsEnabled="False" />
                 <material:MaterialTimePicker Type="Lined" LabelText="Deadline" Format="H:mm" />
 
                 <material:MaterialDivider Margin="0,10" />

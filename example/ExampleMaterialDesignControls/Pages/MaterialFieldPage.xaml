@@ -5,22 +5,24 @@
              x:Class="ExampleMaterialDesignControls.Pages.MaterialFieldPage"
              Title="Material Field">
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Padding="20" Spacing="20">
-                <material:MaterialField LabelText="Name" Text="Michael Williams" />
-                <material:MaterialField LabelText="Phone" Text="+1 646 980 3185" />
-                <material:MaterialField LabelText="ZipCode" Text="10004" />
-                <material:MaterialField LabelText="Mail" Text="michael.williams@gmail.com" LeadingIcon="email.png" />
-                <material:MaterialField LabelText="Address" EmptyText="Has not specified" />
-                <material:MaterialField LabelText="City" EmptyText="-">
-                    <material:MaterialField.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
-                        </OnPlatform>
-                    </material:MaterialField.FontFamily>
-                </material:MaterialField>
-            </StackLayout>
+        <ScrollView VerticalScrollBarVisibility="Never" Padding="20">
+            <Frame BackgroundColor="{StaticResource GradientColorTransparent1}" Padding="0" CornerRadius="20" HasShadow="False" VerticalOptions="StartAndExpand">
+                <StackLayout Padding="20" Spacing="20">
+                    <material:MaterialField LabelText="Name" Text="Michael Williams" />
+                    <material:MaterialField LabelText="Phone" Text="+1 646 980 3185" />
+                    <material:MaterialField LabelText="ZipCode" Text="10004" />
+                    <material:MaterialField LabelText="Mail" Text="michael.williams@gmail.com" LeadingIcon="email.png" />
+                    <material:MaterialField LabelText="Address" EmptyText="Has not specified" />
+                    <material:MaterialField LabelText="City" EmptyText="-">
+                        <material:MaterialField.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material:MaterialField.FontFamily>
+                    </material:MaterialField>
+                </StackLayout>
+            </Frame>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

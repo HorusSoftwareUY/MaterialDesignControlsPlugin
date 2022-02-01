@@ -4,9 +4,9 @@ Text fields let users enter and edit text.
 [View Material Design documentation](https://material.io/components/text-fields)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.gif" width="300">
 
-## Example
+## Example MaterialEntry
 ```XML
 <material:MaterialEntry
     Type="Filled"

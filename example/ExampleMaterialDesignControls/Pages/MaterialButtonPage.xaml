@@ -11,6 +11,7 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
+                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}"/>
                 <material:MaterialButton Text="Download" Icon="download.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}"/>
                 <material:MaterialOutlineButton Text="Cancel Action" Command="{Binding TapCommand}" CommandParameter="Canceled" IconSize="26" ActivityIndicatorSize="26" Padding="16,0" ContentIsExpanded="True" Spacing="0" WidthRequest="400" HorizontalOptions="CenterAndExpand">
                     <material:MaterialButton.CustomIcon>
@@ -21,20 +22,25 @@
                     </material:MaterialButton.CustomActivityIndicator>
                 </material:MaterialOutlineButton>
                 <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
+                
+
+                <material:MaterialDivider Margin="0,10" />
+
+                <material:MaterialLabel Text="Disabled" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Download" Icon="download.png" CornerRadius="16"/>
                 <material:MaterialOutlineButton IsVisible="{Binding CancelIsVisible}" IsEnabled="false" Text="Cancel 2" Command="{Binding TapCommand}" CommandParameter="Canceled 2" />
                 <material:MaterialFlatButton IsVisible="{Binding DeleteIsVisible}" IsEnabled="false" Text="Delete 2" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted 2" />
 
                 <material:MaterialDivider Margin="0,10" />
 
-                <Label Text="Animations" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                <material:MaterialLabel Text="Animations" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialButton Animation="None" Text="None" />
                 <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" />
                 <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" />
 
                 <material:MaterialDivider Margin="0,10" />
 
-                <Label Text="Clicked event" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                <material:MaterialLabel Text="Clicked Event" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Clicked" Clicked="Button_Clicked" />
             </StackLayout>
         </ScrollView>

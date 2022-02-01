@@ -15,16 +15,7 @@
                     AssistiveText="{Binding MessageError}"
                     AnimateError="True"
                     TabIndex="1"
-                    KeyboardFlags="Spellcheck,Suggestions" />
-
-                <material:MaterialEditor
-                    Type="Outlined"
-                    LabelText="Observation"
-                    Placeholder="Enter your observation"
-                    Text="{Binding Observation}"
-                    TabIndex="2"
-                    AutoSize="TextChanges"
-                    KeyboardFlags="CapitalizeSentence" />
+                    KeyboardFlags="Spellcheck,Suggestions"/>
 
                 <material:MaterialEditor
                     Type="Outlined"
@@ -34,6 +25,23 @@
                     TabIndex="2"
                     FieldHeightRequest="120"
                     KeyboardFlags="CapitalizeSentence" />
+
+                <material:MaterialDivider Margin="0,10" />
+
+                <material:MaterialLabel Text="Auto Size" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+
+                <material:MaterialEditor
+                    Type="Outlined"
+                    LabelText="Observation"
+                    Placeholder="Enter your observation"
+                    Text="{Binding Observation}"
+                    TabIndex="2"
+                    AutoSize="TextChanges"
+                    KeyboardFlags="CapitalizeSentence"/>
+
+                <material:MaterialDivider Margin="0,10" />
+
+                <material:MaterialLabel Text="Types" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
 
                 <material:MaterialEditor
                     Type="Lined"

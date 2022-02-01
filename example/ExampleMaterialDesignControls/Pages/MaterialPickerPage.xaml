@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
-                <material:MaterialPicker x:Name="pckColors" Type="Filled" LabelText="Color" AnimateError="True" Placeholder="Select a Color" ItemsSource="{Binding ItemsSourceColors}" SelectedItem="{Binding SelectedItemColor}" />
+                <material:MaterialPicker x:Name="pckColors" Type="Filled" LabelText="Color" AnimateError="True" Placeholder="Select a Color" ItemsSource="{Binding ItemsSourceColors}" SelectedItem="{Binding SelectedItemColor}"/>
                 <Grid
                     ColumnSpacing="16">
                     <Grid.ColumnDefinitions>
@@ -18,9 +18,8 @@
                     <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
                 </Grid>
 
-                <material:MaterialPicker Type="Filled" LabelText="Color" AnimateError="True" IsEnabled="False" />
                 <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Outlined" LabelText="Size" Placeholder="Select Option"/>
-                <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png" />
+                <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png"/>
                 <Label x:Name="lblSelectedIndex" Text="Selected Index: -" />
                 <material:MaterialButton Text="Save" Command="{Binding TapCommand}"/>
 
@@ -30,12 +29,10 @@
                 <material:MaterialPicker x:Name="pckModels2" Type="Filled" HorizontalTextAlignment="Start" Placeholder="Select Option" LabelText="Option" TrailingIcon="" />
                 <material:MaterialPicker x:Name="pckModels3" Type="Filled" HorizontalTextAlignment="Center" Placeholder="Select option" AssistiveText="Required field" LabelText="Option" TrailingIcon="" />
                 <material:MaterialPicker x:Name="pckModels4" Type="Filled" HorizontalTextAlignment="End" Placeholder="Select Option" LabelText="Option" TrailingIcon="" />
-                <!--<material:MaterialPicker.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <OnPlatform.Android>monospace</OnPlatform.Android>
-                        <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
-                    </OnPlatform>
-                </material:MaterialPicker.FontFamily>-->
+
+                <material:MaterialDivider Margin="0,10" />
+
+                <material:MaterialLabel Text="Double Picker" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialDoublePicker x:Name="pckDouble" Type="Filled" LabelText="Double Picker" ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}" SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
                 <material:MaterialDoublePicker Type="Filled" LabelText="Double Picker" ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}" SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" IsEnabled="False" />
                 <Label x:Name="lblSelectedIndexes" Text="Selected Indexes: -" />
@@ -43,7 +40,7 @@
 
                 <material:MaterialDivider Margin="0,10" />
 
-                <Label Text="Double Picker" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                <material:MaterialLabel Text="Double Picker" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialDoublePicker x:Name="pckDoubleWithFocus" Type="Filled" LabelText="Double Picker" Separator=" - " ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}" SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
                 <material:MaterialButton Text="Focus" Command="{Binding Tap3Command}" />
             </StackLayout>

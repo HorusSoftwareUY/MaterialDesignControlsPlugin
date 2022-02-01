@@ -8,16 +8,18 @@
     Title="Material RadioButtons">
     <ContentPage.Content>
 			<ScrollView>
-        <StackLayout>
-			<material:MaterialLabel FontAttributes="Bold" Text="xamarin native control selection" HorizontalOptions="Center"/>
+        <StackLayout Padding="20" Spacing="10">
+
+            <material:MaterialLabel Text="Xamarin Native Control Selection" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
             <material:MaterialRadioButtons 
 				Spacing="0"
 		        ItemsSource="{Binding Rigtones}"
 		        LabelText="Rigtones" 
 		        SelectedItem="{Binding SelectedRigtone}"/>
 
-			<material:MaterialDivider />
-			<material:MaterialLabel FontAttributes="Bold" Text="xamarin native control selection (Disabled)" HorizontalOptions="Center"/>
+			<material:MaterialDivider Margin="0,10" />
+
+			<material:MaterialLabel Text="Xamarin Native Control Selection (Disabled)" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
 
             <material:MaterialRadioButtons 
 				Spacing="0"
@@ -26,8 +28,9 @@
 		        LabelText="Rigtones" 
 		        SelectedItem="{Binding SelectedRigtone}"/>
 
-			<material:MaterialDivider />
-			<material:MaterialLabel FontAttributes="Bold" Text=".png files" HorizontalOptions="Center"/>
+			<material:MaterialDivider Margin="0,10" />
+
+			<material:MaterialLabel Text=".png Files" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
 
             <material:MaterialRadioButtons 
 		        ItemsSource="{Binding Sizes}" 
@@ -41,8 +44,9 @@
 				TextSide="Left"
 				SelectionHorizontalOptions="EndAndExpand"/>
 
-			<material:MaterialDivider />
+			<material:MaterialDivider Margin="0,10" />
 
+            <material:MaterialLabel Text=".svg Files" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
             <material:MaterialRadioButtons 
 				HorizontalOptions="FillAndExpand"
 				Spacing="0"
@@ -62,8 +66,7 @@
                     </material:MaterialRadioButtons.CustomUnselectedIcon>
                     <material:MaterialRadioButtons.CustomDisabledSelectedIcon>
                         <DataTemplate>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledChecked.svg"/>
-                            <!--<ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_unchecked.svg"/>-->
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledChecked.svg"/>
                         </DataTemplate>
                     </material:MaterialRadioButtons.CustomDisabledSelectedIcon>
                     <material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
@@ -73,7 +76,7 @@
                     </material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
                 </material:MaterialRadioButtons>
 
-            <material:MaterialButton Text="Save" HorizontalOptions="Center" WidthRequest="150" Command="{Binding SaveSizeCommand}" />
+            <material:MaterialButton Text="Save" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Command="{Binding SaveSizeCommand}" />
         </StackLayout>
             </ScrollView>
     </ContentPage.Content>
