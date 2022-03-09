@@ -83,10 +83,10 @@
 		        Icon="add_w.png" 
 		        IconSide="Right" 
 		        Animation="Scale"
+				IsEnabled="{Binding IsEnabled}"
 				HorizontalOptions="Center"
 				DisabledBackgroundColor="{StaticResource GrayColor}"
 				BackgroundColor="{StaticResource GradientColor11}"
-				IsEnabled="{Binding IsEnabled}"
 				TextColor="{StaticResource WhiteColor}"
 				DisabledTextColor="{StaticResource DarkGrayColor}">
 				<material:MaterialFloatingButton.CustomIcon>
