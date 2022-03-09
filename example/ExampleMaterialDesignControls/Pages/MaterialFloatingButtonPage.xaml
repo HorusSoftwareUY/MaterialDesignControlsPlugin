@@ -15,8 +15,7 @@
                 Icon="add_w.png" 
 		        Animation="Scale"
 				HorizontalOptions="Center"
-				Clicked="MaterialFloatingButton_Clicked"
-				BackgroundColor="{StaticResource GradientColor1}" />
+				Clicked="MaterialFloatingButton_Clicked"/>
 
 			<material:MaterialDivider Margin="0,10" />
 
@@ -79,16 +78,16 @@
             <material:MaterialFloatingButton 
                 Text="Add"
 		        ButtonSize="Extended"
-				IsEnabled="{Binding IsEnabled}"
 				Command="{Binding TapCommand}"
 				CommandParameter="Floating button tapped!"
 		        Icon="add_w.png" 
 		        IconSide="Right" 
 		        Animation="Scale"
 				HorizontalOptions="Center"
-				BackgroundColor="{StaticResource GradientColor11}"
-				TextColor="{StaticResource WhiteColor}"
 				DisabledBackgroundColor="{StaticResource GrayColor}"
+				BackgroundColor="{StaticResource GradientColor11}"
+				IsEnabled="{Binding IsEnabled}"
+				TextColor="{StaticResource WhiteColor}"
 				DisabledTextColor="{StaticResource DarkGrayColor}">
 				<material:MaterialFloatingButton.CustomIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg"/>
