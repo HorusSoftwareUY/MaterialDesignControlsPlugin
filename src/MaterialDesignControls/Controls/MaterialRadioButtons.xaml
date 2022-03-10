@@ -6,9 +6,19 @@
     x:Class="Plugin.MaterialDesignControls.MaterialRadioButtons">
     <ContentView.Content>
         <StackLayout>
-            <controls:MaterialLabel x:Name="lblLabel" IsVisible="false" LineBreakMode="NoWrap" Margin="14,0,14,2" HorizontalTextAlignment="Start"/>
+            <controls:MaterialLabel 
+		        x:Name="lblLabel" 
+		        IsVisible="false" 
+		        LineBreakMode="NoWrap" 
+		        Margin="14,0,14,2" 
+		        HorizontalTextAlignment="Start"/>
             <StackLayout x:Name="container"/>
-            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+            <controls:MaterialLabel 
+		        x:Name="lblAssistive" 
+		        IsVisible="false" 
+		        LineBreakMode="NoWrap" 
+		        Margin="14,2,14,0" 
+		        HorizontalTextAlignment="Start" />
         </StackLayout>
     </ContentView.Content>
 </controls:BaseMaterialCheckboxes>

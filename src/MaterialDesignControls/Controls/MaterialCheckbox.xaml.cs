@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
@@ -102,10 +101,12 @@ namespace Plugin.MaterialDesignControls
                         lblRightText.HorizontalOptions = TextHorizontalOptions;
                     break;
                 case nameof(IconHeightRequest):
-                    customIcon.ImageHeightRequest = IconHeightRequest;
+                    imageContainer.HeightRequest = IconHeightRequest;
+                    customIcon.HeightRequest = IconHeightRequest;
                     break;
                 case nameof(IconWidthRequest):
-                    customIcon.ImageWidthRequest = IconWidthRequest;
+                    imageContainer.HeightRequest = IconWidthRequest;
+                    customIcon.HeightRequest = IconWidthRequest;
                     break;
                 case nameof(Color):
                 case nameof(DisabledColor):
@@ -113,7 +114,7 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(SelectionHorizontalOptions):
                     chkContainer.HorizontalOptions = SelectionHorizontalOptions;
-                    customIcon.HorizontalOptions = SelectionHorizontalOptions;
+                    imageContainer.HorizontalOptions = SelectionHorizontalOptions;
                     break;
                 case nameof(IsEnabled):
                     SetIsEnabled();
@@ -126,6 +127,8 @@ namespace Plugin.MaterialDesignControls
             container.Spacing = Spacing;
             chk.IsEnabled = IsEnabled;
             chk.Color = Color;
+            imageContainer.HeightRequest = IconHeightRequest;
+            imageContainer.WidthRequest = IconWidthRequest;
             customIcon.ImageHeightRequest = IconHeightRequest;
             customIcon.ImageWidthRequest = IconWidthRequest;
             customIcon.Padding = 0;
@@ -180,7 +183,8 @@ namespace Plugin.MaterialDesignControls
 
         protected override void SetIcon()
         {
-            customIcon.IsVisible = true;
+            //customIcon.IsVisible = true;
+            imageContainer.IsVisible = true;
             chkContainer.IsVisible = false;
             SetCustomIcon();
         }
