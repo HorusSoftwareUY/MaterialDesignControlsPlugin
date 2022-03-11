@@ -33,7 +33,7 @@ namespace Plugin.MaterialDesignControls
                 {
                     swIsClicked = true;
                     Toggled?.Invoke(this, null);
-                    IsToggled = !IsToggled;
+                    IsToggled = sw.IsToggled;
 		        }
 	        };
         }
@@ -213,6 +213,14 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(SpacingProperty, value); }
         }
 
+        public static new readonly BindableProperty BackgroundColorProperty =
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSwitch), defaultValue: Color.Transparent);
+
+        public new Color BackgroundColor
+        {
+            get { return (Color)GetValue(BackgroundColorProperty); }
+            set { SetValue(BackgroundColorProperty, value); }
+	    }
         #endregion Properties
 
         #region Events
