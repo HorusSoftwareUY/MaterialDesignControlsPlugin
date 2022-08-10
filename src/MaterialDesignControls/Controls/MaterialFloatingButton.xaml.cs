@@ -257,6 +257,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(DisabledBackgroundColorProperty, value); }
         }
 
+        public static readonly new BindableProperty IsEnabledProperty =
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialFloatingButton), defaultValue: true, BindingMode.TwoWay);
+
+        public new bool IsEnabled
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
+        }
+
         #endregion Properties
 
         #region Constructors
@@ -299,7 +308,7 @@ namespace Plugin.MaterialDesignControls
                     base.HasShadow = HasShadow;
                     break;
                 case nameof(Padding):
-                    base.Padding = Padding;
+                    container.Padding = Padding;
                     break;
                 case nameof(HeightRequest):
                     base.HeightRequest = HeightRequest;
@@ -345,7 +354,7 @@ namespace Plugin.MaterialDesignControls
                 case nameof(BackgroundColor):
                 case nameof(DisabledBackgroundColor):
                 case nameof(IsEnabled):
-                    base.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
+                    container.BackgroundColor= IsEnabled ? BackgroundColor : DisabledBackgroundColor;
                     lblText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
                     SetIcon();
                     break;
@@ -454,11 +463,12 @@ namespace Plugin.MaterialDesignControls
             imgLeft.Padding = 0;
             imgRight.Padding = 0;
             base.HasShadow = HasShadow;
-            base.Padding = Padding;
+            container.Padding = Padding;
+            base.Padding = 0;
             base.HeightRequest = HeightRequest;
             base.WidthRequest = WidthRequest;
             base.CornerRadius = CornerRadius;
-            base.BackgroundColor = BackgroundColor;
+            container.BackgroundColor = BackgroundColor;
             imgLeft.HeightRequest = IconHeightRequest;
             imgLeft.WidthRequest = IconWidthRequest;
             imgRight.HeightRequest = IconHeightRequest;
