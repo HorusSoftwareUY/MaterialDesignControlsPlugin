@@ -183,7 +183,6 @@ namespace Plugin.MaterialDesignControls
 
         protected override void SetIcon()
         {
-            //customIcon.IsVisible = true;
             imageContainer.IsVisible = true;
             chkContainer.IsVisible = false;
             SetCustomIcon();
