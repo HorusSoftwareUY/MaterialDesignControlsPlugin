@@ -4,11 +4,12 @@
        	xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
        	xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
        	x:Class="Plugin.MaterialDesignControls.MaterialFloatingButton"
-		IsClippedToBounds="True" >
+		IsClippedToBounds="True">
     <StackLayout 
-		VerticalOptions="Center"
+		x:Name="container"
+		VerticalOptions="Fill"
+		HorizontalOptions="Fill"
 		Spacing="0" 
-		HorizontalOptions="CenterAndExpand"
 		Orientation="Horizontal">
         <custom:CustomImage 
 	        x:Name="imgLeft" 

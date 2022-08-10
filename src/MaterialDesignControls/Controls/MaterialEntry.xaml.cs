@@ -25,18 +25,18 @@ namespace Plugin.MaterialDesignControls
             this.txtEntry.Unfocused += HandleFocusChange;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
 
-            this.imgClearIcon.Tapped = () =>
+            imgClearIcon.Command = new Command(() =>
             {
-                this.Text = string.Empty;
-                this.txtEntry.Text = string.Empty;
-            };
+                Text = string.Empty;
+                txtEntry.Text = string.Empty;
+            });
 
-            this.imgShowPasswordIcon.Tapped = () =>
+            imgShowPasswordIcon.Command = new Command(() =>
             {
-                if (this.passwordIsVisible)
+                if (passwordIsVisible)
                 {
-                    this.txtEntry.IsPassword = true;
-                    this.passwordIsVisible = false;
+                    txtEntry.IsPassword = true;
+                    passwordIsVisible = false;
 
                     // Display the show password icon
                     if (CustomShowPasswordIcon != null)
@@ -46,8 +46,8 @@ namespace Plugin.MaterialDesignControls
                 }
                 else
                 {
-                    this.txtEntry.IsPassword = false;
-                    this.passwordIsVisible = true;
+                    txtEntry.IsPassword = false;
+                    passwordIsVisible = true;
 
                     // Display the hide password icon
                     if (CustomHidePasswordIcon != null)
@@ -55,7 +55,7 @@ namespace Plugin.MaterialDesignControls
                     else if (!string.IsNullOrEmpty(HidePasswordIcon))
                         imgShowPasswordIcon.SetImage(HidePasswordIcon);
                 }
-            };
+            });
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
