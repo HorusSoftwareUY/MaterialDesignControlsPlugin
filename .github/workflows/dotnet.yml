@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore src/MaterialDesignControls.sln
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build src/MaterialDesignControls.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test src/MaterialDesignControls.sln --no-build --verbosity normal
