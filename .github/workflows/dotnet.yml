@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore src/MaterialDesignControls.sln
-    - name: Build
-      run: dotnet build src/MaterialDesignControls.sln --configuration Release --no-restore
-    - name: Test
-      run: dotnet test src/MaterialDesignControls.sln --no-build --verbosity normal
+      run: msbuild src/MaterialDesignControls.sln -t:restore,build -p:RestorePackagesConfig=true
+    - name: Build iOS
+      run: msbuild src/MaterialDesignControls.iOS/MaterialDesignControls.iOS.csproj -t:Rebuild -p:Configuration=Release
+    - name: Build Android
+      run: msbuild src/MaterialDesignControls.Android/MaterialDesignControls.Android.csproj -t:Rebuild -p:Configuration=Release
