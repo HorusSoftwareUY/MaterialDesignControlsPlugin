@@ -17,8 +17,10 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
     - name: Restore dependencies
-      run: msbuild src/MaterialDesignControls.sln -t:restore,build -p:RestorePackagesConfig=true
+      run: msbuild src/MaterialDesignControls.sln -t:restore -p:RestorePackagesConfig=true
     - name: Build iOS
       run: msbuild src/MaterialDesignControls.iOS/MaterialDesignControls.iOS.csproj -t:Rebuild -p:Configuration=Release
     - name: Build Android
