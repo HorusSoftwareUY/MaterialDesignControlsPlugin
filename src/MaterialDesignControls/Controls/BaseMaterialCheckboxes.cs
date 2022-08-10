@@ -8,7 +8,6 @@ namespace Plugin.MaterialDesignControls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public abstract class BaseMaterialCheckboxes : ContentView
     {
-
         #region Text
 
         public static readonly BindableProperty TextProperty =
@@ -308,7 +307,7 @@ namespace Plugin.MaterialDesignControls
 
         #region Methods
 
-        protected void UpdateLayout(string propertyName, StackLayout container, Label lblAssistive)
+        protected void UpdateLayout(string propertyName, StackLayout container ,Label lblAssistive)
         {
             switch (propertyName)
             {

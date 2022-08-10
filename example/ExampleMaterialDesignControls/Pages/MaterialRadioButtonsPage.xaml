@@ -7,8 +7,8 @@
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     Title="Material RadioButtons">
     <ContentPage.Content>
-			<ScrollView>
-        <StackLayout Padding="20" Spacing="10">
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="10">
 
             <material:MaterialLabel Text="Xamarin Native Control Selection" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
             <material:MaterialRadioButtons 
@@ -17,7 +17,7 @@
 		        LabelText="Rigtones" 
 		        SelectedItem="{Binding SelectedRigtone}"/>
 
-			<material:MaterialDivider Margin="0,10" />
+			<material:MaterialDivider Margin="0,10"/>
 
 			<material:MaterialLabel Text="Xamarin Native Control Selection (Disabled)" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
 
