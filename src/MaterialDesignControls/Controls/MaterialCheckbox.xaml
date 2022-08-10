@@ -5,22 +5,78 @@
     xmlns:controls="clr-namespace:Plugin.MaterialDesignControls"
     xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
     x:Class="Plugin.MaterialDesignControls.MaterialCheckbox">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="gridStyle" TargetType="Grid">
+				<Setter Property="ColumnSpacing" Value="0"/>
+				<Setter Property="RowSpacing" Value="0"/>
+				<Setter Property="VerticalOptions" Value="Center"/>
+				<Setter Property="HorizontalOptions" Value="Center"/>
+			</Style>
+		</ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
         <StackLayout Spacing="0" VerticalOptions="Center">
             <StackLayout x:Name="container" Orientation="Horizontal" >
-                <controls:MaterialLabel x:Name="lblLeftText" VerticalOptions="Center" VerticalTextAlignment="Center" IsVisible="False"/>
-                <Grid x:Name="chkContainer" ColumnSpacing="0" RowSpacing="0" VerticalOptions="Center" HorizontalOptions="Center">
+                <controls:MaterialLabel 
+		            x:Name="lblLeftText" 
+		            VerticalOptions="Center" 
+					VerticalTextAlignment="Center" 
+					IsVisible="False"/>
+                <Grid 
+		            x:Name="chkContainer" 
+					Style="{StaticResource gridStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
 		            </Grid.ColumnDefinitions>
-                    <CheckBox Grid.Column="0" x:Name="chk" VerticalOptions="Center"  HeightRequest="25" WidthRequest="25" />
-                    <BoxView Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="25" HeightRequest="25"/>
+                    <CheckBox 
+			            Grid.Column="0" 
+			            x:Name="chk" 
+			            VerticalOptions="Center"  
+			            HorizontalOptions="Center" 
+			            HeightRequest="25" 
+			            WidthRequest="25" />
+                    <BoxView 
+			            Grid.Column="0" 
+			            HorizontalOptions="Center" 
+			            VerticalOptions="Center" 
+			            WidthRequest="25" 
+			            HeightRequest="25"/>
                 </Grid>
-                <custom:CustomImageButton x:Name="customIcon" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="False"/>
-                <controls:MaterialLabel x:Name="lblRightText" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                <Grid 
+		            x:Name="imageContainer" 
+                    IsVisible="False"
+					Style="{StaticResource gridStyle}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+		            </Grid.ColumnDefinitions>
+                    <custom:CustomImageButton 
+		                Grid.Column="0" 
+		                x:Name="customIcon" 
+		                HorizontalOptions="Start" 
+		                VerticalOptions="Center"/>
+                    <BoxView 
+						Grid.Column="0" 
+						BackgroundColor="Transparent" 
+						HorizontalOptions="Center" 
+						VerticalOptions="Center" 
+						WidthRequest="25" 
+						HeightRequest="25"/>
+                </Grid>
+                <controls:MaterialLabel 
+					x:Name="lblRightText" 
+					VerticalOptions="Center" 
+					VerticalTextAlignment="Center"/>
             </StackLayout>
-            <BoxView x:Name="bxvLine" HeightRequest="1" />
-            <controls:MaterialLabel x:Name="lblAssistive" IsVisible="false" LineBreakMode="NoWrap" Margin="14,2,14,0" HorizontalTextAlignment="Start" />
+            <BoxView 
+				x:Name="bxvLine" 
+				HeightRequest="1"/>
+            <controls:MaterialLabel 
+				x:Name="lblAssistive" 
+				IsVisible="false" 
+				LineBreakMode="NoWrap" 
+				Margin="14,2,14,0" 
+				HorizontalTextAlignment="Start" />
         </StackLayout>
     </ContentView.Content>
 </controls:BaseMaterialCheckboxes>

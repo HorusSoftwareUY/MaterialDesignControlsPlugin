@@ -33,7 +33,7 @@ namespace Plugin.MaterialDesignControls
                 {
                     swIsClicked = true;
                     Toggled?.Invoke(this, null);
-                    IsToggled = !IsToggled;
+                    IsToggled = sw.IsToggled;
 		        }
 	        };
         }
