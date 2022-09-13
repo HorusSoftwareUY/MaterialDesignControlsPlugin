@@ -1,8 +1,5 @@
 ﻿using ExampleMaterialDesignControls.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages

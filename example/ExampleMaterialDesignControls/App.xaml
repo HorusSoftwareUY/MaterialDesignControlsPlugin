@@ -141,43 +141,110 @@
         </Style>
 
         <!-- MaterialButton -->
-        <Style TargetType="material:MaterialButton">
-            <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
-            <Setter Property="DisabledTextColor" Value="{StaticResource WhiteColor}"/>
+        <Style TargetType="material:MaterialButton" x:Key="BaseMaterialButtonStyle">
             <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
-            <Setter Property="BackgroundColor" Value="{StaticResource GradientColor1}" />
-            <Setter Property="DisabledBackgroundColor" Value="#c6c6c5" />
-            <Setter Property="BorderColor" Value="{StaticResource GradientColor1}" />
-            <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
-            <Setter Property="BusyColor" Value="{StaticResource BlackColor}" />
-            <Setter Property="ToUpper" Value="False" />
-            <Setter Property="HeightRequest" Value="48" />
-            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="BusyColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="FontFamily" Value="{StaticResource SemiBoldFont}" />
         </Style>
-
-        <!-- MaterialOutlineButton -->
-        <Style TargetType="material:MaterialOutlineButton">
-            <Setter Property="TextColor" Value="{StaticResource GradientColor1}" />
-            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
-            <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
-            <Setter Property="BorderColor" Value="{StaticResource GradientColor1}" />
-            <Setter Property="DisabledBorderColor" Value="#c6c6c5" />
-            <Setter Property="ToUpper" Value="False" />
-            <Setter Property="HeightRequest" Value="48" />
-            <Setter Property="CornerRadius" Value="16" />
-            <Setter Property="FontFamily" Value="{StaticResource SemiBoldFont}" />
+        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}">
         </Style>
-
-        <!-- MaterialFlatButton -->
-        <Style TargetType="material:MaterialFlatButton">
-            <Setter Property="TextColor" Value="{StaticResource GradientColor1}" />
-            <Setter Property="DisabledTextColor" Value="#c6c6c5" />
-            <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
-            <Setter Property="ToUpper" Value="False" />
-            <Setter Property="HeightRequest" Value="48" />
-            <Setter Property="CornerRadius" Value="16" />
-            <Setter Property="FontFamily" Value="{StaticResource SemiBoldFont}" />
+        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialElevatedButtonStyle">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="{StaticResource GradientColor1}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="DarkGray"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialFilledButtonStyle">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource GradientColor1}" />
+                                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="DarkGray" />
+                                <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialTonalButtonStyle">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource GradientColorTransparent1}" />
+                                <Setter Property="TextColor" Value="{StaticResource GradientColor1}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="LightGray" />
+                                <Setter Property="TextColor" Value="DarkGray"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialOutlinedButtonStyle">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}" />
+                                <Setter Property="BorderColor" Value="{StaticResource GradientColor1}" />
+                                <Setter Property="TextColor" Value="{StaticResource GradientColor1}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}" />
+                                <Setter Property="BorderColor" Value="DarkGray" />
+                                <Setter Property="TextColor" Value="DarkGray"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialTextButtonStyle">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="{StaticResource GradientColor1}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="DarkGray"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
         </Style>
 
         <!-- MaterialChips -->

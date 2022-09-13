@@ -1,8 +1,7 @@
-﻿using System;
-namespace Plugin.MaterialDesignControls
+﻿namespace Plugin.MaterialDesignControls
 {
     public enum AnimationTypes
     {
-        None, Fade, Scale,
+        None, Fade, Scale, Custom
     }
 }

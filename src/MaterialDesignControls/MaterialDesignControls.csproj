@@ -51,11 +51,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Controls\MaterialRatingControl.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialRatingControl.xaml.cs">
       <DependentUpon>MaterialRatingControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialSlider.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialSlider.xaml.cs">
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -66,43 +66,40 @@
     <Compile Include="Implementations\CustomSlider.cs" />
     <Compile Include="Implementations\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomEditor.cs" />
-    <Compile Include="Controls\MaterialChips.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialChips.xaml.cs">
       <DependentUpon>MaterialChips.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialDatePicker.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialDatePicker.xaml.cs">
       <DependentUpon>MaterialDatePicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialEditor.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialEditor.xaml.cs">
       <DependentUpon>MaterialEditor.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialEntry.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialEntry.xaml.cs">
       <DependentUpon>MaterialEntry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialLabel.cs" />
-    <Compile Include="Controls\MaterialPicker.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialLabel.cs" />
+    <Compile Include="ControlsMaterial2\MaterialPicker.xaml.cs">
       <DependentUpon>MaterialPicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialSelection.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialSelection.xaml.cs">
       <DependentUpon>MaterialSelection.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialTimePicker.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialTimePicker.xaml.cs">
       <DependentUpon>MaterialTimePicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialChipsGroup.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialChipsGroup.xaml.cs">
       <DependentUpon>MaterialChipsGroup.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialField.cs" />
-    <Compile Include="Controls\MaterialOutlineButton.cs" />
-    <Compile Include="Controls\MaterialFlatButton.cs" />
-    <Compile Include="Controls\MaterialButton.cs" />
+    <Compile Include="ControlsMaterial2\MaterialField.cs" />
     <Compile Include="Implementations\CustomImageButton.cs" />
     <Compile Include="Animations\ShakeAnimation.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
@@ -110,47 +107,49 @@
     <Compile Include="Animations\TouchAndPressAnimation.cs" />
     <Compile Include="Implementations\CustomImage.cs" />
     <Compile Include="Implementations\DoublePicker.cs" />
-    <Compile Include="Controls\MaterialDoublePicker.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialDoublePicker.xaml.cs">
       <DependentUpon>MaterialDoublePicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialCodeEntry.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialCodeEntry.xaml.cs">
       <DependentUpon>MaterialCodeEntry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\BaseMaterialFieldControl.cs" />
+    <Compile Include="ControlsMaterial2\BaseMaterialFieldControl.cs" />
     <Compile Include="TextTransforms.cs" />
-    <Compile Include="Controls\MaterialCustomControl.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialCustomControl.xaml.cs">
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utils\LoggerHelper.cs" />
-    <Compile Include="Controls\MaterialSegmented.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialSegmented.xaml.cs">
       <DependentUpon>MaterialSegmented.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialCheckbox.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialCheckbox.xaml.cs">
       <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\BaseMaterialCheckboxes.cs" />
+    <Compile Include="ControlsMaterial2\BaseMaterialCheckboxes.cs" />
     <Compile Include="TextSide.cs" />
-    <Compile Include="Controls\MaterialRadioButtons.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialRadioButtons.xaml.cs">
       <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialSwitch.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialSwitch.xaml.cs">
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialDivider.cs" />
-    <Compile Include="Controls\MaterialFloatingButton.xaml.cs">
+    <Compile Include="ControlsMaterial2\MaterialDivider.cs" />
+    <Compile Include="ControlsMaterial2\MaterialFloatingButton.xaml.cs">
       <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Implementations\CustomFrame.cs" />
     <Compile Include="FloatingButtonSize.cs" />
     <Compile Include="IconSide.cs" />
+    <Compile Include="Styles\DefaultStyles.cs" />
+    <Compile Include="ControlsMaterial3\MaterialButton.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -161,8 +160,14 @@
     <Folder Include="Animations\" />
     <Folder Include="Effects\" />
     <Folder Include="Utils\" />
+    <Folder Include="ControlsMaterial3\" />
+    <Folder Include="Styles\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ControlsMaterial3\" />
+    <None Remove="Styles\" />
   </ItemGroup>
 </Project>

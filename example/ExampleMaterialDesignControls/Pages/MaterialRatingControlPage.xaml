@@ -123,7 +123,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <material:MaterialFlatButton Text="Clear" Command="{Binding ClearCommand}" />
+                    <material:MaterialButton ButtonType="Text" Text="Clear" Command="{Binding ClearCommand}" />
                     <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
                 </Grid>
 

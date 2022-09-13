@@ -1,49 +1,129 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             x:Class="ExampleMaterialDesignControls.Pages.MaterialButtonPage"
-             Title="Material Button"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             ios:Page.UseSafeArea="True"
-             IconImageSource="calendar.png">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialButtonPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    Title="Material Button"
+    ios:Page.UseSafeArea="True"
+    IconImageSource="calendar.png">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LegendLabel" TargetType="material:MaterialLabel">
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="0,10,0,0" />
+            </Style>
+            <Style x:Key="SubtitleLabel" TargetType="material:MaterialLabel">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Padding="20" Spacing="20">
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}"/>
-                <material:MaterialButton Text="Download" Icon="download.png" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}"/>
-                <material:MaterialOutlineButton Text="Cancel Action" Command="{Binding TapCommand}" CommandParameter="Canceled" IconSize="26" ActivityIndicatorSize="26" Padding="16,0" ContentIsExpanded="True" Spacing="0" WidthRequest="400" HorizontalOptions="CenterAndExpand">
-                    <material:MaterialButton.CustomIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
-                    </material:MaterialButton.CustomIcon>
+            <StackLayout Padding="20" Spacing="10">
+
+                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Elevated button:" />
+                <material:MaterialButton
+                    ButtonType="Elevated"
+                    Style="{StaticResource MaterialElevatedButtonStyle}"
+                    Command="{Binding SaveFileCommand}"
+                    IsBusy="{Binding SaveFileCommand.IsRunning}"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsVisible="{Binding IsVisible}"
+                    Text="Save file" />
+
+                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Filled button with leading png icon:" />
+                <material:MaterialButton
+                    ButtonType="Filled"
+                    Style="{StaticResource MaterialFilledButtonStyle}"
+                    Command="{Binding DownloadFileCommand}"
+                    IsBusy="{Binding DownloadFileCommand.IsRunning}"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsVisible="{Binding IsVisible}"
+                    Text="Download file">
+                    <material:MaterialButton.LeadingIcon>
+                        <Image Source="download.png" />
+                    </material:MaterialButton.LeadingIcon>
+                </material:MaterialButton>
+
+                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Tonal button with trailing svg icon:" />
+                <material:MaterialButton
+                    ButtonType="Tonal"
+                    Style="{StaticResource MaterialTonalButtonStyle}"
+                    Command="{Binding OpenTutorialCommand}"
+                    IsBusy="{Binding OpenTutorialCommand.IsRunning}"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsVisible="{Binding IsVisible}"
+                    Text="Open tutorial">
+                    <material:MaterialButton.TrailingIcon>
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                    </material:MaterialButton.TrailingIcon>
+                </material:MaterialButton>
+
+                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Outlined button with custom activity indicator:" />
+                <material:MaterialButton
+                    ButtonType="Outlined"
+                    Style="{StaticResource MaterialOutlinedButtonStyle}"
+                    Command="{Binding CancelActionCommand}"
+                    IsBusy="{Binding CancelActionCommand.IsRunning}"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsVisible="{Binding IsVisible}"
+                    Text="Cancel action">
                     <material:MaterialButton.CustomActivityIndicator>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg"/> 
+                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
                     </material:MaterialButton.CustomActivityIndicator>
-                </material:MaterialOutlineButton>
-                <material:MaterialFlatButton Text="Delete" Icon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted" />
-                
+                </material:MaterialButton>
+
+                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Text button:" />
+                <material:MaterialButton
+                    ButtonType="Text"
+                    Style="{StaticResource MaterialTextButtonStyle}"
+                    Command="{Binding DeleteItemCommand}"
+                    IsBusy="{Binding DeleteItemCommand.IsRunning}"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsVisible="{Binding IsVisible}"
+                    Text="Delete item">
+                    <material:MaterialButton.LeadingIcon>
+                        <Image Source="delete.png" />
+                    </material:MaterialButton.LeadingIcon>
+                </material:MaterialButton>
+
+                <material:MaterialSwitch IsToggled="{Binding IsEnabled}" Text="Is enabled" />
+
+                <material:MaterialSwitch IsToggled="{Binding IsVisible}" Text="Is visible" />
 
                 <material:MaterialDivider Margin="0,10" />
 
-                <material:MaterialLabel Text="Disabled" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
-                <material:MaterialButton Command="{Binding TapCommand2}" CommandParameter="Saved 2" IsEnabled="{Binding IsEnabled}" Text="Download" Icon="download.png" CornerRadius="16"/>
-                <material:MaterialOutlineButton IsVisible="{Binding CancelIsVisible}" IsEnabled="false" Text="Cancel 2" Command="{Binding TapCommand}" CommandParameter="Canceled 2" />
-                <material:MaterialFlatButton IsVisible="{Binding DeleteIsVisible}" IsEnabled="false" Text="Delete 2" Icon="delete.png" DisabledIcon="delete.png" Command="{Binding TapCommand}" CommandParameter="Deleted 2" />
+                <material:MaterialLabel Style="{StaticResource SubtitleLabel}" Text="Animations" />
 
-                <material:MaterialDivider Margin="0,10" />
-
-                <material:MaterialLabel Text="Animations" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialButton Animation="None" Text="None" />
-                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Fade" />
-                <material:MaterialButton Animation="Scale" AnimationParameter="0.98" Text="Scale" />
+                <material:MaterialButton
+                    Animation="Fade"
+                    AnimationParameter="0.6"
+                    Text="Fade" />
+                <material:MaterialButton
+                    Animation="Scale"
+                    AnimationParameter="0.98"
+                    Text="Scale" />
+                <material:MaterialButton
+                    Animation="Custom"
+                    Text="Custom" />
 
                 <material:MaterialDivider Margin="0,10" />
 
-                <material:MaterialLabel Text="Clicked Event" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
-                <material:MaterialButton Animation="Fade" AnimationParameter="0.6" Text="Clicked" Clicked="Button_Clicked" />
+                <material:MaterialLabel Style="{StaticResource SubtitleLabel}" Text="Events" />
+
+                <material:MaterialButton
+                    Animation="Fade"
+                    AnimationParameter="0.6"
+                    Clicked="Button_Clicked"
+                    Text="Clicked event" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
-
 </ContentPage>

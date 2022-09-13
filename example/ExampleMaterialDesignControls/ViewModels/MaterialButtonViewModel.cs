@@ -1,78 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
+﻿using System.Threading.Tasks;
+using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace ExampleMaterialDesignControls.ViewModels
 {
-    public class MaterialButtonViewModel : BaseViewModel
+    public partial class MaterialButtonViewModel : BaseViewModel
     {
-        private bool isEnabled;
+        private string _controlTitle = "Material Button";
 
-        public bool IsEnabled
+        [ObservableProperty]
+        private bool _isEnabled = true;
+
+        [ObservableProperty]
+        private bool _isVisible = true;
+
+        [ICommand]
+        private async Task SaveFile()
         {
-            get { return isEnabled; }
-            set { SetProperty(ref isEnabled, value); }
+            await Task.Delay(2000);
+            await this.DisplayAlert(_controlTitle, $"Save file executed!", "Ok");
         }
 
-        private bool isBusy;
-
-        public bool IsBusy
+        [ICommand]
+        private async Task DownloadFile()
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            await Task.Delay(2000);
+            await this.DisplayAlert(_controlTitle, $"Download file executed!", "Ok");
         }
 
-        private bool cancelIsVisible = true;
-
-        public bool CancelIsVisible
+        [ICommand]
+        private async Task OpenTutorial()
         {
-            get { return cancelIsVisible; }
-            set { SetProperty(ref cancelIsVisible, value); }
+            await Task.Delay(2000);
+            await this.DisplayAlert(_controlTitle, $"Open tutorial executed!", "Ok");
         }
 
-        private bool deleteIsVisible = false;
-
-        public bool DeleteIsVisible
+        [ICommand]
+        private async Task CancelAction()
         {
-            get { return deleteIsVisible; }
-            set { SetProperty(ref deleteIsVisible, value); }
+            await Task.Delay(2000);
+            await this.DisplayAlert(_controlTitle, $"Cancel action executed!", "Ok");
         }
 
-        public ICommand TapCommand => new Command<string>(OnTap);
-
-        public ICommand TapCommand2 => new Command<string>(OnTap2, (var) => { return IsEnabled; });
-
-        public async void OnTap(object parameter)
+        [ICommand]
+        private async Task DeleteItem()
         {
-            if (parameter != null)
-            {
-                if (parameter is string && ((string)parameter).ToString().Equals("Saved"))
-                {
-                    this.IsBusy = true;
-                    await Task.Delay(2000);
-                    this.IsBusy = false;
-
-                    this.IsEnabled = true;
-                }
-
-                string text = parameter.ToString();
-                await this.DisplayAlert("", text, "Ok");
-            }
-        }
-
-        public async void OnTap2(object parameter)
-        {
-            if (parameter != null)
-            {
-                string text = parameter.ToString();
-                await this.DisplayAlert("", text, "Ok");
-
-                this.CancelIsVisible = false;
-                this.DeleteIsVisible = true;
-            }
+            await Task.Delay(2000);
+            await this.DisplayAlert(_controlTitle, $"Delete item executed!", "Ok");
         }
     }
 }
