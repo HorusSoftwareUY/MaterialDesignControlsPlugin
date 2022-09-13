@@ -281,6 +281,15 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(AnimationParameterProperty, value); }
         }
 
+        public static readonly BindableProperty CustomAnimationProperty =
+            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(BaseMaterialCheckboxes), defaultValue: null);
+
+        public ICustomAnimation CustomAnimation
+        {
+            get { return (ICustomAnimation)GetValue(CustomAnimationProperty); }
+            set { SetValue(CustomAnimationProperty, value); }
+        }
+
         public static readonly BindableProperty ColorProperty =
             BindableProperty.Create(nameof(Color), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: Color.FromHex("#2e85cc"));
 

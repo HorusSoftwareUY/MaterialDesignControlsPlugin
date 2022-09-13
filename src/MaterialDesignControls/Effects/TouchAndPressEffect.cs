@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Plugin.MaterialDesignControls.Animations;
+using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
@@ -7,6 +8,7 @@ namespace Plugin.MaterialDesignControls
         void ConsumeEvent(EventType gestureType);
         bool IsEnabled { get; set; }
         AnimationTypes Animation { get; set; }
+        ICustomAnimation CustomAnimation { get; set; }
         double? AnimationParameter { get; set; }
         void ExecuteAction();
     }

@@ -35,13 +35,11 @@ namespace Plugin.MaterialDesignControls.Animations
                 Task.Run(async () =>
                 {
                     if (touchAndPressEffectConsumer.Animation == AnimationTypes.Fade)
-                    {
                         await view.FadeTo(touchAndPressEffectConsumer.AnimationParameter.HasValue ? touchAndPressEffectConsumer.AnimationParameter.Value : 0.6, 100);
-                    }
-                    else
-                    {
+                    else if (touchAndPressEffectConsumer.Animation == AnimationTypes.Scale)
                         await view.ScaleTo(touchAndPressEffectConsumer.AnimationParameter.HasValue ? touchAndPressEffectConsumer.AnimationParameter.Value : 0.95, 100);
-                    }
+                    else if (touchAndPressEffectConsumer.Animation == AnimationTypes.Custom && touchAndPressEffectConsumer.CustomAnimation != null)
+                        await touchAndPressEffectConsumer.CustomAnimation.SetAnimation(view);
                 });
             }
         }
@@ -53,13 +51,11 @@ namespace Plugin.MaterialDesignControls.Animations
                 Task.Run(async () =>
                 {
                     if (touchAndPressEffectConsumer.Animation == AnimationTypes.Fade)
-                    {
                         await view.FadeTo(1, 100);
-                    }
-                    else
-                    {
+                    else if (touchAndPressEffectConsumer.Animation == AnimationTypes.Scale)
                         await view.ScaleTo(1, 100);
-                    }
+                    else if (touchAndPressEffectConsumer.Animation == AnimationTypes.Custom && touchAndPressEffectConsumer.CustomAnimation != null)
+                        await touchAndPressEffectConsumer.CustomAnimation.RestoreAnimation(view);
                 });
             }
         }

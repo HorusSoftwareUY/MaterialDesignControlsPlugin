@@ -6,6 +6,7 @@
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:animations="clr-namespace:ExampleMaterialDesignControls.Animations"
     Title="Material Button"
     ios:Page.UseSafeArea="True"
     IconImageSource="calendar.png">
@@ -112,7 +113,11 @@
                     Text="Scale" />
                 <material:MaterialButton
                     Animation="Custom"
-                    Text="Custom" />
+                    Text="Custom">
+                    <material:MaterialButton.CustomAnimation>
+                        <animations:CustomButtonAnimation />
+                    </material:MaterialButton.CustomAnimation>
+                </material:MaterialButton>
 
                 <material:MaterialDivider Margin="0,10" />
 

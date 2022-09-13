@@ -150,6 +150,7 @@
     <Compile Include="IconSide.cs" />
     <Compile Include="Styles\DefaultStyles.cs" />
     <Compile Include="ControlsMaterial3\MaterialButton.cs" />
+    <Compile Include="Animations\ICustomAnimation.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
