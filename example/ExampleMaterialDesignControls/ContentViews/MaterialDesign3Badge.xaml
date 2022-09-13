@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="ExampleMaterialDesignControls.ContentViews.MaterialDesign3Badge"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    Padding="6,4"
+    BackgroundColor="{StaticResource GradientGreenColorTransparent}"
+    CornerRadius="8"
+    HasShadow="False"
+    HorizontalOptions="Center"
+    VerticalOptions="Start"
+    TranslationY="-5">
+    <material:MaterialLabel
+        FontSize="{StaticResource Body4FontSize}"
+        HorizontalTextAlignment="Center"
+        LineBreakMode="TailTruncation"
+        Text="Material Design 3"
+        TextColor="{StaticResource GradientGreenColor}" />
+</Frame>

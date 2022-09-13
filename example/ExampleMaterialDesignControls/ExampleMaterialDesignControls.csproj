@@ -25,6 +25,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Resources\Svg\" />
     <Folder Include="Animations\" />
+    <Folder Include="ContentViews\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MasterPageItem.cs" />
@@ -60,6 +61,7 @@
     <None Remove="Resources\Svg\starUnselected.svg" />
     <None Remove="Microsoft.Toolkit.Mvvm" />
     <None Remove="Animations\" />
+    <None Remove="ContentViews\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Svg\mute.svg" />

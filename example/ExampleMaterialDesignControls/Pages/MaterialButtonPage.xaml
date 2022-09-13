@@ -3,10 +3,11 @@
     x:Class="ExampleMaterialDesignControls.Pages.MaterialButtonPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:ExampleMaterialDesignControls.Animations"
+    xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:animations="clr-namespace:ExampleMaterialDesignControls.Animations"
     Title="Material Button"
     ios:Page.UseSafeArea="True"
     IconImageSource="calendar.png">
@@ -28,24 +29,26 @@
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="10">
 
+                <contentViews:InfoIndicatorView Message="MaterialButton follows the latest guidelines of Material Design 3" />
+
                 <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Elevated button:" />
                 <material:MaterialButton
                     ButtonType="Elevated"
-                    Style="{StaticResource MaterialElevatedButtonStyle}"
                     Command="{Binding SaveFileCommand}"
                     IsBusy="{Binding SaveFileCommand.IsRunning}"
                     IsEnabled="{Binding IsEnabled}"
                     IsVisible="{Binding IsVisible}"
+                    Style="{StaticResource MaterialElevatedButtonStyle}"
                     Text="Save file" />
 
                 <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Filled button with leading png icon:" />
                 <material:MaterialButton
                     ButtonType="Filled"
-                    Style="{StaticResource MaterialFilledButtonStyle}"
                     Command="{Binding DownloadFileCommand}"
                     IsBusy="{Binding DownloadFileCommand.IsRunning}"
                     IsEnabled="{Binding IsEnabled}"
                     IsVisible="{Binding IsVisible}"
+                    Style="{StaticResource MaterialFilledButtonStyle}"
                     Text="Download file">
                     <material:MaterialButton.LeadingIcon>
                         <Image Source="download.png" />
@@ -55,11 +58,11 @@
                 <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Tonal button with trailing svg icon:" />
                 <material:MaterialButton
                     ButtonType="Tonal"
-                    Style="{StaticResource MaterialTonalButtonStyle}"
                     Command="{Binding OpenTutorialCommand}"
                     IsBusy="{Binding OpenTutorialCommand.IsRunning}"
                     IsEnabled="{Binding IsEnabled}"
                     IsVisible="{Binding IsVisible}"
+                    Style="{StaticResource MaterialTonalButtonStyle}"
                     Text="Open tutorial">
                     <material:MaterialButton.TrailingIcon>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
@@ -69,11 +72,11 @@
                 <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Outlined button with custom activity indicator:" />
                 <material:MaterialButton
                     ButtonType="Outlined"
-                    Style="{StaticResource MaterialOutlinedButtonStyle}"
                     Command="{Binding CancelActionCommand}"
                     IsBusy="{Binding CancelActionCommand.IsRunning}"
                     IsEnabled="{Binding IsEnabled}"
                     IsVisible="{Binding IsVisible}"
+                    Style="{StaticResource MaterialOutlinedButtonStyle}"
                     Text="Cancel action">
                     <material:MaterialButton.CustomActivityIndicator>
                         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
@@ -83,11 +86,11 @@
                 <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Text button:" />
                 <material:MaterialButton
                     ButtonType="Text"
-                    Style="{StaticResource MaterialTextButtonStyle}"
                     Command="{Binding DeleteItemCommand}"
                     IsBusy="{Binding DeleteItemCommand.IsRunning}"
                     IsEnabled="{Binding IsEnabled}"
                     IsVisible="{Binding IsVisible}"
+                    Style="{StaticResource MaterialTextButtonStyle}"
                     Text="Delete item">
                     <material:MaterialButton.LeadingIcon>
                         <Image Source="delete.png" />
@@ -111,9 +114,7 @@
                     Animation="Scale"
                     AnimationParameter="0.98"
                     Text="Scale" />
-                <material:MaterialButton
-                    Animation="Custom"
-                    Text="Custom">
+                <material:MaterialButton Animation="Custom" Text="Custom">
                     <material:MaterialButton.CustomAnimation>
                         <animations:CustomButtonAnimation />
                     </material:MaterialButton.CustomAnimation>
