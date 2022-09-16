@@ -1,4 +1,4 @@
-name: Build Xamarin.iOS app
+name: Build, pack and push Plugin.MaterialDesignControls NuGet package
 
 env:
   IOS_CSPROJ_FILE_PATH: 'src/MaterialDesignControls.iOS/MaterialDesignControls.iOS.csproj'
@@ -40,7 +40,7 @@ jobs:
       run: nuget pack
       
     - name: Nuget push
-      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+      run: nuget push **\Plugin.MaterialDesignControls.*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
       
       
       
