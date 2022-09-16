@@ -1,0 +1,59 @@
+name: Build Xamarin.iOS app
+
+env:
+  IOS_CSPROJ_FILE_PATH: 'src/MaterialDesignControls.iOS/MaterialDesignControls.iOS.csproj'
+  ANDROID_CSPROJ_FILE_PATH: 'src/MaterialDesignControls.Android/MaterialDesignControls.Android.csproj'
+  SLN_FILE_PATH: 'src/MaterialDesignControls.sln'
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    
+    # iOS build
+    - uses: actions/checkout@v3
+    - name: Set default Xamarin SDK versions
+      run: |
+        $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --ios=14.10
+
+    - name: Set default Xcode 12.3
+      run: |
+        XCODE_ROOT=/Applications/Xcode_12.3.0.app
+        echo "MD_APPLE_SDK_ROOT=$XCODE_ROOT" >> $GITHUB_ENV
+        sudo xcode-select -s $XCODE_ROOT
+
+    - name: Setup .NET Core SDK 5.0.x
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x'
+
+    - name: Install dependencies
+      run: nuget restore ${{ env.SLN_FILE_PATH }}
+
+    - name: Build
+      run: msbuild ${{ env.IOS_CSPROJ_FILE_PATH }} /p:Configuration=Release /p:Platform=iPhone /t:Rebuild
+      
+    # Android build
+    - uses: actions/checkout@v3
+    - name: Set default Xamarin SDK versions
+      run: |
+        $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.10 --android=10.2
+
+    - name: Setup .NET Core SDK 5.0.x
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x'
+
+    - name: Install dependencies
+      run: nuget restore ${{ env.SLN_FILE_PATH }}
+
+    - name: Build
+      run: msbuild ${{ env.ANDROID_CSPROJ_FILE_PATH }} /t:PackageForAndroid /p:Configuration=Release
+      
