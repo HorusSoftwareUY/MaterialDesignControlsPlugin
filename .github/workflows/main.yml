@@ -45,6 +45,11 @@ jobs:
     - name: Build
       run: msbuild ${{ env.ANDROID_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
       
+    - name: Nuget pack
+      run: nuget pack
+      
+    - name: Nuget push
+      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
       
       
       
