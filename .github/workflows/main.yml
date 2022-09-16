@@ -19,9 +19,6 @@ jobs:
     
     # iOS build
     - uses: actions/checkout@v3
-    - name: Set default Xamarin SDK versions
-      run: |
-        $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --ios=14.10
 
     - name: Setup .NET Core SDK 5.0.x
       uses: actions/setup-dotnet@v2
@@ -36,9 +33,6 @@ jobs:
       
     # Android build
     - uses: actions/checkout@v3
-    - name: Set default Xamarin SDK versions
-      run: |
-        $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --android=10.2
 
     - name: Setup .NET Core SDK 5.0.x
       uses: actions/setup-dotnet@v2
