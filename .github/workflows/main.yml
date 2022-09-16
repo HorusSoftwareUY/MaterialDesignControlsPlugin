@@ -17,7 +17,7 @@ jobs:
 
     steps:
     
-    # iOS build
+    
     - uses: actions/checkout@v3
 
     - name: Setup .NET Core SDK 5.0.x
@@ -28,20 +28,11 @@ jobs:
     - name: Install dependencies
       run: nuget restore ${{ env.SLN_FILE_PATH }}
 
+    # iOS build
     - name: Build
       run: msbuild ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
       
     # Android build
-    - uses: actions/checkout@v3
-
-    - name: Setup .NET Core SDK 5.0.x
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '5.0.x'
-
-    - name: Install dependencies
-      run: nuget restore ${{ env.SLN_FILE_PATH }}
-
     - name: Build
       run: msbuild ${{ env.ANDROID_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
       
