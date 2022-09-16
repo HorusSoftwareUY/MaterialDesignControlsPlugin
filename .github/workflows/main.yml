@@ -32,7 +32,7 @@ jobs:
       run: nuget restore ${{ env.SLN_FILE_PATH }}
 
     - name: Build
-      run: msbuild ${{ env.IOS_CSPROJ_FILE_PATH }} /p:Configuration=Release /p:Platform=iPhoneSimulator /t:Rebuild
+      run: msbuild ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
       
     # Android build
     - uses: actions/checkout@v3
@@ -49,7 +49,7 @@ jobs:
       run: nuget restore ${{ env.SLN_FILE_PATH }}
 
     - name: Build
-      run: msbuild ${{ env.ANDROID_CSPROJ_FILE_PATH }} /t:PackageForAndroid /p:Configuration=Release
+      run: msbuild ${{ env.ANDROID_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
       
       
       
