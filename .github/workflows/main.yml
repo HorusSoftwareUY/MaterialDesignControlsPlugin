@@ -3,7 +3,7 @@ name: Build Xamarin.iOS app
 env:
   IOS_CSPROJ_FILE_PATH: 'src/MaterialDesignControls.iOS/MaterialDesignControls.iOS.csproj'
   ANDROID_CSPROJ_FILE_PATH: 'src/MaterialDesignControls.Android/MaterialDesignControls.Android.csproj'
-  SLN_FILE_PATH: 'src/MaterialDesignControls.sln'
+  SLN_FILE_PATH: 'example/ExampleMaterialDesignControls.sln'
 
 on:
   push:
@@ -50,4 +50,7 @@ jobs:
 
     - name: Build
       run: msbuild ${{ env.ANDROID_CSPROJ_FILE_PATH }} /t:PackageForAndroid /p:Configuration=Release
+      
+      
+      
       
