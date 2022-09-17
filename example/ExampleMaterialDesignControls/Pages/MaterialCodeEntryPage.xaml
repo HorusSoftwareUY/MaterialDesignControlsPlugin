@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialCodeEntryPage"
              Title="Material Code Entry"
              BackgroundColor="White">
@@ -19,7 +20,7 @@
                 <material:MaterialCodeEntry Type="Filled" LabelText="Code 4" Length="6" Keyboard="Text" TabIndex="5" ReturnType="Next" IsEnabled="False"/>
                 <material:MaterialCodeEntry Type="Filled" LabelText="Code 4" Length="6" Keyboard="Text" KeyboardFlags="CapitalizeCharacter" TextTransform="Uppercase" TabIndex="5" ReturnType="Next" HorizontalTextAlignment="Center" />
                 
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" />
+                <material3:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

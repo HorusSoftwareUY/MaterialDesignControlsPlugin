@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialSegmentedPage"
     Title="Material Segmented"
     BackgroundColor="White">
@@ -113,7 +114,7 @@
                     IsSelectedChanged="MaterialSegmented_IsSelectedChanged"
                     SelectedColor="{StaticResource GradientColor1}" />
             </StackLayout>
-            <material:MaterialButton Text="Save" Command="{Binding SaveCommand}" VerticalOptions="EndAndExpand" HorizontalOptions="Fill"/>
+            <material3:MaterialButton Text="Save" Command="{Binding SaveCommand}" VerticalOptions="EndAndExpand" HorizontalOptions="Fill"/>
         </StackLayout>
         </ScrollView>
     </ContentPage.Content>

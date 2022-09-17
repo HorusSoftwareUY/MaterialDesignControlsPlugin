@@ -2,8 +2,7 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.App">
     <Application.Resources>
 
@@ -144,14 +143,14 @@
         </Style>
 
         <!-- MaterialButton -->
-        <Style TargetType="material:MaterialButton" x:Key="BaseMaterialButtonStyle">
+        <Style TargetType="material3:MaterialButton" x:Key="BaseMaterialButtonStyle">
             <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
             <Setter Property="BusyColor" Value="{StaticResource GradientColor1}" />
             <Setter Property="FontFamily" Value="{StaticResource SemiBoldFont}" />
         </Style>
-        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}">
+        <Style TargetType="material3:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}">
         </Style>
-        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialElevatedButtonStyle">
+        <Style TargetType="material3:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialElevatedButtonStyle">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
@@ -169,7 +168,7 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
-        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialFilledButtonStyle">
+        <Style TargetType="material3:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialFilledButtonStyle">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
@@ -189,7 +188,7 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
-        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialTonalButtonStyle">
+        <Style TargetType="material3:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialTonalButtonStyle">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
@@ -209,7 +208,7 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
-        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialOutlinedButtonStyle">
+        <Style TargetType="material3:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialOutlinedButtonStyle">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
@@ -231,7 +230,7 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
-        <Style TargetType="material:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialTextButtonStyle">
+        <Style TargetType="material3:MaterialButton" BasedOn="{StaticResource BaseMaterialButtonStyle}" x:Key="MaterialTextButtonStyle">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">

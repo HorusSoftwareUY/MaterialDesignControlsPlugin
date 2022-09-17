@@ -32,7 +32,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledIconProperty =
-            BindableProperty.Create(nameof(DisabledIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(DisabledIcon), typeof(string), typeof(MaterialFloatingButton), defaultValue: null);
 
         public string DisabledIcon
         {
@@ -158,7 +158,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ToUpperProperty =
-            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialButton), defaultValue: false);
+            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialFloatingButton), defaultValue: false);
 
         public bool ToUpper
         {

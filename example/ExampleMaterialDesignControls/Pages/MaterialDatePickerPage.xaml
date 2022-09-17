@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialDatePickerPage"
              Title="Material Date Picker"
              BackgroundColor="White">
@@ -15,8 +16,8 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <material:MaterialButton ButtonType="Text" Text="Clear" Command="{Binding ClearCommand}" />
-                    <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
+                    <material3:MaterialButton ButtonType="Text" Text="Clear" Command="{Binding ClearCommand}" />
+                    <material3:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
                 </Grid>
 
                 <material:MaterialDatePicker Type="Outlined" LabelText="End date" Format="dd/MM/yyyy"/>
@@ -40,7 +41,7 @@
                         </OnPlatform>
                     </material:MaterialDatePicker.FontFamily>
                 </material:MaterialDatePicker>
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
+                <material3:MaterialButton Text="Save" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

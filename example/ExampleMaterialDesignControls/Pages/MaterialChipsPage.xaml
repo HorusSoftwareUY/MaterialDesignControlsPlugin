@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
     Title="Material Chips"
     BackgroundColor="White">
     <ContentPage.Content>
@@ -44,7 +45,7 @@
                     LabelText="Colors"
                     SelectedItems="{Binding SelectedColors}" />
 
-                <material:MaterialButton
+                <material3:MaterialButton
                     Margin="0,20,0,0"
                     Command="{Binding TapCommand}"
                     Text="Save"

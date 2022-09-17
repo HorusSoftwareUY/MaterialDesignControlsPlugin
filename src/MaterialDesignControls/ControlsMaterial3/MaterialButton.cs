@@ -5,14 +5,14 @@ using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
     public enum MaterialButtonType
     {
         Elevated, Filled, Tonal, Outlined, Text
     }
 
-    public class MaterialButton : ContentView, ITouchAndPressEffectConsumer
+    public class MaterialButton : Grid, ITouchAndPressEffectConsumer
     {
         #region Attributes and Properties
 
@@ -24,13 +24,13 @@ namespace Plugin.MaterialDesignControls
 
         private ContentView _trailingIconContentView;
 
-        protected MaterialLabel TextLabel { get; set; }
+        private MaterialLabel _textLabel;
 
         private ActivityIndicator _activityIndicator;
 
         private ContentView _cntActivityIndicator;
 
-        protected Frame FrameLayout { get; set; }
+        private Frame _frameLayout;
 
         #endregion Attributes and Properties
 
@@ -284,15 +284,16 @@ namespace Plugin.MaterialDesignControls
         {
             _initialized = true;
 
-            FrameLayout = new Frame
+            MinimumHeightRequest = 40;
+            HeightRequest = 40;
+
+            _frameLayout = new Frame
             {
                 HasShadow = false,
-                CornerRadius = 20,
-                MinimumHeightRequest = 40,
-                HeightRequest = 40,
+                CornerRadius = Convert.ToInt32(CornerRadius),
                 Padding = Padding
             };
-            Content = FrameLayout;
+            Children.Add(_frameLayout, 0, 0);
 
             _stcLayout = new StackLayout
             {
@@ -300,7 +301,7 @@ namespace Plugin.MaterialDesignControls
                 Spacing = Spacing,
                 HorizontalOptions = ContentIsExpanded ? LayoutOptions.FillAndExpand : LayoutOptions.Center,
             };
-            FrameLayout.Content = _stcLayout;
+            _frameLayout.Content = _stcLayout;
 
             _leadingIconContentView = new ContentView
             {
@@ -311,13 +312,17 @@ namespace Plugin.MaterialDesignControls
             };
             _stcLayout.Children.Add(_leadingIconContentView);
 
-            TextLabel = new MaterialLabel
+            _textLabel = new MaterialLabel
             {
                 LineBreakMode = LineBreakMode.NoWrap,
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center
+                HorizontalOptions = ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center,
+                Text = ToUpper ? Text?.ToUpper() : Text,
+                FontSize = FontSize,
+                FontFamily = FontFamily,
+
             };
-            _stcLayout.Children.Add(TextLabel);
+            _stcLayout.Children.Add(_textLabel);
 
             _trailingIconContentView = new ContentView
             {
@@ -336,7 +341,7 @@ namespace Plugin.MaterialDesignControls
                 HeightRequest = ActivityIndicatorSize,
                 IsVisible = false
             };
-            _stcLayout.Children.Add(_cntActivityIndicator);
+            Children.Add(_cntActivityIndicator, 0, 0);
 
             Effects.Add(new TouchAndPressEffect());
 
@@ -345,6 +350,9 @@ namespace Plugin.MaterialDesignControls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
+            if (Children == null)
+                return;
+
             if (!_initialized)
                 Initialize();
 
@@ -363,16 +371,16 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(Text):
                 case nameof(ToUpper):
-                    TextLabel.Text = ToUpper ? Text?.ToUpper() : Text;
+                    _textLabel.Text = ToUpper ? Text?.ToUpper() : Text;
                     break;
                 case nameof(FontSize):
-                    TextLabel.FontSize = FontSize;
+                    _textLabel.FontSize = FontSize;
                     break;
                 case nameof(FontFamily):
-                    TextLabel.FontFamily = FontFamily;
+                    _textLabel.FontFamily = FontFamily;
                     break;
                 case nameof(CornerRadius):
-                    FrameLayout.CornerRadius = Convert.ToInt32(CornerRadius);
+                    _frameLayout.CornerRadius = Convert.ToInt32(CornerRadius);
                     break;
                 case nameof(LeadingIcon):
                     if (LeadingIcon != null)
@@ -422,11 +430,6 @@ namespace Plugin.MaterialDesignControls
                 case nameof(IsBusy):
                     if (IsBusy)
                     {
-                        TextLabel.IsVisible = false;
-
-                        _leadingIconContentView.IsVisible = false;
-                        _trailingIconContentView.IsVisible = false;
-
                         if (CustomActivityIndicator == null)
                         {
                             if (_activityIndicator == null)
@@ -441,16 +444,11 @@ namespace Plugin.MaterialDesignControls
 
                         _cntActivityIndicator.IsVisible = true;
 
-                        FrameLayout.BackgroundColor = Color.Transparent;
-                        FrameLayout.BorderColor = Color.Transparent;
-                        FrameLayout.HasShadow = false;
+                        _frameLayout.IsVisible = false;
                     }
                     else
                     {
-                        TextLabel.IsVisible = true;
-
-                        _leadingIconContentView.IsVisible = _leadingIconContentView.Content != null;
-                        _trailingIconContentView.IsVisible = _trailingIconContentView.Content != null;
+                        _frameLayout.IsVisible = true;
 
                         if (CustomActivityIndicator == null)
                         {
@@ -465,20 +463,18 @@ namespace Plugin.MaterialDesignControls
                         }
 
                         _cntActivityIndicator.IsVisible = false;
-
-                        SetButtonType();
                     }
                     break;
 
                 case nameof(Padding):
-                    FrameLayout.Padding = Padding;
+                    _frameLayout.Padding = Padding;
                     break;
                 case nameof(Spacing):
                     _stcLayout.Spacing = Spacing;
                     break;
                 case nameof(ContentIsExpanded):
                     _stcLayout.HorizontalOptions = ContentIsExpanded ? LayoutOptions.FillAndExpand : LayoutOptions.Center;
-                    TextLabel.HorizontalOptions = ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center;
+                    _textLabel.HorizontalOptions = ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center;
                     break;
             }
         }
@@ -488,36 +484,36 @@ namespace Plugin.MaterialDesignControls
             switch (ButtonType)
             {
                 case MaterialButtonType.Elevated:
-                    TextLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
-                    FrameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
-                    FrameLayout.BorderColor = Color.Transparent;
-                    FrameLayout.HasShadow = true;
+                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
+                    _frameLayout.BorderColor = Color.Transparent;
+                    _frameLayout.HasShadow = true;
                     break;
                 case MaterialButtonType.Filled:
-                    TextLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.BackgroundColor;
-                    FrameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.PrimaryColor;
-                    FrameLayout.BorderColor = Color.Transparent;
-                    FrameLayout.HasShadow = false;
+                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.BackgroundColor;
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.PrimaryColor;
+                    _frameLayout.BorderColor = Color.Transparent;
+                    _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Tonal:
-                    TextLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.BackgroundColor;
+                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.BackgroundColor;
 
                     var defaultBackgroundColor = Color.FromRgba(DefaultStyles.PrimaryColor.R, DefaultStyles.PrimaryColor.G, DefaultStyles.PrimaryColor.B, 0.4);
-                    FrameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : defaultBackgroundColor;
-                    FrameLayout.BorderColor = Color.Transparent;
-                    FrameLayout.HasShadow = false;
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : defaultBackgroundColor;
+                    _frameLayout.BorderColor = Color.Transparent;
+                    _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Outlined:
-                    TextLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
-                    FrameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
-                    FrameLayout.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
-                    FrameLayout.HasShadow = false;
+                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
+                    _frameLayout.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
+                    _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Text:
-                    TextLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
-                    FrameLayout.BackgroundColor = Color.Transparent;
-                    FrameLayout.BorderColor = Color.Transparent;
-                    FrameLayout.HasShadow = false;
+                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
+                    _frameLayout.BackgroundColor = Color.Transparent;
+                    _frameLayout.BorderColor = Color.Transparent;
+                    _frameLayout.HasShadow = false;
                     break;
             }
         }

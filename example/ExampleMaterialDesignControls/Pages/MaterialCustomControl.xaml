@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialCustomControl"
              Title="Material Custom Control"
              BackgroundColor="White">
@@ -16,11 +17,11 @@
 
                 <material:MaterialCustomControl LabelText="Item" AssistiveText="{Binding AssistiveText}" AnimateError="True">
                     <material:MaterialCustomControl.CustomControl>
-                        <material:MaterialButton Text="Select item" />
+                        <material3:MaterialButton Text="Select item" />
                     </material:MaterialCustomControl.CustomControl>
                 </material:MaterialCustomControl>
                 
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand"/>
+                <material3:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

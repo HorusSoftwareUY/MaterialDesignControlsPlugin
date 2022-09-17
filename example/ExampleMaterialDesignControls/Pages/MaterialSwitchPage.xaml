@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage"
     Title="Material Switch"
     BackgroundColor="White">
@@ -32,7 +33,7 @@
             <material:MaterialLabel Text="Required" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
 
             <material:MaterialSwitch IsToggled="{Binding IsOn}" Text="Dark mode" TextSide="Left" AssistiveText="{Binding Error}" SwitchHorizontalOptions="EndAndExpand"/>
-            <material:MaterialButton Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding SaveCommand}"/>
+            <material3:MaterialButton Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding SaveCommand}"/>
 
             <material:MaterialDivider Margin="0,10"/>
 
