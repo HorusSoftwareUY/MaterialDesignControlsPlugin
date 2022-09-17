@@ -151,6 +151,9 @@
     <Compile Include="Styles\DefaultStyles.cs" />
     <Compile Include="ControlsMaterial3\MaterialButton.cs" />
     <Compile Include="Animations\ICustomAnimation.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialButton.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialFlatButton.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialOutlineButton.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -163,6 +166,7 @@
     <Folder Include="Utils\" />
     <Folder Include="ControlsMaterial3\" />
     <Folder Include="Styles\" />
+    <Folder Include="ControlsMaterial2\DeprecatedControls\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
@@ -170,5 +174,6 @@
   <ItemGroup>
     <None Remove="ControlsMaterial3\" />
     <None Remove="Styles\" />
+    <None Remove="ControlsMaterial2\DeprecatedControls\" />
   </ItemGroup>
 </Project>
