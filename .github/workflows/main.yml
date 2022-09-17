@@ -1,0 +1,46 @@
+name: Build, pack and push Plugin.MaterialDesignControls NuGet package
+
+env:
+  IOS_CSPROJ_FILE_PATH: 'src/MaterialDesignControls.iOS/MaterialDesignControls.iOS.csproj'
+  ANDROID_CSPROJ_FILE_PATH: 'src/MaterialDesignControls.Android/MaterialDesignControls.Android.csproj'
+  SLN_FILE_PATH: 'example/ExampleMaterialDesignControls.sln'
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    
+    
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET Core SDK 5.0.x
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x'
+
+    - name: Install dependencies
+      run: nuget restore ${{ env.SLN_FILE_PATH }}
+
+    # iOS build
+    - name: Build
+      run: msbuild ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
+      
+    # Android build
+    - name: Build
+      run: msbuild ${{ env.ANDROID_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
+      
+    - name: Nuget pack
+      run: nuget pack
+      
+    - name: Nuget push
+      run: nuget push **\Plugin.MaterialDesignControls.*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+      
+      
+      
