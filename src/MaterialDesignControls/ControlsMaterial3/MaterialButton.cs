@@ -486,7 +486,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 case MaterialButtonType.Elevated:
                     _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
                     _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
-                    _frameLayout.BorderColor = Color.Transparent;
+                    _frameLayout.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
                     _frameLayout.HasShadow = true;
                     break;
                 case MaterialButtonType.Filled:
