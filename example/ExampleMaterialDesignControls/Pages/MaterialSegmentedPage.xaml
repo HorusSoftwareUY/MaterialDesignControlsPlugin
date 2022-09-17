@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialSegmentedPage"
-    BackgroundColor="#F5F5F5" Title="Material Segmented" >
+    Title="Material Segmented"
+    BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView>
         <StackLayout Padding="20" Spacing="20">

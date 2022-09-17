@@ -9,7 +9,8 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:controls="clr-namespace:SkeletonExample.Controls" 
              ios:Page.UseSafeArea="True"
-             IconImageSource="Product.png">
+             IconImageSource="Product.png"
+             BackgroundColor="White">
     <ContentPage.Content>
 
         <controls:StickyHeader

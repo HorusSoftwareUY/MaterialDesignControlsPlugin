@@ -10,7 +10,8 @@
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     Title="Material Button"
     ios:Page.UseSafeArea="True"
-    IconImageSource="calendar.png">
+    IconImageSource="calendar.png"
+    BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LegendLabel" TargetType="material:MaterialLabel">

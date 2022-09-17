@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage"
-    Title="Material Switch">
+    Title="Material Switch"
+    BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView>
         <StackLayout Spacing="15" Padding="20">

@@ -9,7 +9,8 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:controls="clr-namespace:SkeletonExample.Controls" 
              ios:Page.UseSafeArea="True"
-             IconImageSource="Shipping.png">
+             IconImageSource="Shipping.png"
+             BackgroundColor="White">
 
         <Grid VerticalOptions="FillAndExpand" RowSpacing="0" Margin="30,0">
             <Grid.RowDefinitions>
