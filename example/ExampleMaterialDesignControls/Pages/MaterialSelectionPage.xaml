@@ -4,7 +4,8 @@
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
-             Title="Material Selection">
+             Title="Material Selection"
+             BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">

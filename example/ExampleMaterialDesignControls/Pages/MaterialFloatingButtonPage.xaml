@@ -5,7 +5,8 @@
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialFloatingButtonPage"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    Title="Material Floating Button">
+    Title="Material Floating Button"
+	BackgroundColor="White">
     <ContentPage.Content>
 		<ScrollView>
         <StackLayout Spacing="20" Padding="20" >

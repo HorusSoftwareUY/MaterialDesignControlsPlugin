@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
              x:Class="ExampleMaterialDesignControls.Pages.AddCardPage"
@@ -9,7 +10,8 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:controls="clr-namespace:SkeletonExample.Controls" 
              ios:Page.UseSafeArea="True"
-             IconImageSource="Payment.png">
+             IconImageSource="Payment.png"
+             BackgroundColor="White">
 
         <Grid VerticalOptions="FillAndExpand" RowSpacing="0" Margin="30,0">
             <Grid.RowDefinitions>
@@ -55,6 +57,6 @@
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
-            <material:MaterialButton Text="Add Card" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" VerticalOptions="EndAndExpand" Margin="0,20" Grid.Row="2"/>
+            <material3:MaterialButton Text="Add Card" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" VerticalOptions="EndAndExpand" Margin="0,20" Grid.Row="2"/>
         </Grid>
 </ContentPage>

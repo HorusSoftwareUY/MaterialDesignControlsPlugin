@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
              x:Class="ExampleMaterialDesignControls.Pages.ProductDetailsPage"
@@ -9,7 +10,8 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:controls="clr-namespace:SkeletonExample.Controls" 
              ios:Page.UseSafeArea="True"
-             IconImageSource="Product.png">
+             IconImageSource="Product.png"
+             BackgroundColor="White">
     <ContentPage.Content>
 
         <controls:StickyHeader
@@ -58,7 +60,7 @@
                     </Frame>
                     <material:MaterialLabel Text="Size" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Margin="0,0,0,5"/>
                     <material:MaterialChipsGroup SelectedItem="{Binding SelectedSizes}" ItemsSource="{Binding Sizes}" AssistiveText="{Binding Error}" AnimateError="True" />
-                    <material:MaterialButton Text="Add to Bag" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" VerticalOptions="EndAndExpand" />
+                    <material3:MaterialButton Text="Add to Bag" ToUpper="False" Command="{Binding TapCommand}" CommandParameter="Saved" IsBusy="{Binding IsBusy}" VerticalOptions="EndAndExpand" />
                 </StackLayout>
             </controls:StickyHeader.Content>
 

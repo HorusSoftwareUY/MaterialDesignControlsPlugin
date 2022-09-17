@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialTimePickerPage"
-             Title="Material Time Picker">
+             Title="Material Time Picker"
+             BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
@@ -15,8 +17,8 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <material:MaterialFlatButton Text="Clear" Command="{Binding ClearCommand}" />
-                    <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
+                    <material3:MaterialButton ButtonType="Text" Text="Clear" Command="{Binding ClearCommand}" />
+                    <material3:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
                 </Grid>
 
                 <material:MaterialTimePicker Type="Outlined" LabelText="End time" Format="H:mm" />
@@ -35,7 +37,7 @@
                         </OnPlatform>
                     </material:MaterialTimePicker.FontFamily>
                 </material:MaterialTimePicker>
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
+                <material3:MaterialButton Text="Save" Command="{Binding TapCommand}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

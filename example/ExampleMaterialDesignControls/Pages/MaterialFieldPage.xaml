@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialFieldPage"
-             Title="Material Field">
+             Title="Material Field"
+             BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never" Padding="20">
             <Frame BackgroundColor="{StaticResource GradientColorTransparent1}" Padding="0" CornerRadius="20" HasShadow="False" VerticalOptions="StartAndExpand">

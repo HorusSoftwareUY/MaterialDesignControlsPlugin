@@ -4,6 +4,13 @@
 
 MaterialDesignControls Plugin for Xamarin Forms is a collection of Xamarin.Forms controls that apply the [Material Design Guidelines](https://material.io/design/components/selection-controls.html)
 
+## Material Design 3
+We are migrating to [Material Design 3](https://m3.material.io/)!
+
+Start using the latest features in your existing product.
+
+## Demo
+
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls_Final.gif" width="300">
 
 ## Controls Index
@@ -56,6 +63,12 @@ You must add this namespace to your xaml files:
 
 ```XML
 xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+```
+
+**You must add this namespace to your xaml files to use Material Design 3 controls:**
+
+```XML
+xmlns:material="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
 ```
 
 ## Controls

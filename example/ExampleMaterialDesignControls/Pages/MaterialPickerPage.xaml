@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialPickerPage"
-             Title="Material Picker">
+             Title="Material Picker"
+             BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Padding="20" Spacing="20">
@@ -14,14 +16,14 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <material:MaterialFlatButton Text="Clear" Command="{Binding ClearCommand}" />
-                    <material:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
+                    <material3:MaterialButton ButtonType="Text" Text="Clear" Command="{Binding ClearCommand}" />
+                    <material3:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
                 </Grid>
 
                 <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Outlined" LabelText="Size" Placeholder="Select Option"/>
                 <material:MaterialPicker x:Name="pckModels" Type="Lined" LabelText="Model" LeadingIcon="color.png"/>
                 <Label x:Name="lblSelectedIndex" Text="Selected Index: -" />
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}"/>
+                <material3:MaterialButton Text="Save" Command="{Binding TapCommand}"/>
 
                 <material:MaterialDivider Margin="0,10" />
 
@@ -36,13 +38,13 @@
                 <material:MaterialDoublePicker x:Name="pckDouble" Type="Filled" LabelText="Double Picker" ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}" SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
                 <material:MaterialDoublePicker Type="Filled" LabelText="Double Picker" ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}" SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" IsEnabled="False" />
                 <Label x:Name="lblSelectedIndexes" Text="Selected Indexes: -" />
-                <material:MaterialButton Text="Save" Command="{Binding Tap2Command}" />
+                <material3:MaterialButton Text="Save" Command="{Binding Tap2Command}" />
 
                 <material:MaterialDivider Margin="0,10" />
 
                 <material:MaterialLabel Text="Double Picker" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
                 <material:MaterialDoublePicker x:Name="pckDoubleWithFocus" Type="Filled" LabelText="Double Picker" Separator=" - " ItemsSource="{Binding ItemsSource}" SecondaryItemsSource="{Binding SecondaryItemsSource}" SelectedItem="{Binding SelectedItem}" SecondarySelectedItem="{Binding SecondarySelectedItem}" />
-                <material:MaterialButton Text="Focus" Command="{Binding Tap3Command}" />
+                <material3:MaterialButton Text="Focus" Command="{Binding Tap3Command}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

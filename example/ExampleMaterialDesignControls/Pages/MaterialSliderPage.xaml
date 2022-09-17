@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialSliderPage"
-             Title="Material Slider">
+             Title="Material Slider"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="SliderStyle" TargetType="material:MaterialSlider">
@@ -66,7 +68,7 @@
 
                 <material:MaterialSlider x:Name="slider6" Style="{StaticResource SliderStyle}" MinimumValue="0" AssistiveText="Slide to change the opacity value" MaximumValue="100" LabelMinimumText="0" LabelMaximumText="10" Value="{Binding Value}" LabelText="Select the opacity" ThumbColor="{StaticResource GradientColor12}" LabelTextColor="{StaticResource GradientColor12}"  ActiveTrackColor="{StaticResource GradientColor12}"  InactiveTrackColor="{StaticResource GradientColorTransparent12}"/>
 
-                <material:MaterialButton Text="Save" Command="{Binding TapCommand}" />
+                <material3:MaterialButton Text="Save" Command="{Binding TapCommand}" />
 
             </StackLayout>
         </ScrollView>

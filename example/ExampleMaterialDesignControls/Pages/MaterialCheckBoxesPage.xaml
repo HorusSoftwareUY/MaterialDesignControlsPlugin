@@ -3,9 +3,11 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialCheckBoxesPage"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    Title="MaterialCheckbox">
+    Title="MaterialCheckbox"
+    BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20" Spacing="10">
@@ -127,7 +129,7 @@
                     IsChecked="{Binding IsChecked}"
 		            Text="I agree to the terms of service"/>
 
-                <material:MaterialButton HorizontalOptions="FillAndExpand" Text="Save" Margin="0,20,0,0" Command="{Binding SaveCommand}"/>
+                <material3:MaterialButton HorizontalOptions="FillAndExpand" Text="Save" Margin="0,20,0,0" Command="{Binding SaveCommand}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

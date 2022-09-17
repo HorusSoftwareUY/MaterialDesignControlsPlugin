@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
@@ -6,6 +6,7 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
+    [Obsolete("MaterialButton is deprecated, please use MaterialButton of Material 3 instead.")]
     public class MaterialButton : ContentView, ITouchAndPressEffectConsumer
     {
         #region Constructors
@@ -286,6 +287,8 @@ namespace Plugin.MaterialDesignControls
         }
 
         public event EventHandler Clicked;
+
+        public ICustomAnimation CustomAnimation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         #endregion Properties
 

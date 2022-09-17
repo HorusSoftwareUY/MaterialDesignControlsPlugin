@@ -109,6 +109,15 @@ namespace Plugin.MaterialDesignControls.Implementations
             set { SetValue(AnimationParameterProperty, value); }
         }
 
+        public static readonly BindableProperty CustomAnimationProperty =
+            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(CustomImageButton), defaultValue: null);
+
+        public ICustomAnimation CustomAnimation
+        {
+            get { return (ICustomAnimation)GetValue(CustomAnimationProperty); }
+            set { SetValue(CustomAnimationProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialControlsPage"
              Title="Material Controls"
@@ -9,7 +10,8 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              ios:Page.UseSafeArea="True"
-             IconImageSource="Home.png">
+             IconImageSource="Home.png"
+             BackgroundColor="White">
     <ContentPage.Content>
         <Grid x:Name="mainGrid" Margin="20,0,20,0">
                             <Grid.RowDefinitions>
@@ -26,12 +28,15 @@
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding GoMaterialButtonCommand}"/>
                             </Frame.GestureRecognizers>
-                            <StackLayout>
-                                <Frame BackgroundColor="{StaticResource GradientColorTransparent1}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                                    <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_button.svg"/>
-                                </Frame>
-                                <material:MaterialLabel Text="Material Button" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor1}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
-                            </StackLayout>
+                            <Grid>
+                                <StackLayout>
+                                    <Frame BackgroundColor="{StaticResource GradientColorTransparent1}" HasShadow="False" WidthRequest="90" HeightRequest="90" Padding="0" CornerRadius="45" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                        <ffimageloadingsvg:SvgCachedImage Margin="20" Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_button.svg"/>
+                                    </Frame>
+                                    <material:MaterialLabel Text="Material Button" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="{StaticResource GradientColor1}" FontAttributes="Bold" FontSize="{StaticResource Body2FontSize}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                </StackLayout>
+                                <contentViews:MaterialDesign3Badge />
+                            </Grid>
                         </Frame>
 
                         <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource GradientColorTransparent2}" HasShadow="False" CornerRadius="16" Padding="15">

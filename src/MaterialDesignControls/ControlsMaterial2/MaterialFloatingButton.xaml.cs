@@ -32,7 +32,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledIconProperty =
-            BindableProperty.Create(nameof(DisabledIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(DisabledIcon), typeof(string), typeof(MaterialFloatingButton), defaultValue: null);
 
         public string DisabledIcon
         {
@@ -158,7 +158,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ToUpperProperty =
-            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialButton), defaultValue: false);
+            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialFloatingButton), defaultValue: false);
 
         public bool ToUpper
         {
@@ -236,6 +236,15 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (double?)GetValue(AnimationParameterProperty); }
             set { SetValue(AnimationParameterProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomAnimationProperty =
+            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(MaterialFloatingButton), defaultValue: null);
+
+        public ICustomAnimation CustomAnimation
+        {
+            get { return (ICustomAnimation)GetValue(CustomAnimationProperty); }
+            set { SetValue(CustomAnimationProperty, value); }
         }
 
         public static new readonly BindableProperty BackgroundColorProperty =

@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialRadioButtonsPage"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    Title="Material RadioButtons">
+    Title="Material RadioButtons"
+    BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20" Spacing="10">
@@ -76,7 +78,7 @@
                     </material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
                 </material:MaterialRadioButtons>
 
-            <material:MaterialButton Text="Save" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Command="{Binding SaveSizeCommand}" />
+            <material3:MaterialButton Text="Save" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Command="{Binding SaveSizeCommand}" />
         </StackLayout>
             </ScrollView>
     </ContentPage.Content>
