@@ -8,7 +8,8 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialFloatingButtonPage()
         {
             InitializeComponent();
-            this.BindingContext = new MaterialFloatingButtonViewModel { DisplayAlert = this.DisplayAlert };
+
+            BindingContext = new MaterialFloatingButtonViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
 
         void MaterialFloatingButton_Clicked(System.Object sender, System.EventArgs e)

@@ -10,7 +10,8 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialRatingControlPage()
         {
             InitializeComponent();
-            this.BindingContext = new MaterialRatingControlViewModel { DisplayAlert = this.DisplayAlert };
+
+            BindingContext = new MaterialRatingControlViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
     }
 }

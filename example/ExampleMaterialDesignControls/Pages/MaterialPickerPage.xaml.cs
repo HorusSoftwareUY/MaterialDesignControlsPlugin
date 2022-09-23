@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Input;
+using ExampleMaterialDesignControls.ViewModels;
 using Plugin.MaterialDesignControls;
 using Xamarin.Forms;
 
@@ -8,104 +8,44 @@ namespace ExampleMaterialDesignControls.Pages
 {
     public partial class MaterialPickerPage : ContentPage
     {
-        public List<string> ItemsSourceColors { get; set; }
-
-        public string SelectedItemColor { get; set; }
-
-        public string SelectedSizes { get; set; }
-
-        public string SelectedItem { get; set; }
-
-        public string SecondarySelectedItem { get; set; }
-
-        public List<string> ItemsSource { get; set; }
-
-        public List<string> SecondaryItemsSource { get; set; }
-
         public MaterialPickerPage()
         {
             InitializeComponent();
 
-            ItemsSourceColors = new List<string> { "Red", "Blue", "Green" };
+            pckSizes.ItemsSource = new List<string> { "P", "M", "X", "XL" };
 
-            this.pckSizes.ItemsSource = new List<string> { "P", "M", "X", "XL" };
+            pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            pckModels.SelectedIndexChanged += PckModels_SelectedIndexChanged;
 
-            this.pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
-            this.pckModels.SelectedIndexChanged += PckModels_SelectedIndexChanged;
+            pckModels2.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            pckModels3.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            pckModels4.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
 
-            this.pckModels2.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
-            this.pckModels3.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
-            this.pckModels4.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            pckDouble.SelectedIndexesChanged += PckDouble_SelectedIndexChanged;
 
-            this.pckDouble.SelectedIndexesChanged += PckDouble_SelectedIndexChanged;
-            this.ItemsSource = new List<string> { "Model 1", "Model 2", "Model 3", "Model 4" };
-            this.SecondaryItemsSource = new List<string> { "A", "B", "C", "D" };
-            this.SelectedItem = "Model 2";
-            this.SecondarySelectedItem = "C";
+            var viewModel = new MaterialPickerViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
 
-            this.TapCommand = new Command<string>(OnTap);
+            viewModel.FocusOnPicker = () =>
+            {
+                pckDoubleWithFocus.Focus();
+            };
 
-            this.Tap2Command = new Command<string>(OnTap2);
-
-            this.Tap3Command = new Command<string>(OnTap3);
-
-            ClearCommand = new Command(() =>
+            viewModel.ClearSelectedItem = () =>
             {
                 pckColors.ClearSelectedItem();
-            });
+            };
 
-            ShowCommand = new Command(async () =>
-            {
-                if (!string.IsNullOrEmpty(SelectedItemColor))
-                    await DisplayAlert("Color", SelectedItemColor, "Ok");
-                else
-                    await DisplayAlert("Color", "No color selected", "Ok");
-            });
-
-            this.BindingContext = this;
+            BindingContext = viewModel;
         }
 
         private void PckDouble_SelectedIndexChanged(object sender, SelectedIndexesEventArgs e)
         {
-            this.lblSelectedIndexes.Text = $"SelectedIndexes: {e.SelectedIndexes[0]} - {e.SelectedIndexes[1]}";
+            lblSelectedIndexes.Text = $"SelectedIndexes: {e.SelectedIndexes[0]} - {e.SelectedIndexes[1]}";
         }
 
         private void PckModels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.lblSelectedIndex.Text = $"SelectedIndex: {this.pckModels.SelectedIndex}";
+            lblSelectedIndex.Text = $"SelectedIndex: {pckModels.SelectedIndex}";
         }
-
-        public ICommand TapCommand { get; set; }
-
-        public async void OnTap(object parameter)
-        {
-            if (!string.IsNullOrEmpty(this.pckColors.SelectedItem))
-            {
-                this.pckColors.AssistiveText = null;
-                await this.DisplayAlert("Saved", !string.IsNullOrEmpty(this.SelectedSizes) ? this.SelectedSizes : "Select option", "Ok");
-            }
-            else
-            {
-                this.pckColors.AssistiveText = "The color is required";
-            }
-        }
-
-        public ICommand Tap2Command { get; set; }
-
-        public async void OnTap2(object parameter)
-        {
-            await this.DisplayAlert("Saved", $"{SelectedItem} - {SecondarySelectedItem}", "Ok");
-        }
-
-        public ICommand Tap3Command { get; set; }
-
-        public async void OnTap3(object parameter)
-        {
-            this.pckDoubleWithFocus.Focus();
-        }
-
-        public ICommand ClearCommand { get; set; }
-
-        public ICommand ShowCommand { get; set; }
     }
 }

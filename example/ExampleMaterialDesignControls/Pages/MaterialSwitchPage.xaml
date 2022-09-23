@@ -1,48 +1,115 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage"
-    Title="Material Switch"
-    BackgroundColor="White">
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <ScrollView>
-        <StackLayout Spacing="15" Padding="20">
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialSwitch" LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
 
-            <material:MaterialSwitch Text="WIFI" IsToggled="True" ThumbColor="{StaticResource GradientColor4}" OnColor="#aca3db" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
-            <material:MaterialSwitch Text="Bluetooth *" IsToggled="False" ThumbColor="{StaticResource GradientColor4}" OnColor="#aca3db" AssistiveText="Bluetooth is required" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20" Spacing="15">
 
-            <material:MaterialDivider Margin="0,10"/>
+                    <material:MaterialSwitch
+                        IsToggled="True"
+                        OnColor="#aca3db"
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="WIFI"
+                        TextSide="Left"
+                        ThumbColor="{StaticResource GradientColor4}" />
+                    <material:MaterialSwitch
+                        AssistiveText="Bluetooth is required"
+                        IsToggled="False"
+                        OnColor="#aca3db"
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="Bluetooth *"
+                        TextSide="Left"
+                        ThumbColor="{StaticResource GradientColor4}" />
 
-            <material:MaterialLabel Text="Enabled / Disabled" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
+                    <material:MaterialDivider Margin="0,10" />
 
-            <material:MaterialSwitch Text="Bluetooth" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
-            <material:MaterialSwitch Text="Bluetooth" IsEnabled="False" IsToggled="True" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalOptions="Center"
+                        Text="Enabled / Disabled" />
 
-            <material:MaterialDivider Margin="0,10"/>
+                    <material:MaterialSwitch
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="Bluetooth"
+                        TextSide="Left" />
+                    <material:MaterialSwitch
+                        IsEnabled="False"
+                        IsToggled="True"
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="Bluetooth"
+                        TextSide="Left" />
 
-            <material:MaterialLabel Text="Text to the Right" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
+                    <material:MaterialDivider Margin="0,10" />
 
-            <material:MaterialSwitch Text="Wifi" Toggled="Switch_toggled"/>
-            <material:MaterialSwitch Text="Wifi" IsToggled="True" TextHorizontalOptions="EndAndExpand"/>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalOptions="Center"
+                        Text="Text to the Right" />
 
-            <material:MaterialDivider Margin="0,10"/>
+                    <material:MaterialSwitch Text="Wifi" Toggled="Switch_toggled" />
+                    <material:MaterialSwitch
+                        IsToggled="True"
+                        Text="Wifi"
+                        TextHorizontalOptions="EndAndExpand" />
 
-            <material:MaterialLabel Text="Required" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
+                    <material:MaterialDivider Margin="0,10" />
 
-            <material:MaterialSwitch IsToggled="{Binding IsOn}" Text="Dark mode" TextSide="Left" AssistiveText="{Binding Error}" SwitchHorizontalOptions="EndAndExpand"/>
-            <material3:MaterialButton Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding SaveCommand}"/>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalOptions="Center"
+                        Text="Required" />
 
-            <material:MaterialDivider Margin="0,10"/>
+                    <material:MaterialSwitch
+                        AssistiveText="{Binding Error}"
+                        IsToggled="{Binding IsOn}"
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="Dark mode"
+                        TextSide="Left" />
+                    <material3:MaterialButton
+                        Command="{Binding SaveCommand}"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Save" />
 
-            <material:MaterialLabel Text="Default True / False" HorizontalOptions="Center" FontFamily="{StaticResource SemiBoldFont}"/>
+                    <material:MaterialDivider Margin="0,10" />
 
-            <material:MaterialSwitch  IsToggled="{Binding PropertyA}" Text="Default True" AssistiveText="{Binding PropertyA}" AnimateError="False" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
-            <material:MaterialSwitch  IsToggled="{Binding PropertyB}" Text="Default False" AssistiveText="{Binding PropertyB}" AnimateError="False" TextSide="Left" SwitchHorizontalOptions="EndAndExpand"/>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalOptions="Center"
+                        Text="Default True / False" />
 
-        </StackLayout>
-        </ScrollView>
+                    <material:MaterialSwitch
+                        AnimateError="False"
+                        AssistiveText="{Binding PropertyA}"
+                        IsToggled="{Binding PropertyA}"
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="Default True"
+                        TextSide="Left" />
+                    <material:MaterialSwitch
+                        AnimateError="False"
+                        AssistiveText="{Binding PropertyB}"
+                        IsToggled="{Binding PropertyB}"
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="Default False"
+                        TextSide="Left" />
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -8,7 +8,7 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialChipsPage()
         {
             InitializeComponent();
-            this.BindingContext = new ProductDetailsViewModel() { DisplayAlert = this.DisplayAlert };
+            BindingContext = new ProductDetailsViewModel() { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
     }
 }

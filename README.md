@@ -33,6 +33,7 @@ Start using the latest features in your existing product.
 - [MaterialFloatingButton](#materialfloatingbutton)
 - [MaterialCheckbox](#materialcheckbox)
 - [MaterialSwitch](#materialswitch)
+- [MaterialTopAppBar](#materialtopappbar)
 
 ## Setup
 * Available on NuGet: [Plugin.MaterialDesignControls](https://www.nuget.org/packages/Plugin.MaterialDesignControls/) [![NuGet](https://img.shields.io/nuget/v/Plugin.MaterialDesignControls.svg?label=NuGet)](https://www.nuget.org/packages/Plugin.MaterialDesignControls/)
@@ -241,6 +242,15 @@ Switches toggle the state of a single item on or off.
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch_preview.png" width="300">
 <br/>
 [View documentation](MaterialSwitchControl.md)
+
+---
+
+### MaterialTopAppBar
+TopAppBar displays information and actions at the top of a screen.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/topappbar_preview.png" width="300">
+<br/>
+[View documentation](MaterialTopAppBar.md)
 
 ---
 

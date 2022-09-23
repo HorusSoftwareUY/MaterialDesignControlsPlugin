@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialTopAppBarPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialTopAppBar" LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
+
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20" Spacing="20">
+
+                    <contentViews:InfoIndicatorView Message="MaterialTopAppBar follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialTopAppBar
+                        BackgroundColor="{StaticResource GradientColorTransparent1}"
+                        HeadlineColor="{StaticResource GradientColor1}"
+                        Headline="Type - CenterAligned"
+                        LeadingIconCommand="{Binding BackCommand}"
+                        TrailingIconCommand="{Binding VolumeCommand}"
+                        Type="CenterAligned">
+                        <material3:MaterialTopAppBar.LeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
+                        </material3:MaterialTopAppBar.LeadingIcon>
+                        <material3:MaterialTopAppBar.TrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.volume_blue.svg" />
+                        </material3:MaterialTopAppBar.TrailingIcon>
+                    </material3:MaterialTopAppBar>
+
+                    <material3:MaterialTopAppBar
+                        BackgroundColor="{StaticResource GradientColorTransparent1}"
+                        HeadlineColor="{StaticResource GradientColor1}"
+                        Headline="Type - Small"
+                        LeadingIconCommand="{Binding BackCommand}"
+                        Type="Small">
+                        <material3:MaterialTopAppBar.LeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
+                        </material3:MaterialTopAppBar.LeadingIcon>
+                    </material3:MaterialTopAppBar>
+
+                    <material3:MaterialTopAppBar
+                        BackgroundColor="{StaticResource GradientColorTransparent1}"
+                        HeadlineColor="{StaticResource GradientColor1}"
+                        Headline="Type - Medium"
+                        LeadingIconCommand="{Binding BackCommand}"
+                        Type="Medium">
+                        <material3:MaterialTopAppBar.LeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
+                        </material3:MaterialTopAppBar.LeadingIcon>
+                    </material3:MaterialTopAppBar>
+
+                    <material3:MaterialTopAppBar
+                        BackgroundColor="{StaticResource GradientColorTransparent1}"
+                        HeadlineColor="{StaticResource GradientColor1}"
+                        Headline="Type - Large"
+                        LeadingIconCommand="{Binding BackCommand}"
+                        Type="Large">
+                        <material3:MaterialTopAppBar.LeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
+                        </material3:MaterialTopAppBar.LeadingIcon>
+                    </material3:MaterialTopAppBar>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

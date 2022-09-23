@@ -1,135 +1,164 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             x:Class="ExampleMaterialDesignControls.Pages.MaterialRatingControlPage"
-             Title="MaterialRatingControl"
-             BackgroundColor="White">
+<ContentPage
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialRatingControlPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="20" Spacing="20">
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialRatingControl" LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
 
-                <material:MaterialRatingControl
-                    LabelText="How do you rate the service?"
-                    ItemSize="5"
-                    ItemsByRow="5"
-                    Value="4"
-                    SelectedIcon="starSelected.png"
-                    UnSelectedIcon="starUnselected.png"
-                    LabelSize="{StaticResource ButtonFontSize}"/>
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20" Spacing="20">
 
-                <material:MaterialDivider Margin="0,0,0,10" />
+                    <material:MaterialRatingControl
+                        ItemSize="5"
+                        ItemsByRow="5"
+                        LabelSize="{StaticResource ButtonFontSize}"
+                        LabelText="How do you rate the service?"
+                        SelectedIcon="starSelected.png"
+                        UnSelectedIcon="starUnselected.png"
+                        Value="4" />
 
-                <material:MaterialLabel Text="Png Icons" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                    <material:MaterialDivider Margin="0,0,0,10" />
 
-                <material:MaterialRatingControl
-                    LabelText="How do you rate...?(png icons)"
-                    ItemSize="5"
-                    ItemsByRow="5"
-                    Animation="Fade"
-                    AnimationParameter="0.1" 
-                    SelectedIcon="starSelected.png"
-                    UnSelectedIcon="starUnselected.png"
-                    LabelSize="{StaticResource ButtonFontSize}"/>
-                
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Png Icons" />
 
-                <material:MaterialDivider Margin="0,0,0,10" />
-
-                <material:MaterialLabel Text="Svg Icons" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
-
-                <material:MaterialRatingControl
-                    LabelText="How do you...?(svg icons)"
-                    LabelSize="{StaticResource ButtonFontSize}"
-                    ItemSize="5"
-                    ItemsByRow="5"
-                    TabIndex="3">
-                    <material:MaterialRatingControl.CustomSelectedIcon>
-                        <DataTemplate>
-                            <ffimageloadingsvg:SvgCachedImage
-                                Source="resource://ExampleMaterialDesignControls.Resources.Svg.starSelected.svg"/>
-                        </DataTemplate>
-                    </material:MaterialRatingControl.CustomSelectedIcon>
-                    <material:MaterialRatingControl.CustomUnSelectedIcon>
-                        <DataTemplate>
-                            <ffimageloadingsvg:SvgCachedImage
-                                Source="resource://ExampleMaterialDesignControls.Resources.Svg.starUnselected.svg"/>
-                        </DataTemplate>
-                    </material:MaterialRatingControl.CustomUnSelectedIcon>
-                </material:MaterialRatingControl>
-
-                <material:MaterialDivider Margin="0,0,0,10" />
-
-                <material:MaterialLabel Text="Multiple Rows" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
-
-                <material:MaterialRatingControl
-                    LabelText="How do you rate...?(multiple rows)"
-                    LabelSize="{StaticResource ButtonFontSize}"
-                    ItemSize="10"
-                    ItemsByRow="5"
-                    SelectedIcon="starSelected.png"
-                    UnSelectedIcon="starUnselected.png" />
-
-                <material:MaterialDivider Margin="0,0,0,10" />
-
-                <material:MaterialLabel Text="Animations" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
-
-                <material:MaterialRatingControl
-                    LabelText="How do you rate...?(none)"
-                    LabelSize="{StaticResource ButtonFontSize}"
-                    ItemSize="5"
-                    ItemsByRow="5"
-                    SelectedIcon="starSelected.png"
-                    UnSelectedIcon="starUnselected.png" />
-
-                <material:MaterialRatingControl
-                    LabelText="How do you...? (fade)"
-                    LabelSize="{StaticResource ButtonFontSize}"
-                    ItemSize="5"
-                    ItemsByRow="5"
-                    Animation="Fade"
-                    AnimationParameter="0.1"
-                    SelectedIcon="starSelected.png"
-                    UnSelectedIcon="starUnselected.png" />
-
-                <material:MaterialRatingControl
-                    LabelText="How do you...? (scale)"
-                    LabelSize="{StaticResource ButtonFontSize}"
-                    ItemSize="5"
-                    ItemsByRow="5"
-                    Animation="Scale"
-                    AnimationParameter="1.5"
-                    SelectedIcon="starSelected.png"
-                    UnSelectedIcon="starUnselected.png" />
-
-                <material:MaterialDivider Margin="0,0,0,10" />
-
-                <material:MaterialLabel Text="Assistive Text" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                    <material:MaterialRatingControl
+                        Animation="Fade"
+                        AnimationParameter="0.1"
+                        ItemSize="5"
+                        ItemsByRow="5"
+                        LabelSize="{StaticResource ButtonFontSize}"
+                        LabelText="How do you rate...?(png icons)"
+                        SelectedIcon="starSelected.png"
+                        UnSelectedIcon="starUnselected.png" />
 
 
-                <material:MaterialRatingControl
-                    LabelText="How do you rate the service?"
-                    LabelSize="{StaticResource ButtonFontSize}"
-                    ItemSize="5"
-                    ItemsByRow="5"
-                    Value="{Binding Value}"
-                    AssistiveText="{Binding Error}"
-                    AnimateError="True"
-                    AssistiveTextColor="Red"
-                    SelectedIcon="starSelected.png"
-                    UnSelectedIcon="starUnselected.png" />
-                <Grid
-                    ColumnSpacing="16">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <material3:MaterialButton ButtonType="Text" Text="Clear" Command="{Binding ClearCommand}" />
-                    <material3:MaterialButton Grid.Column="1" Text="Show" Command="{Binding ShowCommand}" />
-                </Grid>
+                    <material:MaterialDivider Margin="0,0,0,10" />
 
-            </StackLayout>
-        </ScrollView>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Svg Icons" />
+
+                    <material:MaterialRatingControl
+                        ItemSize="5"
+                        ItemsByRow="5"
+                        LabelSize="{StaticResource ButtonFontSize}"
+                        LabelText="How do you...?(svg icons)"
+                        TabIndex="3">
+                        <material:MaterialRatingControl.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starSelected.svg" />
+                            </DataTemplate>
+                        </material:MaterialRatingControl.CustomSelectedIcon>
+                        <material:MaterialRatingControl.CustomUnSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starUnselected.svg" />
+                            </DataTemplate>
+                        </material:MaterialRatingControl.CustomUnSelectedIcon>
+                    </material:MaterialRatingControl>
+
+                    <material:MaterialDivider Margin="0,0,0,10" />
+
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Multiple Rows" />
+
+                    <material:MaterialRatingControl
+                        ItemSize="10"
+                        ItemsByRow="5"
+                        LabelSize="{StaticResource ButtonFontSize}"
+                        LabelText="How do you rate...?(multiple rows)"
+                        SelectedIcon="starSelected.png"
+                        UnSelectedIcon="starUnselected.png" />
+
+                    <material:MaterialDivider Margin="0,0,0,10" />
+
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Animations" />
+
+                    <material:MaterialRatingControl
+                        ItemSize="5"
+                        ItemsByRow="5"
+                        LabelSize="{StaticResource ButtonFontSize}"
+                        LabelText="How do you rate...?(none)"
+                        SelectedIcon="starSelected.png"
+                        UnSelectedIcon="starUnselected.png" />
+
+                    <material:MaterialRatingControl
+                        Animation="Fade"
+                        AnimationParameter="0.1"
+                        ItemSize="5"
+                        ItemsByRow="5"
+                        LabelSize="{StaticResource ButtonFontSize}"
+                        LabelText="How do you...? (fade)"
+                        SelectedIcon="starSelected.png"
+                        UnSelectedIcon="starUnselected.png" />
+
+                    <material:MaterialRatingControl
+                        Animation="Scale"
+                        AnimationParameter="1.5"
+                        ItemSize="5"
+                        ItemsByRow="5"
+                        LabelSize="{StaticResource ButtonFontSize}"
+                        LabelText="How do you...? (scale)"
+                        SelectedIcon="starSelected.png"
+                        UnSelectedIcon="starUnselected.png" />
+
+                    <material:MaterialDivider Margin="0,0,0,10" />
+
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Assistive Text" />
+
+
+                    <material:MaterialRatingControl
+                        AnimateError="True"
+                        AssistiveText="{Binding Error}"
+                        AssistiveTextColor="Red"
+                        ItemSize="5"
+                        ItemsByRow="5"
+                        LabelSize="{StaticResource ButtonFontSize}"
+                        LabelText="How do you rate the service?"
+                        SelectedIcon="starSelected.png"
+                        UnSelectedIcon="starUnselected.png"
+                        Value="{Binding Value}" />
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <material3:MaterialButton
+                            ButtonType="Text"
+                            Command="{Binding ClearCommand}"
+                            Text="Clear" />
+                        <material3:MaterialButton
+                            Grid.Column="1"
+                            Command="{Binding ShowCommand}"
+                            Text="Show" />
+                    </Grid>
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -9,7 +9,7 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            BindingContext = new MaterialCustomControlViewModel { DisplayAlert = this.DisplayAlert };
+            BindingContext = new MaterialCustomControlViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
     }
 }

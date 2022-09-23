@@ -9,7 +9,7 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            this.BindingContext = new MaterialEntryViewModel { DisplayAlert = this.DisplayAlert };
+            BindingContext = new MaterialEntryViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
 
             txtName.Focused += TxtName_Focused;
             txtName.Unfocused += TxtName_Unfocused;

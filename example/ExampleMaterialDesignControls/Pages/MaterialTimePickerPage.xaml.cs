@@ -9,7 +9,7 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            this.BindingContext = new MaterialTimePickerViewModel { DisplayAlert = this.DisplayAlert };
+            BindingContext = new MaterialTimePickerViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
     }
 }

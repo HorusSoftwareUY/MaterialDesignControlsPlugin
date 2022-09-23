@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using ExampleMaterialDesignControls.ViewModels;
+using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
 {
@@ -7,6 +8,8 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialDividerPage()
         {
             InitializeComponent();
+
+            BindingContext = new BaseViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
     }
 }

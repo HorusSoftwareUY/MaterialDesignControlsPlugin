@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Collections.Generic;
 using ExampleMaterialDesignControls.ViewModels;
 using Xamarin.Forms;
 
@@ -11,7 +9,8 @@ namespace ExampleMaterialDesignControls.Pages
         public ShippingPage()
         {
             InitializeComponent();
-            this.BindingContext = new ShippingViewModel() { DisplayAlert = this.DisplayAlert };
+
+            this.BindingContext = new ShippingViewModel() { DisplayAlert = DisplayAlert, Navigation = Navigation };
 
             this.pckSizes.ItemsSource = new List<string> { "United States", "Canada", "Mexico" };
         }

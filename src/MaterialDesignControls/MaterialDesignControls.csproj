@@ -154,6 +154,8 @@
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialButton.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialFlatButton.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialOutlineButton.cs" />
+    <Compile Include="ControlsMaterial3\MaterialTopAppBar.cs" />
+    <Compile Include="Implementations\ContentViewButton.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

@@ -8,7 +8,7 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialRadioButtonsPage()
         {
             InitializeComponent();
-            this.BindingContext = new MaterialRadioButtonsViewModel { DisplayAlert = this.DisplayAlert };
+            BindingContext = new MaterialRadioButtonsViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
     }
 }

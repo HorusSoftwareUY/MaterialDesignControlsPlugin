@@ -8,10 +8,11 @@ namespace ExampleMaterialDesignControls
         public MainPage()
         {
             InitializeComponent();
-            this.Children.Add(new NavigationPage(new MaterialControlsPage()) { Title = "Controls", IconImageSource = "Home.png" });
-            this.Children.Add(new ProductDetailsPage());
-            this.Children.Add(new AddCardPage());
-            this.Children.Add(new ShippingPage());
+            Children.Add(new NavigationPage(new MaterialControlsPage()) { Title = "Controls", IconImageSource = "Home.png" });
+            Children.Add(new ProductDetailsPage());
+            Children.Add(new AddCardPage());
+            Children.Add(new ShippingPage());
+            Children.Add(new InfoPage());
         }
     }
 }

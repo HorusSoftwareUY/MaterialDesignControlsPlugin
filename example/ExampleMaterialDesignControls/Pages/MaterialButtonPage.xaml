@@ -6,13 +6,12 @@
     xmlns:animations="clr-namespace:ExampleMaterialDesignControls.Animations"
     xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    Title="Material Button"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="True"
-    IconImageSource="calendar.png"
-    BackgroundColor="White">
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LegendLabel" TargetType="material:MaterialLabel">
@@ -28,110 +27,118 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Padding="20" Spacing="10">
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialButton" LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
 
-                <contentViews:InfoIndicatorView Message="MaterialButton follows the latest guidelines of Material Design 3" />
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20" Spacing="10">
 
-                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Elevated button:" />
-                <material3:MaterialButton
-                    ButtonType="Elevated"
-                    Command="{Binding SaveFileCommand}"
-                    IsBusy="{Binding SaveFileCommand.IsRunning}"
-                    IsEnabled="{Binding IsEnabled}"
-                    IsVisible="{Binding IsVisible}"
-                    Style="{StaticResource MaterialElevatedButtonStyle}"
-                    Text="Save file" />
+                    <contentViews:InfoIndicatorView Message="MaterialButton follows the latest guidelines of Material Design 3" />
 
-                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Filled button with leading png icon:" />
-                <material3:MaterialButton
-                    ButtonType="Filled"
-                    Command="{Binding DownloadFileCommand}"
-                    IsBusy="{Binding DownloadFileCommand.IsRunning}"
-                    IsEnabled="{Binding IsEnabled}"
-                    IsVisible="{Binding IsVisible}"
-                    Style="{StaticResource MaterialFilledButtonStyle}"
-                    Text="Download file">
-                    <material3:MaterialButton.LeadingIcon>
-                        <Image Source="download.png" />
-                    </material3:MaterialButton.LeadingIcon>
-                </material3:MaterialButton>
+                    <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Elevated button:" />
+                    <material3:MaterialButton
+                        ButtonType="Elevated"
+                        Command="{Binding SaveFileCommand}"
+                        IsBusy="{Binding SaveFileCommand.IsRunning}"
+                        IsEnabled="{Binding IsEnabled}"
+                        IsVisible="{Binding IsVisible}"
+                        Style="{StaticResource MaterialElevatedButtonStyle}"
+                        Text="Save file" />
 
-                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Tonal button with trailing svg icon:" />
-                <material3:MaterialButton
-                    ButtonType="Tonal"
-                    Command="{Binding OpenTutorialCommand}"
-                    IsBusy="{Binding OpenTutorialCommand.IsRunning}"
-                    IsEnabled="{Binding IsEnabled}"
-                    IsVisible="{Binding IsVisible}"
-                    Style="{StaticResource MaterialTonalButtonStyle}"
-                    Text="Open tutorial">
-                    <material3:MaterialButton.TrailingIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
-                    </material3:MaterialButton.TrailingIcon>
-                </material3:MaterialButton>
+                    <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Filled button with leading png icon:" />
+                    <material3:MaterialButton
+                        ButtonType="Filled"
+                        Command="{Binding DownloadFileCommand}"
+                        IsBusy="{Binding DownloadFileCommand.IsRunning}"
+                        IsEnabled="{Binding IsEnabled}"
+                        IsVisible="{Binding IsVisible}"
+                        Style="{StaticResource MaterialFilledButtonStyle}"
+                        Text="Download file">
+                        <material3:MaterialButton.LeadingIcon>
+                            <Image Source="download.png" />
+                        </material3:MaterialButton.LeadingIcon>
+                    </material3:MaterialButton>
 
-                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Outlined button with custom activity indicator:" />
-                <material3:MaterialButton
-                    ButtonType="Outlined"
-                    Command="{Binding CancelActionCommand}"
-                    IsBusy="{Binding CancelActionCommand.IsRunning}"
-                    IsEnabled="{Binding IsEnabled}"
-                    IsVisible="{Binding IsVisible}"
-                    Style="{StaticResource MaterialOutlinedButtonStyle}"
-                    Text="Cancel action">
-                    <material3:MaterialButton.CustomActivityIndicator>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
-                    </material3:MaterialButton.CustomActivityIndicator>
-                </material3:MaterialButton>
+                    <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Tonal button with trailing svg icon:" />
+                    <material3:MaterialButton
+                        ButtonType="Tonal"
+                        Command="{Binding OpenTutorialCommand}"
+                        IsBusy="{Binding OpenTutorialCommand.IsRunning}"
+                        IsEnabled="{Binding IsEnabled}"
+                        IsVisible="{Binding IsVisible}"
+                        Style="{StaticResource MaterialTonalButtonStyle}"
+                        Text="Open tutorial">
+                        <material3:MaterialButton.TrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialButton.TrailingIcon>
+                    </material3:MaterialButton>
 
-                <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Text button:" />
-                <material3:MaterialButton
-                    ButtonType="Text"
-                    Command="{Binding DeleteItemCommand}"
-                    IsBusy="{Binding DeleteItemCommand.IsRunning}"
-                    IsEnabled="{Binding IsEnabled}"
-                    IsVisible="{Binding IsVisible}"
-                    Style="{StaticResource MaterialTextButtonStyle}"
-                    Text="Delete item">
-                    <material3:MaterialButton.LeadingIcon>
-                        <Image Source="delete.png" />
-                    </material3:MaterialButton.LeadingIcon>
-                </material3:MaterialButton>
+                    <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Outlined button with custom activity indicator:" />
+                    <material3:MaterialButton
+                        ButtonType="Outlined"
+                        Command="{Binding CancelActionCommand}"
+                        IsBusy="{Binding CancelActionCommand.IsRunning}"
+                        IsEnabled="{Binding IsEnabled}"
+                        IsVisible="{Binding IsVisible}"
+                        Style="{StaticResource MaterialOutlinedButtonStyle}"
+                        Text="Cancel action">
+                        <material3:MaterialButton.CustomActivityIndicator>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialButton.CustomActivityIndicator>
+                    </material3:MaterialButton>
 
-                <material:MaterialSwitch IsToggled="{Binding IsEnabled}" Text="Is enabled" />
+                    <material:MaterialLabel Style="{StaticResource LegendLabel}" Text="Text button:" />
+                    <material3:MaterialButton
+                        ButtonType="Text"
+                        Command="{Binding DeleteItemCommand}"
+                        IsBusy="{Binding DeleteItemCommand.IsRunning}"
+                        IsEnabled="{Binding IsEnabled}"
+                        IsVisible="{Binding IsVisible}"
+                        Style="{StaticResource MaterialTextButtonStyle}"
+                        Text="Delete item">
+                        <material3:MaterialButton.LeadingIcon>
+                            <Image Source="delete.png" />
+                        </material3:MaterialButton.LeadingIcon>
+                    </material3:MaterialButton>
 
-                <material:MaterialSwitch IsToggled="{Binding IsVisible}" Text="Is visible" />
+                    <material:MaterialSwitch IsToggled="{Binding IsEnabled}" Text="Is enabled" />
 
-                <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialSwitch IsToggled="{Binding IsVisible}" Text="Is visible" />
 
-                <material:MaterialLabel Style="{StaticResource SubtitleLabel}" Text="Animations" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                <material3:MaterialButton Animation="None" Text="None" />
-                <material3:MaterialButton
-                    Animation="Fade"
-                    AnimationParameter="0.6"
-                    Text="Fade" />
-                <material3:MaterialButton
-                    Animation="Scale"
-                    AnimationParameter="0.98"
-                    Text="Scale" />
-                <material3:MaterialButton Animation="Custom" Text="Custom">
-                    <material3:MaterialButton.CustomAnimation>
-                        <animations:CustomButtonAnimation />
-                    </material3:MaterialButton.CustomAnimation>
-                </material3:MaterialButton>
+                    <material:MaterialLabel Style="{StaticResource SubtitleLabel}" Text="Animations" />
 
-                <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialButton Animation="None" Text="None" />
+                    <material3:MaterialButton
+                        Animation="Fade"
+                        AnimationParameter="0.6"
+                        Text="Fade" />
+                    <material3:MaterialButton
+                        Animation="Scale"
+                        AnimationParameter="0.98"
+                        Text="Scale" />
+                    <material3:MaterialButton Animation="Custom" Text="Custom">
+                        <material3:MaterialButton.CustomAnimation>
+                            <animations:CustomButtonAnimation />
+                        </material3:MaterialButton.CustomAnimation>
+                    </material3:MaterialButton>
 
-                <material:MaterialLabel Style="{StaticResource SubtitleLabel}" Text="Events" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                <material3:MaterialButton
-                    Animation="Fade"
-                    AnimationParameter="0.6"
-                    Clicked="Button_Clicked"
-                    Text="Clicked event" />
-            </StackLayout>
-        </ScrollView>
+                    <material:MaterialLabel Style="{StaticResource SubtitleLabel}" Text="Events" />
+
+                    <material3:MaterialButton
+                        Animation="Fade"
+                        AnimationParameter="0.6"
+                        Clicked="Button_Clicked"
+                        Text="Clicked event" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -8,7 +8,8 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialSegmentedPage()
         {
             InitializeComponent();
-            this.BindingContext = new MaterialSegmentedViewModel() { DisplayAlert = this.DisplayAlert };
+
+            BindingContext = new MaterialSegmentedViewModel() { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
 
         void MaterialSegmented_IsSelectedChanged(System.Object sender, System.EventArgs e)

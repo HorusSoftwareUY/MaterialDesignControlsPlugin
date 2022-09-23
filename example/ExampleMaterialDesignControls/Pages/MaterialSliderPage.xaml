@@ -1,76 +1,202 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             x:Class="ExampleMaterialDesignControls.Pages.MaterialSliderPage"
-             Title="Material Slider"
-             BackgroundColor="White">
+<ContentPage
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialSliderPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="SliderStyle" TargetType="material:MaterialSlider">
-                <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}"/>
-                <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}"/>
+                <Setter Property="LabelSize" Value="{StaticResource Body3FontSize}" />
+                <Setter Property="LabelTextColor" Value="{StaticResource LabelTextColor}" />
                 <Setter Property="DisabledLabelTextColor" Value="{StaticResource DarkGrayColor}" />
                 <Setter Property="AssistiveTextColor" Value="{StaticResource AssistiveTextColor}" />
-                <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}"/>
+                <Setter Property="AssistiveSize" Value="{StaticResource Body3FontSize}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Padding="20" Spacing="20">
-                <material:MaterialSlider x:Name="slider" Style="{StaticResource SliderStyle}" MinimumValue="0" MaximumValue="100" LabelText="Slider" LabelValueIsVisible="True" LabelValueFormat="0.00 km" LabelValueSize="{StaticResource Body3FontSize}" LabelTextColor="{StaticResource GradientColor1}" ThumbColor="{StaticResource GradientColor1}"  ActiveTrackColor="{StaticResource GradientColor1}" InactiveTrackColor="{StaticResource GradientColorTransparent1}"  LabelValueColor="{StaticResource GradientColor1}" />
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialSlider" LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
 
-                <material:MaterialSlider x:Name="slider10" Style="{StaticResource SliderStyle}" MinimumValue="0"  MaximumValue="10"  IsEnabled="True" ThumbImage="color_c.png"  LabelText="Thumb icon" Value="5" LabelMinimumText="0"  LabelMaximumText="10" LabelTextColor="{StaticResource GradientColor3}" ActiveTrackColor="{StaticResource GradientColor3}" InactiveTrackColor="{StaticResource GradientColorTransparent3}" />
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20" Spacing="20">
+                    <material:MaterialSlider
+                        x:Name="slider"
+                        ActiveTrackColor="{StaticResource GradientColor1}"
+                        InactiveTrackColor="{StaticResource GradientColorTransparent1}"
+                        LabelText="Slider"
+                        LabelTextColor="{StaticResource GradientColor1}"
+                        LabelValueColor="{StaticResource GradientColor1}"
+                        LabelValueFormat="0.00 km"
+                        LabelValueIsVisible="True"
+                        LabelValueSize="{StaticResource Body3FontSize}"
+                        MaximumValue="100"
+                        MinimumValue="0"
+                        Style="{StaticResource SliderStyle}"
+                        ThumbColor="{StaticResource GradientColor1}" />
 
-                <material:MaterialSlider  x:Name="slider0" Style="{StaticResource SliderStyle}" MinimumValue="0"  MaximumValue="10"  IsEnabled="False" ThumbImage="color.png"  LabelText="Disabled slider" Value="5" LabelMinimumText="0"  LabelMaximumText="10"/>
+                    <material:MaterialSlider
+                        x:Name="slider10"
+                        ActiveTrackColor="{StaticResource GradientColor3}"
+                        InactiveTrackColor="{StaticResource GradientColorTransparent3}"
+                        IsEnabled="True"
+                        LabelMaximumText="10"
+                        LabelMinimumText="0"
+                        LabelText="Thumb icon"
+                        LabelTextColor="{StaticResource GradientColor3}"
+                        MaximumValue="10"
+                        MinimumValue="0"
+                        Style="{StaticResource SliderStyle}"
+                        ThumbImage="color_c.png"
+                        Value="5" />
 
-                <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialSlider
+                        x:Name="slider0"
+                        IsEnabled="False"
+                        LabelMaximumText="10"
+                        LabelMinimumText="0"
+                        LabelText="Disabled slider"
+                        MaximumValue="10"
+                        MinimumValue="0"
+                        Style="{StaticResource SliderStyle}"
+                        ThumbImage="color.png"
+                        Value="5" />
 
-                <material:MaterialLabel Text="Event Value" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                <material:MaterialSlider x:Name="slider1" Style="{StaticResource SliderStyle}" MinimumValue="0"  MaximumValue="10" LabelMinimumText="0" LabelMaximumText="10"  ValueChanged="slider1_ValueChanged" LabelText="Slider with event ValueChanged" ThumbColor="{StaticResource GradientColor6}" ActiveTrackColor="{StaticResource GradientColor6}" LabelTextColor="{StaticResource GradientColor6}" InactiveTrackColor="{StaticResource GradientColorTransparent6}"/>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Event Value" />
 
-                <material:MaterialLabel x:Name="lblSlider1" FontSize="{StaticResource Body1FontSize}" TextColor="{StaticResource GradientColor6}"/>
+                    <material:MaterialSlider
+                        x:Name="slider1"
+                        ActiveTrackColor="{StaticResource GradientColor6}"
+                        InactiveTrackColor="{StaticResource GradientColorTransparent6}"
+                        LabelMaximumText="10"
+                        LabelMinimumText="0"
+                        LabelText="Slider with event ValueChanged"
+                        LabelTextColor="{StaticResource GradientColor6}"
+                        MaximumValue="10"
+                        MinimumValue="0"
+                        Style="{StaticResource SliderStyle}"
+                        ThumbColor="{StaticResource GradientColor6}"
+                        ValueChanged="slider1_ValueChanged" />
 
-                <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialLabel
+                        x:Name="lblSlider1"
+                        FontSize="{StaticResource Body1FontSize}"
+                        TextColor="{StaticResource GradientColor6}" />
 
-                <material:MaterialLabel Text="Icons" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                <material:MaterialSlider x:Name="slider2" Style="{StaticResource SliderStyle}" MinimumValue="0" MaximumValue="100" MaximumIcon="volume.png" MinimumIcon="mute.png" LabelText="Slider whit image(png)" ShowIcons="True" ThumbColor="{StaticResource GradientColor8}" ActiveTrackColor="{StaticResource GradientColor8}" LabelTextColor="{StaticResource GradientColor8}"  InactiveTrackColor="{StaticResource GradientColorTransparent8}"/>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Icons" />
 
-                <material:MaterialSlider x:Name="slider3" Style="{StaticResource SliderStyle}" MinimumValue="0" MaximumValue="100"  LabelText="Slider whit image(svg)" ShowIcons="True" ThumbColor="{StaticResource GradientColor10}" ActiveTrackColor="{StaticResource GradientColor10}"   InactiveTrackColor="{StaticResource GradientColorTransparent10}" LabelTextColor="{StaticResource GradientColor10}">
-                    <material:MaterialSlider.CustomMinimumIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg"/>
-                    </material:MaterialSlider.CustomMinimumIcon>
-                    <material:MaterialSlider.CustomMaximumIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.volume.svg"/>
-                    </material:MaterialSlider.CustomMaximumIcon>
-                </material:MaterialSlider>
+                    <material:MaterialSlider
+                        x:Name="slider2"
+                        ActiveTrackColor="{StaticResource GradientColor8}"
+                        InactiveTrackColor="{StaticResource GradientColorTransparent8}"
+                        LabelText="Slider whit image(png)"
+                        LabelTextColor="{StaticResource GradientColor8}"
+                        MaximumIcon="volume.png"
+                        MaximumValue="100"
+                        MinimumIcon="mute.png"
+                        MinimumValue="0"
+                        ShowIcons="True"
+                        Style="{StaticResource SliderStyle}"
+                        ThumbColor="{StaticResource GradientColor8}" />
 
-                <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialSlider
+                        x:Name="slider3"
+                        ActiveTrackColor="{StaticResource GradientColor10}"
+                        InactiveTrackColor="{StaticResource GradientColorTransparent10}"
+                        LabelText="Slider whit image(svg)"
+                        LabelTextColor="{StaticResource GradientColor10}"
+                        MaximumValue="100"
+                        MinimumValue="0"
+                        ShowIcons="True"
+                        Style="{StaticResource SliderStyle}"
+                        ThumbColor="{StaticResource GradientColor10}">
+                        <material:MaterialSlider.CustomMinimumIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
+                        </material:MaterialSlider.CustomMinimumIcon>
+                        <material:MaterialSlider.CustomMaximumIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.volume.svg" />
+                        </material:MaterialSlider.CustomMaximumIcon>
+                    </material:MaterialSlider>
 
-                <material:MaterialLabel Text="Background Image" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                <material:MaterialSlider x:Name="slider4" Style="{StaticResource SliderStyle}" MinimumValue="0" MaximumValue="100" ThumbColor="Black"  BackgroundImage="scale.png"  LabelText="Slider whit backgroundimage(png)"  ActiveTrackColor="Transparent"  InactiveTrackColor="Transparent"/>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Background Image" />
 
-                <material:MaterialSlider  x:Name="slider5" Style="{StaticResource SliderStyle}" MinimumValue="0"  MaximumValue="100" ThumbColor="Black" LabelText="Slider whit backgroundimage(svg)"  ActiveTrackColor="Transparent"  InactiveTrackColor="Transparent">
-                    <material:MaterialSlider.CustomBackgroundImage>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.scale.svg"/>
-                    </material:MaterialSlider.CustomBackgroundImage>
-                </material:MaterialSlider>
+                    <material:MaterialSlider
+                        x:Name="slider4"
+                        ActiveTrackColor="Transparent"
+                        BackgroundImage="scale.png"
+                        InactiveTrackColor="Transparent"
+                        LabelText="Slider whit backgroundimage(png)"
+                        MaximumValue="100"
+                        MinimumValue="0"
+                        Style="{StaticResource SliderStyle}"
+                        ThumbColor="Black" />
 
-                <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialSlider
+                        x:Name="slider5"
+                        ActiveTrackColor="Transparent"
+                        InactiveTrackColor="Transparent"
+                        LabelText="Slider whit backgroundimage(svg)"
+                        MaximumValue="100"
+                        MinimumValue="0"
+                        Style="{StaticResource SliderStyle}"
+                        ThumbColor="Black">
+                        <material:MaterialSlider.CustomBackgroundImage>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.scale.svg" />
+                        </material:MaterialSlider.CustomBackgroundImage>
+                    </material:MaterialSlider>
 
-                <material:MaterialLabel Text="Assistive Text" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                <material:MaterialSlider x:Name="slider6" Style="{StaticResource SliderStyle}" MinimumValue="0" AssistiveText="Slide to change the opacity value" MaximumValue="100" LabelMinimumText="0" LabelMaximumText="10" Value="{Binding Value}" LabelText="Select the opacity" ThumbColor="{StaticResource GradientColor12}" LabelTextColor="{StaticResource GradientColor12}"  ActiveTrackColor="{StaticResource GradientColor12}"  InactiveTrackColor="{StaticResource GradientColorTransparent12}"/>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Assistive Text" />
 
-                <material3:MaterialButton Text="Save" Command="{Binding TapCommand}" />
+                    <material:MaterialSlider
+                        x:Name="slider6"
+                        ActiveTrackColor="{StaticResource GradientColor12}"
+                        AssistiveText="Slide to change the opacity value"
+                        InactiveTrackColor="{StaticResource GradientColorTransparent12}"
+                        LabelMaximumText="10"
+                        LabelMinimumText="0"
+                        LabelText="Select the opacity"
+                        LabelTextColor="{StaticResource GradientColor12}"
+                        MaximumValue="100"
+                        MinimumValue="0"
+                        Style="{StaticResource SliderStyle}"
+                        ThumbColor="{StaticResource GradientColor12}"
+                        Value="{Binding Value}" />
 
-            </StackLayout>
-        </ScrollView>
+                    <material3:MaterialButton Command="{Binding TapCommand}" Text="Save" />
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

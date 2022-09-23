@@ -104,7 +104,11 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialDividerCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialDividerPage());
-            //await DisplayAlert("Material Divider", "Comming Soon!", "Ok");
+        });
+
+        public ICommand GoMaterialTopAppBarCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialTopAppBarPage());
         });
     }
 }

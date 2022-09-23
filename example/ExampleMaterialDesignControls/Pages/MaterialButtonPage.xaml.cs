@@ -10,7 +10,7 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            this.BindingContext = new MaterialButtonViewModel { DisplayAlert = this.DisplayAlert };
+            BindingContext = new MaterialButtonViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
 
         private void Button_Clicked(object sender, EventArgs e)

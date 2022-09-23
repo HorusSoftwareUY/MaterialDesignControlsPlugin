@@ -19,6 +19,7 @@
     <PackageReference Include="Xamarin.Forms.Skeleton" Version="2.0.0" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
@@ -62,6 +63,7 @@
     <None Remove="Microsoft.Toolkit.Mvvm" />
     <None Remove="Animations\" />
     <None Remove="ContentViews\" />
+    <None Remove="Xamarin.Essentials" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Svg\mute.svg" />

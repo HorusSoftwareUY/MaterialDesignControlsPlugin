@@ -1,87 +1,106 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-             x:Class="ExampleMaterialDesignControls.Pages.MaterialEditorPage"
-             Title="Material Editor"
-             BackgroundColor="White">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialEditorPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Padding="20" Spacing="20">
-                <material:MaterialEditor
-                    Type="Filled"
-                    LabelText="Message*"
-                    Placeholder="Enter your message"
-                    Text="{Binding Message}"
-                    AssistiveText="{Binding MessageError}"
-                    AnimateError="True"
-                    TabIndex="1"
-                    KeyboardFlags="Spellcheck,Suggestions"/>
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialEditor" LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
 
-                <material:MaterialEditor
-                    Type="Outlined"
-                    LabelText="Observation"
-                    Placeholder="Enter your observation"
-                    Text="{Binding Observation}"
-                    TabIndex="2"
-                    FieldHeightRequest="120"
-                    KeyboardFlags="CapitalizeSentence" />
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20" Spacing="20">
+                    <material:MaterialEditor
+                        AnimateError="True"
+                        AssistiveText="{Binding MessageError}"
+                        KeyboardFlags="Spellcheck,Suggestions"
+                        LabelText="Message*"
+                        Placeholder="Enter your message"
+                        TabIndex="1"
+                        Text="{Binding Message}"
+                        Type="Filled" />
 
-                <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialEditor
+                        FieldHeightRequest="120"
+                        KeyboardFlags="CapitalizeSentence"
+                        LabelText="Observation"
+                        Placeholder="Enter your observation"
+                        TabIndex="2"
+                        Text="{Binding Observation}"
+                        Type="Outlined" />
 
-                <material:MaterialLabel Text="Auto Size" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                <material:MaterialEditor
-                    Type="Outlined"
-                    LabelText="Observation"
-                    Placeholder="Enter your observation"
-                    Text="{Binding Observation}"
-                    TabIndex="2"
-                    AutoSize="TextChanges"
-                    KeyboardFlags="CapitalizeSentence"/>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Auto Size" />
 
-                <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialEditor
+                        AutoSize="TextChanges"
+                        KeyboardFlags="CapitalizeSentence"
+                        LabelText="Observation"
+                        Placeholder="Enter your observation"
+                        TabIndex="2"
+                        Text="{Binding Observation}"
+                        Type="Outlined" />
 
-                <material:MaterialLabel Text="Types" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                <material:MaterialEditor
-                    Type="Lined"
-                    LabelText="Description"
-                    Placeholder="Enter your description"
-                    Text="{Binding DefaultValue}"
-                    LeadingIcon="email.png" TabIndex="3"
-                    HorizontalTextAlignment="Center" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Types" />
 
-                <material:MaterialEditor
-                    Type="Outlined"
-                    LabelText="Description"
-                    Placeholder="Enter your description"
-                    LeadingIcon="email.png"
-                    TabIndex="4"
-                    Text="Testing description"
-                    IsEnabled="False" />
+                    <material:MaterialEditor
+                        HorizontalTextAlignment="Center"
+                        LabelText="Description"
+                        LeadingIcon="email.png"
+                        Placeholder="Enter your description"
+                        TabIndex="3"
+                        Text="{Binding DefaultValue}"
+                        Type="Lined" />
 
-                <material:MaterialEditor
-                    Type="Outlined"
-                    LabelText="Description"
-                    Placeholder="Enter your description"
-                    LeadingIcon="email.png"
-                    HeightRequest="200"
-                    TabIndex="5">
-                    <material:MaterialEditor.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
-                        </OnPlatform>
-                    </material:MaterialEditor.FontFamily>
-                </material:MaterialEditor>
+                    <material:MaterialEditor
+                        IsEnabled="False"
+                        LabelText="Description"
+                        LeadingIcon="email.png"
+                        Placeholder="Enter your description"
+                        TabIndex="4"
+                        Text="Testing description"
+                        Type="Outlined" />
 
-                <material3:MaterialButton
-                    Text="Save"
-                    VerticalOptions="EndAndExpand"
-                    Command="{Binding TapCommand}" />
-            </StackLayout>
-        </ScrollView>
+                    <material:MaterialEditor
+                        HeightRequest="200"
+                        LabelText="Description"
+                        LeadingIcon="email.png"
+                        Placeholder="Enter your description"
+                        TabIndex="5"
+                        Type="Outlined">
+                        <material:MaterialEditor.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material:MaterialEditor.FontFamily>
+                    </material:MaterialEditor>
+
+                    <material3:MaterialButton
+                        Command="{Binding TapCommand}"
+                        Text="Save"
+                        VerticalOptions="EndAndExpand" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

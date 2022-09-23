@@ -1,36 +1,85 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
-             Title="Material Selection"
-             BackgroundColor="White">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Padding="20" Spacing="20">
-                <material:MaterialSelection Type="Filled" LeadingIcon="calendar.png" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection">
-                    <material:MaterialSelection.CustomTrailingIcon>
-                        <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg"/>
-                    </material:MaterialSelection.CustomTrailingIcon>
-                </material:MaterialSelection>
-                <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection" />
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialSelection" LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
 
-                <material:MaterialDivider Margin="0,10" />
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20" Spacing="20">
+                    <material:MaterialSelection
+                        Command="{Binding TapCommand}"
+                        CommandParameter="User selection"
+                        LabelText="User"
+                        LeadingIcon="calendar.png"
+                        Placeholder="Select user"
+                        Text="{Binding SelectedText}"
+                        Type="Filled">
+                        <material:MaterialSelection.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg" />
+                        </material:MaterialSelection.CustomTrailingIcon>
+                    </material:MaterialSelection>
+                    <material:MaterialSelection
+                        Command="{Binding TapCommand}"
+                        CommandParameter="User selection"
+                        LabelText="User"
+                        Placeholder="Select user"
+                        Text="{Binding SelectedText}"
+                        Type="Filled" />
 
-                <material:MaterialLabel Text="Types" FontFamily="{StaticResource SemiBoldFont}" HorizontalTextAlignment="Center" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                <material:MaterialSelection Type="Filled" LabelText="User" Placeholder="Select user" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="User selection" IsEnabled="False" />
-                <material:MaterialSelection Type="Outlined" LabelText="Product" Placeholder="Select product" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="Product selection" HorizontalTextAlignment="Center" />
-                <material:MaterialSelection Type="Lined" TrailingIcon="arrow_drop_down.png" LabelText="Model" Placeholder="Select model" Text="{Binding SelectedText}" Command="{Binding TapCommand}" CommandParameter="Model selection">
-                    <material:MaterialSelection.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <OnPlatform.Android>monospace</OnPlatform.Android>
-                            <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
-                        </OnPlatform>
-                    </material:MaterialSelection.FontFamily>
-                </material:MaterialSelection>
-            </StackLayout>
-        </ScrollView>
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Types" />
+
+                    <material:MaterialSelection
+                        Command="{Binding TapCommand}"
+                        CommandParameter="User selection"
+                        IsEnabled="False"
+                        LabelText="User"
+                        Placeholder="Select user"
+                        Text="{Binding SelectedText}"
+                        Type="Filled" />
+                    <material:MaterialSelection
+                        Command="{Binding TapCommand}"
+                        CommandParameter="Product selection"
+                        HorizontalTextAlignment="Center"
+                        LabelText="Product"
+                        Placeholder="Select product"
+                        Text="{Binding SelectedText}"
+                        Type="Outlined" />
+                    <material:MaterialSelection
+                        Command="{Binding TapCommand}"
+                        CommandParameter="Model selection"
+                        LabelText="Model"
+                        Placeholder="Select model"
+                        Text="{Binding SelectedText}"
+                        TrailingIcon="arrow_drop_down.png"
+                        Type="Lined">
+                        <material:MaterialSelection.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material:MaterialSelection.FontFamily>
+                    </material:MaterialSelection>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

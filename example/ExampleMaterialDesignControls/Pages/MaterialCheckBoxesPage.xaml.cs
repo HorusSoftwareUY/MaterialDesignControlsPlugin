@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using ExampleMaterialDesignControls.ViewModels;
 using Xamarin.Forms;
 
@@ -10,7 +9,7 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialCheckBoxesPage()
         {
             InitializeComponent();
-            this.BindingContext = new MaterialCheckboxViewModel { DisplayAlert = this.DisplayAlert };
+            BindingContext = new MaterialCheckboxViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
 
         private void Checkbox_IsCheckedChanged(object sender, EventArgs eventArgs)

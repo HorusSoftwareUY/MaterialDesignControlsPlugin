@@ -9,7 +9,7 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialSwitchPage()
         {
             InitializeComponent();
-            this.BindingContext = new MaterialSwitchViewModel { DisplayAlert = this.DisplayAlert };
+            BindingContext = new MaterialSwitchViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
 
         private void Switch_toggled(object sender, EventArgs eventArgs)

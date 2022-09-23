@@ -6,7 +6,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 {
     public partial class MaterialButtonViewModel : BaseViewModel
     {
-        private string _controlTitle = "Material Button";
+        private string _controlTitle = "MaterialButton";
 
         [ObservableProperty]
         private bool _isEnabled = true;

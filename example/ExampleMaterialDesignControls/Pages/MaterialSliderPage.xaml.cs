@@ -1,5 +1,4 @@
 ﻿using ExampleMaterialDesignControls.ViewModels;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,8 +11,7 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-
-            this.BindingContext = new MaterialSliderViewModel { DisplayAlert = this.DisplayAlert };
+            BindingContext = new MaterialSliderViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
 
         private void slider1_ValueChanged(object sender, ValueChangedEventArgs e)

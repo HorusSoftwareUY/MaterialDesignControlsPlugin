@@ -1,28 +1,49 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-             x:Class="ExampleMaterialDesignControls.Pages.MaterialCustomControl"
-             Title="Material Custom Control"
-             BackgroundColor="White">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialCustomControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Padding="20" Spacing="20">
-                <material:MaterialCustomControl LabelText="Value" AssistiveText="{Binding AssistiveText}" AnimateError="True">
-                    <material:MaterialCustomControl.CustomControl>
-                        <Slider />
-                    </material:MaterialCustomControl.CustomControl>
-                </material:MaterialCustomControl>
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialCustomControl" LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
 
-                <material:MaterialCustomControl LabelText="Item" AssistiveText="{Binding AssistiveText}" AnimateError="True">
-                    <material:MaterialCustomControl.CustomControl>
-                        <material3:MaterialButton Text="Select item" />
-                    </material:MaterialCustomControl.CustomControl>
-                </material:MaterialCustomControl>
-                
-                <material3:MaterialButton Text="Save" Command="{Binding TapCommand}" VerticalOptions="EndAndExpand"/>
-            </StackLayout>
-        </ScrollView>
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20" Spacing="20">
+                    <material:MaterialCustomControl
+                        AnimateError="True"
+                        AssistiveText="{Binding AssistiveText}"
+                        LabelText="Value">
+                        <material:MaterialCustomControl.CustomControl>
+                            <Slider />
+                        </material:MaterialCustomControl.CustomControl>
+                    </material:MaterialCustomControl>
+
+                    <material:MaterialCustomControl
+                        AnimateError="True"
+                        AssistiveText="{Binding AssistiveText}"
+                        LabelText="Item">
+                        <material:MaterialCustomControl.CustomControl>
+                            <material3:MaterialButton Text="Select item" />
+                        </material:MaterialCustomControl.CustomControl>
+                    </material:MaterialCustomControl>
+
+                    <material3:MaterialButton
+                        Command="{Binding TapCommand}"
+                        Text="Save"
+                        VerticalOptions="EndAndExpand" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

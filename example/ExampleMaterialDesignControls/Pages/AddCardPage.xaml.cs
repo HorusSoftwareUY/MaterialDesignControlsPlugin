@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
-using ExampleMaterialDesignControls.ViewModels;
+﻿using ExampleMaterialDesignControls.ViewModels;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
@@ -11,8 +8,7 @@ namespace ExampleMaterialDesignControls.Pages
         public AddCardPage()
         {
             InitializeComponent();
-            this.BindingContext = new AddCardViewModel() { DisplayAlert = this.DisplayAlert };
+            BindingContext = new AddCardViewModel() { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
-
     }
 }

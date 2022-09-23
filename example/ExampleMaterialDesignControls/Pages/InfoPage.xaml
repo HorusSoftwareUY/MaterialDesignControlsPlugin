@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ExampleMaterialDesignControls.Pages.InfoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    Title="Info"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    IconImageSource="Home.png">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="30,30,30,20"
+                Spacing="10"
+                VerticalOptions="FillAndExpand">
+
+                <ffimageloading:CachedImage
+                    Aspect="AspectFit"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Source="shoes_1.jpg" />
+
+                <material:MaterialLabel
+                    FontFamily="{StaticResource BoldFont}"
+                    FontSize="{StaticResource H4FontSize}"
+                    Text="Material Design"
+                    TextColor="{StaticResource GradientColor1}" />
+                <material:MaterialLabel
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource SemiBoldFont}"
+                    FontSize="{StaticResource H5FontSize}"
+                    Text="Plugin for Xamarin Forms"
+                    TextColor="{StaticResource BlackColor}" />
+                <material:MaterialLabel
+                    FontSize="{StaticResource Body2FontSize}"
+                    Text="Material Design is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material Design streamlines collaboration between designers and developers, and helps teams quickly build beautiful products."
+                    TextColor="{StaticResource DarkGrayColor}" />
+
+                <material:MaterialDivider Margin="0,18,0,10" />
+
+                <material:MaterialLabel
+                    FontFamily="{StaticResource BoldFont}"
+                    FontSize="{StaticResource H4FontSize}"
+                    Text="Horus"
+                    TextColor="{StaticResource GradientColor1}" />
+                <material:MaterialLabel
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource SemiBoldFont}"
+                    FontSize="{StaticResource H5FontSize}"
+                    Text="Mobile Development Studio"
+                    TextColor="{StaticResource BlackColor}" />
+                <material:MaterialLabel
+                    FontSize="{StaticResource Body2FontSize}"
+                    Text="Horus is a mobile development studio passionate about creating cutting edge apps to solve everyday problems, simplify frustrating activities, and bring solutions to the palm of your hand."
+                    TextColor="{StaticResource DarkGrayColor}" />
+
+                <material3:MaterialButton
+                    Margin="50,0"
+                    Clicked="ContactUsButton_Clicked"
+                    Text="Contact us" />
+
+                <material:MaterialDivider Margin="0,18,0,10" />
+
+                <material:MaterialLabel
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource SemiBoldFont}"
+                    FontSize="{StaticResource H5FontSize}"
+                    Text="Contributions"
+                    TextColor="{StaticResource BlackColor}" />
+                <material:MaterialLabel
+                    FontSize="{StaticResource Body2FontSize}"
+                    Text="Contributions are welcome! If you find a bug want a feature added please report it. If you want to contribute code please file an issue, create a branch, and file a pull request."
+                    TextColor="{StaticResource DarkGrayColor}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
