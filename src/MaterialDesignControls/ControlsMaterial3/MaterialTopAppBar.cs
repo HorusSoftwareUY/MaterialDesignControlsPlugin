@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
@@ -23,6 +24,19 @@ namespace Plugin.MaterialDesignControls.Material3
         private ContentViewButton _leadingIconContentView;
 
         private ContentViewButton _trailingIconContentView;
+
+        private double _mediumDefaultFontSize = 28;
+        private double _largeDefaultFontSize = 32;
+
+        private int _smallRowHeight = 48;
+        private int _mediumRowHeight = 106;
+        private int _largeRowHeight = 106;
+
+        private int _smallLabelLateralMargin = 48;
+        private int _mediumLabelLateralMargin = 10;
+        private int _largeLabelLateralMargin = 10;
+
+        private bool _isCollapsed = false;
 
         #endregion Attributes and Properties
 
@@ -73,6 +87,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(HeadlineFontFamilyProperty, value); }
         }
 
+        public static readonly BindableProperty HeadlineMarginAdjustmentProperty =
+           BindableProperty.Create(nameof(HeadlineMarginAdjustment), typeof(Thickness), typeof(MaterialTopAppBar), default(Thickness), BindingMode.OneTime);
+
+        public Thickness HeadlineMarginAdjustment
+        {
+            get => (Thickness)GetValue(HeadlineMarginAdjustmentProperty);
+            set => SetValue(HeadlineMarginAdjustmentProperty, value);
+        }
+
         public static readonly BindableProperty LeadingIconProperty =
             BindableProperty.Create(nameof(LeadingIcon), typeof(View), typeof(MaterialTopAppBar), defaultValue: null);
 
@@ -118,31 +141,49 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(TrailingIconCommandProperty, value);
         }
 
-        public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.ButtonAnimation);
+        public static readonly BindableProperty ButtonAnimationProperty =
+            BindableProperty.Create(nameof(ButtonAnimation), typeof(AnimationTypes), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.ButtonAnimation);
 
-        public AnimationTypes Animation
+        public AnimationTypes ButtonAnimation
         {
-            get { return (AnimationTypes)GetValue(AnimationProperty); }
-            set { SetValue(AnimationProperty, value); }
+            get { return (AnimationTypes)GetValue(ButtonAnimationProperty); }
+            set { SetValue(ButtonAnimationProperty, value); }
         }
 
-        public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.ButtonAnimationParameter);
+        public static readonly BindableProperty ButtonAnimationParameterProperty =
+            BindableProperty.Create(nameof(ButtonAnimationParameter), typeof(double?), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.ButtonAnimationParameter);
 
-        public double? AnimationParameter
+        public double? ButtonAnimationParameter
         {
-            get { return (double?)GetValue(AnimationParameterProperty); }
-            set { SetValue(AnimationParameterProperty, value); }
+            get { return (double?)GetValue(ButtonAnimationParameterProperty); }
+            set { SetValue(ButtonAnimationParameterProperty, value); }
         }
 
-        public static readonly BindableProperty CustomAnimationProperty =
-            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(MaterialTopAppBar), defaultValue: null);
+        public static readonly BindableProperty ButtonCustomAnimationProperty =
+            BindableProperty.Create(nameof(ButtonCustomAnimation), typeof(ICustomAnimation), typeof(MaterialTopAppBar), defaultValue: null);
 
-        public ICustomAnimation CustomAnimation
+        public ICustomAnimation ButtonCustomAnimation
         {
-            get { return (ICustomAnimation)GetValue(CustomAnimationProperty); }
-            set { SetValue(CustomAnimationProperty, value); }
+            get { return (ICustomAnimation)GetValue(ButtonCustomAnimationProperty); }
+            set { SetValue(ButtonCustomAnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty ScrollViewNameProperty =
+           BindableProperty.Create(nameof(ScrollViewName), typeof(string), typeof(MaterialTopAppBar), default(string), BindingMode.OneTime);
+
+        public string ScrollViewName
+        {
+            get => (string)GetValue(ScrollViewNameProperty);
+            set => SetValue(ScrollViewNameProperty, value);
+        }
+
+        public static readonly BindableProperty ScrollViewAnimationLengthProperty =
+            BindableProperty.Create(nameof(ScrollViewAnimationLength), typeof(int), typeof(MaterialTopAppBar), defaultValue: 250);
+
+        public int ScrollViewAnimationLength
+        {
+            get { return (int)GetValue(ScrollViewAnimationLengthProperty); }
+            set { SetValue(ScrollViewAnimationLengthProperty, value); }
         }
 
         #endregion Bindable properties
@@ -178,35 +219,37 @@ namespace Plugin.MaterialDesignControls.Material3
             ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
             ColumnDefinitions.Add(new ColumnDefinition { Width = 48 });
 
-            _leadingIconContentView = new ContentViewButton
-            {
-                VerticalOptions = LayoutOptions.Center,
-                WidthRequest = IconSize,
-                HeightRequest = IconSize,
-                AnimationParameter = AnimationParameter,
-                Animation = Animation,
-                IsVisible = false
-            };
-            Children.Add(_leadingIconContentView, 0, 0);
-
             _headlineLabel = new MaterialLabel
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
+                HeightRequest = 48,
                 TextColor = HeadlineColor,
                 FontSize = HeadlineFontSize,
                 FontFamily = HeadlineFontFamily
             };
-            Children.Add(_headlineLabel, 1, 0);
+            Children.Add(_headlineLabel, 0, 0);
+            Grid.SetColumnSpan(_headlineLabel, 3);
+
+            _leadingIconContentView = new ContentViewButton
+            {
+                VerticalOptions = LayoutOptions.Start,
+                WidthRequest = 48,
+                HeightRequest = 48,
+                AnimationParameter = ButtonAnimationParameter,
+                Animation = ButtonAnimation,
+                IsVisible = false
+            };
+            Children.Add(_leadingIconContentView, 0, 0);
 
             _trailingIconContentView = new ContentViewButton
             {
-                VerticalOptions = LayoutOptions.Center,
-                WidthRequest = IconSize,
-                HeightRequest = IconSize,
-                AnimationParameter = AnimationParameter,
-                Animation = Animation,
+                VerticalOptions = LayoutOptions.Start,
+                WidthRequest = 48,
+                HeightRequest = 48,
+                AnimationParameter = ButtonAnimationParameter,
+                Animation = ButtonAnimation,
                 IsVisible = false
             };
             Children.Add(_trailingIconContentView, 2, 0);
@@ -240,6 +283,9 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(HeadlineFontFamily):
                     _headlineLabel.FontFamily = HeadlineFontFamily;
                     break;
+                case nameof(HeadlineMarginAdjustment):
+                    _headlineLabel.Margin = HeadlineMarginAdjustment;
+                    break;
 
                 case nameof(LeadingIconCommand):
                     _leadingIconContentView.Command = LeadingIconCommand;
@@ -252,6 +298,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(LeadingIcon):
                     if (LeadingIcon != null)
                     {
+                        LeadingIcon.WidthRequest = IconSize;
+                        LeadingIcon.HeightRequest = IconSize;
+                        LeadingIcon.HorizontalOptions = LayoutOptions.Center;
+                        LeadingIcon.VerticalOptions = LayoutOptions.Center;
                         _leadingIconContentView.Content = LeadingIcon;
                         _leadingIconContentView.IsVisible = true;
                     }
@@ -259,28 +309,34 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(TrailingIcon):
                     if (TrailingIcon != null)
                     {
+                        TrailingIcon.WidthRequest = IconSize;
+                        TrailingIcon.HeightRequest = IconSize;
+                        TrailingIcon.HorizontalOptions = LayoutOptions.Center;
+                        TrailingIcon.VerticalOptions = LayoutOptions.Center;
                         _trailingIconContentView.Content = TrailingIcon;
                         _trailingIconContentView.IsVisible = true;
                     }
                     break;
-                case nameof(IconSize):
-                    _leadingIconContentView.HeightRequest = IconSize;
-                    _leadingIconContentView.WidthRequest = IconSize;
-                    _trailingIconContentView.HeightRequest = IconSize;
-                    _trailingIconContentView.WidthRequest = IconSize;
+
+                case nameof(ButtonAnimation):
+                    _leadingIconContentView.Animation = ButtonAnimation;
+                    _trailingIconContentView.Animation = ButtonAnimation;
+                    break;
+                case nameof(ButtonAnimationParameter):
+                    _leadingIconContentView.AnimationParameter = ButtonAnimationParameter;
+                    _trailingIconContentView.AnimationParameter = ButtonAnimationParameter;
+                    break;
+                case nameof(ButtonCustomAnimation):
+                    _leadingIconContentView.CustomAnimation = ButtonCustomAnimation;
+                    _trailingIconContentView.CustomAnimation = ButtonCustomAnimation;
                     break;
 
-                case nameof(Animation):
-                    _leadingIconContentView.Animation = Animation;
-                    _trailingIconContentView.Animation = Animation;
-                    break;
-                case nameof(AnimationParameter):
-                    _leadingIconContentView.AnimationParameter = AnimationParameter;
-                    _trailingIconContentView.AnimationParameter = AnimationParameter;
-                    break;
-                case nameof(CustomAnimation):
-                    _leadingIconContentView.CustomAnimation = CustomAnimation;
-                    _trailingIconContentView.CustomAnimation = CustomAnimation;
+                case "Renderer":
+                    base.OnPropertyChanged(propertyName);
+
+                    if (!string.IsNullOrEmpty(ScrollViewName)
+                        && (Type == MaterialTopAppBarType.Medium || Type == MaterialTopAppBarType.Large))
+                        SetScrollViewAnimation();
                     break;
 
                 default:
@@ -289,32 +345,104 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        public void SetType()
+        private void SetScrollViewAnimation()
+        {
+            try
+            {
+                var viewByName = Parent.FindByName(ScrollViewName);
+                if (viewByName != null && viewByName is ScrollView scrollView)
+                {
+                    int maxHeight = Type == MaterialTopAppBarType.Large ? _largeRowHeight : _mediumRowHeight;
+                    int minHeight = _smallRowHeight;
+
+                    double maxFontSize = Type == MaterialTopAppBarType.Large ? _largeDefaultFontSize : _mediumDefaultFontSize;
+                    double minFontSize = HeadlineFontSize;
+
+                    int maxLabelLateralMargin = Type == MaterialTopAppBarType.Large ? _largeLabelLateralMargin : _mediumLabelLateralMargin;
+                    int minLabelLateralMargin = _smallLabelLateralMargin;
+
+                    if (Device.RuntimePlatform == Device.Android)
+                    {
+                        scrollView.Effects.Add(new TouchReleaseEffect(() =>
+                        {
+                            ScrollAnimation(scrollView.ScrollY, maxHeight, minHeight, maxFontSize, minFontSize, maxLabelLateralMargin, minLabelLateralMargin);
+
+                            Task.Run(async () =>
+                            {
+                                await Task.Delay(500);
+                                if (_isCollapsed && scrollView.ScrollY <= 0)
+                                    ExpandTopAppBar(maxHeight, minHeight, maxFontSize, minFontSize, maxLabelLateralMargin, minLabelLateralMargin);
+                            });
+                        }));
+                    }
+                    else
+                    {
+                        scrollView.Scrolled += (s, e) =>
+                        {
+                            ScrollAnimation(e.ScrollY, maxHeight, minHeight, maxFontSize, minFontSize, maxLabelLateralMargin, minLabelLateralMargin);
+                        };
+                    }
+                }
+                else
+                    System.Diagnostics.Debug.WriteLine($"The view with name '{ScrollViewName}' wasn't found or it isn't a ScrollView");
+            }
+            catch (System.Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+
+        private void ScrollAnimation(double scrollY, int maxHeight, int minHeight, double maxFontSize, double minFontSize, int maxLabelLateralMargin, int minLabelLateralMargin)
+        {
+            if (_isCollapsed && scrollY <= 0)
+                ExpandTopAppBar(maxHeight, minHeight, maxFontSize, minFontSize, maxLabelLateralMargin, minLabelLateralMargin);
+            else if (!_isCollapsed && scrollY >= 70)
+                CollapseTopAppBar(maxHeight, minHeight, maxFontSize, minFontSize, maxLabelLateralMargin, minLabelLateralMargin);
+        }
+
+        private void ExpandTopAppBar(int maxHeight, int minHeight, double maxFontSize, double minFontSize, int maxLabelLateralMargin, int minLabelLateralMargin)
+        {
+            _isCollapsed = false;
+
+            var mainAnimation = new Animation();
+            mainAnimation.Add(0, 1, new Animation(v => RowDefinitions[0].Height = new GridLength(v), minHeight, maxHeight, Easing.Linear));
+            mainAnimation.Add(0, 1, new Animation(v => _headlineLabel.FontSize = v, minFontSize, maxFontSize, Easing.Linear));
+            mainAnimation.Add(0, 1, new Animation(v => _headlineLabel.Margin = new Thickness(v, HeadlineMarginAdjustment.Top, v, HeadlineMarginAdjustment.Bottom), minLabelLateralMargin, maxLabelLateralMargin, Easing.SinIn));
+            mainAnimation.Commit(this, $"{nameof(MaterialTopAppBar)}{Id}", 16, (uint)ScrollViewAnimationLength, null);
+        }
+
+        private void CollapseTopAppBar(int maxHeight, int minHeight, double maxFontSize, double minFontSize, int maxLabelLateralMargin, int minLabelLateralMargin)
+        {
+            _isCollapsed = true;
+
+            var mainAnimation = new Animation();
+            mainAnimation.Add(0, 1, new Animation(v => RowDefinitions[0].Height = new GridLength(v), maxHeight, minHeight, Easing.Linear));
+            mainAnimation.Add(0, 1, new Animation(v => _headlineLabel.FontSize = v, maxFontSize, minFontSize, Easing.Linear));
+            mainAnimation.Add(0, 1, new Animation(v => _headlineLabel.Margin = new Thickness(v, HeadlineMarginAdjustment.Top, v, HeadlineMarginAdjustment.Bottom), maxLabelLateralMargin, minLabelLateralMargin, Easing.SinOut));
+            mainAnimation.Commit(this, $"{nameof(MaterialTopAppBar)}{Id}", 16, (uint)ScrollViewAnimationLength, null);
+        }
+
+        private void SetType()
         {
             switch (Type)
             {
                 case MaterialTopAppBarType.Small:
-                    _headlineLabel.HorizontalTextAlignment = Xamarin.Forms.TextAlignment.Start;
+                    _headlineLabel.HorizontalTextAlignment = TextAlignment.Start;
+                    _headlineLabel.Margin = new Thickness(_smallLabelLateralMargin, HeadlineMarginAdjustment.Top, _smallLabelLateralMargin, HeadlineMarginAdjustment.Bottom);
                     break;
                 case MaterialTopAppBarType.Medium:
-                    RowDefinitions.Add(new RowDefinition() { Height = new GridLength(48) });
-                    Grid.SetRow(_headlineLabel, 1);
-                    Grid.SetColumn(_headlineLabel, 0);
-                    Grid.SetColumnSpan(_headlineLabel, 3);
-                    _headlineLabel.HorizontalTextAlignment = Xamarin.Forms.TextAlignment.Start;
-                    _headlineLabel.Margin = new Thickness(10, 0);
-                    _headlineLabel.FontSize = 28;
-                    RowSpacing = 10;
+                    _headlineLabel.HorizontalTextAlignment = TextAlignment.Start;
+                    _headlineLabel.VerticalOptions = LayoutOptions.End;
+                    _headlineLabel.Margin = new Thickness(_mediumLabelLateralMargin, HeadlineMarginAdjustment.Top, _mediumLabelLateralMargin, HeadlineMarginAdjustment.Bottom);
+                    _headlineLabel.FontSize = _mediumDefaultFontSize;
+                    RowDefinitions[0].Height = new GridLength(_mediumRowHeight);
                     break;
                 case MaterialTopAppBarType.Large:
-                    RowDefinitions.Add(new RowDefinition() { Height = new GridLength(48) });
-                    Grid.SetRow(_headlineLabel, 1);
-                    Grid.SetColumn(_headlineLabel, 0);
-                    Grid.SetColumnSpan(_headlineLabel, 3);
-                    _headlineLabel.HorizontalTextAlignment = Xamarin.Forms.TextAlignment.Start;
-                    _headlineLabel.Margin = new Thickness(10, 0);
-                    _headlineLabel.FontSize = 32;
-                    RowSpacing = 10;
+                    _headlineLabel.HorizontalTextAlignment = TextAlignment.Start;
+                    _headlineLabel.VerticalOptions = LayoutOptions.End;
+                    _headlineLabel.Margin = new Thickness(_largeLabelLateralMargin, HeadlineMarginAdjustment.Top, _largeLabelLateralMargin, HeadlineMarginAdjustment.Bottom);
+                    _headlineLabel.FontSize = _largeDefaultFontSize;
+                    RowDefinitions[0].Height = new GridLength(_largeRowHeight);
                     break;
             }
         }

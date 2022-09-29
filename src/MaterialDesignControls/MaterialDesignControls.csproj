@@ -156,6 +156,8 @@
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialOutlineButton.cs" />
     <Compile Include="ControlsMaterial3\MaterialTopAppBar.cs" />
     <Compile Include="Implementations\ContentViewButton.cs" />
+    <Compile Include="Effects\TouchReleaseEffect.cs" />
+    <Compile Include="Effects\Effects.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

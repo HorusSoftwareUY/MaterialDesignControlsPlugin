@@ -1,12 +1,10 @@
 ﻿using System;
 using Android.Views;
-using Plugin.MaterialDesignControls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using View = Android.Views.View;
 using TouchAndPressEffect = Plugin.MaterialDesignControls.Android.TouchAndPressEffect;
 
-[assembly: ResolutionGroupName(Plugin.MaterialDesignControls.TouchAndPressEffect.EffectIdPrefix)]
 [assembly: ExportEffect(typeof(TouchAndPressEffect), nameof(TouchAndPressEffect))]
 
 namespace Plugin.MaterialDesignControls.Android

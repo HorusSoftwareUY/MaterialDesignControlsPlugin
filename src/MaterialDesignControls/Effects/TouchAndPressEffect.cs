@@ -23,9 +23,7 @@ namespace Plugin.MaterialDesignControls
 
     public class TouchAndPressEffect : RoutingEffect
     {
-        public const string EffectIdPrefix = "TouchAndPressEffect";
-
-        public TouchAndPressEffect() : base($"{EffectIdPrefix}.{nameof(TouchAndPressEffect)}")
+        public TouchAndPressEffect() : base($"{Effects.EffectIdPrefix}.{nameof(TouchAndPressEffect)}")
         {
         }
     }

@@ -389,5 +389,17 @@
             <Setter Property="ShadowColor" Value="Black" />
             <Setter Property="TextColor" Value="White" />
 	    </Style>
+
+        <!-- MaterialTopAppBar -->
+        <Style TargetType="material3:MaterialTopAppBar">
+            <Setter Property="Type" Value="CenterAligned" />
+            <Setter Property="HeadlineFontFamily" Value="{StaticResource RegularFont}" />
+            <Setter Property="HeadlineColor" Value="Black" />
+            <Setter Property="HeadlineMarginAdjustment">
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,3,0,0" />
+                </OnPlatform>
+            </Setter>
+	    </Style>
     </Application.Resources>
 </Application>
