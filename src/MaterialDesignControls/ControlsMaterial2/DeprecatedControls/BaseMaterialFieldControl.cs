@@ -8,6 +8,8 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("BaseMaterialFieldControl is deprecated, please use BaseMaterialFieldControl of Material 3 instead.")]
+
     public abstract class BaseMaterialFieldControl : ContentView
     {
         #region Properties
@@ -327,7 +329,7 @@ namespace Plugin.MaterialDesignControls
 
         public bool LeadingIconIsVisible
         {
-            get { return !string.IsNullOrEmpty(this.LeadingIcon) || CustomLeadingIcon != null; }
+            get { return !string.IsNullOrEmpty(LeadingIcon) || CustomLeadingIcon != null; }
         }
 
         public static readonly BindableProperty LeadingIconCommandProperty =
@@ -368,7 +370,7 @@ namespace Plugin.MaterialDesignControls
 
         public bool TrailingIconIsVisible
         {
-            get { return !string.IsNullOrEmpty(this.TrailingIcon) || CustomTrailingIcon != null; }
+            get { return !string.IsNullOrEmpty(TrailingIcon) || CustomTrailingIcon != null; }
         }
 
         public static readonly BindableProperty TrailingIconCommandProperty =

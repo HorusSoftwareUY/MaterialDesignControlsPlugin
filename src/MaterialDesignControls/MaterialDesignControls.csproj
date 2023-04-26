@@ -59,6 +59,8 @@
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.cs" />
+    <Compile Include="ControlsMaterial3\MaterialEntry.xaml.cs" />
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
     <Compile Include="Implementations\CustomPicker.cs" />
@@ -78,7 +80,7 @@
       <DependentUpon>MaterialEditor.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialEntry.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialEntry.xaml.cs">
       <DependentUpon>MaterialEntry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -115,7 +117,7 @@
       <DependentUpon>MaterialCodeEntry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\BaseMaterialFieldControl.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\BaseMaterialFieldControl.cs" />
     <Compile Include="TextTransforms.cs" />
     <Compile Include="ControlsMaterial2\MaterialCustomControl.xaml.cs">
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
@@ -168,9 +170,7 @@
     <Folder Include="Animations\" />
     <Folder Include="Effects\" />
     <Folder Include="Utils\" />
-    <Folder Include="ControlsMaterial3\" />
     <Folder Include="Styles\" />
-    <Folder Include="ControlsMaterial2\DeprecatedControls\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
@@ -179,5 +179,10 @@
     <None Remove="ControlsMaterial3\" />
     <None Remove="Styles\" />
     <None Remove="ControlsMaterial2\DeprecatedControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="ControlsMaterial3\MaterialEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
