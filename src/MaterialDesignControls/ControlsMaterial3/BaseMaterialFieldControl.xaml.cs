@@ -23,7 +23,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty CustomContentProperty =
-            BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
+            BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null, propertyChanged: OnCustomContentChanged);
 
         public View CustomContent
         {
@@ -403,6 +403,13 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Icons
 
         #region Methods
+        private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is BaseMaterialFieldControl control)
+            {
+                control.customContent.Content = (View)newValue;
+            }
+        }
 
         private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
         {
@@ -433,27 +440,30 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected abstract void SetHorizontalTextAlignment();
 
-        protected void SetLabelTextColor(Label lblLabel)
+        protected void SetLabelTextColor()
         {
             if (IsControlEnabled)
-                lblLabel.TextColor = IsControlFocused && FocusedLabelTextColor != Color.Transparent ? FocusedLabelTextColor : LabelTextColor;
+                this.lblLabel.TextColor = IsControlFocused && FocusedLabelTextColor != Color.Transparent ? FocusedLabelTextColor : LabelTextColor;
             else
-                lblLabel.TextColor = DisabledLabelTextColor;
+                this.lblLabel.TextColor = DisabledLabelTextColor;
         }
 
-        private void SetBorderAndBackgroundColors(Frame frmContainer, BoxView bxvLine)
+        private void SetBorderAndBackgroundColors()
         {
             if (IsControlEnabled)
-                frmContainer.BackgroundColor = IsControlFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : BackgroundColorControl;
+                this.frmContainer.BackgroundColor = IsControlFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : BackgroundColorControl;
             else
-                frmContainer.BackgroundColor = DisabledBackgroundColor;
+                this.frmContainer.BackgroundColor = DisabledBackgroundColor;
 
             if (IsControlEnabled)
-                frmContainer.BorderColor = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
+                this.frmContainer.BorderColor = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
             else
-                frmContainer.BorderColor = DisabledBorderColor;
+                this.frmContainer.BorderColor = DisabledBorderColor;
 
-            //bxvLine.IsVisible = false;
+            if (IsControlEnabled)
+                this.bxvLine.Color = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
+            else
+                this.bxvLine.Color = DisabledBorderColor;
         }
 
         protected void UpdateLayout(string propertyName)
@@ -463,8 +473,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(IsEnabled):
                     SetIsEnabled();
                     SetTextColor();
-                    SetLabelTextColor(this.lblLabel);
-                    SetBorderAndBackgroundColors(this.frmContainer, this.bxvLine);
+                    SetLabelTextColor();
+                    SetBorderAndBackgroundColors();
                     break;
                 case nameof(TextColor):
                     SetTextColor();
@@ -498,7 +508,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.lblLabel.IsVisible = !string.IsNullOrEmpty(LabelText);
                     break;
                 case nameof(LabelTextColor):
-                    SetLabelTextColor(lblLabel);
+                    SetLabelTextColor();
                     break;
                 case nameof(LabelSize):
                     this.lblLabel.FontSize = LabelSize;
@@ -515,7 +525,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 //case nameof(Type):
                 case nameof(BackgroundColor):
                 case nameof(BorderColor):
-                    SetBorderAndBackgroundColors(this.frmContainer, this.bxvLine);
+                    SetBorderAndBackgroundColors();
                     break;
                 case nameof(AssistiveText):
                     this.lblAssistive.Text = AssistiveText;
@@ -593,9 +603,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected void SetFocusChange()
         {
-            SetLabelTextColor(this.lblLabel);
+            SetLabelTextColor();
             SetTextColor();
-            SetBorderAndBackgroundColors(this.frmContainer, this.bxvLine);
+            SetBorderAndBackgroundColors();
         }
 
         #endregion Methods

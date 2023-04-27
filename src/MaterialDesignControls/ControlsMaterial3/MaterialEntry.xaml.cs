@@ -59,17 +59,11 @@ namespace Plugin.MaterialDesignControls.Material3
             //});
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
-            frameTapGestureRecognizer.Tapped += TestAction;
-            //    (s, e) =>
-            //{
-            //    this.txtEntry.Focus();
-            //};
+            frameTapGestureRecognizer.Tapped +=  (s, e) =>
+            {
+                this.txtEntry.Focus();
+            };
             this.GetFrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
-        }
-
-        private void TestAction(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion Constructors
