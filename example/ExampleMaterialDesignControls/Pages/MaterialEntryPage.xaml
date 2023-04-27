@@ -178,9 +178,9 @@
                                             ReturnType="Done"
                                             Type="Filled" />
 
-                    <material3:MaterialEntry LabelText="Test Materialfield without content"
+                    <!--<material3:MaterialEntry LabelText="Test Materialfield without content"
                                              BackgroundColor="Red"
-                                             Placeholder="Enter text"/>
+                                             Placeholder="Enter text"/>-->
 
                 </StackLayout>
             </ScrollView>

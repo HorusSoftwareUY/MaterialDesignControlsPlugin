@@ -2,53 +2,11 @@
 <controls3:BaseMaterialFieldControl xmlns="http://xamarin.com/schemas/2014/forms"
                                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                                     xmlns:controls3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-                                    xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
                                     xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
                                     x:Class="Plugin.MaterialDesignControls.Material3.MaterialEntry">
-    <controls3:BaseMaterialFieldControl.Content>
-        <StackLayout Spacing="2">
-            <controls:MaterialLabel x:Name="lblLabel"
-                                    IsVisible="false"
-                                    LineBreakMode="NoWrap"
-                                    Margin="16,0,16,8"
-                                    HorizontalTextAlignment="Start" />
-            
-            <Frame x:Name="frmContainer"
-                   HasShadow="false"
-                   HeightRequest="56"
-                   Padding="16,0">
-                <StackLayout Orientation="Horizontal"
-                             Spacing="0">
-                    <custom:CustomImageButton x:Name="imgLeadingIcon"
-                                              IsVisible="false"
-                                              HorizontalOptions="Start" />
-                    <custom:CustomEntry x:Name="txtEntry"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="FillAndExpand" />
-
-                    <!--<ContentView x:Name="_Content"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="FillAndExpand" />-->
-                    
-                    <custom:CustomImageButton x:Name="imgTrailingIcon"
-                                              IsVisible="false"
-                                              HorizontalOptions="End" />
-
-                    <custom:CustomImageButton x:Name="imgShowPasswordIcon"
-                                              IsVisible="false"
-                                              HorizontalOptions="End" />
-                    <custom:CustomImageButton x:Name="imgClearIcon"
-                                              IsVisible="false"
-                                              HorizontalOptions="End" />
-                </StackLayout>
-            </Frame>
-            <BoxView x:Name="bxvLine"
-                     HeightRequest="1" />
-            <controls:MaterialLabel x:Name="lblAssistive"
-                                    IsVisible="false"
-                                    LineBreakMode="NoWrap"
-                                    Margin="14,2,14,0"
-                                    HorizontalTextAlignment="Start" />
-        </StackLayout>
-    </controls3:BaseMaterialFieldControl.Content>
+    <controls3:BaseMaterialFieldControl.CustomContent>
+        <custom:CustomEntry x:Name="txtEntry"
+                            VerticalOptions="Center"
+                            HorizontalOptions="FillAndExpand" />
+    </controls3:BaseMaterialFieldControl.CustomContent>
 </controls3:BaseMaterialFieldControl>

@@ -59,7 +59,7 @@
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.cs" />
+    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.xaml.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.xaml.cs" />
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
@@ -181,6 +181,9 @@
     <None Remove="ControlsMaterial2\DeprecatedControls\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

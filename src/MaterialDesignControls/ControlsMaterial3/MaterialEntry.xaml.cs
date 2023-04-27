@@ -1,11 +1,7 @@
 ﻿using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -29,44 +25,51 @@ namespace Plugin.MaterialDesignControls.Material3
             this.txtEntry.Unfocused += HandleFocusChange;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
 
-            imgClearIcon.Command = new Command(() =>
-            {
-                Text = string.Empty;
-                txtEntry.Text = string.Empty;
-            });
+            //TODO: check for future
+            //imgClearIcon.Command = new Command(() =>
+            //{
+            //    Text = string.Empty;
+            //    txtEntry.Text = string.Empty;
+            //});
 
-            imgShowPasswordIcon.Command = new Command(() =>
-            {
-                if (passwordIsVisible)
-                {
-                    txtEntry.IsPassword = true;
-                    passwordIsVisible = false;
+            //imgShowPasswordIcon.Command = new Command(() =>
+            //{
+            //    if (passwordIsVisible)
+            //    {
+            //        txtEntry.IsPassword = true;
+            //        passwordIsVisible = false;
 
-                    // Display the show password icon
-                    if (CustomShowPasswordIcon != null)
-                        imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
-                    else if (!string.IsNullOrEmpty(ShowPasswordIcon))
-                        imgShowPasswordIcon.SetImage(ShowPasswordIcon);
-                }
-                else
-                {
-                    txtEntry.IsPassword = false;
-                    passwordIsVisible = true;
+            //        // Display the show password icon
+            //        if (CustomShowPasswordIcon != null)
+            //            imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
+            //        else if (!string.IsNullOrEmpty(ShowPasswordIcon))
+            //            imgShowPasswordIcon.SetImage(ShowPasswordIcon);
+            //    }
+            //    else
+            //    {
+            //        txtEntry.IsPassword = false;
+            //        passwordIsVisible = true;
 
-                    // Display the hide password icon
-                    if (CustomHidePasswordIcon != null)
-                        imgShowPasswordIcon.SetCustomImage(CustomHidePasswordIcon);
-                    else if (!string.IsNullOrEmpty(HidePasswordIcon))
-                        imgShowPasswordIcon.SetImage(HidePasswordIcon);
-                }
-            });
+            //        // Display the hide password icon
+            //        if (CustomHidePasswordIcon != null)
+            //            imgShowPasswordIcon.SetCustomImage(CustomHidePasswordIcon);
+            //        else if (!string.IsNullOrEmpty(HidePasswordIcon))
+            //            imgShowPasswordIcon.SetImage(HidePasswordIcon);
+            //    }
+            //});
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
-            frameTapGestureRecognizer.Tapped += (s, e) =>
-            {
-                this.txtEntry.Focus();
-            };
-            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+            frameTapGestureRecognizer.Tapped += TestAction;
+            //    (s, e) =>
+            //{
+            //    this.txtEntry.Focus();
+            //};
+            this.GetFrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+        }
+
+        private void TestAction(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion Constructors
@@ -322,7 +325,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.InitializeComponent();
             }
 
-            UpdateLayout(propertyName, lblLabel, lblAssistive, frmContainer, bxvLine, imgLeadingIcon, imgTrailingIcon);
+            UpdateLayout(propertyName);
 
             switch (propertyName)
             {
@@ -367,41 +370,41 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.txtEntry.CursorPosition = this.CursorPosition;
                     break;
 
-                case nameof(IsPassword):
-                    this.txtEntry.IsPassword = IsPassword;
-                    SetShowPasswordIconIsVisible();
-                    break;
-                case nameof(ShowPasswordIcon):
-                    if (!string.IsNullOrEmpty(ShowPasswordIcon))
-                        imgShowPasswordIcon.SetImage(ShowPasswordIcon);
+                //case nameof(IsPassword):
+                //    this.txtEntry.IsPassword = IsPassword;
+                //    SetShowPasswordIconIsVisible();
+                //    break;
+                //case nameof(ShowPasswordIcon):
+                //    if (!string.IsNullOrEmpty(ShowPasswordIcon))
+                //        imgShowPasswordIcon.SetImage(ShowPasswordIcon);
 
-                    SetShowPasswordIconIsVisible();
-                    break;
-                case nameof(CustomShowPasswordIcon):
-                    if (CustomShowPasswordIcon != null)
-                        imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
+                //    SetShowPasswordIconIsVisible();
+                //    break;
+                //case nameof(CustomShowPasswordIcon):
+                //    if (CustomShowPasswordIcon != null)
+                //        imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
 
-                    SetShowPasswordIconIsVisible();
-                    break;
-                case nameof(ShowPasswordIconIsVisible):
-                    SetShowPasswordIconIsVisible();
-                    break;
+                //    SetShowPasswordIconIsVisible();
+                //    break;
+                //case nameof(ShowPasswordIconIsVisible):
+                //    SetShowPasswordIconIsVisible();
+                //    break;
                 
-                case nameof(this.ClearIcon):
-                    if (!string.IsNullOrEmpty(this.ClearIcon))
-                        imgClearIcon.SetImage(ClearIcon);
+                //case nameof(this.ClearIcon):
+                //    if (!string.IsNullOrEmpty(this.ClearIcon))
+                //        imgClearIcon.SetImage(ClearIcon);
 
-                    SetClearIconIsVisible();
-                    break;
-                case nameof(CustomClearIcon):
-                    if (CustomClearIcon != null)
-                        imgClearIcon.SetCustomImage(CustomClearIcon);
+                //    SetClearIconIsVisible();
+                //    break;
+                //case nameof(CustomClearIcon):
+                //    if (CustomClearIcon != null)
+                //        imgClearIcon.SetCustomImage(CustomClearIcon);
 
-                    SetClearIconIsVisible();
-                    break;
-                case nameof(this.ClearIconIsVisible):
-                    SetClearIconIsVisible();
-                    break;
+                //    SetClearIconIsVisible();
+                //    break;
+                //case nameof(this.ClearIconIsVisible):
+                //    SetClearIconIsVisible();
+                //    break;
 
                 case nameof(this.TabIndex):
                     if (this.TabIndex != 0)
@@ -437,17 +440,17 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private void SetShowPasswordIconIsVisible()
-        {
-            imgShowPasswordIcon.IsVisible = IsPassword && ShowPasswordIconIsVisible && IsEnabled
-                && (!string.IsNullOrEmpty(ShowPasswordIcon) || CustomShowPasswordIcon != null);
-        }
+        //private void SetShowPasswordIconIsVisible()
+        //{
+        //    imgShowPasswordIcon.IsVisible = IsPassword && ShowPasswordIconIsVisible && IsEnabled
+        //        && (!string.IsNullOrEmpty(ShowPasswordIcon) || CustomShowPasswordIcon != null);
+        //}
 
-        private void SetClearIconIsVisible()
-        {
-            imgClearIcon.IsVisible = ClearIconIsVisible && IsEnabled && !string.IsNullOrEmpty(Text)
-                && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
-        }
+        //private void SetClearIconIsVisible()
+        //{
+        //    imgClearIcon.IsVisible = ClearIconIsVisible && IsEnabled && !string.IsNullOrEmpty(Text)
+        //        && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
+        //}
 
         protected override void SetIsEnabled()
         {
@@ -462,7 +465,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void SetPadding()
         {
-            frmContainer.Padding = Padding;
+            this.GetFrameContainer.Padding = Padding;
         }
 
         protected override void SetTextColor()
@@ -518,7 +521,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            base.SetFocusChange(lblLabel, frmContainer, bxvLine);
+            base.SetFocusChange();
 
             if (IsControlFocused)
             {
@@ -533,10 +536,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (this.ClearIconIsVisible && this.IsControlEnabled)
-            {
-                this.imgClearIcon.IsVisible = !string.IsNullOrEmpty(e.NewTextValue);
-            }
+            //if (this.ClearIconIsVisible && this.IsControlEnabled)
+            //{
+            //    this.imgClearIcon.IsVisible = !string.IsNullOrEmpty(e.NewTextValue);
+            //}
 
             var changedByTextTransform = Text != null && txtEntry.Text != null && Text.ToLower() == txtEntry.Text.ToLower();
 

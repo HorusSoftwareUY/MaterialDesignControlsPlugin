@@ -1,5 +1,4 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Implementations;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -8,7 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public abstract class BaseMaterialFieldControl : ContentView
+    public abstract partial class BaseMaterialFieldControl : ContentView
     {
         #region Properties
 
@@ -21,6 +20,16 @@ namespace Plugin.MaterialDesignControls.Material3
         //    get { return (FieldTypes)GetValue(TypeProperty); }
         //    set { SetValue(TypeProperty, value); }
         //}
+
+
+        public static readonly BindableProperty CustomContentProperty =
+            BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public View CustomContent
+        {
+            get { return (View)GetValue(CustomContentProperty); }
+            set { SetValue(CustomContentProperty, value); }
+        }
 
         public static readonly BindableProperty FieldHeightRequestProperty =
             BindableProperty.Create(nameof(FieldHeightRequest), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 56.0);
@@ -68,7 +77,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Text
 
-        //Proposed States: Normal, Focused, Disabled, Error
+        //Proposed States: Normal, Focused, Disabled, Error (Check for future)
         public static readonly BindableProperty TextColorProperty =
             BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
 
@@ -244,7 +253,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AssistiveMarginProperty =
-            BindableProperty.Create(nameof(AssistiveMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(16, 4 , 16, 0));
+            BindableProperty.Create(nameof(AssistiveMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(16, 4, 16, 0));
 
         public Thickness AssistiveMargin
         {
@@ -406,6 +415,8 @@ namespace Plugin.MaterialDesignControls.Material3
             return true;
         }
 
+        protected Frame GetFrameContainer => frmContainer;
+
         protected abstract void SetIsEnabled();
 
         protected abstract void SetPadding();
@@ -445,15 +456,15 @@ namespace Plugin.MaterialDesignControls.Material3
             //bxvLine.IsVisible = false;
         }
 
-        protected void UpdateLayout(string propertyName, Label lblLabel, Label lblAssistive, Frame frmContainer, BoxView bxvLine, CustomImageButton imgLeadingIcon, CustomImageButton imgTrailingIcon)
+        protected void UpdateLayout(string propertyName)
         {
             switch (propertyName)
             {
                 case nameof(IsEnabled):
                     SetIsEnabled();
                     SetTextColor();
-                    SetLabelTextColor(lblLabel);
-                    SetBorderAndBackgroundColors(frmContainer, bxvLine);
+                    SetLabelTextColor(this.lblLabel);
+                    SetBorderAndBackgroundColors(this.frmContainer, this.bxvLine);
                     break;
                 case nameof(TextColor):
                     SetTextColor();
@@ -467,14 +478,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetFontFamily();
 
                     if (LabelFontFamily != null)
-                        lblLabel.FontFamily = LabelFontFamily;
+                        this.lblLabel.FontFamily = LabelFontFamily;
                     else if (LabelFontFamily == null && FontFamily != null)
-                        lblLabel.FontFamily = FontFamily;
+                        this.lblLabel.FontFamily = FontFamily;
 
                     if (AssistiveFontFamily != null)
-                        lblAssistive.FontFamily = AssistiveFontFamily;
+                        this.lblAssistive.FontFamily = AssistiveFontFamily;
                     else if (AssistiveFontFamily == null && FontFamily != null)
-                        lblAssistive.FontFamily = FontFamily;
+                        this.lblAssistive.FontFamily = FontFamily;
                     break;
                 case nameof(Placeholder):
                     SetPlaceholder();
@@ -483,61 +494,61 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetPlaceholderColor();
                     break;
                 case nameof(LabelText):
-                    lblLabel.Text = LabelText;
-                    lblLabel.IsVisible = !string.IsNullOrEmpty(LabelText);
+                    this.lblLabel.Text = LabelText;
+                    this.lblLabel.IsVisible = !string.IsNullOrEmpty(LabelText);
                     break;
                 case nameof(LabelTextColor):
                     SetLabelTextColor(lblLabel);
                     break;
                 case nameof(LabelSize):
-                    lblLabel.FontSize = LabelSize;
+                    this.lblLabel.FontSize = LabelSize;
                     break;
                 case nameof(LabelMargin):
-                    lblLabel.Margin = LabelMargin;
+                    this.lblLabel.Margin = LabelMargin;
                     break;
                 case nameof(Padding):
                     SetPadding();
                     break;
                 case nameof(CornerRadius):
-                    frmContainer.CornerRadius = Convert.ToInt32(CornerRadius);
+                    this.frmContainer.CornerRadius = Convert.ToInt32(CornerRadius);
                     break;
                 //case nameof(Type):
                 case nameof(BackgroundColor):
                 case nameof(BorderColor):
-                    SetBorderAndBackgroundColors(frmContainer, bxvLine);
+                    SetBorderAndBackgroundColors(this.frmContainer, this.bxvLine);
                     break;
                 case nameof(AssistiveText):
-                    lblAssistive.Text = AssistiveText;
-                    lblAssistive.IsVisible = !string.IsNullOrEmpty(AssistiveText);
+                    this.lblAssistive.Text = AssistiveText;
+                    this.lblAssistive.IsVisible = !string.IsNullOrEmpty(AssistiveText);
                     if (AnimateError && !string.IsNullOrEmpty(AssistiveText))
                         ShakeAnimation.Animate(this);
                     break;
                 case nameof(AssistiveTextColor):
-                    lblAssistive.TextColor = AssistiveTextColor;
+                    this.lblAssistive.TextColor = AssistiveTextColor;
                     break;
                 case nameof(AssistiveSize):
-                    lblAssistive.FontSize = AssistiveSize;
+                    this.lblAssistive.FontSize = AssistiveSize;
                     break;
                 case nameof(AssistiveMargin):
-                    lblAssistive.Margin = AssistiveMargin;
+                    this.lblAssistive.Margin = AssistiveMargin;
                     break;
 
                 case nameof(LeadingIcon):
                     if (!string.IsNullOrEmpty(LeadingIcon))
-                        imgLeadingIcon.SetImage(LeadingIcon);
+                        this.imgLeadingIcon.SetImage(LeadingIcon);
 
-                    imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+                    this.imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(CustomLeadingIcon):
                     if (CustomLeadingIcon != null)
-                        imgLeadingIcon.SetCustomImage(CustomLeadingIcon);
+                        this.imgLeadingIcon.SetCustomImage(CustomLeadingIcon);
 
-                    imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+                    this.imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(LeadingIconCommand):
                     if (LeadingIconCommand != null)
                     {
-                        imgLeadingIcon.Tapped = () =>
+                        this.imgLeadingIcon.Tapped = () =>
                         {
                             if (LeadingIconCommand != null)
                                 LeadingIconCommand.Execute(LeadingIconCommandParameter);
@@ -547,20 +558,20 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(TrailingIcon):
                     if (!string.IsNullOrEmpty(TrailingIcon))
-                        imgTrailingIcon.SetImage(TrailingIcon);
+                        this.imgTrailingIcon.SetImage(TrailingIcon);
 
-                    imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(CustomTrailingIcon):
                     if (CustomTrailingIcon != null)
-                        imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
+                        this.imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
 
-                    imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(TrailingIconCommand):
                     if (TrailingIconCommand != null)
                     {
-                        imgTrailingIcon.Tapped = () =>
+                        this.imgTrailingIcon.Tapped = () =>
                         {
                             if (TrailingIconCommand != null)
                                 TrailingIconCommand.Execute(TrailingIconCommandParameter);
@@ -569,22 +580,22 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(FieldHeightRequest):
-                    frmContainer.HeightRequest = FieldHeightRequest;
+                    this.frmContainer.HeightRequest = FieldHeightRequest;
                     break;
 
                 case nameof(HorizontalTextAlignment):
                     SetHorizontalTextAlignment();
-                    lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
-                    lblAssistive.HorizontalTextAlignment = HorizontalTextAlignment;
+                    this.lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
+                    this.lblAssistive.HorizontalTextAlignment = HorizontalTextAlignment;
                     break;
             }
         }
 
-        protected void SetFocusChange(Label lblLabel, Frame frmContainer, BoxView bxvLine)
+        protected void SetFocusChange()
         {
-            SetLabelTextColor(lblLabel);
+            SetLabelTextColor(this.lblLabel);
             SetTextColor();
-            SetBorderAndBackgroundColors(frmContainer, bxvLine);
+            SetBorderAndBackgroundColors(this.frmContainer, this.bxvLine);
         }
 
         #endregion Methods

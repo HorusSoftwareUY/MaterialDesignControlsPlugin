@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Plugin.MaterialDesignControls.Material3.BaseMaterialFieldControl"
+             xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls">
+    <ContentView.Content>
+        <StackLayout Spacing="2">
+            <controls:MaterialLabel x:Name="lblLabel"
+                                    IsVisible="false"
+                                    LineBreakMode="NoWrap"
+                                    Margin="16,0,16,8"
+                                    HorizontalTextAlignment="Start" />
+
+            <Frame x:Name="frmContainer"
+                   HasShadow="false"
+                   HeightRequest="56"
+                   Padding="16,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="56" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <custom:CustomImageButton x:Name="imgLeadingIcon"
+                                              IsVisible="false"
+                                              Grid.Column="0"
+                                              Grid.Row="0"
+                                              HorizontalOptions="Start" />
+
+                    <ContentView x:Name="content"
+                                 VerticalOptions="Center"
+                                 Grid.Column="1"
+                                 Grid.Row="0"
+                                 HorizontalOptions="FillAndExpand" />
+
+                    <!--TODO: implement or try to it after first iteration-->
+                    <!--<custom:CustomImageButton x:Name="imgShowPasswordIcon"
+                                              IsVisible="false"
+                                              HorizontalOptions="End" />
+
+                    <custom:CustomImageButton x:Name="imgClearIcon"
+                                              IsVisible="false"
+                                              HorizontalOptions="End" />-->
+
+                    <custom:CustomImageButton x:Name="imgTrailingIcon"
+                                              IsVisible="false"
+                                              Grid.Column="2"
+                                              Grid.Row="0"
+                                              HorizontalOptions="End" />
+                </Grid>
+            </Frame>
+            <BoxView x:Name="bxvLine"
+                     HeightRequest="1" />
+            <controls:MaterialLabel x:Name="lblAssistive"
+                                    IsVisible="false"
+                                    LineBreakMode="NoWrap"
+                                    Margin="14,2,14,0"
+                                    HorizontalTextAlignment="Start" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
