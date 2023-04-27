@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialEntry : BaseMaterialFieldControl
+    public partial class MaterialEntry : ContentView
     {
         #region Constructors
 
@@ -63,7 +63,7 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 this.txtEntry.Focus();
             };
-            this.GetFrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+            //this.GetFrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
@@ -276,20 +276,20 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CursorPositionProperty, value); }
         }
 
-        public override bool IsControlFocused
-        {
-            get { return txtEntry.IsFocused; }
-        }
+        //public override bool IsControlFocused
+        //{
+        //    get { return txtEntry.IsFocused; }
+        //}
 
-        public override bool IsControlEnabled
-        {
-            get { return this.IsEnabled; }
-        }
+        //public override bool IsControlEnabled
+        //{
+        //    get { return this.IsEnabled; }
+        //}
 
-        public override Color BackgroundColorControl
-        {
-            get { return this.BackgroundColor; }
-        }
+        //public override Color BackgroundColorControl
+        //{
+        //    get { return this.BackgroundColor; }
+        //}
 
         #endregion Properties
 
@@ -319,7 +319,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.InitializeComponent();
             }
 
-            UpdateLayout(propertyName);
+            //UpdateLayout(propertyName);
 
             switch (propertyName)
             {
@@ -446,54 +446,54 @@ namespace Plugin.MaterialDesignControls.Material3
         //        && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
         //}
 
-        protected override void SetIsEnabled()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-                txtEntry.IsEnabled = IsEnabled;
-            else
-            {
-                // Workaround to a disabled text color issue in Android
-                txtEntry.IsReadOnly = !IsEnabled;
-            }
-        }
+        //protected override void SetIsEnabled()
+        //{
+        //    if (Device.RuntimePlatform == Device.iOS)
+        //        txtEntry.IsEnabled = IsEnabled;
+        //    else
+        //    {
+        //        // Workaround to a disabled text color issue in Android
+        //        txtEntry.IsReadOnly = !IsEnabled;
+        //    }
+        //}
 
-        protected override void SetPadding()
-        {
-            this.GetFrameContainer.Padding = Padding;
-        }
+        //protected override void SetPadding()
+        //{
+        //    this.GetFrameContainer.Padding = Padding;
+        //}
 
-        protected override void SetTextColor()
-        {
-            if (IsControlEnabled)
-                txtEntry.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
-            else
-                txtEntry.TextColor = DisabledTextColor;
-        }
+        //protected override void SetTextColor()
+        //{
+        //    if (IsControlEnabled)
+        //        txtEntry.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
+        //    else
+        //        txtEntry.TextColor = DisabledTextColor;
+        //}
 
-        protected override void SetFontSize()
-        {
-            txtEntry.FontSize = FontSize;
-        }
+        //protected override void SetFontSize()
+        //{
+        //    txtEntry.FontSize = FontSize;
+        //}
 
-        protected override void SetFontFamily()
-        {
-            txtEntry.FontFamily = FontFamily;
-        }
+        //protected override void SetFontFamily()
+        //{
+        //    txtEntry.FontFamily = FontFamily;
+        //}
 
-        protected override void SetPlaceholder()
-        {
-            txtEntry.Placeholder = Placeholder;
-        }
+        //protected override void SetPlaceholder()
+        //{
+        //    txtEntry.Placeholder = Placeholder;
+        //}
 
-        protected override void SetPlaceholderColor()
-        {
-            txtEntry.PlaceholderColor = PlaceholderColor;
-        }
+        //protected override void SetPlaceholderColor()
+        //{
+        //    txtEntry.PlaceholderColor = PlaceholderColor;
+        //}
 
-        protected override void SetHorizontalTextAlignment()
-        {
-            txtEntry.HorizontalTextAlignment = HorizontalTextAlignment;
-        }
+        //protected override void SetHorizontalTextAlignment()
+        //{
+        //    txtEntry.HorizontalTextAlignment = HorizontalTextAlignment;
+        //}
 
         public new bool Focus()
         {
@@ -515,17 +515,17 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            base.SetFocusChange();
+            //base.SetFocusChange();
 
-            if (IsControlFocused)
-            {
-                Focused?.Invoke(this, e);
+            //if (IsControlFocused)
+            //{
+            //    Focused?.Invoke(this, e);
 
-                var textInsideInput = txtEntry.Text;
-                txtEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
-            }
-            else
-                Unfocused?.Invoke(this, e);
+            //    var textInsideInput = txtEntry.Text;
+            //    txtEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
+            //}
+            //else
+            //    Unfocused?.Invoke(this, e);
         }
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)

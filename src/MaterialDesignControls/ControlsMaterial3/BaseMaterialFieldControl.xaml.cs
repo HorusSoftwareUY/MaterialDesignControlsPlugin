@@ -40,7 +40,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty CustomContentProperty =
-            BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: new StackLayout(), propertyChanged: OnCustomContentChanged);
+            BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null, propertyChanged: OnCustomContentChanged);
 
         public View CustomContent
         {

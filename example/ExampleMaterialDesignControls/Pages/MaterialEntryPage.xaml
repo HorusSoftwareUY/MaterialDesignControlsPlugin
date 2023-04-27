@@ -178,7 +178,7 @@
                                             ReturnType="Done"
                                             Type="Filled" />
 
-                    <!--<material3:MaterialEntry />-->
+                    <material3:MaterialEntry />
 
                 </StackLayout>
             </ScrollView>

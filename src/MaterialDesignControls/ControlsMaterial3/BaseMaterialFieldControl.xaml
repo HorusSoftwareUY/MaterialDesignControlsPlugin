@@ -28,15 +28,10 @@
                     <custom:CustomImageButton x:Name="imgLeadingIcon"
                                               IsVisible="false"
                                               Grid.Column="0"
-                                              Grid.Row="0"
                                               HorizontalOptions="Start" />
 
                     <ContentView x:Name="customContent"
-                                 VerticalOptions="Center"
-                                 WidthRequest="20"
-                                 HeightRequest="20"
                                  Grid.Column="1"
-                                 Grid.Row="0"
                                  HorizontalOptions="FillAndExpand" />
 
                     <!--TODO: implement or try to it after first iteration-->
@@ -53,7 +48,6 @@
                                               WidthRequest="24"
                                               HeightRequest="24"
                                               Grid.Column="2"
-                                              Grid.Row="0"
                                               HorizontalOptions="End" />
                 </Grid>
             </Frame>
