@@ -9,6 +9,13 @@ namespace Plugin.MaterialDesignControls.Material3
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public abstract partial class BaseMaterialFieldControl : ContentView
     {
+        #region Constructor
+        public BaseMaterialFieldControl()
+        {
+            InitializeComponent();
+        }
+        #endregion
+
         #region Properties
 
         //TODO: check this and think about future
@@ -23,7 +30,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty CustomContentProperty =
-            BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null, propertyChanged: OnCustomContentChanged);
+            BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: new StackLayout(), propertyChanged: OnCustomContentChanged);
 
         public View CustomContent
         {
