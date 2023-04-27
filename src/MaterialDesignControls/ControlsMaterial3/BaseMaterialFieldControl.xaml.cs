@@ -12,9 +12,19 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Constructor
         public BaseMaterialFieldControl()
         {
-            InitializeComponent();
+            if (!this.initialized)
+            {
+                this.initialized = true;
+                this.InitializeComponent();
+            }
         }
         #endregion
+
+        #region Attributes
+
+        private bool initialized = false;
+
+        #endregion Attributes
 
         #region Properties
 

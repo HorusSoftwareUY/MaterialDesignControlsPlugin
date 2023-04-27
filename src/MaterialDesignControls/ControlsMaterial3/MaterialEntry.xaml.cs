@@ -72,7 +72,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool initialized = false;
 
-        private bool passwordIsVisible = false;
+        //private bool passwordIsVisible = false;
 
         #endregion Attributes
 
