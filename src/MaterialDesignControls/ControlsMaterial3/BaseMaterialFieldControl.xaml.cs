@@ -1,4 +1,5 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.ControlsMaterial3;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -7,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public abstract partial class BaseMaterialFieldControl : ContentView
+    public partial class BaseMaterialFieldControl : ContentView
     {
         #region Constructor
         public BaseMaterialFieldControl()
@@ -40,11 +41,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty CustomContentProperty =
-            BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null, propertyChanged: OnCustomContentChanged);
+            BindableProperty.Create(nameof(CustomContent), typeof(IBaseMaterialFieldControl), typeof(BaseMaterialFieldControl), defaultValue: null, propertyChanged: OnCustomContentChanged);
 
-        public View CustomContent
+        public IBaseMaterialFieldControl CustomContent
         {
-            get { return (View)GetValue(CustomContentProperty); }
+            get { return (IBaseMaterialFieldControl)GetValue(CustomContentProperty); }
             set { SetValue(CustomContentProperty, value); }
         }
 
@@ -83,13 +84,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
             set { SetValue(HorizontalTextAlignmentProperty, value); }
         }
-
-        public abstract bool IsControlFocused { get; }
-
-        public abstract bool IsControlEnabled { get; }
-
-        public abstract Color BackgroundColorControl { get; }
-
         #endregion Properties
 
         #region Text
@@ -420,6 +414,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Icons
 
         #region Methods
+
         private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is BaseMaterialFieldControl control)
@@ -439,46 +434,32 @@ namespace Plugin.MaterialDesignControls.Material3
             return true;
         }
 
-        protected Frame GetFrameContainer => frmContainer;
-
-        protected abstract void SetIsEnabled();
-
-        protected abstract void SetPadding();
-
-        protected abstract void SetTextColor();
-
-        protected abstract void SetFontSize();
-
-        protected abstract void SetFontFamily();
-
-        protected abstract void SetPlaceholder();
-
-        protected abstract void SetPlaceholderColor();
-
-        protected abstract void SetHorizontalTextAlignment();
-
         protected void SetLabelTextColor()
         {
-            if (IsControlEnabled)
-                this.lblLabel.TextColor = IsControlFocused && FocusedLabelTextColor != Color.Transparent ? FocusedLabelTextColor : LabelTextColor;
+            if (CustomContent == null) return;
+
+            if (CustomContent.IsControlEnabled())
+                this.lblLabel.TextColor = CustomContent.IsControlFocused() && FocusedLabelTextColor != Color.Transparent ? FocusedLabelTextColor : LabelTextColor;
             else
                 this.lblLabel.TextColor = DisabledLabelTextColor;
         }
 
         private void SetBorderAndBackgroundColors()
         {
-            if (IsControlEnabled)
-                this.frmContainer.BackgroundColor = IsControlFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : BackgroundColorControl;
+            if (CustomContent == null) return;
+
+            if (CustomContent.IsControlEnabled())
+                this.frmContainer.BackgroundColor = CustomContent.IsControlFocused() && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : CustomContent.BackgroundColorControl();
             else
                 this.frmContainer.BackgroundColor = DisabledBackgroundColor;
 
-            if (IsControlEnabled)
-                this.frmContainer.BorderColor = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
+            if (CustomContent.IsControlEnabled())
+                this.frmContainer.BorderColor = CustomContent.IsControlFocused() && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
             else
                 this.frmContainer.BorderColor = DisabledBorderColor;
 
-            if (IsControlEnabled)
-                this.bxvLine.Color = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
+            if (CustomContent.IsControlEnabled())
+                this.bxvLine.Color = CustomContent.IsControlFocused() && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
             else
                 this.bxvLine.Color = DisabledBorderColor;
         }
@@ -488,21 +469,21 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (propertyName)
             {
                 case nameof(IsEnabled):
-                    SetIsEnabled();
-                    SetTextColor();
+                    CustomContent.SetIsEnabled();
+                    CustomContent.SetTextColor(FocusedTextColor, TextColor, DisabledTextColor);
                     SetLabelTextColor();
                     SetBorderAndBackgroundColors();
                     break;
                 case nameof(TextColor):
-                    SetTextColor();
+                    CustomContent.SetTextColor(FocusedTextColor, TextColor, DisabledTextColor);
                     break;
                 case nameof(FontSize):
-                    SetFontSize();
+                    CustomContent.SetFontSize();
                     break;
                 case nameof(FontFamily):
                 case nameof(LabelFontFamily):
                 case nameof(AssistiveFontFamily):
-                    SetFontFamily();
+                    CustomContent.SetFontFamily();
 
                     if (LabelFontFamily != null)
                         this.lblLabel.FontFamily = LabelFontFamily;
@@ -515,10 +496,10 @@ namespace Plugin.MaterialDesignControls.Material3
                         this.lblAssistive.FontFamily = FontFamily;
                     break;
                 case nameof(Placeholder):
-                    SetPlaceholder();
+                    CustomContent.SetPlaceholder();
                     break;
                 case nameof(PlaceholderColor):
-                    SetPlaceholderColor();
+                    CustomContent.SetPlaceholderColor();
                     break;
                 case nameof(LabelText):
                     this.lblLabel.Text = LabelText;
@@ -534,7 +515,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.lblLabel.Margin = LabelMargin;
                     break;
                 case nameof(Padding):
-                    SetPadding();
+                    frmContainer.Padding = this.Padding;
                     break;
                 case nameof(CornerRadius):
                     this.frmContainer.CornerRadius = Convert.ToInt32(CornerRadius);
@@ -577,8 +558,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         this.imgLeadingIcon.Tapped = () =>
                         {
-                            if (LeadingIconCommand != null)
-                                LeadingIconCommand.Execute(LeadingIconCommandParameter);
+                            LeadingIconCommand?.Execute(LeadingIconCommandParameter);
                         };
                     }
                     break;
@@ -600,8 +580,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         this.imgTrailingIcon.Tapped = () =>
                         {
-                            if (TrailingIconCommand != null)
-                                TrailingIconCommand.Execute(TrailingIconCommandParameter);
+                            TrailingIconCommand?.Execute(TrailingIconCommandParameter);
                         };
                     }
                     break;
@@ -611,7 +590,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(HorizontalTextAlignment):
-                    SetHorizontalTextAlignment();
+                    CustomContent.SetHorizontalTextAlignment();
                     this.lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
                     this.lblAssistive.HorizontalTextAlignment = HorizontalTextAlignment;
                     break;
@@ -621,7 +600,7 @@ namespace Plugin.MaterialDesignControls.Material3
         protected void SetFocusChange()
         {
             SetLabelTextColor();
-            SetTextColor();
+            CustomContent.SetTextColor(FocusedTextColor, TextColor, DisabledTextColor);
             SetBorderAndBackgroundColors();
         }
 
