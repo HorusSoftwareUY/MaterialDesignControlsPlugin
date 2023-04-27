@@ -10,12 +10,13 @@
             <controls:MaterialLabel x:Name="lblLabel"
                                     IsVisible="false"
                                     LineBreakMode="NoWrap"
-                                    Margin="14,0,14,2"
+                                    Margin="16,0,16,8"
                                     HorizontalTextAlignment="Start" />
+            
             <Frame x:Name="frmContainer"
                    HasShadow="false"
-                   HeightRequest="40"
-                   Padding="12,0">
+                   HeightRequest="56"
+                   Padding="16,0">
                 <StackLayout Orientation="Horizontal"
                              Spacing="0">
                     <custom:CustomImageButton x:Name="imgLeadingIcon"
@@ -24,6 +25,11 @@
                     <custom:CustomEntry x:Name="txtEntry"
                                         VerticalOptions="Center"
                                         HorizontalOptions="FillAndExpand" />
+
+                    <!--<ContentView x:Name="_Content"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="FillAndExpand" />-->
+                    
                     <custom:CustomImageButton x:Name="imgTrailingIcon"
                                               IsVisible="false"
                                               HorizontalOptions="End" />

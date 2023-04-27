@@ -82,7 +82,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEntry), defaultValue: new Thickness(12, 0));
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEntry), defaultValue: new Thickness(16, 0));
 
         public new Thickness Padding
         {

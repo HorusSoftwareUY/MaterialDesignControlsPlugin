@@ -68,6 +68,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Text
 
+        //Proposed States: Normal, Focused, Disabled, Error
         public static readonly BindableProperty TextColorProperty =
             BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
 
@@ -194,7 +195,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMarginProperty =
-            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(14, 0, 14, 2));
+            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(16, 0, 16, 0));
 
         public Thickness LabelMargin
         {
@@ -243,7 +244,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AssistiveMarginProperty =
-            BindableProperty.Create(nameof(AssistiveMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(14, 2, 14, 0));
+            BindableProperty.Create(nameof(AssistiveMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(16, 4 , 16, 0));
 
         public Thickness AssistiveMargin
         {
