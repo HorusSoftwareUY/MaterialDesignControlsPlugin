@@ -4,9 +4,33 @@
                                     xmlns:controls3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
                                     xmlns:custom3="clr-namespace:Plugin.MaterialDesignControls.Material3.Implementations;assembly=Plugin.MaterialDesignControls"
                                     x:Class="Plugin.MaterialDesignControls.Material3.MaterialEntry">
+
+    <controls3:BaseMaterialFieldControl.Content />
+    <!--<controls3:BaseMaterialFieldControl.Content>
+        <StackLayout>
+            --><!--<custom3:CustomEntry x:Name="txtEntry"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="FillAndExpand" />--><!--
+        </StackLayout>
+    </controls3:BaseMaterialFieldControl.Content>-->
+    
+    <!--<controls3:BaseMaterialFieldControl>
+        <StackLayout>
+            <custom3:CustomEntry x:Name="txtEntry"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+    </controls3:BaseMaterialFieldControl>-->
+    
     <controls3:BaseMaterialFieldControl.CustomContent>
         <custom3:CustomEntry x:Name="txtEntry"
                             VerticalOptions="Center"
                             HorizontalOptions="FillAndExpand" />
     </controls3:BaseMaterialFieldControl.CustomContent>
+
+    <!--<custom3:CustomEntry x:Name="txtEntry"
+                         VerticalOptions="Center"
+                         WidthRequest="10"
+                         HorizontalOptions="FillAndExpand" />-->
+    
 </controls3:BaseMaterialFieldControl>

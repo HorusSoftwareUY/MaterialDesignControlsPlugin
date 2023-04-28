@@ -1,4 +1,5 @@
-﻿using Plugin.MaterialDesignControls.Implementations;
+﻿using Plugin.MaterialDesignControls.ControlsMaterial3;
+using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
 using System.Runtime.CompilerServices;
@@ -11,6 +12,11 @@ namespace Plugin.MaterialDesignControls.Material3
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialEntry : BaseMaterialFieldControl
     {
+        //protected override void OnApplyTemplate()
+        //{
+        //    this.CustomContent = txtEntry;
+        //    //base.OnApplyTemplate();
+        //}
         #region Constructors
 
         public MaterialEntry()
@@ -63,7 +69,7 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 this.txtEntry.Focus();
             };
-            //this.GetFrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+            this.FrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
@@ -304,7 +310,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.InitializeComponent();
             }
 
-            UpdateLayout(propertyName);
+            //UpdateLayout(propertyName);
 
             switch (propertyName)
             {
@@ -451,7 +457,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            base.SetFocusChange();
+            //SetFocusChange();
 
             if (txtEntry.IsControlFocused())
             {

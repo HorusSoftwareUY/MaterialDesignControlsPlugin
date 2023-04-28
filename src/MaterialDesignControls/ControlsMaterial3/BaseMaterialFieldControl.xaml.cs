@@ -1,5 +1,6 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.ControlsMaterial3;
+using Plugin.MaterialDesignControls.Material3.Implementations;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -8,7 +9,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BaseMaterialFieldControl : ContentView
+    public partial class BaseMaterialFieldControl : ContentPresenter
     {
         #region Constructor
         public BaseMaterialFieldControl()
@@ -41,7 +42,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty CustomContentProperty =
-            BindableProperty.Create(nameof(CustomContent), typeof(IBaseMaterialFieldControl), typeof(BaseMaterialFieldControl), defaultValue: null, propertyChanged: OnCustomContentChanged);
+            BindableProperty.Create(nameof(CustomContent), typeof(IBaseMaterialFieldControl), typeof(BaseMaterialFieldControl), defaultValue: new CustomEntry(), propertyChanged: OnCustomContentChanged);
 
         public IBaseMaterialFieldControl CustomContent
         {
@@ -415,11 +416,13 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
+        public Frame FrameContainer => this.frmContainer;
+        
         private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is BaseMaterialFieldControl control)
             {
-                control.customContent.Content = (View)newValue;
+                control.customContent.Children.Add((View)newValue);
             }
         }
 
@@ -464,7 +467,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.bxvLine.Color = DisabledBorderColor;
         }
 
-        protected void UpdateLayout(string propertyName)
+        public void UpdateLayout(string propertyName)
         {
             switch (propertyName)
             {
@@ -597,7 +600,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        protected void SetFocusChange()
+        public void SetFocusChange()
         {
             SetLabelTextColor();
             CustomContent.SetTextColor(FocusedTextColor, TextColor, DisabledTextColor);

@@ -104,9 +104,6 @@
                         <material:MaterialEntry.CustomHidePasswordIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg" />
                         </material:MaterialEntry.CustomHidePasswordIcon>
-                        <material:MaterialEntry.CustomTrailingIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
-                        </material:MaterialEntry.CustomTrailingIcon>
                     </material:MaterialEntry>
 
                     <material:MaterialEntry HorizontalTextAlignment="Center"
@@ -178,7 +175,11 @@
                                             ReturnType="Done"
                                             Type="Filled" />
 
-                    <material3:MaterialEntry />
+                    <material3:MaterialEntry LabelText="Hola">
+                        <material3:MaterialEntry.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                        </material3:MaterialEntry.CustomTrailingIcon>
+                    </material3:MaterialEntry>
 
                 </StackLayout>
             </ScrollView>

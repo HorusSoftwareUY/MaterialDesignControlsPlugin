@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPresenter xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plugin.MaterialDesignControls.Material3.BaseMaterialFieldControl"
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls">
-    <ContentView.Content>
-        <StackLayout Spacing="2">
+    <ContentPresenter.Content>
+        <StackLayout Spacing="2" BackgroundColor="Red">
             <controls:MaterialLabel x:Name="lblLabel"
                                     IsVisible="false"
                                     LineBreakMode="NoWrap"
@@ -30,9 +30,14 @@
                                               Grid.Column="0"
                                               HorizontalOptions="Start" />
 
-                    <ContentView x:Name="customContent"
+                    <StackLayout Orientation="Horizontal"
                                  Grid.Column="1"
+                                 x:Name="customContent"
                                  HorizontalOptions="FillAndExpand" />
+
+                    <!--<ContentPresenter x:Name="customContent"
+                                 Grid.Column="1"
+                                 HorizontalOptions="FillAndExpand" />-->
 
                     <!--TODO: implement or try to it after first iteration-->
                     <!--<custom:CustomImageButton x:Name="imgShowPasswordIcon"
@@ -59,5 +64,5 @@
                                     Margin="14,2,14,0"
                                     HorizontalTextAlignment="Start" />
         </StackLayout>
-    </ContentView.Content>
-</ContentView>
+    </ContentPresenter.Content>
+</ContentPresenter>
