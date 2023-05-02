@@ -597,11 +597,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public void SetFocusChange()
         {
+            var state = CustomContent.IsControlFocused() ? "Focused" : CustomContent.IsControlEnabled() ? "Normal" : "Disabled";
+            VisualStateManager.GoToState((VisualElement)CustomContent, state);
             SetLabelTextColor();
             CustomContent.SetTextColor(TextColor);
             SetBorderAndBackgroundColors();
-            var state = CustomContent.IsControlFocused() ? "Focused" : CustomContent.IsControlEnabled() ? "Normal" : "Disabled";
-            VisualStateManager.GoToState((VisualElement)CustomContent, state);
         }
 
         #endregion Methods

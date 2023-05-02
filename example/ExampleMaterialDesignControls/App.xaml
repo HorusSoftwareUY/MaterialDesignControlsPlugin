@@ -400,7 +400,7 @@
                     Value="showPassword.png" />
         </Style>
 
-        <Style TargetType="material3:MaterialEntry">
+        <Style TargetType="material3:BaseMaterialFieldControl">
             <Setter Property="AnimateError"
                     Value="True" />
             <Setter Property="AssistiveTextColor"
@@ -443,11 +443,12 @@
                         <VisualState x:Name="Focused">
                             <VisualState.Setters>
                                 <Setter Property="TextColor"
-                                        Value="{StaticResource TextColor}" />
+                                        Value="Red" />
                                 <Setter Property="LabelTextColor"
                                         Value="{StaticResource GradientColor1}" />
                                 <Setter Property="BorderColor"
                                         Value="Red" />
+                                <!--BorderMaterialColor-->
                                 <Setter Property="BackgroundColor"
                                         Value="{StaticResource GradientColorTransparent1}" />
                             </VisualState.Setters>
