@@ -18,9 +18,7 @@ namespace Plugin.MaterialDesignControls.Material3
             txtEntry = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry()
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = Color.Red,
-                Margin = new Thickness(0)
+                HorizontalOptions = LayoutOptions.FillAndExpand
             };
             txtEntry.SetValue(Grid.ColumnProperty, 1);
             txtEntry.SetValue(Grid.RowProperty, 1);

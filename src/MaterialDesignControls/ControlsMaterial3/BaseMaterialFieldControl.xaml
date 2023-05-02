@@ -10,7 +10,7 @@
                    HasShadow="false"
                    HeightRequest="56"
                    Padding="16,8">
-                <Grid x:Name="contentLayout" BackgroundColor="Green">
+                <Grid x:Name="contentLayout">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15" />
                         <RowDefinition Height="*" />
@@ -25,8 +25,8 @@
                                             IsVisible="false"
                                             LineBreakMode="NoWrap"
                                             Grid.Row="0"
-                                            Grid.ColumnSpan="3"
-                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Grid.Column="1"
                                             HorizontalTextAlignment="Start" />
                     
                     <custom:CustomImageButton x:Name="imgLeadingIcon"
@@ -37,23 +37,6 @@
                                               WidthRequest="24"
                                               HeightRequest="24"
                                               HorizontalOptions="Start" />
-
-                    <!--<ContentView Grid.Column="1"
-                                 x:Name="customContent"
-                                 HorizontalOptions="FillAndExpand" />-->
-
-                    <!--<ContentPresenter x:Name="customContent"
-                                 Grid.Column="1"
-                                 HorizontalOptions="FillAndExpand" />-->
-
-                    <!--TODO: implement or try to it after first iteration-->
-                    <!--<custom:CustomImageButton x:Name="imgShowPasswordIcon"
-                                              IsVisible="false"
-                                              HorizontalOptions="End" />
-
-                    <custom:CustomImageButton x:Name="imgClearIcon"
-                                              IsVisible="false"
-                                              HorizontalOptions="End" />-->
 
                     <custom:CustomImageButton x:Name="imgTrailingIcon"
                                               IsVisible="false"
@@ -70,7 +53,8 @@
             <controls:MaterialLabel x:Name="lblAssistive"
                                     IsVisible="false"
                                     LineBreakMode="NoWrap"
-                                    Margin="14,2,14,0"
+                                    BackgroundColor="Transparent"
+                                    Margin="16,4,16,0"
                                     HorizontalTextAlignment="Start" />
         </StackLayout>
     </ContentView.Content>

@@ -401,8 +401,6 @@
         </Style>
 
         <Style TargetType="material3:MaterialEntry">
-            <Setter Property="CornerRadius"
-                    Value="6" />
             <Setter Property="AnimateError"
                     Value="True" />
             <Setter Property="AssistiveTextColor"
@@ -449,7 +447,7 @@
                                 <Setter Property="LabelTextColor"
                                         Value="{StaticResource GradientColor1}" />
                                 <Setter Property="BorderColor"
-                                        Value="{StaticResource BorderMaterialColor}" />
+                                        Value="Red" />
                                 <Setter Property="BackgroundColor"
                                         Value="{StaticResource GradientColorTransparent1}" />
                             </VisualState.Setters>

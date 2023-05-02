@@ -24,6 +24,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             {
                 Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
                 Control.SetPadding(0, 0, 0, 0);
+                Control.Left = 0;
 
                 if (Element.ReturnType == ReturnType.Default || Element.ReturnType == ReturnType.Next)
                     Control.ImeOptions = (ImeAction)ImeFlags.NoExtractUi;
