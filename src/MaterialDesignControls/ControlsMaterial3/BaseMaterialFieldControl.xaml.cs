@@ -470,7 +470,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetLabelTextColor();
                     SetBorderAndBackgroundColors();
                     var state = IsEnabled ? "Normal" : "Disabled";
-                    VisualStateManager.GoToState((VisualElement)CustomContent, state);
+                    VisualStateManager.GoToState(this, state);
                     break;
                 case nameof(TextColor):
                     CustomContent.SetTextColor(TextColor);
@@ -598,7 +598,7 @@ namespace Plugin.MaterialDesignControls.Material3
         public void SetFocusChange()
         {
             var state = CustomContent.IsControlFocused() ? "Focused" : CustomContent.IsControlEnabled() ? "Normal" : "Disabled";
-            VisualStateManager.GoToState((VisualElement)CustomContent, state);
+            VisualStateManager.GoToState(this, state);
             SetLabelTextColor();
             CustomContent.SetTextColor(TextColor);
             SetBorderAndBackgroundColors();

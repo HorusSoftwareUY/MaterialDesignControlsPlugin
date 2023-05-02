@@ -109,56 +109,6 @@
         <Color x:Key="GradientGreenColor">#0c3900</Color>
         <Color x:Key="GradientGreenColorTransparent">#d9e7cb</Color>
 
-        <!-- BaseMaterialStyle -->
-        <Style TargetType="material:BaseMaterialFieldControl"
-               x:Key="BaseMaterialStyle">
-            <Setter Property="Type"
-                    Value="Outlined" />
-            <Setter Property="CornerRadius"
-                    Value="6" />
-            <Setter Property="AnimateError"
-                    Value="True" />
-            <!--<Setter Property="FontFamily" Value="" />-->
-
-            <Setter Property="TextColor"
-                    Value="{StaticResource TextColor}" />
-            <Setter Property="FocusedTextColor"
-                    Value="{StaticResource TextColor}" />
-            <Setter Property="DisabledTextColor"
-                    Value="{StaticResource DarkGrayColor}" />
-            <Setter Property="FontSize"
-                    Value="{StaticResource Body1FontSize}" />
-
-            <Setter Property="PlaceholderColor"
-                    Value="{StaticResource PlaceholderColor}" />
-
-            <Setter Property="LabelTextColor"
-                    Value="{StaticResource GradientColor1}" />
-            <Setter Property="FocusedLabelTextColor"
-                    Value="{StaticResource GradientColor1}" />
-            <Setter Property="DisabledLabelTextColor"
-                    Value="{StaticResource DarkGrayColor}" />
-            <Setter Property="LabelSize"
-                    Value="{StaticResource Body3FontSize}" />
-
-            <Setter Property="AssistiveTextColor"
-                    Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveSize"
-                    Value="{StaticResource Body3FontSize}" />
-
-            <Setter Property="BorderColor"
-                    Value="{StaticResource GradientColor1}" />
-            <Setter Property="FocusedBorderColor"
-                    Value="{StaticResource BorderMaterialColor}" />
-            <Setter Property="DisabledBorderColor"
-                    Value="{StaticResource DarkGrayColor}" />
-
-            <Setter Property="FocusedBackgroundColor"
-                    Value="{StaticResource GradientColorTransparent1}" />
-            <Setter Property="DisabledBackgroundColor"
-                    Value="{StaticResource GrayColor}" />
-        </Style>
-
         <!-- MaterialLabel -->
         <Style TargetType="material:MaterialLabel">
             <Setter Property="TextColor"
@@ -387,20 +337,8 @@
                     Value="{StaticResource RegularFont}" />
         </Style>
 
-        <!-- MaterialEntry -->
-        <Style TargetType="material:MaterialEntry"
-               BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor"
-                    Value="{StaticResource BackgroundMaterialColor}" />
-            <Setter Property="ClearIcon"
-                    Value="cancel.png" />
-            <Setter Property="ClearIconIsVisible"
-                    Value="True" />
-            <Setter Property="ShowPasswordIcon"
-                    Value="showPassword.png" />
-        </Style>
-
-        <Style TargetType="material3:BaseMaterialFieldControl">
+        <Style TargetType="material3:BaseMaterialFieldControl"
+               x:Key="BaseMaterial3Style">
             <Setter Property="AnimateError"
                     Value="True" />
             <Setter Property="AssistiveTextColor"
@@ -413,6 +351,14 @@
                     Value="{StaticResource PlaceholderColor}" />
             <Setter Property="LabelSize"
                     Value="{StaticResource Body3FontSize}" />
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}" />
+            <Setter Property="LabelTextColor"
+                    Value="{StaticResource GradientColor1}" />
+            <Setter Property="BorderColor"
+                    Value="{StaticResource GradientColor1}" />
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
@@ -443,12 +389,11 @@
                         <VisualState x:Name="Focused">
                             <VisualState.Setters>
                                 <Setter Property="TextColor"
-                                        Value="Red" />
+                                        Value="{StaticResource TextColor}" />
                                 <Setter Property="LabelTextColor"
-                                        Value="{StaticResource GradientColor1}" />
+                                        Value="{StaticResource BorderMaterialColor}" />
                                 <Setter Property="BorderColor"
-                                        Value="Red" />
-                                <!--BorderMaterialColor-->
+                                        Value="{StaticResource BorderMaterialColor}" />
                                 <Setter Property="BackgroundColor"
                                         Value="{StaticResource GradientColorTransparent1}" />
                             </VisualState.Setters>
@@ -456,6 +401,13 @@
                     </VisualStateGroup>
                 </VisualStateGroupList>
             </Setter>
+        </Style>
+
+        <!--MaterialEntry-->
+        <Style TargetType="material3:MaterialEntry"
+               BasedOn="{StaticResource BaseMaterial3Style}">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource BackgroundMaterialColor}" />
         </Style>
 
         <!-- MaterialEditor -->
