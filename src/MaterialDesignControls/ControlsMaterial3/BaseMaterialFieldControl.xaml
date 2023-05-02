@@ -5,14 +5,15 @@
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls">
     <ContentView.Content>
-        <StackLayout Spacing="2">
+        <StackLayout Spacing="2" 
+                     BackgroundColor="Transparent">
             <Frame x:Name="frmContainer"
                    HasShadow="false"
                    HeightRequest="56"
                    Padding="16,8">
                 <Grid x:Name="contentLayout">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="15" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>

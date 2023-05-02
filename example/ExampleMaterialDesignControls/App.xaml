@@ -337,6 +337,57 @@
                     Value="{StaticResource RegularFont}" />
         </Style>
 
+        <!-- BaseMaterialStyle -->
+        <Style TargetType="material:BaseMaterialFieldControl"
+               x:Key="BaseMaterialStyle">
+            <Setter Property="Type"
+                    Value="Outlined" />
+            <Setter Property="CornerRadius"
+                    Value="6" />
+            <Setter Property="AnimateError"
+                    Value="True" />
+            <Setter Property="FontFamily" Value="" />
+
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}" />
+            <Setter Property="FocusedTextColor"
+                    Value="{StaticResource TextColor}" />
+            <Setter Property="DisabledTextColor"
+                    Value="{StaticResource DarkGrayColor}" />
+            <Setter Property="FontSize"
+                    Value="{StaticResource Body1FontSize}" />
+
+            <Setter Property="PlaceholderColor"
+                    Value="{StaticResource PlaceholderColor}" />
+
+            <Setter Property="LabelTextColor"
+                    Value="{StaticResource GradientColor1}" />
+            <Setter Property="FocusedLabelTextColor"
+                    Value="{StaticResource GradientColor1}" />
+            <Setter Property="DisabledLabelTextColor"
+                    Value="{StaticResource DarkGrayColor}" />
+            <Setter Property="LabelSize"
+                    Value="{StaticResource Body3FontSize}" />
+
+            <Setter Property="AssistiveTextColor"
+                    Value="{StaticResource AssistiveTextColor}" />
+            <Setter Property="AssistiveSize"
+                    Value="{StaticResource Body3FontSize}" />
+
+            <Setter Property="BorderColor"
+                    Value="{StaticResource GradientColor1}" />
+            <Setter Property="FocusedBorderColor"
+                    Value="{StaticResource BorderMaterialColor}" />
+            <Setter Property="DisabledBorderColor"
+                    Value="{StaticResource DarkGrayColor}" />
+
+            <Setter Property="FocusedBackgroundColor"
+                    Value="{StaticResource GradientColorTransparent1}" />
+            <Setter Property="DisabledBackgroundColor"
+                    Value="{StaticResource GrayColor}" />
+        </Style>
+
+
         <Style TargetType="material3:BaseMaterialFieldControl"
                x:Key="BaseMaterial3Style">
             <Setter Property="AnimateError"

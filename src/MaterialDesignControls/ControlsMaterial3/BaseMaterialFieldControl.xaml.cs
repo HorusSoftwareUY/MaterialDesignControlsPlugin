@@ -58,14 +58,14 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(FieldHeightRequestProperty, value); }
         }
 
-        //public static readonly BindableProperty CornerRadiusProperty =
-        //    BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 4.0);
+        public static readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 10.0);
 
-        //public double CornerRadius
-        //{
-        //    get { return (double)GetValue(CornerRadiusProperty); }
-        //    set { SetValue(CornerRadiusProperty, value); }
-        //}
+        public double CornerRadius
+        {
+            get { return (double)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
 
         public static readonly BindableProperty AnimateErrorProperty =
             BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(BaseMaterialFieldControl), defaultValue: false);
@@ -515,9 +515,9 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(Padding):
                     frmContainer.Padding = this.Padding;
                     break;
-                //case nameof(CornerRadius):
-                //    this.frmContainer.CornerRadius = Convert.ToInt32(CornerRadius);
-                //    break;
+                case nameof(CornerRadius):
+                    this.frmContainer.CornerRadius = Convert.ToInt32(CornerRadius);
+                    break;
                 //case nameof(Type):
                 case nameof(BackgroundColor):
                 case nameof(BorderColor):
