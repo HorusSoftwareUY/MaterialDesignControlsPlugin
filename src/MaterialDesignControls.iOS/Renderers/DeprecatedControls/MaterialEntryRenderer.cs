@@ -1,5 +1,6 @@
 ﻿using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.iOS;
+using System;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -8,6 +9,7 @@ using Xamarin.Forms.Platform.iOS;
 
 namespace Plugin.MaterialDesignControls.iOS
 {
+    [Obsolete("MaterialEntryRenderer is deprecated, please use MaterialEntryRenderer of Material 3 instead.")]
     public class MaterialEntryRenderer : EntryRenderer
     {
         public static void Init() { }

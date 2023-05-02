@@ -1,7 +1,9 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
 {
+    [Obsolete("CustomEntry is deprecated, please use CustomEntry of Material 3 instead.")]
     public class CustomEntry : Entry
     {
         public static readonly BindableProperty IsCodeProperty =

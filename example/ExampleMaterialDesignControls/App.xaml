@@ -400,11 +400,11 @@
                     Value="showPassword.png" />
         </Style>
 
-        <!--<Style TargetType="material3:MaterialEntry"
+        <Style TargetType="material3:MaterialEntry"
                BasedOn="{StaticResource BaseMaterialStyle}">
             <Setter Property="BackgroundColor"
                     Value="{StaticResource BackgroundMaterialColor}" />
-        </Style>-->
+        </Style>
 
         <!-- MaterialEditor -->
         <Style TargetType="material:MaterialEditor"
