@@ -1,12 +1,11 @@
 ﻿using Android.Content;
 using Android.Graphics.Drawables;
-using Android.Views.InputMethods;
-using Plugin.MaterialDesignControls.Material3.Implementations;
+using AndroidGraphics = Android.Graphics;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using AndroidGraphics = Android.Graphics;
+using Android.Views.InputMethods;
 
-[assembly: ExportRenderer(typeof(CustomEntry), typeof(Plugin.MaterialDesignControls.Material3.Android.MaterialEntryRenderer))]
+[assembly: ExportRenderer(typeof(Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry), typeof(Plugin.MaterialDesignControls.Material3.Android.MaterialEntryRenderer))]
 
 namespace Plugin.MaterialDesignControls.Material3.Android
 {
