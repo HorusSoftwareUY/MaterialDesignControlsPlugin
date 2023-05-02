@@ -2,6 +2,7 @@
 using Plugin.MaterialDesignControls.ControlsMaterial3;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BaseMaterialFieldControl : ContentPresenter
+    public partial class BaseMaterialFieldControl : ContentView
     {
         #region Constructor
         public BaseMaterialFieldControl()
@@ -39,7 +40,6 @@ namespace Plugin.MaterialDesignControls.Material3
         //    get { return (FieldTypes)GetValue(TypeProperty); }
         //    set { SetValue(TypeProperty, value); }
         //}
-
 
         public static readonly BindableProperty CustomContentProperty =
             BindableProperty.Create(nameof(CustomContent), typeof(IBaseMaterialFieldControl), typeof(BaseMaterialFieldControl), defaultValue: new CustomEntry(), propertyChanged: OnCustomContentChanged);
@@ -420,9 +420,9 @@ namespace Plugin.MaterialDesignControls.Material3
         
         private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (bindable is BaseMaterialFieldControl control)
+            if (bindable is BaseMaterialFieldControl control && control.contentLayout != null)
             {
-                control.customContent.Children.Add((View)newValue);
+                control.contentLayout.Children.Add((View)newValue, 1, 0);
             }
         }
 
@@ -469,6 +469,12 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public void UpdateLayout(string propertyName)
         {
+            if (!this.initialized)
+            {
+                this.initialized = true;
+                InitializeComponent();
+            }
+
             switch (propertyName)
             {
                 case nameof(IsEnabled):

@@ -61,7 +61,7 @@
     </Compile>
     <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.xaml.cs" />
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
-    <Compile Include="ControlsMaterial3\MaterialEntry.xaml.cs" />
+    <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomEntry.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEntry.cs" />
@@ -183,9 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

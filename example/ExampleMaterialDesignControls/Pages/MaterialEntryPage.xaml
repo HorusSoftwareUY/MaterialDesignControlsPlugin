@@ -175,7 +175,7 @@
                                             ReturnType="Done"
                                             Type="Filled" />
 
-                    <material3:MaterialEntry LabelText="Hola">
+                    <material3:MaterialEntry LabelText="Entry 3">
                         <material3:MaterialEntry.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                         </material3:MaterialEntry.CustomTrailingIcon>

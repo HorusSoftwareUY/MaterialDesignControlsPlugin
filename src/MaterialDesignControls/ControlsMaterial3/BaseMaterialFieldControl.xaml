@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPresenter xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plugin.MaterialDesignControls.Material3.BaseMaterialFieldControl"
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls">
-    <ContentPresenter.Content>
-        <StackLayout Spacing="2" BackgroundColor="Red">
+    <ContentView.Content>
+        <StackLayout Spacing="2">
             <controls:MaterialLabel x:Name="lblLabel"
                                     IsVisible="false"
                                     LineBreakMode="NoWrap"
@@ -16,7 +16,7 @@
                    HasShadow="false"
                    HeightRequest="56"
                    Padding="16,0">
-                <Grid>
+                <Grid x:Name="contentLayout">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="56" />
                     </Grid.RowDefinitions>
@@ -30,10 +30,9 @@
                                               Grid.Column="0"
                                               HorizontalOptions="Start" />
 
-                    <StackLayout Orientation="Horizontal"
-                                 Grid.Column="1"
+                    <!--<ContentView Grid.Column="1"
                                  x:Name="customContent"
-                                 HorizontalOptions="FillAndExpand" />
+                                 HorizontalOptions="FillAndExpand" />-->
 
                     <!--<ContentPresenter x:Name="customContent"
                                  Grid.Column="1"
@@ -64,5 +63,5 @@
                                     Margin="14,2,14,0"
                                     HorizontalTextAlignment="Start" />
         </StackLayout>
-    </ContentPresenter.Content>
-</ContentPresenter>
+    </ContentView.Content>
+</ContentView>

@@ -1,5 +1,4 @@
-﻿using Plugin.MaterialDesignControls.ControlsMaterial3;
-using Plugin.MaterialDesignControls.Implementations;
+﻿using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
 using System.Runtime.CompilerServices;
@@ -12,20 +11,22 @@ namespace Plugin.MaterialDesignControls.Material3
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialEntry : BaseMaterialFieldControl
     {
-        //protected override void OnApplyTemplate()
-        //{
-        //    this.CustomContent = txtEntry;
-        //    //base.OnApplyTemplate();
-        //}
         #region Constructors
 
         public MaterialEntry()
         {
-            if (!this.initialized)
+            //if (!this.initialized)
+            //{
+            //    this.initialized = true;
+            //    InitializeComponent();
+            //}
+
+            txtEntry = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry()
             {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+            CustomContent = txtEntry;
 
             this.txtEntry.Focused += HandleFocusChange;
             this.txtEntry.Unfocused += HandleFocusChange;
@@ -75,6 +76,8 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Constructors
 
         #region Attributes
+
+        private Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry txtEntry;
 
         private bool initialized = false;
 
@@ -304,13 +307,13 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!this.initialized)
-            {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
+            //if (!this.initialized)
+            //{
+            //    this.initialized = true;
+            //    InitializeComponent();
+            //}
 
-            //UpdateLayout(propertyName);
+            UpdateLayout(propertyName);
 
             switch (propertyName)
             {
@@ -498,7 +501,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     var nextElement = this.FindNextElement(true, tabIndexes, ref currentTabIndex);
                     if (nextElement != null)
                     {
-                        if (nextElement is CustomEntry nextEntry && nextEntry.IsEnabled && !nextEntry.IsReadOnly)
+                        if (nextElement is Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry nextEntry && nextEntry.IsEnabled && !nextEntry.IsReadOnly)
                         {
                             nextEntry.Focus();
                             string textInsideInput = nextEntry.Text;
