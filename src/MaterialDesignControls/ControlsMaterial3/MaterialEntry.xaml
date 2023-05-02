@@ -6,6 +6,12 @@
                                     x:Class="Plugin.MaterialDesignControls.Material3.MaterialEntry">
 
     <controls3:BaseMaterialFieldControl.Content />
+    <!--<controls3:BaseMaterialFieldControl.CustomContent>
+            <custom3:CustomEntry x:Name="txtEntry"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="FillAndExpand" />
+        </controls3:BaseMaterialFieldControl.CustomContent>-->
+    <!--</controls3:BaseMaterialFieldControl.Content>-->
     <!--<controls3:BaseMaterialFieldControl.Content>
         <StackLayout>
             --><!--<custom3:CustomEntry x:Name="txtEntry"
