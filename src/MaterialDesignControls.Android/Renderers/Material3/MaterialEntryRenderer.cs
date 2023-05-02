@@ -23,7 +23,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             if (Control != null)
             {
                 Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
-                Control.SetPadding(4, 0, 0, 0);
+                Control.SetPadding(0, 0, 0, 0);
 
                 if (Element.ReturnType == ReturnType.Default || Element.ReturnType == ReturnType.Next)
                     Control.ImeOptions = (ImeAction)ImeFlags.NoExtractUi;

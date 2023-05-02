@@ -181,6 +181,12 @@
                         </material3:MaterialEntry.CustomTrailingIcon>
                     </material3:MaterialEntry>
 
+                    <material3:MaterialEntry LabelText="Entry Dis" IsEnabled="False">
+                        <material3:MaterialEntry.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                        </material3:MaterialEntry.CustomTrailingIcon>
+                    </material3:MaterialEntry>
+
                 </StackLayout>
             </ScrollView>
         </Grid>

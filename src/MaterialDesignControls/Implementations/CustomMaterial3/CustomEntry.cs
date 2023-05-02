@@ -18,50 +18,45 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
 
         public bool IsControlEnabled() => this.IsEnabled; 
 
-        public Color BackgroundColorControl() => this.BackgroundColor;
-
-        public void SetIsEnabled()
+        public void SetIsEnabled(bool isEnabled)
         {
             if (Device.RuntimePlatform == Device.iOS)
-                this.IsEnabled = IsEnabled;
+                this.IsEnabled = isEnabled;
             else
             {
                 // Workaround to a disabled text color issue in Android
-                this.IsReadOnly = !IsEnabled;
+                this.IsReadOnly = !isEnabled;
             }
         }
 
-        public void SetTextColor(Color focusedTextColor, Color textColor, Color disabledTextColor)
+        public void SetTextColor(Color textColor)
         {
-            if (IsControlEnabled())
-                this.TextColor = IsControlFocused() && focusedTextColor != Color.Transparent ? focusedTextColor : textColor;
-            else
-                this.TextColor = disabledTextColor;
+            this.TextColor = textColor;
         }
 
-        public void SetFontSize()
+        public void SetFontSize(double fontSize)
         {
-            this.FontSize = FontSize;
+            this.FontSize = fontSize;
         }
 
-        public void SetFontFamily()
+        public void SetFontFamily(string fontFamily)
         {
-            this.FontFamily = FontFamily;
+            this.FontFamily = fontFamily;
         }
 
-        public void SetPlaceholder()
+        public void SetPlaceholder(string placeHolder)
         {
-            this.Placeholder = Placeholder;
+            this.Placeholder = placeHolder;
         }
 
-        public void SetPlaceholderColor()
+        public void SetPlaceholderColor(Color placeHolderColor)
         {
-            this.PlaceholderColor = PlaceholderColor;
+            this.PlaceholderColor = placeHolderColor;
         }
 
-        public void SetHorizontalTextAlignment()
+        public void SetHorizontalTextAlignment(TextAlignment horizontalTextAlignment)
         {
-            this.HorizontalTextAlignment = HorizontalTextAlignment;
+            this.HorizontalTextAlignment = horizontalTextAlignment;
         }
     }
 }

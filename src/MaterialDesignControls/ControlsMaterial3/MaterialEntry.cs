@@ -18,8 +18,12 @@ namespace Plugin.MaterialDesignControls.Material3
             txtEntry = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry()
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Color.Red,
+                Margin = new Thickness(0)
             };
+            txtEntry.SetValue(Grid.ColumnProperty, 1);
+            txtEntry.SetValue(Grid.RowProperty, 1);
             CustomContent = txtEntry;
 
             this.txtEntry.Focused += HandleFocusChange;
@@ -79,14 +83,14 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Properties
 
-        public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEntry), defaultValue: new Thickness(16, 0));
+        //public static readonly new BindableProperty PaddingProperty =
+        //    BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEntry), defaultValue: new Thickness(16, 0));
 
-        public new Thickness Padding
-        {
-            get { return (Thickness)GetValue(PaddingProperty); }
-            set { SetValue(PaddingProperty, value); }
-        }
+        //public new Thickness Padding
+        //{
+        //    get { return (Thickness)GetValue(PaddingProperty); }
+        //    set { SetValue(PaddingProperty, value); }
+        //}
 
         //public static readonly new BindableProperty IsEnabledProperty =
         //    BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialEntry), defaultValue: true);
@@ -178,14 +182,14 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(TextProperty, value); }
         }
 
-        public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray);
+        //public static readonly new BindableProperty BackgroundColorProperty =
+        //    BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray);
 
-        public new Color BackgroundColor
-        {
-            get { return (Color)GetValue(BackgroundColorProperty); }
-            set { SetValue(BackgroundColorProperty, value); }
-        }
+        //public new Color BackgroundColor
+        //{
+        //    get { return (Color)GetValue(BackgroundColorProperty); }
+        //    set { SetValue(BackgroundColorProperty, value); }
+        //}
 
         public static readonly BindableProperty ClearIconProperty =
             BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);

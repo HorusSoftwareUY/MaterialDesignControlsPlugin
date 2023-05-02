@@ -8,20 +8,18 @@ namespace Plugin.MaterialDesignControls.ControlsMaterial3
 
         public bool IsControlEnabled();
 
-        public Color BackgroundColorControl();
+        public void SetIsEnabled(bool isEnabled);
 
-        public void SetIsEnabled();
+        public void SetTextColor(Color textColor);
 
-        public void SetTextColor(Color focusedTextColor, Color textColor, Color disabledTextColor);
+        public void SetFontSize(double fontSize);
 
-        public void SetFontSize();
+        public void SetFontFamily(string fontFamily);
 
-        public void SetFontFamily();
+        public void SetPlaceholder(string placeHolder);
 
-        public void SetPlaceholder();
+        public void SetPlaceholderColor(Color placeHolderColor);
 
-        public void SetPlaceholderColor();
-
-        public void SetHorizontalTextAlignment();
+        public void SetHorizontalTextAlignment(TextAlignment horizontalTextAlignment);
     }
 }

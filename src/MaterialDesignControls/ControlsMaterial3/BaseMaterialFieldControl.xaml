@@ -6,28 +6,36 @@
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls">
     <ContentView.Content>
         <StackLayout Spacing="2">
-            <controls:MaterialLabel x:Name="lblLabel"
-                                    IsVisible="false"
-                                    LineBreakMode="NoWrap"
-                                    Margin="16,0,16,8"
-                                    HorizontalTextAlignment="Start" />
-
             <Frame x:Name="frmContainer"
                    HasShadow="false"
                    HeightRequest="56"
-                   Padding="16,0">
-                <Grid x:Name="contentLayout">
+                   Padding="16,8">
+                <Grid x:Name="contentLayout" BackgroundColor="Green">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="56" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
+
+                    <controls:MaterialLabel x:Name="lblLabel"
+                                            IsVisible="false"
+                                            LineBreakMode="NoWrap"
+                                            Grid.Row="0"
+                                            Grid.ColumnSpan="3"
+                                            Grid.Column="0"
+                                            HorizontalTextAlignment="Start" />
+                    
                     <custom:CustomImageButton x:Name="imgLeadingIcon"
                                               IsVisible="false"
                                               Grid.Column="0"
+                                              Grid.RowSpan="2"
+                                              Grid.Row="0"
+                                              WidthRequest="24"
+                                              HeightRequest="24"
                                               HorizontalOptions="Start" />
 
                     <!--<ContentView Grid.Column="1"
@@ -50,6 +58,8 @@
                     <custom:CustomImageButton x:Name="imgTrailingIcon"
                                               IsVisible="false"
                                               WidthRequest="24"
+                                              Grid.Row="0"
+                                              Grid.RowSpan="2"
                                               HeightRequest="24"
                                               Grid.Column="2"
                                               HorizontalOptions="End" />
