@@ -15,12 +15,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialEntry()
         {
-            //if (!this.initialized)
-            //{
-            //    this.initialized = true;
-            //    InitializeComponent();
-            //}
-
             txtEntry = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry()
             {
                 VerticalOptions = LayoutOptions.Center,
@@ -79,8 +73,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry txtEntry;
 
-        private bool initialized = false;
-
         //private bool passwordIsVisible = false;
 
         #endregion Attributes
@@ -96,14 +88,14 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(PaddingProperty, value); }
         }
 
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialEntry), defaultValue: true);
+        //public static readonly new BindableProperty IsEnabledProperty =
+        //    BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialEntry), defaultValue: true);
 
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
+        //public new bool IsEnabled
+        //{
+        //    get { return (bool)GetValue(IsEnabledProperty); }
+        //    set { SetValue(IsEnabledProperty, value); }
+        //}
 
         public static readonly BindableProperty IsPasswordProperty =
             BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false);
@@ -307,12 +299,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            //if (!this.initialized)
-            //{
-            //    this.initialized = true;
-            //    InitializeComponent();
-            //}
-
             UpdateLayout(propertyName);
 
             switch (propertyName)
@@ -460,7 +446,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            //SetFocusChange();
+            SetFocusChange();
 
             if (txtEntry.IsControlFocused())
             {
