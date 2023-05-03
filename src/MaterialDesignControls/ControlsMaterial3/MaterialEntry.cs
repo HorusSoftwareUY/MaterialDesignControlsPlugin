@@ -463,6 +463,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
+            //TODO: check for future
             //if (this.ClearIconIsVisible && this.IsControlEnabled)
             //{
             //    this.imgClearIcon.IsVisible = !string.IsNullOrEmpty(e.NewTextValue);
