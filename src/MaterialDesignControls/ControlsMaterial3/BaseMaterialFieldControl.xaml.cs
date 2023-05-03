@@ -97,23 +97,23 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(TextColorProperty, value); }
         }
 
-        public static readonly BindableProperty FocusedTextColorProperty =
-            BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
+        //public static readonly BindableProperty FocusedTextColorProperty =
+        //    BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
 
-        public Color FocusedTextColor
-        {
-            get { return (Color)GetValue(FocusedTextColorProperty); }
-            set { SetValue(FocusedTextColorProperty, value); }
-        }
+        //public Color FocusedTextColor
+        //{
+        //    get { return (Color)GetValue(FocusedTextColorProperty); }
+        //    set { SetValue(FocusedTextColorProperty, value); }
+        //}
 
-        public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
+        //public static readonly BindableProperty DisabledTextColorProperty =
+        //    BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
 
-        public Color DisabledTextColor
-        {
-            get { return (Color)GetValue(DisabledTextColorProperty); }
-            set { SetValue(DisabledTextColorProperty, value); }
-        }
+        //public Color DisabledTextColor
+        //{
+        //    get { return (Color)GetValue(DisabledTextColorProperty); }
+        //    set { SetValue(DisabledTextColorProperty, value); }
+        //}
 
         public static readonly BindableProperty FontSizeProperty =
             BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: Font.Default.FontSize);
@@ -177,23 +177,23 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(LabelTextColorProperty, value); }
         }
 
-        public static readonly BindableProperty FocusedLabelTextColorProperty =
-            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
+        //public static readonly BindableProperty FocusedLabelTextColorProperty =
+        //    BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
 
-        public Color FocusedLabelTextColor
-        {
-            get { return (Color)GetValue(FocusedLabelTextColorProperty); }
-            set { SetValue(FocusedLabelTextColorProperty, value); }
-        }
+        //public Color FocusedLabelTextColor
+        //{
+        //    get { return (Color)GetValue(FocusedLabelTextColorProperty); }
+        //    set { SetValue(FocusedLabelTextColorProperty, value); }
+        //}
 
-        public static readonly BindableProperty DisabledLabelTextColorProperty =
-            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+        //public static readonly BindableProperty DisabledLabelTextColorProperty =
+        //    BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
 
-        public Color DisabledLabelTextColor
-        {
-            get { return (Color)GetValue(DisabledLabelTextColorProperty); }
-            set { SetValue(DisabledLabelTextColorProperty, value); }
-        }
+        //public Color DisabledLabelTextColor
+        //{
+        //    get { return (Color)GetValue(DisabledLabelTextColorProperty); }
+        //    set { SetValue(DisabledLabelTextColorProperty, value); }
+        //}
 
         public static readonly BindableProperty LabelSizeProperty =
             BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: Font.Default.FontSize);
@@ -437,12 +437,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected void SetLabelTextColor()
         {
-            if (CustomContent == null) return;
-
-            if (CustomContent.IsControlEnabled())
-                this.lblLabel.TextColor = CustomContent.IsControlFocused() && FocusedLabelTextColor != Color.Transparent ? FocusedLabelTextColor : LabelTextColor;
-            else
-                this.lblLabel.TextColor = DisabledLabelTextColor;
+            this.lblLabel.TextColor = LabelTextColor;
         }
 
         private void SetBorderAndBackgroundColors()
@@ -468,6 +463,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     CustomContent.SetIsEnabled(IsEnabled);
                     CustomContent.SetTextColor(TextColor);
                     SetLabelTextColor();
+                    this.lblLabel.TextColor = LabelTextColor;
                     SetBorderAndBackgroundColors();
                     var state = IsEnabled ? "Normal" : "Disabled";
                     VisualStateManager.GoToState(this, state);
