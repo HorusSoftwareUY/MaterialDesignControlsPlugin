@@ -59,7 +59,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 10.0);
+            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 15.0);
 
         public double CornerRadius
         {
@@ -445,7 +445,7 @@ namespace Plugin.MaterialDesignControls.Material3
             if (CustomContent == null) return;
 
             this.frmContainer.BackgroundColor = BackgroundColor;
-            this.frmContainer.BorderColor = BorderColor;
+            //this.frmContainer.BorderColor = BorderColor;
             this.bxvLine.Color = BorderColor;
         }
 

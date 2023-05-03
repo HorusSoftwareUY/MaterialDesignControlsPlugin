@@ -18,7 +18,8 @@ namespace Plugin.MaterialDesignControls.Material3
             txtEntry = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry()
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalTextAlignment = TextAlignment.Start
             };
             txtEntry.SetValue(Grid.ColumnProperty, 1);
             txtEntry.SetValue(Grid.RowProperty, 1);

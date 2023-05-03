@@ -5,12 +5,10 @@
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls">
     <ContentView.Content>
-        <StackLayout Spacing="2" 
-                     BackgroundColor="Transparent">
+        <StackLayout Spacing="0">
             <Frame x:Name="frmContainer"
                    HasShadow="false"
-                   HeightRequest="56"
-                   Padding="16,8">
+                   Padding="10,8,16,8">
                 <Grid x:Name="contentLayout">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -27,9 +25,10 @@
                                             LineBreakMode="NoWrap"
                                             Grid.Row="0"
                                             Grid.ColumnSpan="2"
+                                            VerticalTextAlignment="End"
                                             Grid.Column="1"
                                             HorizontalTextAlignment="Start" />
-                    
+
                     <custom:CustomImageButton x:Name="imgLeadingIcon"
                                               IsVisible="false"
                                               Grid.Column="0"
@@ -54,7 +53,6 @@
             <controls:MaterialLabel x:Name="lblAssistive"
                                     IsVisible="false"
                                     LineBreakMode="NoWrap"
-                                    BackgroundColor="Transparent"
                                     Margin="16,4,16,0"
                                     HorizontalTextAlignment="Start" />
         </StackLayout>

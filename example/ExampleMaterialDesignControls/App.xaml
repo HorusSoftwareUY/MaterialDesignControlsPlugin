@@ -410,6 +410,8 @@
                     Value="{StaticResource GradientColor1}" />
             <Setter Property="BackgroundColor"
                     Value="{StaticResource BackgroundMaterialColor}" />
+            <Setter Property="CornerRadius"
+                    Value="15" />
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
