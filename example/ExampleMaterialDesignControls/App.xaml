@@ -418,6 +418,8 @@
                                         Value="{StaticResource GradientColor1}" />
                                 <Setter Property="IndicatorColor"
                                         Value="{StaticResource GradientColor1}" />
+                                <Setter Property="BorderColor"
+                                        Value="{StaticResource GradientColor1}" />
                                 <Setter Property="BackgroundColor"
                                         Value="{StaticResource BackgroundMaterialColor}" />
                             </VisualState.Setters>
@@ -430,6 +432,8 @@
                                         Value="{StaticResource DarkGrayColor}" />
                                 <Setter Property="IndicatorColor"
                                         Value="{StaticResource DarkGrayColor}" />
+                                <Setter Property="BorderColor"
+                                        Value="{StaticResource DarkGrayColor}" />
                                 <Setter Property="BackgroundColor"
                                         Value="{StaticResource GrayColor}" />
                             </VisualState.Setters>
@@ -441,6 +445,8 @@
                                 <Setter Property="LabelTextColor"
                                         Value="{StaticResource BorderMaterialColor}" />
                                 <Setter Property="IndicatorColor"
+                                        Value="{StaticResource BorderMaterialColor}" />
+                                <Setter Property="BorderColor"
                                         Value="{StaticResource BorderMaterialColor}" />
                                 <Setter Property="BackgroundColor"
                                         Value="{StaticResource GradientColorTransparent1}" />

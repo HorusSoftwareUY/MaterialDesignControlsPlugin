@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plugin.MaterialDesignControls.Material3.BaseMaterialFieldControl"
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-             xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls">
+             xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+             xmlns:controls3="clr-namespace:Plugin.MaterialDesignControls.Material3.Implementations;assembly=Plugin.MaterialDesignControls">
     <ContentView.Content>
         <StackLayout Spacing="0">
-            <Frame x:Name="frmContainer"
-                   HasShadow="false"
-                   Padding="16,8,16,8">
+            <controls3:CustomFrame x:Name="frmContainer"
+                                   HasShadow="false"
+                                   CornerRadius="5,5,0,0"
+                                   Padding="16,8,16,8">
                 <Grid x:Name="contentLayout"
                       ColumnSpacing="0"
                       RowSpacing="0">
@@ -48,7 +50,7 @@
                                               Grid.Column="2"
                                               HorizontalOptions="End" />
                 </Grid>
-            </Frame>
+            </controls3:CustomFrame>
             <BoxView x:Name="indicator"
                      HeightRequest="1" />
             <controls:MaterialLabel x:Name="lblSupporting"

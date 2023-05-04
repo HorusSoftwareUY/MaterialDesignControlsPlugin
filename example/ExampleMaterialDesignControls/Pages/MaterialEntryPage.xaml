@@ -35,6 +35,18 @@
                                              TabIndex="1"
                                              Text="{Binding Email}" />
 
+                    <material3:MaterialEntry HasBorder="True"
+                                             CornerRadius="10,10,10,10"
+                                             LabelText="Id"
+                                             TabIndex="2"
+                                             Keyboard="Numeric"/>
+
+                    <material3:MaterialEntry CornerRadius="50,50,50,50"
+                                             BorderColor="{StaticResource BorderMaterialColor}"
+                                             LabelText="Id"
+                                             TabIndex="2"
+                                             Keyboard="Numeric" />
+
                     <!--<material3:MaterialEntry AnimateError="True"
                                             ClearIconIsVisible="False"
                                             IsPassword="True"

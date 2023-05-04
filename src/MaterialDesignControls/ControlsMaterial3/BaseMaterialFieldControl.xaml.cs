@@ -59,11 +59,11 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 15.0);
+            BindableProperty.Create(nameof(CornerRadius), typeof(CornerRadius), typeof(BaseMaterialFieldControl));
 
-        public double CornerRadius
+        public CornerRadius CornerRadius
         {
-            get { return (double)GetValue(CornerRadiusProperty); }
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
         }
 
