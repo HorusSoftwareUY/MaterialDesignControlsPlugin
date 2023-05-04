@@ -65,6 +65,7 @@
         <Color x:Key="BorderColor">#b0b0b0</Color>
         <Color x:Key="FocusedBorderColor">#c92726</Color>
         <Color x:Key="AssistiveTextColor">#c92726</Color>
+        <Color x:Key="SupportingTextColor">#c92726</Color>
         <Color x:Key="PlaceholderColor">#66839b</Color>
         <Color x:Key="BackgroundMaterialColor">#0d2e85cc</Color>
         <Color x:Key="BorderMaterialColor">#1f5988</Color>
@@ -392,9 +393,9 @@
                x:Key="BaseMaterial3Style">
             <Setter Property="AnimateError"
                     Value="True" />
-            <Setter Property="AssistiveTextColor"
-                    Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveSize"
+            <Setter Property="SupportingTextColor"
+                    Value="{StaticResource SupportingTextColor}" />
+            <Setter Property="SupportingSize"
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="FontSize"
                     Value="{StaticResource Body1FontSize}" />
@@ -402,12 +403,6 @@
                     Value="{StaticResource PlaceholderColor}" />
             <Setter Property="LabelSize"
                     Value="{StaticResource Body3FontSize}" />
-            <Setter Property="TextColor"
-                    Value="{StaticResource TextColor}" />
-            <Setter Property="LabelTextColor"
-                    Value="{StaticResource GradientColor1}" />
-            <Setter Property="BorderColor"
-                    Value="{StaticResource GradientColor1}" />
             <Setter Property="BackgroundColor"
                     Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="CornerRadius"
@@ -421,7 +416,7 @@
                                         Value="{StaticResource TextColor}" />
                                 <Setter Property="LabelTextColor"
                                         Value="{StaticResource GradientColor1}" />
-                                <Setter Property="BorderColor"
+                                <Setter Property="IndicatorColor"
                                         Value="{StaticResource GradientColor1}" />
                                 <Setter Property="BackgroundColor"
                                         Value="{StaticResource BackgroundMaterialColor}" />
@@ -433,7 +428,7 @@
                                         Value="{StaticResource DarkGrayColor}" />
                                 <Setter Property="LabelTextColor"
                                         Value="{StaticResource DarkGrayColor}" />
-                                <Setter Property="BorderColor"
+                                <Setter Property="IndicatorColor"
                                         Value="{StaticResource DarkGrayColor}" />
                                 <Setter Property="BackgroundColor"
                                         Value="{StaticResource GrayColor}" />
@@ -445,7 +440,7 @@
                                         Value="{StaticResource TextColor}" />
                                 <Setter Property="LabelTextColor"
                                         Value="{StaticResource BorderMaterialColor}" />
-                                <Setter Property="BorderColor"
+                                <Setter Property="IndicatorColor"
                                         Value="{StaticResource BorderMaterialColor}" />
                                 <Setter Property="BackgroundColor"
                                         Value="{StaticResource GradientColorTransparent1}" />

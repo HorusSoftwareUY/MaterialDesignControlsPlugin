@@ -18,8 +18,7 @@ namespace Plugin.MaterialDesignControls.Material3
             txtEntry = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry()
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalTextAlignment = TextAlignment.Start
+                HorizontalOptions = LayoutOptions.FillAndExpand
             };
             txtEntry.SetValue(Grid.ColumnProperty, 1);
             txtEntry.SetValue(Grid.RowProperty, 1);
@@ -190,77 +189,77 @@ namespace Plugin.MaterialDesignControls.Material3
         //    set { SetValue(BackgroundColorProperty, value); }
         //}
 
-        public static readonly BindableProperty ClearIconProperty =
-            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+        //public static readonly BindableProperty ClearIconProperty =
+        //    BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
-        public string ClearIcon
-        {
-            get { return (string)GetValue(ClearIconProperty); }
-            set { SetValue(ClearIconProperty, value); }
-        }
+        //public string ClearIcon
+        //{
+        //    get { return (string)GetValue(ClearIconProperty); }
+        //    set { SetValue(ClearIconProperty, value); }
+        //}
 
-        public static readonly BindableProperty CustomClearIconProperty =
-            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+        //public static readonly BindableProperty CustomClearIconProperty =
+        //    BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
 
-        public View CustomClearIcon
-        {
-            get { return (View)GetValue(CustomClearIconProperty); }
-            set { SetValue(CustomClearIconProperty, value); }
-        }
+        //public View CustomClearIcon
+        //{
+        //    get { return (View)GetValue(CustomClearIconProperty); }
+        //    set { SetValue(CustomClearIconProperty, value); }
+        //}
 
-        public static readonly BindableProperty ClearIconIsVisibleProperty =
-            BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
+        //public static readonly BindableProperty ClearIconIsVisibleProperty =
+        //    BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
 
-        public bool ClearIconIsVisible
-        {
-            get { return (bool)GetValue(ClearIconIsVisibleProperty); }
-            set { SetValue(ClearIconIsVisibleProperty, value); }
-        }
+        //public bool ClearIconIsVisible
+        //{
+        //    get { return (bool)GetValue(ClearIconIsVisibleProperty); }
+        //    set { SetValue(ClearIconIsVisibleProperty, value); }
+        //}
 
-        public static readonly BindableProperty ShowPasswordIconProperty =
-            BindableProperty.Create(nameof(ShowPasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+        //public static readonly BindableProperty ShowPasswordIconProperty =
+        //    BindableProperty.Create(nameof(ShowPasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
-        public string ShowPasswordIcon
-        {
-            get { return (string)GetValue(ShowPasswordIconProperty); }
-            set { SetValue(ShowPasswordIconProperty, value); }
-        }
+        //public string ShowPasswordIcon
+        //{
+        //    get { return (string)GetValue(ShowPasswordIconProperty); }
+        //    set { SetValue(ShowPasswordIconProperty, value); }
+        //}
 
-        public static readonly BindableProperty HidePasswordIconProperty =
-            BindableProperty.Create(nameof(HidePasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
+        //public static readonly BindableProperty HidePasswordIconProperty =
+        //    BindableProperty.Create(nameof(HidePasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
 
-        public string HidePasswordIcon
-        {
-            get { return (string)GetValue(HidePasswordIconProperty); }
-            set { SetValue(HidePasswordIconProperty, value); }
-        }
+        //public string HidePasswordIcon
+        //{
+        //    get { return (string)GetValue(HidePasswordIconProperty); }
+        //    set { SetValue(HidePasswordIconProperty, value); }
+        //}
 
-        public static readonly BindableProperty CustomShowPasswordIconProperty =
-            BindableProperty.Create(nameof(CustomShowPasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+        //public static readonly BindableProperty CustomShowPasswordIconProperty =
+        //    BindableProperty.Create(nameof(CustomShowPasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
 
-        public View CustomShowPasswordIcon
-        {
-            get { return (View)GetValue(CustomShowPasswordIconProperty); }
-            set { SetValue(CustomShowPasswordIconProperty, value); }
-        }
+        //public View CustomShowPasswordIcon
+        //{
+        //    get { return (View)GetValue(CustomShowPasswordIconProperty); }
+        //    set { SetValue(CustomShowPasswordIconProperty, value); }
+        //}
 
-        public static readonly BindableProperty CustomHidePasswordIconProperty =
-            BindableProperty.Create(nameof(CustomHidePasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
+        //public static readonly BindableProperty CustomHidePasswordIconProperty =
+        //    BindableProperty.Create(nameof(CustomHidePasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
 
-        public View CustomHidePasswordIcon
-        {
-            get { return (View)GetValue(CustomHidePasswordIconProperty); }
-            set { SetValue(CustomHidePasswordIconProperty, value); }
-        }
+        //public View CustomHidePasswordIcon
+        //{
+        //    get { return (View)GetValue(CustomHidePasswordIconProperty); }
+        //    set { SetValue(CustomHidePasswordIconProperty, value); }
+        //}
 
-        public static readonly BindableProperty ShowPasswordIconIsVisibleProperty =
-            BindableProperty.Create(nameof(ShowPasswordIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
+        //public static readonly BindableProperty ShowPasswordIconIsVisibleProperty =
+        //    BindableProperty.Create(nameof(ShowPasswordIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
 
-        public bool ShowPasswordIconIsVisible
-        {
-            get { return (bool)GetValue(ShowPasswordIconIsVisibleProperty); }
-            set { SetValue(ShowPasswordIconIsVisibleProperty, value); }
-        }
+        //public bool ShowPasswordIconIsVisible
+        //{
+        //    get { return (bool)GetValue(ShowPasswordIconIsVisibleProperty); }
+        //    set { SetValue(ShowPasswordIconIsVisibleProperty, value); }
+        //}
 
         public static readonly BindableProperty MaxLengthProperty =
             BindableProperty.Create(nameof(MaxLength), typeof(int), typeof(MaterialEntry), defaultValue: Int32.MaxValue);

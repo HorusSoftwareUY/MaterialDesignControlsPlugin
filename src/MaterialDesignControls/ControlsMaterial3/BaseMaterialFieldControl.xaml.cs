@@ -224,54 +224,54 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion LabelText
 
-        #region AssistiveText
+        #region SupportingText
 
-        public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null, validateValue: OnAssistiveTextValidate);
+        public static readonly BindableProperty SupportingTextProperty =
+            BindableProperty.Create(nameof(SupportingText), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null, validateValue: OnSupportingTextValidate);
 
-        public string AssistiveText
+        public string SupportingText
         {
-            get { return (string)GetValue(AssistiveTextProperty); }
-            set { SetValue(AssistiveTextProperty, value); }
+            get { return (string)GetValue(SupportingTextProperty); }
+            set { SetValue(SupportingTextProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+        public static readonly BindableProperty SupportingTextColorProperty =
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
 
-        public Color AssistiveTextColor
+        public Color SupportingTextColor
         {
-            get { return (Color)GetValue(AssistiveTextColorProperty); }
-            set { SetValue(AssistiveTextColorProperty, value); }
+            get { return (Color)GetValue(SupportingTextColorProperty); }
+            set { SetValue(SupportingTextColorProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveSizeProperty =
-            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: Font.Default.FontSize);
+        public static readonly BindableProperty SupportingSizeProperty =
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: Font.Default.FontSize);
 
-        public double AssistiveSize
+        public double SupportingSize
         {
-            get { return (double)GetValue(AssistiveSizeProperty); }
-            set { SetValue(AssistiveSizeProperty, value); }
+            get { return (double)GetValue(SupportingSizeProperty); }
+            set { SetValue(SupportingSizeProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveFontFamilyProperty =
-            BindableProperty.Create(nameof(AssistiveFontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+        public static readonly BindableProperty SupportingFontFamilyProperty =
+            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
 
-        public string AssistiveFontFamily
+        public string SupportingFontFamily
         {
-            get { return (string)GetValue(AssistiveFontFamilyProperty); }
-            set { SetValue(AssistiveFontFamilyProperty, value); }
+            get { return (string)GetValue(SupportingFontFamilyProperty); }
+            set { SetValue(SupportingFontFamilyProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveMarginProperty =
-            BindableProperty.Create(nameof(AssistiveMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(16, 4, 16, 0));
+        public static readonly BindableProperty SupportingMarginProperty =
+            BindableProperty.Create(nameof(SupportingMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(16, 4, 16, 0));
 
-        public Thickness AssistiveMargin
+        public Thickness SupportingMargin
         {
-            get { return (Thickness)GetValue(AssistiveMarginProperty); }
-            set { SetValue(AssistiveMarginProperty, value); }
+            get { return (Thickness)GetValue(SupportingMarginProperty); }
+            set { SetValue(SupportingMarginProperty, value); }
         }
 
-        #endregion AssistiveText
+        #endregion SupportingText
 
         #region Border
 
@@ -282,6 +282,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (Color)GetValue(BorderColorProperty); }
             set { SetValue(BorderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty HasBorderProperty =
+            BindableProperty.Create(nameof(HasBorder), typeof(bool), typeof(BaseMaterialFieldControl), defaultValue: false);
+
+        public bool HasBorder
+        {
+            get { return (bool)GetValue(HasBorderProperty); }
+            set { SetValue(HasBorderProperty, value); }
         }
 
         //public static readonly BindableProperty FocusedBorderColorProperty =
@@ -304,7 +313,29 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion Border
 
+        #region Indicator
+
+        public static readonly BindableProperty IndicatorColorProperty =
+            BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
+
+        public Color IndicatorColor
+        {
+            get { return (Color)GetValue(IndicatorColorProperty); }
+            set { SetValue(IndicatorColorProperty, value); }
+        }
+
+        #endregion Indicator
+
         #region Background
+
+        public static readonly new BindableProperty BackgroundColorProperty =
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray);
+
+        public new Color BackgroundColor
+        {
+            get { return (Color)GetValue(BackgroundColorProperty); }
+            set { SetValue(BackgroundColorProperty, value); }
+        }
 
         //public static readonly BindableProperty FocusedBackgroundColorProperty =
         //    BindableProperty.Create(nameof(FocusedBackgroundColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
@@ -424,12 +455,12 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
+        private static bool OnSupportingTextValidate(BindableObject bindable, object value)
         {
             var control = (BaseMaterialFieldControl)bindable;
 
             // Used to animate the error when the assistive text doesn't change
-            if (control.AnimateError && !string.IsNullOrEmpty(control.AssistiveText) && control.AssistiveText == (string)value)
+            if (control.AnimateError && !string.IsNullOrEmpty(control.SupportingText) && control.SupportingText == (string)value)
                 ShakeAnimation.Animate(control);
 
             return true;
@@ -445,8 +476,8 @@ namespace Plugin.MaterialDesignControls.Material3
             if (CustomContent == null) return;
 
             this.frmContainer.BackgroundColor = BackgroundColor;
-            //this.frmContainer.BorderColor = BorderColor;
-            this.bxvLine.Color = BorderColor;
+            this.frmContainer.BorderColor = HasBorder ? BorderColor : Color.Transparent;
+            this.indicator.Color = IndicatorColor;
         }
 
         public void UpdateLayout(string propertyName)
@@ -476,7 +507,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(FontFamily):
                 case nameof(LabelFontFamily):
-                case nameof(AssistiveFontFamily):
+                case nameof(SupportingFontFamily):
                     CustomContent.SetFontFamily(FontFamily);
 
                     if (LabelFontFamily != null)
@@ -484,10 +515,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     else if (LabelFontFamily == null && FontFamily != null)
                         this.lblLabel.FontFamily = FontFamily;
 
-                    if (AssistiveFontFamily != null)
-                        this.lblAssistive.FontFamily = AssistiveFontFamily;
-                    else if (AssistiveFontFamily == null && FontFamily != null)
-                        this.lblAssistive.FontFamily = FontFamily;
+                    if (SupportingFontFamily != null)
+                        this.lblSupporting.FontFamily = SupportingFontFamily;
+                    else if (SupportingFontFamily == null && FontFamily != null)
+                        this.lblSupporting.FontFamily = FontFamily;
                     break;
                 case nameof(Placeholder):
                     CustomContent.SetPlaceholder(Placeholder);
@@ -517,22 +548,23 @@ namespace Plugin.MaterialDesignControls.Material3
                 //case nameof(Type):
                 case nameof(BackgroundColor):
                 case nameof(BorderColor):
+                case nameof(IndicatorColor):
                     SetBorderAndBackgroundColors();
                     break;
-                case nameof(AssistiveText):
-                    this.lblAssistive.Text = AssistiveText;
-                    this.lblAssistive.IsVisible = !string.IsNullOrEmpty(AssistiveText);
-                    if (AnimateError && !string.IsNullOrEmpty(AssistiveText))
+                case nameof(SupportingText):
+                    this.lblSupporting.Text = SupportingText;
+                    this.lblSupporting.IsVisible = !string.IsNullOrEmpty(SupportingText);
+                    if (AnimateError && !string.IsNullOrEmpty(SupportingText))
                         ShakeAnimation.Animate(this);
                     break;
-                case nameof(AssistiveTextColor):
-                    this.lblAssistive.TextColor = AssistiveTextColor;
+                case nameof(SupportingTextColor):
+                    this.lblSupporting.TextColor = SupportingTextColor;
                     break;
-                case nameof(AssistiveSize):
-                    this.lblAssistive.FontSize = AssistiveSize;
+                case nameof(SupportingSize):
+                    this.lblSupporting.FontSize = SupportingSize;
                     break;
-                case nameof(AssistiveMargin):
-                    this.lblAssistive.Margin = AssistiveMargin;
+                case nameof(SupportingMargin):
+                    this.lblSupporting.Margin = SupportingMargin;
                     break;
 
                 case nameof(LeadingIcon):
@@ -586,10 +618,21 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(HorizontalTextAlignment):
                     CustomContent.SetHorizontalTextAlignment(HorizontalTextAlignment);
                     this.lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
-                    this.lblAssistive.HorizontalTextAlignment = HorizontalTextAlignment;
+                    this.lblSupporting.HorizontalTextAlignment = HorizontalTextAlignment;
+                    break;
+
+                case nameof(HasBorder):
+                    SetHasBorder();
                     break;
             }
         }
+
+        private void SetHasBorder()
+        {
+            indicator.IsVisible = !HasBorder;
+            SetBorderAndBackgroundColors();
+        }
+
 
         public void SetFocusChange()
         {

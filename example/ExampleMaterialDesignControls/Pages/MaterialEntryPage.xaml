@@ -27,13 +27,13 @@
                     <contentViews:InfoIndicatorView Message="MaterialButton follows the latest guidelines of Material Design 3" />
 
                     <material3:MaterialEntry AnimateError="True"
-                                            AssistiveText="Email is required"
-                                            LabelText="Email *"
-                                            MaxLength="50"
-                                            Placeholder="Enter your email"
-                                            ReturnType="Next"
-                                            TabIndex="1"
-                                            Text="{Binding Email}" />
+                                             SupportingText="Email is required"
+                                             LabelText="Email *"
+                                             MaxLength="50"
+                                             Placeholder="Enter your email"
+                                             ReturnType="Next"
+                                             TabIndex="1"
+                                             Text="{Binding Email}" />
 
                     <!--<material3:MaterialEntry AnimateError="True"
                                             ClearIconIsVisible="False"
@@ -59,14 +59,14 @@
                                             Text="Types" />-->
 
                     <material3:MaterialEntry x:Name="txtName"
-                                            AnimateError="True"
-                                            AssistiveText="{Binding NameError}"
-                                            LabelText="Name*"
-                                            MaxLength="12"
-                                            Placeholder="Enter your name"
-                                            ReturnType="Next"
-                                            TabIndex="1"
-                                            Text="{Binding Name}" />
+                                             AnimateError="True"
+                                             SupportingText="{Binding NameError}"
+                                             LabelText="Name*"
+                                             MaxLength="12"
+                                             Placeholder="Enter your name"
+                                             ReturnType="Next"
+                                             TabIndex="2"
+                                             Text="{Binding Name}" />
                     <!--<material:MaterialEntry Keyboard="Email"
                                             LabelText="Email"
                                             LeadingIcon="email.png"
@@ -107,27 +107,27 @@
                     </material:MaterialEntry>-->
 
                     <material3:MaterialEntry HorizontalTextAlignment="Center"
-                                            Keyboard="Telephone"
-                                            LabelText="Phone"
-                                            Placeholder="Enter your phone"
-                                            ReturnType="Next"
-                                            TabIndex="5" />
+                                             Keyboard="Telephone"
+                                             LabelText="Phone"
+                                             Placeholder="Enter your phone"
+                                             ReturnType="Next"
+                                             TabIndex="3" />
                     <material3:MaterialEntry IsEnabled="False"
-                                            Keyboard="Telephone"
-                                            LabelText="Phone"
-                                            Placeholder="Enter your phone"
-                                            ReturnType="Next"
-                                            TabIndex="5" />
+                                             Keyboard="Telephone"
+                                             LabelText="Phone"
+                                             Placeholder="Enter your phone"
+                                             ReturnType="Next"
+                                             TabIndex="3" />
 
-                    <material3:MaterialEntry AssistiveMargin="0,2,0,0"
-                                            AssistiveText="Testing"
-                                            Keyboard="Telephone"
-                                            LabelMargin="0,0,0,2"
-                                            LabelText="Phone (SVG trailing icon)"
-                                            Placeholder="Enter your phone"
-                                            TabIndex="5"
-                                            TrailingIconCommand="{Binding HelpCommand}"
-                                            TrailingIconCommandParameter="Enter your phone">
+                    <material3:MaterialEntry SupportingMargin="0,2,0,0"
+                                             SupportingText="Testing"
+                                             Keyboard="Telephone"
+                                             LabelMargin="0,0,0,2"
+                                             LabelText="Phone (SVG trailing icon)"
+                                             Placeholder="Enter your phone"
+                                             TabIndex="4"
+                                             TrailingIconCommand="{Binding HelpCommand}"
+                                             TrailingIconCommandParameter="Enter your phone">
                         <material3:MaterialEntry.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
                         </material3:MaterialEntry.CustomTrailingIcon>
@@ -156,18 +156,18 @@
                                             Text="Returns" />
 
                     <material3:MaterialEntry LabelText="Return type Search"
-                                            Placeholder="Enter search text"
-                                            ReturnCommand="{Binding SearchCommand}"
-                                            ReturnType="Search"
-                                            Text="{Binding SearchText}" />
+                                             Placeholder="Enter search text"
+                                             ReturnCommand="{Binding SearchCommand}"
+                                             ReturnType="Search"
+                                             Text="{Binding SearchText}" />
 
                     <material3:MaterialEntry LabelText="Return type Next"
-                                            Placeholder="Enter text"
-                                            ReturnType="Next" />
+                                             Placeholder="Enter text"
+                                             ReturnType="Next" />
 
                     <material3:MaterialEntry LabelText="Return type Done"
-                                            Placeholder="Enter text"
-                                            ReturnType="Done"/>
+                                             Placeholder="Enter text"
+                                             ReturnType="Done" />
                 </StackLayout>
             </ScrollView>
         </Grid>

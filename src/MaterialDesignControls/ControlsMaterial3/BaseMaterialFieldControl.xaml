@@ -8,8 +8,10 @@
         <StackLayout Spacing="0">
             <Frame x:Name="frmContainer"
                    HasShadow="false"
-                   Padding="10,8,16,8">
-                <Grid x:Name="contentLayout">
+                   Padding="16,8,16,8">
+                <Grid x:Name="contentLayout"
+                      ColumnSpacing="0"
+                      RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
@@ -25,7 +27,6 @@
                                             LineBreakMode="NoWrap"
                                             Grid.Row="0"
                                             Grid.ColumnSpan="2"
-                                            VerticalTextAlignment="End"
                                             Grid.Column="1"
                                             HorizontalTextAlignment="Start" />
 
@@ -48,9 +49,9 @@
                                               HorizontalOptions="End" />
                 </Grid>
             </Frame>
-            <BoxView x:Name="bxvLine"
+            <BoxView x:Name="indicator"
                      HeightRequest="1" />
-            <controls:MaterialLabel x:Name="lblAssistive"
+            <controls:MaterialLabel x:Name="lblSupporting"
                                     IsVisible="false"
                                     LineBreakMode="NoWrap"
                                     Margin="16,4,16,0"
