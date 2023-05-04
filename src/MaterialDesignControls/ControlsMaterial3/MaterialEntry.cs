@@ -80,25 +80,6 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Attributes
 
         #region Properties
-
-        //public static readonly new BindableProperty PaddingProperty =
-        //    BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEntry), defaultValue: new Thickness(16, 0));
-
-        //public new Thickness Padding
-        //{
-        //    get { return (Thickness)GetValue(PaddingProperty); }
-        //    set { SetValue(PaddingProperty, value); }
-        //}
-
-        //public static readonly new BindableProperty IsEnabledProperty =
-        //    BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialEntry), defaultValue: true);
-
-        //public new bool IsEnabled
-        //{
-        //    get { return (bool)GetValue(IsEnabledProperty); }
-        //    set { SetValue(IsEnabledProperty, value); }
-        //}
-
         public static readonly BindableProperty IsPasswordProperty =
             BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false);
 
@@ -179,15 +160,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-
-        //public static readonly new BindableProperty BackgroundColorProperty =
-        //    BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray);
-
-        //public new Color BackgroundColor
-        //{
-        //    get { return (Color)GetValue(BackgroundColorProperty); }
-        //    set { SetValue(BackgroundColorProperty, value); }
-        //}
 
         //public static readonly BindableProperty ClearIconProperty =
         //    BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);

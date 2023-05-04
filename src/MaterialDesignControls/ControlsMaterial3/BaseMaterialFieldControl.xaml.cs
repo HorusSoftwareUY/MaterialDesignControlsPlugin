@@ -1,7 +1,6 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.ControlsMaterial3;
 using Plugin.MaterialDesignControls.Material3.Implementations;
-using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -59,7 +58,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(CornerRadius), typeof(BaseMaterialFieldControl));
+            BindableProperty.Create(nameof(CornerRadius), typeof(CornerRadius), typeof(BaseMaterialFieldControl), defaultValue: new CornerRadius(5,5,0,0));
 
         public CornerRadius CornerRadius
         {
@@ -96,24 +95,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (Color)GetValue(TextColorProperty); }
             set { SetValue(TextColorProperty, value); }
         }
-
-        //public static readonly BindableProperty FocusedTextColorProperty =
-        //    BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
-
-        //public Color FocusedTextColor
-        //{
-        //    get { return (Color)GetValue(FocusedTextColorProperty); }
-        //    set { SetValue(FocusedTextColorProperty, value); }
-        //}
-
-        //public static readonly BindableProperty DisabledTextColorProperty =
-        //    BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
-
-        //public Color DisabledTextColor
-        //{
-        //    get { return (Color)GetValue(DisabledTextColorProperty); }
-        //    set { SetValue(DisabledTextColorProperty, value); }
-        //}
 
         public static readonly BindableProperty FontSizeProperty =
             BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: Font.Default.FontSize);
@@ -176,24 +157,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (Color)GetValue(LabelTextColorProperty); }
             set { SetValue(LabelTextColorProperty, value); }
         }
-
-        //public static readonly BindableProperty FocusedLabelTextColorProperty =
-        //    BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
-
-        //public Color FocusedLabelTextColor
-        //{
-        //    get { return (Color)GetValue(FocusedLabelTextColorProperty); }
-        //    set { SetValue(FocusedLabelTextColorProperty, value); }
-        //}
-
-        //public static readonly BindableProperty DisabledLabelTextColorProperty =
-        //    BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
-
-        //public Color DisabledLabelTextColor
-        //{
-        //    get { return (Color)GetValue(DisabledLabelTextColorProperty); }
-        //    set { SetValue(DisabledLabelTextColorProperty, value); }
-        //}
 
         public static readonly BindableProperty LabelSizeProperty =
             BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: Font.Default.FontSize);
@@ -292,25 +255,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (bool)GetValue(HasBorderProperty); }
             set { SetValue(HasBorderProperty, value); }
         }
-
-        //public static readonly BindableProperty FocusedBorderColorProperty =
-        //    BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
-
-        //public Color FocusedBorderColor
-        //{
-        //    get { return (Color)GetValue(FocusedBorderColorProperty); }
-        //    set { SetValue(FocusedBorderColorProperty, value); }
-        //}
-
-        //public static readonly BindableProperty DisabledBorderColorProperty =
-        //    BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
-
-        //public Color DisabledBorderColor
-        //{
-        //    get { return (Color)GetValue(DisabledBorderColorProperty); }
-        //    set { SetValue(DisabledBorderColorProperty, value); }
-        //}
-
         #endregion Border
 
         #region Indicator
@@ -336,25 +280,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
         }
-
-        //public static readonly BindableProperty FocusedBackgroundColorProperty =
-        //    BindableProperty.Create(nameof(FocusedBackgroundColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Transparent);
-
-        //public Color FocusedBackgroundColor
-        //{
-        //    get { return (Color)GetValue(FocusedBackgroundColorProperty); }
-        //    set { SetValue(FocusedBackgroundColorProperty, value); }
-        //}
-
-        //public static readonly BindableProperty DisabledBackgroundColorProperty =
-        //    BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
-
-        //public Color DisabledBackgroundColor
-        //{
-        //    get { return (Color)GetValue(DisabledBackgroundColorProperty); }
-        //    set { SetValue(DisabledBackgroundColorProperty, value); }
-        //}
-
         #endregion Background
 
         #region Icons
@@ -543,7 +468,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     frmContainer.Padding = this.Padding;
                     break;
                 case nameof(CornerRadius):
-                    this.frmContainer.CornerRadius = Convert.ToInt32(CornerRadius);
+                    if (HasBorder)
+                    {
+                        this.frmContainer.CornerRadius = CornerRadius;
+                    }
                     break;
                 //case nameof(Type):
                 case nameof(BackgroundColor):
@@ -633,7 +561,6 @@ namespace Plugin.MaterialDesignControls.Material3
             SetBorderAndBackgroundColors();
         }
 
-
         public void SetFocusChange()
         {
             var state = CustomContent.IsControlFocused() ? "Focused" : CustomContent.IsControlEnabled() ? "Normal" : "Disabled";
@@ -642,7 +569,6 @@ namespace Plugin.MaterialDesignControls.Material3
             CustomContent.SetTextColor(TextColor);
             SetBorderAndBackgroundColors();
         }
-
         #endregion Methods
     }
 }

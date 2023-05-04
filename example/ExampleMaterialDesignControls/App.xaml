@@ -389,7 +389,7 @@
         </Style>
 
 
-        <Style TargetType="material3:BaseMaterialFieldControl"
+        <Style TargetType="material3:MaterialEntry"
                x:Key="BaseMaterial3Style">
             <Setter Property="AnimateError"
                     Value="True" />
@@ -407,6 +407,11 @@
                     Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="CornerRadius"
                     Value="15" />
+        </Style>
+
+        <!--MaterialEntry-->
+        <Style TargetType="material3:MaterialEntry"
+               BasedOn="{StaticResource BaseMaterial3Style}">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
@@ -455,13 +460,6 @@
                     </VisualStateGroup>
                 </VisualStateGroupList>
             </Setter>
-        </Style>
-
-        <!--MaterialEntry-->
-        <Style TargetType="material3:MaterialEntry"
-               BasedOn="{StaticResource BaseMaterial3Style}">
-            <Setter Property="BackgroundColor"
-                    Value="{StaticResource BackgroundMaterialColor}" />
         </Style>
 
         <!-- MaterialEditor -->

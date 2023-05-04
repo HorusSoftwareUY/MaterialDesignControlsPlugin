@@ -24,7 +24,7 @@
                 <StackLayout Padding="20,0,20,20"
                              Spacing="20">
 
-                    <contentViews:InfoIndicatorView Message="MaterialButton follows the latest guidelines of Material Design 3" />
+                    <contentViews:InfoIndicatorView Message="MaterialEntry follows the latest guidelines of Material Design 3" />
 
                     <material3:MaterialEntry AnimateError="True"
                                              SupportingText="Email is required"
@@ -36,16 +36,10 @@
                                              Text="{Binding Email}" />
 
                     <material3:MaterialEntry HasBorder="True"
-                                             CornerRadius="10,10,10,10"
+                                             CornerRadius="20,20,20,20"
                                              LabelText="Id"
                                              TabIndex="2"
                                              Keyboard="Numeric"/>
-
-                    <material3:MaterialEntry CornerRadius="50,50,50,50"
-                                             BorderColor="{StaticResource BorderMaterialColor}"
-                                             LabelText="Id"
-                                             TabIndex="2"
-                                             Keyboard="Numeric" />
 
                     <!--<material3:MaterialEntry AnimateError="True"
                                             ClearIconIsVisible="False"
