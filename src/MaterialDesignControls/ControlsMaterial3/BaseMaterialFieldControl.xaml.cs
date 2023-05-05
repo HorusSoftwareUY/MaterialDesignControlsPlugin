@@ -507,13 +507,18 @@ namespace Plugin.MaterialDesignControls.Material3
 
                     this.imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
+
+                case nameof(LeadingIconCommandParameter):
+                    if (LeadingIconCommandParameter != null)
+                    {
+                        this.imgLeadingIcon.CommandParameter = LeadingIconCommandParameter;
+                    }
+                    break;
+
                 case nameof(LeadingIconCommand):
                     if (LeadingIconCommand != null)
                     {
-                        this.imgLeadingIcon.Tapped = () =>
-                        {
-                            LeadingIconCommand?.Execute(LeadingIconCommandParameter);
-                        };
+                        this.imgLeadingIcon.Command = LeadingIconCommand;
                     }
                     break;
 
@@ -530,13 +535,16 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(TrailingIconCommand):
-                    System.Diagnostics.Debugger.Break();
                     if (TrailingIconCommand != null)
                     {
-                        this.imgTrailingIcon.Tapped = () =>
-                        {
-                            TrailingIconCommand?.Execute(TrailingIconCommandParameter);
-                        };
+                        this.imgTrailingIcon.Command = TrailingIconCommand;
+                    }
+                    break;
+
+                case nameof(TrailingIconCommandParameter):
+                    if (TrailingIconCommandParameter != null)
+                    {
+                        this.imgTrailingIcon.CommandParameter = TrailingIconCommandParameter;
                     }
                     break;
 

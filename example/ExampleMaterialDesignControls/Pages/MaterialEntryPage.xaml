@@ -182,17 +182,15 @@
                                              Placeholder="Enter your phone"
                                              TabIndex="4"
                                              TrailingIconCommand="{Binding HelpCommand}"
-                                             TrailingIcon="cancel.png"
-                                             LeadingIcon="cancel.png"
                                              TrailingIconCommandParameter="Enter your phone(T)"
                                              LeadingIconCommand="{Binding HelpCommand}"
                                              LeadingIconCommandParameter="Enter your phone(L)">
-                        <!--<material3:MaterialEntry.CustomTrailingIcon>
+                        <material3:MaterialEntry.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
                         </material3:MaterialEntry.CustomTrailingIcon>
                         <material3:MaterialEntry.CustomLeadingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
-                        </material3:MaterialEntry.CustomLeadingIcon>-->
+                        </material3:MaterialEntry.CustomLeadingIcon>
                     </material3:MaterialEntry>
 
                 </StackLayout>

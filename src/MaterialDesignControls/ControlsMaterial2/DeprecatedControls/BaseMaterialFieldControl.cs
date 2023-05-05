@@ -576,14 +576,15 @@ namespace Plugin.MaterialDesignControls
                 case nameof(LeadingIconCommand):
                     if (LeadingIconCommand != null)
                     {
-                        imgLeadingIcon.Tapped = () =>
-                        {
-                            if (LeadingIconCommand != null)
-                                LeadingIconCommand.Execute(LeadingIconCommandParameter);
-                        };
+                        imgLeadingIcon.Command = LeadingIconCommand;
                     }
                     break;
-
+                case nameof(LeadingIconCommandParameter):
+                    if (LeadingIconCommandParameter != null)
+                    {
+                        imgLeadingIcon.CommandParameter = LeadingIconCommandParameter;
+                    }
+                    break;
                 case nameof(TrailingIcon):
                     if (!string.IsNullOrEmpty(TrailingIcon))
                         imgTrailingIcon.SetImage(TrailingIcon);
@@ -599,14 +600,16 @@ namespace Plugin.MaterialDesignControls
                 case nameof(TrailingIconCommand):
                     if (TrailingIconCommand != null)
                     {
-                        imgTrailingIcon.Tapped = () =>
-                        {
-                            if (TrailingIconCommand != null)
-                                TrailingIconCommand.Execute(TrailingIconCommandParameter);
-                        };
+                        imgTrailingIcon.Command = TrailingIconCommand;
                     }
                     break;
 
+                case nameof(TrailingIconCommandParameter):
+                    if (TrailingIconCommandParameter != null)
+                    {
+                        imgTrailingIcon.CommandParameter = TrailingIconCommandParameter;
+                    }
+                    break;
                 case nameof(FieldHeightRequest):
                     frmContainer.HeightRequest = FieldHeightRequest;
                     break;
