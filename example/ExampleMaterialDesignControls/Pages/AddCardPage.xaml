@@ -44,15 +44,15 @@
                         </AbsoluteLayout>
                     </Frame>
                     <StackLayout Spacing="30">
-                        <material:MaterialEntry Type="Lined" LabelText="Name" Placeholder="Enter your name" Keyboard="Email" TabIndex="2" ReturnType="Next" />
-                        <material:MaterialEntry Type="Lined" LabelText="Card number" Placeholder="XXXX XXXX XXXX XXXX" Keyboard="Telephone" TabIndex="2" ReturnType="Next" />
+                        <material3:MaterialEntry LabelText="Name" Placeholder="Enter your name" Keyboard="Email" TabIndex="2" ReturnType="Next" />
+                        <material3:MaterialEntry LabelText="Card number" Placeholder="XXXX XXXX XXXX XXXX" Keyboard="Telephone" TabIndex="2" ReturnType="Next" />
                         <Grid ColumnSpacing="30">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <material:MaterialDatePicker Type="Lined" LabelText="Expiry" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" Grid.Column="0" />
-                            <material:MaterialEntry Type="Lined" LabelText="CVV" Placeholder="XXX" Keyboard="Telephone" TabIndex="2" ReturnType="Next" Grid.Column="1"/>
+                            <material3:MaterialEntry LabelText="CVV" Placeholder="XXX" Keyboard="Telephone" TabIndex="2" ReturnType="Next" Grid.Column="1"/>
                         </Grid>
                     </StackLayout>
                 </StackLayout>

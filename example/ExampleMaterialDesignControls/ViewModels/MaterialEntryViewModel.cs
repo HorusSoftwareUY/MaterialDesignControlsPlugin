@@ -49,6 +49,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         private async void OnHelpCommand(string parameter)
         {
+            System.Console.WriteLine("Executed command");
             await this.DisplayAlert.Invoke("Help", parameter, "Ok");
         }
 

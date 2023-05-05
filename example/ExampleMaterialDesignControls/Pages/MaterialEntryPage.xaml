@@ -175,7 +175,7 @@
                                              Placeholder="Enter text"
                                              ReturnType="Done" />
 
-                    <!--TODO: remove--> 
+                    <!--TODO: remove-->
                     <material3:MaterialEntry SupportingText="Testing"
                                              Keyboard="Telephone"
                                              LabelText="Phone"
@@ -192,6 +192,22 @@
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
                         </material3:MaterialEntry.CustomLeadingIcon>
                     </material3:MaterialEntry>
+
+                    <material:MaterialEntry AssistiveText="Testing"
+                                            Keyboard="Telephone"
+                                            LabelText="Phone"
+                                            Placeholder="Enter your phone"
+                                            TabIndex="4"
+                                            TrailingIconCommand="{Binding HelpCommand}"
+                                            TrailingIconCommandParameter="Enter your phone(T)">
+                        <material:MaterialEntry.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material:MaterialEntry.CustomTrailingIcon>
+                        <material:MaterialEntry.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material:MaterialEntry.CustomLeadingIcon>
+                    </material:MaterialEntry>
+
                 </StackLayout>
             </ScrollView>
         </Grid>
