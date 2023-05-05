@@ -8,7 +8,7 @@ Text fields let users enter and edit text.
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.gif" width="300">
 
 ## Example MaterialEntry
-Use this style:
+Set style:
 
 ```XML
 <Style TargetType="material3:MaterialEntry"
@@ -84,6 +84,7 @@ Use this style:
     </Setter>
 </Style>
 ``` 
+Using the control:
 
 ```XML
 <material3:MaterialEntry
@@ -103,182 +104,281 @@ Use this style:
 
 ## Documentation
 We update this control to use VisualStateManager (See examble above). So we recommend use visual state to change the style of the control. 
+### Allowed States:
+- Normal
+- Focused
+- Disabled
 <br/>
 
-### Property ValueChanged
-This property is to add an event when the value change on the control.
-<br/>
-<br/>
-
-### Property LabelText:
-This property is to set the label text value.
-<br/>
-<br/>
-
-### Property LabelTextColor:
-This property is to set the color of the label text when the control is enabled.
-<br/>
-<br/>
-
-### Property DisabledLabelTextColor:
-This property is to set the color of the label text when the control is disabled.
+### Property Keyboard
+Default keyboard and base class for specialized keyboards, such as those for telephone numbers, email, URLs and others.
+#### Allowed Values:
+- Plain
+- Chat
+- Email
+- Numeric
+- Telephone
+- Text
+- URL
 <br/>
 <br/>
 
-### Property LabelSize:
-This property is to set the fontsize of the label text.
+### Property KeyboardFlags
+Enumerates keyboard option flags that controls capitalization, spellcheck, suggestion behavior and others. 
+#### Allowed Values:
+- CapitalizeSentence
+- Spellcheck
+- Suggestions
+- CapitalizeWord
+- CapitalizeCharacter
+- CapitalizeNone
+- All
+- None
+#### Usage Example
+- Using only one flag
+```XML
+<material3:MaterialEntry
+    LabelText="Name *"
+    Placeholder="Enter your name"
+    MaxLength="50"
+    KeyboardFlags="CapitalizeWord"
+    Text="{Binding Name}"
+    SupportingText="Name is required"
+    AnimateError="True"
+    TabIndex="1"
+    ReturnType="Next"
+    SupportingTextColor="Red" />
+```
+- Using multiple flags
+```XML
+<material3:MaterialEntry
+    LabelText="Name *"
+    Placeholder="Enter your name"
+    MaxLength="50"
+    KeyboardFlags="CapitalizeWord|Suggestions"
+    Text="{Binding Name}"
+    SupportingText="Name is required"
+    AnimateError="True"
+    TabIndex="1"
+    ReturnType="Next"
+    SupportingTextColor="Red" />
+```
 <br/>
 <br/>
 
-### Property LabelMinimumText:
-This property is to set the label minimum value.
+### Property TextTransform:
+This property is to set a text transform.
+#### Allowed Values:
+- Default
+- Lowercase
+- Uppercase
 <br/>
 <br/>
 
-### Property LabelMinimumTextColor:
-This property is to set the color of the label minimum when control is enabled.
+### Property ReturnType:
+This property is to set the keyboard return button style,
+#### Allowed Values:
+- Done
+- Go
+- Next
+- Search
+- Send
 <br/>
 <br/>
 
-### Property DisabledLabelMinimumTextColor:
-This property is to set the color of the label minimum when control is disable.
+### Property ReturnCommand:
+This property is to set the behavior after click on return button.
 <br/>
 <br/>
 
-### Property LabelMinimumSize:
-This property is to set the font size of the label minimum.
+### Property Text:
+This property is to set the current text.
 <br/>
 <br/>
 
-### Property LabelMaximumText:
-This property is to set the label maximum text value on the control.
+### Property MaxLength:
+This property is to set the max length of the text.
 <br/>
 <br/>
 
-### Property LabelMaximumTextColor:
-This property is to set the label maximum text color value on the control enabled.
+### Property CursorPosition:
+This property is to set the cursor position.
 <br/>
 <br/>
 
-### Property DisabledLabelMaximumTextColor:
-This property is to set the label text maximum color value on the control. When the control is disabled.
+### Property TextChanged:
+This property is to set the event after the text changed.
 <br/>
 <br/>
 
-### Property AssistiveText:
-This property is to set the error text on the control. 
+### Property FieldHeightRequest:
+This property is to set the height of the Material Entry
 <br/>
 <br/>
 
-### Property AssistiveTextColor:
-This property is to set the error text color value on the control. By default is gray.
-<br/>
-<br/> 
-
-### Property AssistiveSize:
-This property is to set the error text font size value on the control. By default is gray. 
+### Property CornerRadius:
+This property is to set the corner radious for the control. This is used only when you has a border and you can use (double: topLeft, double: topRight, double: bottomLeft, double: bottomRight) or (double: uniform).
+```XML
+<material3:MaterialEntry
+    LabelText="Name *"
+    Placeholder="Enter your name"
+    Text="{Binding Name}"
+    SupportingText="Name is required"
+    AnimateError="True"
+    TabIndex="1"
+    ReturnType="Next"
+    HasBorder="True"
+    CornerRadious="10"
+    SupportingTextColor="Red" />
+```
 <br/>
 <br/>
 
 ### Property AnimateError:
-This property is to set if you can show a ShakeAnimation when there is a error with control.
+This property is to set the if you want or not animate the control on error.
 <br/>
 <br/>
 
-### Property MinimumIcon:
-This property is to set the image to minimum to types of images like png, jpg.
+### Property HorizontalTextAlignment:
+This property is to set the horizontal text alignment.
+#### Allowed Values:
+- Start
+- Center
+- End
 <br/>
 <br/>
 
-### Property CustomMinimumIcon:
-This property is to set the image to minimum with support to svg. 
+### Property TextColor:
+This property is to set the text color.
 <br/>
 <br/>
 
-### Property MaximumIcon:
-This property is to set the image to maximum to types of images like png, jpg.
+### Property FontSize:
+This property is to set the font size.
 <br/>
 <br/>
 
-### Property CustomMaximumIcon:
-This property is to set the image to maximum with support to svg.
+### Property FontFamily:
+This property is to set the font family.
+<br/>
+<br/> 
+
+### Property Placeholder:
+This property is to set the placeholder of the material entry.
 <br/>
 <br/>
 
-### Property BackgroundImage:
-This property is to set the background image to control, this allow jpg, png.
+### Property PlaceholderColor:
+This property is to set the placeholder color of the material entry.
 <br/>
 <br/>
 
-### Property CustomBackgroundImage:
-This property is to set the background image to control, this allow svg.
+### Property LabelText:
+This property is to set the label of the material entry.
 <br/>
 <br/>
 
-### Property ThumbImage:
-This property is to set the thumb with a image.
+### Property LabelTextColor:
+This property is to set the label color of the material entry.
 <br/>
 <br/>
 
-### Property Value:
-This property is to set the value of the control, by default is the minimum.
+### Property LabelSize:
+This property is to set the label size of the material entry.
 <br/>
 <br/>
 
-### Property MinimumValue:
-This property is to set the minimum value, by default is 0.
+### Property LabelFontFamily:
+This property is to set the label font family of the material entry.
 <br/>
 <br/>
 
-### Property MaximumValue:
-This property is to set the minimum value, by default is 1.
+### Property LabelMargin:
+This property is to set the label margin family of the material entry. By default uses (16,0,16,0).
 <br/>
 <br/>
 
-### Property ActiveTrackColor:
-This property is to set the active tracker color.
+### Property SupportingText:
+This property is to set the supporting text of the material entry.
 <br/>
 <br/>
 
-### Property InactiveTrackColor:
-This property is to set the inactive tracker color.
+### Property SupportingTextColor:
+This property is to set the supporting text color of the material entry.
 <br/>
 <br/>
 
-### Property ThumbColor:
-This property is to set the color of thumb.
+### Property SupportingSize:
+This property is to set the supporting text size of the material entry.
 <br/>
 <br/>
 
-### Property TrackHeight:
-This property is to set the height of the thumb.
+### Property SupportingFontFamily:
+This property is to set the supporting text font family of the material entry.
 <br/>
 <br/>
 
-### Property TrackCornerRadius:
-This property is to set the corner radious of the track.
+### Property SupportingMargin:
+This property is to set the supporting text margin of the material entry. By default uses (16,4,16,0).
 <br/>
 <br/>
 
-### Property UserInteractionEnabled:
-This property is to set the if the interaction of the user is enabled.
+### Property BorderColor:
+This property is to set the border color. This is enabled when you set the property HasBorder equals true.
 <br/>
 <br/>
 
-### Property ShowIcons:
-This property is to set if show or not the icons.
+### Property HasBorder:
+This property is to set if this control has border or not.
 <br/>
 <br/>
 
-### Property DisabledActiveTrackColor:
-This property is to set the disabled active track color, when the control is disabled.
+### Property IndicatorColor:
+This property is to set the indicator color.
 <br/>
 <br/>
 
-### Property DisabledInactiveTrackColor:
-This property is to set the disabled inactive track color, when the control is disabled.
+### Property BackgroundColor:
+This property is to set the background color.
 <br/>
 <br/>
 
-### Property DisabledThumbColor:
-This property is to set the disabled thumb color, whe the control is disabled.
+### Property LeadingIcon:
+This property is to set the leading icon. This can be png or jpg.
+<br/>
+<br/>
+
+### Property CustomLeadingIcon:
+This property is to set the leading icon with support to svg.
+<br/>
+<br/>
+
+### Property LeadingIconCommand:
+This property is to set the leading icon command.
+<br/>
+<br/>
+
+### Property LeadingIconCommandParameter:
+This property is to set the leading icon command parameter.
+<br/>
+<br/>
+
+### Property TrailingIcon:
+This property is to set the trailing icon. This can be png or jpg.
+<br/>
+<br/>
+
+### Property CustomTrailingIcon:
+This property is to set the trailing icon with support to svg.
+<br/>
+<br/>
+
+### Property TrailingIconCommand:
+This property is to set the trailing icon command.
+<br/>
+<br/>
+
+### Property TrailingIconCommandParameter:
+This property is to set the trailing icon command parameter.
+<br/>
+<br/>
