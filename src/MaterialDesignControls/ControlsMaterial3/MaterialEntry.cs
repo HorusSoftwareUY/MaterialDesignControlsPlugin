@@ -75,19 +75,17 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry txtEntry;
 
-        //private bool passwordIsVisible = false;
-
         #endregion Attributes
 
         #region Properties
-        //public static readonly BindableProperty IsPasswordProperty =
-        //    BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false);
+        public static readonly BindableProperty IsPasswordProperty =
+            BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false);
 
-        //public bool IsPassword
-        //{
-        //    get { return (bool)GetValue(IsPasswordProperty); }
-        //    set { SetValue(IsPasswordProperty, value); }
-        //}
+        public bool IsPassword
+        {
+            get { return (bool)GetValue(IsPasswordProperty); }
+            set { SetValue(IsPasswordProperty, value); }
+        }
 
         public static readonly BindableProperty IsCodeProperty =
             BindableProperty.Create(nameof(IsCode), typeof(bool), typeof(MaterialEntry), defaultValue: false);
@@ -160,78 +158,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-
-        //public static readonly BindableProperty ClearIconProperty =
-        //    BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
-
-        //public string ClearIcon
-        //{
-        //    get { return (string)GetValue(ClearIconProperty); }
-        //    set { SetValue(ClearIconProperty, value); }
-        //}
-
-        //public static readonly BindableProperty CustomClearIconProperty =
-        //    BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
-
-        //public View CustomClearIcon
-        //{
-        //    get { return (View)GetValue(CustomClearIconProperty); }
-        //    set { SetValue(CustomClearIconProperty, value); }
-        //}
-
-        //public static readonly BindableProperty ClearIconIsVisibleProperty =
-        //    BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
-
-        //public bool ClearIconIsVisible
-        //{
-        //    get { return (bool)GetValue(ClearIconIsVisibleProperty); }
-        //    set { SetValue(ClearIconIsVisibleProperty, value); }
-        //}
-
-        //public static readonly BindableProperty ShowPasswordIconProperty =
-        //    BindableProperty.Create(nameof(ShowPasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
-
-        //public string ShowPasswordIcon
-        //{
-        //    get { return (string)GetValue(ShowPasswordIconProperty); }
-        //    set { SetValue(ShowPasswordIconProperty, value); }
-        //}
-
-        //public static readonly BindableProperty HidePasswordIconProperty =
-        //    BindableProperty.Create(nameof(HidePasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
-
-        //public string HidePasswordIcon
-        //{
-        //    get { return (string)GetValue(HidePasswordIconProperty); }
-        //    set { SetValue(HidePasswordIconProperty, value); }
-        //}
-
-        //public static readonly BindableProperty CustomShowPasswordIconProperty =
-        //    BindableProperty.Create(nameof(CustomShowPasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
-
-        //public View CustomShowPasswordIcon
-        //{
-        //    get { return (View)GetValue(CustomShowPasswordIconProperty); }
-        //    set { SetValue(CustomShowPasswordIconProperty, value); }
-        //}
-
-        //public static readonly BindableProperty CustomHidePasswordIconProperty =
-        //    BindableProperty.Create(nameof(CustomHidePasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
-
-        //public View CustomHidePasswordIcon
-        //{
-        //    get { return (View)GetValue(CustomHidePasswordIconProperty); }
-        //    set { SetValue(CustomHidePasswordIconProperty, value); }
-        //}
-
-        //public static readonly BindableProperty ShowPasswordIconIsVisibleProperty =
-        //    BindableProperty.Create(nameof(ShowPasswordIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
-
-        //public bool ShowPasswordIconIsVisible
-        //{
-        //    get { return (bool)GetValue(ShowPasswordIconIsVisibleProperty); }
-        //    set { SetValue(ShowPasswordIconIsVisibleProperty, value); }
-        //}
 
         public static readonly BindableProperty MaxLengthProperty =
             BindableProperty.Create(nameof(MaxLength), typeof(int), typeof(MaterialEntry), defaultValue: Int32.MaxValue);
@@ -318,41 +244,9 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.txtEntry.CursorPosition = this.CursorPosition;
                     break;
 
-                //case nameof(IsPassword):
-                //    this.txtEntry.IsPassword = IsPassword;
-                //    SetShowPasswordIconIsVisible();
-                //    break;
-                //case nameof(ShowPasswordIcon):
-                //    if (!string.IsNullOrEmpty(ShowPasswordIcon))
-                //        imgShowPasswordIcon.SetImage(ShowPasswordIcon);
-
-                //    SetShowPasswordIconIsVisible();
-                //    break;
-                //case nameof(CustomShowPasswordIcon):
-                //    if (CustomShowPasswordIcon != null)
-                //        imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
-
-                //    SetShowPasswordIconIsVisible();
-                //    break;
-                //case nameof(ShowPasswordIconIsVisible):
-                //    SetShowPasswordIconIsVisible();
-                //    break;
-                
-                //case nameof(this.ClearIcon):
-                //    if (!string.IsNullOrEmpty(this.ClearIcon))
-                //        imgClearIcon.SetImage(ClearIcon);
-
-                //    SetClearIconIsVisible();
-                //    break;
-                //case nameof(CustomClearIcon):
-                //    if (CustomClearIcon != null)
-                //        imgClearIcon.SetCustomImage(CustomClearIcon);
-
-                //    SetClearIconIsVisible();
-                //    break;
-                //case nameof(this.ClearIconIsVisible):
-                //    SetClearIconIsVisible();
-                //    break;
+                case nameof(IsPassword):
+                    this.txtEntry.IsPassword = IsPassword;
+                    break;
 
                 case nameof(this.TabIndex):
                     if (this.TabIndex != 0)
@@ -387,18 +281,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
             }
         }
-
-        //private void SetShowPasswordIconIsVisible()
-        //{
-        //    imgShowPasswordIcon.IsVisible = IsPassword && ShowPasswordIconIsVisible && IsEnabled
-        //        && (!string.IsNullOrEmpty(ShowPasswordIcon) || CustomShowPasswordIcon != null);
-        //}
-
-        //private void SetClearIconIsVisible()
-        //{
-        //    imgClearIcon.IsVisible = ClearIconIsVisible && IsEnabled && !string.IsNullOrEmpty(Text)
-        //        && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
-        //}
 
         public new bool Focus()
         {
@@ -435,12 +317,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //TODO: check for future
-            //if (this.ClearIconIsVisible && this.IsControlEnabled)
-            //{
-            //    this.imgClearIcon.IsVisible = !string.IsNullOrEmpty(e.NewTextValue);
-            //}
-
             var changedByTextTransform = Text != null && txtEntry.Text != null && Text.ToLower() == txtEntry.Text.ToLower();
 
             this.Text = this.txtEntry.Text;

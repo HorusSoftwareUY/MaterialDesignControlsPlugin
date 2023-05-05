@@ -333,6 +333,11 @@ This property is to set if this control has border or not.
 <br/>
 <br/>
 
+### Property IsPassword:
+This property is to set if this control behaves as password entry.
+<br/>
+<br/>
+
 ### Property IndicatorColor:
 This property is to set the indicator color.
 <br/>
