@@ -530,6 +530,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(TrailingIconCommand):
+                    System.Diagnostics.Debugger.Break();
                     if (TrailingIconCommand != null)
                     {
                         this.imgTrailingIcon.Tapped = () =>
