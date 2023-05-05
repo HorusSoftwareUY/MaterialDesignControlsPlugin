@@ -41,7 +41,7 @@ namespace ExampleMaterialDesignControls.ViewModels
             }
             else
             {
-                this.NameError = "The message is required";
+                this.NameError = "This field is required";
             }
         }
 
