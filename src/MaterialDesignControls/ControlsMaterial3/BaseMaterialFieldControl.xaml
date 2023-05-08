@@ -8,7 +8,7 @@
     <ContentView.Content>
         <StackLayout Spacing="0">
             <controls3:ContentBox x:Name="frmContainer"
-                                   CornerRadius="5"
+                                   CornerRadius="10"
                                    CornerRadiusTopLeft="True"
                                    CornerRadiusTopRight="True"
                                    Padding="16,8,16,8">

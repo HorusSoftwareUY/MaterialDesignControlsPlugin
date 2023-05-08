@@ -124,7 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Renderers\Material3\ContentBoxRenderer.cs" />
-    <Compile Include="Renderers\Material3\CustomFrameRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\MaterialSliderRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

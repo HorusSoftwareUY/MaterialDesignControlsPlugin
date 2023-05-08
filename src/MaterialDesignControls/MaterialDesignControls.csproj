@@ -64,7 +64,6 @@
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="Implementations\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\ContentBox.cs" />
-    <Compile Include="Implementations\CustomMaterial3\CustomFrame.cs" />
     <Compile Include="Implementations\Deprecated\CustomEntry.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEntry.cs" />
     <Compile Include="Implementations\CustomPicker.cs" />

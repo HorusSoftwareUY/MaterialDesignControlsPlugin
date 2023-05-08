@@ -72,7 +72,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\Material3\ContentBoxRenderer.cs" />
-    <Compile Include="Renderers\Material3\CustomFrameRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\MaterialDatePickerRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialEntryRenderer.cs" />

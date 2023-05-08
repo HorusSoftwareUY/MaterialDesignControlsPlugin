@@ -7,6 +7,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Material3.Android;
+using Xamarin.Forms.Platform.Android.FastRenderers;
+using static Java.Util.ResourceBundle;
 
 [assembly: ExportRenderer(typeof(ContentBox), typeof(ContentBoxRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.Android
@@ -60,10 +62,22 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             backgroundDrawable.SetColors(new int[] { element.BackgroundColor.ToAndroid(), element.BackgroundColor.ToAndroid() });
             backgroundDrawable.SetShape(ShapeType.Rectangle);
 
+
+            backgroundDrawable.SetStroke((int)element.BorderWidth, element.BorderColor.ToAndroid());
+
             float[] corners = SetCorners(element);
             backgroundDrawable.SetCornerRadii(corners);
-            backgroundDrawable.SetStroke((int)element.BorderWidth, element.BorderColor.ToAndroid());
-            this.SetBackground(backgroundDrawable);
+
+            Control.SetBackground(backgroundDrawable);
+
+            Control.SetPadding(
+                (int)((int)element.BorderWidth + element.Padding.Left),
+                (int)((int)element.BorderWidth + element.Padding.Top),
+                (int)((int)element.BorderWidth + element.Padding.Right),
+                (int)((int)element.BorderWidth + element.Padding.Bottom)
+            );
+
+            Control.SetClipToOutline(false);
         }
 
         private static float[] SetCorners(ContentBox element)
