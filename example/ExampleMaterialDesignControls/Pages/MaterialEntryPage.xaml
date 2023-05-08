@@ -36,7 +36,12 @@
                                              Text="{Binding Email}" />
 
                     <material3:MaterialEntry HasBorder="True"
-                                             CornerRadius="20,20,20,20"
+                                             CornerRadius="10"
+                                             CornerRadiusBottomLeft="True"
+                                             CornerRadiusBottomRight="True"
+                                             CornerRadiusTopRight="True"
+                                             CornerRadiusTopLeft="True"
+                                             BorderWidth="1"
                                              LabelText="Id"
                                              TabIndex="2"
                                              Keyboard="Numeric"/>

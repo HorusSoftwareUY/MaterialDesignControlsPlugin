@@ -7,9 +7,10 @@
              xmlns:controls3="clr-namespace:Plugin.MaterialDesignControls.Material3.Implementations;assembly=Plugin.MaterialDesignControls">
     <ContentView.Content>
         <StackLayout Spacing="0">
-            <controls3:CustomFrame x:Name="frmContainer"
-                                   HasShadow="false"
-                                   CornerRadius="5,5,0,0"
+            <controls3:ContentBox x:Name="frmContainer"
+                                   CornerRadius="5"
+                                   CornerRadiusTopLeft="True"
+                                   CornerRadiusTopRight="True"
                                    Padding="16,8,16,8">
                 <Grid x:Name="contentLayout"
                       ColumnSpacing="0"
@@ -52,7 +53,7 @@
                                               Grid.Column="2"
                                               HorizontalOptions="End" />
                 </Grid>
-            </controls3:CustomFrame>
+            </controls3:ContentBox>
             <BoxView x:Name="indicator"
                      HeightRequest="1" />
             <controls:MaterialLabel x:Name="lblSupporting"

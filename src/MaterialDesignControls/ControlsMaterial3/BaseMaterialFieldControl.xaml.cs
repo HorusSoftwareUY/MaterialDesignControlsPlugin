@@ -57,15 +57,6 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(FieldHeightRequestProperty, value); }
         }
 
-        public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(CornerRadius), typeof(BaseMaterialFieldControl), defaultValue: new CornerRadius(5,5,0,0));
-
-        public CornerRadius CornerRadius
-        {
-            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
         public static readonly BindableProperty AnimateErrorProperty =
             BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(BaseMaterialFieldControl), defaultValue: false);
 
@@ -236,6 +227,54 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion SupportingText
 
+        #region CornerRadius
+
+        public static readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(BaseMaterialFieldControl), defaultValue: 0f);
+
+        public float CornerRadius
+        {
+            get { return (float)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly BindableProperty CornerRadiusTopLeftProperty =
+            BindableProperty.Create(nameof(CornerRadiusTopLeft), typeof(bool), typeof(BaseMaterialFieldControl), false);
+
+        public bool CornerRadiusTopLeft
+        {
+            get { return (bool)GetValue(CornerRadiusTopLeftProperty); }
+            set { SetValue(CornerRadiusTopLeftProperty, value); }
+        }
+
+        public static readonly BindableProperty CornerRadiusTopRightProperty =
+            BindableProperty.Create(nameof(CornerRadiusTopRight), typeof(bool), typeof(BaseMaterialFieldControl), false);
+
+        public bool CornerRadiusTopRight
+        {
+            get { return (bool)GetValue(CornerRadiusTopRightProperty); }
+            set { SetValue(CornerRadiusTopRightProperty, value); }
+        }
+
+        public static readonly BindableProperty CornerRadiusBottomRightProperty =
+            BindableProperty.Create(nameof(CornerRadiusBottomRight), typeof(bool), typeof(BaseMaterialFieldControl), false);
+
+        public bool CornerRadiusBottomRight
+        {
+            get { return (bool)GetValue(CornerRadiusBottomRightProperty); }
+            set { SetValue(CornerRadiusBottomRightProperty, value); }
+        }
+
+        public static readonly BindableProperty CornerRadiusBottomLeftProperty =
+            BindableProperty.Create(nameof(CornerRadiusBottomLeft), typeof(bool), typeof(BaseMaterialFieldControl), false);
+
+        public bool CornerRadiusBottomLeft
+        {
+            get { return (bool)GetValue(CornerRadiusBottomLeftProperty); }
+            set { SetValue(CornerRadiusBottomLeftProperty, value); }
+        }
+        #endregion
+
         #region Border
 
         public static readonly BindableProperty BorderColorProperty =
@@ -254,6 +293,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (bool)GetValue(HasBorderProperty); }
             set { SetValue(HasBorderProperty, value); }
+        }
+
+        public static readonly BindableProperty BorderWidthProperty =
+            BindableProperty.Create(nameof(BorderWidth), typeof(float), typeof(ContentBox), 0f);
+
+        public float BorderWidth
+        {
+            get { return (float)GetValue(BorderWidthProperty); }
+            set { SetValue(BorderWidthProperty, value); }
         }
         #endregion Border
 
@@ -370,8 +418,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
-        public Frame FrameContainer => this.frmContainer;
-        
+        public ContentBox FrameContainer => this.frmContainer;
+
         private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is BaseMaterialFieldControl control && control.contentLayout != null)
@@ -560,6 +608,38 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(HasBorder):
                     SetHasBorder();
+                    break;
+
+                case nameof(BorderWidth):
+                    this.frmContainer.BorderWidth = HasBorder ? BorderWidth : 0f;
+                    break;
+
+                case nameof(CornerRadiusBottomLeft):
+                    if (HasBorder)
+                    {
+                        this.frmContainer.CornerRadiusBottomLeft = CornerRadiusBottomLeft;
+                    }
+                    break;
+
+                case nameof(CornerRadiusBottomRight):
+                    if (HasBorder)
+                    {
+                        this.frmContainer.CornerRadiusBottomRight = CornerRadiusBottomRight;
+                    }
+                    break;
+
+                case nameof(CornerRadiusTopRight):
+                    if (HasBorder)
+                    {
+                        this.frmContainer.CornerRadiusTopRight = CornerRadiusTopRight;
+                    }
+                    break;
+
+                case nameof(CornerRadiusTopLeft):
+                    if (HasBorder)
+                    {
+                        this.frmContainer.CornerRadiusTopLeft = CornerRadiusTopLeft;
+                    }
                     break;
             }
         }

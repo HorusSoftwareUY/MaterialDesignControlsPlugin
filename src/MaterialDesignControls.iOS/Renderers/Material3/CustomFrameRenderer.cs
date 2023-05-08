@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using CoreAnimation;
 using CoreGraphics;
+using Foundation;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Material3.iOS;
 using UIKit;
@@ -30,6 +31,21 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 UpdateCornerRadius();
             }
         }
+
+        //protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
+        //{
+        //    base.OnElementChanged(e);
+        //    var elem = (CustomFrame)this.Element;
+        //    if (elem != null)
+        //    {
+
+        //        // Border
+        //        //this.Layer.CornerRadius = (float)elem.CornerRadius;
+        //        this.Layer.Bounds.Inset(1, 1);
+        //        Layer.BorderColor = elem.BorderColor.ToCGColor();
+        //        Layer.BorderWidth = 1;
+        //    }
+        //}
 
         // A very basic way of retrieving same one value for all of the corners
         private double RetrieveCommonCornerRadius(CornerRadius cornerRadius)
@@ -80,7 +96,8 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
 
         private void UpdateCornerRadius()
         {
-            var cornerRadius = (Element as CustomFrame)?.CornerRadius;
+            var element = Element as CustomFrame;
+            var cornerRadius = element?.CornerRadius;
             if (!cornerRadius.HasValue)
             {
                 return;
@@ -92,11 +109,44 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 return;
             }
 
+            //var roundedCorners = RetrieveRoundedCorners(cornerRadius.Value);
+
+            //var path = UIBezierPath.FromRoundedRect(Bounds, roundedCorners, new CGSize(roundedCornerRadius, roundedCornerRadius));
+            //var mask = new CAShapeLayer { Path = path.CGPath };
+
+
             var roundedCorners = RetrieveRoundedCorners(cornerRadius.Value);
 
+            NativeView.Layer.MasksToBounds = true;
             var path = UIBezierPath.FromRoundedRect(Bounds, roundedCorners, new CGSize(roundedCornerRadius, roundedCornerRadius));
             var mask = new CAShapeLayer { Path = path.CGPath };
+            mask.Frame = Bounds;
+            mask.LineWidth = 1;
+            mask.StrokeColor = UIColor.SystemBlueColor.CGColor;  // border color
+            mask.FillColor = UIColor.Clear.CGColor;  // bg color , you need to set it as clear otherwise it will cover its child element
+            mask.ShadowRadius = 0;
+            //Element.pa
+
+            Element.BorderColor = Color.Transparent;
             NativeView.Layer.Mask = mask;
+            NativeView.Layer.AddSublayer(mask);
         }
+
+
+        //public override void LayoutSubviews()
+        //{
+        //    base.LayoutSubviews();
+
+        //    CAShapeLayer viewBorder = new CAShapeLayer();
+        //    viewBorder.StrokeColor = UIColor.Blue.CGColor;
+        //    viewBorder.FillColor = null;
+        //    viewBorder.LineDashPattern = new NSNumber[] { new NSNumber(5), new NSNumber(2) };
+        //    viewBorder.Frame = NativeView.Bounds;
+        //    viewBorder.Path = UIBezierPath.FromRect(NativeView.Bounds).CGPath;
+        //    Layer.AddSublayer(viewBorder);
+
+        //    // If you don't want the shadow effect
+        //    Element.HasShadow = false;
+        //}
     }
 }
