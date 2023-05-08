@@ -187,6 +187,34 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public new event EventHandler<FocusEventArgs> Unfocused;
 
+        public static readonly BindableProperty FocusedCommandProperty =
+           BindableProperty.Create(nameof(FocusedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+
+        public ICommand FocusedCommand
+        {
+            get { return (ICommand)GetValue(FocusedCommandProperty); }
+            set { SetValue(FocusedCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty UnfocusedCommandProperty =
+            BindableProperty.Create(nameof(UnfocusedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+
+        public ICommand UnfocusedCommand
+        {
+            get { return (ICommand)GetValue(UnfocusedCommandProperty); }
+            set { SetValue(UnfocusedCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty TextChangedCommandProperty =
+            BindableProperty.Create(nameof(TextChangedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+
+        public ICommand TextChangedCommand
+        {
+            get { return (ICommand)GetValue(TextChangedCommandProperty); }
+            set { SetValue(TextChangedCommandProperty, value); }
+        }
+
+
         #endregion Events
 
         #region Methods
@@ -307,12 +335,16 @@ namespace Plugin.MaterialDesignControls.Material3
             if (txtEntry.IsControlFocused())
             {
                 Focused?.Invoke(this, e);
+                FocusedCommand?.Execute(null);
 
                 var textInsideInput = txtEntry.Text;
                 txtEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
             }
             else
+            {
                 Unfocused?.Invoke(this, e);
+                UnfocusedCommand?.Execute(null);
+            }
         }
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -322,7 +354,10 @@ namespace Plugin.MaterialDesignControls.Material3
             this.Text = this.txtEntry.Text;
 
             if (!changedByTextTransform)
+            {
+                this.TextChangedCommand?.Execute(null);
                 this.TextChanged?.Invoke(this, e);
+            }
 
             ApplyTextTransform();
         }
