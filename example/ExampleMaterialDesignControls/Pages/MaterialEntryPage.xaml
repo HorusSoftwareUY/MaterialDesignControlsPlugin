@@ -41,7 +41,7 @@
                                              CornerRadiusBottomRight="True"
                                              CornerRadiusTopRight="True"
                                              CornerRadiusTopLeft="True"
-                                             BorderWidth="2"
+                                             BorderWidth="1"
                                              LabelText="Id"
                                              TabIndex="2"
                                              Keyboard="Numeric"/>
