@@ -28,17 +28,6 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Attributes
 
         #region Properties
-
-        //TODO: check this and think about future
-        //public static readonly BindableProperty TypeProperty =
-        //    BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(BaseMaterialFieldControl), defaultValue: FieldTypes.Filled);
-
-        //public FieldTypes Type
-        //{
-        //    get { return (FieldTypes)GetValue(TypeProperty); }
-        //    set { SetValue(TypeProperty, value); }
-        //}
-
         public static readonly BindableProperty CustomContentProperty =
             BindableProperty.Create(nameof(CustomContent), typeof(IBaseMaterialFieldControl), typeof(BaseMaterialFieldControl), defaultValue: new CustomEntry(), propertyChanged: OnCustomContentChanged);
 
@@ -521,7 +510,6 @@ namespace Plugin.MaterialDesignControls.Material3
                         this.frmContainer.CornerRadius = CornerRadius;
                     }
                     break;
-                //case nameof(Type):
                 case nameof(BackgroundColor):
                 case nameof(BorderColor):
                 case nameof(IndicatorColor):

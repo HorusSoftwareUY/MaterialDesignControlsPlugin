@@ -28,39 +28,6 @@ namespace Plugin.MaterialDesignControls.Material3
             this.txtEntry.Unfocused += HandleFocusChange;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
 
-            //TODO: check for future
-            //imgClearIcon.Command = new Command(() =>
-            //{
-            //    Text = string.Empty;
-            //    txtEntry.Text = string.Empty;
-            //});
-
-            //imgShowPasswordIcon.Command = new Command(() =>
-            //{
-            //    if (passwordIsVisible)
-            //    {
-            //        txtEntry.IsPassword = true;
-            //        passwordIsVisible = false;
-
-            //        // Display the show password icon
-            //        if (CustomShowPasswordIcon != null)
-            //            imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
-            //        else if (!string.IsNullOrEmpty(ShowPasswordIcon))
-            //            imgShowPasswordIcon.SetImage(ShowPasswordIcon);
-            //    }
-            //    else
-            //    {
-            //        txtEntry.IsPassword = false;
-            //        passwordIsVisible = true;
-
-            //        // Display the hide password icon
-            //        if (CustomHidePasswordIcon != null)
-            //            imgShowPasswordIcon.SetCustomImage(CustomHidePasswordIcon);
-            //        else if (!string.IsNullOrEmpty(HidePasswordIcon))
-            //            imgShowPasswordIcon.SetImage(HidePasswordIcon);
-            //    }
-            //});
-
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped +=  (s, e) =>
             {

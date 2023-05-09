@@ -46,23 +46,6 @@
                                              TabIndex="2"
                                              Keyboard="Numeric"/>
 
-                    <!--<material3:MaterialEntry AnimateError="True"
-                                            ClearIconIsVisible="False"
-                                            IsPassword="True"
-                                            LabelText="Password *"
-                                            MaxLength="50"
-                                            Placeholder="Enter your password"
-                                            ReturnType="Done"
-                                            TabIndex="2"
-                                            Text="{Binding Password}">
-                        <material3:MaterialEntry.CustomShowPasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg" />
-                        </material3:MaterialEntry.CustomShowPasswordIcon>
-                        <material3:MaterialEntry.CustomHidePasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg" />
-                        </material3:MaterialEntry.CustomHidePasswordIcon>
-                    </material3:MaterialEntry>-->
-
                     <material:MaterialDivider Margin="0,10" />
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
@@ -76,60 +59,21 @@
                                              MaxLength="12"
                                              Placeholder="Enter your name"
                                              ReturnType="Next"
-                                             TabIndex="2"
+                                             TabIndex="3"
                                              Text="{Binding Name}" />
                     
-                    <!--<material:MaterialEntry Keyboard="Email"
-                                            LabelText="Email"
-                                            LeadingIcon="email.png"
-                                            Placeholder="Enter your email"
-                                            ReturnType="Next"
-                                            TabIndex="2"
-                                            Type="Lined" />
-
-                    <material:MaterialEntry ClearIconIsVisible="False"
-                                            IsPassword="true"
-                                            LabelText="Password"
-                                            Placeholder="Enter your password"
-                                            ReturnType="Next"
-                                            TabIndex="3"
-                                            Type="Lined">
-                        <material:MaterialEntry.CustomShowPasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg" />
-                        </material:MaterialEntry.CustomShowPasswordIcon>
-                        <material:MaterialEntry.CustomHidePasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg" />
-                        </material:MaterialEntry.CustomHidePasswordIcon>
-                    </material:MaterialEntry>
-
-                    <material:MaterialEntry CornerRadius="20"
-                                            IsPassword="true"
-                                            LabelText="Confirm password"
-                                            Placeholder="Confirm password"
-                                            ReturnCommand="{Binding TapCommand}"
-                                            ReturnType="Done"
-                                            TabIndex="4"
-                                            Type="Outlined">
-                        <material:MaterialEntry.CustomShowPasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg" />
-                        </material:MaterialEntry.CustomShowPasswordIcon>
-                        <material:MaterialEntry.CustomHidePasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg" />
-                        </material:MaterialEntry.CustomHidePasswordIcon>
-                    </material:MaterialEntry>-->
-
                     <material3:MaterialEntry HorizontalTextAlignment="Center"
                                              Keyboard="Telephone"
                                              LabelText="Phone"
                                              Placeholder="Enter your phone"
                                              ReturnType="Next"
-                                             TabIndex="3" />
+                                             TabIndex="4" />
                     <material3:MaterialEntry IsEnabled="False"
                                              Keyboard="Telephone"
                                              LabelText="Phone"
                                              Placeholder="Enter your phone"
                                              ReturnType="Next"
-                                             TabIndex="3" />
+                                             TabIndex="5" />
 
                     <material3:MaterialEntry SupportingMargin="0,2,0,0"
                                              SupportingText="Testing"
@@ -137,7 +81,7 @@
                                              LabelMargin="0,0,0,2"
                                              LabelText="Phone (SVG trailing icon)"
                                              Placeholder="Enter your phone"
-                                             TabIndex="4"
+                                             TabIndex="6"
                                              TrailingIconCommand="{Binding HelpCommand}"
                                              TrailingIconCommandParameter="Enter your phone">
                         <material3:MaterialEntry.CustomTrailingIcon>
@@ -169,18 +113,20 @@
 
                     <material3:MaterialEntry LabelText="Return type Search"
                                              Placeholder="Enter search text"
+                                             TabIndex="7"
                                              ReturnCommand="{Binding SearchCommand}"
                                              ReturnType="Search"
                                              Text="{Binding SearchText}" />
 
                     <material3:MaterialEntry LabelText="Return type Next"
+                                             TabIndex="8"
                                              Placeholder="Enter text"
                                              ReturnType="Next" />
 
                     <material3:MaterialEntry LabelText="Return type Done"
                                              Placeholder="Enter text"
+                                             TabIndex="9"
                                              ReturnType="Done" />
-
                 </StackLayout>
             </ScrollView>
         </Grid>

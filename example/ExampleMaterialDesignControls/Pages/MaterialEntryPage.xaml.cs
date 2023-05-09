@@ -11,18 +11,18 @@ namespace ExampleMaterialDesignControls.Pages
 
             BindingContext = new MaterialEntryViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
 
-            //txtName.Focused += TxtName_Focused;
-            //txtName.Unfocused += TxtName_Unfocused;
+            txtName.Focused += TxtName_Focused;
+            txtName.Unfocused += TxtName_Unfocused;
         }
 
         private void TxtName_Unfocused(object sender, FocusEventArgs e)
         {
-            //txtName.LabelText = "Name* - Unfocused";
+            txtName.LabelText = "Name* - Unfocused";
         }
 
         private void TxtName_Focused(object sender, FocusEventArgs e)
         {
-            //txtName.LabelText = "Name* - Focused";
+            txtName.LabelText = "Name* - Focused";
         }
     }
 }

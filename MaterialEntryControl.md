@@ -217,7 +217,7 @@ This property is to set the height of the Material Entry
 <br/>
 
 ### Property CornerRadius:
-This property is to set the corner radious for the control. This is used only when you has a border and you can use (double: topLeft, double: topRight, double: bottomLeft, double: bottomRight) or (double: uniform).
+This property is to set the corner radius for the control. This is used only when you set HasBorder as true.
 ```XML
 <material3:MaterialEntry
     LabelText="Name *"
@@ -228,11 +228,32 @@ This property is to set the corner radious for the control. This is used only wh
     TabIndex="1"
     ReturnType="Next"
     HasBorder="True"
-    CornerRadious="10"
+    CornerRadius="10"
     SupportingTextColor="Red" />
 ```
 <br/>
 <br/>
+
+### Property CornerRadiusTopLeft:
+This property is to set if you wanna top left rounded.
+<br/>
+<br/>
+
+### Property CornerRadiusTopRight:
+This property is to set if you wanna top right rounded.
+<br/>
+<br/>
+
+### Property CornerRadiusBottomRight:
+This property is to set if you wanna bottom right rounded.
+<br/>
+<br/>
+
+### Property CornerRadiusBottomLeft:
+This property is to set if you wanna bottom left rounded.
+<br/>
+<br/>
+
 
 ### Property AnimateError:
 This property is to set the if you want or not animate the control on error.
@@ -330,6 +351,11 @@ This property is to set the border color. This is enabled when you set the prope
 
 ### Property HasBorder:
 This property is to set if this control has border or not.
+<br/>
+<br/>
+
+### Property BorderWidth:
+This property is to set the border width. **Only supported on iOS**
 <br/>
 <br/>
 
