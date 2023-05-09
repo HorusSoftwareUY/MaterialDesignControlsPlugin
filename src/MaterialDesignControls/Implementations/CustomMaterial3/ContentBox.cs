@@ -1,16 +1,17 @@
-﻿using Xamarin.Forms;
+﻿using Plugin.MaterialDesignControls.Implementations;
+using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
-    public partial class ContentBox : StackLayout
+    public partial class ContentBox : Frame
     {
         #region Attributes & Properties
 
-        public static BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(ContentBox), 0f);
+        public static BindableProperty CustomCornerRadiusProperty =
+            BindableProperty.Create(nameof(CustomCornerRadius), typeof(float), typeof(ContentBox), 0f);
 
-        public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(ContentBox), Color.Default);
+        public static readonly BindableProperty CustomBorderColorProperty =
+            BindableProperty.Create(nameof(CustomBorderColor), typeof(Color), typeof(ContentBox), Color.Default);
 
         public static readonly BindableProperty BorderWidthProperty =
             BindableProperty.Create(nameof(BorderWidth), typeof(float), typeof(ContentBox), 0f);
@@ -51,16 +52,16 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             set { SetValue(CornerRadiusBottomLeftProperty, value); }
         }
 
-        public float CornerRadius
+        public float CustomCornerRadius
         {
-            get { return (float)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
+            get { return (float)GetValue(CustomCornerRadiusProperty); }
+            set { SetValue(CustomCornerRadiusProperty, value); }
         }
 
-        public Color BorderColor
+        public Color CustomBorderColor
         {
-            get { return (Color)GetValue(BorderColorProperty); }
-            set { SetValue(BorderColorProperty, value); }
+            get { return (Color)GetValue(CustomBorderColorProperty); }
+            set { SetValue(CustomBorderColorProperty, value); }
         }
 
         public float BorderWidth
