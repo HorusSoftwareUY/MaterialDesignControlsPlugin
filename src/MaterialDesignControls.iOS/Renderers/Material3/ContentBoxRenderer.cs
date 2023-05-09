@@ -46,7 +46,6 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
             var element = (ContentBox)Element;
             Layer.BackgroundColor = element.BackgroundColor.ToCGColor();
             DrawBorder(element);
-            //DrawShadow(element.ShadowColor, element.CornerRadius, element.ShadowOpacity);
         }
 
         private void DrawBorder(ContentBox element)

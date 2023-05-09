@@ -65,9 +65,9 @@
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <!--<material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Types" />-->
+                                            Text="Types" />
 
                     <material3:MaterialEntry x:Name="txtName"
                                              AnimateError="True"
@@ -78,6 +78,7 @@
                                              ReturnType="Next"
                                              TabIndex="2"
                                              Text="{Binding Name}" />
+                    
                     <!--<material:MaterialEntry Keyboard="Email"
                                             LabelText="Email"
                                             LeadingIcon="email.png"

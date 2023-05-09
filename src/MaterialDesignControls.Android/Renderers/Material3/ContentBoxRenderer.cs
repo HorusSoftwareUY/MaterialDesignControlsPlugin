@@ -33,8 +33,8 @@ namespace Plugin.MaterialDesignControls.Material3.Android
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == nameof(CustomFrame.CornerRadius) ||
-                e.PropertyName == nameof(CustomFrame))
+            if (e.PropertyName == nameof(ContentBox.CornerRadius) ||
+                e.PropertyName == nameof(ContentBox))
             {
                 UpdateCornerRadius();
             }
@@ -44,7 +44,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
         {
             if (Control.Background is GradientDrawable backgroundGradient)
             {
-                var cornerRadius = (Element as CustomFrame)?.CornerRadius;
+                var cornerRadius = (Element as ContentBox)?.CornerRadius;
                 if (!cornerRadius.HasValue)
                 {
                     return;
