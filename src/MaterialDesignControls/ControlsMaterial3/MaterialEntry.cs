@@ -19,8 +19,7 @@ namespace Plugin.MaterialDesignControls.Material3
             txtEntry = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry()
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = Color.Red
+                HorizontalOptions = LayoutOptions.FillAndExpand
             };
             txtEntry.SetValue(Grid.ColumnProperty, 1);
             txtEntry.SetValue(Grid.RowProperty, 1);
@@ -413,8 +412,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 AnimatedLabel.IsVisible = false;
                 Label.IsVisible = true;
                 Label.Text = AnimatedLabel.Text;
-                //LabelTitle.Text = Title;
-                //EntryField.Placeholder = "";
             }
         }
 
@@ -433,9 +430,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 Label.IsVisible = false;
                 AnimatedLabel.IsVisible = false;
                 txtEntry.Placeholder = AnimatedLabel.Text;
-
-                //EntryField.Placeholder = Title;
-                //LabelTitle.Text = "";
             }
         }
 
@@ -443,7 +437,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var taskCompletionSource = new TaskCompletionSource<bool>();
 
-            // setup information for animation
             Action<double> callback = input => { Label.FontSize = input; };
             double startingHeight = AnimatedLabel.FontSize;
             double endingHeight = fontSize;
@@ -451,12 +444,10 @@ namespace Plugin.MaterialDesignControls.Material3
             uint length = 100;
             Easing easing = Easing.Linear;
 
-            // now start animation with all the setup information
-            AnimatedLabel.Animate("invis", callback, startingHeight, endingHeight, rate, length, easing, (v, c) => taskCompletionSource.SetResult(c));
+            AnimatedLabel.Animate("AnimateLabel", callback, startingHeight, endingHeight, rate, length, easing, (v, c) => taskCompletionSource.SetResult(c));
 
             return taskCompletionSource.Task;
         }
-
         #endregion Methods
     }
 }

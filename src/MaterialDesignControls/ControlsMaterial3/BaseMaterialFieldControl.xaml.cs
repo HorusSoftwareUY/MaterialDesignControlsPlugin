@@ -493,7 +493,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(Placeholder):
                     CustomContent.SetPlaceholder(Placeholder);
-                    SetAnimatedLabel();
                     break;
                 case nameof(PlaceholderColor):
                     CustomContent.SetPlaceholderColor(PlaceholderColor);
@@ -501,7 +500,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(LabelText):
                     this.lblLabel.Text = LabelText;
                     this.lblLabel.IsVisible = !AnimateLabel;//!string.IsNullOrEmpty(LabelText);
-                    SetAnimatedLabel();
                     break;
                 case nameof(LabelTextColor):
                     SetLabelTextColor();
@@ -641,6 +639,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     }
                     break;
             }
+
+            SetAnimatedLabel();
         }
 
         private void SetHasBorder()
