@@ -33,6 +33,14 @@
                                             Grid.Column="1"
                                             HorizontalTextAlignment="Start" />
 
+                    <controls:MaterialLabel x:Name="lblAnimatedLabel"
+                                            IsVisible="false"
+                                            LineBreakMode="NoWrap"
+                                            Grid.Row="0"
+                                            Grid.ColumnSpan="2"
+                                            Grid.Column="1"
+                                            HorizontalTextAlignment="Start" />
+
                     <custom:CustomImageButton x:Name="imgLeadingIcon"
                                               IsVisible="false"
                                               Grid.Column="0"

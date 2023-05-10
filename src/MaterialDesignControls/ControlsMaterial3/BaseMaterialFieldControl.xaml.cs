@@ -24,6 +24,17 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Attributes
 
         private bool initialized = false;
+        
+        public ContentBox FrameContainer => this.frmContainer;
+
+        public IBaseMaterialFieldControl Control => this.CustomContent;
+
+        public MaterialLabel Label => this.lblLabel;
+
+        public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
+
+        public bool AnimateLabel => (string.IsNullOrWhiteSpace(Placeholder) && !string.IsNullOrWhiteSpace(LabelText))
+            || (!string.IsNullOrWhiteSpace(Placeholder) && string.IsNullOrWhiteSpace(LabelText));
 
         #endregion Attributes
 
@@ -407,8 +418,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
-        public ContentBox FrameContainer => this.frmContainer;
-
         private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is BaseMaterialFieldControl control && control.contentLayout != null)
@@ -484,13 +493,15 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(Placeholder):
                     CustomContent.SetPlaceholder(Placeholder);
+                    SetAnimatedLabel();
                     break;
                 case nameof(PlaceholderColor):
                     CustomContent.SetPlaceholderColor(PlaceholderColor);
                     break;
                 case nameof(LabelText):
                     this.lblLabel.Text = LabelText;
-                    this.lblLabel.IsVisible = !string.IsNullOrEmpty(LabelText);
+                    this.lblLabel.IsVisible = !AnimateLabel;//!string.IsNullOrEmpty(LabelText);
+                    SetAnimatedLabel();
                     break;
                 case nameof(LabelTextColor):
                     SetLabelTextColor();
@@ -646,6 +657,15 @@ namespace Plugin.MaterialDesignControls.Material3
             CustomContent.SetTextColor(TextColor);
             SetBorderAndBackgroundColors();
         }
+
+        public void SetAnimatedLabel()
+        {
+            if (AnimateLabel)
+            {
+                AnimatedLabel.Text = string.IsNullOrWhiteSpace(LabelText) ? Placeholder : LabelText;
+            }
+        }
+
         #endregion Methods
     }
 }

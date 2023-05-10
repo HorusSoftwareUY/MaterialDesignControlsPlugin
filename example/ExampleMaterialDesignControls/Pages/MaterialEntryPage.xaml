@@ -26,7 +26,7 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialEntry follows the latest guidelines of Material Design 3" />
 
-                    <material3:MaterialEntry AnimateError="True"
+                    <!--<material3:MaterialEntry AnimateError="True"
                                              SupportingText="Email is required"
                                              LabelText="Email *"
                                              MaxLength="50"
@@ -125,6 +125,10 @@
 
                     <material3:MaterialEntry LabelText="Return type Done"
                                              Placeholder="Enter text"
+                                             TabIndex="9"
+                                             ReturnType="Done" /> -->
+
+                    <material3:MaterialEntry Placeholder="Enter text"
                                              TabIndex="9"
                                              ReturnType="Done" />
                 </StackLayout>
