@@ -128,11 +128,15 @@
                                              TabIndex="9"
                                              ReturnType="Done" /> -->
 
-                    <material3:MaterialEntry Placeholder="Enter text"
+                    <material3:MaterialEntry LabelPlaceholderText="Place Holder Works Animation"
                                              TabIndex="9"
                                              ReturnType="Done" />
 
-                    <material3:MaterialEntry LabelText="Enter text"
+                    <material3:MaterialEntry LabelText="Label text"
+                                             TabIndex="9"
+                                             ReturnType="Done" />
+
+                    <material3:MaterialEntry Placeholder="Place text"
                                              TabIndex="9"
                                              ReturnType="Done" />
 
@@ -143,12 +147,14 @@
                                              CornerRadiusTopRight="True"
                                              CornerRadiusTopLeft="True"
                                              BorderWidth="1"
-                                             LabelText="Id"
+                                             LabelText="Label"
+                                             LabelPlaceholderText="LabelPlace"
+                                             Placeholder="Place"
                                              TabIndex="2"
                                              Keyboard="Numeric" />
 
-                    <material3:MaterialEntry LabelText="Label text"
-                                             Placeholder="Placeholder"
+                    <material3:MaterialEntry LabelText="Label"
+                                             LabelPlaceholderText="LabelPlace"
                                              TabIndex="9"
                                              ReturnType="Done" />
                 </StackLayout>

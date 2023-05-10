@@ -1,14 +1,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31313.79
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleMaterialDesignControls.Android", "ExampleMaterialDesignControls.Android\ExampleMaterialDesignControls.Android.csproj", "{1E4E88F1-A058-44F5-A441-EAD9F534EF91}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleMaterialDesignControls.iOS", "ExampleMaterialDesignControls.iOS\ExampleMaterialDesignControls.iOS.csproj", "{14A1BA06-3AD2-4FB2-B14D-BFC5D66DB869}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleMaterialDesignControls", "ExampleMaterialDesignControls\ExampleMaterialDesignControls.csproj", "{439F7D85-7EF9-404C-AA78-98A755644B6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleMaterialDesignControls", "ExampleMaterialDesignControls\ExampleMaterialDesignControls.csproj", "{439F7D85-7EF9-404C-AA78-98A755644B6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialDesignControls", "..\src\MaterialDesignControls\MaterialDesignControls.csproj", "{2DD667DD-DC54-4CA6-B167-B0B4C1CE72D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaterialDesignControls", "..\src\MaterialDesignControls\MaterialDesignControls.csproj", "{2DD667DD-DC54-4CA6-B167-B0B4C1CE72D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialDesignControls.Android", "..\src\MaterialDesignControls.Android\MaterialDesignControls.Android.csproj", "{771F5490-1C4C-4BFF-A829-E532336552F8}"
 EndProject
@@ -53,6 +53,7 @@ Global
 		{1E4E88F1-A058-44F5-A441-EAD9F534EF91}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{1E4E88F1-A058-44F5-A441-EAD9F534EF91}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{1E4E88F1-A058-44F5-A441-EAD9F534EF91}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{1E4E88F1-A058-44F5-A441-EAD9F534EF91}.Debug|iPhoneSimulator.Deploy.0 = Debug|Any CPU
 		{1E4E88F1-A058-44F5-A441-EAD9F534EF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E4E88F1-A058-44F5-A441-EAD9F534EF91}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1E4E88F1-A058-44F5-A441-EAD9F534EF91}.Release|iPhone.ActiveCfg = Release|Any CPU

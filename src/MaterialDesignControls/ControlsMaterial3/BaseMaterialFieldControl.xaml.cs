@@ -33,8 +33,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
 
-        public bool AnimateLabel => (string.IsNullOrWhiteSpace(Placeholder) && !string.IsNullOrWhiteSpace(LabelText))
-            || (!string.IsNullOrWhiteSpace(Placeholder) && string.IsNullOrWhiteSpace(LabelText));
+        public bool AnimateLabel => !string.IsNullOrWhiteSpace(LabelPlaceholderText)
+            && string.IsNullOrWhiteSpace(LabelText);
 
         #endregion Attributes
 
@@ -416,6 +416,17 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion Icons
 
+        #region LabelPlaceholderText
+        public static readonly BindableProperty LabelPlaceholderTextProperty =
+            BindableProperty.Create(nameof(TextColor), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public string LabelPlaceholderText
+        {
+            get { return (string)GetValue(LabelPlaceholderTextProperty); }
+            set { SetValue(LabelPlaceholderTextProperty, value); }
+        }
+        #endregion LabelPlaceholderText
+
         #region Methods
 
         private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
@@ -499,7 +510,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(LabelText):
                     this.lblLabel.Text = LabelText;
-                    this.lblLabel.IsVisible = !AnimateLabel;//!string.IsNullOrEmpty(LabelText);
+                    this.lblLabel.IsVisible = !string.IsNullOrWhiteSpace(LabelText) && !AnimateLabel;
                     break;
                 case nameof(LabelTextColor):
                     SetLabelTextColor();
@@ -638,6 +649,10 @@ namespace Plugin.MaterialDesignControls.Material3
                         this.frmContainer.CornerRadiusTopLeft = CornerRadiusTopLeft;
                     }
                     break;
+
+                case nameof(LabelPlaceholderText):
+                    this.LabelPlaceholderText = LabelPlaceholderText;
+                    break;
             }
 
             SetAnimatedLabel();
@@ -662,13 +677,8 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             if (AnimateLabel)
             {
-                AnimatedLabel.Text = string.IsNullOrWhiteSpace(LabelText) ? Placeholder : LabelText;
-
-                if (!string.IsNullOrWhiteSpace(LabelText) && string.IsNullOrWhiteSpace(Placeholder))
-                {
-                    Placeholder = LabelText;
-                    LabelText = null;
-                }
+                AnimatedLabel.Text = LabelPlaceholderText;
+                Placeholder = LabelPlaceholderText;
             }
         }
 
