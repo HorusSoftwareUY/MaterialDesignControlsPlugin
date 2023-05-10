@@ -663,6 +663,12 @@ namespace Plugin.MaterialDesignControls.Material3
             if (AnimateLabel)
             {
                 AnimatedLabel.Text = string.IsNullOrWhiteSpace(LabelText) ? Placeholder : LabelText;
+
+                if (!string.IsNullOrWhiteSpace(LabelText) && string.IsNullOrWhiteSpace(Placeholder))
+                {
+                    Placeholder = LabelText;
+                    LabelText = null;
+                }
             }
         }
 

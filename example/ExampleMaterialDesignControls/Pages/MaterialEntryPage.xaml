@@ -131,6 +131,26 @@
                     <material3:MaterialEntry Placeholder="Enter text"
                                              TabIndex="9"
                                              ReturnType="Done" />
+
+                    <material3:MaterialEntry LabelText="Enter text"
+                                             TabIndex="9"
+                                             ReturnType="Done" />
+
+                    <material3:MaterialEntry HasBorder="True"
+                                             CornerRadius="10"
+                                             CornerRadiusBottomLeft="True"
+                                             CornerRadiusBottomRight="True"
+                                             CornerRadiusTopRight="True"
+                                             CornerRadiusTopLeft="True"
+                                             BorderWidth="1"
+                                             LabelText="Id"
+                                             TabIndex="2"
+                                             Keyboard="Numeric" />
+
+                    <material3:MaterialEntry LabelText="Label text"
+                                             Placeholder="Placeholder"
+                                             TabIndex="9"
+                                             ReturnType="Done" />
                 </StackLayout>
             </ScrollView>
         </Grid>

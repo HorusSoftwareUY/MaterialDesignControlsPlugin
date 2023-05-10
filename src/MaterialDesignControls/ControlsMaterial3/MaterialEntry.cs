@@ -19,7 +19,8 @@ namespace Plugin.MaterialDesignControls.Material3
             txtEntry = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry()
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Color.Red
             };
             txtEntry.SetValue(Grid.ColumnProperty, 1);
             txtEntry.SetValue(Grid.RowProperty, 1);
@@ -402,6 +403,7 @@ namespace Plugin.MaterialDesignControls.Material3
             if (AnimateLabel)
             {
                 AnimatedLabel.IsVisible = true;
+                AnimatedLabel.TextColor = PlaceholderColor;
                 txtEntry.Placeholder = "";
 
                 var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 100);
@@ -421,6 +423,7 @@ namespace Plugin.MaterialDesignControls.Material3
             if (AnimateLabel)
             {
                 AnimatedLabel.IsVisible = true;
+                AnimatedLabel.TextColor = LabelTextColor;
                 Label.IsVisible = false;
 
                 var t1 = AnimatedLabel.TranslateTo(txtEntry.X, txtEntry.Y, 100);
