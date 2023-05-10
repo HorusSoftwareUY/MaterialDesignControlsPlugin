@@ -319,6 +319,12 @@ This property is to set the label margin family of the material entry. By defaul
 <br/>
 <br/>
 
+### Property LabelPlaceholderText:
+This property is to set the placeholder and label text, but you want place holder animates and translates to Label position.
+#### if you use this property, PlaceHolder will be replace by it.
+<br/>
+<br/>
+
 ### Property SupportingText:
 This property is to set the supporting text of the material entry.
 <br/>
