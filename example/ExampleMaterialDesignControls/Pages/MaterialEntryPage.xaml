@@ -26,7 +26,7 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialEntry follows the latest guidelines of Material Design 3" />
 
-                    <!--<material3:MaterialEntry AnimateError="True"
+                    <material3:MaterialEntry AnimateError="True"
                                              SupportingText="Email is required"
                                              LabelText="Email *"
                                              MaxLength="50"
@@ -126,18 +126,15 @@
                     <material3:MaterialEntry LabelText="Return type Done"
                                              Placeholder="Enter text"
                                              TabIndex="9"
-                                             ReturnType="Done" /> -->
-
-                    <material3:MaterialEntry LabelPlaceholderText="Place Holder Works Animation"
-                                             TabIndex="9"
                                              ReturnType="Done" />
 
-                    <material3:MaterialEntry LabelText="Label text"
-                                             TabIndex="9"
-                                             ReturnType="Done" />
 
-                    <material3:MaterialEntry Placeholder="Place text"
-                                             TabIndex="9"
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Animate Placeholder to Label" />
+
+                    <material3:MaterialEntry LabelPlaceholderText="Lastname"
+                                             TabIndex="10"
                                              ReturnType="Done" />
 
                     <material3:MaterialEntry HasBorder="True"
@@ -147,16 +144,8 @@
                                              CornerRadiusTopRight="True"
                                              CornerRadiusTopLeft="True"
                                              BorderWidth="1"
-                                             LabelText="Label"
-                                             LabelPlaceholderText="LabelPlace"
-                                             Placeholder="Place"
-                                             TabIndex="2"
-                                             Keyboard="Numeric" />
-
-                    <material3:MaterialEntry LabelText="Label"
-                                             LabelPlaceholderText="LabelPlace"
-                                             TabIndex="9"
-                                             ReturnType="Done" />
+                                             LabelPlaceholderText="Address"
+                                             TabIndex="11" />
                 </StackLayout>
             </ScrollView>
         </Grid>
