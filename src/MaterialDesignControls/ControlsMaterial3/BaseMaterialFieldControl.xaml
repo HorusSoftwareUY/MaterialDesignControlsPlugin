@@ -73,5 +73,4 @@
                                     HorizontalTextAlignment="Start" />
         </StackLayout>
     </ContentView.Content>
-    
 </ContentView>
