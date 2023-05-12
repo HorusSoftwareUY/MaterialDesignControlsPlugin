@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BaseMaterialFieldControl : StackLayout
+    public partial class BaseMaterialFieldControl : ContentView
     {
         #region Constructor
         public BaseMaterialFieldControl()
@@ -671,9 +671,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(AnimatePlaceholder):
                     this.lblLabel.IsVisible = !AnimatePlaceholder;
-                    SetAnimatedLabel();
                     break;
             }
+            SetAnimatedLabel();
         }
 
         private void SetHasBorder()
@@ -699,6 +699,16 @@ namespace Plugin.MaterialDesignControls.Material3
                 {
                     AnimatedLabel.Text = Placeholder;
                     Placeholder = Placeholder;
+
+                    if (CustomContent is CustomEntry txtEntry)
+                    {
+                        if (string.IsNullOrWhiteSpace(txtEntry.Text) && !txtEntry.IsFocused)
+                        {
+                            txtEntry.SetValue(Grid.ColumnProperty, 1);
+                            txtEntry.SetValue(Grid.RowProperty, 0);
+                            txtEntry.SetValue(Grid.RowSpanProperty, 2);
+                        }
+                    }
                 }
             }
             catch (Exception ex)

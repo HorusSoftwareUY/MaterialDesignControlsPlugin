@@ -294,7 +294,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
             if (txtEntry.IsControlFocused())
             {
-                Focused.Invoke(this, e);
+                Focused?.Invoke(this, e);
                 FocusedCommand?.Execute(null);
 
                 var textInsideInput = txtEntry.Text;
@@ -384,13 +384,17 @@ namespace Plugin.MaterialDesignControls.Material3
                 AnimatedLabel.TextColor = PlaceholderColor;
                 txtEntry.Placeholder = "";
 
-                var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 100);
+                var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 200);
                 var t2 = SizeTo(LabelSize);
                 await Task.WhenAll(t1, t2);
 
                 AnimatedLabel.IsVisible = false;
                 Label.IsVisible = true;
                 Label.Text = AnimatedLabel.Text;
+
+                txtEntry.SetValue(Grid.ColumnProperty, 1);
+                txtEntry.SetValue(Grid.RowProperty, 1);
+                txtEntry.SetValue(Grid.RowSpanProperty, 1);
             }
         }
 
@@ -402,13 +406,20 @@ namespace Plugin.MaterialDesignControls.Material3
                 AnimatedLabel.TextColor = LabelTextColor;
                 Label.IsVisible = false;
 
-                var t1 = AnimatedLabel.TranslateTo(txtEntry.X, txtEntry.Y, 100);
+                var t1 = AnimatedLabel.TranslateTo(txtEntry.X, txtEntry.Y, 200);
                 var t2 = SizeTo(txtEntry.FontSize);
                 await Task.WhenAll(t1, t2);
 
                 Label.IsVisible = false;
                 AnimatedLabel.IsVisible = false;
                 txtEntry.Placeholder = AnimatedLabel.Text;
+
+                if (!IsFocused)
+                {
+                    txtEntry.SetValue(Grid.ColumnProperty, 1);
+                    txtEntry.SetValue(Grid.RowProperty, 0);
+                    txtEntry.SetValue(Grid.RowSpanProperty, 2);
+                }
             }
         }
 
@@ -420,7 +431,7 @@ namespace Plugin.MaterialDesignControls.Material3
             double startingHeight = AnimatedLabel.FontSize;
             double endingHeight = fontSize;
             uint rate = 5;
-            uint length = 100;
+            uint length = 200;
             Easing easing = Easing.Linear;
 
             AnimatedLabel.Animate("AnimateLabel", callback, startingHeight, endingHeight, rate, length, easing, (v, c) => taskCompletionSource.SetResult(c));
