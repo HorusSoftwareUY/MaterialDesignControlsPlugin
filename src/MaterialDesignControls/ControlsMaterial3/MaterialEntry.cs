@@ -148,30 +148,11 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Properties
 
         #region Events
-
         public event EventHandler TextChanged;
 
         public new event EventHandler<FocusEventArgs> Focused;
 
         public new event EventHandler<FocusEventArgs> Unfocused;
-
-        public static readonly BindableProperty FocusedCommandProperty =
-           BindableProperty.Create(nameof(FocusedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
-
-        public ICommand FocusedCommand
-        {
-            get { return (ICommand)GetValue(FocusedCommandProperty); }
-            set { SetValue(FocusedCommandProperty, value); }
-        }
-
-        public static readonly BindableProperty UnfocusedCommandProperty =
-            BindableProperty.Create(nameof(UnfocusedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
-
-        public ICommand UnfocusedCommand
-        {
-            get { return (ICommand)GetValue(UnfocusedCommandProperty); }
-            set { SetValue(UnfocusedCommandProperty, value); }
-        }
 
         public static readonly BindableProperty TextChangedCommandProperty =
             BindableProperty.Create(nameof(TextChangedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
@@ -181,8 +162,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (ICommand)GetValue(TextChangedCommandProperty); }
             set { SetValue(TextChangedCommandProperty, value); }
         }
-
-
         #endregion Events
 
         #region Methods
@@ -315,7 +294,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
             if (txtEntry.IsControlFocused())
             {
-                Focused?.Invoke(this, e);
+                Focused.Invoke(this, e);
                 FocusedCommand?.Execute(null);
 
                 var textInsideInput = txtEntry.Text;
@@ -399,7 +378,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private async Task TransitionToTitle()
         {
-            if (AnimateLabel)
+            if (AnimatePlaceholder)
             {
                 AnimatedLabel.IsVisible = true;
                 AnimatedLabel.TextColor = PlaceholderColor;
@@ -417,7 +396,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private async Task TransitionToPlaceholder()
         {
-            if (AnimateLabel)
+            if (AnimatePlaceholder)
             {
                 AnimatedLabel.IsVisible = true;
                 AnimatedLabel.TextColor = LabelTextColor;

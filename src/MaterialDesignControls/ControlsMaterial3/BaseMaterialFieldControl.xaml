@@ -1,74 +1,71 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plugin.MaterialDesignControls.Material3.BaseMaterialFieldControl"
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
              xmlns:controls3="clr-namespace:Plugin.MaterialDesignControls.Material3.Implementations;assembly=Plugin.MaterialDesignControls">
-    <ContentView.Content>
-        <StackLayout Spacing="0">
-            <controls3:ContentBox x:Name="frmContainer"
-                                   CornerRadius="10"
-                                   CornerRadiusTopLeft="True"
-                                   CornerRadiusTopRight="True"
-                                   Padding="16,8,16,8">
-                <Grid x:Name="contentLayout"
-                      ColumnSpacing="0"
-                      RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
+    <controls3:MaterialCard x:Name="frmContainer"
+                          CornerRadius="10"
+                          HasShadow="False"
+                          CornerRadiusTopLeft="True"
+                          CornerRadiusTopRight="True"
+                          Padding="16,8,16,8">
+        <Grid x:Name="contentLayout"
+              ColumnSpacing="0"
+              RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
 
-                    <controls:MaterialLabel x:Name="lblLabel"
-                                            IsVisible="false"
-                                            LineBreakMode="NoWrap"
-                                            Grid.Row="0"
-                                            Grid.ColumnSpan="2"
-                                            Grid.Column="1"
-                                            HorizontalTextAlignment="Start" />
-
-                    <controls:MaterialLabel x:Name="lblAnimatedLabel"
-                                            IsVisible="false"
-                                            LineBreakMode="NoWrap"
-                                            Grid.Row="0"
-                                            Grid.ColumnSpan="2"
-                                            Grid.Column="1"
-                                            HorizontalTextAlignment="Start" />
-
-                    <custom:CustomImageButton x:Name="imgLeadingIcon"
-                                              IsVisible="false"
-                                              Grid.Column="0"
-                                              Grid.RowSpan="2"
-                                              Grid.Row="0"
-                                              Margin="-4,0,16,0"
-                                              WidthRequest="24"
-                                              HeightRequest="24"
-                                              HorizontalOptions="Start" />
-
-                    <custom:CustomImageButton x:Name="imgTrailingIcon"
-                                              IsVisible="false"
-                                              WidthRequest="24"
-                                              Grid.Row="0"
-                                              Grid.RowSpan="2"
-                                              HeightRequest="24"
-                                              Margin="16,0,-4,0"
-                                              Grid.Column="2"
-                                              HorizontalOptions="End" />
-                </Grid>
-            </controls3:ContentBox>
-            <BoxView x:Name="indicator"
-                     HeightRequest="1" />
-            <controls:MaterialLabel x:Name="lblSupporting"
+            <controls:MaterialLabel x:Name="lblLabel"
                                     IsVisible="false"
                                     LineBreakMode="NoWrap"
-                                    Margin="16,4,16,0"
+                                    Grid.Row="0"
+                                    Grid.ColumnSpan="2"
+                                    Grid.Column="1"
                                     HorizontalTextAlignment="Start" />
-        </StackLayout>
-    </ContentView.Content>
-</ContentView>
+
+            <controls:MaterialLabel x:Name="lblAnimatedLabel"
+                                    IsVisible="false"
+                                    LineBreakMode="NoWrap"
+                                    Grid.Row="0"
+                                    Grid.ColumnSpan="2"
+                                    Grid.Column="1"
+                                    HorizontalTextAlignment="Start" />
+
+            <custom:CustomImageButton x:Name="imgLeadingIcon"
+                                      IsVisible="false"
+                                      Grid.Column="0"
+                                      Grid.RowSpan="2"
+                                      Grid.Row="0"
+                                      Margin="-4,0,16,0"
+                                      WidthRequest="24"
+                                      HeightRequest="24"
+                                      HorizontalOptions="Start" />
+
+            <custom:CustomImageButton x:Name="imgTrailingIcon"
+                                      IsVisible="false"
+                                      WidthRequest="24"
+                                      Grid.Row="0"
+                                      Grid.RowSpan="2"
+                                      HeightRequest="24"
+                                      Margin="16,0,-4,0"
+                                      Grid.Column="2"
+                                      HorizontalOptions="End" />
+        </Grid>
+    </controls3:MaterialCard>
+    <BoxView x:Name="indicator"
+             HeightRequest="1" />
+    <controls:MaterialLabel x:Name="lblSupporting"
+                            IsVisible="false"
+                            LineBreakMode="NoWrap"
+                            Margin="16,4,16,0"
+                            HorizontalTextAlignment="Start" />
+</StackLayout>

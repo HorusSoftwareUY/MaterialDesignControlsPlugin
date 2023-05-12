@@ -388,8 +388,8 @@
                     Value="{StaticResource GrayColor}" />
         </Style>
 
-        <Style TargetType="material3:MaterialEntry"
-               x:Key="BaseMaterial3Style">
+        <!--MaterialEntry-->
+        <Style TargetType="material3:MaterialEntry">
             <Setter Property="AnimateError"
                     Value="True" />
             <Setter Property="SupportingTextColor"
@@ -404,12 +404,6 @@
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="BackgroundColor"
                     Value="{StaticResource BackgroundMaterialColor}" />
-        </Style>
-        
-        <!--MaterialEntry-->
-
-        <Style TargetType="material3:MaterialEntry"
-               BasedOn="{StaticResource BaseMaterial3Style}">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">

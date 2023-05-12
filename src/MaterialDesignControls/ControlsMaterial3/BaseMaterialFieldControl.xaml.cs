@@ -1,6 +1,8 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.ControlsMaterial3;
 using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Utils;
+using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BaseMaterialFieldControl : ContentView
+    public partial class BaseMaterialFieldControl : StackLayout
     {
         #region Constructor
         public BaseMaterialFieldControl()
@@ -25,16 +27,13 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool initialized = false;
         
-        public ContentBox FrameContainer => this.frmContainer;
+        public MaterialCard FrameContainer => this.frmContainer;
 
         public IBaseMaterialFieldControl Control => this.CustomContent;
 
         public MaterialLabel Label => this.lblLabel;
 
         public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
-
-        public bool AnimateLabel => !string.IsNullOrWhiteSpace(LabelPlaceholderText)
-            && string.IsNullOrWhiteSpace(LabelText);
 
         #endregion Attributes
 
@@ -125,6 +124,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (Color)GetValue(PlaceholderColorProperty); }
             set { SetValue(PlaceholderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimatePlaceholderProperty =
+            BindableProperty.Create(nameof(AnimatePlaceholder), typeof(bool), typeof(BaseMaterialFieldControl), defaultValue: false);
+
+        public bool AnimatePlaceholder
+        {
+            get { return (bool)GetValue(AnimatePlaceholderProperty); }
+            set { SetValue(AnimatePlaceholderProperty, value); }
         }
 
         #endregion Placeholder
@@ -295,13 +303,13 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(HasBorderProperty, value); }
         }
 
-        public static readonly BindableProperty BorderWidthProperty =
-            BindableProperty.Create(nameof(BorderWidth), typeof(float), typeof(ContentBox), 0f);
+        public static readonly BindableProperty iOSBorderWidthProperty =
+            BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(MaterialCard), 0f);
 
-        public float BorderWidth
+        public float iOSBorderWidth
         {
-            get { return (float)GetValue(BorderWidthProperty); }
-            set { SetValue(BorderWidthProperty, value); }
+            get { return (float)GetValue(iOSBorderWidthProperty); }
+            set { SetValue(iOSBorderWidthProperty, value); }
         }
         #endregion Border
 
@@ -416,16 +424,27 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion Icons
 
-        #region LabelPlaceholderText
-        public static readonly BindableProperty LabelPlaceholderTextProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+        #region Events
 
-        public string LabelPlaceholderText
+        public static readonly BindableProperty FocusedCommandProperty =
+           BindableProperty.Create(nameof(FocusedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+
+        public ICommand FocusedCommand
         {
-            get { return (string)GetValue(LabelPlaceholderTextProperty); }
-            set { SetValue(LabelPlaceholderTextProperty, value); }
+            get { return (ICommand)GetValue(FocusedCommandProperty); }
+            set { SetValue(FocusedCommandProperty, value); }
         }
-        #endregion LabelPlaceholderText
+
+        public static readonly BindableProperty UnfocusedCommandProperty =
+            BindableProperty.Create(nameof(UnfocusedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+
+        public ICommand UnfocusedCommand
+        {
+            get { return (ICommand)GetValue(UnfocusedCommandProperty); }
+            set { SetValue(UnfocusedCommandProperty, value); }
+        }
+
+        #endregion
 
         #region Methods
 
@@ -510,7 +529,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(LabelText):
                     this.lblLabel.Text = LabelText;
-                    this.lblLabel.IsVisible = !string.IsNullOrWhiteSpace(LabelText) && !AnimateLabel;
+                    this.lblLabel.IsVisible = !string.IsNullOrWhiteSpace(LabelText);
                     break;
                 case nameof(LabelTextColor):
                     SetLabelTextColor();
@@ -618,8 +637,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetHasBorder();
                     break;
 
-                case nameof(BorderWidth):
-                    this.frmContainer.BorderWidth = HasBorder ? BorderWidth : 0f;
+                case nameof(iOSBorderWidth):
+                    this.frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
                     break;
 
                 case nameof(CornerRadiusBottomLeft):
@@ -650,12 +669,11 @@ namespace Plugin.MaterialDesignControls.Material3
                     }
                     break;
 
-                case nameof(LabelPlaceholderText):
-                    this.LabelPlaceholderText = LabelPlaceholderText;
+                case nameof(AnimatePlaceholder):
+                    this.lblLabel.IsVisible = !AnimatePlaceholder;
+                    SetAnimatedLabel();
                     break;
             }
-
-            SetAnimatedLabel();
         }
 
         private void SetHasBorder()
@@ -675,10 +693,17 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public void SetAnimatedLabel()
         {
-            if (AnimateLabel)
+            try
             {
-                AnimatedLabel.Text = LabelPlaceholderText;
-                Placeholder = LabelPlaceholderText;
+                if (AnimatePlaceholder)
+                {
+                    AnimatedLabel.Text = Placeholder;
+                    Placeholder = Placeholder;
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Log(ex);
             }
         }
 

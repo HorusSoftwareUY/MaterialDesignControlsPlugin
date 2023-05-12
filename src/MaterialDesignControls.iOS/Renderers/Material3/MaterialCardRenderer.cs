@@ -4,14 +4,15 @@ using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Material3.iOS;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(ContentBox), typeof(ContentBoxRenderer))]
+[assembly: ExportRenderer(typeof(MaterialCard), typeof(MaterialCardRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.iOS
 {
-    public class ContentBoxRenderer : ViewRenderer
+    public class MaterialCardRenderer : ViewRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
@@ -28,7 +29,7 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (new string[] { "BackgroundColor", "BorderColor", "BorderWidth", "CornerRadius", "Height", "Width", "CornerRadiusTopLeft", "CornerRadiusTopRight", "CornerRadiusBottomLeft", "CornerRadiusBottomRight" }.Contains(e.PropertyName))
+            if (new string[] { "BackgroundColor", "BorderColor", "iOSBorderWidth", "CornerRadius", "Height", "Width", "CornerRadiusTopLeft", "CornerRadiusTopRight", "CornerRadiusBottomLeft", "CornerRadiusBottomRight", "iOSShadowOffset", "iOSShadowOpacity", "iOSShadowRadius", "ShadowColor" }.Contains(e.PropertyName))
             {
                 Draw();
                 SetNeedsDisplay();
@@ -43,12 +44,13 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
 
         private void Draw()
         {
-            var element = (ContentBox)Element;
+            var element = (MaterialCard)Element;
             Layer.BackgroundColor = element.BackgroundColor.ToCGColor();
             DrawBorder(element);
+            DrawShadow(element);
         }
 
-        private void DrawBorder(ContentBox element)
+        private void DrawBorder(MaterialCard element)
         {
             try
             {
@@ -60,10 +62,10 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
 
             Layer.CornerRadius = element.CornerRadius;
             Layer.BorderColor = element.BorderColor.ToCGColor();
-            Layer.BorderWidth = element.BorderWidth;
+            Layer.BorderWidth = element.iOSBorderWidth;
         }
 
-        private CACornerMask GetMaskCorner(ContentBox element)
+        private CACornerMask GetMaskCorner(MaterialCard element)
         {
 
             if (!element.CornerRadiusTopLeft && !element.CornerRadiusTopRight && !element.CornerRadiusBottomLeft && !element.CornerRadiusBottomRight)
@@ -117,6 +119,20 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
             //15: all corners rounded
 
             return 0;
+        }
+
+        public void DrawShadow(MaterialCard customFrame)
+        {
+            if (customFrame != null)
+            {
+                if (customFrame.HasShadow)
+                {
+                    Layer.ShadowColor = customFrame.ShadowColor.ToCGColor();
+                    Layer.ShadowRadius = (float)customFrame.iOSShadowRadius;
+                    Layer.ShadowOpacity = (float)customFrame.iOSShadowOpacity;
+                    Layer.ShadowOffset = new SizeF((float)customFrame.iOSShadowOffset.Width, (float)customFrame.iOSShadowOffset.Height);
+                }
+            }
         }
     }
 }

@@ -41,7 +41,7 @@
                                              CornerRadiusBottomRight="True"
                                              CornerRadiusTopRight="True"
                                              CornerRadiusTopLeft="True"
-                                             BorderWidth="1"
+                                             iOSBorderWidth="1"
                                              LabelText="Id"
                                              TabIndex="2"
                                              Keyboard="Numeric"/>
@@ -128,13 +128,13 @@
                                              TabIndex="9"
                                              ReturnType="Done" />
 
-
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Animate Placeholder to Label" />
 
-                    <material3:MaterialEntry LabelPlaceholderText="Lastname"
+                    <material3:MaterialEntry Placeholder="Lastname"
                                              TabIndex="10"
+                                             AnimatePlaceholder="True"
                                              ReturnType="Done" />
 
                     <material3:MaterialEntry HasBorder="True"
@@ -142,9 +142,10 @@
                                              CornerRadiusBottomLeft="True"
                                              CornerRadiusBottomRight="True"
                                              CornerRadiusTopRight="True"
+                                             AnimatePlaceholder="True"
                                              CornerRadiusTopLeft="True"
-                                             BorderWidth="1"
-                                             LabelPlaceholderText="Address"
+                                             iOSBorderWidth="1"
+                                             Placeholder="Address"
                                              TabIndex="11" />
                 </StackLayout>
             </ScrollView>

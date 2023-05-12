@@ -5,13 +5,14 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Material3.Android;
+using Android.OS;
 
-[assembly: ExportRenderer(typeof(ContentBox), typeof(ContentBoxRenderer))]
+[assembly: ExportRenderer(typeof(MaterialCard), typeof(MaterialCardRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.Android
 {
-    public class ContentBoxRenderer : Xamarin.Forms.Platform.Android.FastRenderers.FrameRenderer
+    public class MaterialCardRenderer : Xamarin.Forms.Platform.Android.FastRenderers.FrameRenderer
     {
-        public ContentBoxRenderer(Context context)
+        public MaterialCardRenderer(Context context)
             : base(context)
         {
         }
@@ -22,6 +23,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             if (e.NewElement != null && Control != null)
             {
                 UpdateCornerRadius();
+                DrawShadow();
             }
         }
 
@@ -29,8 +31,8 @@ namespace Plugin.MaterialDesignControls.Material3.Android
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == nameof(ContentBox.CornerRadius) ||
-                e.PropertyName == nameof(ContentBox))
+            if (e.PropertyName == nameof(MaterialCard.CornerRadius) ||
+                e.PropertyName == nameof(MaterialCard))
             {
                 UpdateCornerRadius();
             }
@@ -40,13 +42,13 @@ namespace Plugin.MaterialDesignControls.Material3.Android
         {
             if (Control.Background is GradientDrawable backgroundGradient)
             {
-                var cornerRadius = (Element as ContentBox)?.CornerRadius;
+                var cornerRadius = (Element as MaterialCard)?.CornerRadius;
                 if (!cornerRadius.HasValue)
                 {
                     return;
                 }
 
-                if (!(Element is ContentBox element))
+                if (!(Element is MaterialCard element))
                 {
                     return;
                 }
@@ -76,6 +78,28 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                     bottomLeftCorner,
                 };
                 backgroundGradient.SetCornerRadii(cornerRadii);
+            }
+        }
+
+        public void DrawShadow()
+        {
+            var customFrame = (MaterialCard)Element;
+            if (customFrame != null)
+            {
+                if (customFrame.HasShadow)
+                {
+                    if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
+                    {
+                        SetOutlineSpotShadowColor(customFrame.ShadowColor.ToAndroid());
+                        SetOutlineAmbientShadowColor(customFrame.ShadowColor.ToAndroid());
+                        CardElevation = (float)customFrame.AndroidElevation;
+                    }
+                    else
+                    {
+                        var borderColor = customFrame.ShadowColor.MultiplyAlpha(customFrame.AndroidBorderAlpha);
+                        Element.BorderColor = borderColor;
+                    }
+                }
             }
         }
     }

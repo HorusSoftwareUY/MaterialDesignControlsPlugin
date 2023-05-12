@@ -8,82 +8,6 @@ Text fields let users enter and edit text.
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.gif" width="300">
 
 ## Example MaterialEntry
-Set style:
-
-```XML
-<Style TargetType="material3:MaterialEntry"
-        x:Key="BaseMaterial3Style">
-    <Setter Property="AnimateError"
-            Value="True" />
-    <Setter Property="SupportingTextColor"
-            Value="{StaticResource SupportingTextColor}" />
-    <Setter Property="SupportingSize"
-            Value="{StaticResource Body3FontSize}" />
-    <Setter Property="FontSize"
-            Value="{StaticResource Body1FontSize}" />
-    <Setter Property="PlaceholderColor"
-            Value="{StaticResource PlaceholderColor}" />
-    <Setter Property="LabelSize"
-            Value="{StaticResource Body3FontSize}" />
-    <Setter Property="BackgroundColor"
-            Value="{StaticResource BackgroundMaterialColor}" />
-    <Setter Property="CornerRadius"
-            Value="15" />
-</Style>
-
-<!--MaterialEntry-->
-<Style TargetType="material3:MaterialEntry"
-        BasedOn="{StaticResource BaseMaterial3Style}">
-    <Setter Property="VisualStateManager.VisualStateGroups">
-        <VisualStateGroupList>
-            <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal">
-                    <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="{StaticResource TextColor}" />
-                        <Setter Property="LabelTextColor"
-                                Value="{StaticResource GradientColor1}" />
-                        <Setter Property="IndicatorColor"
-                                Value="{StaticResource GradientColor1}" />
-                        <Setter Property="BorderColor"
-                                Value="{StaticResource GradientColor1}" />
-                        <Setter Property="BackgroundColor"
-                                Value="{StaticResource BackgroundMaterialColor}" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Disabled">
-                    <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="{StaticResource DarkGrayColor}" />
-                        <Setter Property="LabelTextColor"
-                                Value="{StaticResource DarkGrayColor}" />
-                        <Setter Property="IndicatorColor"
-                                Value="{StaticResource DarkGrayColor}" />
-                        <Setter Property="BorderColor"
-                                Value="{StaticResource DarkGrayColor}" />
-                        <Setter Property="BackgroundColor"
-                                Value="{StaticResource GrayColor}" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Focused">
-                    <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="{StaticResource TextColor}" />
-                        <Setter Property="LabelTextColor"
-                                Value="{StaticResource BorderMaterialColor}" />
-                        <Setter Property="IndicatorColor"
-                                Value="{StaticResource BorderMaterialColor}" />
-                        <Setter Property="BorderColor"
-                                Value="{StaticResource BorderMaterialColor}" />
-                        <Setter Property="BackgroundColor"
-                                Value="{StaticResource GradientColorTransparent1}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateGroupList>
-    </Setter>
-</Style>
-``` 
 Using the control:
 
 ```XML
@@ -98,8 +22,6 @@ Using the control:
     ReturnType="Next"
     SupportingTextColor="Red" />
 ```
-
-
 <br/>
 
 ## Documentation
@@ -108,6 +30,77 @@ We update this control to use VisualStateManager (See examble above). So we reco
 - Normal
 - Focused
 - Disabled
+#### Example:
+
+Set style:
+
+```XML
+<Style TargetType="material3:MaterialEntry">
+        <Setter Property="AnimateError"
+                Value="True" />
+        <Setter Property="SupportingTextColor"
+                Value="#c92726" />
+        <Setter Property="SupportingSize"
+                Value="12" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="PlaceholderColor"
+                Value="#66839b" />
+        <Setter Property="LabelSize"
+                Value="12" />
+        <Setter Property="BackgroundColor"
+                Value="#0d2e85cc" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+        <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                        <Setter Property="TextColor"
+                                Value="#0d1a26" />
+                        <Setter Property="LabelTextColor"
+                                Value="#2e85cc" />
+                        <Setter Property="IndicatorColor"
+                                Value="#2e85cc" />
+                        <Setter Property="BorderColor"
+                                Value="#2e85cc" />
+                        <Setter Property="BackgroundColor"
+                                Value="#0d2e85cc" />
+                        </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                        <Setter Property="TextColor"
+                                Value="#828282" />
+                        <Setter Property="LabelTextColor"
+                                Value="#828282" />
+                        <Setter Property="IndicatorColor"
+                                Value="#828282" />
+                        <Setter Property="BorderColor"
+                                Value="#828282" />
+                        <Setter Property="BackgroundColor"
+                                Value="#E3E3E3" />
+                        </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Focused">
+                        <VisualState.Setters>
+                        <Setter Property="TextColor"
+                                Value="#0d1a26" />
+                        <Setter Property="LabelTextColor"
+                                Value="#1f5988" />
+                        <Setter Property="IndicatorColor"
+                                Value="#1f5988" />
+                        <Setter Property="BorderColor"
+                                Value="#1f5988" />
+                        <Setter Property="BackgroundColor"
+                                Value="#1A2e85cc" />
+                        </VisualState.Setters>
+                </VisualState>
+                </VisualStateGroup>
+        </VisualStateGroupList>
+        </Setter>
+</Style>
+``` 
+<br/>
 <br/>
 
 ### Property Keyboard
@@ -294,6 +287,11 @@ This property is to set the placeholder color of the material entry.
 <br/>
 <br/>
 
+### Property AnimatePlaceholder:
+If you set this property to true the placeholder will be translated to label place.
+<br/>
+<br/>
+
 ### Property LabelText:
 This property is to set the label of the material entry.
 <br/>
@@ -316,12 +314,6 @@ This property is to set the label font family of the material entry.
 
 ### Property LabelMargin:
 This property is to set the label margin family of the material entry. By default uses (16,0,16,0).
-<br/>
-<br/>
-
-### Property LabelPlaceholderText:
-This property is to set the placeholder and label text, but you want place holder animates and translates to Label position.
-#### if you use this property, PlaceHolder will be replace by it.
 <br/>
 <br/>
 
@@ -360,7 +352,7 @@ This property is to set if this control has border or not.
 <br/>
 <br/>
 
-### Property BorderWidth:
+### Property iOSBorderWidth:
 This property is to set the border width. **Only supported on iOS**
 <br/>
 <br/>
