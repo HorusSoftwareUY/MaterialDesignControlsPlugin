@@ -35,6 +35,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
 
+        public bool AnimateLabel => this.AnimatePlaceholder && string.IsNullOrWhiteSpace(LabelText);
+
         #endregion Attributes
 
         #region Properties
@@ -670,7 +672,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(AnimatePlaceholder):
-                    this.lblLabel.IsVisible = !AnimatePlaceholder;
+                    this.lblLabel.IsVisible = !AnimateLabel;
                     break;
             }
             SetAnimatedLabel();
@@ -695,7 +697,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             try
             {
-                if (AnimatePlaceholder)
+                if (AnimateLabel)
                 {
                     AnimatedLabel.Text = Placeholder;
                     Placeholder = Placeholder;
@@ -707,6 +709,18 @@ namespace Plugin.MaterialDesignControls.Material3
                             txtEntry.SetValue(Grid.ColumnProperty, 1);
                             txtEntry.SetValue(Grid.RowProperty, 0);
                             txtEntry.SetValue(Grid.RowSpanProperty, 2);
+                        }
+                    }
+                }
+                else
+                {
+                    if (CustomContent is CustomEntry txtEntry)
+                    {
+                        if (string.IsNullOrWhiteSpace(txtEntry.Text) && !txtEntry.IsFocused)
+                        {
+                            txtEntry.SetValue(Grid.ColumnProperty, 1);
+                            txtEntry.SetValue(Grid.RowProperty, 1);
+                            txtEntry.SetValue(Grid.RowSpanProperty, 1);
                         }
                     }
                 }

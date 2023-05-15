@@ -378,19 +378,15 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private async Task TransitionToTitle()
         {
-            if (AnimatePlaceholder)
+            if (AnimateLabel)
             {
-                AnimatedLabel.IsVisible = true;
-                AnimatedLabel.TextColor = PlaceholderColor;
                 txtEntry.Placeholder = "";
+                AnimatedLabel.IsVisible = true;
 
                 var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 200);
                 var t2 = SizeTo(LabelSize);
                 await Task.WhenAll(t1, t2);
-
-                AnimatedLabel.IsVisible = false;
-                Label.IsVisible = true;
-                Label.Text = AnimatedLabel.Text;
+                AnimatedLabel.TextColor = LabelTextColor;
 
                 txtEntry.SetValue(Grid.ColumnProperty, 1);
                 txtEntry.SetValue(Grid.RowProperty, 1);
@@ -400,19 +396,16 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private async Task TransitionToPlaceholder()
         {
-            if (AnimatePlaceholder)
+            if (AnimateLabel)
             {
-                AnimatedLabel.IsVisible = true;
-                AnimatedLabel.TextColor = LabelTextColor;
-                Label.IsVisible = false;
+                AnimatedLabel.TextColor = PlaceholderColor;
 
                 var t1 = AnimatedLabel.TranslateTo(txtEntry.X, txtEntry.Y, 200);
                 var t2 = SizeTo(txtEntry.FontSize);
                 await Task.WhenAll(t1, t2);
 
-                Label.IsVisible = false;
-                AnimatedLabel.IsVisible = false;
                 txtEntry.Placeholder = AnimatedLabel.Text;
+                AnimatedLabel.IsVisible = false;
 
                 if (!IsFocused)
                 {
@@ -427,7 +420,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var taskCompletionSource = new TaskCompletionSource<bool>();
 
-            Action<double> callback = input => { Label.FontSize = input; };
+            Action<double> callback = input => { AnimatedLabel.FontSize = input; };
             double startingHeight = AnimatedLabel.FontSize;
             double endingHeight = fontSize;
             uint rate = 5;
