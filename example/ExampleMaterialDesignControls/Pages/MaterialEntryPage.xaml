@@ -52,7 +52,7 @@
                                              MaxLength="12"
                                              Placeholder="Enter your name"
                                              ReturnType="Next"
-                                             TabIndex="3"
+                                             TabIndex="2"
                                              Text="{Binding Name}" />
 
                     <material3:MaterialButton Command="{Binding TapCommand}"
@@ -70,7 +70,7 @@
                                              LabelText="Phone"
                                              Placeholder="Enter your phone"
                                              ReturnType="Next"
-                                             TabIndex="4" />
+                                             TabIndex="3" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -83,7 +83,7 @@
                                              LabelText="Phone"
                                              Placeholder="Enter your phone"
                                              ReturnType="Next"
-                                             TabIndex="5" />
+                                             TabIndex="4" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -97,7 +97,7 @@
                                              LabelMargin="0,0,0,2"
                                              LabelText="Phone (SVG trailing icon)"
                                              Placeholder="Enter your phone"
-                                             TabIndex="6"
+                                             TabIndex="5"
                                              TrailingIconCommand="{Binding HelpCommand}"
                                              TrailingIconCommandParameter="Enter your phone">
                         <material3:MaterialEntry.CustomTrailingIcon>
@@ -131,19 +131,19 @@
 
                     <material3:MaterialEntry LabelText="Return type Search"
                                              Placeholder="Enter search text"
-                                             TabIndex="7"
+                                             TabIndex="6"
                                              ReturnCommand="{Binding SearchCommand}"
                                              ReturnType="Search"
                                              Text="{Binding SearchText}" />
 
                     <material3:MaterialEntry LabelText="Return type Next"
-                                             TabIndex="8"
+                                             TabIndex="7"
                                              Placeholder="Enter text"
                                              ReturnType="Next" />
 
                     <material3:MaterialEntry LabelText="Return type Done"
                                              Placeholder="Enter text"
-                                             TabIndex="9"
+                                             TabIndex="8"
                                              ReturnType="Done" />
 
                     <material:MaterialDivider Margin="0,10" />
@@ -152,7 +152,7 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Animate Placeholder to Label" />
 
-                    <material3:MaterialEntry TabIndex="10"
+                    <material3:MaterialEntry TabIndex="9"
                                              AnimatePlaceholder="True"
                                              Placeholder="Lastname"
                                              ReturnType="Done" />
@@ -171,7 +171,7 @@
                                              CornerRadiusTopLeft="True"
                                              iOSBorderWidth="1"
                                              LabelText="Id"
-                                             TabIndex="2"
+                                             TabIndex="10"
                                              Keyboard="Numeric" />
 
                     <material:MaterialDivider Margin="0,10" />
@@ -219,7 +219,7 @@
                                              FocusedCommand="{Binding FocusedCommand}"
                                              UnfocusedCommand="{Binding UnfocusedCommand}"
                                              LabelText="Label Text"
-                                             TabIndex="2"
+                                             TabIndex="12"
                                              Keyboard="Numeric">
                         <material3:MaterialEntry.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
