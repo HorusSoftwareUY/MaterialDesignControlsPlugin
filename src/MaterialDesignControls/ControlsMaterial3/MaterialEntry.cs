@@ -1,4 +1,4 @@
-﻿using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
 using System.Runtime.CompilerServices;
