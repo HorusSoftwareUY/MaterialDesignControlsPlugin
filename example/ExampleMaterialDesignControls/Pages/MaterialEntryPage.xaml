@@ -28,7 +28,7 @@
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Indicator" />
+                                            Text="Filled Type" />
                     
                     <material3:MaterialEntry AnimateError="True"
                                              SupportingText="Email is required"
@@ -152,9 +152,9 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Animate Placeholder to Label" />
 
-                    <material3:MaterialEntry Placeholder="Lastname"
-                                             TabIndex="10"
+                    <material3:MaterialEntry TabIndex="10"
                                              AnimatePlaceholder="True"
+                                             Placeholder="Lastname"
                                              ReturnType="Done" />
 
                     <material:MaterialDivider Margin="0,10" />
@@ -203,7 +203,6 @@
                                              CornerRadiusBottomRight="True"
                                              CornerRadiusTopRight="True"
                                              CornerRadiusTopLeft="False"
-                                             AnimatePlaceholder="True"
                                              iOSBorderWidth="3"
                                              SupportingMargin="10,2,0,0"
                                              SupportingText="Testing"

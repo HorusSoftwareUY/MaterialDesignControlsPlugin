@@ -380,17 +380,11 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             if (AnimateLabel)
             {
-                txtEntry.Placeholder = "";
-                AnimatedLabel.IsVisible = true;
-
                 var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 200);
                 var t2 = SizeTo(LabelSize);
                 await Task.WhenAll(t1, t2);
                 AnimatedLabel.TextColor = LabelTextColor;
-
-                txtEntry.SetValue(Grid.ColumnProperty, 1);
-                txtEntry.SetValue(Grid.RowProperty, 1);
-                txtEntry.SetValue(Grid.RowSpanProperty, 1);
+                AnimatedLabel.SetValue(Grid.RowSpanProperty, 1);
             }
         }
 
@@ -399,20 +393,12 @@ namespace Plugin.MaterialDesignControls.Material3
             if (AnimateLabel)
             {
                 AnimatedLabel.TextColor = PlaceholderColor;
-
-                var t1 = AnimatedLabel.TranslateTo(txtEntry.X, txtEntry.Y, 200);
-                var t2 = SizeTo(txtEntry.FontSize);
-                await Task.WhenAll(t1, t2);
-
-                txtEntry.Placeholder = AnimatedLabel.Text;
-                AnimatedLabel.IsVisible = false;
-
                 if (!IsFocused)
                 {
-                    txtEntry.SetValue(Grid.ColumnProperty, 1);
-                    txtEntry.SetValue(Grid.RowProperty, 0);
-                    txtEntry.SetValue(Grid.RowSpanProperty, 2);
+                    AnimatedLabel.SetValue(Grid.RowSpanProperty, 2);
                 }
+                var t2 = SizeTo(txtEntry.FontSize);
+                await Task.WhenAll(t2);
             }
         }
 
