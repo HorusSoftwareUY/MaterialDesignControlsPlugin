@@ -10,7 +10,6 @@
             <controls3:MaterialCard x:Name="frmContainer"
                                     CornerRadius="10"
                                     HasShadow="False"
-                                    HeightRequest="56"
                                     CornerRadiusTopLeft="True"
                                     CornerRadiusTopRight="True"
                                     Padding="16,8,16,8">
@@ -18,8 +17,8 @@
                       ColumnSpacing="0"
                       RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="16" />
+                        <RowDefinition Height="24" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
@@ -38,8 +37,10 @@
                     <controls:MaterialLabel x:Name="lblAnimatedLabel"
                                             IsVisible="false"
                                             LineBreakMode="NoWrap"
+                                            VerticalTextAlignment="Center"
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="FillAndExpand"
                                             Grid.Row="0"
-                                            Grid.ColumnSpan="2"
                                             Grid.Column="1"
                                             HorizontalTextAlignment="Start" />
 

@@ -398,8 +398,6 @@
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="FontSize"
                     Value="{StaticResource Body1FontSize}" />
-            <Setter Property="PlaceholderColor"
-                    Value="{StaticResource PlaceholderColor}" />
             <Setter Property="LabelSize"
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="BackgroundColor"

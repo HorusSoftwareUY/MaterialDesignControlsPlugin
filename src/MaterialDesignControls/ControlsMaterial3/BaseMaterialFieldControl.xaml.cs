@@ -37,6 +37,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public bool AnimateLabel => this.AnimatePlaceholder && string.IsNullOrWhiteSpace(LabelText);
 
+        public double PlaceHolderXPosition = 0;
+
+        public double PlaceHolderYPosition = 0;
         #endregion Attributes
 
         #region Properties
@@ -47,15 +50,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (IBaseMaterialFieldControl)GetValue(CustomContentProperty); }
             set { SetValue(CustomContentProperty, value); }
-        }
-
-        public static readonly BindableProperty FieldHeightRequestProperty =
-            BindableProperty.Create(nameof(FieldHeightRequest), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: 56.0);
-
-        public double FieldHeightRequest
-        {
-            get { return (double)GetValue(FieldHeightRequestProperty); }
-            set { SetValue(FieldHeightRequestProperty, value); }
         }
 
         public static readonly BindableProperty AnimateErrorProperty =
@@ -136,7 +130,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (bool)GetValue(AnimatePlaceholderProperty); }
             set { SetValue(AnimatePlaceholderProperty, value); }
         }
-
         #endregion Placeholder
 
         #region LabelText
@@ -507,6 +500,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(FontSize):
                     CustomContent.SetFontSize(FontSize);
+                    SetAnimatedLabel();
                     break;
                 case nameof(FontFamily):
                 case nameof(LabelFontFamily):
@@ -524,14 +518,20 @@ namespace Plugin.MaterialDesignControls.Material3
                         this.lblSupporting.FontFamily = FontFamily;
                     break;
                 case nameof(Placeholder):
-                    CustomContent.SetPlaceholder(Placeholder);
+                    if (!AnimateLabel)
+                    {
+                        CustomContent.SetPlaceholder(Placeholder);
+                    }
+                    SetAnimatedLabel();
                     break;
                 case nameof(PlaceholderColor):
                     CustomContent.SetPlaceholderColor(PlaceholderColor);
+                    SetAnimatedLabel();
                     break;
                 case nameof(LabelText):
                     this.lblLabel.Text = LabelText;
-                    this.lblLabel.IsVisible = !string.IsNullOrWhiteSpace(LabelText);
+                    this.lblLabel.IsVisible = !AnimateLabel;
+                    SetAnimatedLabel();
                     break;
                 case nameof(LabelTextColor):
                     SetLabelTextColor();
@@ -625,10 +625,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     }
                     break;
 
-                case nameof(FieldHeightRequest):
-                    this.frmContainer.HeightRequest = FieldHeightRequest;
-                    break;
-
                 case nameof(HorizontalTextAlignment):
                     CustomContent.SetHorizontalTextAlignment(HorizontalTextAlignment);
                     this.lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
@@ -673,9 +669,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(AnimatePlaceholder):
                     this.lblLabel.IsVisible = !AnimateLabel;
+                    SetAnimatedLabel();
                     break;
             }
-            SetAnimatedLabel();
         }
 
         private void SetHasBorder()
@@ -699,30 +695,23 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 if (AnimateLabel)
                 {
-                    AnimatedLabel.Text = Placeholder;
-                    Placeholder = Placeholder;
+                    AnimatedLabel.Text = string.IsNullOrWhiteSpace(AnimatedLabel.Text) ? Placeholder : AnimatedLabel.Text;
+                    AnimatedLabel.IsVisible = true;
+                    AnimatedLabel.TextColor = PlaceholderColor;
+                    AnimatedLabel.FontSize = FontSize;
 
-                    if (CustomContent is CustomEntry txtEntry)
-                    {
-                        if (string.IsNullOrWhiteSpace(txtEntry.Text) && !txtEntry.IsFocused)
-                        {
-                            txtEntry.SetValue(Grid.ColumnProperty, 1);
-                            txtEntry.SetValue(Grid.RowProperty, 0);
-                            txtEntry.SetValue(Grid.RowSpanProperty, 2);
-                        }
-                    }
+                    AnimatedLabel.SetValue(Grid.RowSpanProperty, 2);
+
+                    PlaceHolderXPosition = AnimatedLabel.X;
+                    PlaceHolderYPosition = AnimatedLabel.Y;
+
+                    CustomContent.SetPlaceholder("");
+                    Placeholder = "";
                 }
                 else
                 {
-                    if (CustomContent is CustomEntry txtEntry)
-                    {
-                        if (string.IsNullOrWhiteSpace(txtEntry.Text) && !txtEntry.IsFocused)
-                        {
-                            txtEntry.SetValue(Grid.ColumnProperty, 1);
-                            txtEntry.SetValue(Grid.RowProperty, 1);
-                            txtEntry.SetValue(Grid.RowSpanProperty, 1);
-                        }
-                    }
+                    CustomContent.SetPlaceholder(Placeholder);
+                    AnimatedLabel.IsVisible = false;
                 }
             }
             catch (Exception ex)
