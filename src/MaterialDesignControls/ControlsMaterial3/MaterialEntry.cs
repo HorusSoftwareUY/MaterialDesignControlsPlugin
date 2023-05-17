@@ -2,7 +2,6 @@ using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -290,30 +289,18 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private async void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            SetFocusChange();
+            await SetFocusChange();
 
             if (txtEntry.IsControlFocused())
             {
                 Focused?.Invoke(this, e);
-                FocusedCommand?.Execute(null);
 
                 var textInsideInput = txtEntry.Text;
                 txtEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
-
-                if (string.IsNullOrEmpty(textInsideInput))
-                {
-                    await TransitionToTitle();
-                }
             }
             else
             {
                 Unfocused?.Invoke(this, e);
-                UnfocusedCommand?.Execute(null);
-
-                if (string.IsNullOrEmpty(Text))
-                {
-                    await TransitionToPlaceholder();
-                }
             }
         }
 
@@ -374,47 +361,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 txtEntry.Text = txtEntry.Text.ToLower();
             else if (TextTransform == TextTransforms.Uppercase)
                 txtEntry.Text = txtEntry.Text.ToUpper();
-        }
-
-        private async Task TransitionToTitle()
-        {
-            if (AnimateLabel)
-            {
-                var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 200);
-                var t2 = SizeTo(LabelSize);
-                await Task.WhenAll(t1, t2);
-                AnimatedLabel.TextColor = LabelTextColor;
-                AnimatedLabel.SetValue(Grid.RowSpanProperty, 1);
-            }
-        }
-
-        private async Task TransitionToPlaceholder()
-        {
-            if (AnimateLabel)
-            {
-                AnimatedLabel.TextColor = PlaceholderColor;
-                if (!IsFocused)
-                {
-                    AnimatedLabel.SetValue(Grid.RowSpanProperty, 2);
-                }
-                await SizeTo(txtEntry.FontSize);
-            }
-        }
-
-        private Task SizeTo(double fontSize)
-        {
-            var taskCompletionSource = new TaskCompletionSource<bool>();
-
-            Action<double> callback = input => { AnimatedLabel.FontSize = input; };
-            double startingHeight = AnimatedLabel.FontSize;
-            double endingHeight = fontSize;
-            uint rate = 5;
-            uint length = 200;
-            Easing easing = Easing.Linear;
-
-            AnimatedLabel.Animate("AnimateLabel", callback, startingHeight, endingHeight, rate, length, easing, (v, c) => taskCompletionSource.SetResult(c));
-
-            return taskCompletionSource.Task;
         }
         #endregion Methods
     }

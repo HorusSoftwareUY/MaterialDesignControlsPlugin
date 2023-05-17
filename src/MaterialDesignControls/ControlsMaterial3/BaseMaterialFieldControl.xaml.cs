@@ -3,9 +3,11 @@ using Plugin.MaterialDesignControls.ControlsMaterial3;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -680,13 +682,42 @@ namespace Plugin.MaterialDesignControls.Material3
             SetBorderAndBackgroundColors();
         }
 
-        public void SetFocusChange()
+        public async Task SetFocusChange()
         {
             var state = CustomContent.IsControlFocused() ? "Focused" : CustomContent.IsControlEnabled() ? "Normal" : "Disabled";
             VisualStateManager.GoToState(this, state);
             SetLabelTextColor();
             CustomContent.SetTextColor(TextColor);
             SetBorderAndBackgroundColors();
+
+            if (CustomContent.IsControlFocused())
+            {
+                FocusedCommand?.Execute(null);
+
+                if (AnimatePlaceholder && ValidateIfAnimate())
+                {
+                    await TransitionToTitle();
+                }
+            }
+            else
+            {
+                UnfocusedCommand?.Execute(null);
+
+                if (AnimatePlaceholder && ValidateIfAnimate())
+                {
+                    await TransitionToPlaceholder();
+                }
+            }
+        }
+
+        private bool ValidateIfAnimate()
+        {
+            if (this is MaterialEntry control && string.IsNullOrEmpty(control.Text))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public void SetAnimatedLabel()
@@ -721,5 +752,48 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         #endregion Methods
+
+        #region Animation
+        public async Task TransitionToTitle()
+        {
+            if (AnimateLabel)
+            {
+                var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 200);
+                var t2 = SizeTo(LabelSize);
+                await Task.WhenAll(t1, t2);
+                AnimatedLabel.TextColor = LabelTextColor;
+                AnimatedLabel.SetValue(Grid.RowSpanProperty, 1);
+            }
+        }
+
+        public async Task TransitionToPlaceholder()
+        {
+            if (AnimateLabel)
+            {
+                AnimatedLabel.TextColor = PlaceholderColor;
+                if (!IsFocused)
+                {
+                    AnimatedLabel.SetValue(Grid.RowSpanProperty, 2);
+                }
+                await SizeTo(FontSize);
+            }
+        }
+
+        private Task SizeTo(double fontSize)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+
+            Action<double> callback = input => { AnimatedLabel.FontSize = input; };
+            double startingHeight = AnimatedLabel.FontSize;
+            double endingHeight = fontSize;
+            uint rate = 5;
+            uint length = 200;
+            Easing easing = Easing.Linear;
+
+            AnimatedLabel.Animate("AnimateLabel", callback, startingHeight, endingHeight, rate, length, easing, (v, c) => taskCompletionSource.SetResult(c));
+
+            return taskCompletionSource.Task;
+        }
+        #endregion Animation
     }
 }
