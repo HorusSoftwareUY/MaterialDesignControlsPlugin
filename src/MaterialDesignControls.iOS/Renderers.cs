@@ -12,6 +12,7 @@
             MaterialTimePickerRenderer.Init();
             MaterialEditorRenderer.Init();
             MaterialSliderRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.iOS.MaterialEntryRenderer.Init();
         }
     }
 }

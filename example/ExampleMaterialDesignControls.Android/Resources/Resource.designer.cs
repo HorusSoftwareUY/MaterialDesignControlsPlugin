@@ -14,7 +14,7 @@ namespace ExampleMaterialDesignControls.Droid
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.1.0.5")]
 	public partial class Resource
 	{
 		
@@ -14852,7 +14852,7 @@ namespace ExampleMaterialDesignControls.Droid
 			public const int splash_screen = 2131165561;
 			
 			// aapt resource value: 0x7F07017A
-			public const int startSelected = 2131165562;
+			public const int starSelected = 2131165562;
 			
 			// aapt resource value: 0x7F07017B
 			public const int starUnselected = 2131165563;

@@ -12,7 +12,7 @@
             MaterialTimePickerRenderer.Init();
             MaterialEditorRenderer.Init();
             MaterialSliderRenderer.Init();
-
+            Plugin.MaterialDesignControls.Material3.Android.MaterialEntryRenderer.Init();
         }
     }
 }

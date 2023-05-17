@@ -8,6 +8,8 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("BaseMaterialFieldControl is deprecated, please use BaseMaterialFieldControl of Material 3 instead.")]
+
     public abstract class BaseMaterialFieldControl : ContentView
     {
         #region Properties
@@ -327,7 +329,7 @@ namespace Plugin.MaterialDesignControls
 
         public bool LeadingIconIsVisible
         {
-            get { return !string.IsNullOrEmpty(this.LeadingIcon) || CustomLeadingIcon != null; }
+            get { return !string.IsNullOrEmpty(LeadingIcon) || CustomLeadingIcon != null; }
         }
 
         public static readonly BindableProperty LeadingIconCommandProperty =
@@ -368,7 +370,7 @@ namespace Plugin.MaterialDesignControls
 
         public bool TrailingIconIsVisible
         {
-            get { return !string.IsNullOrEmpty(this.TrailingIcon) || CustomTrailingIcon != null; }
+            get { return !string.IsNullOrEmpty(TrailingIcon) || CustomTrailingIcon != null; }
         }
 
         public static readonly BindableProperty TrailingIconCommandProperty =
@@ -574,14 +576,15 @@ namespace Plugin.MaterialDesignControls
                 case nameof(LeadingIconCommand):
                     if (LeadingIconCommand != null)
                     {
-                        imgLeadingIcon.Tapped = () =>
-                        {
-                            if (LeadingIconCommand != null)
-                                LeadingIconCommand.Execute(LeadingIconCommandParameter);
-                        };
+                        imgLeadingIcon.Command = LeadingIconCommand;
                     }
                     break;
-
+                case nameof(LeadingIconCommandParameter):
+                    if (LeadingIconCommandParameter != null)
+                    {
+                        imgLeadingIcon.CommandParameter = LeadingIconCommandParameter;
+                    }
+                    break;
                 case nameof(TrailingIcon):
                     if (!string.IsNullOrEmpty(TrailingIcon))
                         imgTrailingIcon.SetImage(TrailingIcon);
@@ -597,14 +600,16 @@ namespace Plugin.MaterialDesignControls
                 case nameof(TrailingIconCommand):
                     if (TrailingIconCommand != null)
                     {
-                        imgTrailingIcon.Tapped = () =>
-                        {
-                            if (TrailingIconCommand != null)
-                                TrailingIconCommand.Execute(TrailingIconCommandParameter);
-                        };
+                        imgTrailingIcon.Command = TrailingIconCommand;
                     }
                     break;
 
+                case nameof(TrailingIconCommandParameter):
+                    if (TrailingIconCommandParameter != null)
+                    {
+                        imgTrailingIcon.CommandParameter = TrailingIconCommandParameter;
+                    }
+                    break;
                 case nameof(FieldHeightRequest):
                     frmContainer.HeightRequest = FieldHeightRequest;
                     break;

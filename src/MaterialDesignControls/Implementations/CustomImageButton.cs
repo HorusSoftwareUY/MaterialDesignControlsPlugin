@@ -21,32 +21,6 @@ namespace Plugin.MaterialDesignControls.Implementations
         #endregion Constructors
 
         #region Attributes
-
-        private Action tapped;
-        public Action Tapped
-        {
-            get { return this.tapped; }
-            set
-            {
-                if (this.tapped != null)
-                {
-                    this.GestureRecognizers.Clear();
-                }
-
-                this.tapped = value;
-
-                var tapGestureRecognizer = new TapGestureRecognizer();
-                tapGestureRecognizer.Tapped += (s, e) =>
-                {
-                    if (this.Tapped != null)
-                    {
-                        this.Tapped.Invoke();
-                    }
-                };
-                this.GestureRecognizers.Add(tapGestureRecognizer);
-            }
-        }
-
         private Image image;
 
         private View customImage;

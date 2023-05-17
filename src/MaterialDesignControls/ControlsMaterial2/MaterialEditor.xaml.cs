@@ -22,11 +22,11 @@ namespace Plugin.MaterialDesignControls
             this.txtEditor.Unfocused += HandleFocusChange;
             this.txtEditor.TextChanged += TxtEntry_TextChanged;
 
-            this.imgClearIcon.Tapped = () =>
+            this.imgClearIcon.Command = new Command(() =>
             {
                 this.Text = string.Empty;
                 this.txtEditor.Text = string.Empty;
-            };
+            });
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>

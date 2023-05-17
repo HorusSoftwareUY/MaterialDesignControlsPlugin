@@ -1,12 +1,12 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Utils;
+using System;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialEntry : BaseMaterialFieldControl
@@ -15,86 +15,36 @@ namespace Plugin.MaterialDesignControls
 
         public MaterialEntry()
         {
-            if (!this.initialized)
+            txtEntry = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry()
             {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+            txtEntry.SetValue(Grid.ColumnProperty, 1);
+            txtEntry.SetValue(Grid.RowProperty, 1);
+            CustomContent = txtEntry;
 
             this.txtEntry.Focused += HandleFocusChange;
             this.txtEntry.Unfocused += HandleFocusChange;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
 
-            imgClearIcon.Command = new Command(() =>
-            {
-                Text = string.Empty;
-                txtEntry.Text = string.Empty;
-            });
-
-            imgShowPasswordIcon.Command = new Command(() =>
-            {
-                if (passwordIsVisible)
-                {
-                    txtEntry.IsPassword = true;
-                    passwordIsVisible = false;
-
-                    // Display the show password icon
-                    if (CustomShowPasswordIcon != null)
-                        imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
-                    else if (!string.IsNullOrEmpty(ShowPasswordIcon))
-                        imgShowPasswordIcon.SetImage(ShowPasswordIcon);
-                }
-                else
-                {
-                    txtEntry.IsPassword = false;
-                    passwordIsVisible = true;
-
-                    // Display the hide password icon
-                    if (CustomHidePasswordIcon != null)
-                        imgShowPasswordIcon.SetCustomImage(CustomHidePasswordIcon);
-                    else if (!string.IsNullOrEmpty(HidePasswordIcon))
-                        imgShowPasswordIcon.SetImage(HidePasswordIcon);
-                }
-            });
-
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
-            frameTapGestureRecognizer.Tapped += (s, e) =>
+            frameTapGestureRecognizer.Tapped +=  (s, e) =>
             {
                 this.txtEntry.Focus();
             };
-            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+            this.FrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
 
         #region Attributes
 
-        private bool initialized = false;
-
-        private bool passwordIsVisible = false;
+        private Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry txtEntry;
 
         #endregion Attributes
 
         #region Properties
-
-        public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialEntry), defaultValue: new Thickness(12, 0));
-
-        public new Thickness Padding
-        {
-            get { return (Thickness)GetValue(PaddingProperty); }
-            set { SetValue(PaddingProperty, value); }
-        }
-
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialEntry), defaultValue: true);
-
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
-
         public static readonly BindableProperty IsPasswordProperty =
             BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false);
 
@@ -176,87 +126,6 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(TextProperty, value); }
         }
 
-        public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray);
-
-        public new Color BackgroundColor
-        {
-            get { return (Color)GetValue(BackgroundColorProperty); }
-            set { SetValue(BackgroundColorProperty, value); }
-        }
-
-        public static readonly BindableProperty ClearIconProperty =
-            BindableProperty.Create(nameof(ClearIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
-
-        public string ClearIcon
-        {
-            get { return (string)GetValue(ClearIconProperty); }
-            set { SetValue(ClearIconProperty, value); }
-        }
-
-        public static readonly BindableProperty CustomClearIconProperty =
-            BindableProperty.Create(nameof(CustomClearIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
-
-        public View CustomClearIcon
-        {
-            get { return (View)GetValue(CustomClearIconProperty); }
-            set { SetValue(CustomClearIconProperty, value); }
-        }
-
-        public static readonly BindableProperty ClearIconIsVisibleProperty =
-            BindableProperty.Create(nameof(ClearIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
-
-        public bool ClearIconIsVisible
-        {
-            get { return (bool)GetValue(ClearIconIsVisibleProperty); }
-            set { SetValue(ClearIconIsVisibleProperty, value); }
-        }
-
-        public static readonly BindableProperty ShowPasswordIconProperty =
-            BindableProperty.Create(nameof(ShowPasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
-
-        public string ShowPasswordIcon
-        {
-            get { return (string)GetValue(ShowPasswordIconProperty); }
-            set { SetValue(ShowPasswordIconProperty, value); }
-        }
-
-        public static readonly BindableProperty HidePasswordIconProperty =
-            BindableProperty.Create(nameof(HidePasswordIcon), typeof(string), typeof(MaterialEntry), defaultValue: null);
-
-        public string HidePasswordIcon
-        {
-            get { return (string)GetValue(HidePasswordIconProperty); }
-            set { SetValue(HidePasswordIconProperty, value); }
-        }
-
-        public static readonly BindableProperty CustomShowPasswordIconProperty =
-            BindableProperty.Create(nameof(CustomShowPasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
-
-        public View CustomShowPasswordIcon
-        {
-            get { return (View)GetValue(CustomShowPasswordIconProperty); }
-            set { SetValue(CustomShowPasswordIconProperty, value); }
-        }
-
-        public static readonly BindableProperty CustomHidePasswordIconProperty =
-            BindableProperty.Create(nameof(CustomHidePasswordIcon), typeof(View), typeof(MaterialEntry), defaultValue: null);
-
-        public View CustomHidePasswordIcon
-        {
-            get { return (View)GetValue(CustomHidePasswordIconProperty); }
-            set { SetValue(CustomHidePasswordIconProperty, value); }
-        }
-
-        public static readonly BindableProperty ShowPasswordIconIsVisibleProperty =
-            BindableProperty.Create(nameof(ShowPasswordIconIsVisible), typeof(bool), typeof(MaterialEntry), defaultValue: true);
-
-        public bool ShowPasswordIconIsVisible
-        {
-            get { return (bool)GetValue(ShowPasswordIconIsVisibleProperty); }
-            set { SetValue(ShowPasswordIconIsVisibleProperty, value); }
-        }
-
         public static readonly BindableProperty MaxLengthProperty =
             BindableProperty.Create(nameof(MaxLength), typeof(int), typeof(MaterialEntry), defaultValue: Int32.MaxValue);
 
@@ -275,50 +144,49 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(CursorPositionProperty, value); }
         }
 
-        public override bool IsControlFocused
-        {
-            get { return txtEntry.IsFocused; }
-        }
-
-        public override bool IsControlEnabled
-        {
-            get { return this.IsEnabled; }
-        }
-
-        public override Color BackgroundColorControl
-        {
-            get { return this.BackgroundColor; }
-        }
-
         #endregion Properties
 
         #region Events
-
         public event EventHandler TextChanged;
 
         public new event EventHandler<FocusEventArgs> Focused;
 
         public new event EventHandler<FocusEventArgs> Unfocused;
 
+        public static readonly BindableProperty TextChangedCommandProperty =
+            BindableProperty.Create(nameof(TextChangedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+
+        public ICommand TextChangedCommand
+        {
+            get { return (ICommand)GetValue(TextChangedCommandProperty); }
+            set { SetValue(TextChangedCommandProperty, value); }
+        }
         #endregion Events
 
         #region Methods
 
-        private static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
+        private async static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialEntry)bindable;
+
+            if (!control.txtEntry.IsFocused)
+            {
+                if (!string.IsNullOrEmpty((string)newValue))
+                {
+                    await control.TransitionToTitle();
+                }
+                else
+                {
+                    await control.TransitionToPlaceholder();
+                }
+            }
+
             control.txtEntry.Text = (string)newValue;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!this.initialized)
-            {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
-
-            UpdateLayout(propertyName, lblLabel, lblAssistive, frmContainer, bxvLine, imgLeadingIcon, imgTrailingIcon);
+            UpdateLayout(propertyName);
 
             switch (propertyName)
             {
@@ -365,38 +233,6 @@ namespace Plugin.MaterialDesignControls
 
                 case nameof(IsPassword):
                     this.txtEntry.IsPassword = IsPassword;
-                    SetShowPasswordIconIsVisible();
-                    break;
-                case nameof(ShowPasswordIcon):
-                    if (!string.IsNullOrEmpty(ShowPasswordIcon))
-                        imgShowPasswordIcon.SetImage(ShowPasswordIcon);
-
-                    SetShowPasswordIconIsVisible();
-                    break;
-                case nameof(CustomShowPasswordIcon):
-                    if (CustomShowPasswordIcon != null)
-                        imgShowPasswordIcon.SetCustomImage(CustomShowPasswordIcon);
-
-                    SetShowPasswordIconIsVisible();
-                    break;
-                case nameof(ShowPasswordIconIsVisible):
-                    SetShowPasswordIconIsVisible();
-                    break;
-                
-                case nameof(this.ClearIcon):
-                    if (!string.IsNullOrEmpty(this.ClearIcon))
-                        imgClearIcon.SetImage(ClearIcon);
-
-                    SetClearIconIsVisible();
-                    break;
-                case nameof(CustomClearIcon):
-                    if (CustomClearIcon != null)
-                        imgClearIcon.SetCustomImage(CustomClearIcon);
-
-                    SetClearIconIsVisible();
-                    break;
-                case nameof(this.ClearIconIsVisible):
-                    SetClearIconIsVisible();
                     break;
 
                 case nameof(this.TabIndex):
@@ -433,67 +269,6 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-        private void SetShowPasswordIconIsVisible()
-        {
-            imgShowPasswordIcon.IsVisible = IsPassword && ShowPasswordIconIsVisible && IsEnabled
-                && (!string.IsNullOrEmpty(ShowPasswordIcon) || CustomShowPasswordIcon != null);
-        }
-
-        private void SetClearIconIsVisible()
-        {
-            imgClearIcon.IsVisible = ClearIconIsVisible && IsEnabled && !string.IsNullOrEmpty(Text)
-                && (!string.IsNullOrEmpty(ClearIcon) || CustomClearIcon != null);
-        }
-
-        protected override void SetIsEnabled()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-                txtEntry.IsEnabled = IsEnabled;
-            else
-            {
-                // Workaround to a disabled text color issue in Android
-                txtEntry.IsReadOnly = !IsEnabled;
-            }
-        }
-
-        protected override void SetPadding()
-        {
-            frmContainer.Padding = Padding;
-        }
-
-        protected override void SetTextColor()
-        {
-            if (IsControlEnabled)
-                txtEntry.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
-            else
-                txtEntry.TextColor = DisabledTextColor;
-        }
-
-        protected override void SetFontSize()
-        {
-            txtEntry.FontSize = FontSize;
-        }
-
-        protected override void SetFontFamily()
-        {
-            txtEntry.FontFamily = FontFamily;
-        }
-
-        protected override void SetPlaceholder()
-        {
-            txtEntry.Placeholder = Placeholder;
-        }
-
-        protected override void SetPlaceholderColor()
-        {
-            txtEntry.PlaceholderColor = PlaceholderColor;
-        }
-
-        protected override void SetHorizontalTextAlignment()
-        {
-            txtEntry.HorizontalTextAlignment = HorizontalTextAlignment;
-        }
-
         public new bool Focus()
         {
             Device.BeginInvokeOnMainThread(() =>
@@ -512,11 +287,11 @@ namespace Plugin.MaterialDesignControls
             return true;
         }
 
-        private void HandleFocusChange(object sender, FocusEventArgs e)
+        private async void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            base.SetFocusChange(lblLabel, frmContainer, bxvLine);
+            await SetFocusChange();
 
-            if (IsControlFocused)
+            if (txtEntry.IsControlFocused())
             {
                 Focused?.Invoke(this, e);
 
@@ -524,22 +299,22 @@ namespace Plugin.MaterialDesignControls
                 txtEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
             }
             else
+            {
                 Unfocused?.Invoke(this, e);
+            }
         }
 
         private void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (this.ClearIconIsVisible && this.IsControlEnabled)
-            {
-                this.imgClearIcon.IsVisible = !string.IsNullOrEmpty(e.NewTextValue);
-            }
-
             var changedByTextTransform = Text != null && txtEntry.Text != null && Text.ToLower() == txtEntry.Text.ToLower();
 
             this.Text = this.txtEntry.Text;
 
             if (!changedByTextTransform)
+            {
+                this.TextChangedCommand?.Execute(null);
                 this.TextChanged?.Invoke(this, e);
+            }
 
             ApplyTextTransform();
         }
@@ -555,7 +330,7 @@ namespace Plugin.MaterialDesignControls
                     var nextElement = this.FindNextElement(true, tabIndexes, ref currentTabIndex);
                     if (nextElement != null)
                     {
-                        if (nextElement is CustomEntry nextEntry && nextEntry.IsEnabled && !nextEntry.IsReadOnly)
+                        if (nextElement is Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry nextEntry && nextEntry.IsEnabled && !nextEntry.IsReadOnly)
                         {
                             nextEntry.Focus();
                             string textInsideInput = nextEntry.Text;
@@ -587,7 +362,6 @@ namespace Plugin.MaterialDesignControls
             else if (TextTransform == TextTransforms.Uppercase)
                 txtEntry.Text = txtEntry.Text.ToUpper();
         }
-
         #endregion Methods
     }
 }

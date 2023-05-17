@@ -421,23 +421,23 @@ namespace Plugin.MaterialDesignControls
 
             if (isTrailingIcon)
             {
-                this.imgTrailingIcon.Tapped = () =>
+                this.imgTrailingIcon.Command = new Command(() =>
                 {
                     if (this.IsEnabled && this.TrailingIconCommand != null)
                     {
                         this.TrailingIconCommand.Execute(this.TrailingIconCommandParameter);
                     }
-                };
+                });
             }
             else
             {
-                this.imgLeadingIcon.Tapped = () =>
+                this.imgLeadingIcon.Command =  new Command(() =>
                 {
                     if (this.IsEnabled && this.LeadingIconCommand != null)
                     {
                         this.LeadingIconCommand.Execute(this.LeadingIconCommandParameter);
                     }
-                };
+                });
             }
         }
 

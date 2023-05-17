@@ -71,8 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\Material3\MaterialCardRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\MaterialDatePickerRenderer.cs" />
-    <Compile Include="Renderers\MaterialEntryRenderer.cs" />
+    <Compile Include="Renderers\DeprecatedControls\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers.cs" />
     <Compile Include="Renderers\MaterialSliderRenderer.cs" />

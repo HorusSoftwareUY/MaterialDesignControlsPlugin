@@ -123,12 +123,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Renderers\Material3\MaterialCardRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\MaterialSliderRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers.cs" />
     <Compile Include="Renderers\MaterialDatePickerRenderer.cs" />
-    <Compile Include="Renderers\MaterialEntryRenderer.cs" />
+    <Compile Include="Renderers\DeprecatedControls\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\MaterialEditorRenderer.cs" />
