@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialPicker is deprecated, please use MaterialPicker of Material 3 instead.")]
     public partial class MaterialPicker : BaseMaterialFieldControl
     {
         #region Constructors

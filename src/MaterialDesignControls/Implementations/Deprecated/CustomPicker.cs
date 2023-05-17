@@ -3,6 +3,7 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
 {
+    [Obsolete("CustomPicker is deprecated, please use CustomPicker of Material 3 instead.")]
     public class CustomPicker : Picker
     {
         public TextAlignment HorizontalTextAlignment { get; set; }

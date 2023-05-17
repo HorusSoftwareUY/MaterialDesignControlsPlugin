@@ -6,11 +6,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Plugin.MaterialDesignControls.Android.Utils;
 using System.ComponentModel;
+using System;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(Plugin.MaterialDesignControls.Android.MaterialPickerRenderer))]
 
 namespace Plugin.MaterialDesignControls.Android
 {
+    [Obsolete("MaterialPickerRenderer is deprecated, please use MaterialPickerRenderer of Material 3 instead.")]
     public class MaterialPickerRenderer : PickerRenderer
     {
         public static void Init() { }

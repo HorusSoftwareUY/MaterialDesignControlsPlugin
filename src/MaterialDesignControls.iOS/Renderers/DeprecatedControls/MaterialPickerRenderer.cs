@@ -14,6 +14,7 @@ using Xamarin.Forms.Platform.iOS;
 
 namespace Plugin.MaterialDesignControls.iOS
 {
+    [Obsolete("MaterialPickerRenderer is deprecated, please use MaterialPickerRenderer of Material 3 instead.")]
     public class MaterialPickerRenderer : PickerRenderer
     {
         public static void Init() { }
