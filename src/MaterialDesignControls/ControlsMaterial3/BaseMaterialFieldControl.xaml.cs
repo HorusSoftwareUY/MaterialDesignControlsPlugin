@@ -1,5 +1,4 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.ControlsMaterial3;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
@@ -7,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -34,6 +32,8 @@ namespace Plugin.MaterialDesignControls.Material3
         public IBaseMaterialFieldControl Control => this.CustomContent;
 
         public MaterialLabel Label => this.lblLabel;
+
+        public MaterialLabel SupportingLabel => this.lblSupporting;
 
         public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
 
@@ -313,7 +313,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Indicator
 
         public static readonly BindableProperty IndicatorColorProperty =
-            BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.DarkGray);
 
         public Color IndicatorColor
         {
@@ -520,10 +520,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         this.lblSupporting.FontFamily = FontFamily;
                     break;
                 case nameof(Placeholder):
-                    if (!AnimateLabel)
-                    {
-                        CustomContent.SetPlaceholder(Placeholder);
-                    }
+                    CustomContent.SetPlaceholder(Placeholder);
                     SetAnimatedLabel();
                     break;
                 case nameof(PlaceholderColor):
@@ -693,17 +690,28 @@ namespace Plugin.MaterialDesignControls.Material3
             if (CustomContent.IsControlFocused())
             {
                 FocusedCommand?.Execute(null);
+            }
+            else
+            {
+                UnfocusedCommand?.Execute(null);
+            }
 
-                if (AnimatePlaceholder && ValidateIfAnimate())
+            await Animate();
+        }
+
+        public async Task Animate()
+        {
+            bool validateIfAnimate = ValidateIfAnimate();
+            if (CustomContent.IsControlFocused())
+            {
+                if (AnimatePlaceholder && validateIfAnimate)
                 {
                     await TransitionToTitle();
                 }
             }
             else
             {
-                UnfocusedCommand?.Execute(null);
-
-                if (AnimatePlaceholder && ValidateIfAnimate())
+                if (AnimatePlaceholder && validateIfAnimate)
                 {
                     await TransitionToPlaceholder();
                 }
@@ -712,7 +720,12 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool ValidateIfAnimate()
         {
-            if (this is MaterialEntry control && string.IsNullOrEmpty(control.Text))
+            if (this is MaterialEntry materialEntry && materialEntry.IsEnabled && string.IsNullOrEmpty(materialEntry.Text))
+            {
+                return true;
+            }
+
+            if (this is MaterialPicker materialPicker && materialPicker.IsEnabled && materialPicker.SelectedIndex == -1)
             {
                 return true;
             }
@@ -739,11 +752,11 @@ namespace Plugin.MaterialDesignControls.Material3
                     CustomContent.SetPlaceholder("");
                     Placeholder = "";
                 }
-                else
-                {
-                    CustomContent.SetPlaceholder(Placeholder);
-                    AnimatedLabel.IsVisible = false;
-                }
+                //else
+                //{
+                //    CustomContent.SetPlaceholder(Placeholder);
+                //    AnimatedLabel.IsVisible = false;
+                //}
             }
             catch (Exception ex)
             {

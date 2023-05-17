@@ -1,49 +1,72 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialPickerPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialPickerPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialPicker" LeadingIconCommand="{Binding BackCommand}">
+            <material3:MaterialTopAppBar Headline="MaterialPicker"
+                                         LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.LeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.LeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="20">
-                    <material:MaterialPicker
-                        x:Name="pckColors"
-                        AnimateError="True"
-                        ItemsSource="{Binding ItemsSourceColors}"
-                        LabelText="Color"
-                        Placeholder="Select a Color"
-                        SelectedItem="{Binding SelectedItemColor}"
-                        Type="Filled" />
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
+                    <contentViews:InfoIndicatorView Message="MaterialEntry follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialPicker x:Name="pckColors"
+                                              AnimateError="True"
+                                              ItemsSource="{Binding ItemsSourceColors}"
+                                              AnimatePlaceholder="True"
+                                              Placeholder="Select a Color"
+                                              SelectedItem="{Binding SelectedItemColor}" />
                     <Grid ColumnSpacing="16">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <material3:MaterialButton
-                            ButtonType="Text"
-                            Command="{Binding ClearCommand}"
-                            Text="Clear" />
-                        <material3:MaterialButton
-                            Grid.Column="1"
-                            Command="{Binding ShowCommand}"
-                            Text="Show" />
+                        <material3:MaterialButton ButtonType="Text"
+                                                  Command="{Binding ClearCommand}"
+                                                  Text="Clear" />
+                        <material3:MaterialButton Grid.Column="1"
+                                                  Command="{Binding ShowCommand}"
+                                                  Text="Show" />
                     </Grid>
 
-                    <material:MaterialPicker
+                    <material3:MaterialPicker x:Name="pckModels2"
+                                              HorizontalTextAlignment="Start"
+                                              LabelText="Option"
+                                              Placeholder="Select Option" />
+
+                    <material3:MaterialPicker x:Name="pckModels23"
+                                              HorizontalTextAlignment="Start"
+                                              LabelText="Option"
+                                              HasBorder="True"
+                                              CornerRadius="10"
+                                              CornerRadiusBottomLeft="True"
+                                              CornerRadiusTopLeft="True"
+                                              CornerRadiusBottomRight="True"
+                                              CornerRadiusTopRight="True"
+                                              Placeholder="Select Option"/>
+
+                    <material:MaterialPicker x:Name="pckModels4"
+                                             HorizontalTextAlignment="Start"
+                                             LabelText="Option"
+                                             Placeholder="Select Option"
+                                             TrailingIcon="" />
+
+                    <!--<material:MaterialPicker
                         x:Name="pckSizes"
                         LabelText="Size"
                         Placeholder="Select Option"
@@ -126,7 +149,7 @@
                         SelectedItem="{Binding SelectedItem}"
                         Separator=" - "
                         Type="Filled" />
-                    <material3:MaterialButton Command="{Binding Tap3Command}" Text="Focus" />
+                    <material3:MaterialButton Command="{Binding Tap3Command}" Text="Focus" />-->
                 </StackLayout>
             </ScrollView>
         </Grid>

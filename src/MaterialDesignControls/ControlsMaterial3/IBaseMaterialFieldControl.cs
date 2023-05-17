@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace Plugin.MaterialDesignControls.ControlsMaterial3
+namespace Plugin.MaterialDesignControls.Material3
 {
     public interface IBaseMaterialFieldControl
     {
