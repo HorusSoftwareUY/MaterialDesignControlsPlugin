@@ -4,7 +4,7 @@ Text fields let users enter and edit text.
 [View Material Design documentation](https://material.io/components/text-fields)
 
 ## Screenshot
-<!-- TODO: Improve this  -->
+<!-- TODO: Change this  -->
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.gif" width="300">
 
 ## Example MaterialEntry
@@ -30,6 +30,7 @@ We update this control to use VisualStateManager (See examble above). So we reco
 - Normal
 - Focused
 - Disabled
+
 #### Example:
 
 Set style:
@@ -201,11 +202,6 @@ This property is to set the cursor position.
 
 ### Property TextChanged:
 This property is to set the event after the text changed.
-<br/>
-<br/>
-
-### Property FieldHeightRequest:
-This property is to set the height of the Material Entry
 <br/>
 <br/>
 

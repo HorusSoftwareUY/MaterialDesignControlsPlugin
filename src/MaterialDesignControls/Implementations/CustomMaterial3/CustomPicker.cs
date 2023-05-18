@@ -20,7 +20,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
 
         public void SetFontFamily(string fontFamily)
         {
-            this.FontFamily = FontFamily;
+            this.FontFamily = fontFamily;
         }
 
         public void SetFontSize(double fontSize)
@@ -30,22 +30,22 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
 
         public void SetHorizontalTextAlignment(TextAlignment horizontalTextAlignment)
         {
-            this.HorizontalTextAlignment = HorizontalTextAlignment;
+            this.HorizontalTextAlignment = horizontalTextAlignment;
         }
 
         public void SetIsEnabled(bool isEnabled)
         {
-            this.IsEnabled = IsEnabled;
+            this.IsEnabled = isEnabled;
         }
 
         public void SetPlaceholder(string placeHolder)
         {
-            this.Placeholder = Placeholder;
+            this.Placeholder = placeHolder;
         }
 
         public void SetPlaceholderColor(Color placeHolderColor)
         {
-            this.PlaceholderColor = PlaceholderColor;
+            this.PlaceholderColor = placeHolderColor;
         }
 
         public void SetTextColor(Color textColor)

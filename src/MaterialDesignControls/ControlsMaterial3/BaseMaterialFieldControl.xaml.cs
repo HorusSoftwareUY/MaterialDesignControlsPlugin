@@ -752,11 +752,12 @@ namespace Plugin.MaterialDesignControls.Material3
                     CustomContent.SetPlaceholder("");
                     Placeholder = "";
                 }
-                //else
-                //{
-                //    CustomContent.SetPlaceholder(Placeholder);
-                //    AnimatedLabel.IsVisible = false;
-                //}
+                else
+                {
+                    CustomContent.SetPlaceholder(Placeholder);
+                    CustomContent.SetPlaceholderColor(PlaceholderColor);
+                    AnimatedLabel.IsVisible = false;
+                }
             }
             catch (Exception ex)
             {

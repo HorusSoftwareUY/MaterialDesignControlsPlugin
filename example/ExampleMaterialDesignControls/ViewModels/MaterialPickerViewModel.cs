@@ -80,6 +80,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         [ICommand]
         public async Task Show()
         {
+            ItemsSource.Add("Nuevo");
             if (!string.IsNullOrEmpty(SelectedItemColor))
                 await DisplayAlert("Color", SelectedItemColor, "Ok");
             else

@@ -466,6 +466,8 @@
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="BackgroundColor"
                     Value="{StaticResource BackgroundMaterialColor}" />
+            <Setter Property="PlaceholderColor"
+                    Value="{StaticResource PlaceholderColor}" />
             <Setter Property="TrailingIcon"
                     Value="arrow_drop_down.png" />
             <Setter Property="VisualStateManager.VisualStateGroups">
