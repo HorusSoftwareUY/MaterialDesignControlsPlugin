@@ -201,6 +201,14 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(this.SupportingLineBreakMode):
                     this.SupportingLabel.LineBreakMode = this.SupportingLineBreakMode;
                     break;
+
+                case nameof(ItemsSource):
+                    if (ItemsSource != null && ItemsSource is INotifyCollectionChanged collection)
+                    {
+                        collection.CollectionChanged -= Collection_CollectionChanged;
+                        collection.CollectionChanged += Collection_CollectionChanged;
+                    }
+                    break;
             }
         }
 
@@ -262,6 +270,29 @@ namespace Plugin.MaterialDesignControls.Material3
             SelectedItem = null;
             pckOptions.SelectedIndex = -1;
             Task.Run(Animate).ConfigureAwait(false);
+        }
+
+        private void Collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (this is MaterialPicker control)
+            {
+                if (e.Action == NotifyCollectionChangedAction.Add)
+                {
+                    foreach (var item in e.NewItems)
+                    {
+                        control.pckOptions.Items.Add(item.ToString());
+                    }
+                }
+                else if (e.Action == NotifyCollectionChangedAction.Remove)
+                {
+                    if (control.pckOptions.Items.Count > 0)
+                    {
+                        control.pckOptions.Items.RemoveAt(e.OldStartingIndex);
+                    }
+                }
+
+                control.InternalUpdateSelectedIndex();
+            }
         }
         #endregion Methods
     }

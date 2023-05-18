@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
@@ -10,7 +11,7 @@ namespace ExampleMaterialDesignControls.ViewModels
     public partial class MaterialPickerViewModel : BaseViewModel
     {
         [ObservableProperty]
-        private List<string> _itemsSourceColors;
+        private ObservableCollection<string> _itemsSourceColors;
 
         [ObservableProperty]
         private string _selectedItemColor;
@@ -28,7 +29,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         private string _secondarySelectedItem;
 
         [ObservableProperty]
-        private List<string> _itemsSource;
+        private ObservableCollection<string> _itemsSource;
 
         [ObservableProperty]
         private List<string> _secondaryItemsSource;
@@ -39,9 +40,9 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public MaterialPickerViewModel()
         {
-            ItemsSourceColors = new List<string> { "Red", "Blue", "Green" };
+            ItemsSourceColors = new ObservableCollection<string> { "Red", "Blue", "Green" };
 
-            ItemsSource = new List<string> { "Model 1", "Model 2", "Model 3", "Model 4" };
+            ItemsSource = new ObservableCollection<string> { "Model 1", "Model 2", "Model 3", "Model 4" };
             SecondaryItemsSource = new List<string> { "A", "B", "C", "D" };
             SelectedItem = "Model 2";
             SecondarySelectedItem = "C";
