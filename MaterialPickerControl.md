@@ -247,11 +247,6 @@ This property is to set the border width. **Only supported on iOS**
 <br/>
 <br/>
 
-### Property IsPassword:
-This property is to set if this control behaves as password entry.
-<br/>
-<br/>
-
 ### Property IndicatorColor:
 This property is to set the indicator color.
 <br/>
@@ -302,31 +297,6 @@ This property is to set the trailing icon command parameter.
 <br/>
 <br/>
 
-
-### Property Keyboard
-Default keyboard and base class for specialized keyboards, such as those for telephone numbers, email, URLs and others.
-#### Allowed Values:
-- Plain
-- Chat
-- Email
-- Numeric
-- Telephone
-- Text
-- URL
-<br/>
-<br/>
-
-### Property KeyboardFlags
-Enumerates keyboard option flags that controls capitalization, spellcheck, suggestion behavior and others. 
-#### Allowed Values:
-- CapitalizeSentence
-- Spellcheck
-- Suggestions
-- CapitalizeWord
-- CapitalizeCharacter
-- CapitalizeNone
-- All
-- None
 #### Usage Example
 - Using only one flag
 ```XML

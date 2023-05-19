@@ -181,6 +181,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(LabelMarginProperty, value); }
         }
 
+        public static readonly BindableProperty LabelLineBreakModeProperty =
+            BindableProperty.Create(nameof(LabelLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
+
+        public LineBreakMode LabelLineBreakMode
+        {
+            get { return (LineBreakMode)GetValue(LabelLineBreakModeProperty); }
+            set { SetValue(LabelLineBreakModeProperty, value); }
+        }
+
         #endregion LabelText
 
         #region SupportingText
@@ -230,6 +239,14 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(SupportingMarginProperty, value); }
         }
 
+        public static readonly BindableProperty SupportingLineBreakModeProperty =
+            BindableProperty.Create(nameof(SupportingLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
+
+        public LineBreakMode SupportingLineBreakMode
+        {
+            get { return (LineBreakMode)GetValue(SupportingLineBreakModeProperty); }
+            set { SetValue(SupportingLineBreakModeProperty, value); }
+        }
         #endregion SupportingText
 
         #region CornerRadius
@@ -670,6 +687,14 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(AnimatePlaceholder):
                     this.lblLabel.IsVisible = !AnimateLabel;
                     SetAnimatedLabel();
+                    break;
+
+                case nameof(this.LabelLineBreakMode):
+                    this.lblLabel.LineBreakMode = this.LabelLineBreakMode;
+                    break;
+
+                case nameof(this.SupportingLineBreakMode):
+                    this.lblSupporting.LineBreakMode = this.SupportingLineBreakMode;
                     break;
             }
         }

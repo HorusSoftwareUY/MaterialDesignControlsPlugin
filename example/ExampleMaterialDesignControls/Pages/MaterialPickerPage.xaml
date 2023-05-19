@@ -182,49 +182,6 @@
                             </OnPlatform>
                         </material3:MaterialPicker.SupportingFontFamily>
                     </material3:MaterialPicker>
-
-
-
-
-                    <!--<material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Double Picker" />
-                    <material:MaterialDoublePicker
-                        x:Name="pckDouble"
-                        ItemsSource="{Binding ItemsSource}"
-                        LabelText="Double Picker"
-                        SecondaryItemsSource="{Binding SecondaryItemsSource}"
-                        SecondarySelectedItem="{Binding SecondarySelectedItem}"
-                        SelectedItem="{Binding SelectedItem}"
-                        Type="Filled" />
-                    <material:MaterialDoublePicker
-                        IsEnabled="False"
-                        ItemsSource="{Binding ItemsSource}"
-                        LabelText="Double Picker"
-                        SecondaryItemsSource="{Binding SecondaryItemsSource}"
-                        SecondarySelectedItem="{Binding SecondarySelectedItem}"
-                        SelectedItem="{Binding SelectedItem}"
-                        Type="Filled" />
-                    <Label x:Name="lblSelectedIndexes" Text="Selected Indexes: -" />
-                    <material3:MaterialButton Command="{Binding Tap2Command}" Text="Save" />
-
-                    <material:MaterialDivider Margin="0,10" />-->
-
-                    <!--<material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Double Picker" />
-                    <material:MaterialDoublePicker
-                        x:Name="pckDoubleWithFocus"
-                        ItemsSource="{Binding ItemsSource}"
-                        LabelText="Double Picker"
-                        SecondaryItemsSource="{Binding SecondaryItemsSource}"
-                        SecondarySelectedItem="{Binding SecondarySelectedItem}"
-                        SelectedItem="{Binding SelectedItem}"
-                        Separator=" - "
-                        Type="Filled" />
-                    <material3:MaterialButton Command="{Binding Tap3Command}" Text="Focus" />-->
                 </StackLayout>
             </ScrollView>
         </Grid>

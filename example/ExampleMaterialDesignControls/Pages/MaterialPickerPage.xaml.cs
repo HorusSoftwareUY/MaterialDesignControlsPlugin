@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using ExampleMaterialDesignControls.ViewModels;
-using Plugin.MaterialDesignControls;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
@@ -12,8 +11,6 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            //pckSizes.ItemsSource = new List<string> { "P", "M", "X", "XL" };
-
             pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             pckModels.SelectedIndexChanged += PckModels_SelectedIndexChanged;
 
@@ -22,14 +19,7 @@ namespace ExampleMaterialDesignControls.Pages
             pckModels4.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             pckModels5.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
 
-            //pckDouble.SelectedIndexesChanged += PckDouble_SelectedIndexChanged;
-
             var viewModel = new MaterialPickerViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
-
-            //viewModel.FocusOnPicker = () =>
-            //{
-            //    pckDoubleWithFocus.Focus();
-            //};
 
             viewModel.ClearSelectedItem = () =>
             {
@@ -37,11 +27,6 @@ namespace ExampleMaterialDesignControls.Pages
             };
 
             BindingContext = viewModel;
-        }
-
-        private void PckDouble_SelectedIndexChanged(object sender, SelectedIndexesEventArgs e)
-        {
-            //lblSelectedIndexes.Text = $"SelectedIndexes: {e.SelectedIndexes[0]} - {e.SelectedIndexes[1]}";
         }
 
         private void PckModels_SelectedIndexChanged(object sender, EventArgs e)

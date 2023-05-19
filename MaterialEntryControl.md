@@ -407,3 +407,27 @@ This property is to set the trailing icon command.
 This property is to set the trailing icon command parameter.
 <br/>
 <br/>
+
+### Property LabelLineBreakMode:
+This property is to set the Label Line Break Mode
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
+<br/>
+<br/>
+
+### Property SupportingLineBreakMode:
+This property is to set the Supporting LineBreakMode.
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
+<br/>
+<br/>

@@ -77,24 +77,6 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(SelectedItemProperty, value); }
         }
 
-        public static readonly BindableProperty LabelLineBreakModeProperty =
-            BindableProperty.Create(nameof(LabelLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
-
-        public LineBreakMode LabelLineBreakMode
-        {
-            get { return (LineBreakMode)GetValue(LabelLineBreakModeProperty); }
-            set { SetValue(LabelLineBreakModeProperty, value); }
-        }
-
-        public static readonly BindableProperty SupportingLineBreakModeProperty =
-            BindableProperty.Create(nameof(SupportingLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
-
-        public LineBreakMode SupportingLineBreakMode
-        {
-            get { return (LineBreakMode)GetValue(SupportingLineBreakModeProperty); }
-            set { SetValue(SupportingLineBreakModeProperty, value); }
-        }
-
         public static readonly BindableProperty MultilineEnabledProperty =
             BindableProperty.Create(nameof(MultilineEnabled), typeof(bool), typeof(MaterialPicker), defaultValue: false);
 
@@ -195,13 +177,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(this.PickerRowHeight):
                     this.pckOptions.PickerRowHeight = this.PickerRowHeight;
                     break;
-                case nameof(this.LabelLineBreakMode):
-                    this.Label.LineBreakMode = this.LabelLineBreakMode;
-                    break;
-                case nameof(this.SupportingLineBreakMode):
-                    this.SupportingLabel.LineBreakMode = this.SupportingLineBreakMode;
-                    break;
-
                 case nameof(ItemsSource):
                     if (ItemsSource != null && ItemsSource is INotifyCollectionChanged collection)
                     {
