@@ -14,13 +14,13 @@ namespace ExampleMaterialDesignControls.Pages
 
             //pckSizes.ItemsSource = new List<string> { "P", "M", "X", "XL" };
 
-            pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
-            pckModels.SelectedIndexChanged += PckModels_SelectedIndexChanged;
+            //pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            //pckModels.SelectedIndexChanged += PckModels_SelectedIndexChanged;
 
-            pckModels2.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
-            pckModels3.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
-            pckModels4.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
-            pckModels5.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            //pckModels2.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            //pckModels3.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            //pckModels4.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            //pckModels5.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
 
             //pckDouble.SelectedIndexesChanged += PckDouble_SelectedIndexChanged;
 
@@ -31,10 +31,10 @@ namespace ExampleMaterialDesignControls.Pages
             //    pckDoubleWithFocus.Focus();
             //};
 
-            viewModel.ClearSelectedItem = () =>
-            {
-                pckColors.ClearSelectedItem();
-            };
+            //viewModel.ClearSelectedItem = () =>
+            //{
+            //    pckColors.ClearSelectedItem();
+            //};
 
             BindingContext = viewModel;
         }
@@ -46,7 +46,7 @@ namespace ExampleMaterialDesignControls.Pages
 
         private void PckModels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblSelectedIndex.Text = $"SelectedIndex: {pckModels.SelectedIndex}";
+            //lblSelectedIndex.Text = $"SelectedIndex: {pckModels.SelectedIndex}";
         }
     }
 }
