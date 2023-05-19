@@ -30,7 +30,6 @@
                                             Text="Filled Type" />
 
                     <material3:MaterialPicker x:Name="pckColors"
-                                              AnimateError="True"
                                               LabelText="Label"
                                               ItemsSource="{Binding ItemsSourceColors}"
                                               Placeholder="Select a Color"
@@ -56,7 +55,10 @@
 
                     <material3:MaterialPicker x:Name="pckModels"
                                               Placeholder="Select a model"
+                                              SupportingText="{Binding ModelAssistiveText}"
+                                              SelectedItem="{Binding SelectedModel}"
                                               LabelText="Model"
+                                              AnimateError="True"
                                               LeadingIcon="color.png" />
 
                     <Label x:Name="lblSelectedIndex"
@@ -124,6 +126,62 @@
                                               CornerRadiusTopLeft="True"
                                               CornerRadiusTopRight="True"
                                               Placeholder="Select Option" />
+
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Full API" />
+
+                    <material3:MaterialPicker x:Name="pckModels6"
+                                              HorizontalTextAlignment="Start"
+                                              HasBorder="True"
+                                              AnimateError="True"
+                                              SupportingText="Supporting text"
+                                              SupportingLineBreakMode="WordWrap"
+                                              LabelText="Label"
+                                              LabelLineBreakMode="WordWrap"
+                                              iOSBorderWidth="2"
+                                              CornerRadius="10"
+                                              AnimatePlaceholder="True"
+                                              ItemsSource="{Binding ItemsSourceColors}"
+                                              PickerRowHeight="100"
+                                              MultilineEnabled="True"
+                                              Placeholder="Select a Color"
+                                              LeadingIconCommand="{Binding IconCommand}"
+                                              LeadingIconCommandParameter="Tapped (L)"
+                                              TrailingIconCommand="{Binding IconCommand}"
+                                              TrailingIconCommandParameter="Tapped (T)"
+                                              CornerRadiusBottomLeft="True"
+                                              CornerRadiusBottomRight="True"
+                                              CornerRadiusTopLeft="True"
+                                              CornerRadiusTopRight="True">
+                        <material3:MaterialPicker.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialPicker.CustomTrailingIcon>
+                        <material3:MaterialPicker.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialPicker.CustomLeadingIcon>
+                        <material3:MaterialPicker.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialPicker.FontFamily>
+                        <material3:MaterialPicker.LabelFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialPicker.LabelFontFamily>
+                        <material3:MaterialPicker.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialPicker.SupportingFontFamily>
+                    </material3:MaterialPicker>
 
 
 

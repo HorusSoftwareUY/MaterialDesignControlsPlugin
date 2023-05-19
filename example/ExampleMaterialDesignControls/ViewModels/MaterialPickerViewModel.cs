@@ -17,13 +17,16 @@ namespace ExampleMaterialDesignControls.ViewModels
         private string _selectedItemColor;
 
         [ObservableProperty]
-        private string _colorAssistiveText;
+        private string _modelAssistiveText;
 
         [ObservableProperty]
         private string _selectedSizes;
 
         [ObservableProperty]
         private string _selectedItem;
+
+        [ObservableProperty]
+        private string _selectedModel;
 
         [ObservableProperty]
         private string _secondarySelectedItem;
@@ -51,13 +54,13 @@ namespace ExampleMaterialDesignControls.ViewModels
         [ICommand]
         private async Task Tap(object parameter)
         {
-            if (!string.IsNullOrEmpty(SelectedItemColor))
+            if (!string.IsNullOrEmpty(SelectedModel))
             {
-                ColorAssistiveText = null;
-                await DisplayAlert("Saved", !string.IsNullOrEmpty(SelectedSizes) ? SelectedSizes : "Select option", "Ok");
+                ModelAssistiveText = null;
+                await DisplayAlert("Saved", !string.IsNullOrEmpty(SelectedModel) ? SelectedModel : "Select option", "Ok");
             }
             else
-                ColorAssistiveText = "The color is required";
+                ModelAssistiveText = "The model is required";
         }
 
         [ICommand]
@@ -85,6 +88,12 @@ namespace ExampleMaterialDesignControls.ViewModels
                 await DisplayAlert("Color", SelectedItemColor, "Ok");
             else
                 await DisplayAlert("Color", "No color selected", "Ok");
+        }
+
+        [ICommand]
+        private async Task Icon(object parameter)
+        {
+            await DisplayAlert("Saved", $"Command {parameter}", "Ok");
         }
     }
 }

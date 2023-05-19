@@ -14,7 +14,7 @@ namespace ExampleMaterialDesignControls.Pages
 
             //pckSizes.ItemsSource = new List<string> { "P", "M", "X", "XL" };
 
-            pckModels.ItemsSource = new List<string> { "Color A", "Color B", "Color C", "Color D" };
+            pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             pckModels.SelectedIndexChanged += PckModels_SelectedIndexChanged;
 
             pckModels2.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
