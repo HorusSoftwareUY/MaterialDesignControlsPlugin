@@ -476,6 +476,7 @@ namespace Plugin.MaterialDesignControls.Material3
             this.frmContainer.BackgroundColor = BackgroundColor;
             this.frmContainer.BorderColor = HasBorder ? BorderColor : Color.Transparent;
             this.indicator.Color = IndicatorColor;
+            this.frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
         }
 
         public void UpdateLayout(string propertyName)

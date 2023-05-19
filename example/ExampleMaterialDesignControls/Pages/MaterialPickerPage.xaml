@@ -29,7 +29,7 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Filled Type" />
 
-                    <!--<material3:MaterialPicker x:Name="pckColors"
+                    <material3:MaterialPicker x:Name="pckColors"
                                               LabelText="Label"
                                               ItemsSource="{Binding ItemsSourceColors}"
                                               Placeholder="Select a Color"
@@ -79,7 +79,7 @@
                                               LabelText="Option"
                                               SupportingText="Required field"
                                               TrailingIcon=""
-                                              Placeholder="Select Option" />-->
+                                              Placeholder="Select Option" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -99,7 +99,7 @@
                                               Placeholder="Select Option" />
 
 
-                    <!--<material:MaterialDivider Margin="0,10" />
+                    <material:MaterialDivider Margin="0,10" />
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
@@ -142,7 +142,7 @@
                                               SupportingLineBreakMode="WordWrap"
                                               LabelText="Label"
                                               LabelLineBreakMode="WordWrap"
-                                              iOSBorderWidth="2"
+                                              iOSBorderWidth="3"
                                               CornerRadius="10"
                                               AnimatePlaceholder="True"
                                               ItemsSource="{Binding ItemsSourceColors}"
@@ -181,7 +181,7 @@
                                 <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                             </OnPlatform>
                         </material3:MaterialPicker.SupportingFontFamily>
-                    </material3:MaterialPicker>-->
+                    </material3:MaterialPicker>
 
 
 
