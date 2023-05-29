@@ -1,5 +1,4 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.ControlsMaterial3;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
@@ -7,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -34,6 +32,8 @@ namespace Plugin.MaterialDesignControls.Material3
         public IBaseMaterialFieldControl Control => this.CustomContent;
 
         public MaterialLabel Label => this.lblLabel;
+
+        public MaterialLabel SupportingLabel => this.lblSupporting;
 
         public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
 
@@ -181,6 +181,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(LabelMarginProperty, value); }
         }
 
+        public static readonly BindableProperty LabelLineBreakModeProperty =
+            BindableProperty.Create(nameof(LabelLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
+
+        public LineBreakMode LabelLineBreakMode
+        {
+            get { return (LineBreakMode)GetValue(LabelLineBreakModeProperty); }
+            set { SetValue(LabelLineBreakModeProperty, value); }
+        }
+
         #endregion LabelText
 
         #region SupportingText
@@ -230,6 +239,14 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(SupportingMarginProperty, value); }
         }
 
+        public static readonly BindableProperty SupportingLineBreakModeProperty =
+            BindableProperty.Create(nameof(SupportingLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
+
+        public LineBreakMode SupportingLineBreakMode
+        {
+            get { return (LineBreakMode)GetValue(SupportingLineBreakModeProperty); }
+            set { SetValue(SupportingLineBreakModeProperty, value); }
+        }
         #endregion SupportingText
 
         #region CornerRadius
@@ -301,7 +318,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty iOSBorderWidthProperty =
-            BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(MaterialCard), 0f);
+            BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(MaterialCard), 1f);
 
         public float iOSBorderWidth
         {
@@ -313,7 +330,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Indicator
 
         public static readonly BindableProperty IndicatorColorProperty =
-            BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.DarkGray);
 
         public Color IndicatorColor
         {
@@ -476,6 +493,7 @@ namespace Plugin.MaterialDesignControls.Material3
             this.frmContainer.BackgroundColor = BackgroundColor;
             this.frmContainer.BorderColor = HasBorder ? BorderColor : Color.Transparent;
             this.indicator.Color = IndicatorColor;
+            this.frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
         }
 
         public void UpdateLayout(string propertyName)
@@ -520,10 +538,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         this.lblSupporting.FontFamily = FontFamily;
                     break;
                 case nameof(Placeholder):
-                    if (!AnimateLabel)
-                    {
-                        CustomContent.SetPlaceholder(Placeholder);
-                    }
+                    CustomContent.SetPlaceholder(Placeholder);
                     SetAnimatedLabel();
                     break;
                 case nameof(PlaceholderColor):
@@ -673,6 +688,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.lblLabel.IsVisible = !AnimateLabel;
                     SetAnimatedLabel();
                     break;
+
+                case nameof(this.LabelLineBreakMode):
+                    this.lblLabel.LineBreakMode = this.LabelLineBreakMode;
+                    break;
+
+                case nameof(this.SupportingLineBreakMode):
+                    this.lblSupporting.LineBreakMode = this.SupportingLineBreakMode;
+                    break;
             }
         }
 
@@ -693,17 +716,28 @@ namespace Plugin.MaterialDesignControls.Material3
             if (CustomContent.IsControlFocused())
             {
                 FocusedCommand?.Execute(null);
+            }
+            else
+            {
+                UnfocusedCommand?.Execute(null);
+            }
 
-                if (AnimatePlaceholder && ValidateIfAnimate())
+            await Animate();
+        }
+
+        public async Task Animate()
+        {
+            bool validateIfAnimate = ValidateIfAnimate();
+            if (CustomContent.IsControlFocused())
+            {
+                if (AnimatePlaceholder && validateIfAnimate)
                 {
                     await TransitionToTitle();
                 }
             }
             else
             {
-                UnfocusedCommand?.Execute(null);
-
-                if (AnimatePlaceholder && ValidateIfAnimate())
+                if (AnimatePlaceholder && validateIfAnimate)
                 {
                     await TransitionToPlaceholder();
                 }
@@ -712,7 +746,12 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool ValidateIfAnimate()
         {
-            if (this is MaterialEntry control && string.IsNullOrEmpty(control.Text))
+            if (this is MaterialEntry materialEntry && materialEntry.IsEnabled && string.IsNullOrEmpty(materialEntry.Text))
+            {
+                return true;
+            }
+
+            if (this is MaterialPicker materialPicker && materialPicker.IsEnabled && materialPicker.SelectedIndex == -1)
             {
                 return true;
             }
@@ -742,6 +781,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 else
                 {
                     CustomContent.SetPlaceholder(Placeholder);
+                    CustomContent.SetPlaceholderColor(PlaceholderColor);
                     AnimatedLabel.IsVisible = false;
                 }
             }

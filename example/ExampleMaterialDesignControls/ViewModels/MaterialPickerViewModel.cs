@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
@@ -10,13 +12,13 @@ namespace ExampleMaterialDesignControls.ViewModels
     public partial class MaterialPickerViewModel : BaseViewModel
     {
         [ObservableProperty]
-        private List<string> _itemsSourceColors;
+        private ObservableCollection<CustomColor> _itemsSourceColors;
 
         [ObservableProperty]
-        private string _selectedItemColor;
+        private CustomColor _selectedItemColor;
 
         [ObservableProperty]
-        private string _colorAssistiveText;
+        private string _modelAssistiveText;
 
         [ObservableProperty]
         private string _selectedSizes;
@@ -25,10 +27,13 @@ namespace ExampleMaterialDesignControls.ViewModels
         private string _selectedItem;
 
         [ObservableProperty]
+        private string _selectedModel;
+
+        [ObservableProperty]
         private string _secondarySelectedItem;
 
         [ObservableProperty]
-        private List<string> _itemsSource;
+        private ObservableCollection<string> _itemsSource;
 
         [ObservableProperty]
         private List<string> _secondaryItemsSource;
@@ -39,24 +44,44 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public MaterialPickerViewModel()
         {
-            ItemsSourceColors = new List<string> { "Red", "Blue", "Green" };
 
-            ItemsSource = new List<string> { "Model 1", "Model 2", "Model 3", "Model 4" };
+            ItemsSourceColors = new ObservableCollection<CustomColor> 
+            { 
+                new CustomColor()
+                {
+                    Color = "Red",
+                    Id = 1
+                },
+                new CustomColor()
+                {
+                    Color = "Blue",
+                    Id = 2
+                },
+                new CustomColor()
+                {
+                    Color = "Green",
+                    Id = 3
+                }
+            };
+
+            ItemsSource = new ObservableCollection<string> { "Model 1", "Model 2", "Model 3", "Model 4" };
             SecondaryItemsSource = new List<string> { "A", "B", "C", "D" };
             SelectedItem = "Model 2";
             SecondarySelectedItem = "C";
+
+            SelectedItemColor = ItemsSourceColors.FirstOrDefault();
         }
 
         [ICommand]
         private async Task Tap(object parameter)
         {
-            if (!string.IsNullOrEmpty(SelectedItemColor))
+            if (!string.IsNullOrEmpty(SelectedModel))
             {
-                ColorAssistiveText = null;
-                await DisplayAlert("Saved", !string.IsNullOrEmpty(SelectedSizes) ? SelectedSizes : "Select option", "Ok");
+                ModelAssistiveText = null;
+                await DisplayAlert("Saved", !string.IsNullOrEmpty(SelectedModel) ? SelectedModel : "Select option", "Ok");
             }
             else
-                ColorAssistiveText = "The color is required";
+                ModelAssistiveText = "The model is required";
         }
 
         [ICommand]
@@ -80,10 +105,38 @@ namespace ExampleMaterialDesignControls.ViewModels
         [ICommand]
         public async Task Show()
         {
-            if (!string.IsNullOrEmpty(SelectedItemColor))
-                await DisplayAlert("Color", SelectedItemColor, "Ok");
+            if (SelectedItemColor != null)
+                await DisplayAlert("Color", SelectedItemColor.Color, "Ok");
             else
                 await DisplayAlert("Color", "No color selected", "Ok");
+        }
+
+        [ICommand]
+        private async Task Icon(object parameter)
+        {
+            await DisplayAlert("Saved", $"Command {parameter}", "Ok");
+        }
+
+        [ICommand]
+        private async Task AddNewColor()
+        {
+            var lastId = ItemsSourceColors.LastOrDefault().Id;
+            var newColor = new CustomColor() { Color = $"New Color ({++lastId})", Id = lastId };
+            ItemsSourceColors.Add(newColor);
+            await DisplayAlert("Saved", $"New color {newColor.Color} added", "Ok");
+        }
+    }
+
+    public class CustomColor
+    {
+        public int Id { get; set;}
+
+        public string Color { get; set; }
+
+        // We override this method only to show a Custom Object without set PropertyPath in Full API example.
+        public override string ToString()
+        {
+            return Color;
         }
     }
 }

@@ -36,7 +36,7 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Lined" LabelText="Country" Placeholder="Select your country" TabIndex="2"/>
+                    <material3:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" LabelText="Country" Placeholder="Select your country" TabIndex="2"/>
                     <Grid ColumnSpacing="30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>

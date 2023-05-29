@@ -13,6 +13,7 @@
             MaterialEditorRenderer.Init();
             MaterialSliderRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialEntryRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.iOS.MaterialPickerRenderer.Init();
         }
     }
 }

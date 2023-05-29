@@ -1,15 +1,16 @@
 ﻿using Android.Content;
 using Android.Graphics.Drawables;
-using AndroidGraphics = Android.Graphics;
-using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Android.Utils;
+using Plugin.MaterialDesignControls.Material3.Android;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Plugin.MaterialDesignControls.Android.Utils;
-using System.ComponentModel;
+using AndroidGraphics = Android.Graphics;
 
-[assembly: ExportRenderer(typeof(CustomPicker), typeof(Plugin.MaterialDesignControls.Android.MaterialPickerRenderer))]
+[assembly: ExportRenderer(typeof(CustomPicker), typeof(MaterialPickerRenderer))]
 
-namespace Plugin.MaterialDesignControls.Android
+namespace Plugin.MaterialDesignControls.Material3.Android
 {
     public class MaterialPickerRenderer : PickerRenderer
     {
@@ -24,7 +25,7 @@ namespace Plugin.MaterialDesignControls.Android
             if (this.Control != null)
             {
                 this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
-                this.Control.SetPadding(4, 0, 0, 0);
+                this.Control.SetPadding(0, 0, 0, 0);
 
                 if (this.Element is CustomPicker customPicker)
                 {
