@@ -27,15 +27,17 @@
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Filled Type" />
+                                            Text="Filled Type with PropertyPath seted" />
 
                     <material3:MaterialPicker x:Name="pckColors"
                                               LabelText="Label"
                                               ItemsSource="{Binding ItemsSourceColors}"
                                               Placeholder="Select a Color"
+                                              PropertyPath="Color"
                                               SelectedItem="{Binding SelectedItemColor}" />
                     <Grid ColumnSpacing="16">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
@@ -43,6 +45,9 @@
                                                   Command="{Binding ClearCommand}"
                                                   Text="Clear" />
                         <material3:MaterialButton Grid.Column="1"
+                                                  Command="{Binding AddNewColorCommand}"
+                                                  Text="Add Color" />
+                        <material3:MaterialButton Grid.Column="2"
                                                   Command="{Binding ShowCommand}"
                                                   Text="Show" />
                     </Grid>

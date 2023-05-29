@@ -331,11 +331,17 @@ This property is to set the trailing icon command parameter.
 
 ### Property ItemsSource:
 This property is to set the items source
+#### If you use a custom object, we recommend set *PropertyPath* property with the name of the property that you want to show its value in the picker list. In other case you must override ToString method (use by default) or use a string list.
 <br/>
 <br/>
 
 ### Property SelectedItem:
-This property is to set the selected item
+This property is to set the selected item. 
+<br/>
+<br/>
+
+### Property PropertyPath:
+This property is to set name of the property that you want to show its value in the picker list.
 <br/>
 <br/>
 

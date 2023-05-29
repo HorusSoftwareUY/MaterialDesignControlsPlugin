@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
@@ -11,10 +12,10 @@ namespace ExampleMaterialDesignControls.ViewModels
     public partial class MaterialPickerViewModel : BaseViewModel
     {
         [ObservableProperty]
-        private ObservableCollection<string> _itemsSourceColors;
+        private ObservableCollection<CustomColor> _itemsSourceColors;
 
         [ObservableProperty]
-        private string _selectedItemColor;
+        private CustomColor _selectedItemColor;
 
         [ObservableProperty]
         private string _modelAssistiveText;
@@ -43,12 +44,32 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public MaterialPickerViewModel()
         {
-            ItemsSourceColors = new ObservableCollection<string> { "Red", "Blue", "Green" };
+
+            ItemsSourceColors = new ObservableCollection<CustomColor> 
+            { 
+                new CustomColor()
+                {
+                    Color = "Red",
+                    Id = 1
+                },
+                new CustomColor()
+                {
+                    Color = "Blue",
+                    Id = 2
+                },
+                new CustomColor()
+                {
+                    Color = "Green",
+                    Id = 3
+                }
+            };
 
             ItemsSource = new ObservableCollection<string> { "Model 1", "Model 2", "Model 3", "Model 4" };
             SecondaryItemsSource = new List<string> { "A", "B", "C", "D" };
             SelectedItem = "Model 2";
             SecondarySelectedItem = "C";
+
+            SelectedItemColor = ItemsSourceColors.FirstOrDefault();
         }
 
         [ICommand]
@@ -84,8 +105,8 @@ namespace ExampleMaterialDesignControls.ViewModels
         [ICommand]
         public async Task Show()
         {
-            if (!string.IsNullOrEmpty(SelectedItemColor))
-                await DisplayAlert("Color", SelectedItemColor, "Ok");
+            if (SelectedItemColor != null)
+                await DisplayAlert("Color", SelectedItemColor.Color, "Ok");
             else
                 await DisplayAlert("Color", "No color selected", "Ok");
         }
@@ -94,6 +115,27 @@ namespace ExampleMaterialDesignControls.ViewModels
         private async Task Icon(object parameter)
         {
             await DisplayAlert("Saved", $"Command {parameter}", "Ok");
+        }
+
+        [ICommand]
+        private async Task AddNewColor()
+        {
+            var lastId = ItemsSourceColors.LastOrDefault().Id;
+            var newColor = new CustomColor() { Color = $"New Color ({++lastId})", Id = lastId };
+            ItemsSourceColors.Add(newColor);
+            await DisplayAlert("Saved", $"New color {newColor.Color} added", "Ok");
+        }
+    }
+
+    public class CustomColor
+    {
+        public int Id { get; set;}
+
+        public string Color { get; set; }
+
+        public override string ToString()
+        {
+            return Color;
         }
     }
 }
