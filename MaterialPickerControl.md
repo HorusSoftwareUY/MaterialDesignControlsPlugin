@@ -29,7 +29,7 @@ We update this control to use VisualStateManager (See examble above). So we reco
 Set style:
 
 ```XML
-<Style TargetType="material3:MaterialEntry">
+<Style TargetType="material3:MaterialPicker">
         <Setter Property="AnimateError"
                 Value="True" />
         <Setter Property="SupportingTextColor"
@@ -102,16 +102,15 @@ Set style:
 ### Property CornerRadius:
 This property is to set the corner radius for the control. This is used only when you set HasBorder as true.
 ```XML
-<material3:MaterialEntry
-    LabelText="Name *"
-    Placeholder="Enter your name"
-    Text="{Binding Name}"
-    SupportingText="Name is required"
+<material3:MaterialPicker
+    Placeholder="Select the color"
+    SupportingText="Color is required"
     AnimateError="True"
     TabIndex="1"
     ReturnType="Next"
     HasBorder="True"
     CornerRadius="10"
+    CornerRadiusTopLeft="True"
     SupportingTextColor="Red" />
 ```
 <br/>
@@ -168,12 +167,12 @@ This property is to set the font family.
 <br/> 
 
 ### Property Placeholder:
-This property is to set the placeholder of the material entry.
+This property is to set the placeholder of the material picker.
 <br/>
 <br/>
 
 ### Property PlaceholderColor:
-This property is to set the placeholder color of the material entry.
+This property is to set the placeholder color of the material picker.
 <br/>
 <br/>
 
@@ -183,52 +182,52 @@ If you set this property to true the placeholder will be translated to label pla
 <br/>
 
 ### Property LabelText:
-This property is to set the label of the material entry.
+This property is to set the label of the material picker.
 <br/>
 <br/>
 
 ### Property LabelTextColor:
-This property is to set the label color of the material entry.
+This property is to set the label color of the material picker.
 <br/>
 <br/>
 
 ### Property LabelSize:
-This property is to set the label size of the material entry.
+This property is to set the label size of the material picker.
 <br/>
 <br/>
 
 ### Property LabelFontFamily:
-This property is to set the label font family of the material entry.
+This property is to set the label font family of the material picker.
 <br/>
 <br/>
 
 ### Property LabelMargin:
-This property is to set the label margin family of the material entry. By default uses (16,0,16,0).
+This property is to set the label margin family of the material picker. By default uses (16,0,16,0).
 <br/>
 <br/>
 
 ### Property SupportingText:
-This property is to set the supporting text of the material entry.
+This property is to set the supporting text of the material picker.
 <br/>
 <br/>
 
 ### Property SupportingTextColor:
-This property is to set the supporting text color of the material entry.
+This property is to set the supporting text color of the material picker.
 <br/>
 <br/>
 
 ### Property SupportingSize:
-This property is to set the supporting text size of the material entry.
+This property is to set the supporting text size of the material picker.
 <br/>
 <br/>
 
 ### Property SupportingFontFamily:
-This property is to set the supporting text font family of the material entry.
+This property is to set the supporting text font family of the material picker.
 <br/>
 <br/>
 
 ### Property SupportingMargin:
-This property is to set the supporting text margin of the material entry. By default uses (16,4,16,0).
+This property is to set the supporting text margin of the material picker. By default uses (16,4,16,0).
 <br/>
 <br/>
 
@@ -294,38 +293,6 @@ This property is to set the trailing icon command.
 
 ### Property TrailingIconCommandParameter:
 This property is to set the trailing icon command parameter.
-<br/>
-<br/>
-
-#### Usage Example
-- Using only one flag
-```XML
-<material3:MaterialEntry
-    LabelText="Name *"
-    Placeholder="Enter your name"
-    MaxLength="50"
-    KeyboardFlags="CapitalizeWord"
-    Text="{Binding Name}"
-    SupportingText="Name is required"
-    AnimateError="True"
-    TabIndex="1"
-    ReturnType="Next"
-    SupportingTextColor="Red" />
-```
-- Using multiple flags
-```XML
-<material3:MaterialEntry
-    LabelText="Name *"
-    Placeholder="Enter your name"
-    MaxLength="50"
-    KeyboardFlags="CapitalizeWord|Suggestions"
-    Text="{Binding Name}"
-    SupportingText="Name is required"
-    AnimateError="True"
-    TabIndex="1"
-    ReturnType="Next"
-    SupportingTextColor="Red" />
-```
 <br/>
 <br/>
 
