@@ -133,6 +133,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public string Color { get; set; }
 
+        // We override this method only to show a Custom Object without set PropertyPath in Full API example.
         public override string ToString()
         {
             return Color;
