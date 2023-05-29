@@ -335,7 +335,12 @@ This property is to set the items source
 <br/>
 
 ### Property SelectedItem:
-This property is to set the selected item
+This property is to set the selected item. If you use a custom object, we recommend set PropertyPath property with the name of the property that you wahhnt to show its value in the picker list. In other case you must override ToString method.
+<br/>
+<br/>
+
+### Property PropertyPath:
+This property is to set name of the property that you want to show its value in the picker list.
 <br/>
 <br/>
 

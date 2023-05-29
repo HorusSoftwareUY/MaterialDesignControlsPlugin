@@ -69,11 +69,11 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SelectedItemProperty =
-            BindableProperty.Create(nameof(SelectedItem), typeof(string), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnSelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
+            BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(MaterialPicker), defaultValue: null, propertyChanged: OnSelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
 
-        public string SelectedItem
+        public object SelectedItem
         {
-            get { return (string)GetValue(SelectedItemProperty); }
+            get { return GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }
         }
 
@@ -96,7 +96,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SelectedIndexProperty =
-            BindableProperty.Create(nameof(SelectedIndex), typeof(int), typeof(MaterialPicker), defaultValue: 0);
+            BindableProperty.Create(nameof(SelectedIndex), typeof(int), typeof(MaterialPicker), defaultValue: -1);
 
         public int SelectedIndex
         {
@@ -118,6 +118,15 @@ namespace Plugin.MaterialDesignControls.Material3
                 return -1;
             }
         }
+
+        public static readonly BindableProperty PropertyPathProperty =
+            BindableProperty.Create(nameof(PropertyPath), typeof(string), typeof(MaterialPicker), defaultValue: null);
+
+        public string PropertyPath
+        {
+            get { return (string)GetValue(PropertyPathProperty); }
+            set { SetValue(PropertyPathProperty, value); }
+        }
         #endregion Properties
 
         #region Methods
@@ -125,22 +134,45 @@ namespace Plugin.MaterialDesignControls.Material3
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialPicker)bindable;
-            control.pckOptions.SelectedItem = (string)newValue;
-            control.InternalUpdateSelectedIndex();
+            if (newValue is not null)
+            {
+                var newItem = string.IsNullOrWhiteSpace(control.PropertyPath) ? newValue.ToString() : GetPropertyValue(newValue, control.PropertyPath);
+                control.pckOptions.SelectedItem = newItem;
+                control.InternalUpdateSelectedIndex();
+            }
         }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialPicker)bindable;
+            UpdateItemsSource(newValue, control);
+        }
+
+        private static void UpdateItemsSource(object newValue, MaterialPicker control)
+        {
             control.pckOptions.Items.Clear();
             if (!Equals(newValue, null) && newValue is IEnumerable)
             {
                 foreach (var item in (IEnumerable)newValue)
                 {
-                    control.pckOptions.Items.Add(item.ToString());
+                    var newItem = string.IsNullOrWhiteSpace(control.PropertyPath) ? item.ToString() : GetPropertyValue(item, control.PropertyPath);
+                    control.pckOptions.Items.Add(newItem);
                 }
             }
             control.InternalUpdateSelectedIndex();
+        }
+
+        private static string GetPropertyValue(object item, string propertyToSearch)
+        {
+            var properties = item.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                if (property.Name.Equals(propertyToSearch, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return property.GetValue(item, null).ToString();
+                }
+            }
+            return item.ToString();
         }
 
         private void InternalUpdateSelectedIndex()
@@ -151,10 +183,20 @@ namespace Plugin.MaterialDesignControls.Material3
                 var index = 0;
                 foreach (var item in this.ItemsSource)
                 {
-                    if (item != null && item.Equals(this.SelectedItem))
+                    if (item != null && this.SelectedItem != null && string.IsNullOrWhiteSpace(this.PropertyPath) && item.ToString().Equals(this.SelectedItem.ToString()))
                     {
                         selectedIndex = index;
                         break;
+                    }
+                    else if (item != null && this.SelectedItem != null && !string.IsNullOrWhiteSpace(this.PropertyPath))
+                    {
+                        var itemValue = GetPropertyValue(item, this.PropertyPath);
+                        var selectedItemValue = GetPropertyValue(this.SelectedItem, this.PropertyPath);
+                        if (itemValue.ToString().Equals(selectedItemValue.ToString()))
+                        {
+                            selectedIndex = index;
+                            break;
+                        }
                     }
                     index++;
                 }
@@ -228,7 +270,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 {
                     if (index.Equals(this.pckOptions.SelectedIndex))
                     {
-                        this.SelectedItem = item.ToString();
+                        this.SelectedItem = item;
                         if (this.SelectedIndexChanged != null)
                         {
                             this.SelectedIndexChanged.Invoke(this, e);
@@ -243,6 +285,7 @@ namespace Plugin.MaterialDesignControls.Material3
         public void ClearSelectedItem()
         {
             SelectedItem = null;
+            pckOptions.SelectedItem = null;
             pckOptions.SelectedIndex = -1;
             Task.Run(Animate).ConfigureAwait(false);
         }
@@ -255,7 +298,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 {
                     foreach (var item in e.NewItems)
                     {
-                        control.pckOptions.Items.Add(item.ToString());
+                        var newItem = string.IsNullOrWhiteSpace(control.PropertyPath) ? item.ToString() : GetPropertyValue(item, control.PropertyPath);
+                        control.pckOptions.Items.Add(newItem);
                     }
                 }
                 else if (e.Action == NotifyCollectionChangedAction.Remove)
