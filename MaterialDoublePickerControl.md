@@ -352,5 +352,29 @@ This property is to set the separator. Ex. " - "
 <br/>
 <br/>
 
+### Property LabelLineBreakMode:
+This property is to set the Label Line Break Mode
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
+<br/>
+<br/>
+
+### Property SupportingLineBreakMode:
+This property is to set the Supporting LineBreakMode.
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
+<br/>
+<br/>
+
 
 
