@@ -61,11 +61,14 @@
     </Compile>
     <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.xaml.cs" />
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
+    <Compile Include="ControlsMaterial3\MaterialDatePicker.cs" />
+    <Compile Include="ControlsMaterial3\MaterialDoublePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
     <Compile Include="Implementations\Deprecated\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomPicker.cs" />
+    <Compile Include="Implementations\CustomMaterial3\DoublePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\MaterialCard.cs" />
     <Compile Include="Implementations\Deprecated\CustomEntry.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEntry.cs" />
@@ -114,8 +117,8 @@
     <Compile Include="AnimationTypes.cs" />
     <Compile Include="Animations\TouchAndPressAnimation.cs" />
     <Compile Include="Implementations\CustomImage.cs" />
-    <Compile Include="Implementations\DoublePicker.cs" />
-    <Compile Include="ControlsMaterial2\MaterialDoublePicker.xaml.cs">
+    <Compile Include="Implementations\Deprecated\DoublePicker.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialDoublePicker.xaml.cs">
       <DependentUpon>MaterialDoublePicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

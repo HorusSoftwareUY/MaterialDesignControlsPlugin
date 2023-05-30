@@ -57,5 +57,8 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         {
             this.HorizontalTextAlignment = horizontalTextAlignment;
         }
+
+        public bool ValidateIfAnimate() =>
+            this.IsEnabled && string.IsNullOrEmpty(this.Text);
     }
 }

@@ -1,43 +1,47 @@
-﻿using Android.Content;
-using Android.Graphics.Drawables;
-using AndroidGraphics = Android.Graphics;
-using Plugin.MaterialDesignControls.Implementations;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using Plugin.MaterialDesignControls.Android.Utils;
+﻿using System;
 using System.ComponentModel;
-using System;
+using Foundation;
+using Plugin.MaterialDesignControls.iOS.Utils;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Material3.iOS;
+using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(CustomDatePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialDatePickerRenderer))]
+[assembly: ExportRenderer(typeof(CustomDatePicker), typeof(MaterialDatePickerRenderer))]
 
-namespace Plugin.MaterialDesignControls.Android
+namespace Plugin.MaterialDesignControls.Material3.iOS
 {
-    [Obsolete("MaterialDatePickerRenderer is deprecated, please use MaterialDatePickerRenderer of Material 3 instead.")]
-
     public class MaterialDatePickerRenderer : DatePickerRenderer
     {
         public static void Init() { }
-
-        public MaterialDatePickerRenderer(Context context) : base(context)
-        { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.DatePicker> e)
         {
             base.OnElementChanged(e);
             if (this.Control != null)
             {
-                this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
-                this.Control.SetPadding(4, 0, 0, 0);
+                this.Control.BorderStyle = UITextBorderStyle.None;
 
                 if (this.Element is CustomDatePicker customDatePicker)
                 {
-                    this.Control.Gravity = TextAlignmentHelper.ConvertToGravityFlags(customDatePicker.HorizontalTextAlignment);
+                    this.Control.TextAlignment = TextAlignmentHelper.Convert(customDatePicker.HorizontalTextAlignment);
 
                     if (!customDatePicker.CustomDate.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
                     {
                         this.Control.Text = null;
-                        this.Control.Hint = customDatePicker.Placeholder;
-                        this.Control.SetHintTextColor(customDatePicker.PlaceholderColor.ToAndroid());
+                        this.Control.AttributedPlaceholder = new NSAttributedString(customDatePicker.Placeholder, foregroundColor: customDatePicker.PlaceholderColor.ToUIColor());
+                    }
+
+                    if (UIDevice.CurrentDevice.CheckSystemVersion(13, 2))
+                    {
+                        try
+                        {
+                            UIDatePicker picker = (UIDatePicker)Control.InputView;
+                            picker.PreferredDatePickerStyle = UIDatePickerStyle.Wheels;
+                        }
+                        catch (Exception)
+                        { }
                     }
                 }
             }
@@ -55,9 +59,8 @@ namespace Plugin.MaterialDesignControls.Android
             {
                 if (!customDatePicker.CustomDate.HasValue && !string.IsNullOrEmpty(customDatePicker.Placeholder))
                 {
-                    this.Control.Text = null;
-                    this.Control.Hint = customDatePicker.Placeholder;
-                    this.Control.SetHintTextColor(customDatePicker.PlaceholderColor.ToAndroid());
+                    Control.Text = null;
+                    Control.AttributedPlaceholder = new NSAttributedString(customDatePicker.Placeholder, foregroundColor: customDatePicker.PlaceholderColor.ToUIColor());
                 }
             }
         }

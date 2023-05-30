@@ -746,14 +746,24 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool ValidateIfAnimate()
         {
-            if (this is MaterialEntry materialEntry && materialEntry.IsEnabled && string.IsNullOrEmpty(materialEntry.Text))
-            {
-                return true;
-            }
+            //if (this is MaterialEntry materialEntry && materialEntry.IsEnabled && string.IsNullOrEmpty(materialEntry.Text))
+            //{
+            //    return true;
+            //}
 
-            if (this is MaterialPicker materialPicker && materialPicker.IsEnabled && materialPicker.SelectedIndex == -1)
+            //if (this is MaterialPicker materialPicker && materialPicker.IsEnabled && materialPicker.SelectedIndex == -1)
+            //{
+            //    return true;
+            //}
+
+            //if (this is MaterialPicker materialPicker && materialPicker.IsEnabled && materialPicker.SelectedIndex == -1)
+            //{
+            //    return true;
+            //}
+
+            if (CustomContent is IBaseMaterialFieldControl content)
             {
-                return true;
+                return content.ValidateIfAnimate();
             }
 
             return false;
@@ -789,6 +799,19 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 LoggerHelper.Log(ex);
             }
+        }
+
+        public static string GetPropertyValue(object item, string propertyToSearch)
+        {
+            var properties = item.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                if (property.Name.Equals(propertyToSearch, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return property.GetValue(item, null).ToString();
+                }
+            }
+            return item.ToString();
         }
 
         #endregion Methods

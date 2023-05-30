@@ -14,6 +14,8 @@
             MaterialSliderRenderer.Init();
             Plugin.MaterialDesignControls.Material3.Android.MaterialEntryRenderer.Init();
             Plugin.MaterialDesignControls.Material3.Android.MaterialPickerRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.Android.MaterialDoublePickerRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.Android.MaterialDatePickerRenderer.Init();
         }
     }
 }

@@ -15,6 +15,9 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref date, value); }
         }
 
+        public DateTime MinimumDate => DateTime.Today.AddDays(-10);
+        public DateTime MaximumDate => DateTime.Today.AddDays(10);
+
         public delegate Task DisplayAlertType(string title, string message, string cancel);
 
         public DisplayAlertType DisplayAlert { get; set; }
@@ -38,5 +41,13 @@ namespace ExampleMaterialDesignControls.ViewModels
             else
                 await DisplayAlert("Date", "No date selected", "Ok");
         });
+
+        public ICommand IconCommand => new Command(OnIconCommand);
+
+        private async void OnIconCommand(object commandParameter)
+        {
+            await DisplayAlert("Saved", $"Command {commandParameter}", "Ok");
+
+        }
     }
 }

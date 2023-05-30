@@ -12,6 +12,7 @@ using Xamarin.Forms.Platform.iOS;
 
 namespace Plugin.MaterialDesignControls.iOS
 {
+    [Obsolete("MaterialDatePickerRenderer is deprecated, please use MaterialDatePickerRenderer of Material 3 instead.")]
     public class MaterialDatePickerRenderer : DatePickerRenderer
     {
         public static void Init() { }
