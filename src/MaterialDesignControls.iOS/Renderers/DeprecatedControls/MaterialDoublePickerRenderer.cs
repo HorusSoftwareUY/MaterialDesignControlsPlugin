@@ -18,6 +18,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace Plugin.MaterialDesignControls.iOS
 {
+    [Obsolete("MaterialDoublePickerRenderer is deprecated, please use MaterialDoublePickerRenderer of Material 3 instead.")]
     public class MaterialDoublePickerRenderer : DoublePickerRenderer<UITextField>
     {
         public static void Init() { }
@@ -76,6 +77,8 @@ namespace Plugin.MaterialDesignControls.iOS
             return CGRect.Empty;
         }
     }
+
+    [Obsolete("DoublePickerRenderer is deprecated, please use DoublePickerRenderer of Material 3 instead.")]
 
     public abstract class DoublePickerRenderer<TControl> : ViewRenderer<Xamarin.Forms.Picker, TControl>
             where TControl : UITextField

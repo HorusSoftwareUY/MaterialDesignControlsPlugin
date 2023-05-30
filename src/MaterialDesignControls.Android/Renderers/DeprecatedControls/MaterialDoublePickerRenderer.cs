@@ -22,6 +22,7 @@ using Android.Graphics.Drawables;
 
 namespace Plugin.MaterialDesignControls.Android
 {
+    [Obsolete("MaterialDoublePickerRenderer is deprecated, please use MaterialDoublePickerRenderer of Material 3 instead.")]
     public class MaterialDoublePickerRenderer : DoublePickerRenderer
     {
         public static void Init() { }
@@ -51,6 +52,8 @@ namespace Plugin.MaterialDesignControls.Android
             }
         }
     }
+
+    [Obsolete("DoublePickerRenderer is deprecated, please use DoublePickerRenderer of Material 3 instead.")]
 
     public class DoublePickerRenderer : ViewRenderer<Picker, EditText>, IPickerRenderer
     {

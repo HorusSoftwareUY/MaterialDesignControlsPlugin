@@ -21,26 +21,27 @@ namespace ExampleMaterialDesignControls.ViewModels
         private string _modelAssistiveText;
 
         [ObservableProperty]
-        private string _selectedSizes;
-
-        [ObservableProperty]
-        private string _selectedItem;
-
-        [ObservableProperty]
         private string _selectedModel;
 
-        [ObservableProperty]
-        private string _secondarySelectedItem;
+        public Action ClearSelectedItem { get; set; }
+
+        // DoublePicker
 
         [ObservableProperty]
-        private ObservableCollection<string> _itemsSource;
+        private Country _selectedItem;
 
         [ObservableProperty]
-        private List<string> _secondaryItemsSource;
+        private City _secondarySelectedItem;
+
+        [ObservableProperty]
+        private ObservableCollection<Country> _itemsSource;
+
+        [ObservableProperty]
+        private ObservableCollection<City> _secondaryItemsSource;
 
         public Action FocusOnPicker { get; set; }
 
-        public Action ClearSelectedItem { get; set; }
+        public Action ClearDoubleSelectedItem { get; set; }
 
         public MaterialPickerViewModel()
         {
@@ -64,12 +65,46 @@ namespace ExampleMaterialDesignControls.ViewModels
                 }
             };
 
-            ItemsSource = new ObservableCollection<string> { "Model 1", "Model 2", "Model 3", "Model 4" };
-            SecondaryItemsSource = new List<string> { "A", "B", "C", "D" };
-            SelectedItem = "Model 2";
-            SecondarySelectedItem = "C";
+            ItemsSource = new ObservableCollection<Country>
+            {
+                new Country()
+                {
+                    Name = "Uruguay",
+                    Id = 1
+                },
+                new Country()
+                {
+                    Name = "Colombia",
+                    Id = 2
+                },
+                new Country()
+                {
+                    Name = "Argentina",
+                    Id = 3
+                }
+            };
+            SecondaryItemsSource = new ObservableCollection<City>
+            {
+                new City()
+                {
+                    Name = "Montevideo",
+                    Id = 1
+                },
+                new City()
+                {
+                    Name = "Bogotà",
+                    Id = 2
+                },
+                new City()
+                {
+                    Name = "Buenos Aires",
+                    Id = 3
+                }
+            };
 
             SelectedItemColor = ItemsSourceColors.FirstOrDefault();
+            SelectedItem = ItemsSource.FirstOrDefault();
+            SecondarySelectedItem = SecondaryItemsSource.FirstOrDefault();
         }
 
         [ICommand]
@@ -91,7 +126,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
 
         [ICommand]
-        public async Task Tap3(object parameter)
+        public void Tap3(object parameter)
         {
             FocusOnPicker?.Invoke();
         }
@@ -103,12 +138,27 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
 
         [ICommand]
+        public void ClearDouble()
+        {
+            ClearDoubleSelectedItem?.Invoke();
+        }
+
+        [ICommand]
         public async Task Show()
         {
             if (SelectedItemColor != null)
                 await DisplayAlert("Color", SelectedItemColor.Color, "Ok");
             else
                 await DisplayAlert("Color", "No color selected", "Ok");
+        }
+
+        [ICommand]
+        public async Task ShowDouble()
+        {
+            if (SelectedItem != null && SecondarySelectedItem != null )
+                await DisplayAlert("Country and City", $"country={SelectedItem.Name},City={SecondarySelectedItem.Name}", "Ok");
+            else
+                await DisplayAlert("Country and City", "No country/city selected", "Ok");
         }
 
         [ICommand]
@@ -125,6 +175,21 @@ namespace ExampleMaterialDesignControls.ViewModels
             ItemsSourceColors.Add(newColor);
             await DisplayAlert("Saved", $"New color {newColor.Color} added", "Ok");
         }
+
+        [ICommand]
+        private async Task AddNewCityAndCountry()
+        {
+            var lastCountryId = ItemsSource.LastOrDefault().Id;
+            var lastCityId = SecondaryItemsSource.LastOrDefault().Id;
+
+            var newCountry = new Country() { Name = $"New Country ({++lastCountryId})", Id = lastCountryId };
+            ItemsSource.Add(newCountry);
+
+            var newCity = new City() { Name = $"New city ({++lastCityId})", Id = lastCityId };
+            SecondaryItemsSource.Add(newCity);
+
+            await DisplayAlert("Saved", $"New country {newCountry.Name} and new City {newCity.Name} added", "Ok");
+        }
     }
 
     public class CustomColor
@@ -137,6 +202,32 @@ namespace ExampleMaterialDesignControls.ViewModels
         public override string ToString()
         {
             return Color;
+        }
+    }
+
+    public class Country
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        // We override this method only to show a Custom Object without set PropertyPath/SecondaryPropertyPath in Full API example.
+        public override string ToString()
+        {
+            return Name;
+        }
+    }
+
+    public class City
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        // We override this method only to show a Custom Object without set PropertyPath/SecondaryPropertyPath in Full API example.
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

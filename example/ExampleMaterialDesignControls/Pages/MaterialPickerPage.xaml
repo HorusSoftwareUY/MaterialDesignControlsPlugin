@@ -23,9 +23,9 @@
                         VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="20,0,20,20"
                              Spacing="20">
-                    <contentViews:InfoIndicatorView Message="MaterialEntry follows the latest guidelines of Material Design 3" />
+                    <contentViews:InfoIndicatorView Message="MaterialPicker follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <!--<material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Filled Type with PropertyPath seted" />
 
@@ -186,7 +186,81 @@
                                 <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                             </OnPlatform>
                         </material3:MaterialPicker.SupportingFontFamily>
-                    </material3:MaterialPicker>
+                    </material3:MaterialPicker>-->
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource BoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="MaterialDoublePicker" />
+
+                    <material3:MaterialDoublePicker ItemsSource="{Binding ItemsSource}"
+                                                    SecondarySelectedItem="{Binding SecondarySelectedItem}"
+                                                    SelectedItem="{Binding SelectedItem}"
+                                                    LabelText="Country/City"
+                                                    Placeholder="Select the country/city"
+                                                    PropertyPath="Name"
+                                                    x:Name="pckDouble"
+                                                    SecondaryPropertyPath="Name"
+                                                    SecondaryItemsSource="{Binding SecondaryItemsSource}" />
+
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <material3:MaterialButton ButtonType="Text"
+                                                  Command="{Binding ClearDoubleCommand}"
+                                                  Text="Clear" />
+                        <material3:MaterialButton Grid.Column="1"
+                                                  Command="{Binding AddNewCityAndCountryCommand}"
+                                                  Text="Add Data" />
+                        <material3:MaterialButton Grid.Column="2"
+                                                  Command="{Binding ShowDoubleCommand}"
+                                                  Text="Show" />
+                    </Grid>
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Implement SelectedIndexesChanged" />
+
+                    <material3:MaterialDoublePicker IsEnabled="False"
+                                                    ItemsSource="{Binding ItemsSource}"
+                                                    LabelText="Double Picker"
+                                                    x:Name="pckDoubleSelectedIndexes"
+                                                    Placeholder="Select an option"
+                                                    SecondaryItemsSource="{Binding SecondaryItemsSource}" />
+
+                    <Label x:Name="lblSelectedIndexes"
+                           Text="Selected Indexes: -" />
+
+                    <material3:MaterialButton Command="{Binding Tap2Command}"
+                                              Text="Save" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Separator, animation with border and focus" />
+
+                    <material3:MaterialDoublePicker x:Name="pckDoubleWithFocus"
+                                                    ItemsSource="{Binding ItemsSource}"
+                                                    LabelText="Double Picker"
+                                                    HasBorder="True"
+                                                    CornerRadius="10"
+                                                    Placeholder="Select an option"
+                                                    CornerRadiusBottomLeft="True"
+                                                    CornerRadiusBottomRight="True"
+                                                    CornerRadiusTopLeft="True"
+                                                    CornerRadiusTopRight="True"
+                                                    SecondaryItemsSource="{Binding SecondaryItemsSource}"
+                                                    Separator="/" />
+                    <material3:MaterialButton Command="{Binding Tap3Command}"
+                                              Text="Focus" />
+
                 </StackLayout>
             </ScrollView>
         </Grid>

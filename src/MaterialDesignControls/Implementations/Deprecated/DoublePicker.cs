@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
 {
+    [Obsolete("DoublePicker is deprecated, please use DoublePicker of Material 3 instead.")]
     public class DoublePicker : Picker
     {
         public TextAlignment HorizontalTextAlignment { get; set; }

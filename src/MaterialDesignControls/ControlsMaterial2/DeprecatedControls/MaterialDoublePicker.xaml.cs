@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialDoublePicker is deprecated, please use MaterialDoublePicker of Material 3 instead.")]
+
     public partial class MaterialDoublePicker : BaseMaterialFieldControl
     {
         #region Constructors
@@ -402,6 +403,7 @@ namespace Plugin.MaterialDesignControls
         #endregion Methods
     }
 
+    [Obsolete("SelectedIndexesEventArgs is deprecated, please use SelectedIndexesEventArgs of Material 3 instead.")]
     public class SelectedIndexesEventArgs : EventArgs
     {
         public int[] SelectedIndexes { get; set; }
