@@ -6,11 +6,14 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Plugin.MaterialDesignControls.Android.Utils;
 using System.ComponentModel;
+using System;
 
 [assembly: ExportRenderer(typeof(CustomDatePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialDatePickerRenderer))]
 
 namespace Plugin.MaterialDesignControls.Android
 {
+    [Obsolete("MaterialDatePickerRenderer is deprecated, please use MaterialDatePickerRenderer of Material 3 instead.")]
+
     public class MaterialDatePickerRenderer : DatePickerRenderer
     {
         public static void Init() { }
