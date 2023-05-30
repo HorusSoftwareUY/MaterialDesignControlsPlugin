@@ -52,5 +52,10 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         {
             this.TextColor = textColor;
         }
+
+        public bool ValidateIfAnimate()
+        {
+            return this.IsEnabled && this.SelectedIndex == -1;
+        }
     }
 }

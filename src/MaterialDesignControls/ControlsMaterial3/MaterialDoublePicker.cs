@@ -406,14 +406,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     foreach (var item in e.NewItems)
                     {
                         var newItem = string.IsNullOrWhiteSpace(control.SecondaryPropertyPath) ? item.ToString() : GetPropertyValue(item, control.SecondaryPropertyPath);
-                        control.pckOptions.Items.Add(newItem);
+                        control.pckOptions.SecondaryItems.Add(newItem);
                     }
                 }
                 else if (e.Action == NotifyCollectionChangedAction.Remove)
                 {
-                    if (control.pckOptions.Items.Count > 0)
+                    if (control.pckOptions.SecondaryItems.Count > 0)
                     {
-                        control.pckOptions.Items.RemoveAt(e.OldStartingIndex);
+                        control.pckOptions.SecondaryItems.RemoveAt(e.OldStartingIndex);
                     }
                 }
 

@@ -25,7 +25,7 @@
                              Spacing="20">
                     <contentViews:InfoIndicatorView Message="MaterialPicker follows the latest guidelines of Material Design 3" />
 
-                    <!--<material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Filled Type with PropertyPath seted" />
 
@@ -186,7 +186,7 @@
                                 <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                             </OnPlatform>
                         </material3:MaterialPicker.SupportingFontFamily>
-                    </material3:MaterialPicker>-->
+                    </material3:MaterialPicker>
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -227,8 +227,7 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Implement SelectedIndexesChanged" />
 
-                    <material3:MaterialDoublePicker IsEnabled="False"
-                                                    ItemsSource="{Binding ItemsSource}"
+                    <material3:MaterialDoublePicker ItemsSource="{Binding ItemsSource}"
                                                     LabelText="Double Picker"
                                                     x:Name="pckDoubleSelectedIndexes"
                                                     Placeholder="Select an option"
@@ -236,9 +235,6 @@
 
                     <Label x:Name="lblSelectedIndexes"
                            Text="Selected Indexes: -" />
-
-                    <material3:MaterialButton Command="{Binding Tap2Command}"
-                                              Text="Save" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -248,11 +244,11 @@
 
                     <material3:MaterialDoublePicker x:Name="pckDoubleWithFocus"
                                                     ItemsSource="{Binding ItemsSource}"
-                                                    LabelText="Double Picker"
                                                     HasBorder="True"
                                                     CornerRadius="10"
                                                     Placeholder="Select an option"
                                                     CornerRadiusBottomLeft="True"
+                                                    AnimatePlaceholder="True"
                                                     CornerRadiusBottomRight="True"
                                                     CornerRadiusTopLeft="True"
                                                     CornerRadiusTopRight="True"
@@ -260,6 +256,62 @@
                                                     Separator="/" />
                     <material3:MaterialButton Command="{Binding Tap3Command}"
                                               Text="Focus" />
+
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="MaterialDoublePicker Full API" />
+
+                    <material3:MaterialDoublePicker x:Name="pckDouble6"
+                                                    HorizontalTextAlignment="Start"
+                                                    HasBorder="True"
+                                                    AnimateError="True"
+                                                    SupportingText="Supporting text"
+                                                    SupportingLineBreakMode="WordWrap"
+                                                    LabelText="Label"
+                                                    LabelLineBreakMode="WordWrap"
+                                                    iOSBorderWidth="3"
+                                                    Separator=" - "
+                                                    CornerRadius="10"
+                                                    AnimatePlaceholder="True"
+                                                    ItemsSource="{Binding ItemsSourceColors}"
+                                                    SecondaryItemsSource="{Binding ItemsSource}"
+                                                    Placeholder="Select a Color"
+                                                    LeadingIconCommand="{Binding IconCommand}"
+                                                    LeadingIconCommandParameter="Tapped (L)"
+                                                    TrailingIconCommand="{Binding IconCommand}"
+                                                    TrailingIconCommandParameter="Tapped (T)"
+                                                    CornerRadiusBottomLeft="True"
+                                                    CornerRadiusBottomRight="True"
+                                                    CornerRadiusTopLeft="True"
+                                                    CornerRadiusTopRight="True">
+                        <material3:MaterialDoublePicker.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialDoublePicker.CustomTrailingIcon>
+                        <material3:MaterialDoublePicker.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialDoublePicker.CustomLeadingIcon>
+                        <material3:MaterialDoublePicker.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDoublePicker.FontFamily>
+                        <material3:MaterialDoublePicker.LabelFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDoublePicker.LabelFontFamily>
+                        <material3:MaterialDoublePicker.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDoublePicker.SupportingFontFamily>
+                    </material3:MaterialDoublePicker>
 
                 </StackLayout>
             </ScrollView>

@@ -120,12 +120,6 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
 
         [ICommand]
-        private async Task Tap2(object parameter)
-        {
-            await DisplayAlert("Saved", $"{SelectedItem} - {SecondarySelectedItem}", "Ok");
-        }
-
-        [ICommand]
         public void Tap3(object parameter)
         {
             FocusOnPicker?.Invoke();

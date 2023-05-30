@@ -33,7 +33,7 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 {
                     this.Control.TextAlignment = TextAlignmentHelper.Convert(doublePicker.HorizontalTextAlignment);
 
-                    if (doublePicker.SelectedIndexes.Length > 0 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
+                    if (doublePicker.SelectedIndexes.Length > 1 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
                     {
                         this.Control.Text = null;
                         this.Control.AttributedPlaceholder = new NSAttributedString(doublePicker.Placeholder, foregroundColor: doublePicker.PlaceholderColor.ToUIColor());
@@ -49,7 +49,7 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
             var doublePicker = (DoublePicker)Element;
             if (e.PropertyName == nameof(doublePicker.SelectedIndexes))
             {
-                if (doublePicker.SelectedIndexes.Length > 0 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
+                if (doublePicker.SelectedIndexes.Length > 1 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
                 {
                     this.Control.Text = null;
                     this.Control.AttributedPlaceholder = new NSAttributedString(doublePicker.Placeholder, foregroundColor: doublePicker.PlaceholderColor.ToUIColor());

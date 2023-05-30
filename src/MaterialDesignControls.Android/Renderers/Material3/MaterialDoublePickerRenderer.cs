@@ -43,7 +43,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                 {
                     this.Control.Gravity = TextAlignmentHelper.ConvertToGravityFlags(doublePicker.HorizontalTextAlignment);
 
-                    if (doublePicker.SelectedIndexes.Length > 0 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
+                    if (doublePicker.SelectedIndexes.Length > 1 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
                     {
                         this.Control.Text = null;
                         this.Control.Hint = doublePicker.Placeholder;
@@ -60,7 +60,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             var doublePicker = (DoublePicker)Element;
             if (e.PropertyName == nameof(doublePicker.SelectedIndexes))
             {
-                if (doublePicker.SelectedIndexes.Length > 0 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
+                if (doublePicker.SelectedIndexes.Length > 1 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
                 {
                     this.Control.Text = null;
                     this.Control.Hint = doublePicker.Placeholder;
