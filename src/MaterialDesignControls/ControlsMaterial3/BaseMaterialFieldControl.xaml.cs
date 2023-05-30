@@ -746,21 +746,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool ValidateIfAnimate()
         {
-            //if (this is MaterialEntry materialEntry && materialEntry.IsEnabled && string.IsNullOrEmpty(materialEntry.Text))
-            //{
-            //    return true;
-            //}
-
-            //if (this is MaterialPicker materialPicker && materialPicker.IsEnabled && materialPicker.SelectedIndex == -1)
-            //{
-            //    return true;
-            //}
-
-            //if (this is MaterialPicker materialPicker && materialPicker.IsEnabled && materialPicker.SelectedIndex == -1)
-            //{
-            //    return true;
-            //}
-
             if (CustomContent is IBaseMaterialFieldControl content)
             {
                 return content.ValidateIfAnimate();

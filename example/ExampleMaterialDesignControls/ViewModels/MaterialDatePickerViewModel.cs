@@ -22,13 +22,6 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public DisplayAlertType DisplayAlert { get; set; }
 
-        public ICommand TapCommand => new Command(OnTapCommand);
-
-        private async void OnTapCommand()
-        {
-            await this.DisplayAlert.Invoke("", this.Date.HasValue ? this.Date.Value.ToShortDateString() : "Select date", "Ok");
-        }
-
         public ICommand ClearCommand => new Command(() =>
         {
             Date = null;
