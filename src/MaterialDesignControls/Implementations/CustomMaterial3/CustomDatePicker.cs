@@ -82,7 +82,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             this.TextColor = textColor;
         }
 
-        public bool ValidateIfAnimate() =>
+        public bool ValidateIfAnimatePlaceHolder() =>
             this.IsEnabled && !this.CustomDate.HasValue;
     }
 }
