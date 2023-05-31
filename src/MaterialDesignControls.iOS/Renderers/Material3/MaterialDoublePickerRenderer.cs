@@ -6,9 +6,9 @@ using System.Drawing;
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
-using Plugin.MaterialDesignControls.Implementations;
-using Plugin.MaterialDesignControls.iOS;
 using Plugin.MaterialDesignControls.iOS.Utils;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Material3.iOS;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -16,7 +16,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 [assembly: ExportRenderer(typeof(DoublePicker), typeof(MaterialDoublePickerRenderer))]
 
-namespace Plugin.MaterialDesignControls.iOS
+namespace Plugin.MaterialDesignControls.Material3.iOS
 {
     public class MaterialDoublePickerRenderer : DoublePickerRenderer<UITextField>
     {
@@ -33,11 +33,26 @@ namespace Plugin.MaterialDesignControls.iOS
                 {
                     this.Control.TextAlignment = TextAlignmentHelper.Convert(doublePicker.HorizontalTextAlignment);
 
-                    if (doublePicker.SelectedItem == null && !string.IsNullOrEmpty(doublePicker.Placeholder))
+                    if (doublePicker.SelectedIndexes.Length > 1 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
                     {
                         this.Control.Text = null;
                         this.Control.AttributedPlaceholder = new NSAttributedString(doublePicker.Placeholder, foregroundColor: doublePicker.PlaceholderColor.ToUIColor());
                     }
+                }
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            var doublePicker = (DoublePicker)Element;
+            if (e.PropertyName == nameof(doublePicker.SelectedIndexes))
+            {
+                if (doublePicker.SelectedIndexes.Length > 1 && doublePicker.SelectedIndexes[0] < 0 && doublePicker.SelectedIndexes[1] < 0 && !string.IsNullOrEmpty(doublePicker.Placeholder))
+                {
+                    this.Control.Text = null;
+                    this.Control.AttributedPlaceholder = new NSAttributedString(doublePicker.Placeholder, foregroundColor: doublePicker.PlaceholderColor.ToUIColor());
                 }
             }
         }
@@ -339,7 +354,7 @@ namespace Plugin.MaterialDesignControls.iOS
                     text = doublePicker.Items[doublePicker.SelectedIndexes[0]];
 
                 if (doublePicker.SecondaryItems.Count > 0 && doublePicker.SelectedIndexes[1] >= 0)
-                    text = $"{text} {doublePicker.SecondaryItems[doublePicker.SelectedIndexes[1]]}".Trim();
+                    text = $"{text}{doublePicker.Separator}{doublePicker.SecondaryItems[doublePicker.SelectedIndexes[1]]}".Trim();
 
                 Control.Text = text;
             }
@@ -354,7 +369,7 @@ namespace Plugin.MaterialDesignControls.iOS
         void UpdatePickerSelectedIndex(int formsIndex, int component)
         {
             var source = (PickerSource)_picker.Model;
-            
+
             var doublePicker = Element as DoublePicker;
             if (doublePicker != null)
             {

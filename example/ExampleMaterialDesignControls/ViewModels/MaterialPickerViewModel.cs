@@ -21,26 +21,27 @@ namespace ExampleMaterialDesignControls.ViewModels
         private string _modelAssistiveText;
 
         [ObservableProperty]
-        private string _selectedSizes;
-
-        [ObservableProperty]
-        private string _selectedItem;
-
-        [ObservableProperty]
         private string _selectedModel;
 
-        [ObservableProperty]
-        private string _secondarySelectedItem;
+        public Action ClearSelectedItem { get; set; }
+
+        // DoublePicker
 
         [ObservableProperty]
-        private ObservableCollection<string> _itemsSource;
+        private int _selectedItem;
 
         [ObservableProperty]
-        private List<string> _secondaryItemsSource;
+        private Weight _secondarySelectedItem;
+
+        [ObservableProperty]
+        private ObservableCollection<int> _itemsSource;
+
+        [ObservableProperty]
+        private ObservableCollection<Weight> _secondaryItemsSource;
 
         public Action FocusOnPicker { get; set; }
 
-        public Action ClearSelectedItem { get; set; }
+        public Action ClearDoubleSelectedItem { get; set; }
 
         public MaterialPickerViewModel()
         {
@@ -64,12 +65,28 @@ namespace ExampleMaterialDesignControls.ViewModels
                 }
             };
 
-            ItemsSource = new ObservableCollection<string> { "Model 1", "Model 2", "Model 3", "Model 4" };
-            SecondaryItemsSource = new List<string> { "A", "B", "C", "D" };
-            SelectedItem = "Model 2";
-            SecondarySelectedItem = "C";
+            ItemsSource = new ObservableCollection<int>
+            {
+                30,31,32,33,34,35,36,37
+            };
+
+            SecondaryItemsSource = new ObservableCollection<Weight>
+            {
+                new Weight()
+                {
+                    Name = "kgs",
+                    Id = 1
+                },
+                new Weight()
+                {
+                    Name = "lbs",
+                    Id = 2
+                }
+            };
 
             SelectedItemColor = ItemsSourceColors.FirstOrDefault();
+            SelectedItem = ItemsSource.FirstOrDefault();
+            SecondarySelectedItem = SecondaryItemsSource.FirstOrDefault();
         }
 
         [ICommand]
@@ -85,13 +102,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
 
         [ICommand]
-        private async Task Tap2(object parameter)
-        {
-            await DisplayAlert("Saved", $"{SelectedItem} - {SecondarySelectedItem}", "Ok");
-        }
-
-        [ICommand]
-        public async Task Tap3(object parameter)
+        public void Tap3(object parameter)
         {
             FocusOnPicker?.Invoke();
         }
@@ -103,12 +114,27 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
 
         [ICommand]
+        public void ClearDouble()
+        {
+            ClearDoubleSelectedItem?.Invoke();
+        }
+
+        [ICommand]
         public async Task Show()
         {
             if (SelectedItemColor != null)
                 await DisplayAlert("Color", SelectedItemColor.Color, "Ok");
             else
                 await DisplayAlert("Color", "No color selected", "Ok");
+        }
+
+        [ICommand]
+        public async Task ShowDouble()
+        {
+            if (SelectedItem != null && SecondarySelectedItem != null )
+                await DisplayAlert("Country and City", $"Weight={SelectedItem} {SecondarySelectedItem.Name}", "Ok");
+            else
+                await DisplayAlert("Country and City", "No weight selected", "Ok");
         }
 
         [ICommand]
@@ -125,6 +151,20 @@ namespace ExampleMaterialDesignControls.ViewModels
             ItemsSourceColors.Add(newColor);
             await DisplayAlert("Saved", $"New color {newColor.Color} added", "Ok");
         }
+
+        [ICommand]
+        private async Task AddNewWeight()
+        {
+            var lastWeight = ItemsSource.LastOrDefault();
+            var lastWeightId = SecondaryItemsSource.LastOrDefault().Id;
+
+            ItemsSource.Add(++lastWeight);
+
+            var newWeight = new Weight() { Name = $"New weight ({++lastWeightId})", Id = lastWeightId };
+            SecondaryItemsSource.Add(newWeight);
+
+            await DisplayAlert("Saved", $"New weight {lastWeight} {newWeight.Name} added", "Ok");
+        }
     }
 
     public class CustomColor
@@ -137,6 +177,19 @@ namespace ExampleMaterialDesignControls.ViewModels
         public override string ToString()
         {
             return Color;
+        }
+    }
+
+    public class Weight
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        // We override this method only to show a Custom Object without set PropertyPath/SecondaryPropertyPath in Full API example.
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

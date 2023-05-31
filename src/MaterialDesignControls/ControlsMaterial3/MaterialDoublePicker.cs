@@ -1,24 +1,28 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialDoublePicker : BaseMaterialFieldControl
+    public class MaterialDoublePicker : BaseMaterialFieldControl
     {
         #region Constructors
 
         public MaterialDoublePicker()
         {
-            if (!this.initialized)
+            pckOptions = new Plugin.MaterialDesignControls.Material3.Implementations.DoublePicker()
             {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+            pckOptions.SetValue(Grid.ColumnProperty, 1);
+            pckOptions.SetValue(Grid.RowProperty, 1);
+            CustomContent = pckOptions;
 
             pckOptions.Focused += HandleFocusChange;
             pckOptions.Unfocused += HandleFocusChange;
@@ -27,17 +31,17 @@ namespace Plugin.MaterialDesignControls
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
             {
-                if (IsControlEnabled)
+                if (pckOptions.IsControlEnabled())
                     this.pckOptions.Focus();
             };
-            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+            this.FrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
 
         #region Attributes
 
-        private bool initialized = false;
+        private Plugin.MaterialDesignControls.Material3.Implementations.DoublePicker pckOptions;
 
         #endregion Attributes
 
@@ -48,25 +52,6 @@ namespace Plugin.MaterialDesignControls
         #endregion Events
 
         #region Properties
-
-        public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialDoublePicker), defaultValue: new Thickness(12, 0));
-
-        public new Thickness Padding
-        {
-            get { return (Thickness)GetValue(PaddingProperty); }
-            set { SetValue(PaddingProperty, value); }
-        }
-
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDoublePicker), defaultValue: true);
-
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
-
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnItemsSourceChanged);
 
@@ -86,20 +71,20 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedItemProperty =
-            BindableProperty.Create(nameof(SelectedItem), typeof(string), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnSelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
+            BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnSelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
 
-        public string SelectedItem
+        public object SelectedItem
         {
-            get { return (string)GetValue(SelectedItemProperty); }
+            get { return GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }
         }
 
         public static readonly BindableProperty SecondarySelectedItemProperty =
-            BindableProperty.Create(nameof(SecondarySelectedItem), typeof(string), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnSecondarySelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
+            BindableProperty.Create(nameof(SecondarySelectedItem), typeof(object), typeof(MaterialDoublePicker), defaultValue: null, propertyChanged: OnSecondarySelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
 
-        public string SecondarySelectedItem
+        public object SecondarySelectedItem
         {
-            get { return (string)GetValue(SecondarySelectedItemProperty); }
+            get { return GetValue(SecondarySelectedItemProperty); }
             set { SetValue(SecondarySelectedItemProperty, value); }
         }
 
@@ -110,15 +95,6 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (string)GetValue(SeparatorProperty); }
             set { SetValue(SeparatorProperty, value); }
-        }
-
-        public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDoublePicker), defaultValue: Color.LightGray);
-
-        public new Color BackgroundColor
-        {
-            get { return (Color)GetValue(BackgroundColorProperty); }
-            set { SetValue(BackgroundColorProperty, value); }
         }
 
         public int SelectedIndex
@@ -163,19 +139,22 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-        public override bool IsControlFocused
+        public static readonly BindableProperty PropertyPathProperty =
+            BindableProperty.Create(nameof(PropertyPath), typeof(string), typeof(MaterialDoublePicker), defaultValue: null);
+
+        public string PropertyPath
         {
-            get { return pckOptions.IsFocused; }
+            get { return (string)GetValue(PropertyPathProperty); }
+            set { SetValue(PropertyPathProperty, value); }
         }
 
-        public override bool IsControlEnabled
-        {
-            get { return this.IsEnabled; }
-        }
+        public static readonly BindableProperty SecondaryPropertyPathProperty =
+            BindableProperty.Create(nameof(SecondaryPropertyPath), typeof(string), typeof(MaterialDoublePicker), defaultValue: null);
 
-        public override Color BackgroundColorControl
+        public string SecondaryPropertyPath
         {
-            get { return this.BackgroundColor; }
+            get { return (string)GetValue(SecondaryPropertyPathProperty); }
+            set { SetValue(SecondaryPropertyPathProperty, value); }
         }
 
         #endregion Properties
@@ -193,18 +172,12 @@ namespace Plugin.MaterialDesignControls
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialDoublePicker)bindable;
-            //control.pckOptions.SelectedItem = (string)newValue;
-            //control.pckOptions.SelectedIndexes = new int[] { control.SelectedIndex, control.SecondarySelectedIndex };
-
             control.InternalUpdateSelectedIndex();
         }
 
         private static void OnSecondarySelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialDoublePicker)bindable;
-            //control.pckOptions.SelectedItem = (string)newValue;
-            //control.pckOptions.SelectedIndexes = new int[] { control.SelectedIndex, control.SecondarySelectedIndex };
-
             control.InternalUpdateSelectedIndex();
         }
 
@@ -216,7 +189,8 @@ namespace Plugin.MaterialDesignControls
             {
                 foreach (var item in (IEnumerable)newValue)
                 {
-                    control.pckOptions.Items.Add(item.ToString());
+                    var newItem = string.IsNullOrWhiteSpace(control.PropertyPath) ? item.ToString() : GetPropertyValue(item, control.PropertyPath);
+                    control.pckOptions.Items.Add(newItem);
                 }
             }
             control.InternalUpdateSelectedIndex();
@@ -230,7 +204,8 @@ namespace Plugin.MaterialDesignControls
             {
                 foreach (var item in (IEnumerable)newValue)
                 {
-                    control.pckOptions.SecondaryItems.Add(item.ToString());
+                    var newItem = string.IsNullOrWhiteSpace(control.SecondaryPropertyPath) ? item.ToString() : GetPropertyValue(item, control.SecondaryPropertyPath);
+                    control.pckOptions.SecondaryItems.Add(newItem);
                 }
             }
             control.InternalUpdateSelectedIndex();
@@ -244,10 +219,20 @@ namespace Plugin.MaterialDesignControls
                 var index = 0;
                 foreach (var item in this.ItemsSource)
                 {
-                    if (item != null && item.Equals(this.SelectedItem))
+                    if (item != null && this.SelectedItem != null && string.IsNullOrWhiteSpace(this.PropertyPath) && item.ToString().Equals(this.SelectedItem.ToString()))
                     {
                         selectedIndex = index;
                         break;
+                    }
+                    else if (item != null && this.SelectedItem != null && !string.IsNullOrWhiteSpace(this.PropertyPath))
+                    {
+                        var itemValue = GetPropertyValue(item, this.PropertyPath);
+                        var selectedItemValue = GetPropertyValue(this.SelectedItem, this.PropertyPath);
+                        if (itemValue.Equals(selectedItemValue))
+                        {
+                            selectedIndex = index;
+                            break;
+                        }
                     }
                     index++;
                 }
@@ -259,10 +244,20 @@ namespace Plugin.MaterialDesignControls
                 var index = 0;
                 foreach (var item in this.SecondaryItemsSource)
                 {
-                    if (item != null && item.Equals(this.SecondarySelectedItem))
+                    if (item != null && this.SecondarySelectedItem != null && string.IsNullOrWhiteSpace(this.SecondaryPropertyPath) && item.ToString().Equals(this.SecondarySelectedItem.ToString()))
                     {
                         secondarySelectedIndex = index;
                         break;
+                    }
+                    else if (item != null && this.SecondarySelectedItem != null && !string.IsNullOrWhiteSpace(this.SecondaryPropertyPath))
+                    {
+                        var itemValue = GetPropertyValue(item, this.SecondaryPropertyPath);
+                        var secondarySelectedItemValue = GetPropertyValue(this.SecondarySelectedItem, this.SecondaryPropertyPath);
+                        if (itemValue.Equals(secondarySelectedItemValue))
+                        {
+                            secondarySelectedIndex = index;
+                            break;
+                        }
                     }
                     index++;
                 }
@@ -273,13 +268,8 @@ namespace Plugin.MaterialDesignControls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!this.initialized)
-            {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
 
-            UpdateLayout(propertyName, lblLabel, lblAssistive, frmContainer, bxvLine, imgLeadingIcon, imgTrailingIcon);
+            UpdateLayout(propertyName);
 
             switch (propertyName)
             {
@@ -289,50 +279,21 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.Separator):
                     this.pckOptions.Separator = this.Separator;
                     break;
+                case nameof(ItemsSource):
+                    if (ItemsSource != null && ItemsSource is INotifyCollectionChanged itemsSource)
+                    {
+                        itemsSource.CollectionChanged -= PckOptions_ItemsSourceChanged;
+                        itemsSource.CollectionChanged += PckOptions_ItemsSourceChanged;
+                    }
+                    break;
+                case nameof(SecondaryItemsSource):
+                    if (SecondaryItemsSource != null && SecondaryItemsSource is INotifyCollectionChanged secondaryItemsSource)
+                    {
+                        secondaryItemsSource.CollectionChanged -= PckOptions_SecondaryItemsSourceChanged;
+                        secondaryItemsSource.CollectionChanged += PckOptions_SecondaryItemsSourceChanged;
+                    }
+                    break;
             }
-        }
-
-        protected override void SetIsEnabled()
-        {
-            pckOptions.IsEnabled = IsEnabled;
-        }
-
-        protected override void SetPadding()
-        {
-            frmContainer.Padding = Padding;
-        }
-
-        protected override void SetTextColor()
-        {
-            if (IsControlEnabled)
-                pckOptions.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
-            else
-                pckOptions.TextColor = DisabledTextColor;
-        }
-
-        protected override void SetFontSize()
-        {
-            pckOptions.FontSize = FontSize;
-        }
-
-        protected override void SetFontFamily()
-        {
-            pckOptions.FontFamily = FontFamily;
-        }
-
-        protected override void SetPlaceholder()
-        {
-            pckOptions.Placeholder = Placeholder;
-        }
-
-        protected override void SetPlaceholderColor()
-        {
-            pckOptions.PlaceholderColor = PlaceholderColor;
-        }
-
-        protected override void SetHorizontalTextAlignment()
-        {
-            pckOptions.HorizontalTextAlignment = HorizontalTextAlignment;
         }
 
         public new bool Focus()
@@ -353,14 +314,18 @@ namespace Plugin.MaterialDesignControls
             return true;
         }
 
-        private void HandleFocusChange(object sender, FocusEventArgs e)
+        private async void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            base.SetFocusChange(lblLabel, frmContainer, bxvLine);
+            await SetFocusChange();
 
-            if (IsControlFocused)
+            if (pckOptions.IsControlFocused())
+            {
                 Focused?.Invoke(this, e);
+            }
             else
+            {
                 Unfocused?.Invoke(this, e);
+            }
         }
 
         private void PckOptions_SelectedIndexesChanged(object sender, SelectedIndexesEventArgs e)
@@ -372,7 +337,7 @@ namespace Plugin.MaterialDesignControls
                 {
                     if (index.Equals(e.SelectedIndexes[0]))
                     {
-                        this.SelectedItem = item.ToString();
+                        this.SelectedItem = item;
                         break;
                     }
                     index++;
@@ -386,7 +351,7 @@ namespace Plugin.MaterialDesignControls
                 {
                     if (index.Equals(e.SelectedIndexes[1]))
                     {
-                        this.SecondarySelectedItem = item.ToString();
+                        this.SecondarySelectedItem = item;
                         break;
                     }
                     index++;
@@ -398,6 +363,64 @@ namespace Plugin.MaterialDesignControls
                 this.SelectedIndexesChanged.Invoke(this, e);
             }
         }
+
+        public void ClearSelectedItem()
+        {
+            SelectedItem = null;
+            pckOptions.SelectedItem = null;
+            SecondarySelectedItem = null;
+            pckOptions.SelectedIndexes = new int[] { -1, -1 };
+            Task.Run(AnimatePlaceholderAction).ConfigureAwait(false);
+        }
+
+        private void PckOptions_ItemsSourceChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (this is MaterialDoublePicker control)
+            {
+                if (e.Action == NotifyCollectionChangedAction.Add)
+                {
+                    foreach (var item in e.NewItems)
+                    {
+                        var newItem = string.IsNullOrWhiteSpace(control.PropertyPath) ? item.ToString() : GetPropertyValue(item, control.PropertyPath);
+                        control.pckOptions.Items.Add(newItem);
+                    }
+                }
+                else if (e.Action == NotifyCollectionChangedAction.Remove)
+                {
+                    if (control.pckOptions.Items.Count > 0)
+                    {
+                        control.pckOptions.Items.RemoveAt(e.OldStartingIndex);
+                    }
+                }
+
+                control.InternalUpdateSelectedIndex();
+            }
+        }
+
+        private void PckOptions_SecondaryItemsSourceChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (this is MaterialDoublePicker control)
+            {
+                if (e.Action == NotifyCollectionChangedAction.Add)
+                {
+                    foreach (var item in e.NewItems)
+                    {
+                        var newItem = string.IsNullOrWhiteSpace(control.SecondaryPropertyPath) ? item.ToString() : GetPropertyValue(item, control.SecondaryPropertyPath);
+                        control.pckOptions.SecondaryItems.Add(newItem);
+                    }
+                }
+                else if (e.Action == NotifyCollectionChangedAction.Remove)
+                {
+                    if (control.pckOptions.SecondaryItems.Count > 0)
+                    {
+                        control.pckOptions.SecondaryItems.RemoveAt(e.OldStartingIndex);
+                    }
+                }
+
+                control.InternalUpdateSelectedIndex();
+            }
+        }
+
 
         #endregion Methods
     }

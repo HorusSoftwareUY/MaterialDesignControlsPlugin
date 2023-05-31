@@ -21,5 +21,7 @@ namespace Plugin.MaterialDesignControls.Material3
         public void SetPlaceholderColor(Color placeHolderColor);
 
         public void SetHorizontalTextAlignment(TextAlignment horizontalTextAlignment);
+
+        public bool ValidateIfAnimatePlaceHolder();
     }
 }
