@@ -20,6 +20,15 @@ namespace ExampleMaterialDesignControls.Pages
             pckModels4.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             pckModels5.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
 
+            pckDoubleSelectedIndexes.ItemsSource = new List<string> { "Model A", "Model B", "Model C" };
+            pckDoubleSelectedIndexes.SecondaryItemsSource = new List<string> { "A", "B", "C", "D" };
+
+            pckDoubleWithFocus.ItemsSource = new List<string> { "Model A", "Model B" };
+            pckDoubleWithFocus.SecondaryItemsSource = new List<string> { "A", "B", "C", "D", "E" };
+
+            pckDouble6.ItemsSource = new List<string> { "Model A", "Model B", "Model C" };
+            pckDouble6.SecondaryItemsSource = new List<string> { "A", "B", "C", "D", "E", "F" };
+
             pckDoubleSelectedIndexes.SelectedIndexesChanged += PckDouble_SelectedIndexChanged;
 
             var viewModel = new MaterialPickerViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
@@ -38,6 +47,10 @@ namespace ExampleMaterialDesignControls.Pages
             {
                 pckDouble.ClearSelectedItem();
             };
+
+           
+
+           
 
             BindingContext = viewModel;
         }

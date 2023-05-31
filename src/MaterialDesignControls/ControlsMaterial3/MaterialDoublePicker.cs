@@ -190,7 +190,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 foreach (var item in (IEnumerable)newValue)
                 {
                     var newItem = string.IsNullOrWhiteSpace(control.PropertyPath) ? item.ToString() : GetPropertyValue(item, control.PropertyPath);
-                    control.pckOptions.Items.Add(newItem.ToString());
+                    control.pckOptions.Items.Add(newItem);
                 }
             }
             control.InternalUpdateSelectedIndex();
@@ -205,7 +205,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 foreach (var item in (IEnumerable)newValue)
                 {
                     var newItem = string.IsNullOrWhiteSpace(control.SecondaryPropertyPath) ? item.ToString() : GetPropertyValue(item, control.SecondaryPropertyPath);
-                    control.pckOptions.SecondaryItems.Add(newItem.ToString());
+                    control.pckOptions.SecondaryItems.Add(newItem);
                 }
             }
             control.InternalUpdateSelectedIndex();
@@ -228,7 +228,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         var itemValue = GetPropertyValue(item, this.PropertyPath);
                         var selectedItemValue = GetPropertyValue(this.SelectedItem, this.PropertyPath);
-                        if (itemValue.ToString().Equals(selectedItemValue.ToString()))
+                        if (itemValue.Equals(selectedItemValue))
                         {
                             selectedIndex = index;
                             break;
@@ -253,7 +253,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         var itemValue = GetPropertyValue(item, this.SecondaryPropertyPath);
                         var secondarySelectedItemValue = GetPropertyValue(this.SecondarySelectedItem, this.SecondaryPropertyPath);
-                        if (itemValue.ToString().Equals(secondarySelectedItemValue.ToString()))
+                        if (itemValue.Equals(secondarySelectedItemValue))
                         {
                             secondarySelectedIndex = index;
                             break;

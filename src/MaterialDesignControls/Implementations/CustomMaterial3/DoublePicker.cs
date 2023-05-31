@@ -7,6 +7,11 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
     public class DoublePicker : Picker, IBaseMaterialFieldControl
     {
+        public DoublePicker()
+        {
+            this.SecondaryItems = new List<string>();
+        }
+
         public TextAlignment HorizontalTextAlignment { get; set; }
 
         public string Placeholder { get; set; }
@@ -25,7 +30,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         }
 
         public static readonly BindableProperty SecondaryItemsProperty =
-            BindableProperty.Create(nameof(SecondaryItems), typeof(List<string>), typeof(DoublePicker), defaultValue: Array.Empty<string>().ToList());
+            BindableProperty.Create(nameof(SecondaryItems), typeof(List<string>), typeof(DoublePicker), defaultValue: null);
 
         public List<string> SecondaryItems
         {

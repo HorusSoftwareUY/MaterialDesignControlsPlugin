@@ -179,7 +179,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         var itemValue = GetPropertyValue(item, this.PropertyPath);
                         var selectedItemValue = GetPropertyValue(this.SelectedItem, this.PropertyPath);
-                        if (itemValue.ToString().Equals(selectedItemValue.ToString()))
+                        if (itemValue.Equals(selectedItemValue))
                         {
                             selectedIndex = index;
                             break;
