@@ -274,7 +274,7 @@ namespace Plugin.MaterialDesignControls.Material3
             SelectedItem = null;
             pckOptions.SelectedItem = null;
             pckOptions.SelectedIndex = -1;
-            Task.Run(Animate).ConfigureAwait(false);
+            Task.Run(AnimatePlaceholderAction).ConfigureAwait(false);
         }
 
         private void PckOptions_ItemsSourceChanged(object sender, NotifyCollectionChangedEventArgs e)

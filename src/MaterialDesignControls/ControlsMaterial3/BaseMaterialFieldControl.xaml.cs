@@ -722,10 +722,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 UnfocusedCommand?.Execute(null);
             }
 
-            await Animate();
+            await AnimatePlaceholderAction();
         }
 
-        public async Task Animate()
+        public async Task AnimatePlaceholderAction()
         {
             bool validateIfAnimate = ValidateIfAnimatePlaceHolder();
             if (CustomContent.IsControlFocused())
