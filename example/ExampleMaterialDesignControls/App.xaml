@@ -520,6 +520,74 @@
             </Setter>
         </Style>
 
+        <!--MaterialDoublePicker-->
+        <Style TargetType="material3:MaterialDoublePicker">
+            <Setter Property="AnimateError"
+                    Value="True" />
+            <Setter Property="SupportingTextColor"
+                    Value="{StaticResource SupportingTextColor}" />
+            <Setter Property="SupportingSize"
+                    Value="{StaticResource Body3FontSize}" />
+            <Setter Property="FontSize"
+                    Value="{StaticResource Body1FontSize}" />
+            <Setter Property="LabelSize"
+                    Value="{StaticResource Body3FontSize}" />
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource BackgroundMaterialColor}" />
+            <Setter Property="PlaceholderColor"
+                    Value="{StaticResource PlaceholderColor}" />
+            <Setter Property="TrailingIcon"
+                    Value="arrow_drop_down.png" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor"
+                                        Value="{StaticResource TextColor}" />
+                                <Setter Property="LabelTextColor"
+                                        Value="{StaticResource GradientColor1}" />
+                                <Setter Property="IndicatorColor"
+                                        Value="{StaticResource GradientColor1}" />
+                                <Setter Property="BorderColor"
+                                        Value="{StaticResource GradientColor1}" />
+                                <Setter Property="BackgroundColor"
+                                        Value="{StaticResource BackgroundMaterialColor}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor"
+                                        Value="{StaticResource DarkGrayColor}" />
+                                <Setter Property="LabelTextColor"
+                                        Value="{StaticResource DarkGrayColor}" />
+                                <Setter Property="IndicatorColor"
+                                        Value="{StaticResource DarkGrayColor}" />
+                                <Setter Property="BorderColor"
+                                        Value="{StaticResource DarkGrayColor}" />
+                                <Setter Property="BackgroundColor"
+                                        Value="{StaticResource GrayColor}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Focused">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor"
+                                        Value="{StaticResource TextColor}" />
+                                <Setter Property="LabelTextColor"
+                                        Value="{StaticResource BorderMaterialColor}" />
+                                <Setter Property="IndicatorColor"
+                                        Value="{StaticResource BorderMaterialColor}" />
+                                <Setter Property="BorderColor"
+                                        Value="{StaticResource BorderMaterialColor}" />
+                                <Setter Property="BackgroundColor"
+                                        Value="{StaticResource GradientColorTransparent1}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
         <!-- MaterialEditor -->
         <Style TargetType="material:MaterialEditor"
                BasedOn="{StaticResource BaseMaterialStyle}">

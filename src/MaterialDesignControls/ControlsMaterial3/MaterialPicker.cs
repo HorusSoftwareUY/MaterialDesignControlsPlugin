@@ -162,19 +162,6 @@ namespace Plugin.MaterialDesignControls.Material3
             control.InternalUpdateSelectedIndex();
         }
 
-        private static string GetPropertyValue(object item, string propertyToSearch)
-        {
-            var properties = item.GetType().GetProperties();
-            foreach (var property in properties)
-            {
-                if (property.Name.Equals(propertyToSearch, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return property.GetValue(item, null).ToString();
-                }
-            }
-            return item.ToString();
-        }
-
         private void InternalUpdateSelectedIndex()
         {
             var selectedIndex = -1;
@@ -192,7 +179,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         var itemValue = GetPropertyValue(item, this.PropertyPath);
                         var selectedItemValue = GetPropertyValue(this.SelectedItem, this.PropertyPath);
-                        if (itemValue.ToString().Equals(selectedItemValue.ToString()))
+                        if (itemValue.Equals(selectedItemValue))
                         {
                             selectedIndex = index;
                             break;
@@ -222,8 +209,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(ItemsSource):
                     if (ItemsSource != null && ItemsSource is INotifyCollectionChanged collection)
                     {
-                        collection.CollectionChanged -= Collection_CollectionChanged;
-                        collection.CollectionChanged += Collection_CollectionChanged;
+                        collection.CollectionChanged -= PckOptions_ItemsSourceChanged;
+                        collection.CollectionChanged += PckOptions_ItemsSourceChanged;
                     }
                     break;
             }
@@ -287,10 +274,10 @@ namespace Plugin.MaterialDesignControls.Material3
             SelectedItem = null;
             pckOptions.SelectedItem = null;
             pckOptions.SelectedIndex = -1;
-            Task.Run(Animate).ConfigureAwait(false);
+            Task.Run(AnimatePlaceholderAction).ConfigureAwait(false);
         }
 
-        private void Collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void PckOptions_ItemsSourceChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (this is MaterialPicker control)
             {

@@ -23,7 +23,7 @@
                         VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="20,0,20,20"
                              Spacing="20">
-                    <contentViews:InfoIndicatorView Message="MaterialEntry follows the latest guidelines of Material Design 3" />
+                    <contentViews:InfoIndicatorView Message="MaterialPicker follows the latest guidelines of Material Design 3" />
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
@@ -187,6 +187,126 @@
                             </OnPlatform>
                         </material3:MaterialPicker.SupportingFontFamily>
                     </material3:MaterialPicker>
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource BoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="MaterialDoublePicker" />
+
+                    <material3:MaterialDoublePicker ItemsSource="{Binding ItemsSource}"
+                                                    SecondarySelectedItem="{Binding SecondarySelectedItem}"
+                                                    SelectedItem="{Binding SelectedItem}"
+                                                    LabelText="Weight"
+                                                    Placeholder="Select"
+                                                    PropertyPath="Name"
+                                                    x:Name="pckDouble"
+                                                    SecondaryPropertyPath="Name"
+                                                    SecondaryItemsSource="{Binding SecondaryItemsSource}" />
+
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <material3:MaterialButton ButtonType="Text"
+                                                  Command="{Binding ClearDoubleCommand}"
+                                                  Text="Clear" />
+                        <material3:MaterialButton Grid.Column="1"
+                                                  Command="{Binding AddNewWeightCommand}"
+                                                  Text="Add Data" />
+                        <material3:MaterialButton Grid.Column="2"
+                                                  Command="{Binding ShowDoubleCommand}"
+                                                  Text="Show" />
+                    </Grid>
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Implement SelectedIndexesChanged" />
+
+                    <material3:MaterialDoublePicker LabelText="Double Picker"
+                                                    x:Name="pckDoubleSelectedIndexes"
+                                                    Placeholder="Select an option" />
+
+                    <Label x:Name="lblSelectedIndexes"
+                           Text="Selected Indexes: -" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Separator, animation with border and focus" />
+
+                    <material3:MaterialDoublePicker x:Name="pckDoubleWithFocus"
+                                                    HasBorder="True"
+                                                    CornerRadius="10"
+                                                    Placeholder="Select an option"
+                                                    CornerRadiusBottomLeft="True"
+                                                    AnimatePlaceholder="True"
+                                                    CornerRadiusBottomRight="True"
+                                                    CornerRadiusTopLeft="True"
+                                                    CornerRadiusTopRight="True"
+                                                    Separator="/" />
+                    <material3:MaterialButton Command="{Binding Tap3Command}"
+                                              Text="Focus" />
+
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="MaterialDoublePicker Full API" />
+
+                    <material3:MaterialDoublePicker x:Name="pckDouble6"
+                                                    HorizontalTextAlignment="Start"
+                                                    HasBorder="True"
+                                                    AnimateError="True"
+                                                    SupportingText="Supporting text"
+                                                    SupportingLineBreakMode="WordWrap"
+                                                    LabelText="Label"
+                                                    LabelLineBreakMode="WordWrap"
+                                                    iOSBorderWidth="3"
+                                                    Separator=" - "
+                                                    CornerRadius="10"
+                                                    AnimatePlaceholder="True"
+                                                    Placeholder="Select a Color"
+                                                    LeadingIconCommand="{Binding IconCommand}"
+                                                    LeadingIconCommandParameter="Tapped (L)"
+                                                    TrailingIconCommand="{Binding IconCommand}"
+                                                    TrailingIconCommandParameter="Tapped (T)"
+                                                    CornerRadiusBottomLeft="True"
+                                                    CornerRadiusBottomRight="True"
+                                                    CornerRadiusTopLeft="True"
+                                                    CornerRadiusTopRight="True">
+                        <material3:MaterialDoublePicker.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialDoublePicker.CustomTrailingIcon>
+                        <material3:MaterialDoublePicker.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialDoublePicker.CustomLeadingIcon>
+                        <material3:MaterialDoublePicker.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDoublePicker.FontFamily>
+                        <material3:MaterialDoublePicker.LabelFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDoublePicker.LabelFontFamily>
+                        <material3:MaterialDoublePicker.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDoublePicker.SupportingFontFamily>
+                    </material3:MaterialDoublePicker>
+
                 </StackLayout>
             </ScrollView>
         </Grid>
