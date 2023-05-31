@@ -197,8 +197,8 @@
                     <material3:MaterialDoublePicker ItemsSource="{Binding ItemsSource}"
                                                     SecondarySelectedItem="{Binding SecondarySelectedItem}"
                                                     SelectedItem="{Binding SelectedItem}"
-                                                    LabelText="Country/City"
-                                                    Placeholder="Select the country/city"
+                                                    LabelText="Weight"
+                                                    Placeholder="Select"
                                                     PropertyPath="Name"
                                                     x:Name="pckDouble"
                                                     SecondaryPropertyPath="Name"
@@ -214,7 +214,7 @@
                                                   Command="{Binding ClearDoubleCommand}"
                                                   Text="Clear" />
                         <material3:MaterialButton Grid.Column="1"
-                                                  Command="{Binding AddNewCityAndCountryCommand}"
+                                                  Command="{Binding AddNewWeightCommand}"
                                                   Text="Add Data" />
                         <material3:MaterialButton Grid.Column="2"
                                                   Command="{Binding ShowDoubleCommand}"
@@ -227,11 +227,9 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Implement SelectedIndexesChanged" />
 
-                    <material3:MaterialDoublePicker ItemsSource="{Binding ItemsSource}"
-                                                    LabelText="Double Picker"
+                    <material3:MaterialDoublePicker LabelText="Double Picker"
                                                     x:Name="pckDoubleSelectedIndexes"
-                                                    Placeholder="Select an option"
-                                                    SecondaryItemsSource="{Binding SecondaryItemsSource}" />
+                                                    Placeholder="Select an option" />
 
                     <Label x:Name="lblSelectedIndexes"
                            Text="Selected Indexes: -" />
@@ -243,7 +241,6 @@
                                             Text="Separator, animation with border and focus" />
 
                     <material3:MaterialDoublePicker x:Name="pckDoubleWithFocus"
-                                                    ItemsSource="{Binding ItemsSource}"
                                                     HasBorder="True"
                                                     CornerRadius="10"
                                                     Placeholder="Select an option"
@@ -252,7 +249,6 @@
                                                     CornerRadiusBottomRight="True"
                                                     CornerRadiusTopLeft="True"
                                                     CornerRadiusTopRight="True"
-                                                    SecondaryItemsSource="{Binding SecondaryItemsSource}"
                                                     Separator="/" />
                     <material3:MaterialButton Command="{Binding Tap3Command}"
                                               Text="Focus" />
@@ -276,8 +272,6 @@
                                                     Separator=" - "
                                                     CornerRadius="10"
                                                     AnimatePlaceholder="True"
-                                                    ItemsSource="{Binding ItemsSourceColors}"
-                                                    SecondaryItemsSource="{Binding ItemsSource}"
                                                     Placeholder="Select a Color"
                                                     LeadingIconCommand="{Binding IconCommand}"
                                                     LeadingIconCommandParameter="Tapped (L)"

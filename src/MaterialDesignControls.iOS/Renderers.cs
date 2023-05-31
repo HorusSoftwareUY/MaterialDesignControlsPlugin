@@ -1,4 +1,4 @@
-﻿namespace Plugin.MaterialDesignControls.iOS
+namespace Plugin.MaterialDesignControls.iOS
 {
     public static class Renderer
     {

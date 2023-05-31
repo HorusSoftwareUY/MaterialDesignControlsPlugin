@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
@@ -53,7 +53,9 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             this.TextColor = textColor;
         }
 
-        public bool ValidateIfAnimate() =>
-            this.IsEnabled && this.SelectedIndex == -1;
+        public bool ValidateIfAnimatePlaceHolder()
+        {
+            return this.IsEnabled && this.SelectedIndex == -1;
+        }
     }
 }

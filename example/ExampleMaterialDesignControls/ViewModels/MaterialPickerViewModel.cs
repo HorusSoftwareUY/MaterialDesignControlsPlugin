@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -28,16 +28,16 @@ namespace ExampleMaterialDesignControls.ViewModels
         // DoublePicker
 
         [ObservableProperty]
-        private Country _selectedItem;
+        private int _selectedItem;
 
         [ObservableProperty]
-        private City _secondarySelectedItem;
+        private Weight _secondarySelectedItem;
 
         [ObservableProperty]
-        private ObservableCollection<Country> _itemsSource;
+        private ObservableCollection<int> _itemsSource;
 
         [ObservableProperty]
-        private ObservableCollection<City> _secondaryItemsSource;
+        private ObservableCollection<Weight> _secondaryItemsSource;
 
         public Action FocusOnPicker { get; set; }
 
@@ -65,40 +65,22 @@ namespace ExampleMaterialDesignControls.ViewModels
                 }
             };
 
-            ItemsSource = new ObservableCollection<Country>
+            ItemsSource = new ObservableCollection<int>
             {
-                new Country()
-                {
-                    Name = "Uruguay",
-                    Id = 1
-                },
-                new Country()
-                {
-                    Name = "Colombia",
-                    Id = 2
-                },
-                new Country()
-                {
-                    Name = "Argentina",
-                    Id = 3
-                }
+                30,31,32,33,34,35,36,37
             };
-            SecondaryItemsSource = new ObservableCollection<City>
+
+            SecondaryItemsSource = new ObservableCollection<Weight>
             {
-                new City()
+                new Weight()
                 {
-                    Name = "Montevideo",
+                    Name = "kgs",
                     Id = 1
                 },
-                new City()
+                new Weight()
                 {
-                    Name = "Bogotà",
+                    Name = "lbs",
                     Id = 2
-                },
-                new City()
-                {
-                    Name = "Buenos Aires",
-                    Id = 3
                 }
             };
 
@@ -150,9 +132,9 @@ namespace ExampleMaterialDesignControls.ViewModels
         public async Task ShowDouble()
         {
             if (SelectedItem != null && SecondarySelectedItem != null )
-                await DisplayAlert("Country and City", $"country={SelectedItem.Name},City={SecondarySelectedItem.Name}", "Ok");
+                await DisplayAlert("Weight", $"Weight={SelectedItem} {SecondarySelectedItem.Name}", "Ok");
             else
-                await DisplayAlert("Country and City", "No country/city selected", "Ok");
+                await DisplayAlert("Weight", "No weight selected", "Ok");
         }
 
         [ICommand]
@@ -171,18 +153,17 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
 
         [ICommand]
-        private async Task AddNewCityAndCountry()
+        private async Task AddNewWeight()
         {
-            var lastCountryId = ItemsSource.LastOrDefault().Id;
-            var lastCityId = SecondaryItemsSource.LastOrDefault().Id;
+            var lastWeight = ItemsSource.LastOrDefault();
+            var lastWeightId = SecondaryItemsSource.LastOrDefault().Id;
 
-            var newCountry = new Country() { Name = $"New Country ({++lastCountryId})", Id = lastCountryId };
-            ItemsSource.Add(newCountry);
+            ItemsSource.Add(++lastWeight);
 
-            var newCity = new City() { Name = $"New city ({++lastCityId})", Id = lastCityId };
-            SecondaryItemsSource.Add(newCity);
+            var newWeight = new Weight() { Name = $"New weight ({++lastWeightId})", Id = lastWeightId };
+            SecondaryItemsSource.Add(newWeight);
 
-            await DisplayAlert("Saved", $"New country {newCountry.Name} and new City {newCity.Name} added", "Ok");
+            await DisplayAlert("Saved", $"New weight {lastWeight} {newWeight.Name} added", "Ok");
         }
     }
 
@@ -199,20 +180,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
     }
 
-    public class Country
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        // We override this method only to show a Custom Object without set PropertyPath/SecondaryPropertyPath in Full API example.
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
-
-    public class City
+    public class Weight
     {
         public int Id { get; set; }
 

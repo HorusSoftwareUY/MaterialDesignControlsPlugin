@@ -179,7 +179,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         var itemValue = GetPropertyValue(item, this.PropertyPath);
                         var selectedItemValue = GetPropertyValue(this.SelectedItem, this.PropertyPath);
-                        if (itemValue.ToString().Equals(selectedItemValue.ToString()))
+                        if (itemValue.Equals(selectedItemValue))
                         {
                             selectedIndex = index;
                             break;
@@ -274,7 +274,7 @@ namespace Plugin.MaterialDesignControls.Material3
             SelectedItem = null;
             pckOptions.SelectedItem = null;
             pckOptions.SelectedIndex = -1;
-            Task.Run(Animate).ConfigureAwait(false);
+            Task.Run(AnimatePlaceholderAction).ConfigureAwait(false);
         }
 
         private void PckOptions_ItemsSourceChanged(object sender, NotifyCollectionChangedEventArgs e)

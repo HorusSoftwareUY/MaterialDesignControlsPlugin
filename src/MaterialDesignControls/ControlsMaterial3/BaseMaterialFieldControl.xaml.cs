@@ -1,4 +1,4 @@
-﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
@@ -474,7 +474,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var control = (BaseMaterialFieldControl)bindable;
 
-            // Used to animate the error when the assistive text doesn't change
+            // Used to animate the error when the supporting text doesn't change
             if (control.AnimateError && !string.IsNullOrEmpty(control.SupportingText) && control.SupportingText == (string)value)
                 ShakeAnimation.Animate(control);
 
@@ -722,12 +722,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 UnfocusedCommand?.Execute(null);
             }
 
-            await Animate();
+            await AnimatePlaceholderAction();
         }
 
-        public async Task Animate()
+        public async Task AnimatePlaceholderAction()
         {
-            bool validateIfAnimate = ValidateIfAnimate();
+            bool validateIfAnimate = ValidateIfAnimatePlaceHolder();
             if (CustomContent.IsControlFocused())
             {
                 if (AnimatePlaceholder && validateIfAnimate)
@@ -744,11 +744,11 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private bool ValidateIfAnimate()
+        private bool ValidateIfAnimatePlaceHolder()
         {
             if (CustomContent is IBaseMaterialFieldControl content)
             {
-                return content.ValidateIfAnimate();
+                return content.ValidateIfAnimatePlaceHolder();
             }
 
             return false;

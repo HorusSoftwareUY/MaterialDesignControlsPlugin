@@ -1,4 +1,4 @@
-﻿namespace Plugin.MaterialDesignControls.Android
+namespace Plugin.MaterialDesignControls.Android
 {
     public static class Renderer
     {

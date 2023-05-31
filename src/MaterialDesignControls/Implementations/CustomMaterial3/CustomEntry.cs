@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
@@ -58,7 +58,9 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             this.HorizontalTextAlignment = horizontalTextAlignment;
         }
 
-        public bool ValidateIfAnimate() =>
-            this.IsEnabled && string.IsNullOrEmpty(this.Text);
+        public bool ValidateIfAnimatePlaceHolder()
+        {
+            return this.IsEnabled && string.IsNullOrEmpty(this.Text);
+        }
     }
 }
