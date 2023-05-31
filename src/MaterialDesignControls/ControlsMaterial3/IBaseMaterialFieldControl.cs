@@ -22,6 +22,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public void SetHorizontalTextAlignment(TextAlignment horizontalTextAlignment);
 
-        public bool ValidateIfAnimate();
+        public bool ValidateIfAnimatePlaceHolder();
     }
 }

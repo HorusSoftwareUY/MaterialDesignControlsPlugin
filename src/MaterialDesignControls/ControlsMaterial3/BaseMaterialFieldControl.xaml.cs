@@ -474,7 +474,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var control = (BaseMaterialFieldControl)bindable;
 
-            // Used to animate the error when the assistive text doesn't change
+            // Used to animate the error when the supporting text doesn't change
             if (control.AnimateError && !string.IsNullOrEmpty(control.SupportingText) && control.SupportingText == (string)value)
                 ShakeAnimation.Animate(control);
 
@@ -748,7 +748,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             if (CustomContent is IBaseMaterialFieldControl content)
             {
-                return content.ValidateIfAnimate();
+                return content.ValidateIfAnimatePlaceHolder();
             }
 
             return false;

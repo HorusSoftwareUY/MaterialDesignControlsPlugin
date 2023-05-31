@@ -86,7 +86,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         {
             this.TextColor = textColor;
         }
-        public bool ValidateIfAnimate()
+        public bool ValidateIfAnimatePlaceHolder()
         {
             return this.IsEnabled && (this.SelectedIndexes.Length > 1 && SelectedIndexes[0] < 0 && SelectedIndexes[1] < 0);
         }
