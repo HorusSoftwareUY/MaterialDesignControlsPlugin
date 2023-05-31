@@ -21,6 +21,8 @@
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
 
                     <custom:CustomImageButton x:Name="imgLeadingIcon"
@@ -37,11 +39,11 @@
                                               HorizontalOptions="End" />
                     <custom:CustomImageButton x:Name="imgShowPasswordIcon"
                                               IsVisible="false"
-                                              Grid.Column="2"
+                                              Grid.Column="3"
                                               HorizontalOptions="End" />
                     <custom:CustomImageButton x:Name="imgClearIcon"
                                               IsVisible="false"
-                                              Grid.Column="2"
+                                              Grid.Column="4"
                                               HorizontalOptions="End" />
                 </Grid>
             </Frame>
