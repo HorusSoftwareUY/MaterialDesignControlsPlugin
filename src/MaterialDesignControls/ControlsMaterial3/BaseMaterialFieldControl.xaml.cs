@@ -727,7 +727,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public async Task Animate()
         {
-            bool validateIfAnimate = ValidateIfAnimate();
+            bool validateIfAnimate = ValidateIfAnimatePlaceHolder();
             if (CustomContent.IsControlFocused())
             {
                 if (AnimatePlaceholder && validateIfAnimate)
@@ -744,7 +744,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private bool ValidateIfAnimate()
+        private bool ValidateIfAnimatePlaceHolder()
         {
             if (CustomContent is IBaseMaterialFieldControl content)
             {
