@@ -9,7 +9,7 @@ Date pickers let users select a date.
 
 ## Example MaterialDatePicker
 ```XML
-<material:MaterialDatePicker 
+<material3:MaterialDatePicker 
     LabelText="Start date" 
     Format="yyyy-MM-dd" 
     LeadingIcon="calendar.png" />
