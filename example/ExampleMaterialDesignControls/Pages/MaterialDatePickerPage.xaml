@@ -71,9 +71,9 @@
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Animation, Max date and minimum date" />
+                                            Text="Max date and minimum date" />
 
-                    <material3:MaterialDatePicker AnimatePlaceholder="True"
+                    <material3:MaterialDatePicker LabelText="Label"
                                                   MaximumDate="{Binding MaximumDate}"
                                                   MinimumDate="{Binding MinimumDate}"
                                                   Placeholder="Select date" />
@@ -85,11 +85,11 @@
                                             Text="With Border" />
 
 
-                    <material3:MaterialDatePicker AnimatePlaceholder="True"
-                                                  HasBorder="True"
+                    <material3:MaterialDatePicker HasBorder="True"
                                                   CornerRadius="10"
                                                   CornerRadiusBottomLeft="True"
                                                   CornerRadiusBottomRight="True"
+                                                  LabelText="Label"
                                                   CornerRadiusTopLeft="True"
                                                   CornerRadiusTopRight="True"
                                                   Placeholder="Select date" />
@@ -109,7 +109,6 @@
                                                   LabelLineBreakMode="WordWrap"
                                                   iOSBorderWidth="3"
                                                   CornerRadius="10"
-                                                  AnimatePlaceholder="True"
                                                   Placeholder="Select a date"
                                                   LeadingIconCommand="{Binding IconCommand}"
                                                   LeadingIconCommandParameter="Tapped (L)"

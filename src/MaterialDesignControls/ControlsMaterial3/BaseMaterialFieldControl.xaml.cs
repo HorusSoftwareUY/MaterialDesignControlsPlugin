@@ -37,7 +37,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
 
-        public bool AnimateLabel => this.AnimatePlaceholder && string.IsNullOrWhiteSpace(LabelText);
+        public bool AnimatePlaceHolderAsLabel => this.AnimatePlaceholder && string.IsNullOrWhiteSpace(LabelText);
 
         public double PlaceHolderXPosition = 0;
 
@@ -547,7 +547,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(LabelText):
                     this.lblLabel.Text = LabelText;
-                    this.lblLabel.IsVisible = !AnimateLabel;
+                    this.lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
                     SetAnimatedLabel();
                     break;
                 case nameof(LabelTextColor):
@@ -685,7 +685,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(AnimatePlaceholder):
-                    this.lblLabel.IsVisible = !AnimateLabel;
+                    this.lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
                     SetAnimatedLabel();
                     break;
 
@@ -743,7 +743,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region AnimationPlaceHolder
         public async Task TransitionToTitle()
         {
-            if (AnimateLabel)
+            if (AnimatePlaceHolderAsLabel)
             {
                 var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 200);
                 var t2 = SizeTo(LabelSize);
@@ -755,7 +755,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public async Task TransitionToPlaceholder()
         {
-            if (AnimateLabel)
+            if (AnimatePlaceHolderAsLabel)
             {
                 AnimatedLabel.TextColor = PlaceholderColor;
                 if (!IsFocused)
@@ -815,7 +815,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             try
             {
-                if (AnimateLabel)
+                if (AnimatePlaceHolderAsLabel)
                 {
                     AnimatedLabel.Text = string.IsNullOrWhiteSpace(AnimatedLabel.Text) ? Placeholder : AnimatedLabel.Text;
                     AnimatedLabel.IsVisible = true;

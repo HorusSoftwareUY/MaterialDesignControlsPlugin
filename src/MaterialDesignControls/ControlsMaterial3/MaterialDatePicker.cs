@@ -43,6 +43,11 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Attributes
 
         #region Properties
+        public new static readonly BindableProperty AnimatePlaceholderProperty =
+            BindableProperty.Create(nameof(AnimatePlaceholder), typeof(bool), typeof(MaterialDatePicker), defaultValue: false);
+
+        public new bool AnimatePlaceholder => false;
+
         public static readonly BindableProperty DateProperty =
             BindableProperty.Create(nameof(Date), typeof(DateTime?), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnDateChanged, defaultBindingMode: BindingMode.TwoWay);
 
