@@ -165,12 +165,12 @@ This property is to set the font family.
 <br/> 
 
 ### Property Placeholder:
-This property is to set the placeholder of the material picker.
+This property is to set the placeholder.
 <br/>
 <br/>
 
 ### Property PlaceholderColor:
-This property is to set the placeholder color of the material picker.
+This property is to set the placeholder.
 <br/>
 <br/>
 
@@ -180,52 +180,52 @@ this property is disabled.
 <br/>
 
 ### Property LabelText:
-This property is to set the label of the material picker.
+This property is to set the label.
 <br/>
 <br/>
 
 ### Property LabelTextColor:
-This property is to set the label color of the material picker.
+This property is to set the label color.
 <br/>
 <br/>
 
 ### Property LabelSize:
-This property is to set the label size of the material picker.
+This property is to set the label size.
 <br/>
 <br/>
 
 ### Property LabelFontFamily:
-This property is to set the label font family of the material picker.
+This property is to set the label font family.
 <br/>
 <br/>
 
 ### Property LabelMargin:
-This property is to set the label margin family of the material picker. By default uses (16,0,16,0).
+This property is to set the label margin family. By default uses (16,0,16,0).
 <br/>
 <br/>
 
 ### Property SupportingText:
-This property is to set the supporting text of the material picker.
+This property is to set the supporting text.
 <br/>
 <br/>
 
 ### Property SupportingTextColor:
-This property is to set the supporting text color of the material picker.
+This property is to set the supporting text color.
 <br/>
 <br/>
 
 ### Property SupportingSize:
-This property is to set the supporting text size of the material picker.
+This property is to set the supporting text size.
 <br/>
 <br/>
 
 ### Property SupportingFontFamily:
-This property is to set the supporting text font family of the material picker.
+This property is to set the supporting text font family.
 <br/>
 <br/>
 
 ### Property SupportingMargin:
-This property is to set the supporting text margin of the material picker. By default uses (16,4,16,0).
+This property is to set the supporting text margin. By default uses (16,4,16,0).
 <br/>
 <br/>
 
@@ -311,6 +311,30 @@ This property is to set the maximum date
 
 ### Property Format:
 This property is to set the format date
+<br/>
+<br/>
+
+### Property LabelLineBreakMode:
+This property is to set the Label Line Break Mode
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
+<br/>
+<br/>
+
+### Property SupportingLineBreakMode:
+This property is to set the Supporting LineBreakMode.
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
 <br/>
 <br/>
 
