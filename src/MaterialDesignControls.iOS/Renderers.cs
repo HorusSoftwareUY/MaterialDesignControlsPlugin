@@ -15,6 +15,7 @@
             Plugin.MaterialDesignControls.Material3.iOS.MaterialEntryRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialPickerRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialDoublePickerRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.iOS.MaterialTimePickerRenderer.Init();
         }
     }
 }

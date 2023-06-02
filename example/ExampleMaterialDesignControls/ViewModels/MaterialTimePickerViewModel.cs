@@ -38,5 +38,11 @@ namespace ExampleMaterialDesignControls.ViewModels
             else
                 await DisplayAlert("Time", "No time selected", "Ok");
         });
+
+        public ICommand IconCommand => new Command(async (parameter) =>
+        {
+            await DisplayAlert("Saved", $"Command {parameter}", "Ok");
+
+        });
     }
 }

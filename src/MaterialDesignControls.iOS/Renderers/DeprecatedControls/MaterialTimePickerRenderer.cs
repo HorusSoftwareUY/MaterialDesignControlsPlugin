@@ -1,41 +1,49 @@
 ﻿using System;
-using Android.Content;
-using Android.Graphics.Drawables;
-using AndroidGraphics = Android.Graphics;
-using Plugin.MaterialDesignControls.Implementations;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using Plugin.MaterialDesignControls.Android.Utils;
 using System.ComponentModel;
+using Foundation;
+using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.iOS;
+using Plugin.MaterialDesignControls.iOS.Utils;
+using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(CustomTimePicker), typeof(Plugin.MaterialDesignControls.Android.MaterialTimePickerRenderer))]
+[assembly: ExportRenderer(typeof(CustomTimePicker), typeof(MaterialTimePickerRenderer))]
 
-namespace Plugin.MaterialDesignControls.Android
+namespace Plugin.MaterialDesignControls.iOS
 {
+    [Obsolete("MaterialTimePickerRenderer is deprecated, please use MaterialTimePickerRenderer of Material 3 instead.")]
+
     public class MaterialTimePickerRenderer : TimePickerRenderer
     {
         public static void Init() { }
-
-        public MaterialTimePickerRenderer(Context context) : base(context)
-        { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.TimePicker> e)
         {
             base.OnElementChanged(e);
             if (this.Control != null)
             {
-                this.Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
-                this.Control.SetPadding(4, 0, 0, 0);
+                this.Control.BorderStyle = UITextBorderStyle.None;
 
                 if (this.Element is CustomTimePicker customTimePicker)
                 {
-                    this.Control.TextAlignment = TextAlignmentHelper.ConvertToAndroid(customTimePicker.HorizontalTextAlignment);
+                    this.Control.TextAlignment = TextAlignmentHelper.Convert(customTimePicker.HorizontalTextAlignment);
 
                     if (!customTimePicker.CustomTime.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
                     {
                         this.Control.Text = null;
-                        this.Control.Hint = customTimePicker.Placeholder;
-                        this.Control.SetHintTextColor(customTimePicker.PlaceholderColor.ToAndroid());
+                        this.Control.AttributedPlaceholder = new NSAttributedString(customTimePicker.Placeholder, foregroundColor: customTimePicker.PlaceholderColor.ToUIColor());
+                    }
+
+                    if (UIDevice.CurrentDevice.CheckSystemVersion(13, 2))
+                    {
+                        try
+                        {
+                            UIDatePicker picker = (UIDatePicker)Control.InputView;
+                            picker.PreferredDatePickerStyle = UIDatePickerStyle.Wheels;
+                        }
+                        catch (Exception)
+                        { }
                     }
                 }
             }
@@ -57,9 +65,8 @@ namespace Plugin.MaterialDesignControls.Android
             {
                 if (!customTimePicker.CustomTime.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
                 {
-                    this.Control.Text = null;
-                    this.Control.Hint = customTimePicker.Placeholder;
-                    this.Control.SetHintTextColor(customTimePicker.PlaceholderColor.ToAndroid());
+                    Control.Text = null;
+                    Control.AttributedPlaceholder = new NSAttributedString(customTimePicker.Placeholder, foregroundColor: customTimePicker.PlaceholderColor.ToUIColor());
                 }
             }
         }
