@@ -57,5 +57,10 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         {
             return this.IsEnabled && this.SelectedIndex == -1;
         }
+
+        public void FocusControl()
+        {
+            this.Focus();
+        }
     }
 }

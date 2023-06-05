@@ -85,5 +85,10 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
 
         public bool ValidateIfAnimatePlaceHolder() 
             => this.IsEnabled && !this.CustomTime.HasValue;
+
+        public void FocusControl()
+        {
+            this.Focus();
+        }
     }
 }

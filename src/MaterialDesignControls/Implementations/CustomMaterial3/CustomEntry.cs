@@ -62,5 +62,9 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         {
             return this.IsEnabled && string.IsNullOrEmpty(this.Text);
         }
+        public void FocusControl()
+        {
+            this.Focus();
+        }
     }
 }
