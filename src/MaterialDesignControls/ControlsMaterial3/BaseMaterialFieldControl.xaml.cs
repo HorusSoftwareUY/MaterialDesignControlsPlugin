@@ -20,6 +20,17 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.initialized = true;
                 this.InitializeComponent();
             }
+
+            //Set by default Trailing and Leading command to focus control
+            this.imgLeadingIcon.Command = new Command(() =>
+            {
+                this.CustomContent.FocusControl();
+            });
+
+            this.imgTrailingIcon.Command = new Command(() =>
+            {
+                this.CustomContent.FocusControl();
+            });
         }
         #endregion
 
