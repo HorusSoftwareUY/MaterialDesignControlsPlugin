@@ -63,13 +63,5 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
                 _ = Focus();
             });
         }
-
-        public void FocusControl()
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                _ = Focus();
-            });
-        }
     }
 }
