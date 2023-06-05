@@ -9,8 +9,6 @@ using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-
     public class MaterialSelection : BaseMaterialFieldControl
     {
         #region Constructors
