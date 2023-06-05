@@ -83,5 +83,10 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         }
 
         public bool ValidateIfAnimatePlaceHolder() => false;
+
+        public void FocusControl()
+        {
+            this.Focus();
+        }
     }
 }

@@ -88,5 +88,10 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         }
         public bool ValidateIfAnimatePlaceHolder() =>
             this.IsEnabled && (this.SelectedIndexes.Length > 1 && SelectedIndexes[0] < 0 && SelectedIndexes[1] < 0);
+
+        public void FocusControl()
+        {
+            this.Focus();
+        }
     }
 }
