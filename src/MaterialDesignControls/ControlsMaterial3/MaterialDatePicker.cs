@@ -5,7 +5,6 @@ using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public class MaterialDatePicker : BaseMaterialFieldControl
     {
         #region Constructors
