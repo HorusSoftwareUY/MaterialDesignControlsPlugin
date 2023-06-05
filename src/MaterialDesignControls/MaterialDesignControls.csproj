@@ -66,6 +66,7 @@
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomLabel.cs" />
     <Compile Include="Implementations\Deprecated\CustomDatePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialSelection.cs" />
     <Compile Include="ControlsMaterial3\MaterialTimePicker.cs" />

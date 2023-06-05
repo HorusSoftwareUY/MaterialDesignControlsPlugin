@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using System.Xml;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -15,7 +10,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialSelection()
         {
-            lblCustom = new MaterialLabel()
+            lblCustom = new Plugin.MaterialDesignControls.Material3.Implementations.CustomLabel()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand
@@ -29,7 +24,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Attributes
 
-        private MaterialLabel lblCustom;
+        private Plugin.MaterialDesignControls.Material3.Implementations.CustomLabel lblCustom;
         #endregion Attributes
 
         #region Properties
@@ -98,8 +93,12 @@ namespace Plugin.MaterialDesignControls.Material3
                     control.Command.Execute(control.CommandParameter);
                 }
             };
-            control.FrameContainer.GestureRecognizers.Clear();
-            control.FrameContainer.GestureRecognizers.Add(selectionTapGestureRecognizer);
+            var customLabel = (Plugin.MaterialDesignControls.Material3.Implementations.CustomLabel)control.CustomContent;
+
+            control.Label.GestureRecognizers.Clear();
+            control.Label.GestureRecognizers.Add(selectionTapGestureRecognizer); 
+            customLabel.GestureRecognizers.Clear();
+            customLabel.GestureRecognizers.Add(selectionTapGestureRecognizer);
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
