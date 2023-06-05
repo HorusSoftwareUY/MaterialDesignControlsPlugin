@@ -87,6 +87,8 @@ namespace Plugin.MaterialDesignControls
 
         public bool ValidateIfAnimatePlaceHolder() => false;
 
+        public void FocusControl(){   }
+
         #endregion Methods
     }
 }
