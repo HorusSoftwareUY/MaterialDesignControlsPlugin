@@ -3,6 +3,7 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
 {
+    [Obsolete("CustomTimePicker is deprecated, please use CustomTimePicker of Material 3 instead.")]
     public class CustomTimePicker : TimePicker
     {
         public TextAlignment HorizontalTextAlignment { get; set; }

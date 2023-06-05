@@ -16,6 +16,7 @@ namespace Plugin.MaterialDesignControls.iOS
             Plugin.MaterialDesignControls.Material3.iOS.MaterialPickerRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialDoublePickerRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialDatePickerRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.iOS.MaterialTimePickerRenderer.Init();
         }
     }
 }

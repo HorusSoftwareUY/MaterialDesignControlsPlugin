@@ -6,6 +6,8 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialTimePicker is deprecated, please use MaterialTimePicker of Material 3 instead.")]
+
     public partial class MaterialTimePicker : BaseMaterialFieldControl
     {
         #region Constructors
