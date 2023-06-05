@@ -33,7 +33,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 if (pckTime.IsControlEnabled())
                     this.pckTime.Focus();
             };
-            this.FrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+            this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
