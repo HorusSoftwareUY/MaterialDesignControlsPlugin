@@ -61,10 +61,12 @@
     </Compile>
     <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.xaml.cs" />
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
+    <Compile Include="ControlsMaterial3\MaterialDatePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialDoublePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
-    <Compile Include="Implementations\CustomDatePicker.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
+    <Compile Include="Implementations\Deprecated\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomPicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\DoublePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\MaterialCard.cs" />
@@ -79,7 +81,7 @@
       <DependentUpon>MaterialChips.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialDatePicker.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialDatePicker.xaml.cs">
       <DependentUpon>MaterialDatePicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

@@ -1,18 +1,47 @@
+﻿using System;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
-    public class CustomPicker : Picker, IBaseMaterialFieldControl
+    public class CustomDatePicker : DatePicker, IBaseMaterialFieldControl
     {
         public TextAlignment HorizontalTextAlignment { get; set; }
+
+        private DateTime? customDate;
+
+        public DateTime? CustomDate
+        {
+            get { return this.customDate; }
+            set
+            {
+                this.customDate = value;
+                if (this.customDate.HasValue)
+                {
+                    base.Date = this.customDate.Value;
+                    EmptyDate = false;
+                }
+                else
+                    EmptyDate = true;
+            }
+        }
+
+        public DateTime InternalDateTime
+        {
+            get { return base.Date; }
+        }
 
         public string Placeholder { get; set; }
 
         public Color PlaceholderColor { get; set; }
 
-        public bool MultilineEnabled { get; set; } = false;
+        public static readonly BindableProperty EmptyDateProperty =
+            BindableProperty.Create(nameof(EmptyDate), typeof(bool), typeof(CustomDatePicker), defaultValue: true);
 
-        public int PickerRowHeight { get; set; } = 50;
+        public bool EmptyDate
+        {
+            get { return (bool)GetValue(EmptyDateProperty); }
+            set { SetValue(EmptyDateProperty, value); }
+        }
 
         public bool IsControlEnabled() => this.IsEnabled;
 
@@ -53,8 +82,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             this.TextColor = textColor;
         }
 
-        public bool ValidateIfAnimatePlaceHolder() =>
-            this.IsEnabled && this.SelectedIndex == -1;
+        public bool ValidateIfAnimatePlaceHolder() => false;
 
         public void FocusControl()
         {

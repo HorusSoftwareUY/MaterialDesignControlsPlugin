@@ -3,6 +3,8 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
 {
+
+    [Obsolete("CustomDatePicker is deprecated, please use CustomDatePicker of Material 3 instead.")]
     public class CustomDatePicker : DatePicker
     {
         public TextAlignment HorizontalTextAlignment { get; set; }

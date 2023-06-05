@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
@@ -34,7 +34,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 if (pckOptions.IsControlEnabled())
                     this.pckOptions.Focus();
             };
-            this.FrameContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+            this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
