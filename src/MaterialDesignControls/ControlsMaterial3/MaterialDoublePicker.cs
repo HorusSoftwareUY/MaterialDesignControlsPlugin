@@ -8,7 +8,6 @@ using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public class MaterialDoublePicker : BaseMaterialFieldControl
     {
         #region Constructors

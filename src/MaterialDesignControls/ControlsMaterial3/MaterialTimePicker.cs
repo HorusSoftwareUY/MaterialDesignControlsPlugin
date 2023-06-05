@@ -7,7 +7,6 @@ using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public class MaterialTimePicker : BaseMaterialFieldControl
     {
         #region Constructors
