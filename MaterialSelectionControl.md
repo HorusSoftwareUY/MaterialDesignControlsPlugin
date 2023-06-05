@@ -29,7 +29,7 @@ We update this control to use VisualStateManager (See examble above). So we reco
 Set style:
 
 ```XML
-<Style TargetType="material3:MAterialSelection">
+<Style TargetType="material3:MaterialSelection">
         <Setter Property="AnimateError"
                 Value="True" />
         <Setter Property="SupportingTextColor"
