@@ -31,7 +31,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
 
                 if (this.Element is CustomTimePicker customTimePicker)
                 {
-                    this.Control.TextAlignment = TextAlignmentHelper.ConvertToAndroid(customTimePicker.HorizontalTextAlignment);
+                    this.Control.Gravity = TextAlignmentHelper.ConvertToGravityFlags(customTimePicker.HorizontalTextAlignment);
 
                     if (!customTimePicker.CustomTime.HasValue && !string.IsNullOrEmpty(customTimePicker.Placeholder))
                     {
