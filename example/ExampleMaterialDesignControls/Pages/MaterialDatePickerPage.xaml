@@ -1,91 +1,149 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialDatePickerPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialDatePickerPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialDatePicker" LeadingIconCommand="{Binding BackCommand}">
+            <material3:MaterialTopAppBar Headline="MaterialDatePicker"
+                                         LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.LeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.LeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="20">
-                    <material:MaterialDatePicker
-                        Date="{Binding Date}"
-                        Format="yyyy-MM-dd"
-                        LabelText="Start date"
-                        LeadingIcon="calendar.png"
-                        Placeholder="Select date"
-                        Type="Filled" />
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
+
+                    <contentViews:InfoIndicatorView Message="MaterialDatePicker follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialDatePicker Date="{Binding Date}"
+                                                  Format="yyyy-MM-dd"
+                                                  LabelText="Start date"
+                                                  LeadingIcon="calendar.png"
+                                                  Placeholder="Select date" />
 
                     <Grid ColumnSpacing="16">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <material3:MaterialButton
-                            ButtonType="Text"
-                            Command="{Binding ClearCommand}"
-                            Text="Clear" />
-                        <material3:MaterialButton
-                            Grid.Column="1"
-                            Command="{Binding ShowCommand}"
-                            Text="Show" />
+                        <material3:MaterialButton ButtonType="Text"
+                                                  Command="{Binding ClearCommand}"
+                                                  Text="Clear" />
+                        <material3:MaterialButton Grid.Column="1"
+                                                  Command="{Binding ShowCommand}"
+                                                  Text="Show" />
                     </Grid>
 
-                    <material:MaterialDatePicker
-                        Format="dd/MM/yyyy"
-                        LabelText="End date"
-                        Type="Outlined" />
-                    <material:MaterialDatePicker
-                        Format="dd/MM/yyyy"
-                        LabelText="Deadline"
-                        Type="Lined" />
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Disabled" />
+
+                    <material3:MaterialDatePicker Format="dd/MM/yyyy"
+                                                  IsEnabled="False"
+                                                  Placeholder="Select Date"
+                                                  LabelText="End date" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Disabled" />
-                    <material:MaterialDatePicker
-                        Format="dd/MM/yyyy"
-                        IsEnabled="False"
-                        LabelText="End date"
-                        Type="Outlined" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Horizontal Text Alignment" />
+                    <material3:MaterialDatePicker SupportingText="Required field"
+                                                  HorizontalTextAlignment="Center"
+                                                  TrailingIcon=""
+                                                  LabelText="Date"
+                                                  Placeholder="Select date" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Horizontal Text Alignment" />
-                    <material:MaterialDatePicker HorizontalTextAlignment="Start" Type="Filled" />
-                    <material:MaterialDatePicker
-                        AssistiveText="Required field"
-                        HorizontalTextAlignment="Center"
-                        LabelText="Date"
-                        Placeholder="Select date"
-                        Type="Filled" />
-                    <material:MaterialDatePicker HorizontalTextAlignment="End" Type="Filled">
-                        <material:MaterialDatePicker.FontFamily>
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Max date and minimum date" />
+
+                    <material3:MaterialDatePicker LabelText="Label"
+                                                  MaximumDate="{Binding MaximumDate}"
+                                                  MinimumDate="{Binding MinimumDate}"
+                                                  Placeholder="Select date" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="With Border" />
+
+
+                    <material3:MaterialDatePicker HasBorder="True"
+                                                  CornerRadius="10"
+                                                  CornerRadiusBottomLeft="True"
+                                                  CornerRadiusBottomRight="True"
+                                                  LabelText="Label"
+                                                  CornerRadiusTopLeft="True"
+                                                  CornerRadiusTopRight="True"
+                                                  Placeholder="Select date" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Full API" />
+
+                    <material3:MaterialDatePicker HorizontalTextAlignment="Start"
+                                                  HasBorder="True"
+                                                  AnimateError="True"
+                                                  SupportingText="Supporting text"
+                                                  SupportingLineBreakMode="WordWrap"
+                                                  LabelText="Label"
+                                                  LabelLineBreakMode="WordWrap"
+                                                  iOSBorderWidth="3"
+                                                  CornerRadius="10"
+                                                  Placeholder="Select a date"
+                                                  LeadingIconCommand="{Binding IconCommand}"
+                                                  LeadingIconCommandParameter="Tapped (L)"
+                                                  TrailingIconCommand="{Binding IconCommand}"
+                                                  TrailingIconCommandParameter="Tapped (T)"
+                                                  CornerRadiusBottomLeft="True"
+                                                  CornerRadiusBottomRight="True"
+                                                  CornerRadiusTopLeft="True"
+                                                  CornerRadiusTopRight="True">
+                        <material3:MaterialDatePicker.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialDatePicker.CustomTrailingIcon>
+                        <material3:MaterialDatePicker.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialDatePicker.CustomLeadingIcon>
+                        <material3:MaterialDatePicker.FontFamily>
                             <OnPlatform x:TypeArguments="x:String">
                                 <OnPlatform.Android>monospace</OnPlatform.Android>
                                 <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                             </OnPlatform>
-                        </material:MaterialDatePicker.FontFamily>
-                    </material:MaterialDatePicker>
-                    <material3:MaterialButton Command="{Binding TapCommand}" Text="Save" />
+                        </material3:MaterialDatePicker.FontFamily>
+                        <material3:MaterialDatePicker.LabelFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDatePicker.LabelFontFamily>
+                        <material3:MaterialDatePicker.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDatePicker.SupportingFontFamily>
+                    </material3:MaterialDatePicker>
+
                 </StackLayout>
             </ScrollView>
         </Grid>

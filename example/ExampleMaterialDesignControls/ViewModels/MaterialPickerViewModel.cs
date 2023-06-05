@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -132,9 +132,9 @@ namespace ExampleMaterialDesignControls.ViewModels
         public async Task ShowDouble()
         {
             if (SelectedItem != null && SecondarySelectedItem != null )
-                await DisplayAlert("Country and City", $"Weight={SelectedItem} {SecondarySelectedItem.Name}", "Ok");
+                await DisplayAlert("Weight", $"Weight={SelectedItem} {SecondarySelectedItem.Name}", "Ok");
             else
-                await DisplayAlert("Country and City", "No weight selected", "Ok");
+                await DisplayAlert("Weight", "No weight selected", "Ok");
         }
 
         [ICommand]

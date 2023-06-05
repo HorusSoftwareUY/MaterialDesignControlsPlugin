@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialDatePicker : BaseMaterialFieldControl
+    public class MaterialDatePicker : BaseMaterialFieldControl
     {
         #region Constructors
 
         public MaterialDatePicker()
         {
-            if (!this.initialized)
+            pckDate = new Plugin.MaterialDesignControls.Material3.Implementations.CustomDatePicker()
             {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+            pckDate.SetValue(Grid.ColumnProperty, 1);
+            pckDate.SetValue(Grid.RowProperty, 1);
+            CustomContent = pckDate;
 
             pckDate.Focused += HandleFocusChange;
             pckDate.Unfocused += HandleFocusChange;
@@ -26,39 +27,25 @@ namespace Plugin.MaterialDesignControls
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
             {
-                if (IsControlEnabled)
+                if (this.pckDate.IsControlEnabled())
                     this.pckDate.Focus();
             };
-            this.frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
+            this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
 
         #region Attributes
 
-        private bool initialized = false;
+        private Plugin.MaterialDesignControls.Material3.Implementations.CustomDatePicker pckDate;
 
         #endregion Attributes
 
         #region Properties
+        public new static readonly BindableProperty AnimatePlaceholderProperty =
+            BindableProperty.Create(nameof(AnimatePlaceholder), typeof(bool), typeof(MaterialDatePicker), defaultValue: false);
 
-        public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialDatePicker), defaultValue: new Thickness(12, 0));
-
-        public new Thickness Padding
-        {
-            get { return (Thickness)GetValue(PaddingProperty); }
-            set { SetValue(PaddingProperty, value); }
-        }
-
-        public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialDatePicker), defaultValue: true);
-
-        public new bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
+        public new bool AnimatePlaceholder => false;
 
         public static readonly BindableProperty DateProperty =
             BindableProperty.Create(nameof(Date), typeof(DateTime?), typeof(MaterialDatePicker), defaultValue: null, propertyChanged: OnDateChanged, defaultBindingMode: BindingMode.TwoWay);
@@ -95,31 +82,6 @@ namespace Plugin.MaterialDesignControls
             get { return (string)GetValue(FormatProperty); }
             set { SetValue(FormatProperty, value); }
         }
-
-        public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDatePicker), defaultValue: Color.LightGray);
-
-        public new Color BackgroundColor
-        {
-            get { return (Color)GetValue(BackgroundColorProperty); }
-            set { SetValue(BackgroundColorProperty, value); }
-        }
-
-        public override bool IsControlFocused
-        {
-            get { return pckDate.IsFocused; }
-        }
-
-        public override bool IsControlEnabled
-        {
-            get { return this.IsEnabled; }
-        }
-
-        public override Color BackgroundColorControl
-        {
-            get { return this.BackgroundColor; }
-        }
-
         #endregion Properties
 
         #region Events
@@ -140,13 +102,7 @@ namespace Plugin.MaterialDesignControls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!this.initialized)
-            {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
-
-            UpdateLayout(propertyName, lblLabel, lblAssistive, frmContainer, bxvLine, imgLeadingIcon, imgTrailingIcon);
+            UpdateLayout(propertyName);
 
             switch (propertyName)
             {
@@ -163,49 +119,6 @@ namespace Plugin.MaterialDesignControls
                     this.pckDate.Format = this.Format;
                     break;
             }
-        }
-
-        protected override void SetIsEnabled()
-        {
-            pckDate.IsEnabled = IsEnabled;
-        }
-
-        protected override void SetPadding()
-        {
-            frmContainer.Padding = Padding;
-        }
-
-        protected override void SetTextColor()
-        {
-            if (IsControlEnabled)
-                pckDate.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
-            else
-                pckDate.TextColor = DisabledTextColor;
-        }
-
-        protected override void SetFontSize()
-        {
-            pckDate.FontSize = FontSize;
-        }
-
-        protected override void SetFontFamily()
-        {
-            pckDate.FontFamily = FontFamily;
-        }
-
-        protected override void SetPlaceholder()
-        {
-            pckDate.Placeholder = Placeholder;
-        }
-
-        protected override void SetPlaceholderColor()
-        {
-            pckDate.PlaceholderColor = PlaceholderColor;
-        }
-
-        protected override void SetHorizontalTextAlignment()
-        {
-            pckDate.HorizontalTextAlignment = HorizontalTextAlignment;
         }
 
         public new bool Focus()
@@ -226,15 +139,15 @@ namespace Plugin.MaterialDesignControls
             return true;
         }
 
-        private void HandleFocusChange(object sender, FocusEventArgs e)
+        private async void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            base.SetFocusChange(lblLabel, frmContainer, bxvLine);
+            await SetFocusChange();
 
             // Set the default date if the user doesn't select anything
-            if (!IsControlFocused && !pckDate.CustomDate.HasValue)
-                Date = pckDate.InternalDateTime;
+            if (!this.pckDate.IsControlFocused() && !this.pckDate.CustomDate.HasValue)
+                Date = this.pckDate.InternalDateTime;
 
-            if (IsControlFocused)
+            if (this.pckDate.IsControlFocused())
                 Focused?.Invoke(this, e);
             else
                 Unfocused?.Invoke(this, e);

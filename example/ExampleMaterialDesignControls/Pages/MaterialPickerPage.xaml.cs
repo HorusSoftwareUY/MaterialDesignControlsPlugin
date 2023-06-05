@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using ExampleMaterialDesignControls.ViewModels;
 using Plugin.MaterialDesignControls.Material3;
@@ -47,10 +47,6 @@ namespace ExampleMaterialDesignControls.Pages
             {
                 pckDouble.ClearSelectedItem();
             };
-
-           
-
-           
 
             BindingContext = viewModel;
         }

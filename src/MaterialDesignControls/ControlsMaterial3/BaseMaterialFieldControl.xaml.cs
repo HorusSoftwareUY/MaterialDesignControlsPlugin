@@ -1,4 +1,4 @@
-﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Utils;
 using System;
@@ -48,7 +48,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
 
-        public bool AnimateLabel => this.AnimatePlaceholder && string.IsNullOrWhiteSpace(LabelText);
+        public bool AnimatePlaceHolderAsLabel => this.AnimatePlaceholder && string.IsNullOrWhiteSpace(LabelText);
 
         public double PlaceHolderXPosition = 0;
 
@@ -558,7 +558,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(LabelText):
                     this.lblLabel.Text = LabelText;
-                    this.lblLabel.IsVisible = !AnimateLabel;
+                    this.lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
                     SetAnimatedLabel();
                     break;
                 case nameof(LabelTextColor):
@@ -696,7 +696,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(AnimatePlaceholder):
-                    this.lblLabel.IsVisible = !AnimateLabel;
+                    this.lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
                     SetAnimatedLabel();
                     break;
 
@@ -735,6 +735,63 @@ namespace Plugin.MaterialDesignControls.Material3
 
             await AnimatePlaceholderAction();
         }
+       
+        public static string GetPropertyValue(object item, string propertyToSearch)
+        {
+            var properties = item.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                if (property.Name.Equals(propertyToSearch, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return property.GetValue(item, null).ToString();
+                }
+            }
+            return item.ToString();
+        }
+
+        #endregion Methods
+
+        #region AnimationPlaceHolder
+        public async Task TransitionToTitle()
+        {
+            if (AnimatePlaceHolderAsLabel)
+            {
+                var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 200);
+                var t2 = SizeTo(LabelSize);
+                await Task.WhenAll(t1, t2);
+                AnimatedLabel.TextColor = LabelTextColor;
+                AnimatedLabel.SetValue(Grid.RowSpanProperty, 1);
+            }
+        }
+
+        public async Task TransitionToPlaceholder()
+        {
+            if (AnimatePlaceHolderAsLabel)
+            {
+                AnimatedLabel.TextColor = PlaceholderColor;
+                if (!IsFocused)
+                {
+                    AnimatedLabel.SetValue(Grid.RowSpanProperty, 2);
+                }
+                await SizeTo(FontSize);
+            }
+        }
+
+        private Task SizeTo(double fontSize)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+
+            Action<double> callback = input => { AnimatedLabel.FontSize = input; };
+            double startingHeight = AnimatedLabel.FontSize;
+            double endingHeight = fontSize;
+            uint rate = 5;
+            uint length = 200;
+            Easing easing = Easing.Linear;
+
+            AnimatedLabel.Animate("AnimateLabel", callback, startingHeight, endingHeight, rate, length, easing, (v, c) => taskCompletionSource.SetResult(c));
+
+            return taskCompletionSource.Task;
+        }
 
         public async Task AnimatePlaceholderAction()
         {
@@ -769,7 +826,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             try
             {
-                if (AnimateLabel)
+                if (AnimatePlaceHolderAsLabel)
                 {
                     AnimatedLabel.Text = string.IsNullOrWhiteSpace(AnimatedLabel.Text) ? Placeholder : AnimatedLabel.Text;
                     AnimatedLabel.IsVisible = true;
@@ -797,62 +854,6 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        public static string GetPropertyValue(object item, string propertyToSearch)
-        {
-            var properties = item.GetType().GetProperties();
-            foreach (var property in properties)
-            {
-                if (property.Name.Equals(propertyToSearch, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return property.GetValue(item, null).ToString();
-                }
-            }
-            return item.ToString();
-        }
-
-        #endregion Methods
-
-        #region Animation
-        public async Task TransitionToTitle()
-        {
-            if (AnimateLabel)
-            {
-                var t1 = AnimatedLabel.TranslateTo(Label.X, Label.Y, 200);
-                var t2 = SizeTo(LabelSize);
-                await Task.WhenAll(t1, t2);
-                AnimatedLabel.TextColor = LabelTextColor;
-                AnimatedLabel.SetValue(Grid.RowSpanProperty, 1);
-            }
-        }
-
-        public async Task TransitionToPlaceholder()
-        {
-            if (AnimateLabel)
-            {
-                AnimatedLabel.TextColor = PlaceholderColor;
-                if (!IsFocused)
-                {
-                    AnimatedLabel.SetValue(Grid.RowSpanProperty, 2);
-                }
-                await SizeTo(FontSize);
-            }
-        }
-
-        private Task SizeTo(double fontSize)
-        {
-            var taskCompletionSource = new TaskCompletionSource<bool>();
-
-            Action<double> callback = input => { AnimatedLabel.FontSize = input; };
-            double startingHeight = AnimatedLabel.FontSize;
-            double endingHeight = fontSize;
-            uint rate = 5;
-            uint length = 200;
-            Easing easing = Easing.Linear;
-
-            AnimatedLabel.Animate("AnimateLabel", callback, startingHeight, endingHeight, rate, length, easing, (v, c) => taskCompletionSource.SetResult(c));
-
-            return taskCompletionSource.Task;
-        }
-        #endregion Animation
+        #endregion AnimationPlaceHolder
     }
 }
