@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
@@ -86,9 +86,15 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         {
             this.TextColor = textColor;
         }
-        public bool ValidateIfAnimatePlaceHolder()
+        public bool ValidateIfAnimatePlaceHolder() =>
+            this.IsEnabled && (this.SelectedIndexes.Length > 1 && SelectedIndexes[0] < 0 && SelectedIndexes[1] < 0);
+
+        public void FocusControl()
         {
-            return this.IsEnabled && (this.SelectedIndexes.Length > 1 && SelectedIndexes[0] < 0 && SelectedIndexes[1] < 0);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                _ = Focus();
+            });
         }
     }
 }

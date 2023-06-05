@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -23,5 +23,7 @@ namespace Plugin.MaterialDesignControls.Material3
         public void SetHorizontalTextAlignment(TextAlignment horizontalTextAlignment);
 
         public bool ValidateIfAnimatePlaceHolder();
+
+        public void FocusControl();
     }
 }
