@@ -1,16 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
 using Foundation;
-using Plugin.MaterialDesignControls.Implementations;
-using Plugin.MaterialDesignControls.iOS;
 using Plugin.MaterialDesignControls.iOS.Utils;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Material3.iOS;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(CustomTimePicker), typeof(MaterialTimePickerRenderer))]
 
-namespace Plugin.MaterialDesignControls.iOS
+
+namespace Plugin.MaterialDesignControls.Material3.iOS
 {
     public class MaterialTimePickerRenderer : TimePickerRenderer
     {
