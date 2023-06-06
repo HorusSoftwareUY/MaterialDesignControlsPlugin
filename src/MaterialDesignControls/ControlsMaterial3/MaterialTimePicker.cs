@@ -32,6 +32,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 if (pckTime.IsControlEnabled())
                     this.pckTime.Focus();
             };
+
+            this.Label.GestureRecognizers.Clear();
             this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 

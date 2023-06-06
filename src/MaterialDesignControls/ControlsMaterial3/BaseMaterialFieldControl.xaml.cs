@@ -24,11 +24,27 @@ namespace Plugin.MaterialDesignControls.Material3
             //Set by default Trailing and Leading command to focus control
             this.imgLeadingIcon.Command = new Command(() =>
             {
+                if (this is MaterialSelection materialSelection)
+                {
+                    if (materialSelection.IsEnabled && materialSelection.Command != null && materialSelection.Command.CanExecute(materialSelection.CommandParameter))
+                    {
+                        materialSelection.Command.Execute(materialSelection.CommandParameter);
+                    }
+                    return;
+                }
                 this.CustomContent.FocusControl();
             });
 
             this.imgTrailingIcon.Command = new Command(() =>
             {
+                if (this is MaterialSelection materialSelection)
+                {
+                    if (materialSelection.IsEnabled && materialSelection.Command != null && materialSelection.Command.CanExecute(materialSelection.CommandParameter))
+                    {
+                        materialSelection.Command.Execute(materialSelection.CommandParameter);
+                    }
+                    return;
+                }
                 this.CustomContent.FocusControl();
             });
         }
