@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using Plugin.MaterialDesignControls.Material3;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
@@ -9,7 +8,7 @@ namespace Plugin.MaterialDesignControls
         #region Properties
 
         public static new readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialEntry), defaultValue: null, propertyChanged: OnTextChanged);
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialLabel), defaultValue: null, propertyChanged: OnTextChanged);
 
         public new string Text
         {

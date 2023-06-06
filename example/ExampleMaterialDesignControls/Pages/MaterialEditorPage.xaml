@@ -25,7 +25,6 @@
                         SupportingText="{Binding MessageError}"
                         KeyboardFlags="Spellcheck,Suggestions"
                         LabelText="Message*"
-                        AutoSize="TextChanges"
                         HorizontalTextAlignment="Center"
                         Placeholder="Enter your message"
                         TabIndex="1"

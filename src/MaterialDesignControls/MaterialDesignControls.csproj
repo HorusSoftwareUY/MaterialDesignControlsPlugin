@@ -68,7 +68,9 @@
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEditor.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomLabel.cs" />
     <Compile Include="Implementations\Deprecated\CustomDatePicker.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSelection.cs" />
     <Compile Include="ControlsMaterial3\MaterialTimePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomPicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomTimePicker.cs" />
@@ -102,7 +104,7 @@
       <DependentUpon>MaterialPicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialSelection.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialSelection.xaml.cs">
       <DependentUpon>MaterialSelection.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

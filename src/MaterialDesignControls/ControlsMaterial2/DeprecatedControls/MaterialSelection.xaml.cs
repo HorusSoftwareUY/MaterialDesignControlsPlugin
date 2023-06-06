@@ -1,12 +1,14 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialSelection is deprecated, please use MaterialSelection of Material 3 instead.")]
+
     public partial class MaterialSelection : BaseMaterialFieldControl
     {
         #region Constructors
