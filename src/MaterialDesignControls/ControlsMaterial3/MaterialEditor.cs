@@ -83,7 +83,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AutoSizeProperty =
-            BindableProperty.Create(nameof(AutoSize), typeof(EditorAutoSizeOption), typeof(MaterialEditor), defaultValue: EditorAutoSizeOption.TextChanges);
+            BindableProperty.Create(nameof(AutoSize), typeof(EditorAutoSizeOption), typeof(MaterialEditor), defaultValue: EditorAutoSizeOption.Disabled);
 
         public EditorAutoSizeOption AutoSize
         {
