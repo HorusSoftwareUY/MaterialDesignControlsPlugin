@@ -83,7 +83,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AutoSizeProperty =
-            BindableProperty.Create(nameof(AutoSize), typeof(EditorAutoSizeOption), typeof(MaterialEditor), defaultValue: EditorAutoSizeOption.Disabled);
+            BindableProperty.Create(nameof(AutoSize), typeof(EditorAutoSizeOption), typeof(MaterialEditor), defaultValue: EditorAutoSizeOption.TextChanges);
 
         public EditorAutoSizeOption AutoSize
         {
@@ -163,11 +163,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(AutoSize):
                     this.txtEditor.AutoSize = AutoSize;
                     break;
-
-                //case nameof(FieldHeightRequest):
-                //    rowDefinition.Height = new GridLength(FieldHeightRequest);
-                //    txtEditor.HeightRequest = FieldHeightRequest;
-                //    break;
             }
         }
 
