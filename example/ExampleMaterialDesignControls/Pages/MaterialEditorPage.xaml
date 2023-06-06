@@ -20,24 +20,23 @@
 
             <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="20,0,20,20" Spacing="20">
-                    <material:MaterialEditor
+                    <material3:MaterialEditor
                         AnimateError="True"
-                        AssistiveText="{Binding MessageError}"
+                        SupportingText="{Binding MessageError}"
                         KeyboardFlags="Spellcheck,Suggestions"
                         LabelText="Message*"
+                        AutoSize="TextChanges"
+                        HorizontalTextAlignment="Center"
                         Placeholder="Enter your message"
                         TabIndex="1"
-                        Text="{Binding Message}"
-                        Type="Filled" />
+                        Text="{Binding Message}" />
 
-                    <material:MaterialEditor
-                        FieldHeightRequest="120"
+                    <material3:MaterialEditor
                         KeyboardFlags="CapitalizeSentence"
                         LabelText="Observation"
                         Placeholder="Enter your observation"
                         TabIndex="2"
-                        Text="{Binding Observation}"
-                        Type="Outlined" />
+                        Text="{Binding Observation}" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -46,14 +45,13 @@
                         HorizontalTextAlignment="Center"
                         Text="Auto Size" />
 
-                    <material:MaterialEditor
+                    <material3:MaterialEditor
                         AutoSize="TextChanges"
                         KeyboardFlags="CapitalizeSentence"
                         LabelText="Observation"
                         Placeholder="Enter your observation"
                         TabIndex="2"
-                        Text="{Binding Observation}"
-                        Type="Outlined" />
+                        Text="{Binding Observation}" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -62,38 +60,35 @@
                         HorizontalTextAlignment="Center"
                         Text="Types" />
 
-                    <material:MaterialEditor
+                    <material3:MaterialEditor
                         HorizontalTextAlignment="Center"
                         LabelText="Description"
                         LeadingIcon="email.png"
                         Placeholder="Enter your description"
                         TabIndex="3"
-                        Text="{Binding DefaultValue}"
-                        Type="Lined" />
+                        Text="{Binding DefaultValue}" />
 
-                    <material:MaterialEditor
+                    <material3:MaterialEditor
                         IsEnabled="False"
                         LabelText="Description"
                         LeadingIcon="email.png"
                         Placeholder="Enter your description"
                         TabIndex="4"
-                        Text="Testing description"
-                        Type="Outlined" />
+                        Text="Testing description asdfasdfa asdfasdf asdfasdf asdfasdfasdf asdfasdfasd asdfasdf asd sadfasdf asdf asdf sadf asd fsadf asdfsadf adsf asdfsdaf asdfasdfasdrwerwerwe fin" />
 
-                    <material:MaterialEditor
+                    <material3:MaterialEditor
                         HeightRequest="200"
                         LabelText="Description"
                         LeadingIcon="email.png"
                         Placeholder="Enter your description"
-                        TabIndex="5"
-                        Type="Outlined">
-                        <material:MaterialEditor.FontFamily>
+                        TabIndex="5">
+                        <material3:MaterialEditor.FontFamily>
                             <OnPlatform x:TypeArguments="x:String">
                                 <OnPlatform.Android>monospace</OnPlatform.Android>
                                 <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                             </OnPlatform>
-                        </material:MaterialEditor.FontFamily>
-                    </material:MaterialEditor>
+                        </material3:MaterialEditor.FontFamily>
+                    </material3:MaterialEditor>
 
                     <material3:MaterialButton
                         Command="{Binding TapCommand}"

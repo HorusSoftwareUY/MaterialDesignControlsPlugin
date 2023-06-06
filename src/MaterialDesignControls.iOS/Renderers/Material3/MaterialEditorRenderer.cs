@@ -1,15 +1,15 @@
-﻿using System;
-using Foundation;
-using Plugin.MaterialDesignControls.Implementations;
-using Plugin.MaterialDesignControls.iOS;
+﻿using Foundation;
 using Plugin.MaterialDesignControls.Utils;
+using System;
 using UIKit;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Xamarin.Forms;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Material3.iOS;
 
 [assembly: ExportRenderer(typeof(CustomEditor), typeof(MaterialEditorRenderer))]
 
-namespace Plugin.MaterialDesignControls.iOS
+namespace Plugin.MaterialDesignControls.Material3.iOS
 {
     public class MaterialEditorRenderer : EditorRenderer
     {

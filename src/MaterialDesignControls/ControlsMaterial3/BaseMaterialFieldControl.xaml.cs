@@ -478,6 +478,11 @@ namespace Plugin.MaterialDesignControls.Material3
             if (bindable is BaseMaterialFieldControl control && control.contentLayout != null)
             {
                 control.contentLayout.Children.Add((View)newValue);
+
+                if (newValue is MaterialEditor)
+                {
+                    control.contentLayout.RowDefinitions[1].Height = GridLength.Auto;
+                }
             }
         }
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\example\packages\Xamarin.Forms.4.4.0.991864\build\Xamarin.Forms.props" Condition="Exists('..\..\example\packages\Xamarin.Forms.4.4.0.991864\build\Xamarin.Forms.props')" />
   <Import Project="..\packages\Xamarin.Forms.3.0.0.446417\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.3.0.0.446417\build\netstandard2.0\Xamarin.Forms.props')" />
@@ -126,6 +126,7 @@
     <Compile Include="Renderers\Material3\MaterialCardRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialDatePickerRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialDoublePickerRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialEditorRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialTimePickerRenderer.cs" />
@@ -137,7 +138,7 @@
     <Compile Include="Renderers\DeprecatedControls\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialTimePickerRenderer.cs" />
-    <Compile Include="Renderers\MaterialEditorRenderer.cs" />
+    <Compile Include="Renderers\DeprecatedControls\MaterialEditorRenderer.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="Effects.cs" />
     <Compile Include="Utils\TextAlignmentHelper.cs" />
