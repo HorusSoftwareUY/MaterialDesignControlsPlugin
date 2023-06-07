@@ -7,6 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialSwitch is deprecated, please use MaterialSwitch of Material 3 instead.")]
     public partial class MaterialSwitch : ContentView
     {
         #region Attributes

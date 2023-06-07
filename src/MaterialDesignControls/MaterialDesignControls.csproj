@@ -65,6 +65,7 @@
     <Compile Include="ControlsMaterial3\MaterialDoublePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomLabel.cs" />
     <Compile Include="Implementations\Deprecated\CustomDatePicker.cs" />
@@ -151,7 +152,7 @@
       <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialSwitch.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialSwitch.xaml.cs">
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -185,7 +186,9 @@
     <Folder Include="Styles\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0-pre2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="ControlsMaterial3\" />
@@ -194,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
