@@ -21,13 +21,10 @@
             <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="20,0,20,20" Spacing="15">
 
-                    <material:MaterialSwitch
+                    <material3:MaterialSwitch
                         IsToggled="True"
-                        OnColor="#aca3db"
-                        SwitchHorizontalOptions="EndAndExpand"
-                        Text="WIFI"
-                        TextSide="Left"
-                        ThumbColor="{StaticResource GradientColor4}" />
+                        />
+                    
                     <material:MaterialSwitch
                         AssistiveText="Bluetooth is required"
                         IsToggled="False"
