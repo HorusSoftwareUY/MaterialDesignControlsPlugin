@@ -66,6 +66,9 @@
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSwitchTemplate.xaml.cs">
+      <DependentUpon>MaterialSwitchTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomLabel.cs" />
     <Compile Include="Implementations\Deprecated\CustomDatePicker.cs" />
@@ -137,6 +140,7 @@
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utils\ColorAnimationUtil.cs" />
     <Compile Include="Utils\LoggerHelper.cs" />
     <Compile Include="ControlsMaterial2\MaterialSegmented.xaml.cs">
       <DependentUpon>MaterialSegmented.xaml</DependentUpon>
@@ -182,7 +186,6 @@
   <ItemGroup>
     <Folder Include="Animations\" />
     <Folder Include="Effects\" />
-    <Folder Include="Utils\" />
     <Folder Include="Styles\" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +203,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ControlsMaterial3\MaterialSwitchTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
