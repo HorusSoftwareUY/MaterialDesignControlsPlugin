@@ -13,9 +13,8 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             txtEditor = new Plugin.MaterialDesignControls.Material3.Implementations.CustomEditor()
             {
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = -1
+                VerticalOptions = LayoutOptions.Fill,
+                HorizontalOptions = LayoutOptions.FillAndExpand
             };
             txtEditor.SetValue(Grid.ColumnProperty, 1);
             txtEditor.SetValue(Grid.RowProperty, 1);
@@ -90,6 +89,16 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (EditorAutoSizeOption)GetValue(AutoSizeProperty); }
             set { SetValue(AutoSizeProperty, value); }
         }
+
+        public new static readonly BindableProperty HeightRequestProperty =
+            BindableProperty.Create(nameof(HeightRequest), typeof(double), typeof(MaterialEditor), defaultValue: -1.0);
+
+        public new double HeightRequest
+        {
+            get { return (double)GetValue(HeightRequestProperty); }
+            set { SetValue(HeightRequestProperty, value); }
+        }
+
         #endregion Properties
 
         #region Events
@@ -116,6 +125,13 @@ namespace Plugin.MaterialDesignControls.Material3
 
             switch (propertyName)
             {
+                case nameof(this.HeightRequest):
+                    if (AutoSize == EditorAutoSizeOption.Disabled)
+                    {
+                        this.txtEditor.HeightRequest = HeightRequest;
+                    }
+                    break;
+
                 case nameof(base.TranslationX):
                     base.OnPropertyChanged(propertyName);
                     break;

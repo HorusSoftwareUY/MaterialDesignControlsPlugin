@@ -4,6 +4,24 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
     public class CustomEditor : Editor, IBaseMaterialFieldControl
     {
+        //public double MaxHeight { get; set; } = 100;
+
+        //protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+        //{
+        //    var sizeRequest = base.OnMeasure(widthConstraint, heightConstraint);
+
+        //    var newHeight = sizeRequest.Request.Height;
+        //    if (newHeight > MaxHeight)
+        //        newHeight = MaxHeight;
+
+        //    return new SizeRequest(new Size(sizeRequest.Request.Width, newHeight));
+        //}
+
+        public CustomEditor()
+        {
+            BackgroundColor = Color.Red;
+        }
+
         public void FocusControl()
         {
             Device.BeginInvokeOnMainThread(() =>

@@ -6,6 +6,7 @@ using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Material3.iOS;
+using CoreGraphics;
 
 [assembly: ExportRenderer(typeof(CustomEditor), typeof(MaterialEditorRenderer))]
 
@@ -34,7 +35,7 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
             {
                 Text = element?.Placeholder,
                 TextColor = element.PlaceholderColor.ToUIColor(),
-                BackgroundColor = UIColor.Clear
+                BackgroundColor = UIColor.Clear,
             };
 
             lblPlaceholder.Hidden = !string.IsNullOrEmpty(element.Text);
@@ -75,6 +76,19 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 || e.PropertyName == MaterialEditor.FontFamilyProperty.PropertyName)
                 SetFont();
         }
+
+        //protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
+        //{
+
+        //    base.OnElementChanged(e);
+        //    if (this.Control != null)
+        //    {
+
+        //        this.Control.
+
+        //    }
+
+        //}
 
         private void SetFont()
         {
