@@ -176,7 +176,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion Events
 
-
         #region Methods
         private async void Loaded(object sender, EventArgs e)
         {
@@ -292,7 +291,7 @@ namespace Plugin.MaterialDesignControls.Material3
             if (ReduceThumbSize)
             {
                 await SizeTo(_increazeTo);
-                this.imgIcon.IsVisible = TrailingIconIsVisible;
+                this.imgIcon.IsVisible = true;
                 SetSelectedIconSource();
             }
             else
@@ -407,42 +406,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             switch (propertyName)
             {
-                //case nameof(SelectedIcon):
-                //    if (!string.IsNullOrEmpty(SelectedIcon))
-                //        this.imgIcon.SetImage(SelectedIcon);
-
-                //    this.imgIcon.IsVisible = TrailingIconIsVisible;
-                //break;
-
-                //case nameof(CustomSelectedIcon):
-                //    if (CustomSelectedIcon != null)
-                //        this.imgIcon.SetCustomImage(CustomSelectedIcon);
-
-                //    this.imgIcon.IsVisible = TrailingIconIsVisible;
-                //break;   
-                    
-                //case nameof(UnselectedIcon):
-                //    if (!string.IsNullOrEmpty(UnselectedIcon))
-                //        this.imgIcon.SetImage(UnselectedIcon);
-
-                //    this.imgIcon.IsVisible = LeadingIconIsVisible;
-                //break;
-
-                //case nameof(CustomUnselectedIcon):
-                //    if (CustomUnselectedIcon != null)
-                //        this.imgIcon.SetCustomImage(CustomUnselectedIcon);
-
-                //    this.imgIcon.IsVisible = LeadingIconIsVisible;
-                //break;
-
-                //case nameof(ThumbSelectedColor):
-                //    this.ThumbFrame.BackgroundColor = ThumbColor;
-                //    break;
-
-                //case nameof(ThumbColor):
-                //    this.ThumbFrame.BackgroundColor = ThumbColor;
-                //    break;
-
                 case nameof(BackgroundOnSelectedColor):
                     InitializeSwitchPanUpdate();
                     break;
@@ -454,12 +417,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
             base.OnPropertyChanged(propertyName);
         }
-
-        private bool TrailingIconIsVisible 
-            => CurrentState != SwitchStateEnum.Left && !string.IsNullOrEmpty(SelectedIcon) || CustomSelectedIcon != null;
-        
-        private bool LeadingIconIsVisible
-            => CurrentState != SwitchStateEnum.Right && !string.IsNullOrEmpty(UnselectedIcon) || CustomUnselectedIcon != null;
 
         private async Task SizeTo(double scale)
         {
@@ -506,12 +463,5 @@ namespace Plugin.MaterialDesignControls.Material3
         Running,
         Completed,
         Canceled
-    }
-
-    public enum KnobLimitEnum
-    {
-        Boundary,
-        Centered,
-        Max
     }
 }
