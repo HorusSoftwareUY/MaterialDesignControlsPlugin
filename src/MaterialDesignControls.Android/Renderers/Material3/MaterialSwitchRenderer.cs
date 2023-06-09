@@ -10,18 +10,18 @@ using Xamarin.Forms.Platform.Android;
 using Android.Content;
 using Switch = Android.Widget.Switch;
 
-[assembly: ExportRenderer(typeof(MaterialSwitchTemplate), typeof(MaterialSwitchTemplateRenderer))]
+//[assembly: ExportRenderer(typeof(MaterialSwitch), typeof(MaterialSwitchRenderer))]
 
 namespace Plugin.MaterialDesignControls.Material3.Android
 {
-    public class MaterialSwitchTemplateRenderer : VisualElementRenderer<ContentView>
+    public class MaterialSwitchRenderer : VisualElementRenderer<ContentView>
     {
         public static void Init() { }
 
 
         private readonly Switch _a11YSwitch;
 
-        public MaterialSwitchTemplateRenderer(Context context) : base(context)
+        public MaterialSwitchRenderer(Context context) : base(context)
         {
             _a11YSwitch = new Switch(context);
         }
@@ -36,7 +36,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                 return;
             }
 
-            MaterialSwitchTemplate customSwitch = e.NewElement as MaterialSwitchTemplate;
+            MaterialSwitch customSwitch = e.NewElement as MaterialSwitch;
 
             _a11YSwitch.Checked = customSwitch.IsToggled;
 
@@ -47,9 +47,9 @@ namespace Plugin.MaterialDesignControls.Material3.Android
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName.Equals(nameof(MaterialSwitchTemplate.IsToggled)))
+            if (e.PropertyName.Equals(nameof(MaterialSwitch.IsToggled)))
             {
-                MaterialSwitchTemplate customSwitch = sender as MaterialSwitchTemplate;
+                MaterialSwitch customSwitch = sender as MaterialSwitch;
 
                 if (_a11YSwitch.Checked != customSwitch.IsToggled)
                 {
@@ -85,7 +85,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
         {
             if (keyCode == Keycode.Space || keyCode == Keycode.Enter)
             {
-                MaterialSwitchTemplate customSwitch = Element as MaterialSwitchTemplate;
+                MaterialSwitch customSwitch = Element as MaterialSwitch;
                 customSwitch.IsToggled = !customSwitch.IsToggled;
             }
 

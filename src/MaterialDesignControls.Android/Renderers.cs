@@ -18,7 +18,7 @@ namespace Plugin.MaterialDesignControls.Android
             Plugin.MaterialDesignControls.Material3.Android.MaterialDatePickerRenderer.Init();
             Plugin.MaterialDesignControls.Material3.Android.MaterialTimePickerRenderer.Init();
             Plugin.MaterialDesignControls.Material3.Android.MaterialEditorRenderer.Init();
-            Plugin.MaterialDesignControls.Material3.Android.MaterialSwitchTemplateRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.Android.MaterialSwitchRenderer.Init();
         }
     }
 }

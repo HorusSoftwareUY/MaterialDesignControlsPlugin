@@ -4,12 +4,12 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(MaterialSwitchTemplate), typeof(MaterialSwitchTemplateRenderer))]
+//[assembly: ExportRenderer(typeof(MaterialSwitch), typeof(MaterialSwitchRenderer))]
 
 
 namespace Plugin.MaterialDesignControls.Material3.iOS
 {
-    internal class MaterialSwitchTemplateRenderer : VisualElementRenderer<ContentView>
+    internal class MaterialSwitchRenderer : VisualElementRenderer<ContentView>
     {
         public new static void Init()
         {
@@ -24,7 +24,7 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
 
             if (e.NewElement != null)
             {
-                _a11YSwitch.On = ((MaterialSwitchTemplate)e.NewElement).IsToggled;
+                _a11YSwitch.On = ((MaterialSwitch)e.NewElement).IsToggled;
             }
 
         }

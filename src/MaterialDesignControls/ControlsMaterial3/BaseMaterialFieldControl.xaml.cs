@@ -440,7 +440,7 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CustomTrailingIconProperty, value); }
         }
 
-        public bool TrailingIconIsVisible
+        private bool TrailingIconIsVisible
         {
             get { return !string.IsNullOrEmpty(TrailingIcon) || CustomTrailingIcon != null; }
         }

@@ -66,9 +66,8 @@
     <Compile Include="ControlsMaterial3\MaterialEditor.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
-    <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs" />
-    <Compile Include="ControlsMaterial3\MaterialSwitchTemplate.xaml.cs">
-      <DependentUpon>MaterialSwitchTemplate.xaml</DependentUpon>
+    <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
+      <DependentUpon>MaterialSwitch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEditor.cs" />
@@ -205,9 +204,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialSwitchTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
