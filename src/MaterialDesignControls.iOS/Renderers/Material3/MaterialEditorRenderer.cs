@@ -64,6 +64,9 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
 
             this.Control.AddConstraints(hConstraints);
             this.Control.AddConstraints(vConstraints);
+
+            Control.LayoutManager.UsesDefaultHyphenation = false;
+            Control.LayoutManager.AllowsNonContiguousLayout = false;
         }
 
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

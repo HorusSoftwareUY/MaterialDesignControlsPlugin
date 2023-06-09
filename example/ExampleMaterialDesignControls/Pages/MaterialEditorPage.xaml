@@ -145,8 +145,6 @@
                             </OnPlatform>
                         </material3:MaterialEditor.SupportingFontFamily>
                     </material3:MaterialEditor>
-
-                    <Editor AutoSize="TextChanges" BackgroundColor="Red" />
                 </StackLayout>
             </ScrollView>
         </Grid>
