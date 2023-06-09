@@ -177,7 +177,7 @@ This property is to set the placeholder color of the material picker.
 <br/>
 
 ### Property AnimatePlaceholder:
-If you set this property to true the placeholder will be translated to label place.
+If you set this property to true the placeholder will be translated to label place. **you mustn't set Label Text**
 <br/>
 <br/>
 

@@ -146,27 +146,30 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoMaterialEditorCommand}" />
                         </Frame.GestureRecognizers>
-                        <StackLayout>
-                            <Frame Padding="0"
-                                   BackgroundColor="{StaticResource GradientColorTransparent4}"
-                                   CornerRadius="45"
-                                   HasShadow="False"
-                                   HeightRequest="90"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="Center"
-                                   WidthRequest="90">
-                                <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                  Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_editor.svg" />
-                            </Frame>
-                            <material:MaterialLabel FontAttributes="Bold"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Center"
-                                                    LineBreakMode="TailTruncation"
-                                                    Text="Editor"
-                                                    TextColor="{StaticResource GradientColor4}"
-                                                    VerticalOptions="EndAndExpand" />
-                        </StackLayout>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent4}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_editor.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="Editor"
+                                                        TextColor="{StaticResource GradientColor4}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
                     </Frame>
 
                     <Frame Grid.Row="2"

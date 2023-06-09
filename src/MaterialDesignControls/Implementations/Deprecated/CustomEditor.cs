@@ -3,6 +3,7 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Implementations
 {
+    [Obsolete("CustomEditor is deprecated, please use CustomEditor of Material 3 instead.")]
     public class CustomEditor : Editor
     {
         public static readonly BindableProperty PlaceholderProperty =

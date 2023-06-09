@@ -5,11 +5,14 @@ using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Views.InputMethods;
+using System;
 
 [assembly: ExportRenderer(typeof(CustomEditor), typeof(Plugin.MaterialDesignControls.Android.MaterialEditorRenderer))]
 
 namespace Plugin.MaterialDesignControls.Android
 {
+    [Obsolete("MaterialEditorRenderer is deprecated, please use MaterialEditorRenderer of Material 3 instead.")]
+
     public class MaterialEditorRenderer : EditorRenderer
     {
         public static void Init() { }
