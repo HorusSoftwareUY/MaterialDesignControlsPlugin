@@ -317,6 +317,7 @@
     <Compile Include="Renderers\Material3\MaterialCardRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialDatePickerRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialDoublePickerRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialEditorRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialSwitchRenderer.cs" />
@@ -329,7 +330,7 @@
     <Compile Include="Renderers\DeprecatedControls\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialTimePickerRenderer.cs" />
-    <Compile Include="Renderers\MaterialEditorRenderer.cs" />
+    <Compile Include="Renderers\DeprecatedControls\MaterialEditorRenderer.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="Effects.cs" />
     <Compile Include="Utils\TextAlignmentHelper.cs" />
