@@ -21,7 +21,7 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref propertyB, value); }
         }
 
-        private bool isOn;
+        private bool isOn = true;
 
         public bool IsOn
         {

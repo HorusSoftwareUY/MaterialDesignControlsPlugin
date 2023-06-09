@@ -77,7 +77,6 @@
     <Compile Include="Renderers\Material3\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialDatePickerRenderer.cs" />
-    <Compile Include="Renderers\Material3\MaterialSwitchRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialPickerRenderer.cs" />
