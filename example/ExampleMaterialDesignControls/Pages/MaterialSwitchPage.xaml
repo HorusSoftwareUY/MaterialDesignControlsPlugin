@@ -24,55 +24,11 @@
                              Spacing="15">
 
                     <material3:MaterialSwitch IsToggled="True"
-                                              BackgroundColor="Red"
-                                              CornerRadius="25"
-                                              HeightRequest="50"
-                                              KnobColor="Green"
-                                              KnobCornerRadius="30"
-                                              KnobHeight="60"
+                                              KnobColor="Red"
+                                              KnobHeight="24"
                                               KnobLimit="Boundary"
                                               TrailingIcon="Product.png"
-                                              KnobWidth="60"
-                                              WidthRequest="120">
-                        <!--<material3:MaterialSwitch.BackgroundContent>
-                            <StackLayout Orientation="Horizontal">
-                                <FlexLayout Margin="15,0,15,0"
-                                            AlignItems="Center"
-                                            JustifyContent="SpaceBetween">
-                                    <Image Aspect="AspectFit"
-                                           HeightRequest="30"
-                                           HorizontalOptions="Center"
-                                           Source="Product"
-                                           VerticalOptions="Center" />
-                                    <Image Aspect="AspectFit"
-                                           HeightRequest="30"
-                                           HorizontalOptions="Center"
-                                           Source="Product"
-                                           VerticalOptions="Center" />
-                                </FlexLayout>
-                            </StackLayout>
-                        </material3:MaterialSwitch.BackgroundContent>
-                        <material3:MaterialSwitch.KnobContent>
-                            <StackLayout Orientation="Horizontal">
-                                <FlexLayout x:Name="Flex"
-                                            Margin="15,0,15,0"
-                                            AlignItems="Center"
-                                            JustifyContent="SpaceBetween"
-                                            WidthRequest="90">
-                                    <Image Aspect="AspectFit"
-                                           HeightRequest="30"
-                                           HorizontalOptions="Center"
-                                           Source="Product"
-                                           VerticalOptions="Center" />
-                                    <Image Aspect="AspectFit"
-                                           HeightRequest="30"
-                                           HorizontalOptions="Center"
-                                           Source="Product"
-                                           VerticalOptions="Center" />
-                                </FlexLayout>
-
-                            </StackLayout>
-                        </material3:MaterialSwitch.KnobContent>-->
+                                              KnobWidth="30">
                     </material3:MaterialSwitch>
 
                     <material:MaterialSwitch AssistiveText="Bluetooth is required"

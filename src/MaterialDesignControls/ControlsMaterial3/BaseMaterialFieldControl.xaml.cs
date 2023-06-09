@@ -399,7 +399,7 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CustomLeadingIconProperty, value); }
         }
 
-        public bool LeadingIconIsVisible
+        private bool LeadingIconIsVisible
         {
             get { return !string.IsNullOrEmpty(LeadingIcon) || CustomLeadingIcon != null; }
         }

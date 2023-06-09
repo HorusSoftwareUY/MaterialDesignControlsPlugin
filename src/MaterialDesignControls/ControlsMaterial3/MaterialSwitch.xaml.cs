@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -40,40 +41,6 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Attributes
 
         #region Properties
-
-
-
-        public new static readonly BindableProperty HeightRequestProperty = BindableProperty.Create(nameof(HeightRequest), typeof(double), typeof(MaterialSwitch), 0d, propertyChanged: SizeRequestChanged);
-
-        public new double HeightRequest
-        {
-            get => (double)GetValue(HeightRequestProperty);
-            set => SetValue(HeightRequestProperty, value);
-        }
-
-        public new static readonly BindableProperty WidthRequestProperty = BindableProperty.Create(nameof(WidthRequest), typeof(double), typeof(MaterialSwitch), 0d, propertyChanged: SizeRequestChanged);
-
-        public new double WidthRequest
-        {
-            get => (double)GetValue(WidthRequestProperty);
-            set => SetValue(WidthRequestProperty, value);
-        }
-
-        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(MaterialSwitch), default(float));
-
-        public float CornerRadius
-        {
-            get => (float)GetValue(CornerRadiusProperty);
-            set => SetValue(CornerRadiusProperty, value);
-        }
-
-        public new static readonly BindableProperty BackgroundProperty = BindableProperty.Create(nameof(Background), typeof(Brush), typeof(MaterialSwitch), Brush.Default);
-        [TypeConverter(typeof(BrushTypeConverter))]
-        public new Brush Background
-        {
-            get => (Brush)GetValue(BackgroundProperty);
-            set => SetValue(BackgroundProperty, value);
-        }
 
         public new static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSwitch), Color.Default);
 
@@ -145,15 +112,7 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(KnobColorProperty, value);
         }
 
-        public static readonly BindableProperty KnobCornerRadiusProperty = BindableProperty.Create(nameof(KnobCornerRadius), typeof(float), typeof(MaterialSwitch), default(float));
-
-        public float KnobCornerRadius
-        {
-            get => (float)GetValue(KnobCornerRadiusProperty);
-            set => SetValue(KnobCornerRadiusProperty, value);
-        }
-
-        public static readonly BindableProperty HorizontalKnobMarginProperty = BindableProperty.Create(nameof(HorizontalKnobMargin), typeof(double), typeof(MaterialSwitch), 0d, propertyChanged: SizeRequestChanged);
+        public static readonly BindableProperty HorizontalKnobMarginProperty = BindableProperty.Create(nameof(HorizontalKnobMargin), typeof(double), typeof(MaterialSwitch), 2d, propertyChanged: SizeRequestChanged);
 
         public double HorizontalKnobMargin
         {
@@ -186,6 +145,25 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (View)GetValue(CustomTrailingIconProperty); }
             set { SetValue(CustomTrailingIconProperty, value); }
         }
+
+        public static readonly BindableProperty LeadingIconProperty =
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public string LeadingIcon
+        {
+            get { return (string)GetValue(LeadingIconProperty); }
+            set { SetValue(LeadingIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomLeadingIconProperty =
+            BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
+
+        public View CustomLeadingIcon
+        {
+            get { return (View)GetValue(CustomLeadingIconProperty); }
+            set { SetValue(CustomLeadingIconProperty, value); }
+        }
+
         #endregion Thumb
 
         #endregion Properties
@@ -200,19 +178,19 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         #region Methods
-        private void Loaded(object sender, EventArgs e)
+        private async void Loaded(object sender, EventArgs e)
         {
             if (IsToggled)
             {
-                GoToRight(100);
+                await GoToRight(100);
             }
             else
             {
-                GoToLeft(100);
+                await GoToLeft(100);
             }
         }
 
-        private static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
+        private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (!(bindable is MaterialSwitch view))
             {
@@ -221,18 +199,18 @@ namespace Plugin.MaterialDesignControls.Material3
 
             if ((bool)newValue && view.CurrentState != SwitchStateEnum.Right)
             {
-                view.GoToRight();
+                await view.GoToRight();
             }
             else if (!(bool)newValue && view.CurrentState != SwitchStateEnum.Left)
             {
-                view.GoToLeft();
+                await view.GoToLeft();
             }
 
             view.Toggled?.Invoke(view, new ToggledEventArgs((bool)newValue));
             view.ToggledCommand?.Execute((bool)newValue);
         }
 
-        private void GoToLeft(double percentage = 0.0)
+        private async Task GoToLeft(double percentage = 0.0)
         {
             if (Math.Abs(KnobFrame.TranslationX + _xRef) > 0.0)
             {
@@ -258,9 +236,10 @@ namespace Plugin.MaterialDesignControls.Material3
             }
 
             this.imgTrailingIcon.IsVisible = false;
+            await SizeTo(0.9);
         }
 
-        private void GoToRight(double percentage = 0.0)
+        private async Task GoToRight(double percentage = 0.0)
         {
             if (Math.Abs(KnobFrame.TranslationX - _xRef) > 0.0)
             {
@@ -287,6 +266,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
 
             this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+            await SizeTo(1.1);
         }
 
         private void SendSwitchPanUpdatedEventArgs(PanStatusEnum status)
@@ -308,20 +288,20 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
             if (CurrentState == SwitchStateEnum.Right)
             {
-                GoToLeft();
+                await GoToLeft();
             }
             else
             {
-                GoToRight();
+                await GoToRight();
             }
         }
 
-        private void PanGestureRecognizer_PanUpdated(object sender, PanUpdatedEventArgs e)
+        private async void PanGestureRecognizer_PanUpdated(object sender, PanUpdatedEventArgs e)
         {
             this.AbortAnimation("SwitchAnimation");
             double dragX = e.TotalX - _tmpTotalX;
@@ -345,11 +325,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
                     if (KnobFrame.TranslationX > 0)
                     {
-                        GoToRight(percentage);
+                        await GoToRight(percentage);
                     }
                     else
                     {
-                        GoToLeft(percentage);
+                        await GoToLeft(percentage);
                     }
 
                     _tmpTotalX = 0;
@@ -368,32 +348,9 @@ namespace Plugin.MaterialDesignControls.Material3
                 return;
             }
 
-            // Knob
-            view.KnobFrame.WidthRequest = view.KnobWidth < 0.0 ? view.Width / 2 : view.KnobWidth;
-            view.KnobFrame.HeightRequest = view.KnobHeight < 0.0 ? view.Height : view.KnobHeight;
-
-            // Background
-            view.BackgroundFrame.WidthRequest = view.WidthRequest < 0.0 ? view.Width : view.WidthRequest;
-            view.BackgroundFrame.HeightRequest = view.HeightRequest < 0.0 ? view.Height : view.HeightRequest;
-
             // View
             view.SetBaseWidthRequest(Math.Max(view.BackgroundFrame.WidthRequest, view.KnobFrame.WidthRequest * 2));
-
-            // Calculate knob position
-            switch (view.KnobLimit)
-            {
-                case KnobLimitEnum.Boundary:
-                    view._xRef = ((view.BackgroundFrame.WidthRequest - view.KnobFrame.WidthRequest) / 2) - view.HorizontalKnobMargin;
-                    break;
-
-                case KnobLimitEnum.Centered:
-                    view._xRef = ((view.BackgroundFrame.WidthRequest - view.KnobFrame.WidthRequest) / 2) - (((view.BackgroundFrame.WidthRequest / 2) - view.KnobFrame.WidthRequest) / 2);
-                    break;
-
-                case KnobLimitEnum.Max:
-                    view._xRef = Math.Max(view.BackgroundFrame.WidthRequest, view.KnobFrame.WidthRequest * 2) / 4;
-                    break;
-            }
+            view._xRef = ((view.BackgroundFrame.WidthRequest - view.KnobFrame.WidthRequest) / 2) - 3;
             view.KnobFrame.TranslationX = view.CurrentState == SwitchStateEnum.Left ? -view._xRef : view._xRef;
         }
 
@@ -417,12 +374,37 @@ namespace Plugin.MaterialDesignControls.Material3
                         this.imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
 
                     this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                break;                
+                case nameof(LeadingIcon):
+                    if (!string.IsNullOrEmpty(LeadingIcon))
+                        this.imgTrailingIcon.SetImage(LeadingIcon);
+
+                    this.imgTrailingIcon.IsVisible = LeadingIconIsVisible;
+                break;
+                case nameof(CustomLeadingIcon):
+                    if (CustomLeadingIcon != null)
+                        this.imgTrailingIcon.SetCustomImage(CustomLeadingIcon);
+
+                    this.imgTrailingIcon.IsVisible = LeadingIconIsVisible;
                 break;
             }
+
+            base.OnPropertyChanged(propertyName);
         }
 
         private bool TrailingIconIsVisible 
             => CurrentState != SwitchStateEnum.Left && !string.IsNullOrEmpty(TrailingIcon) || CustomTrailingIcon != null;
+        
+        private bool LeadingIconIsVisible
+            => CurrentState != SwitchStateEnum.Right && !string.IsNullOrEmpty(LeadingIcon) || CustomLeadingIcon != null;
+
+        private async Task SizeTo(double scale)
+        {
+            uint length = 200;
+            Easing easing = Easing.Linear;
+
+            await KnobFrame.ScaleTo(scale, length, easing);
+        }
         #endregion Methods
     }
 

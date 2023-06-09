@@ -7,9 +7,6 @@
              AutomationProperties.IsInAccessibleTree="True"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
              BackgroundColor="Transparent">
-    <ContentView.GestureRecognizers>
-        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-    </ContentView.GestureRecognizers>
     <ContentView.Content>
         <Grid>
             <Grid.Effects>
@@ -18,15 +15,14 @@
 
             <controls3:MaterialCard x:Name="BackgroundFrame"
                                     Padding="0"
+                                    CornerRadius="15"
                                     BackgroundColor="{Binding BackgroundColor, Source={RelativeSource AncestorType={x:Type ContentView}}}"
-                                    Content="{Binding BackgroundContent, Source={RelativeSource AncestorType={x:Type ContentView}}}"
-                                    CornerRadius="{Binding CornerRadius, Source={RelativeSource AncestorType={x:Type ContentView}}}"
                                     CornerRadiusBottomLeft="True"
                                     CornerRadiusTopLeft="True"
                                     CornerRadiusBottomRight="True"
                                     CornerRadiusTopRight="True"
                                     HasShadow="False"
-                                    HeightRequest="{Binding HeightRequest, Source={RelativeSource AncestorType={x:Type ContentView}}}"
+                                    HeightRequest="32"
                                     HorizontalOptions="Center"
                                     IsClippedToBounds="True"
                                     VerticalOptions="Center"
@@ -39,21 +35,21 @@
             <controls3:MaterialCard x:Name="KnobFrame"
                                     Padding="0"
                                     BackgroundColor="{Binding KnobColor, Source={RelativeSource AncestorType={x:Type ContentView}}}"
-                                    CornerRadius="{Binding KnobCornerRadius, Source={RelativeSource AncestorType={x:Type ContentView}}}"
+                                    CornerRadius="12"
                                     CornerRadiusBottomLeft="True"
                                     CornerRadiusTopLeft="True"
                                     CornerRadiusBottomRight="True"
                                     CornerRadiusTopRight="True"
                                     HasShadow="False"
-                                    HeightRequest="{Binding KnobHeight, Source={RelativeSource AncestorType={x:Type ContentView}}}"
+                                    HeightRequest="24"
                                     HorizontalOptions="Center"
                                     IsClippedToBounds="True"
                                     VerticalOptions="Center"
-                                    WidthRequest="{Binding KnobWidth, Source={RelativeSource AncestorType={x:Type ContentView}}}">
+                                    WidthRequest="24">
                 <custom:CustomImageButton x:Name="imgTrailingIcon"
                                           IsVisible="false"
-                                          WidthRequest="24"
-                                          HeightRequest="24"
+                                          WidthRequest="22"
+                                          HeightRequest="22"
                                           VerticalOptions="Center"
                                           HorizontalOptions="Center" />
             </controls3:MaterialCard>
