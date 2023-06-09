@@ -20,15 +20,13 @@ namespace Plugin.MaterialDesignControls.Material3
             SwitchPanUpdate += (sender, e) =>
             {
                 //Color Animation
-                Color fromColor = IsToggled ? Color.FromHex("#4ACC64") : Color.FromHex("#EBECEC");
-                Color toColor = IsToggled ? Color.FromHex("#EBECEC") : Color.FromHex("#4ACC64");
+                Color fromColor = IsToggled ? BackgroundOnSelectedColor : BackgroundOnUnselectedColor;
+                Color toColor = IsToggled ? BackgroundOnUnselectedColor : BackgroundOnSelectedColor;
 
                 double t = e.Percentage * 0.01;
 
                 BackgroundColor = ColorAnimationUtil.ColorAnimation(fromColor, toColor, t);
             };
-
-            //Flex.TranslationX = -(e.TranslateX + e.XRef);
         }
         #endregion Constructors
 
@@ -38,9 +36,17 @@ namespace Plugin.MaterialDesignControls.Material3
         private double _xRef;
         private double _tmpTotalX;
 
+        private readonly int _toggleAnimationDuration = 100;
+        private readonly double _reduceTo = 0.85;
+        private readonly double _increazeTo = 1.15;
+
+        public bool ReduceThumbSize => CustomUnselectedIcon == null && string.IsNullOrWhiteSpace(UnselectedIcon);
+
         #endregion Attributes
 
         #region Properties
+
+        #region Background
 
         public new static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSwitch), Color.Default);
 
@@ -49,6 +55,23 @@ namespace Plugin.MaterialDesignControls.Material3
             get => (Color)GetValue(BackgroundColorProperty);
             set => SetValue(BackgroundColorProperty, value);
         }
+
+        public static readonly BindableProperty BackgroundOnUnselectedColorProperty = BindableProperty.Create(nameof(BackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), Color.LightGray);
+
+        public Color BackgroundOnUnselectedColor
+        {
+            get => (Color)GetValue(BackgroundOnUnselectedColorProperty);
+            set => SetValue(BackgroundOnUnselectedColorProperty, value);
+        }
+
+        public static readonly BindableProperty BackgroundOnSelectedColorProperty = BindableProperty.Create(nameof(BackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), Color.FromHex("#aca3db"));
+
+        public Color BackgroundOnSelectedColor
+        {
+            get => (Color)GetValue(BackgroundOnSelectedColorProperty);
+            set => SetValue(BackgroundOnSelectedColorProperty, value);
+        }
+        #endregion BackgroundColor
 
         #region Toggled
 
@@ -61,7 +84,6 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(IsToggledProperty, value);
         }
 
-
         public static readonly BindableProperty ToggledCommandProperty = BindableProperty.Create(nameof(ToggledCommand), typeof(ICommand), typeof(MaterialSwitch));
 
         public ICommand ToggledCommand
@@ -69,17 +91,11 @@ namespace Plugin.MaterialDesignControls.Material3
             get => (ICommand)GetValue(ToggledCommandProperty);
             set => SetValue(ToggledCommandProperty, value);
         }
-
-        public static readonly BindableProperty ToggleAnimationDurationProperty = BindableProperty.Create(nameof(ToggleAnimationDuration), typeof(int), typeof(MaterialSwitch), 100);
-
-        public int ToggleAnimationDuration
-        {
-            get => (int)GetValue(ToggleAnimationDurationProperty);
-            set => SetValue(ToggleAnimationDurationProperty, value);
-        }
         #endregion Toggled
 
         #region Thumb
+
+        //TODO: to remove and check a better way 
         public static readonly BindableProperty KnobHeightProperty = BindableProperty.Create(nameof(KnobHeight), typeof(double), typeof(MaterialSwitch), 0d, propertyChanged: SizeRequestChanged);
 
         public double KnobHeight
@@ -96,72 +112,56 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(KnobWidthProperty, value);
         }
 
-        public static readonly BindableProperty KnobBackgroundProperty = BindableProperty.Create(nameof(KnobBackground), typeof(Brush), typeof(MaterialSwitch), Brush.Default);
-        [TypeConverter(typeof(BrushTypeConverter))]
-        public Brush KnobBackground
+        public static readonly BindableProperty ThumbUnselectedColorProperty = BindableProperty.Create(nameof(ThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), Color.DarkGray);
+
+        public Color ThumbUnselectedColor
         {
-            get => (Brush)GetValue(KnobBackgroundProperty);
-            set => SetValue(KnobBackgroundProperty, value);
+            get => (Color)GetValue(ThumbUnselectedColorProperty);
+            set => SetValue(ThumbUnselectedColorProperty, value);
         }
 
-        public static readonly BindableProperty KnobColorProperty = BindableProperty.Create(nameof(KnobColor), typeof(Color), typeof(MaterialSwitch), Color.Default);
+        public static readonly BindableProperty ThumbSelectedColorProperty = BindableProperty.Create(nameof(ThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), Color.FromHex("#7364c3"));
 
-        public Color KnobColor
+        public Color ThumbSelectedColor
         {
-            get => (Color)GetValue(KnobColorProperty);
-            set => SetValue(KnobColorProperty, value);
+            get => (Color)GetValue(ThumbSelectedColorProperty);
+            set => SetValue(ThumbSelectedColorProperty, value);
         }
 
-        public static readonly BindableProperty HorizontalKnobMarginProperty = BindableProperty.Create(nameof(HorizontalKnobMargin), typeof(double), typeof(MaterialSwitch), 2d, propertyChanged: SizeRequestChanged);
+        public static readonly BindableProperty SelectedIconProperty =
+            BindableProperty.Create(nameof(SelectedIcon), typeof(string), typeof(MaterialSwitch), defaultValue: null);
 
-        public double HorizontalKnobMargin
+        public string SelectedIcon
         {
-            get => (double)GetValue(HorizontalKnobMarginProperty);
-            set => SetValue(HorizontalKnobMarginProperty, value);
+            get { return (string)GetValue(SelectedIconProperty); }
+            set { SetValue(SelectedIconProperty, value); }
         }
 
-        public static readonly BindableProperty KnobLimitProperty = BindableProperty.Create(nameof(KnobLimit), typeof(KnobLimitEnum), typeof(MaterialSwitch), KnobLimitEnum.Boundary, propertyChanged: SizeRequestChanged);
+        public static readonly BindableProperty CustomSelectedIconProperty =
+            BindableProperty.Create(nameof(CustomSelectedIcon), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
 
-        public KnobLimitEnum KnobLimit
+        public View CustomSelectedIcon
         {
-            get => (KnobLimitEnum)GetValue(KnobLimitProperty);
-            set => SetValue(KnobLimitProperty, value);
+            get { return (View)GetValue(CustomSelectedIconProperty); }
+            set { SetValue(CustomSelectedIconProperty, value); }
         }
 
-        public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialSwitch), defaultValue: null);
+        public static readonly BindableProperty UnselectedIconProperty =
+            BindableProperty.Create(nameof(UnselectedIcon), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
 
-        public string TrailingIcon
+        public string UnselectedIcon
         {
-            get { return (string)GetValue(TrailingIconProperty); }
-            set { SetValue(TrailingIconProperty, value); }
+            get { return (string)GetValue(UnselectedIconProperty); }
+            set { SetValue(UnselectedIconProperty, value); }
         }
 
-        public static readonly BindableProperty CustomTrailingIconProperty =
-            BindableProperty.Create(nameof(CustomTrailingIcon), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
+        public static readonly BindableProperty CustomUnselectedIconProperty =
+            BindableProperty.Create(nameof(CustomUnselectedIcon), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
 
-        public View CustomTrailingIcon
+        public View CustomUnselectedIcon
         {
-            get { return (View)GetValue(CustomTrailingIconProperty); }
-            set { SetValue(CustomTrailingIconProperty, value); }
-        }
-
-        public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
-
-        public string LeadingIcon
-        {
-            get { return (string)GetValue(LeadingIconProperty); }
-            set { SetValue(LeadingIconProperty, value); }
-        }
-
-        public static readonly BindableProperty CustomLeadingIconProperty =
-            BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
-
-        public View CustomLeadingIcon
-        {
-            get { return (View)GetValue(CustomLeadingIconProperty); }
-            set { SetValue(CustomLeadingIconProperty, value); }
+            get { return (View)GetValue(CustomUnselectedIconProperty); }
+            set { SetValue(CustomUnselectedIconProperty, value); }
         }
 
         #endregion Thumb
@@ -212,18 +212,19 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private async Task GoToLeft(double percentage = 0.0)
         {
-            if (Math.Abs(KnobFrame.TranslationX + _xRef) > 0.0)
+            if (Math.Abs(ThumbFrame.TranslationX + _xRef) > 0.0)
             {
                 this.AbortAnimation("SwitchAnimation");
                 new Animation
                 {
-                    {0, 1, new Animation(v => KnobFrame.TranslationX = v, KnobFrame.TranslationX, -_xRef)},
+                    {0, 1, new Animation(v => ThumbFrame.TranslationX = v, ThumbFrame.TranslationX, -_xRef)},
                     {0, 1, new Animation(_ => SendSwitchPanUpdatedEventArgs(PanStatusEnum.Running))}
-                }.Commit(this, "SwitchAnimation", 16, Convert.ToUInt32(ToggleAnimationDuration - (ToggleAnimationDuration * percentage / 100)), null, (_, __) =>
+                }.Commit(this, "SwitchAnimation", 16, Convert.ToUInt32(_toggleAnimationDuration - (_toggleAnimationDuration * percentage / 100)), null, (_, __) =>
                 {
                     this.AbortAnimation("SwitchAnimation");
                     CurrentState = SwitchStateEnum.Left;
                     IsToggled = false;
+                    ThumbFrame.BackgroundColor = ThumbUnselectedColor;
                     SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
                 });
             }
@@ -232,28 +233,50 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.AbortAnimation("SwitchAnimation");
                 CurrentState = SwitchStateEnum.Left;
                 IsToggled = false;
+                ThumbFrame.BackgroundColor = ThumbUnselectedColor;
                 SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
             }
 
-            this.imgTrailingIcon.IsVisible = false;
-            await SizeTo(0.9);
+            if (ReduceThumbSize)
+            {
+                await SizeTo(_reduceTo);
+                this.imgIcon.IsVisible = false;
+            }
+            else
+            {
+                SetUnselectedIconSource();
+            }
+        }
+
+        private void SetUnselectedIconSource()
+        {
+            if (CustomUnselectedIcon != null)
+            {
+                this.imgIcon.SetCustomImage(CustomUnselectedIcon);
+            }
+            else if (!string.IsNullOrWhiteSpace(UnselectedIcon))
+            {
+                this.imgIcon.SetImage(UnselectedIcon);
+            }
         }
 
         private async Task GoToRight(double percentage = 0.0)
         {
-            if (Math.Abs(KnobFrame.TranslationX - _xRef) > 0.0)
+            if (Math.Abs(ThumbFrame.TranslationX - _xRef) > 0.0)
             {
                 this.AbortAnimation("SwitchAnimation");
 
                 IsToggled = true;
                 new Animation
                 {
-                    {0, 1, new Animation(v => KnobFrame.TranslationX = v, KnobFrame.TranslationX, _xRef)},
+                    {0, 1, new Animation(v => ThumbFrame.TranslationX = v, ThumbFrame.TranslationX, _xRef)},
                     {0, 1, new Animation(_ => SendSwitchPanUpdatedEventArgs(PanStatusEnum.Running))}
-                }.Commit(this, "SwitchAnimation", 16, Convert.ToUInt32(ToggleAnimationDuration - (ToggleAnimationDuration * percentage / 100)), null, (_, __) =>
+                }.Commit(this, "SwitchAnimation", 16, Convert.ToUInt32(_toggleAnimationDuration - (_toggleAnimationDuration * percentage / 100)), null, (_, __) =>
                 {
                     this.AbortAnimation("SwitchAnimation");
                     CurrentState = SwitchStateEnum.Right;
+                    IsToggled = true;
+                    ThumbFrame.BackgroundColor = ThumbSelectedColor;
                     SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
                 });
             }
@@ -262,11 +285,32 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.AbortAnimation("SwitchAnimation");
                 CurrentState = SwitchStateEnum.Right;
                 IsToggled = true;
+                ThumbFrame.BackgroundColor = ThumbSelectedColor;
                 SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
             }
 
-            this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
-            await SizeTo(1.1);
+            if (ReduceThumbSize)
+            {
+                await SizeTo(_increazeTo);
+                this.imgIcon.IsVisible = TrailingIconIsVisible;
+                SetSelectedIconSource();
+            }
+            else
+            {
+                SetSelectedIconSource();
+            }
+        }
+
+        private void SetSelectedIconSource()
+        {
+            if (CustomSelectedIcon != null)
+            {
+                this.imgIcon.SetCustomImage(CustomSelectedIcon);
+            }
+            else if (!string.IsNullOrWhiteSpace(SelectedIcon))
+            {
+                this.imgIcon.SetImage(SelectedIcon);
+            }
         }
 
         private void SendSwitchPanUpdatedEventArgs(PanStatusEnum status)
@@ -275,11 +319,11 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 XRef = _xRef,
                 IsToggled = IsToggled,
-                TranslateX = KnobFrame.TranslationX,
+                TranslateX = ThumbFrame.TranslationX,
                 Status = status,
                 Percentage = IsToggled
-                    ? Math.Abs(KnobFrame.TranslationX - _xRef) / (2 * _xRef) * 100
-                    : Math.Abs(KnobFrame.TranslationX + _xRef) / (2 * _xRef) * 100
+                    ? Math.Abs(ThumbFrame.TranslationX - _xRef) / (2 * _xRef) * 100
+                    : Math.Abs(ThumbFrame.TranslationX + _xRef) / (2 * _xRef) * 100
             };
 
             if (!double.IsNaN(ev.Percentage))
@@ -313,17 +357,17 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case GestureStatus.Running:
-                    KnobFrame.TranslationX = Math.Min(_xRef, Math.Max(-_xRef, KnobFrame.TranslationX + dragX));
+                    ThumbFrame.TranslationX = Math.Min(_xRef, Math.Max(-_xRef, ThumbFrame.TranslationX + dragX));
                     _tmpTotalX = e.TotalX;
                     SendSwitchPanUpdatedEventArgs(PanStatusEnum.Running);
                     break;
 
                 case GestureStatus.Completed:
                     double percentage = IsToggled
-                        ? Math.Abs(KnobFrame.TranslationX - _xRef) / (2 * _xRef) * 100
-                        : Math.Abs(KnobFrame.TranslationX + _xRef) / (2 * _xRef) * 100;
+                        ? Math.Abs(ThumbFrame.TranslationX - _xRef) / (2 * _xRef) * 100
+                        : Math.Abs(ThumbFrame.TranslationX + _xRef) / (2 * _xRef) * 100;
 
-                    if (KnobFrame.TranslationX > 0)
+                    if (ThumbFrame.TranslationX > 0)
                     {
                         await GoToRight(percentage);
                     }
@@ -349,9 +393,9 @@ namespace Plugin.MaterialDesignControls.Material3
             }
 
             // View
-            view.SetBaseWidthRequest(Math.Max(view.BackgroundFrame.WidthRequest, view.KnobFrame.WidthRequest * 2));
-            view._xRef = ((view.BackgroundFrame.WidthRequest - view.KnobFrame.WidthRequest) / 2) - 3;
-            view.KnobFrame.TranslationX = view.CurrentState == SwitchStateEnum.Left ? -view._xRef : view._xRef;
+            view.SetBaseWidthRequest(Math.Max(view.BackgroundFrame.WidthRequest, view.ThumbFrame.WidthRequest * 2));
+            view._xRef = ((view.BackgroundFrame.WidthRequest - view.ThumbFrame.WidthRequest) / 2) - 5;
+            view.ThumbFrame.TranslationX = view.CurrentState == SwitchStateEnum.Left ? -view._xRef : view._xRef;
         }
 
         private void SetBaseWidthRequest(double widthRequest)
@@ -363,47 +407,80 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             switch (propertyName)
             {
-                case nameof(TrailingIcon):
-                    if (!string.IsNullOrEmpty(TrailingIcon))
-                        this.imgTrailingIcon.SetImage(TrailingIcon);
+                //case nameof(SelectedIcon):
+                //    if (!string.IsNullOrEmpty(SelectedIcon))
+                //        this.imgIcon.SetImage(SelectedIcon);
 
-                    this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
-                break;
-                case nameof(CustomTrailingIcon):
-                    if (CustomTrailingIcon != null)
-                        this.imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
+                //    this.imgIcon.IsVisible = TrailingIconIsVisible;
+                //break;
 
-                    this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
-                break;                
-                case nameof(LeadingIcon):
-                    if (!string.IsNullOrEmpty(LeadingIcon))
-                        this.imgTrailingIcon.SetImage(LeadingIcon);
+                //case nameof(CustomSelectedIcon):
+                //    if (CustomSelectedIcon != null)
+                //        this.imgIcon.SetCustomImage(CustomSelectedIcon);
 
-                    this.imgTrailingIcon.IsVisible = LeadingIconIsVisible;
-                break;
-                case nameof(CustomLeadingIcon):
-                    if (CustomLeadingIcon != null)
-                        this.imgTrailingIcon.SetCustomImage(CustomLeadingIcon);
+                //    this.imgIcon.IsVisible = TrailingIconIsVisible;
+                //break;   
+                    
+                //case nameof(UnselectedIcon):
+                //    if (!string.IsNullOrEmpty(UnselectedIcon))
+                //        this.imgIcon.SetImage(UnselectedIcon);
 
-                    this.imgTrailingIcon.IsVisible = LeadingIconIsVisible;
-                break;
+                //    this.imgIcon.IsVisible = LeadingIconIsVisible;
+                //break;
+
+                //case nameof(CustomUnselectedIcon):
+                //    if (CustomUnselectedIcon != null)
+                //        this.imgIcon.SetCustomImage(CustomUnselectedIcon);
+
+                //    this.imgIcon.IsVisible = LeadingIconIsVisible;
+                //break;
+
+                //case nameof(ThumbSelectedColor):
+                //    this.ThumbFrame.BackgroundColor = ThumbColor;
+                //    break;
+
+                //case nameof(ThumbColor):
+                //    this.ThumbFrame.BackgroundColor = ThumbColor;
+                //    break;
+
+                case nameof(BackgroundOnSelectedColor):
+                    InitializeSwitchPanUpdate();
+                    break;
+
+                case nameof(BackgroundOnUnselectedColor):
+                    InitializeSwitchPanUpdate();
+                    break;
             }
 
             base.OnPropertyChanged(propertyName);
         }
 
         private bool TrailingIconIsVisible 
-            => CurrentState != SwitchStateEnum.Left && !string.IsNullOrEmpty(TrailingIcon) || CustomTrailingIcon != null;
+            => CurrentState != SwitchStateEnum.Left && !string.IsNullOrEmpty(SelectedIcon) || CustomSelectedIcon != null;
         
         private bool LeadingIconIsVisible
-            => CurrentState != SwitchStateEnum.Right && !string.IsNullOrEmpty(LeadingIcon) || CustomLeadingIcon != null;
+            => CurrentState != SwitchStateEnum.Right && !string.IsNullOrEmpty(UnselectedIcon) || CustomUnselectedIcon != null;
 
         private async Task SizeTo(double scale)
         {
             uint length = 200;
             Easing easing = Easing.Linear;
 
-            await KnobFrame.ScaleTo(scale, length, easing);
+            await ThumbFrame.ScaleTo(scale, length, easing);
+        }
+
+        private void InitializeSwitchPanUpdate()
+        {
+            SwitchPanUpdate += (sender, e) =>
+            {
+                //Color Animation
+                Color fromColor = IsToggled ? BackgroundOnSelectedColor : BackgroundOnUnselectedColor;
+                Color toColor = IsToggled ? BackgroundOnUnselectedColor : BackgroundOnSelectedColor;
+
+                double t = e.Percentage * 0.01;
+
+                BackgroundColor = ColorAnimationUtil.ColorAnimation(fromColor, toColor, t);
+            };
         }
         #endregion Methods
     }

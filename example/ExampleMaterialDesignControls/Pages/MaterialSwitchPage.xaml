@@ -23,12 +23,7 @@
                 <StackLayout Padding="20,0,20,20"
                              Spacing="15">
 
-                    <material3:MaterialSwitch IsToggled="True"
-                                              KnobColor="Red"
-                                              KnobHeight="24"
-                                              KnobLimit="Boundary"
-                                              TrailingIcon="Product.png"
-                                              KnobWidth="30">
+                    <material3:MaterialSwitch IsToggled="{Binding IsOn}">
                     </material3:MaterialSwitch>
 
                     <material:MaterialSwitch AssistiveText="Bluetooth is required"
