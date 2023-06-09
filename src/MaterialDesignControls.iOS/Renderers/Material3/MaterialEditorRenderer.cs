@@ -1,15 +1,16 @@
-﻿using System;
-using Foundation;
-using Plugin.MaterialDesignControls.Implementations;
-using Plugin.MaterialDesignControls.iOS;
+﻿using Foundation;
 using Plugin.MaterialDesignControls.Utils;
+using System;
 using UIKit;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Xamarin.Forms;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Material3.iOS;
+using CoreGraphics;
 
 [assembly: ExportRenderer(typeof(CustomEditor), typeof(MaterialEditorRenderer))]
 
-namespace Plugin.MaterialDesignControls.iOS
+namespace Plugin.MaterialDesignControls.Material3.iOS
 {
     public class MaterialEditorRenderer : EditorRenderer
     {
@@ -34,7 +35,7 @@ namespace Plugin.MaterialDesignControls.iOS
             {
                 Text = element?.Placeholder,
                 TextColor = element.PlaceholderColor.ToUIColor(),
-                BackgroundColor = UIColor.Clear
+                BackgroundColor = UIColor.Clear,
             };
 
             lblPlaceholder.Hidden = !string.IsNullOrEmpty(element.Text);
@@ -63,6 +64,9 @@ namespace Plugin.MaterialDesignControls.iOS
 
             this.Control.AddConstraints(hConstraints);
             this.Control.AddConstraints(vConstraints);
+
+            Control.LayoutManager.UsesDefaultHyphenation = false;
+            Control.LayoutManager.AllowsNonContiguousLayout = false;
         }
 
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -75,6 +79,19 @@ namespace Plugin.MaterialDesignControls.iOS
                 || e.PropertyName == MaterialEditor.FontFamilyProperty.PropertyName)
                 SetFont();
         }
+
+        //protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
+        //{
+
+        //    base.OnElementChanged(e);
+        //    if (this.Control != null)
+        //    {
+
+        //        this.Control.
+
+        //    }
+
+        //}
 
         private void SetFont()
         {

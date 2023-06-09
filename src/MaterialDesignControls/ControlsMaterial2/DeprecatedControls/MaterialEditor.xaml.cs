@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialEditor is deprecated, please use MaterialEditor of Material 3 instead.")]
     public partial class MaterialEditor : BaseMaterialFieldControl
     {
         #region Constructors
