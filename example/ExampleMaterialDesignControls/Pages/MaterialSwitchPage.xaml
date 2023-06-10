@@ -26,6 +26,8 @@
                         OnColor="#aca3db"
                         SwitchHorizontalOptions="EndAndExpand"
                         Text="WIFI"
+                        x:Name="swEnabled"
+                        IsEnabled="{Binding IsOn}"
                         TextSide="Left"
                         ThumbColor="{StaticResource GradientColor4}" />
                     <material:MaterialSwitch

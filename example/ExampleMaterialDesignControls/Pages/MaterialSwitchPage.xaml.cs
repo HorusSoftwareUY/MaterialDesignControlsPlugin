@@ -15,6 +15,9 @@ namespace ExampleMaterialDesignControls.Pages
         private void Switch_toggled(object sender, EventArgs eventArgs)
         {
             DisplayAlert("Message","Switch toggled","OK");
-	    }
+
+            swEnabled.IsEnabled = !swEnabled.IsEnabled;
+
+        }
     }
 }
