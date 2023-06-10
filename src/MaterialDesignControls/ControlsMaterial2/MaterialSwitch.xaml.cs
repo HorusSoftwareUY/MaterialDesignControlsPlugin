@@ -297,11 +297,6 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(IsToggled):
                     sw.IsToggled = IsToggled;
-
-                    //if (!swIsClicked)
-                    //    sw.IsToggled = IsToggled;
-                    //else
-                    //    swIsClicked = false;
                     break;
                 case nameof(AssistiveText):
                     lblAssistive.Text = AssistiveText;

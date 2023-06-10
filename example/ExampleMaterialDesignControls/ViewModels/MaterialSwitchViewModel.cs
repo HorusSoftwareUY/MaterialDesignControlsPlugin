@@ -44,16 +44,15 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand SaveCommand => new Command(OnSaveCommand);
         private void OnSaveCommand()
         {
-            IsOn = !IsOn;
-            //if (IsOn)
-            //{
-            //    this.Error = null;
-            //    await this.DisplayAlert.Invoke("Saved", $"Dark mode activated", "Ok");
-            //}
-            //else
-            //{
-            //    this.Error = "The dark mode is required";
-            //}
+            if (IsOn)
+            {
+                this.Error = null;
+                await this.DisplayAlert.Invoke("Saved", $"Dark mode activated", "Ok");
+            }
+            else
+            {
+                this.Error = "The dark mode is required";
+            }
         }
     }
 }
