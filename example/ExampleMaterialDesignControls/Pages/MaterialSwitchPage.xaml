@@ -25,6 +25,11 @@
 
                     <material3:MaterialSwitch IsToggled="{Binding IsOn}"
                                               KnobHeight="24"
+                                              IsEnabled="False"
+                                              SwitchHorizontalOptions="EndAndExpand"
+                                              Text="Bluetooth *"
+                                              TextSide="Left"
+                                              SupportingText="SupportingText"
                                               KnobWidth="30">
                     </material3:MaterialSwitch>
 

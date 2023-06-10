@@ -1,6 +1,6 @@
-﻿using Plugin.MaterialDesignControls.Utils;
+﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Utils;
 using System;
-using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -16,6 +16,7 @@ namespace Plugin.MaterialDesignControls.Material3
         public MaterialSwitch()
         {
             InitializeComponent();
+            Initialize();
 
             SwitchPanUpdate += (sender, e) =>
             {
@@ -166,6 +167,163 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion Thumb
 
+        #region Text
+        public static readonly BindableProperty TextProperty =
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialSwitch), defaultValue: string.Empty);
+
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
+        public static readonly BindableProperty TextColorProperty =
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: Color.Gray);
+
+        public Color TextColor
+        {
+            get { return (Color)GetValue(TextColorProperty); }
+            set { SetValue(TextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledTextColorProperty =
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: Color.LightGray);
+
+        public Color DisabledTextColor
+        {
+            get { return (Color)GetValue(DisabledTextColorProperty); }
+            set { SetValue(DisabledTextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty FontSizeProperty =
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialSwitch), defaultValue: Font.Default.FontSize);
+
+        public double FontSize
+        {
+            get { return (double)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: null);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
+        }
+
+        public static readonly BindableProperty TextSideProperty =
+            BindableProperty.Create(nameof(TextSide), typeof(TextSide), typeof(MaterialSwitch), defaultValue: TextSide.Right);
+
+        public TextSide TextSide
+        {
+            get { return (TextSide)GetValue(TextSideProperty); }
+            set { SetValue(TextSideProperty, value); }
+        }
+
+        public static readonly BindableProperty TextVerticalOptionsProperty =
+            BindableProperty.Create(nameof(TextVerticalOptions), typeof(LayoutOptions), typeof(MaterialSwitch), defaultValue: LayoutOptions.Center);
+
+        public LayoutOptions TextVerticalOptions
+        {
+            get { return (LayoutOptions)GetValue(TextVerticalOptionsProperty); }
+            set { SetValue(TextVerticalOptionsProperty, value); }
+        }
+        #endregion Text
+
+        #region SupportingText
+        public static readonly BindableProperty SupportingTextProperty =
+                    BindableProperty.Create(nameof(SupportingText), typeof(string), typeof(MaterialSwitch), defaultValue: null, validateValue: OnSupportingTextValidate);
+
+        public string SupportingText
+        {
+            get { return (string)GetValue(SupportingTextProperty); }
+            set { SetValue(SupportingTextProperty, value); }
+        }
+
+        public static readonly BindableProperty SupportingTextColorProperty =
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: Color.Gray);
+
+        public Color SupportingTextColor
+        {
+            get { return (Color)GetValue(SupportingTextColorProperty); }
+            set { SetValue(SupportingTextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty SupportingSizeProperty =
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialSwitch), defaultValue: Font.Default.FontSize);
+
+        public double SupportingSize
+        {
+            get { return (double)GetValue(SupportingSizeProperty); }
+            set { SetValue(SupportingSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty SupportingFontFamilyProperty =
+            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: null);
+
+        public string SupportingFontFamily
+        {
+            get { return (string)GetValue(SupportingFontFamilyProperty); }
+            set { SetValue(SupportingFontFamilyProperty, value); }
+        }
+
+        public static readonly BindableProperty SupportingMarginProperty =
+            BindableProperty.Create(nameof(SupportingMargin), typeof(Thickness), typeof(MaterialSwitch), defaultValue: new Thickness(14, 2, 14, 0));
+
+        public Thickness SupportingMargin
+        {
+            get { return (Thickness)GetValue(SupportingMarginProperty); }
+            set { SetValue(SupportingMarginProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimateErrorProperty =
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialSwitch), defaultValue: false);
+
+        public bool AnimateError
+        {
+            get { return (bool)GetValue(AnimateErrorProperty); }
+            set { SetValue(AnimateErrorProperty, value); }
+        }
+        #endregion SupportingText
+
+        public static readonly BindableProperty TextHorizontalOptionsProperty =
+            BindableProperty.Create(nameof(TextHorizontalOptions), typeof(LayoutOptions), typeof(MaterialSwitch), defaultValue: LayoutOptions.Start);
+
+        public LayoutOptions TextHorizontalOptions
+        {
+            get { return (LayoutOptions)GetValue(TextHorizontalOptionsProperty); }
+            set { SetValue(TextHorizontalOptionsProperty, value); }
+        }
+
+        public static readonly BindableProperty SwitchHorizontalOptionsProperty =
+            BindableProperty.Create(nameof(SwitchHorizontalOptions), typeof(LayoutOptions), typeof(MaterialSwitch), defaultValue: LayoutOptions.Start);
+
+        public LayoutOptions SwitchHorizontalOptions
+        {
+            get { return (LayoutOptions)GetValue(SwitchHorizontalOptionsProperty); }
+            set { SetValue(SwitchHorizontalOptionsProperty, value); }
+        }
+
+        public static readonly BindableProperty SpacingProperty =
+            BindableProperty.Create(nameof(Spacing), typeof(double), typeof(MaterialSwitch), defaultValue: 10.0);
+
+        public double Spacing
+        {
+            get { return (double)GetValue(SpacingProperty); }
+            set { SetValue(SpacingProperty, value); }
+        }
+
+        public new static readonly BindableProperty IsEnabledProperty = 
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(VisualElement), defaultValue: true, defaultBindingMode: BindingMode.TwoWay);
+
+        public new bool IsEnabled
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
+        }
+
         #endregion Properties
 
         #region Events
@@ -187,6 +345,24 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 await GoToLeft(100);
             }
+        }
+
+        private static bool OnSupportingTextValidate(BindableObject bindable, object value)
+        {
+            var control = (MaterialSwitch)bindable;
+
+            // Used to animate the error when the assistive text doesn't change
+            if (control.AnimateError && !string.IsNullOrEmpty(control.SupportingText) && control.SupportingText == (string)value)
+                ShakeAnimation.Animate(control);
+
+            return true;
+        }
+
+        private void Initialize()
+        {
+            lblLeft.VerticalOptions = TextVerticalOptions;
+            lblRight.VerticalOptions = TextVerticalOptions;
+            container.Spacing = Spacing;
         }
 
         private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
@@ -413,9 +589,99 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(BackgroundOnUnselectedColor):
                     InitializeSwitchPanUpdate();
                     break;
+
+                case nameof(Text):
+                    lblLeft.Text = Text;
+                    lblRight.Text = Text;
+                    break;
+
+                case nameof(TextColor):
+                case nameof(DisabledTextColor):
+                    SetTextColor();
+                    break;
+
+                case nameof(FontSize):
+                    lblLeft.FontSize = FontSize;
+                    lblRight.FontSize = FontSize;
+                    break;
+
+                case nameof(FontFamily):
+                    lblLeft.FontFamily = FontFamily;
+                    lblRight.FontFamily = FontFamily;
+                    break;
+
+                case nameof(TextVerticalOptions):
+                    lblLeft.VerticalOptions = TextVerticalOptions;
+                    lblRight.VerticalOptions = TextVerticalOptions;
+                    break;
+
+                case nameof(TextSide):
+                    if (TextSide == TextSide.Right)
+                    {
+                        lblLeft.IsVisible = false;
+                        lblRight.Text = Text;
+                        lblRight.IsVisible = true;
+                    }
+                    else
+                    {
+                        lblRight.IsVisible = false;
+                        lblLeft.Text = Text;
+                        lblLeft.IsVisible = true;
+                    }
+                    break;
+
+                case nameof(IsEnabled):
+                    sw.IsEnabled = IsEnabled;
+                    SetTextColor();
+                    break;
+
+                case nameof(SupportingText):
+                    lblSupportingText.Text = SupportingText;
+                    lblSupportingText.IsVisible = !string.IsNullOrEmpty(SupportingText);
+                    if (AnimateError && !string.IsNullOrEmpty(SupportingText))
+                        ShakeAnimation.Animate(this);
+                    break;
+
+                case nameof(SupportingTextColor):
+                    lblSupportingText.TextColor = SupportingTextColor;
+                    break;
+
+                case nameof(SupportingSize):
+                    lblSupportingText.FontSize = SupportingSize;
+                    break;
+
+                case nameof(SupportingFontFamily):
+                    lblSupportingText.FontFamily = SupportingFontFamily;
+                    break;
+
+                case nameof(SupportingMargin):
+                    lblSupportingText.Margin = SupportingMargin;
+                    break;
+
+                case nameof(TextHorizontalOptions):
+                    if (TextSide == TextSide.Left)
+                        lblLeft.HorizontalOptions = TextHorizontalOptions;
+                    else
+                        lblRight.HorizontalOptions = TextHorizontalOptions;
+                    break;
+
+                case nameof(SwitchHorizontalOptions):
+                    sw.HorizontalOptions = SwitchHorizontalOptions;
+                    sw.HorizontalOptions = SwitchHorizontalOptions;
+                    break;
+
+                case nameof(Spacing):
+                    container.Spacing = Spacing;
+                    break;
             }
 
             base.OnPropertyChanged(propertyName);
+        }
+
+        public void SetTextColor()
+        {
+            lblLeft.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+            lblRight.TextColor = IsEnabled ? TextColor : DisabledTextColor;
         }
 
         private async Task SizeTo(double scale)
