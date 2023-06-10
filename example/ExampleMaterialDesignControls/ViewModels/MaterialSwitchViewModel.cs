@@ -42,7 +42,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
 
         public ICommand SaveCommand => new Command(OnSaveCommand);
-        private void OnSaveCommand()
+        private async void OnSaveCommand()
         {
             if (IsOn)
             {
