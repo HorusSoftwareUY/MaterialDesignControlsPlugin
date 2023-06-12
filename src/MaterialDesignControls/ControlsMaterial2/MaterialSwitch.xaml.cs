@@ -13,8 +13,6 @@ namespace Plugin.MaterialDesignControls
 
         private bool Initialized = false;
 
-        private bool swIsClicked = false;
-
         #endregion Attributes
 
         #region Constructors
@@ -31,7 +29,6 @@ namespace Plugin.MaterialDesignControls
 	        {
                 if (IsEnabled)
                 {
-                    swIsClicked = true;
                     Toggled?.Invoke(this, null);
                     IsToggled = sw.IsToggled;
 		        }
@@ -213,6 +210,14 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(SpacingProperty, value); }
         }
 
+        public new static readonly BindableProperty IsEnabledProperty = BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(VisualElement), true, BindingMode.TwoWay, null);
+
+        public new bool IsEnabled
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
+        }
+
         #endregion Properties
 
         #region Events
@@ -252,8 +257,7 @@ namespace Plugin.MaterialDesignControls
                     break;
                 case nameof(TextColor):
                 case nameof(DisabledTextColor):
-                    lblLeft.TextColor = IsEnabled ? TextColor : DisabledTextColor;
-                    lblRight.TextColor = IsEnabled? TextColor : DisabledTextColor;
+                    SetTextColor();
                     break;
                 case nameof(FontSize):
                     lblLeft.FontSize = FontSize;
@@ -288,17 +292,11 @@ namespace Plugin.MaterialDesignControls
                     sw.ThumbColor = ThumbColor;
                     break;
                 case nameof(IsEnabled):
-                    if (!IsEnabled)
-                    {
-                        sw.IsEnabled = IsEnabled;
-                        TextColor = DisabledTextColor;
-		            }
+                    sw.IsEnabled = IsEnabled;
+                    SetTextColor();
                     break;
                 case nameof(IsToggled):
-                    if (!swIsClicked)
-                        sw.IsToggled = IsToggled;
-                    else
-                        swIsClicked = false;
+                    sw.IsToggled = IsToggled;
                     break;
                 case nameof(AssistiveText):
                     lblAssistive.Text = AssistiveText;
@@ -333,6 +331,13 @@ namespace Plugin.MaterialDesignControls
                     break;
 	        }
         }
+
+        private void SetTextColor()
+        {
+            lblLeft.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+            lblRight.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+        }
+
         private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
         {
             var control = (MaterialSwitch)bindable;
