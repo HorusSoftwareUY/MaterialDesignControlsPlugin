@@ -84,12 +84,12 @@ This property is to set a command when the switch is toggled.
 <br/>
 <br/>
 
-### Property ThumbUnselectedColorProperty
+### Property ThumbUnselectedColor
 This property is to set the thumb color when the switch toggled is false.
 <br/>
 <br/>
 
-### Property ThumbSelectedColorProperty
+### Property ThumbSelectedColor
 This property is to set the thumb color when the switch toggled is true.
 <br/>
 <br/>
