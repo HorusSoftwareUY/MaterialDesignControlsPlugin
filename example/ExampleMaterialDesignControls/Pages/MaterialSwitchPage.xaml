@@ -23,9 +23,9 @@
                 <StackLayout Padding="20,0,20,20"
                              Spacing="15">
 
-                    <material3:MaterialSwitch IsToggled="{Binding IsOn}"
+                    <material3:MaterialSwitch IsToggled="True"
                                               KnobHeight="24"
-                                              IsEnabled="False"
+                                              IsEnabled="{Binding IsOn}"
                                               SwitchHorizontalOptions="EndAndExpand"
                                               Text="Bluetooth *"
                                               TextSide="Left"

@@ -10,7 +10,7 @@
              BackgroundColor="Transparent">
     <ContentView.Content>
         <StackLayout Spacing="0">
-            <StackLayout x:Name="container"
+            <StackLayout x:Name="_container"
                          Orientation="Horizontal">
                 <controls:MaterialLabel x:Name="lblLeft"
                                         IsVisible="False" />
@@ -22,7 +22,6 @@
                     <controls3:MaterialCard x:Name="BackgroundFrame"
                                             Padding="0"
                                             CornerRadius="15"
-                                            BackgroundColor="{Binding BackgroundColor, Source={RelativeSource AncestorType={x:Type ContentView}}}"
                                             CornerRadiusBottomLeft="True"
                                             CornerRadiusTopLeft="True"
                                             CornerRadiusBottomRight="True"

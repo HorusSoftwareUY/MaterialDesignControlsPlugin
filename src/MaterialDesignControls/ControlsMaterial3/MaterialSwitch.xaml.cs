@@ -15,8 +15,12 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Constructors
         public MaterialSwitch()
         {
-            InitializeComponent();
-            Initialize();
+            if (!_Initialized)
+            {
+                _Initialized = true;
+                InitializeComponent();
+                Initialize();
+            }
 
             SwitchPanUpdate += (sender, e) =>
             {
@@ -42,6 +46,8 @@ namespace Plugin.MaterialDesignControls.Material3
         private readonly double _increazeTo = 1.15;
 
         public bool ReduceThumbSize => CustomUnselectedIcon == null && string.IsNullOrWhiteSpace(UnselectedIcon);
+
+        private bool _Initialized = false;
 
         #endregion Attributes
 
@@ -184,15 +190,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (Color)GetValue(TextColorProperty); }
             set { SetValue(TextColorProperty, value); }
-        }
-
-        public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: Color.LightGray);
-
-        public Color DisabledTextColor
-        {
-            get { return (Color)GetValue(DisabledTextColorProperty); }
-            set { SetValue(DisabledTextColorProperty, value); }
         }
 
         public static readonly BindableProperty FontSizeProperty =
@@ -362,7 +359,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             lblLeft.VerticalOptions = TextVerticalOptions;
             lblRight.VerticalOptions = TextVerticalOptions;
-            container.Spacing = Spacing;
+            _container.Spacing = Spacing;
         }
 
         private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
@@ -580,6 +577,13 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
+            if (!_Initialized)
+            {
+                _Initialized = true;
+                InitializeComponent();
+                Initialize();
+            }
+
             switch (propertyName)
             {
                 case nameof(BackgroundOnSelectedColor):
@@ -596,8 +600,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(TextColor):
-                case nameof(DisabledTextColor):
                     SetTextColor();
+                    SetEnabledState();
                     break;
 
                 case nameof(FontSize):
@@ -633,6 +637,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(IsEnabled):
                     sw.IsEnabled = IsEnabled;
                     SetTextColor();
+                    SetEnabledState();
                     break;
 
                 case nameof(SupportingText):
@@ -671,17 +676,25 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(Spacing):
-                    container.Spacing = Spacing;
+                    _container.Spacing = Spacing;
+                    break;
+
+                case nameof(BackgroundColor):
+                    BackgroundFrame.BackgroundColor = BackgroundColor;
                     break;
             }
-
-            base.OnPropertyChanged(propertyName);
         }
 
-        public void SetTextColor()
+        private void SetTextColor()
         {
-            lblLeft.TextColor = IsEnabled ? TextColor : DisabledTextColor;
-            lblRight.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+            lblLeft.TextColor = TextColor;
+            lblRight.TextColor = TextColor;
+        }
+
+        private void SetEnabledState()
+        {
+            var state = IsEnabled ? "Normal" : "Disabled";
+            VisualStateManager.GoToState(this, state);
         }
 
         private async Task SizeTo(double scale)
