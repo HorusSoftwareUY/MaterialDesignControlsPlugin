@@ -101,24 +101,6 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Toggled
 
         #region Thumb
-
-        //TODO: to remove and check a better way 
-        public static readonly BindableProperty KnobHeightProperty = BindableProperty.Create(nameof(KnobHeight), typeof(double), typeof(MaterialSwitch), 0d, propertyChanged: SizeRequestChanged);
-
-        public double KnobHeight
-        {
-            get => (double)GetValue(KnobHeightProperty);
-            set => SetValue(KnobHeightProperty, value);
-        }
-
-        public static readonly BindableProperty KnobWidthProperty = BindableProperty.Create(nameof(KnobWidth), typeof(double), typeof(MaterialSwitch), 0d, propertyChanged: SizeRequestChanged);
-
-        public double KnobWidth
-        {
-            get => (double)GetValue(KnobWidthProperty);
-            set => SetValue(KnobWidthProperty, value);
-        }
-
         public static readonly BindableProperty ThumbUnselectedColorProperty = BindableProperty.Create(nameof(ThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), Color.DarkGray);
 
         public Color ThumbUnselectedColor
@@ -360,6 +342,11 @@ namespace Plugin.MaterialDesignControls.Material3
             lblLeft.VerticalOptions = TextVerticalOptions;
             lblRight.VerticalOptions = TextVerticalOptions;
             _container.Spacing = Spacing;
+
+            // View
+            this.SetBaseWidthRequest(Math.Max(this.BackgroundFrame.WidthRequest, this.ThumbFrame.WidthRequest * 2));
+            this._xRef = ((this.BackgroundFrame.WidthRequest - this.ThumbFrame.WidthRequest) / 2) - 5;
+            this.ThumbFrame.TranslationX = this.CurrentState == SwitchStateEnum.Left ? -this._xRef : this._xRef;
         }
 
         private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
@@ -377,9 +364,6 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 await view.GoToLeft();
             }
-
-            view.Toggled?.Invoke(view, new ToggledEventArgs((bool)newValue));
-            view.ToggledCommand?.Execute((bool)newValue);
         }
 
         private async Task GoToLeft(double percentage = 0.0)
@@ -411,8 +395,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
             if (ReduceThumbSize)
             {
-                await SizeTo(_reduceTo);
                 this.imgIcon.IsVisible = false;
+                await SizeTo(_reduceTo);
             }
             else
             {
@@ -515,6 +499,9 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 await GoToRight();
             }
+
+            Toggled?.Invoke(this, new ToggledEventArgs((bool)IsToggled));
+            ToggledCommand?.Execute((bool)IsToggled);
         }
 
         private async void PanGestureRecognizer_PanUpdated(object sender, PanUpdatedEventArgs e)
@@ -557,19 +544,6 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private static void SizeRequestChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (!(bindable is MaterialSwitch view))
-            {
-                return;
-            }
-
-            // View
-            view.SetBaseWidthRequest(Math.Max(view.BackgroundFrame.WidthRequest, view.ThumbFrame.WidthRequest * 2));
-            view._xRef = ((view.BackgroundFrame.WidthRequest - view.ThumbFrame.WidthRequest) / 2) - 5;
-            view.ThumbFrame.TranslationX = view.CurrentState == SwitchStateEnum.Left ? -view._xRef : view._xRef;
-        }
-
         private void SetBaseWidthRequest(double widthRequest)
         {
             base.WidthRequest = widthRequest;
@@ -586,6 +560,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
             switch (propertyName)
             {
+                case nameof(base.TranslationX):
+                    base.OnPropertyChanged(propertyName);
+                    break;
+
                 case nameof(BackgroundOnSelectedColor):
                     InitializeSwitchPanUpdate();
                     break;
@@ -681,6 +659,32 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(BackgroundColor):
                     BackgroundFrame.BackgroundColor = BackgroundColor;
+                    break;
+
+                case nameof(UnselectedIcon):
+                    if (!string.IsNullOrEmpty(UnselectedIcon))
+                        this.imgIcon.SetImage(UnselectedIcon);
+
+                    this.imgIcon.IsVisible = !ReduceThumbSize && !IsToggled;
+                    break;
+                case nameof(CustomUnselectedIcon):
+                    if (CustomUnselectedIcon != null)
+                        this.imgIcon.SetCustomImage(CustomUnselectedIcon);
+
+                    this.imgIcon.IsVisible = !ReduceThumbSize && !IsToggled;
+                    break;
+
+                case nameof(SelectedIcon):
+                    if (!string.IsNullOrEmpty(SelectedIcon))
+                        this.imgIcon.SetImage(SelectedIcon);
+
+                    this.imgIcon.IsVisible = IsToggled;
+                    break;
+                case nameof(CustomSelectedIcon):
+                    if (CustomSelectedIcon != null)
+                        this.imgIcon.SetCustomImage(CustomSelectedIcon);
+
+                    this.imgIcon.IsVisible = IsToggled;
                     break;
             }
         }
