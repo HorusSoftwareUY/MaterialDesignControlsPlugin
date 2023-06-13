@@ -15,9 +15,9 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Constructors
         public MaterialSwitch()
         {
-            if (!_Initialized)
+            if (!_initialized)
             {
-                _Initialized = true;
+                _initialized = true;
                 InitializeComponent();
                 Initialize();
             }
@@ -37,7 +37,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Attributes
 
-        private SwitchStateEnum CurrentState { get; set; }
+        private SwitchStateEnum _currentState { get; set; }
         private double _xRef;
         private double _tmpTotalX;
 
@@ -45,9 +45,9 @@ namespace Plugin.MaterialDesignControls.Material3
         private readonly double _reduceTo = 0.85;
         private readonly double _increazeTo = 1.15;
 
-        public bool ReduceThumbSize => CustomUnselectedIcon == null && string.IsNullOrWhiteSpace(UnselectedIcon);
+        private bool _reduceThumbSize => CustomUnselectedIcon == null && string.IsNullOrWhiteSpace(UnselectedIcon);
 
-        private bool _Initialized = false;
+        private bool _initialized = false;
 
         #endregion Attributes
 
@@ -346,7 +346,7 @@ namespace Plugin.MaterialDesignControls.Material3
             // View
             this.SetBaseWidthRequest(Math.Max(this.BackgroundFrame.WidthRequest, this.ThumbFrame.WidthRequest * 2));
             this._xRef = ((this.BackgroundFrame.WidthRequest - this.ThumbFrame.WidthRequest) / 2) - 5;
-            this.ThumbFrame.TranslationX = this.CurrentState == SwitchStateEnum.Left ? -this._xRef : this._xRef;
+            this.ThumbFrame.TranslationX = this._currentState == SwitchStateEnum.Left ? -this._xRef : this._xRef;
         }
 
         private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
@@ -356,11 +356,11 @@ namespace Plugin.MaterialDesignControls.Material3
                 return;
             }
 
-            if ((bool)newValue && view.CurrentState != SwitchStateEnum.Right)
+            if ((bool)newValue && view._currentState != SwitchStateEnum.Right)
             {
                 await view.GoToRight();
             }
-            else if (!(bool)newValue && view.CurrentState != SwitchStateEnum.Left)
+            else if (!(bool)newValue && view._currentState != SwitchStateEnum.Left)
             {
                 await view.GoToLeft();
             }
@@ -378,7 +378,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 }.Commit(this, "SwitchAnimation", 16, Convert.ToUInt32(_toggleAnimationDuration - (_toggleAnimationDuration * percentage / 100)), null, (_, __) =>
                 {
                     this.AbortAnimation("SwitchAnimation");
-                    CurrentState = SwitchStateEnum.Left;
+                    _currentState = SwitchStateEnum.Left;
                     IsToggled = false;
                     ThumbFrame.BackgroundColor = ThumbUnselectedColor;
                     SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
@@ -387,13 +387,13 @@ namespace Plugin.MaterialDesignControls.Material3
             else
             {
                 this.AbortAnimation("SwitchAnimation");
-                CurrentState = SwitchStateEnum.Left;
+                _currentState = SwitchStateEnum.Left;
                 IsToggled = false;
                 ThumbFrame.BackgroundColor = ThumbUnselectedColor;
                 SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
             }
 
-            if (ReduceThumbSize)
+            if (_reduceThumbSize)
             {
                 this.imgIcon.IsVisible = false;
                 await SizeTo(_reduceTo);
@@ -430,7 +430,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 }.Commit(this, "SwitchAnimation", 16, Convert.ToUInt32(_toggleAnimationDuration - (_toggleAnimationDuration * percentage / 100)), null, (_, __) =>
                 {
                     this.AbortAnimation("SwitchAnimation");
-                    CurrentState = SwitchStateEnum.Right;
+                    _currentState = SwitchStateEnum.Right;
                     IsToggled = true;
                     ThumbFrame.BackgroundColor = ThumbSelectedColor;
                     SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
@@ -439,13 +439,13 @@ namespace Plugin.MaterialDesignControls.Material3
             else
             {
                 this.AbortAnimation("SwitchAnimation");
-                CurrentState = SwitchStateEnum.Right;
+                _currentState = SwitchStateEnum.Right;
                 IsToggled = true;
                 ThumbFrame.BackgroundColor = ThumbSelectedColor;
                 SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
             }
 
-            if (ReduceThumbSize)
+            if (_reduceThumbSize)
             {
                 await SizeTo(_increazeTo);
                 this.imgIcon.IsVisible = true;
@@ -491,7 +491,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
-            if (CurrentState == SwitchStateEnum.Right)
+            if (_currentState == SwitchStateEnum.Right)
             {
                 await GoToLeft();
             }
@@ -551,9 +551,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!_Initialized)
+            if (!_initialized)
             {
-                _Initialized = true;
+                _initialized = true;
                 InitializeComponent();
                 Initialize();
             }
@@ -665,13 +665,13 @@ namespace Plugin.MaterialDesignControls.Material3
                     if (!string.IsNullOrEmpty(UnselectedIcon))
                         this.imgIcon.SetImage(UnselectedIcon);
 
-                    this.imgIcon.IsVisible = !ReduceThumbSize && !IsToggled;
+                    this.imgIcon.IsVisible = !_reduceThumbSize && !IsToggled;
                     break;
                 case nameof(CustomUnselectedIcon):
                     if (CustomUnselectedIcon != null)
                         this.imgIcon.SetCustomImage(CustomUnselectedIcon);
 
-                    this.imgIcon.IsVisible = !ReduceThumbSize && !IsToggled;
+                    this.imgIcon.IsVisible = !_reduceThumbSize && !IsToggled;
                     break;
 
                 case nameof(SelectedIcon):
