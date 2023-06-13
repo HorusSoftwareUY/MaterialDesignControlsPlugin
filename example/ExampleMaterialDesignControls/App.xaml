@@ -942,12 +942,28 @@
                             <VisualState.Setters>
                                 <Setter Property="TextColor"
                                         Value="{StaticResource TextColor}" />
+                                <Setter Property="BackgroundOnUnselectedColor"
+                                        Value="{StaticResource DarkGrayColor}" />
+                                <Setter Property="BackgroundOnSelectedColor"
+                                        Value="{StaticResource PlaceholderColor}" />
+                                <Setter Property="ThumbUnselectedColor"
+                                        Value="{StaticResource DarkBlueColor}" />
+                                <Setter Property="ThumbSelectedColor"
+                                        Value="{StaticResource GradientColor1}" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="Disabled">
                             <VisualState.Setters>
                                 <Setter Property="TextColor"
                                         Value="{StaticResource DarkGrayColor}" />
+                                <Setter Property="BackgroundOnUnselectedColor"
+                                        Value="{StaticResource DarkBlueColor}" />
+                                <Setter Property="BackgroundOnSelectedColor"
+                                        Value="{StaticResource GradientColor1}" />
+                                <Setter Property="ThumbUnselectedColor"
+                                        Value="{StaticResource DarkGrayColor}" />
+                                <Setter Property="ThumbSelectedColor"
+                                        Value="{StaticResource PlaceholderColor}" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>

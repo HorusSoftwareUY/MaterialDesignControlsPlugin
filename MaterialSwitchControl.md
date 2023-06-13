@@ -45,12 +45,28 @@ Set style:
                     <VisualState.Setters>
                         <Setter Property="TextColor"
                                 Value="#0d1a26" />
+                        <Setter Property="BackgroundOnUnselectedColor"
+                                Value="#2e85cc" />
+                        <Setter Property="BackgroundOnSelectedColor"
+                                Value="#2e85cc" />
+                        <Setter Property="ThumbUnselectedColor"
+                                Value="#2e85cc" />
+                        <Setter Property="ThumbSelectedColor"
+                                Value="#0d2e85cc" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Disabled">
                     <VisualState.Setters>
                         <Setter Property="TextColor"
                                 Value="#828282" />
+                        <Setter Property="BackgroundOnUnselectedColor"
+                                Value="#2e85cc" />
+                        <Setter Property="BackgroundOnSelectedColor"
+                                Value="#2e85cc" />
+                        <Setter Property="ThumbUnselectedColor"
+                                Value="#2e85cc" />
+                        <Setter Property="ThumbSelectedColor"
+                                Value="#0d2e85cc" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

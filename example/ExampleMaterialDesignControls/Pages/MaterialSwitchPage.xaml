@@ -108,9 +108,9 @@
                                             Text="Only Switch with custom colors" />
 
                     <material3:MaterialSwitch BackgroundOnSelectedColor="Yellow"
-                                              BackgroundOnUnselectedColor="LightGray"
+                                              BackgroundOnUnselectedColor="Green"
                                               ThumbSelectedColor="Black"
-                                              ThumbUnselectedColor="DarkGray" />
+                                              ThumbUnselectedColor="Red" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -123,9 +123,9 @@
                                               IsToggled="{Binding PropertyA}"
                                               SwitchHorizontalOptions="EndAndExpand"
                                               BackgroundOnSelectedColor="Yellow"
-                                              BackgroundOnUnselectedColor="LightGray"
+                                              BackgroundOnUnselectedColor="Green"
                                               ThumbSelectedColor="Black"
-                                              ThumbUnselectedColor="DarkGray"
+                                              ThumbUnselectedColor="Red"
                                               Text="Default True"
                                               ToggledCommand="{Binding ToggledCommand}"
                                               Toggled="Switch_toggled"
