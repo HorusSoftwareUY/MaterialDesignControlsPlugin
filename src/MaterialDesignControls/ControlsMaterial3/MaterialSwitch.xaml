@@ -59,12 +59,12 @@
                         <controls3:MaterialCard.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                         </controls3:MaterialCard.GestureRecognizers>
-                        <custom:CustomImageButton x:Name="imgIcon"
-                                                  IsVisible="false"
-                                                  WidthRequest="22"
-                                                  HeightRequest="22"
-                                                  VerticalOptions="Center"
-                                                  HorizontalOptions="Center" />
+                        <custom:CustomImage x:Name="imgIcon"
+                                            IsVisible="false"
+                                            WidthRequest="22"
+                                            HeightRequest="22"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center" />
 
                     </controls3:MaterialCard>
                 </Grid>
