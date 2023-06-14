@@ -113,9 +113,9 @@
                         </material3:MaterialButton.LeadingIcon>
                     </material3:MaterialButton>
 
-                    <material:MaterialSwitch IsToggled="{Binding IsEnabled}" Text="Is enabled" />
+                    <material3:MaterialSwitch IsToggled="{Binding IsEnabled}" Text="Is enabled" />
 
-                    <material:MaterialSwitch IsToggled="{Binding IsVisible}" Text="Is visible" />
+                    <material3:MaterialSwitch IsToggled="{Binding IsVisible}" Text="Is visible" />
 
                     <material:MaterialDivider Margin="0,10" />
 

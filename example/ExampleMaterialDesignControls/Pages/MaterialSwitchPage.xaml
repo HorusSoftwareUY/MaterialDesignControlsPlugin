@@ -107,9 +107,9 @@
                                             HorizontalOptions="Center"
                                             Text="Only Switch with custom colors" />
 
-                    <material3:MaterialSwitch BackgroundOnSelectedColor="Yellow"
+                    <material3:MaterialSwitch BackgroundOnSelectedColor="Red"
                                               BackgroundOnUnselectedColor="Green"
-                                              ThumbSelectedColor="Black"
+                                              ThumbSelectedColor="Green"
                                               ThumbUnselectedColor="Red" />
 
                     <material:MaterialDivider Margin="0,10" />
@@ -122,9 +122,9 @@
                                               SupportingText="{Binding PropertyA}"
                                               IsToggled="{Binding PropertyA}"
                                               SwitchHorizontalOptions="EndAndExpand"
-                                              BackgroundOnSelectedColor="Yellow"
+                                              BackgroundOnSelectedColor="Red"
                                               BackgroundOnUnselectedColor="Green"
-                                              ThumbSelectedColor="Black"
+                                              ThumbSelectedColor="Green"
                                               ThumbUnselectedColor="Red"
                                               Text="Default True"
                                               ToggledCommand="{Binding ToggledCommand}"
