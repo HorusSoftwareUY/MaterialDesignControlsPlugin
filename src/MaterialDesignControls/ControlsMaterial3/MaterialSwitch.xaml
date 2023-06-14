@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plugin.MaterialDesignControls.Material3.MaterialSwitch"
@@ -22,6 +22,7 @@
                     </Grid.Effects>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
                     </Grid.GestureRecognizers>
 
                     <controls3:MaterialCard x:Name="BackgroundFrame"
@@ -58,6 +59,7 @@
                                             VerticalOptions="Center">
                         <controls3:MaterialCard.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
                         </controls3:MaterialCard.GestureRecognizers>
                         <custom:CustomImage x:Name="imgIcon"
                                             IsVisible="false"

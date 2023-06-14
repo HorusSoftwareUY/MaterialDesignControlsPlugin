@@ -21,6 +21,14 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref isOn, value); }
 	    }
 
+        private bool isEnabled;
+
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { SetProperty(ref isEnabled, value); }
+        }
+
         private string error;
 
         public string Error
