@@ -74,6 +74,8 @@ namespace Plugin.MaterialDesignControls
 
         private bool passwordIsVisible = false;
 
+        private int focusNextElementAttempts;
+
         #endregion Attributes
 
         #region Properties
@@ -417,6 +419,7 @@ namespace Plugin.MaterialDesignControls
                     {
                         this.txtEntry.ReturnCommand = new Command(() =>
                         {
+                            focusNextElementAttempts = 0;
                             var currentTabIndex = this.txtEntry.TabIndex;
                             this.FocusNextElement(currentTabIndex);
                         });
@@ -549,6 +552,11 @@ namespace Plugin.MaterialDesignControls
         {
             try
             {
+                if (focusNextElementAttempts >= 100)
+                    return;
+
+                ++focusNextElementAttempts;
+
                 var tabIndexes = this.GetTabIndexesOnParentPage(out int count);
 
                 if (tabIndexes != null)
