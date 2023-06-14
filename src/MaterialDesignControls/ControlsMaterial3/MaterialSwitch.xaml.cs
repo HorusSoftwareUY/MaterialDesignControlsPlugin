@@ -313,16 +313,13 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Events
 
         #region Methods
-        private async void Loaded(object sender, EventArgs e)
+
+        private void Loaded(object sender, EventArgs e)
         {
             if (IsToggled)
-            {
-                await GoToRight(100);
-            }
+                GoToRight(100);
             else
-            {
-                await GoToLeft(100);
-            }
+                GoToLeft(100);
         }
 
         private static bool OnSupportingTextValidate(BindableObject bindable, object value)
@@ -351,21 +348,15 @@ namespace Plugin.MaterialDesignControls.Material3
         private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is not MaterialSwitch view)
-            {
                 return;
-            }
 
             if ((bool)newValue && view._currentState != SwitchStateEnum.Right)
-            {
-                await view.GoToRight();
-            }
+                view.GoToRight();
             else if (!(bool)newValue && view._currentState != SwitchStateEnum.Left)
-            {
-                await view.GoToLeft();
-            }
+                view.GoToLeft();
         }
 
-        private async Task GoToLeft(double percentage = 0.0)
+        private void GoToLeft(double percentage = 0.0)
         {
             if (Math.Abs(ThumbFrame.TranslationX + _xRef) > 0.0)
             {
@@ -395,7 +386,10 @@ namespace Plugin.MaterialDesignControls.Material3
             if (_reduceThumbSize)
             {
                 this.imgIcon.IsVisible = false;
-                await SizeTo(_reduceTo);
+                Device.InvokeOnMainThreadAsync(async () =>
+                {
+                    await SizeTo(_reduceTo);
+                });
             }
             else
             {
@@ -415,7 +409,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private async Task GoToRight(double percentage = 0.0)
+        private void GoToRight(double percentage = 0.0)
         {
             if (Math.Abs(ThumbFrame.TranslationX - _xRef) > 0.0)
             {
@@ -446,9 +440,12 @@ namespace Plugin.MaterialDesignControls.Material3
 
             if (_reduceThumbSize)
             {
-                await SizeTo(_increazeTo);
-                this.imgIcon.IsVisible = true;
-                SetSelectedIconSource();
+                Device.InvokeOnMainThreadAsync(async () =>
+                {
+                    await SizeTo(_increazeTo);
+                    this.imgIcon.IsVisible = true;
+                    SetSelectedIconSource();
+                });
             }
             else
             {
@@ -487,17 +484,13 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
             if (_currentState == SwitchStateEnum.Right)
-            {
-                await GoToLeft();
-            }
+                GoToLeft();
             else
-            {
-                await GoToRight();
-            }
+                GoToRight();
 
             Toggled?.Invoke(this, new ToggledEventArgs((bool)IsToggled));
             ToggledCommand?.Execute((bool)IsToggled);
@@ -539,7 +532,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(TextColor):
                     SetTextColor();
                     SetEnabledState();
-                    Task.Run(() => Loaded(null, null)).ConfigureAwait(false);
+                    Loaded(this, null);
                     break;
 
                 case nameof(FontSize):
@@ -576,7 +569,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     sw.IsEnabled = IsEnabled;
                     SetTextColor();
                     SetEnabledState();
-                    Task.Run(() => Loaded(null, null)).ConfigureAwait(false);
+                    Loaded(this, null);
                     break;
 
                 case nameof(SupportingText):
@@ -683,6 +676,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 BackgroundColor = ColorAnimationUtil.ColorAnimation(fromColor, toColor, t);
             };
         }
+
         #endregion Methods
     }
 
