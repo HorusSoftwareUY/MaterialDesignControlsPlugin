@@ -9,6 +9,8 @@
         <StackLayout Spacing="0">
             <material3:MaterialCard x:Name="frmContainer"
                                     CornerRadius="10"
+                                    Type="Custom"
+                                    Animation="None"
                                     HasShadow="False"
                                     CornerRadiusTopLeft="True"
                                     CornerRadiusTopRight="True"

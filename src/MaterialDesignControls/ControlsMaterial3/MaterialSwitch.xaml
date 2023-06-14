@@ -27,6 +27,8 @@
                     <material3:MaterialCard x:Name="BackgroundFrame"
                                             Padding="0"
                                             CornerRadius="15"
+                                            Animation="None"
+                                            Type="Custom"
                                             CornerRadiusBottomLeft="True"
                                             CornerRadiusTopLeft="True"
                                             CornerRadiusBottomRight="True"
@@ -43,6 +45,8 @@
                     </material3:MaterialCard>
                     <material3:MaterialCard x:Name="ThumbFrame"
                                             Padding="0"
+                                            Animation="None"
+                                            Type="Custom"
                                             CornerRadius="12"
                                             CornerRadiusBottomLeft="True"
                                             CornerRadiusTopLeft="True"

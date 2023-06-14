@@ -13,5 +13,10 @@ namespace Plugin.MaterialDesignControls.Styles
         public static double ButtonAnimationParameter { get; set; } = 0.7;
 
         public static AnimationTypes ButtonAnimation { get; set; } = AnimationTypes.Fade;
+
+
+        public static double MaterialCardAnimationParameter { get; set; } = 0.7;
+
+        public static AnimationTypes MaterialCardAnimation { get; set; } = AnimationTypes.Fade;
     }
 }
