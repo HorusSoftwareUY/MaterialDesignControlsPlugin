@@ -385,9 +385,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     BackgroundColor = Color.Transparent;
                     HasBorder = true;
                     break;
-                case MaterialCardType.Custom:
-
-                    break;
             }
         }
 
