@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
@@ -959,11 +959,11 @@
                                 <Setter Property="BackgroundOnUnselectedColor"
                                         Value="{StaticResource LightGrayColor}" />
                                 <Setter Property="BackgroundOnSelectedColor"
-                                        Value="{StaticResource GradientColor8}" />
+                                        Value="{StaticResource LightGrayColor}" />
                                 <Setter Property="ThumbUnselectedColor"
                                         Value="{StaticResource DarkGrayColor}" />
                                 <Setter Property="ThumbSelectedColor"
-                                        Value="{StaticResource PlaceholderColor}" />
+                                        Value="{StaticResource DarkGrayColor}" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>

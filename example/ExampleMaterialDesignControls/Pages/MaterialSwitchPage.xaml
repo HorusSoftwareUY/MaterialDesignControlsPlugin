@@ -67,9 +67,10 @@
                                             Text="Enabled / Disabled" />
 
                     <material3:MaterialSwitch SwitchHorizontalOptions="EndAndExpand"
-                                              Text="Bluetooth"
-                                              TextSide="Left" />
-                    <material3:MaterialSwitch IsEnabled="False"
+                                              Text="Is enabled?"
+                                              TextSide="Left"
+                                              IsToggled="{Binding IsEnabled}" />
+                    <material3:MaterialSwitch IsEnabled="{Binding IsEnabled}"
                                               IsToggled="True"
                                               SwitchHorizontalOptions="EndAndExpand"
                                               Text="Bluetooth"
