@@ -540,6 +540,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(TextColor):
                     SetTextColor();
                     SetEnabledState();
+                    Task.Run(() => Loaded(null, null)).ConfigureAwait(false);
                     break;
 
                 case nameof(FontSize):
@@ -576,6 +577,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     sw.IsEnabled = IsEnabled;
                     SetTextColor();
                     SetEnabledState();
+                    Task.Run(() => Loaded(null, null)).ConfigureAwait(false);
                     break;
 
                 case nameof(SupportingText):
