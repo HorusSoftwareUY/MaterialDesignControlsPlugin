@@ -46,6 +46,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry txtEntry;
 
+        private int focusNextElementAttempts;
+
         #endregion Attributes
 
         #region Properties
@@ -256,6 +258,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         this.txtEntry.ReturnCommand = new Command(() =>
                         {
+                            focusNextElementAttempts = 0;
                             var currentTabIndex = this.txtEntry.TabIndex;
                             this.FocusNextElement(currentTabIndex);
                         });
@@ -327,6 +330,11 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             try
             {
+                if (focusNextElementAttempts >= 100)
+                    return;
+
+                ++focusNextElementAttempts;
+
                 var tabIndexes = this.GetTabIndexesOnParentPage(out int count);
 
                 if (tabIndexes != null)
@@ -341,13 +349,9 @@ namespace Plugin.MaterialDesignControls.Material3
                             nextEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
                         }
                         else if (nextElement is CustomEditor nextEditor && nextEditor.IsEnabled && !nextEditor.IsReadOnly)
-                        {
                             nextEditor.Focus();
-                        }
                         else
-                        {
                             this.FocusNextElement(++currentTabIndex);
-                        }
                     }
                 }
             }
@@ -366,6 +370,7 @@ namespace Plugin.MaterialDesignControls.Material3
             else if (TextTransform == TextTransforms.Uppercase)
                 txtEntry.Text = txtEntry.Text.ToUpper();
         }
+
         #endregion Methods
     }
 }
