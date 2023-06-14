@@ -39,7 +39,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private SwitchStateEnum _currentState { get; set; }
         private double _xRef;
-        private double _tmpTotalX;
 
         private readonly int _toggleAnimationDuration = 100;
         private readonly double _reduceTo = 0.85;
@@ -351,7 +350,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (!(bindable is MaterialSwitch view))
+            if (bindable is not MaterialSwitch view)
             {
                 return;
             }
