@@ -8,6 +8,10 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static Color BackgroundColor { get; set; } = Color.White;
 
+        public static Color ShadowColor { get; set; } = Color.DarkGray;
+
+        public static Color BorderColor { get; set; } = Color.DarkGray;
+
         public static Color TextColor { get; set; } = Color.Black;
 
         public static double ButtonAnimationParameter { get; set; } = 0.7;

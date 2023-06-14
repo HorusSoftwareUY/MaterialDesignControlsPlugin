@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialCardPage"
+             xmlns:animations="clr-namespace:ExampleMaterialDesignControls.Animations"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*"
+              RowSpacing="0">
+            <material3:MaterialTopAppBar Headline="MaterialButton"
+                                         LeadingIconCommand="{Binding BackCommand}"
+                                         ScrollViewName="scrollView"
+                                         Type="Large">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
+
+            <ScrollView x:Name="scrollView"
+                        Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="10">
+
+                    <contentViews:InfoIndicatorView Message="MaterialCard follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialCard x:Name="BackgroundFrame"
+                                            CornerRadius="15"
+                                            Type="Outlined"
+                                            BackgroundColor="Red"
+                                            ShadowColor="Green"
+                                            BorderColor="Black"
+                                            CornerRadiusBottomLeft="True"
+                                            CornerRadiusTopLeft="True"
+                                            CornerRadiusBottomRight="True"
+                                            CornerRadiusTopRight="True"
+                                            HorizontalOptions="FillAndExpand">
+                        <material:MaterialLabel Text="Outlined" />
+
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard CornerRadius="15"
+                                            Type="Filled"
+                                            BackgroundColor="Red"
+                                            ShadowColor="Green"
+                                            BorderColor="Black"
+                                            CornerRadiusBottomLeft="True"
+                                            CornerRadiusTopLeft="True"
+                                            CornerRadiusBottomRight="True"
+                                            CornerRadiusTopRight="True"
+                                            HorizontalOptions="FillAndExpand">
+                        <material:MaterialLabel Text="Filled" />
+
+                    </material3:MaterialCard>
+
+
+                    <material3:MaterialCard CornerRadius="15"
+                                            Type="Elevated"
+                                            Animation="Scale"
+                                            BackgroundColor="Red"
+                                            ShadowColor="Black"
+                                            CornerRadiusBottomLeft="True"
+                                            CornerRadiusTopLeft="True"
+                                            CornerRadiusBottomRight="True"
+                                            CornerRadiusTopRight="True"
+                                            HorizontalOptions="FillAndExpand">
+                        <material:MaterialLabel Text="Elevated" />
+
+                    </material3:MaterialCard>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

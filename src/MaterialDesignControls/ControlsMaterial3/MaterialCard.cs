@@ -72,7 +72,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.MaterialCardAnimation);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: null);
 
         public AnimationTypes Animation
         {
@@ -81,7 +81,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.MaterialCardAnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: null);
 
         public double? AnimationParameter
         {
@@ -220,43 +220,23 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             _initialized = true;
 
-            Effects.Add(new TouchAndPressEffect());
+            //TODO: if I add this effect, materialswitch doesn't work on android
+            //Effects.Add(new TouchAndPressEffect());
+
 
             SetCardType();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            /*
-            Type="Custom"
-            CornerRadiusBottomLeft="True"
-            CornerRadiusTopLeft="True"
-            CornerRadiusBottomRight="True"
-            CornerRadiusTopRight="True"
-
-            HeightRequest="32"
-            HorizontalOptions="Center"
-            IsClippedToBounds="True"
-            VerticalOptions="Center"
-            WidthRequest="52"
-            CornerRadius="12"
-            CornerRadiusBottomLeft="True"
-            CornerRadiusTopLeft="True"
-            CornerRadiusBottomRight="True"
-            CornerRadiusTopRight="True"
-            HasShadow="False"
-            HeightRequest="24"
-            WidthRequest="24"
-            Margin="1,0,1,0"
-            HorizontalOptions="Center"
-            IsClippedToBounds="True"
-            VerticalOptions="Center"
-             */
             switch (propertyName)
             {
                 case nameof(Type):
-                //case nameof(ShadowColor):
-                //case nameof(AndroidElevation):
+                case nameof(ShadowColor):
+                case nameof(base.HasShadow):
+                case nameof(BackgroundColor):
+                case nameof(base.BorderColor):
+                case nameof(AndroidElevation):
                     SetCardType();
                     break;
 
@@ -375,15 +355,23 @@ namespace Plugin.MaterialDesignControls.Material3
                     HasBorder = false;
                     HasShadow = true;
                     BorderColor = Color.Transparent;
+                    BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
+                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
+                    AndroidElevation = AndroidElevation != 0.0 ? AndroidElevation : 10.0;
                     break;
                 case MaterialCardType.Filled:
                     HasShadow = false;
                     HasBorder = false;
+                    BorderColor = Color.Transparent;
+                    BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
+                    ShadowColor = Color.Transparent;
                     break;
                 case MaterialCardType.Outlined:
                     HasShadow = false;
                     BackgroundColor = Color.Transparent;
                     HasBorder = true;
+                    BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.BorderColor;
+
                     break;
             }
         }
