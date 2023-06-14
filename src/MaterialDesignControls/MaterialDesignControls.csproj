@@ -78,7 +78,7 @@
     <Compile Include="Implementations\CustomMaterial3\CustomPicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomTimePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\DoublePicker.cs" />
-    <Compile Include="Implementations\CustomMaterial3\MaterialCard.cs" />
+    <Compile Include="ControlsMaterial3\MaterialCard.cs" />
     <Compile Include="Implementations\Deprecated\CustomEntry.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEntry.cs" />
     <Compile Include="Implementations\Deprecated\CustomPicker.cs" />

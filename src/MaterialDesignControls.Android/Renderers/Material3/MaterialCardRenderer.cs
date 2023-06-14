@@ -3,9 +3,9 @@ using Android.Content;
 using Android.Graphics.Drawables;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Material3.Android;
 using Android.OS;
+using Plugin.MaterialDesignControls.Material3;
 
 [assembly: ExportRenderer(typeof(MaterialCard), typeof(MaterialCardRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.Android

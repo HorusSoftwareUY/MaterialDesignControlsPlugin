@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plugin.MaterialDesignControls.Material3.MaterialSwitch"
              xmlns:effects="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:controls3="clr-namespace:Plugin.MaterialDesignControls.Material3.Implementations;assembly=Plugin.MaterialDesignControls"
              AutomationProperties.IsInAccessibleTree="True"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls"
              BackgroundColor="Transparent">
     <ContentView.Content>
@@ -24,7 +24,7 @@
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                     </Grid.GestureRecognizers>
 
-                    <controls3:MaterialCard x:Name="BackgroundFrame"
+                    <material3:MaterialCard x:Name="BackgroundFrame"
                                             Padding="0"
                                             CornerRadius="15"
                                             CornerRadiusBottomLeft="True"
@@ -37,11 +37,11 @@
                                             IsClippedToBounds="True"
                                             VerticalOptions="Center"
                                             WidthRequest="52">
-                        <controls3:MaterialCard.GestureRecognizers>
+                        <material3:MaterialCard.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                        </controls3:MaterialCard.GestureRecognizers>
-                    </controls3:MaterialCard>
-                    <controls3:MaterialCard x:Name="ThumbFrame"
+                        </material3:MaterialCard.GestureRecognizers>
+                    </material3:MaterialCard>
+                    <material3:MaterialCard x:Name="ThumbFrame"
                                             Padding="0"
                                             CornerRadius="12"
                                             CornerRadiusBottomLeft="True"
@@ -55,9 +55,9 @@
                                             HorizontalOptions="Center"
                                             IsClippedToBounds="True"
                                             VerticalOptions="Center">
-                        <controls3:MaterialCard.GestureRecognizers>
+                        <material3:MaterialCard.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                        </controls3:MaterialCard.GestureRecognizers>
+                        </material3:MaterialCard.GestureRecognizers>
                         <custom:CustomImage x:Name="imgIcon"
                                             IsVisible="false"
                                             WidthRequest="22"
@@ -65,7 +65,7 @@
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center" />
 
-                    </controls3:MaterialCard>
+                    </material3:MaterialCard>
                 </Grid>
                 <controls:MaterialLabel x:Name="lblRight" />
             </StackLayout>

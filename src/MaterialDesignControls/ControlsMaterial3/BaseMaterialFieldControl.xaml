@@ -4,10 +4,10 @@
              x:Class="Plugin.MaterialDesignControls.Material3.BaseMaterialFieldControl"
              xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
-             xmlns:controls3="clr-namespace:Plugin.MaterialDesignControls.Material3.Implementations;assembly=Plugin.MaterialDesignControls">
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls">
     <ContentView.Content>
         <StackLayout Spacing="0">
-            <controls3:MaterialCard x:Name="frmContainer"
+            <material3:MaterialCard x:Name="frmContainer"
                                     CornerRadius="10"
                                     HasShadow="False"
                                     CornerRadiusTopLeft="True"
@@ -64,7 +64,7 @@
                                               Grid.Column="2"
                                               HorizontalOptions="End" />
                 </Grid>
-            </controls3:MaterialCard>
+            </material3:MaterialCard>
             <BoxView x:Name="indicator"
                      HeightRequest="1" />
             <controls:MaterialLabel x:Name="lblSupporting"

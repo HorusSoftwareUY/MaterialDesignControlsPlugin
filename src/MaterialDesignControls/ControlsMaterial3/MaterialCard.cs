@@ -1,8 +1,9 @@
-﻿using Xamarin.Forms;
+﻿using Plugin.MaterialDesignControls.Animations;
+using Xamarin.Forms;
 
-namespace Plugin.MaterialDesignControls.Material3.Implementations
+namespace Plugin.MaterialDesignControls.Material3
 {
-    public partial class MaterialCard : Frame
+    public partial class MaterialCard : Frame, ITouchAndPressEffectConsumer
     {
         #region Attributes & Properties
 
@@ -104,6 +105,22 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             get => (Size)GetValue(iOSShadowOffsetProperty);
             set => SetValue(iOSShadowOffsetProperty, value);
         }
+        public AnimationTypes Animation { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public ICustomAnimation CustomAnimation { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public double? AnimationParameter { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public void ConsumeEvent(EventType gestureType)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ExecuteAction()
+        {
+            throw new System.NotImplementedException();
+        }
         #endregion
+
+
+
     }
 }
