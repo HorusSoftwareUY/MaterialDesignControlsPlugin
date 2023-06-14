@@ -504,46 +504,6 @@ namespace Plugin.MaterialDesignControls.Material3
             ToggledCommand?.Execute((bool)IsToggled);
         }
 
-        private async void PanGestureRecognizer_PanUpdated(object sender, PanUpdatedEventArgs e)
-        {
-            this.AbortAnimation("SwitchAnimation");
-            double dragX = e.TotalX - _tmpTotalX;
-
-            switch (e.StatusType)
-            {
-                case GestureStatus.Started:
-                    SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
-                    break;
-
-                case GestureStatus.Running:
-                    ThumbFrame.TranslationX = Math.Min(_xRef, Math.Max(-_xRef, ThumbFrame.TranslationX + dragX));
-                    _tmpTotalX = e.TotalX;
-                    SendSwitchPanUpdatedEventArgs(PanStatusEnum.Running);
-                    break;
-
-                case GestureStatus.Completed:
-                    double percentage = IsToggled
-                        ? Math.Abs(ThumbFrame.TranslationX - _xRef) / (2 * _xRef) * 100
-                        : Math.Abs(ThumbFrame.TranslationX + _xRef) / (2 * _xRef) * 100;
-
-                    if (ThumbFrame.TranslationX > 0)
-                    {
-                        await GoToRight(percentage);
-                    }
-                    else
-                    {
-                        await GoToLeft(percentage);
-                    }
-
-                    _tmpTotalX = 0;
-                    break;
-
-                case GestureStatus.Canceled:
-                    SendSwitchPanUpdatedEventArgs(PanStatusEnum.Canceled);
-                    break;
-            }
-        }
-
         private void SetBaseWidthRequest(double widthRequest)
         {
             base.WidthRequest = widthRequest;

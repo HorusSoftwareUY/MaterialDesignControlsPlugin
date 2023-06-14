@@ -39,7 +39,6 @@
                                             WidthRequest="52">
                         <controls3:MaterialCard.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                            <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
                         </controls3:MaterialCard.GestureRecognizers>
                     </controls3:MaterialCard>
                     <controls3:MaterialCard x:Name="ThumbFrame"
