@@ -32,9 +32,6 @@
                                             IsClippedToBounds="True"
                                             VerticalOptions="Center"
                                             WidthRequest="52">
-                        <!--<material3:MaterialCard.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                        </material3:MaterialCard.GestureRecognizers>-->
                     </material3:MaterialCard>
                     <material3:MaterialCard x:Name="ThumbFrame"
                                             Padding="0"
@@ -52,9 +49,6 @@
                                             HorizontalOptions="Center"
                                             IsClippedToBounds="True"
                                             VerticalOptions="Center">
-                        <!--<material3:MaterialCard.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                        </material3:MaterialCard.GestureRecognizers>-->
                         <custom:CustomImage x:Name="imgIcon"
                                             IsVisible="false"
                                             WidthRequest="22"

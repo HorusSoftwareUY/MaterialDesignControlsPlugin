@@ -29,7 +29,7 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (new string[] { "BackgroundColor", "BorderColor", "iOSBorderWidth", "CornerRadius", "Height", "Width", "CornerRadiusTopLeft", "CornerRadiusTopRight", "CornerRadiusBottomLeft", "CornerRadiusBottomRight", "iOSShadowOffset", "iOSShadowOpacity", "iOSShadowRadius", "ShadowColor" }.Contains(e.PropertyName))
+            if (new string[] { "BackgroundColor", "BorderColor", "iOSBorderWidth", "CornerRadius", "Height", "Width", "CornerRadiusTopLeft", "CornerRadiusTopRight", "CornerRadiusBottomLeft", "CornerRadiusBottomRight", "iOSShadowOffset", "iOSShadowOpacity", "iOSShadowRadius", "ShadowColor", "HasShadow", "HasBorder" }.Contains(e.PropertyName))
             {
                 Draw();
                 SetNeedsDisplay();
@@ -61,12 +61,8 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
             };
 
             Layer.CornerRadius = element.CornerRadius;
-            if (element.HasBorder)
-            {
-                Layer.BorderColor = element.BorderColor.ToCGColor();
-                Layer.BorderWidth = element.iOSBorderWidth;
-            }
-
+            Layer.BorderColor = element.BorderColor.ToCGColor();
+            Layer.BorderWidth = element.iOSBorderWidth;
         }
 
         private CACornerMask GetMaskCorner(MaterialCard element)

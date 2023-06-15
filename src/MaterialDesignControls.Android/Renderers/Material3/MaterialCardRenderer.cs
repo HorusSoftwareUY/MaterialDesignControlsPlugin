@@ -88,11 +88,11 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             {
                 if (customFrame.HasShadow)
                 {
-                    if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
+                    if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
                     {
                         SetOutlineSpotShadowColor(customFrame.ShadowColor.ToAndroid());
                         SetOutlineAmbientShadowColor(customFrame.ShadowColor.ToAndroid());
-                        CardElevation = (float)customFrame.AndroidElevation;
+                        Control.SetElevation(Context.ToPixels(customFrame.AndroidElevation));
                     }
                     else
                     {

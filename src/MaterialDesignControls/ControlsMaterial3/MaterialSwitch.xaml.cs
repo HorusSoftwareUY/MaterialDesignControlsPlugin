@@ -361,7 +361,7 @@ namespace Plugin.MaterialDesignControls.Material3
             });
         }
 
-        private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is not MaterialSwitch view)
                 return;

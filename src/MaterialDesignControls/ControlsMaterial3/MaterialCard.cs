@@ -133,7 +133,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ShadowColorProperty =
-            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialCard), defaultValue: Color.FromHex("#80000000"));
+            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialCard), defaultValue: Color.LightGray);
 
         public Color ShadowColor
         {
@@ -161,25 +161,25 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty iOSShadowRadiusProperty =
-            BindableProperty.Create(nameof(iOSShadowRadius), typeof(double), typeof(MaterialCard), defaultValue: 6.0);
+            BindableProperty.Create(nameof(iOSShadowRadius), typeof(float), typeof(MaterialCard), defaultValue: 8.0f);
 
-        public double iOSShadowRadius
+        public float iOSShadowRadius
         {
-            get => (double)GetValue(iOSShadowRadiusProperty);
+            get => (float)GetValue(iOSShadowRadiusProperty);
             set => SetValue(iOSShadowRadiusProperty, value);
         }
 
         public static readonly BindableProperty iOSShadowOpacityProperty =
-            BindableProperty.Create(nameof(iOSShadowOpacity), typeof(double), typeof(MaterialCard), defaultValue: 0.3);
+            BindableProperty.Create(nameof(iOSShadowOpacity), typeof(float), typeof(MaterialCard), defaultValue: 0.2f);
 
-        public double iOSShadowOpacity
+        public float iOSShadowOpacity
         {
-            get => (double)GetValue(iOSShadowOpacityProperty);
+            get => (float)GetValue(iOSShadowOpacityProperty);
             set => SetValue(iOSShadowOpacityProperty, value);
         }
 
         public static readonly BindableProperty iOSShadowOffsetProperty =
-            BindableProperty.Create(nameof(iOSShadowOffset), typeof(Size), typeof(MaterialCard), defaultValue: new Size());
+            BindableProperty.Create(nameof(iOSShadowOffset), typeof(Size), typeof(MaterialCard), defaultValue: new Size(0,5));
 
         public Size iOSShadowOffset
         {
@@ -190,16 +190,16 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Android
         public static readonly BindableProperty AndroidElevationProperty =
-            BindableProperty.Create(nameof(AndroidElevation), typeof(double), typeof(MaterialCard), defaultValue: 10.0);
+            BindableProperty.Create(nameof(AndroidElevation), typeof(float), typeof(MaterialCard), defaultValue: 30.0f);
 
-        public double AndroidElevation
+        public float AndroidElevation
         {
-            get => (double)GetValue(AndroidElevationProperty);
+            get => (float)GetValue(AndroidElevationProperty);
             set => SetValue(AndroidElevationProperty, value);
         }
 
         public static readonly BindableProperty AndroidBorderAlphaProperty =
-            BindableProperty.Create(nameof(AndroidBorderAlpha), typeof(double), typeof(MaterialCard), defaultValue: 1.0);
+            BindableProperty.Create(nameof(AndroidBorderAlpha), typeof(double), typeof(MaterialCard), defaultValue: 0.1);
 
         public double AndroidBorderAlpha
         {
@@ -219,6 +219,8 @@ namespace Plugin.MaterialDesignControls.Material3
             _initialized = true;
 
             this.IsClippedToBounds = true;
+            this.Padding = new Thickness(16);
+            this.CornerRadius = 12f;
 
             Effects.Add(new TouchAndPressEffect());
 
@@ -233,90 +235,106 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetCardType();
                     break;
 
-                //case nameof(ShadowColor):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        ShadowColor = ShadowColor;
-                //    }
-                //    break;
+                case nameof(ShadowColor):
+                    if (Type == MaterialCardType.Custom || Type == MaterialCardType.Elevated)
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    else
+                    {
+                        ShadowColor = Color.Transparent;
+                    }
+                    break;
 
-                //case nameof(base.BackgroundColor):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        BackgroundColor = BackgroundColor;
-                //    }
-                //    break;
+                case nameof(base.BackgroundColor):
+                    if (Type == MaterialCardType.Outlined)
+                    {
+                        BackgroundColor = Color.Transparent;
+                    }
+                    else
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    break;
 
-                //case nameof(base.BorderColor):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        BorderColor = BorderColor;
-                //    }
-                //    break;
-
-
-                //case nameof(HasShadow):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        HasShadow = HasShadow;
-                //    }
-                //    break;
-
-                //case nameof(HasBorder):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        HasBorder = HasBorder;
-                //    }
-                //    break;
-
-                //case nameof(iOSBorderWidth):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        iOSBorderWidth = iOSBorderWidth;
-                //    }
-                //    break;
-
-                //case nameof(iOSShadowRadius):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        iOSShadowRadius = iOSShadowRadius;
-                //    }
-                //    break;
-
-                //case nameof(iOSShadowOffset):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        iOSShadowOffset = iOSShadowOffset;
-                //    }
-                //    break;
+                case nameof(base.BorderColor):
+                    if (Type == MaterialCardType.Outlined || Type == MaterialCardType.Custom)
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    else
+                    {
+                        BorderColor = Color.Transparent;
+                    }
+                    break;
 
 
-                //case nameof(AndroidElevation):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        AndroidElevation = AndroidElevation;
-                //    }
-                //    break;
+                case nameof(HasShadow):
+                    if (Type == MaterialCardType.Custom || Type == MaterialCardType.Elevated)
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    else
+                    {
+                        HasShadow = false;
+                    }
+                    break;
 
-                //case nameof(AndroidBorderAlpha):
-                //    if (Type == MaterialCardType.Custom)
-                //    {
-                //        AndroidBorderAlpha = AndroidBorderAlpha;
-                //    }
-                //    break;
+                case nameof(HasBorder):
+                    if (Type == MaterialCardType.Custom || Type == MaterialCardType.Outlined)
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    else
+                    {
+                        HasBorder = false;
+                    }
+                    break;
 
-                //case nameof(IsEnabled):
-                //    VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled");
-                //    break;
+                case nameof(iOSBorderWidth):
+                    if (Type == MaterialCardType.Custom)
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    break;
 
-                //default:
-                //    base.OnPropertyChanged(propertyName);
-                //    break;
+                case nameof(iOSShadowRadius):
+                    if (Type == MaterialCardType.Custom)
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    break;
+
+                case nameof(iOSShadowOffset):
+                    if (Type == MaterialCardType.Custom)
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    break;
 
 
+                case nameof(AndroidElevation):
+                    if (Type == MaterialCardType.Custom)
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    break;
+
+                case nameof(AndroidBorderAlpha):
+                    if (Type == MaterialCardType.Custom)
+                    {
+                        base.OnPropertyChanged(propertyName);
+                    }
+                    break;
+
+                case nameof(IsEnabled):
+                    VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled");
+                    break;
+
+                default:
+                    base.OnPropertyChanged(propertyName);
+                    break;
             }
-
-            //base.OnPropertyChanged(propertyName);
         }
 
         public void SetCardType()
