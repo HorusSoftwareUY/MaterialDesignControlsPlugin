@@ -130,7 +130,8 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                     Layer.ShadowColor = customFrame.ShadowColor.ToCGColor();
                     Layer.ShadowRadius = (float)customFrame.iOSShadowRadius;
                     Layer.ShadowOpacity = (float)customFrame.iOSShadowOpacity;
-                    Layer.ShadowOffset = new SizeF((float)customFrame.iOSShadowOffset.Width, (float)customFrame.iOSShadowOffset.Height);
+                    Layer.ShadowOffset = new CGSize((float)customFrame.iOSShadowOffset.Width, (float)customFrame.iOSShadowOffset.Height);
+                    Layer.MasksToBounds = false;
                 }
             }
         }

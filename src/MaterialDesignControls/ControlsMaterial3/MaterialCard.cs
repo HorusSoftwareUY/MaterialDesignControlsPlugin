@@ -97,7 +97,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CornerRadiusTopLeftProperty =
-            BindableProperty.Create(nameof(CornerRadiusTopLeft), typeof(bool), typeof(MaterialCard), false);
+            BindableProperty.Create(nameof(CornerRadiusTopLeft), typeof(bool), typeof(MaterialCard), true);
 
         public bool CornerRadiusTopLeft
         {
@@ -106,7 +106,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CornerRadiusTopRightProperty =
-            BindableProperty.Create(nameof(CornerRadiusTopRight), typeof(bool), typeof(MaterialCard), false);
+            BindableProperty.Create(nameof(CornerRadiusTopRight), typeof(bool), typeof(MaterialCard), true);
 
         public bool CornerRadiusTopRight
         {
@@ -115,7 +115,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CornerRadiusBottomRightProperty =
-            BindableProperty.Create(nameof(CornerRadiusBottomRight), typeof(bool), typeof(MaterialCard), false);
+            BindableProperty.Create(nameof(CornerRadiusBottomRight), typeof(bool), typeof(MaterialCard), true);
 
         public bool CornerRadiusBottomRight
         {
@@ -124,7 +124,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CornerRadiusBottomLeftProperty =
-            BindableProperty.Create(nameof(CornerRadiusBottomLeft), typeof(bool), typeof(MaterialCard), false);
+            BindableProperty.Create(nameof(CornerRadiusBottomLeft), typeof(bool), typeof(MaterialCard), true);
 
         public bool CornerRadiusBottomLeft
         {
@@ -161,7 +161,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty iOSShadowRadiusProperty =
-            BindableProperty.Create(nameof(iOSShadowRadius), typeof(float), typeof(MaterialCard), defaultValue: 8.0f);
+            BindableProperty.Create(nameof(iOSShadowRadius), typeof(float), typeof(MaterialCard), defaultValue: 2.0f);
 
         public float iOSShadowRadius
         {
@@ -170,7 +170,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty iOSShadowOpacityProperty =
-            BindableProperty.Create(nameof(iOSShadowOpacity), typeof(float), typeof(MaterialCard), defaultValue: 0.2f);
+            BindableProperty.Create(nameof(iOSShadowOpacity), typeof(float), typeof(MaterialCard), defaultValue: 0.5f);
 
         public float iOSShadowOpacity
         {
@@ -190,7 +190,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Android
         public static readonly BindableProperty AndroidElevationProperty =
-            BindableProperty.Create(nameof(AndroidElevation), typeof(float), typeof(MaterialCard), defaultValue: 30.0f);
+            BindableProperty.Create(nameof(AndroidElevation), typeof(float), typeof(MaterialCard), defaultValue: 50.0f);
 
         public float AndroidElevation
         {

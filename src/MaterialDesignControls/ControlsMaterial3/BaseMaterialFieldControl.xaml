@@ -12,8 +12,8 @@
                                     Type="Custom"
                                     Animation="None"
                                     HasShadow="False"
-                                    CornerRadiusTopLeft="True"
-                                    CornerRadiusTopRight="True"
+                                    CornerRadiusBottomLeft="False"
+                                    CornerRadiusBottomRight="False"
                                     Padding="16,8,16,8">
                 <Grid x:Name="contentLayout"
                       ColumnSpacing="0"

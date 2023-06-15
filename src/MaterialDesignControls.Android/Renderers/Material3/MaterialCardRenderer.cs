@@ -6,6 +6,9 @@ using Xamarin.Forms.Platform.Android;
 using Plugin.MaterialDesignControls.Material3.Android;
 using Android.OS;
 using Plugin.MaterialDesignControls.Material3;
+using AndroidX.Core.View;
+using Android.Util;
+using Android.Animation;
 
 [assembly: ExportRenderer(typeof(MaterialCard), typeof(MaterialCardRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.Android
@@ -88,11 +91,15 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             {
                 if (customFrame.HasShadow)
                 {
+
                     if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
                     {
+                        Control.StateListAnimator = new StateListAnimator();
+
                         SetOutlineSpotShadowColor(customFrame.ShadowColor.ToAndroid());
                         SetOutlineAmbientShadowColor(customFrame.ShadowColor.ToAndroid());
-                        Control.SetElevation(Context.ToPixels(customFrame.AndroidElevation));
+                        float elevation = ConvertDpToPixels(customFrame.AndroidElevation);
+                        Control.SetElevation(elevation);
                     }
                     else
                     {
@@ -102,5 +109,12 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                 }
             }
         }
+
+        private float ConvertDpToPixels(float dpValue)
+        {
+            return TypedValue.ApplyDimension(ComplexUnitType.Dip, dpValue, Context.Resources.DisplayMetrics);
+        }
+
+
     }
 }
