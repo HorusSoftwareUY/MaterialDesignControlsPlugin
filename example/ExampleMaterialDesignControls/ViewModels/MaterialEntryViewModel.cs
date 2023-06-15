@@ -41,14 +41,29 @@ namespace ExampleMaterialDesignControls.ViewModels
             }
             else
             {
-                this.NameError = "The message is required";
+                this.NameError = "This field is required";
             }
+        }
+
+        public ICommand FocusedCommand => new Command(OnFocusedCommand);
+
+        private async void OnFocusedCommand()
+        {
+            await this.DisplayAlert.Invoke("", "Focused", "Ok");
+        }
+
+        public ICommand UnfocusedCommand => new Command(OnUnfocusedCommand);
+
+        private async void OnUnfocusedCommand()
+        {
+            await this.DisplayAlert.Invoke("", "Unfocused", "Ok");
         }
 
         public ICommand HelpCommand => new Command<string>(OnHelpCommand);
 
         private async void OnHelpCommand(string parameter)
         {
+            System.Console.WriteLine("Executed command");
             await this.DisplayAlert.Invoke("Help", parameter, "Ok");
         }
 

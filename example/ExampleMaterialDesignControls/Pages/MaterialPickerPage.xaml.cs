@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using ExampleMaterialDesignControls.ViewModels;
-using Plugin.MaterialDesignControls;
+using Plugin.MaterialDesignControls.Material3;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
@@ -12,16 +12,24 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
 
-            pckSizes.ItemsSource = new List<string> { "P", "M", "X", "XL" };
-
             pckModels.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             pckModels.SelectedIndexChanged += PckModels_SelectedIndexChanged;
 
             pckModels2.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             pckModels3.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
             pckModels4.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
+            pckModels5.ItemsSource = new List<string> { "Model A", "Model B", "Model C", "Model D" };
 
-            pckDouble.SelectedIndexesChanged += PckDouble_SelectedIndexChanged;
+            pckDoubleSelectedIndexes.ItemsSource = new List<string> { "Model A", "Model B", "Model C" };
+            pckDoubleSelectedIndexes.SecondaryItemsSource = new List<string> { "A", "B", "C", "D" };
+
+            pckDoubleWithFocus.ItemsSource = new List<string> { "Model A", "Model B" };
+            pckDoubleWithFocus.SecondaryItemsSource = new List<string> { "A", "B", "C", "D", "E" };
+
+            pckDouble6.ItemsSource = new List<string> { "Model A", "Model B", "Model C" };
+            pckDouble6.SecondaryItemsSource = new List<string> { "A", "B", "C", "D", "E", "F" };
+
+            pckDoubleSelectedIndexes.SelectedIndexesChanged += PckDouble_SelectedIndexChanged;
 
             var viewModel = new MaterialPickerViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
 
@@ -35,17 +43,22 @@ namespace ExampleMaterialDesignControls.Pages
                 pckColors.ClearSelectedItem();
             };
 
-            BindingContext = viewModel;
-        }
+            viewModel.ClearDoubleSelectedItem = () =>
+            {
+                pckDouble.ClearSelectedItem();
+            };
 
-        private void PckDouble_SelectedIndexChanged(object sender, SelectedIndexesEventArgs e)
-        {
-            lblSelectedIndexes.Text = $"SelectedIndexes: {e.SelectedIndexes[0]} - {e.SelectedIndexes[1]}";
+            BindingContext = viewModel;
         }
 
         private void PckModels_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblSelectedIndex.Text = $"SelectedIndex: {pckModels.SelectedIndex}";
+        }
+
+        private void PckDouble_SelectedIndexChanged(object sender, SelectedIndexesEventArgs e)
+        {
+            lblSelectedIndexes.Text = $"SelectedIndexes: {e.SelectedIndexes[0]} - {e.SelectedIndexes[1]}";
         }
     }
 }

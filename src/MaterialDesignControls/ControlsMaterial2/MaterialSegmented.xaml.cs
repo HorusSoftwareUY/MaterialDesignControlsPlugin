@@ -14,6 +14,8 @@ namespace Plugin.MaterialDesignControls
 
         private bool initialized = false;
 
+        private bool isItemsSourceSetted = false;
+
         #endregion Attributes
 
         #region Constructors
@@ -87,7 +89,7 @@ namespace Plugin.MaterialDesignControls
             BindableProperty.Create(nameof(DisabledUnselectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: Color.White);
 
         public Color DisabledUnselectedColor
-	    {
+        {
             get { return (Color)GetValue(DisabledUnselectedColorProperty); }
             set { SetValue(DisabledUnselectedColorProperty, value); }
         }
@@ -102,7 +104,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedItemProperty =
-            BindableProperty.Create(nameof(SelectedItem), typeof(string), typeof(MaterialSegmented), defaultValue: null, BindingMode.TwoWay);
+            BindableProperty.Create(nameof(SelectedItem), typeof(string), typeof(MaterialSegmented), defaultValue: null, BindingMode.TwoWay, propertyChanged: OnSelectedItemChanged);
 
         public string SelectedItem
         {
@@ -132,7 +134,7 @@ namespace Plugin.MaterialDesignControls
             BindableProperty.Create(nameof(SegmentMargin), typeof(int), typeof(MaterialSegmented), defaultValue: 2);
 
         public int SegmentMargin
-	    {
+        {
             get { return (int)GetValue(SegmentMarginProperty); }
             set { SetValue(SegmentMarginProperty, value); }
         }
@@ -169,8 +171,8 @@ namespace Plugin.MaterialDesignControls
 
         public Color DisabledUnselectedTextColor
         {
-            get { return (Color)GetValue(DisabledUnselectedTextColorProperty ); }
-            set { SetValue(DisabledUnselectedTextColorProperty , value); }
+            get { return (Color)GetValue(DisabledUnselectedTextColorProperty); }
+            set { SetValue(DisabledUnselectedTextColorProperty, value); }
         }
 
         public static readonly BindableProperty FontSizeProperty =
@@ -228,7 +230,7 @@ namespace Plugin.MaterialDesignControls
             mainFrame.BackgroundColor = BackgroundColor;
             mainFrame.HeightRequest = HeightRequest;
             mainFrame.MinimumHeightRequest = 32;
-	    }
+        }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -238,6 +240,7 @@ namespace Plugin.MaterialDesignControls
                 this.InitializeComponent();
                 Initialize();
             }
+
             switch (propertyName)
             {
                 case nameof(CornerRadius):
@@ -257,90 +260,93 @@ namespace Plugin.MaterialDesignControls
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialSegmented)bindable;
-            control.grid.ColumnDefinitions = new ColumnDefinitionCollection();
-            control.grid.Children.Clear();
+            control.SetItemSource();
+            control.isItemsSourceSetted = true;
+        }
+
+        private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialSegmented)bindable;
+            if (control.isItemsSourceSetted)
+                control.SetItemSource();
+        }
+
+        private void SetItemSource()
+        {
+            grid.ColumnDefinitions = new ColumnDefinitionCollection();
+            grid.Children.Clear();
 
             int column = 0;
-            if (!Equals(newValue, null) && newValue is IEnumerable)
+            if (ItemsSource != null)
             {
-                foreach (var item in (IEnumerable)newValue)
+                foreach (var item in ItemsSource)
                 {
-                    control.mainFrame.BackgroundColor = 
-			            control.IsEnabled ? control.BackgroundColor : control.DisabledBackgroundColor;
-                    control.grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+                    mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
+                    grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
                     var frame = new CustomFrame();
                     frame.HasShadow = false;
-                    frame.Padding = new Thickness(10,0);
+                    frame.Padding = new Thickness(10, 0);
                     frame.HorizontalOptions = LayoutOptions.Fill;
-                    frame.Margin = new Thickness(control.SegmentMargin);
-                    frame.BackgroundColor =
-                        control.IsEnabled ? control.UnselectedColor : control.DisabledUnselectedColor;
-                    frame.CornerRadius =
-                        (control.CornerRadius - control.SegmentMargin) >= 0 ? ((float)control.CornerRadius - control.SegmentMargin) : 0;
+                    frame.Margin = new Thickness(SegmentMargin);
+                    frame.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
+                    frame.CornerRadius = (CornerRadius - SegmentMargin) >= 0 ? ((float)CornerRadius - SegmentMargin) : 0;
 
                     var label = new MaterialLabel();
                     label.Text = item.ToString().Trim();
                     label.HorizontalOptions = LayoutOptions.Center;
                     label.VerticalOptions = LayoutOptions.Center;
-                    label.FontSize = control.FontSize;
-                    label.FontFamily = control.FontFamily;
-                    label.TextColor =
-                        control.IsEnabled ? control.UnselectedTextColor : control.DisabledUnselectedTextColor;
+                    label.FontSize = FontSize;
+                    label.FontFamily = FontFamily;
+                    label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
 
                     var tapped = new TapGestureRecognizer();
                     tapped.Tapped += (s, e) =>
                     {
-                        if (!control.IsEnabled)
+                        if (!IsEnabled)
                             return;
 
-
-                        if (control is MaterialSegmented)
+                        foreach (var item in grid.Children)
                         {
-                            foreach (var item in control.grid.Children)
-                            {
-                                ((CustomFrame)item).BackgroundColor = control.UnselectedColor;
-                                ((MaterialLabel)(((CustomFrame)item).Content)).TextColor = control.UnselectedTextColor;
-                            }
-
-                            frame.BackgroundColor = control.SelectedColor;
-                            label.TextColor = control.SelectedTextColor;
-                            control.SelectedItem = label.Text.Trim();
+                            ((CustomFrame)item).BackgroundColor = UnselectedColor;
+                            ((MaterialLabel)(((CustomFrame)item).Content)).TextColor = UnselectedTextColor;
                         }
 
-                        if (CommandProperty != null && control.Command != null)
-                            control.Command.Execute(control.CommandParameter);
+                        frame.BackgroundColor = SelectedColor;
+                        label.TextColor = SelectedTextColor;
+                        SelectedItem = label.Text.Trim();
 
-                        control.IsSelectedChanged?.Invoke(control, null);
+                        if (CommandProperty != null && Command != null)
+                            Command.Execute(CommandParameter);
+
+                        IsSelectedChanged?.Invoke(this, null);
                     };
 
-                    if (control.SelectedItem != null)
-                    { 
-                        if (label.Text.Equals(control.SelectedItem))
+                    if (SelectedItem != null)
+                    {
+                        if (label.Text.Equals(SelectedItem))
                         {
-                            frame.BackgroundColor =
-                                control.IsEnabled ? control.SelectedColor : control.DisabledSelectedColor;
-                            label.TextColor =
-                                control.IsEnabled ? control.SelectedTextColor : control.DisabledSelectedTextColor;
-			            }
-		            }
-                    else 
-		            { 
+                            frame.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
+                            label.TextColor = IsEnabled ? SelectedTextColor : DisabledSelectedTextColor;
+                        }
+                    }
+                    else
+                    {
                         if (column < 1)
                         {
-                            frame.BackgroundColor = control.IsEnabled ? control.SelectedColor : control.DisabledSelectedColor;
-                            label.TextColor =
-                                control.IsEnabled ? control.SelectedTextColor : control.DisabledSelectedTextColor;
-                            control.SelectedItem = item.ToString().Trim();
-			            }
-		            }
+                            frame.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
+                            label.TextColor = IsEnabled ? SelectedTextColor : DisabledSelectedTextColor;
+                            SelectedItem = item.ToString().Trim();
+                        }
+                    }
 
                     frame.Content = label;
                     frame.GestureRecognizers.Add(tapped);
-                    control.grid.Children.Add(frame, column, 0);
+                    grid.Children.Add(frame, column, 0);
                     column++;
                 }
             }
         }
+
         #endregion Methods
     }
 }

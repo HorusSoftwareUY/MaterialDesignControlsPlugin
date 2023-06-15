@@ -1,132 +1,312 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialPickerPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialPickerPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialPicker" LeadingIconCommand="{Binding BackCommand}">
+            <material3:MaterialTopAppBar Headline="MaterialPicker"
+                                         LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.LeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.LeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="20">
-                    <material:MaterialPicker
-                        x:Name="pckColors"
-                        AnimateError="True"
-                        ItemsSource="{Binding ItemsSourceColors}"
-                        LabelText="Color"
-                        Placeholder="Select a Color"
-                        SelectedItem="{Binding SelectedItemColor}"
-                        Type="Filled" />
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
+                    <contentViews:InfoIndicatorView Message="MaterialPicker and MaterialDoublePicker follows the latest guidelines of Material Design 3" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Filled Type with PropertyPath seted" />
+
+                    <material3:MaterialPicker x:Name="pckColors"
+                                              LabelText="Label"
+                                              ItemsSource="{Binding ItemsSourceColors}"
+                                              Placeholder="Select a Color"
+                                              PropertyPath="Color"
+                                              SelectedItem="{Binding SelectedItemColor}" />
                     <Grid ColumnSpacing="16">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <material3:MaterialButton
-                            ButtonType="Text"
-                            Command="{Binding ClearCommand}"
-                            Text="Clear" />
-                        <material3:MaterialButton
-                            Grid.Column="1"
-                            Command="{Binding ShowCommand}"
-                            Text="Show" />
+                        <material3:MaterialButton ButtonType="Text"
+                                                  Command="{Binding ClearCommand}"
+                                                  Text="Clear" />
+                        <material3:MaterialButton Grid.Column="1"
+                                                  Command="{Binding AddNewColorCommand}"
+                                                  Text="Add Color" />
+                        <material3:MaterialButton Grid.Column="2"
+                                                  Command="{Binding ShowCommand}"
+                                                  Text="Show" />
                     </Grid>
 
-                    <material:MaterialPicker
-                        x:Name="pckSizes"
-                        LabelText="Size"
-                        Placeholder="Select Option"
-                        SelectedItem="{Binding SelectedSizes}"
-                        Type="Outlined" />
-                    <material:MaterialPicker
-                        x:Name="pckModels"
-                        LabelText="Model"
-                        LeadingIcon="color.png"
-                        Type="Lined" />
-                    <Label x:Name="lblSelectedIndex" Text="Selected Index: -" />
-                    <material3:MaterialButton Command="{Binding TapCommand}" Text="Save" />
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Implement SelectedIndexChanged" />
+
+                    <material3:MaterialPicker x:Name="pckModels"
+                                              Placeholder="Select a model"
+                                              SupportingText="{Binding ModelAssistiveText}"
+                                              SelectedItem="{Binding SelectedModel}"
+                                              LabelText="Model"
+                                              AnimateError="True"
+                                              LeadingIcon="color.png" />
+
+                    <Label x:Name="lblSelectedIndex"
+                           Text="Selected Index: -" />
+
+                    <material3:MaterialButton Command="{Binding TapCommand}"
+                                              Text="Save" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <Label
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Horizontal Text Alignment" />
-                    <material:MaterialPicker
-                        x:Name="pckModels2"
-                        HorizontalTextAlignment="Start"
-                        LabelText="Option"
-                        Placeholder="Select Option"
-                        TrailingIcon=""
-                        Type="Filled" />
-                    <material:MaterialPicker
-                        x:Name="pckModels3"
-                        AssistiveText="Required field"
-                        HorizontalTextAlignment="Center"
-                        LabelText="Option"
-                        Placeholder="Select option"
-                        TrailingIcon=""
-                        Type="Filled" />
-                    <material:MaterialPicker
-                        x:Name="pckModels4"
-                        HorizontalTextAlignment="End"
-                        LabelText="Option"
-                        Placeholder="Select Option"
-                        TrailingIcon=""
-                        Type="Filled" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Horizontal Text Alignment" />
+
+
+                    <material3:MaterialPicker x:Name="pckModels2"
+                                              HorizontalTextAlignment="Center"
+                                              LabelText="Option"
+                                              SupportingText="Required field"
+                                              TrailingIcon=""
+                                              Placeholder="Select Option" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Double Picker" />
-                    <material:MaterialDoublePicker
-                        x:Name="pckDouble"
-                        ItemsSource="{Binding ItemsSource}"
-                        LabelText="Double Picker"
-                        SecondaryItemsSource="{Binding SecondaryItemsSource}"
-                        SecondarySelectedItem="{Binding SecondarySelectedItem}"
-                        SelectedItem="{Binding SelectedItem}"
-                        Type="Filled" />
-                    <material:MaterialDoublePicker
-                        IsEnabled="False"
-                        ItemsSource="{Binding ItemsSource}"
-                        LabelText="Double Picker"
-                        SecondaryItemsSource="{Binding SecondaryItemsSource}"
-                        SecondarySelectedItem="{Binding SecondarySelectedItem}"
-                        SelectedItem="{Binding SelectedItem}"
-                        Type="Filled" />
-                    <Label x:Name="lblSelectedIndexes" Text="Selected Indexes: -" />
-                    <material3:MaterialButton Command="{Binding Tap2Command}" Text="Save" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Using Border" />
+
+                    <material3:MaterialPicker x:Name="pckModels3"
+                                              HorizontalTextAlignment="Start"
+                                              LabelText="Option"
+                                              HasBorder="True"
+                                              CornerRadius="10"
+                                              CornerRadiusBottomLeft="True"
+                                              CornerRadiusBottomRight="True"
+                                              CornerRadiusTopLeft="True"
+                                              CornerRadiusTopRight="True"
+                                              Placeholder="Select Option" />
+
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Double Picker" />
-                    <material:MaterialDoublePicker
-                        x:Name="pckDoubleWithFocus"
-                        ItemsSource="{Binding ItemsSource}"
-                        LabelText="Double Picker"
-                        SecondaryItemsSource="{Binding SecondaryItemsSource}"
-                        SecondarySelectedItem="{Binding SecondarySelectedItem}"
-                        SelectedItem="{Binding SelectedItem}"
-                        Separator=" - "
-                        Type="Filled" />
-                    <material3:MaterialButton Command="{Binding Tap3Command}" Text="Focus" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Animate placeholder" />
+
+                    <material3:MaterialPicker x:Name="pckModels4"
+                                              HorizontalTextAlignment="Start"
+                                              AnimatePlaceholder="True"
+                                              Placeholder="Select Option" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Animate placeholder with border" />
+
+                    <material3:MaterialPicker x:Name="pckModels5"
+                                              HorizontalTextAlignment="Start"
+                                              HasBorder="True"
+                                              CornerRadius="10"
+                                              AnimatePlaceholder="True"
+                                              CornerRadiusBottomLeft="True"
+                                              CornerRadiusBottomRight="True"
+                                              CornerRadiusTopLeft="True"
+                                              CornerRadiusTopRight="True"
+                                              Placeholder="Select Option" />
+
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Full API" />
+
+                    <material3:MaterialPicker x:Name="pckModels6"
+                                              HorizontalTextAlignment="Start"
+                                              HasBorder="True"
+                                              AnimateError="True"
+                                              SupportingText="Supporting text"
+                                              SupportingLineBreakMode="WordWrap"
+                                              LabelText="Label"
+                                              LabelLineBreakMode="WordWrap"
+                                              iOSBorderWidth="3"
+                                              CornerRadius="10"
+                                              AnimatePlaceholder="True"
+                                              ItemsSource="{Binding ItemsSourceColors}"
+                                              PickerRowHeight="100"
+                                              MultilineEnabled="True"
+                                              Placeholder="Select a Color"
+                                              LeadingIconCommand="{Binding IconCommand}"
+                                              LeadingIconCommandParameter="Tapped (L)"
+                                              TrailingIconCommand="{Binding IconCommand}"
+                                              TrailingIconCommandParameter="Tapped (T)"
+                                              CornerRadiusBottomLeft="True"
+                                              CornerRadiusBottomRight="True"
+                                              CornerRadiusTopLeft="True"
+                                              CornerRadiusTopRight="True">
+                        <material3:MaterialPicker.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialPicker.CustomTrailingIcon>
+                        <material3:MaterialPicker.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialPicker.CustomLeadingIcon>
+                        <material3:MaterialPicker.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialPicker.FontFamily>
+                        <material3:MaterialPicker.LabelFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialPicker.LabelFontFamily>
+                        <material3:MaterialPicker.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialPicker.SupportingFontFamily>
+                    </material3:MaterialPicker>
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource BoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="MaterialDoublePicker" />
+
+                    <material3:MaterialDoublePicker ItemsSource="{Binding ItemsSource}"
+                                                    SecondarySelectedItem="{Binding SecondarySelectedItem}"
+                                                    SelectedItem="{Binding SelectedItem}"
+                                                    LabelText="Weight"
+                                                    Placeholder="Select"
+                                                    PropertyPath="Name"
+                                                    x:Name="pckDouble"
+                                                    SecondaryPropertyPath="Name"
+                                                    SecondaryItemsSource="{Binding SecondaryItemsSource}" />
+
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <material3:MaterialButton ButtonType="Text"
+                                                  Command="{Binding ClearDoubleCommand}"
+                                                  Text="Clear" />
+                        <material3:MaterialButton Grid.Column="1"
+                                                  Command="{Binding AddNewWeightCommand}"
+                                                  Text="Add Data" />
+                        <material3:MaterialButton Grid.Column="2"
+                                                  Command="{Binding ShowDoubleCommand}"
+                                                  Text="Show" />
+                    </Grid>
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Implement SelectedIndexesChanged" />
+
+                    <material3:MaterialDoublePicker LabelText="Double Picker"
+                                                    x:Name="pckDoubleSelectedIndexes"
+                                                    Placeholder="Select an option" />
+
+                    <Label x:Name="lblSelectedIndexes"
+                           Text="Selected Indexes: -" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Separator, animation with border and focus" />
+
+                    <material3:MaterialDoublePicker x:Name="pckDoubleWithFocus"
+                                                    HasBorder="True"
+                                                    CornerRadius="10"
+                                                    Placeholder="Select an option"
+                                                    CornerRadiusBottomLeft="True"
+                                                    AnimatePlaceholder="True"
+                                                    CornerRadiusBottomRight="True"
+                                                    CornerRadiusTopLeft="True"
+                                                    CornerRadiusTopRight="True"
+                                                    Separator="/" />
+                    <material3:MaterialButton Command="{Binding Tap3Command}"
+                                              Text="Focus" />
+
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="MaterialDoublePicker Full API" />
+
+                    <material3:MaterialDoublePicker x:Name="pckDouble6"
+                                                    HorizontalTextAlignment="Start"
+                                                    HasBorder="True"
+                                                    AnimateError="True"
+                                                    SupportingText="Supporting text"
+                                                    SupportingLineBreakMode="WordWrap"
+                                                    LabelText="Label"
+                                                    LabelLineBreakMode="WordWrap"
+                                                    iOSBorderWidth="3"
+                                                    Separator=" - "
+                                                    CornerRadius="10"
+                                                    AnimatePlaceholder="True"
+                                                    Placeholder="Select a Color"
+                                                    LeadingIconCommand="{Binding IconCommand}"
+                                                    LeadingIconCommandParameter="Tapped (L)"
+                                                    TrailingIconCommand="{Binding IconCommand}"
+                                                    TrailingIconCommandParameter="Tapped (T)"
+                                                    CornerRadiusBottomLeft="True"
+                                                    CornerRadiusBottomRight="True"
+                                                    CornerRadiusTopLeft="True"
+                                                    CornerRadiusTopRight="True">
+                        <material3:MaterialDoublePicker.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialDoublePicker.CustomTrailingIcon>
+                        <material3:MaterialDoublePicker.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialDoublePicker.CustomLeadingIcon>
+                        <material3:MaterialDoublePicker.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDoublePicker.FontFamily>
+                        <material3:MaterialDoublePicker.LabelFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDoublePicker.LabelFontFamily>
+                        <material3:MaterialDoublePicker.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialDoublePicker.SupportingFontFamily>
+                    </material3:MaterialDoublePicker>
+
                 </StackLayout>
             </ScrollView>
         </Grid>

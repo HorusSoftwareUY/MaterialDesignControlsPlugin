@@ -13,14 +13,6 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref propertyA, value); }
         }
 
-        private bool propertyB = false;
-
-        public bool PropertyB
-        {
-            get { return propertyB; }
-            set { SetProperty(ref propertyB, value); }
-        }
-
         private bool isOn;
 
         public bool IsOn
@@ -28,6 +20,14 @@ namespace ExampleMaterialDesignControls.ViewModels
             get { return isOn; }
             set { SetProperty(ref isOn, value); }
 	    }
+
+        private bool isEnabled;
+
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { SetProperty(ref isEnabled, value); }
+        }
 
         private string error;
 
@@ -53,6 +53,12 @@ namespace ExampleMaterialDesignControls.ViewModels
             {
                 this.Error = "The dark mode is required";
             }
+        }
+
+        public ICommand ToggledCommand => new Command(OnToggledCommand);
+        private async void OnToggledCommand()
+        {
+            await this.DisplayAlert.Invoke("Saved", $"Toggled", "Ok");
         }
     }
 }

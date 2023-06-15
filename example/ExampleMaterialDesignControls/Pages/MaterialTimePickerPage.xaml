@@ -1,85 +1,140 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialTimePickerPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialTimePickerPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialTimePicker" LeadingIconCommand="{Binding BackCommand}">
+            <material3:MaterialTopAppBar Headline="MaterialTimePicker"
+                                         LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.LeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.LeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="20">
-                    <material:MaterialTimePicker
-                        Format="HH:mm"
-                        LabelText="Start time"
-                        LeadingIcon="calendar.png"
-                        Placeholder="Select time"
-                        Time="{Binding Time}"
-                        Type="Filled" />
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
+                    <contentViews:InfoIndicatorView Message="MaterialTimePicker follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialTimePicker Format="HH:mm"
+                                                  LabelText="Start time"
+                                                  LeadingIcon="calendar.png"
+                                                  Placeholder="Select time"
+                                                  Time="{Binding Time}" />
                     <Grid ColumnSpacing="16">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <material3:MaterialButton
-                            ButtonType="Text"
-                            Command="{Binding ClearCommand}"
-                            Text="Clear" />
-                        <material3:MaterialButton
-                            Grid.Column="1"
-                            Command="{Binding ShowCommand}"
-                            Text="Show" />
+                        <material3:MaterialButton ButtonType="Text"
+                                                  Command="{Binding ClearCommand}"
+                                                  Text="Clear" />
+                        <material3:MaterialButton Grid.Column="1"
+                                                  Command="{Binding ShowCommand}"
+                                                  Text="Show" />
                     </Grid>
-
-                    <material:MaterialTimePicker
-                        Format="H:mm"
-                        LabelText="End time"
-                        Type="Outlined" />
-                    <material:MaterialTimePicker
-                        Format="H:mm"
-                        LabelText="Deadline"
-                        Type="Lined" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <Label
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Horizontal Text Alignment" />
-                    <material:MaterialTimePicker
-                        HorizontalTextAlignment="Start"
-                        TrailingIcon=""
-                        Type="Filled" />
-                    <material:MaterialTimePicker
-                        AssistiveText="Required field"
-                        HorizontalTextAlignment="Center"
-                        LabelText="Time"
-                        Placeholder="Select time"
-                        TrailingIcon=""
-                        Type="Filled" />
-                    <material:MaterialTimePicker
-                        HorizontalTextAlignment="End"
-                        TrailingIcon=""
-                        Type="Filled">
-                        <material:MaterialTimePicker.FontFamily>
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Horizontal Text Alignment" />
+
+                    <material3:MaterialTimePicker HorizontalTextAlignment="Start"
+                                                  LabelText="Start time"
+                                                  Placeholder="Select Time"
+                                                  TrailingIcon="" />
+                    <material3:MaterialTimePicker SupportingText="Required field"
+                                                  HorizontalTextAlignment="Center"
+                                                  LabelText="Time"
+                                                  Placeholder="Select time"
+                                                  TrailingIcon="" />
+                    <material3:MaterialTimePicker HorizontalTextAlignment="End"
+                                                  LabelText="Start time"
+                                                  Placeholder="Select Time"
+                                                  TrailingIcon="">
+                        <material3:MaterialTimePicker.FontFamily>
                             <OnPlatform x:TypeArguments="x:String">
                                 <OnPlatform.Android>monospace</OnPlatform.Android>
                                 <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                             </OnPlatform>
-                        </material:MaterialTimePicker.FontFamily>
-                    </material:MaterialTimePicker>
-                    <material3:MaterialButton Command="{Binding TapCommand}" Text="Save" />
+                        </material3:MaterialTimePicker.FontFamily>
+                    </material3:MaterialTimePicker>
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="With Border" />
+
+                    <material3:MaterialTimePicker HorizontalTextAlignment="Start"
+                                                  Placeholder="Select time"
+                                                  HasBorder="True"
+                                                  LabelText="Label"
+                                                  CornerRadius="10"
+                                                  CornerRadiusBottomLeft="True"
+                                                  CornerRadiusBottomRight="True"
+                                                  CornerRadiusTopLeft="True"
+                                                  CornerRadiusTopRight="True" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Full API" />
+                    <material3:MaterialTimePicker  HorizontalTextAlignment="Start"
+                                                   HasBorder="True"
+                                                   AnimateError="True"
+                                                   SupportingText="Supporting text"
+                                                   SupportingLineBreakMode="WordWrap"
+                                                   LabelText="Label"
+                                                   LabelLineBreakMode="WordWrap"
+                                                   iOSBorderWidth="3"
+                                                   CornerRadius="10"
+                                                   AnimatePlaceholder="True"
+                                                   Placeholder="Select a time"
+                                                   LeadingIconCommand="{Binding IconCommand}"
+                                                   LeadingIconCommandParameter="Tapped (L)"
+                                                   TrailingIconCommand="{Binding IconCommand}"
+                                                   TrailingIconCommandParameter="Tapped (T)"
+                                                   CornerRadiusBottomLeft="True"
+                                                   CornerRadiusBottomRight="True"
+                                                   CornerRadiusTopLeft="True"
+                                                   CornerRadiusTopRight="True">
+                        <material3:MaterialTimePicker.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialTimePicker.CustomTrailingIcon>
+                        <material3:MaterialTimePicker.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialTimePicker.CustomLeadingIcon>
+                        <material3:MaterialTimePicker.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialTimePicker.FontFamily>
+                        <material3:MaterialTimePicker.LabelFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialTimePicker.LabelFontFamily>
+                        <material3:MaterialTimePicker.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialTimePicker.SupportingFontFamily>
+                    </material3:MaterialTimePicker>
                 </StackLayout>
             </ScrollView>
         </Grid>

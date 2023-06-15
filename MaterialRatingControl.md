@@ -15,7 +15,7 @@ This control allow to rate. You can customize some properties that we show in Do
     ItemsByRow="5" 
     Animation="Fade" 
     AnimationParameter="0.1" 
-    SelectedIcon="startSelected.png" 
+    SelectedIcon="starSelected.png" 
     UnSelectedIcon="starUnselected.png"  />
 ```
 <br/>

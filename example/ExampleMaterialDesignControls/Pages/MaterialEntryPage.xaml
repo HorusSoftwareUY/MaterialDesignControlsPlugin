@@ -1,193 +1,251 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialEntry" LeadingIconCommand="{Binding BackCommand}">
+            <material3:MaterialTopAppBar Headline="MaterialEntry"
+                                         LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.LeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.LeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="20">
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
 
-                    <material:MaterialEntry
-                        AnimateError="True"
-                        AssistiveText="Email is required"
-                        LabelText="Email *"
-                        MaxLength="50"
-                        Placeholder="Enter your email"
-                        ReturnType="Next"
-                        TabIndex="1"
-                        Text="{Binding Email}"
-                        Type="Filled" />
+                    <contentViews:InfoIndicatorView Message="MaterialEntry follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialEntry
-                        AnimateError="True"
-                        ClearIconIsVisible="False"
-                        IsPassword="True"
-                        LabelText="Password *"
-                        MaxLength="50"
-                        Placeholder="Enter your password"
-                        ReturnType="Done"
-                        TabIndex="2"
-                        Text="{Binding Password}"
-                        Type="Filled">
-                        <material:MaterialEntry.CustomShowPasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg" />
-                        </material:MaterialEntry.CustomShowPasswordIcon>
-                        <material:MaterialEntry.CustomHidePasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg" />
-                        </material:MaterialEntry.CustomHidePasswordIcon>
-                    </material:MaterialEntry>
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Filled Type" />
+                    
+                    <material3:MaterialEntry AnimateError="True"
+                                             SupportingText="Email is required"
+                                             LabelText="Email *"
+                                             MaxLength="50"
+                                             Placeholder="Enter your email"
+                                             ReturnType="Next"
+                                             TabIndex="1"
+                                             Text="{Binding Email}" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Types" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Using Focused/Unfocused Events and validate entry" />
 
-                    <material:MaterialEntry
-                        x:Name="txtName"
-                        AnimateError="True"
-                        AssistiveText="{Binding NameError}"
-                        LabelText="Name*"
-                        MaxLength="12"
-                        Placeholder="Enter your name"
-                        ReturnType="Next"
-                        TabIndex="1"
-                        Text="{Binding Name}"
-                        Type="Filled" />
-                    <material:MaterialEntry
-                        Keyboard="Email"
-                        LabelText="Email"
-                        LeadingIcon="email.png"
-                        Placeholder="Enter your email"
-                        ReturnType="Next"
-                        TabIndex="2"
-                        Type="Lined" />
+                    <material3:MaterialEntry x:Name="txtName"
+                                             AnimateError="True"
+                                             SupportingText="{Binding NameError}"
+                                             LabelText="Name*"
+                                             MaxLength="12"
+                                             Placeholder="Enter your name"
+                                             ReturnType="Next"
+                                             TabIndex="2"
+                                             Text="{Binding Name}" />
 
-                    <material:MaterialEntry
-                        ClearIconIsVisible="False"
-                        IsPassword="true"
-                        LabelText="Password"
-                        Placeholder="Enter your password"
-                        ReturnType="Next"
-                        TabIndex="3"
-                        Type="Lined">
-                        <material:MaterialEntry.CustomShowPasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg" />
-                        </material:MaterialEntry.CustomShowPasswordIcon>
-                        <material:MaterialEntry.CustomHidePasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg" />
-                        </material:MaterialEntry.CustomHidePasswordIcon>
-                    </material:MaterialEntry>
+                    <material3:MaterialButton Command="{Binding TapCommand}"
+                                              Text="Save"
+                                              VerticalOptions="EndAndExpand" />
 
-                    <material:MaterialEntry
-                        CornerRadius="20"
-                        IsPassword="true"
-                        LabelText="Confirm password"
-                        Placeholder="Confirm password"
-                        ReturnCommand="{Binding TapCommand}"
-                        ReturnType="Done"
-                        TabIndex="4"
-                        Type="Outlined">
-                        <material:MaterialEntry.CustomShowPasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg" />
-                        </material:MaterialEntry.CustomShowPasswordIcon>
-                        <material:MaterialEntry.CustomHidePasswordIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg" />
-                        </material:MaterialEntry.CustomHidePasswordIcon>
-                    </material:MaterialEntry>
+                    <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialEntry
-                        HorizontalTextAlignment="Center"
-                        Keyboard="Telephone"
-                        LabelText="Phone"
-                        Placeholder="Enter your phone"
-                        ReturnType="Next"
-                        TabIndex="5"
-                        Type="Filled" />
-                    <material:MaterialEntry
-                        IsEnabled="False"
-                        Keyboard="Telephone"
-                        LabelText="Phone"
-                        Placeholder="Enter your phone"
-                        ReturnType="Next"
-                        TabIndex="5"
-                        Type="Filled" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Using Different Keyboard" />
 
-                    <material:MaterialEntry
-                        AssistiveMargin="0,2,0,0"
-                        AssistiveText="Testing"
-                        Keyboard="Telephone"
-                        LabelMargin="0,0,0,2"
-                        LabelText="Phone (SVG trailing icon)"
-                        Placeholder="Enter your phone"
-                        TabIndex="5"
-                        TrailingIconCommand="{Binding HelpCommand}"
-                        TrailingIconCommandParameter="Enter your phone"
-                        Type="Filled">
-                        <material:MaterialEntry.CustomTrailingIcon>
+                    <material3:MaterialEntry HorizontalTextAlignment="Center"
+                                             Keyboard="Telephone"
+                                             LabelText="Phone"
+                                             Placeholder="Enter your phone"
+                                             ReturnType="Next"
+                                             TabIndex="3" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Disabled Material Entry" />
+
+                    <material3:MaterialEntry IsEnabled="False"
+                                             Keyboard="Telephone"
+                                             LabelText="Phone"
+                                             Placeholder="Enter your phone"
+                                             ReturnType="Next"
+                                             TabIndex="4" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Set different font families, set Trailing icon with command  and  set Supporting text margin" />
+
+                    <material3:MaterialEntry SupportingMargin="0,2,0,0"
+                                             SupportingText="Testing"
+                                             Keyboard="Telephone"
+                                             LabelMargin="0,0,0,2"
+                                             LabelText="Phone (SVG trailing icon)"
+                                             Placeholder="Enter your phone"
+                                             TabIndex="5"
+                                             TrailingIconCommand="{Binding HelpCommand}"
+                                             TrailingIconCommandParameter="Enter your phone">
+                        <material3:MaterialEntry.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
-                        </material:MaterialEntry.CustomTrailingIcon>
-                        <material:MaterialEntry.FontFamily>
+                        </material3:MaterialEntry.CustomTrailingIcon>
+                        <material3:MaterialEntry.FontFamily>
                             <OnPlatform x:TypeArguments="x:String">
                                 <OnPlatform.Android>monospace</OnPlatform.Android>
                                 <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                             </OnPlatform>
-                        </material:MaterialEntry.FontFamily>
-                        <material:MaterialEntry.LabelFontFamily>
+                        </material3:MaterialEntry.FontFamily>
+                        <material3:MaterialEntry.LabelFontFamily>
                             <OnPlatform x:TypeArguments="x:String">
-                                <OnPlatform.Android>sans-serif-black</OnPlatform.Android>
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
                                 <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
                             </OnPlatform>
-                        </material:MaterialEntry.LabelFontFamily>
-                    </material:MaterialEntry>
-
-                    <material3:MaterialButton
-                        Command="{Binding TapCommand}"
-                        Text="Save"
-                        VerticalOptions="EndAndExpand" />
+                        </material3:MaterialEntry.LabelFontFamily>
+                        <material3:MaterialEntry.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialEntry.SupportingFontFamily>
+                    </material3:MaterialEntry>
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Returns" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Returns" />
 
-                    <material:MaterialEntry
-                        LabelText="Return type Search"
-                        Placeholder="Enter search text"
-                        ReturnCommand="{Binding SearchCommand}"
-                        ReturnType="Search"
-                        Text="{Binding SearchText}"
-                        Type="Filled" />
+                    <material3:MaterialEntry LabelText="Return type Search"
+                                             Placeholder="Enter search text"
+                                             TabIndex="6"
+                                             ReturnCommand="{Binding SearchCommand}"
+                                             ReturnType="Search"
+                                             Text="{Binding SearchText}" />
 
-                    <material:MaterialEntry
-                        LabelText="Return type Next"
-                        Placeholder="Enter text"
-                        ReturnType="Next"
-                        Type="Filled" />
+                    <material3:MaterialEntry LabelText="Return type Next"
+                                             TabIndex="7"
+                                             Placeholder="Enter text"
+                                             ReturnType="Next" />
 
-                    <material:MaterialEntry
-                        LabelText="Return type Done"
-                        Placeholder="Enter text"
-                        ReturnType="Done"
-                        Type="Filled" />
+                    <material3:MaterialEntry LabelText="Return type Done"
+                                             Placeholder="Enter text"
+                                             TabIndex="8"
+                                             ReturnType="Done" />
 
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Animate Placeholder to Label" />
+
+                    <material3:MaterialEntry TabIndex="9"
+                                             AnimatePlaceholder="True"
+                                             Placeholder="Lastname"
+                                             ReturnType="Done" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="With Border" />
+
+                    <material3:MaterialEntry HasBorder="True"
+                                             CornerRadius="10"
+                                             CornerRadiusBottomLeft="True"
+                                             CornerRadiusBottomRight="True"
+                                             CornerRadiusTopRight="True"
+                                             CornerRadiusTopLeft="True"
+                                             iOSBorderWidth="1"
+                                             LabelText="Id"
+                                             TabIndex="10"
+                                             Keyboard="Numeric" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Animate placeholder With Border" />
+
+                    <material3:MaterialEntry HasBorder="True"
+                                             CornerRadius="10"
+                                             CornerRadiusBottomLeft="True"
+                                             CornerRadiusBottomRight="True"
+                                             CornerRadiusTopRight="True"
+                                             AnimatePlaceholder="True"
+                                             CornerRadiusTopLeft="True"
+                                             iOSBorderWidth="1"
+                                             Placeholder="Address"
+                                             TabIndex="11" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Full API" />
+
+                    <material3:MaterialEntry HasBorder="True"
+                                             CornerRadius="10"
+                                             CornerRadiusBottomLeft="True"
+                                             CornerRadiusBottomRight="True"
+                                             CornerRadiusTopRight="True"
+                                             CornerRadiusTopLeft="False"
+                                             iOSBorderWidth="3"
+                                             SupportingMargin="10,2,0,0"
+                                             SupportingText="Testing"
+                                             AnimateError="True"
+                                             MaxLength="10"
+                                             Placeholder="Placeholder"
+                                             PlaceholderColor="Violet"
+                                             ReturnCommand="{Binding SearchCommand}"
+                                             ReturnType="Search"
+                                             TrailingIconCommand="{Binding HelpCommand}"
+                                             TrailingIconCommandParameter="Enter your phone (T)"
+                                             LeadingIconCommand="{Binding HelpCommand}"
+                                             LeadingIconCommandParameter="Enter your phone (L)"
+                                             FocusedCommand="{Binding FocusedCommand}"
+                                             UnfocusedCommand="{Binding UnfocusedCommand}"
+                                             LabelText="Label Text"
+                                             TabIndex="12"
+                                             Keyboard="Numeric">
+                        <material3:MaterialEntry.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialEntry.CustomTrailingIcon>
+                        <material3:MaterialEntry.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialEntry.CustomLeadingIcon>
+                        <material3:MaterialEntry.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialEntry.FontFamily>
+                        <material3:MaterialEntry.LabelFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialEntry.LabelFontFamily>
+                        <material3:MaterialEntry.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialEntry.SupportingFontFamily>
+                    </material3:MaterialEntry>
                 </StackLayout>
             </ScrollView>
         </Grid>

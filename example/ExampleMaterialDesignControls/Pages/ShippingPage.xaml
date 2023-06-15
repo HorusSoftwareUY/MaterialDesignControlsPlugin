@@ -36,16 +36,16 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <material:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" Type="Lined" LabelText="Country" Placeholder="Select your country" TabIndex="2"/>
+                    <material3:MaterialPicker x:Name="pckSizes" SelectedItem="{Binding SelectedSizes}" LabelText="Country" Placeholder="Select your country" TabIndex="2"/>
                     <Grid ColumnSpacing="30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                            <material:MaterialEntry Type="Lined" LabelText="City" Placeholder="Enter your city"  HorizontalOptions="FillAndExpand" Grid.Column="0" />
-                            <material:MaterialEntry Type="Lined" LabelText="Postal Code" Placeholder="10001" Grid.Column="1"/>
+                            <material3:MaterialEntry LabelText="City" Placeholder="Enter your city"  HorizontalOptions="FillAndExpand" Grid.Column="0" />
+                            <material3:MaterialEntry LabelText="Postal Code" Placeholder="10001" Grid.Column="1"/>
                     </Grid>
-                    <material:MaterialEntry Type="Lined" LabelText="Address" Placeholder="Enter your address" Keyboard="Text" ReturnType="Next" />
+                    <material3:MaterialEntry LabelText="Address" Placeholder="Enter your address" Keyboard="Text" ReturnType="Next" />
                     <Grid ColumnSpacing="30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>

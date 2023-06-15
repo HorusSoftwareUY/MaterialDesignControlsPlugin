@@ -1,113 +1,155 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialSwitchPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialSwitch" LeadingIconCommand="{Binding BackCommand}">
+            <material3:MaterialTopAppBar Headline="MaterialSwitch"
+                                         LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.LeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.LeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="15">
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="15">
 
-                    <material:MaterialSwitch
-                        IsToggled="True"
-                        OnColor="#aca3db"
-                        SwitchHorizontalOptions="EndAndExpand"
-                        Text="WIFI"
-                        TextSide="Left"
-                        ThumbColor="{StaticResource GradientColor4}" />
-                    <material:MaterialSwitch
-                        AssistiveText="Bluetooth is required"
-                        IsToggled="False"
-                        OnColor="#aca3db"
-                        SwitchHorizontalOptions="EndAndExpand"
-                        Text="Bluetooth *"
-                        TextSide="Left"
-                        ThumbColor="{StaticResource GradientColor4}" />
+                    <contentViews:InfoIndicatorView Message="MaterialSwitch follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialSwitch IsToggled="False"
+                                              SwitchHorizontalOptions="EndAndExpand"
+                                              Text="Bluetooth *"
+                                              TextSide="Left"
+                                              SupportingText="Bluetooth is required">
+                    </material3:MaterialSwitch>
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text="Enabled / Disabled" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="With Selected Icon" />
 
-                    <material:MaterialSwitch
-                        SwitchHorizontalOptions="EndAndExpand"
-                        Text="Bluetooth"
-                        TextSide="Left" />
-                    <material:MaterialSwitch
-                        IsEnabled="False"
-                        IsToggled="True"
-                        SwitchHorizontalOptions="EndAndExpand"
-                        Text="Bluetooth"
-                        TextSide="Left" />
+                    <material3:MaterialSwitch IsToggled="False"
+                                              SwitchHorizontalOptions="EndAndExpand"
+                                              Text="Mute"
+                                              SelectedIcon="mute.png"
+                                              TextSide="Left">
+                    </material3:MaterialSwitch>
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text="Text to the Right" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="With Selected and Unselected Icon" />
 
-                    <material:MaterialSwitch Text="Wifi" Toggled="Switch_toggled" />
-                    <material:MaterialSwitch
-                        IsToggled="True"
-                        Text="Wifi"
-                        TextHorizontalOptions="EndAndExpand" />
-
-                    <material:MaterialDivider Margin="0,10" />
-
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text="Required" />
-
-                    <material:MaterialSwitch
-                        AssistiveText="{Binding Error}"
-                        IsToggled="{Binding IsOn}"
-                        SwitchHorizontalOptions="EndAndExpand"
-                        Text="Dark mode"
-                        TextSide="Left" />
-                    <material3:MaterialButton
-                        Command="{Binding SaveCommand}"
-                        HorizontalOptions="FillAndExpand"
-                        Text="Save" />
+                    <material3:MaterialSwitch IsToggled="False"
+                                              SwitchHorizontalOptions="EndAndExpand"
+                                              Text="Mute"
+                                              SelectedIcon="volume.png"
+                                              UnselectedIcon="mute.png"
+                                              TextSide="Left">
+                    </material3:MaterialSwitch>
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text="Default True / False" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="Enabled / Disabled" />
 
-                    <material:MaterialSwitch
-                        AnimateError="False"
-                        AssistiveText="{Binding PropertyA}"
-                        IsToggled="{Binding PropertyA}"
-                        SwitchHorizontalOptions="EndAndExpand"
-                        Text="Default True"
-                        TextSide="Left" />
-                    <material:MaterialSwitch
-                        AnimateError="False"
-                        AssistiveText="{Binding PropertyB}"
-                        IsToggled="{Binding PropertyB}"
-                        SwitchHorizontalOptions="EndAndExpand"
-                        Text="Default False"
-                        TextSide="Left" />
+                    <material3:MaterialSwitch SwitchHorizontalOptions="EndAndExpand"
+                                              Text="Is enabled?"
+                                              TextSide="Left"
+                                              IsToggled="{Binding IsEnabled}" />
+                    <material3:MaterialSwitch IsEnabled="{Binding IsEnabled}"
+                                              IsToggled="True"
+                                              SwitchHorizontalOptions="EndAndExpand"
+                                              Text="Bluetooth"
+                                              TextSide="Left" />
 
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="Text to the Right and Toggled Event" />
+
+                    <material3:MaterialSwitch IsToggled="True"
+                                              Text="Wifi"
+                                              Toggled="Switch_toggled"
+                                              TextHorizontalOptions="EndAndExpand" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="Required" />
+
+                    <material3:MaterialSwitch SupportingText="{Binding Error}"
+                                              IsToggled="{Binding IsOn}"
+                                              SwitchHorizontalOptions="EndAndExpand"
+                                              Text="Dark mode"
+                                              TextSide="Left" />
+                    <material3:MaterialButton Command="{Binding SaveCommand}"
+                                              HorizontalOptions="FillAndExpand"
+                                              Text="Save" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="Only Switch with custom colors" />
+
+                    <material3:MaterialSwitch BackgroundOnSelectedColor="Red"
+                                              BackgroundOnUnselectedColor="Green"
+                                              ThumbSelectedColor="Green"
+                                              ThumbUnselectedColor="Red" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="Full API" />
+
+                    <material3:MaterialSwitch AnimateError="False"
+                                              SupportingText="{Binding PropertyA}"
+                                              IsToggled="{Binding PropertyA}"
+                                              SwitchHorizontalOptions="EndAndExpand"
+                                              BackgroundOnSelectedColor="Red"
+                                              BackgroundOnUnselectedColor="Green"
+                                              ThumbSelectedColor="Green"
+                                              ThumbUnselectedColor="Red"
+                                              Text="Default True"
+                                              ToggledCommand="{Binding ToggledCommand}"
+                                              Toggled="Switch_toggled"
+                                              TextSide="Left">
+                        <material3:MaterialSwitch.CustomSelectedIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_radio.svg" />
+                        </material3:MaterialSwitch.CustomSelectedIcon>
+                        <material3:MaterialSwitch.CustomUnselectedIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_divider.svg" />
+                        </material3:MaterialSwitch.CustomUnselectedIcon>
+                        <material3:MaterialSwitch.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialSwitch.FontFamily>
+                        <material3:MaterialSwitch.SupportingFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialSwitch.SupportingFontFamily>
+                    </material3:MaterialSwitch>
                 </StackLayout>
             </ScrollView>
         </Grid>
