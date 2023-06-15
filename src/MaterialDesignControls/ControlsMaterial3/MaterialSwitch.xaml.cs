@@ -314,14 +314,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
-        private void Loaded(object sender, EventArgs e)
-        {
-            if (IsToggled)
-                GoToRight(100);
-            else
-                GoToLeft(100);
-        }
-
         private static bool OnSupportingTextValidate(BindableObject bindable, object value)
         {
             var control = (MaterialSwitch)bindable;
@@ -525,6 +517,14 @@ namespace Plugin.MaterialDesignControls.Material3
             base.WidthRequest = widthRequest;
         }
 
+        private void LoadControl()
+        {
+            if (IsToggled)
+                GoToRight(100);
+            else
+                GoToLeft(100);
+        }
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (!_initialized)
@@ -536,6 +536,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
             switch (propertyName)
             {
+                case "Renderer":
+                    LoadControl();
+                    break;
+
                 case nameof(base.TranslationX):
                     base.OnPropertyChanged(propertyName);
                     break;
@@ -556,7 +560,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(TextColor):
                     SetTextColor();
                     SetEnabledState();
-                    Loaded(this, null);
+                    LoadControl();
                     break;
 
                 case nameof(FontSize):
@@ -593,7 +597,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     sw.IsEnabled = IsEnabled;
                     SetTextColor();
                     SetEnabledState();
-                    Loaded(this, null);
+                    LoadControl();
                     break;
 
                 case nameof(SupportingText):

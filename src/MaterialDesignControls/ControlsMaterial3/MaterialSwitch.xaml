@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plugin.MaterialDesignControls.Material3.MaterialSwitch"
-             xmlns:effects="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:controls3="clr-namespace:Plugin.MaterialDesignControls.Material3.Implementations;assembly=Plugin.MaterialDesignControls"
              AutomationProperties.IsInAccessibleTree="True"
              xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
@@ -17,10 +17,6 @@
                 <controls:MaterialLabel x:Name="lblLeft"
                                         IsVisible="False" />
                 <Grid x:Name="sw">
-                    <Grid.Effects>
-                        <effects:LifecycleEffect Loaded="Loaded" />
-                    </Grid.Effects>
-
                     <material3:MaterialCard x:Name="BackgroundFrame"
                                             Padding="0"
                                             CornerRadius="15"

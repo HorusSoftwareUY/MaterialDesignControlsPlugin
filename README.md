@@ -49,7 +49,7 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 | ------------------- | :------------------: |
 |Xamarin.iOS|iOS 8+|
 |Xamarin.Android|API 16+|
-|Xamarin.Forms|>= 4.4.0.991864|
+|Xamarin.Forms|>= 5.0.0.1874|
 
 ## API Usage
 
