@@ -61,8 +61,12 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
             };
 
             Layer.CornerRadius = element.CornerRadius;
-            Layer.BorderColor = element.BorderColor.ToCGColor();
-            Layer.BorderWidth = element.iOSBorderWidth;
+            if (element.HasBorder)
+            {
+                Layer.BorderColor = element.BorderColor.ToCGColor();
+                Layer.BorderWidth = element.iOSBorderWidth;
+            }
+
         }
 
         private CACornerMask GetMaskCorner(MaterialCard element)

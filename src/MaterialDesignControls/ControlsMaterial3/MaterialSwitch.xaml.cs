@@ -343,6 +343,30 @@ namespace Plugin.MaterialDesignControls.Material3
             this.SetBaseWidthRequest(Math.Max(this.BackgroundFrame.WidthRequest, this.ThumbFrame.WidthRequest * 2));
             this._xRef = ((this.BackgroundFrame.WidthRequest - this.ThumbFrame.WidthRequest) / 2) - 5;
             this.ThumbFrame.TranslationX = this._currentState == SwitchStateEnum.Left ? -this._xRef : this._xRef;
+
+            BackgroundFrame.Command = new Command(() =>
+            {
+                SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
+                if (_currentState == SwitchStateEnum.Right)
+                    GoToLeft();
+                else
+                    GoToRight();
+
+                Toggled?.Invoke(this, new ToggledEventArgs((bool)IsToggled));
+                ToggledCommand?.Execute((bool)IsToggled);
+            });
+            
+            ThumbFrame.Command = new Command(() =>
+            {
+                SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
+                if (_currentState == SwitchStateEnum.Right)
+                    GoToLeft();
+                else
+                    GoToRight();
+
+                Toggled?.Invoke(this, new ToggledEventArgs((bool)IsToggled));
+                ToggledCommand?.Execute((bool)IsToggled);
+            });
         }
 
         private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)

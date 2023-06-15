@@ -1,10 +1,8 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Styles;
-using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -135,7 +133,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ShadowColorProperty =
-            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialCard), defaultValue: Color.Transparent);
+            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialCard), defaultValue: Color.FromHex("#80000000"));
 
         public Color ShadowColor
         {
@@ -154,7 +152,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region iOS
         public static readonly BindableProperty iOSBorderWidthProperty =
-            BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(MaterialCard), 0f);
+            BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(MaterialCard), 1f);
 
         public float iOSBorderWidth
         {
@@ -163,7 +161,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty iOSShadowRadiusProperty =
-            BindableProperty.Create(nameof(iOSShadowRadius), typeof(double), typeof(MaterialCard), defaultValue: 0.0);
+            BindableProperty.Create(nameof(iOSShadowRadius), typeof(double), typeof(MaterialCard), defaultValue: 6.0);
 
         public double iOSShadowRadius
         {
@@ -172,7 +170,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty iOSShadowOpacityProperty =
-            BindableProperty.Create(nameof(iOSShadowOpacity), typeof(double), typeof(MaterialCard), defaultValue: 0.0);
+            BindableProperty.Create(nameof(iOSShadowOpacity), typeof(double), typeof(MaterialCard), defaultValue: 0.3);
 
         public double iOSShadowOpacity
         {
@@ -181,7 +179,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty iOSShadowOffsetProperty =
-            BindableProperty.Create(nameof(iOSShadowOffset), typeof(Size), typeof(MaterialCard), defaultValue: null);
+            BindableProperty.Create(nameof(iOSShadowOffset), typeof(Size), typeof(MaterialCard), defaultValue: new Size());
 
         public Size iOSShadowOffset
         {
@@ -192,7 +190,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Android
         public static readonly BindableProperty AndroidElevationProperty =
-            BindableProperty.Create(nameof(AndroidElevation), typeof(double), typeof(MaterialCard), defaultValue: 0.0);
+            BindableProperty.Create(nameof(AndroidElevation), typeof(double), typeof(MaterialCard), defaultValue: 10.0);
 
         public double AndroidElevation
         {
@@ -201,7 +199,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AndroidBorderAlphaProperty =
-            BindableProperty.Create(nameof(AndroidBorderAlpha), typeof(double), typeof(MaterialCard), defaultValue: 0.0);
+            BindableProperty.Create(nameof(AndroidBorderAlpha), typeof(double), typeof(MaterialCard), defaultValue: 1.0);
 
         public double AndroidBorderAlpha
         {
@@ -220,9 +218,9 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             _initialized = true;
 
-            //TODO: if I add this effect, materialswitch doesn't work on android
-            //Effects.Add(new TouchAndPressEffect());
+            this.IsClippedToBounds = true;
 
+            Effects.Add(new TouchAndPressEffect());
 
             SetCardType();
         }
@@ -232,119 +230,28 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (propertyName)
             {
                 case nameof(Type):
-                case nameof(ShadowColor):
-                case nameof(base.HasShadow):
-                case nameof(BackgroundColor):
-                case nameof(base.BorderColor):
-                case nameof(AndroidElevation):
+                //case nameof(ShadowColor):
+                //case nameof(BorderColor):
+                //case nameof(base.HasShadow):
+                    //case nameof(BackgroundColor):
+                    //case nameof(base.BorderColor):
+                    //case nameof(AndroidElevation):
                     SetCardType();
                     break;
 
-                //case nameof(Text):
-                //case nameof(ToUpper):
-                //    _textLabel.Text = ToUpper ? Text?.ToUpper() : Text;
-                //    break;
-                //case nameof(FontSize):
-                //    _textLabel.FontSize = FontSize;
-                //    break;
-                //case nameof(FontFamily):
-                //    _textLabel.FontFamily = FontFamily;
-                //    break;
-                //case nameof(CornerRadius):
-                //    _frameLayout.CornerRadius = Convert.ToInt32(CornerRadius);
-                //    break;
-                //case nameof(LeadingIcon):
-                //    if (LeadingIcon != null)
-                //    {
-                //        _leadingIconContentView.Content = LeadingIcon;
-                //        _leadingIconContentView.IsVisible = true;
-                //    }
-                //    break;
-                //case nameof(TrailingIcon):
-                //    if (TrailingIcon != null)
-                //    {
-                //        _trailingIconContentView.Content = TrailingIcon;
-                //        _trailingIconContentView.IsVisible = true;
-                //    }
-                //    break;
-                //case nameof(IconSize):
-                //    _leadingIconContentView.HeightRequest = IconSize;
-                //    _leadingIconContentView.WidthRequest = IconSize;
-                //    _trailingIconContentView.HeightRequest = IconSize;
-                //    _trailingIconContentView.WidthRequest = IconSize;
-                //    break;
                 case nameof(IsEnabled):
                     VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled");
                     break;
-                //case nameof(ActivityIndicatorSize):
-                //    _cntActivityIndicator.HeightRequest = ActivityIndicatorSize;
-                //    _cntActivityIndicator.WidthRequest = ActivityIndicatorSize;
-                //    break;
-                //case nameof(CustomActivityIndicator):
-                //    if (CustomActivityIndicator != null)
-                //    {
-                //        _cntActivityIndicator.Content = CustomActivityIndicator;
-                //    }
-                //    break;
-                //case nameof(BusyColor):
-                //    if (CustomActivityIndicator == null)
-                //    {
-                //        if (_activityIndicator == null)
-                //        {
-                //            _activityIndicator = new ActivityIndicator();
-                //            _cntActivityIndicator.Content = _activityIndicator;
-                //        }
-
-                //        _activityIndicator.Color = BusyColor;
-                //    }
-                //    break;
-                //case nameof(IsBusy):
-                //    if (IsBusy)
-                //    {
-                //        if (CustomActivityIndicator == null)
-                //        {
-                //            if (_activityIndicator == null)
-                //            {
-                //                _activityIndicator = new ActivityIndicator { Color = BusyColor };
-                //                _cntActivityIndicator.Content = _activityIndicator;
-                //            }
-
-                //            _activityIndicator.IsVisible = true;
-                //            _activityIndicator.IsRunning = true;
-                //        }
-
-                //        _cntActivityIndicator.IsVisible = true;
-
-                //        _frameLayout.IsVisible = false;
-                //    }
-                //    else
-                //    {
-                //        _frameLayout.IsVisible = true;
-
-                //        if (CustomActivityIndicator == null)
-                //        {
-                //            if (_activityIndicator == null)
-                //            {
-                //                _activityIndicator = new ActivityIndicator();
-                //                _cntActivityIndicator.Content = _activityIndicator;
-                //            }
-
-                //            _activityIndicator.IsVisible = false;
-                //            _activityIndicator.IsRunning = false;
-                //        }
-
-                //        _cntActivityIndicator.IsVisible = false;
-                //    }
-                //    break;
 
                 default:
                     base.OnPropertyChanged(propertyName);
+                    //SetCardType();
                     break;
 
 
             }
 
-            base.OnPropertyChanged(propertyName);
+            //base.OnPropertyChanged(propertyName);
         }
 
         public void SetCardType()
@@ -357,7 +264,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     BorderColor = Color.Transparent;
                     BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
                     ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
-                    AndroidElevation = AndroidElevation != 0.0 ? AndroidElevation : 10.0;
                     break;
                 case MaterialCardType.Filled:
                     HasShadow = false;
@@ -368,10 +274,9 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case MaterialCardType.Outlined:
                     HasShadow = false;
-                    BackgroundColor = Color.Transparent;
+                    BackgroundColor = Color.Red;
                     HasBorder = true;
                     BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.BorderColor;
-
                     break;
             }
         }
