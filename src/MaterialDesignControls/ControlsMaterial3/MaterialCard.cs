@@ -70,7 +70,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: null);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.MaterialCardAnimation);
 
         public AnimationTypes Animation
         {
@@ -79,7 +79,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: null);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.MaterialCardAnimationParameter);
 
         public double? AnimationParameter
         {
@@ -230,23 +230,88 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (propertyName)
             {
                 case nameof(Type):
-                //case nameof(ShadowColor):
-                //case nameof(BorderColor):
-                //case nameof(base.HasShadow):
-                    //case nameof(BackgroundColor):
-                    //case nameof(base.BorderColor):
-                    //case nameof(AndroidElevation):
                     SetCardType();
                     break;
 
-                case nameof(IsEnabled):
-                    VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled");
-                    break;
+                //case nameof(ShadowColor):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        ShadowColor = ShadowColor;
+                //    }
+                //    break;
 
-                default:
-                    base.OnPropertyChanged(propertyName);
-                    //SetCardType();
-                    break;
+                //case nameof(base.BackgroundColor):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        BackgroundColor = BackgroundColor;
+                //    }
+                //    break;
+
+                //case nameof(base.BorderColor):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        BorderColor = BorderColor;
+                //    }
+                //    break;
+
+
+                //case nameof(HasShadow):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        HasShadow = HasShadow;
+                //    }
+                //    break;
+
+                //case nameof(HasBorder):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        HasBorder = HasBorder;
+                //    }
+                //    break;
+
+                //case nameof(iOSBorderWidth):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        iOSBorderWidth = iOSBorderWidth;
+                //    }
+                //    break;
+
+                //case nameof(iOSShadowRadius):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        iOSShadowRadius = iOSShadowRadius;
+                //    }
+                //    break;
+
+                //case nameof(iOSShadowOffset):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        iOSShadowOffset = iOSShadowOffset;
+                //    }
+                //    break;
+
+
+                //case nameof(AndroidElevation):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        AndroidElevation = AndroidElevation;
+                //    }
+                //    break;
+
+                //case nameof(AndroidBorderAlpha):
+                //    if (Type == MaterialCardType.Custom)
+                //    {
+                //        AndroidBorderAlpha = AndroidBorderAlpha;
+                //    }
+                //    break;
+
+                //case nameof(IsEnabled):
+                //    VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled");
+                //    break;
+
+                //default:
+                //    base.OnPropertyChanged(propertyName);
+                //    break;
 
 
             }
@@ -274,7 +339,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case MaterialCardType.Outlined:
                     HasShadow = false;
-                    BackgroundColor = Color.Red;
+                    BackgroundColor = Color.Transparent;
                     HasBorder = true;
                     BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.BorderColor;
                     break;
