@@ -1,5 +1,4 @@
 ﻿using ExampleMaterialDesignControls.ViewModels;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +12,6 @@ namespace ExampleMaterialDesignControls.Pages
             InitializeComponent();
 
             BindingContext = new MaterialCardViewModel { DisplayAlert = DisplayAlert, Navigation = Navigation };
-
         }
     }
 }

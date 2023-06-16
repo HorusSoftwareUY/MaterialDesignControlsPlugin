@@ -9,6 +9,12 @@ using Plugin.MaterialDesignControls.Material3;
 using AndroidX.Core.View;
 using Android.Util;
 using Android.Animation;
+using Android.Graphics;
+using Android.Views;
+using Android.Graphics.Drawables.Shapes;
+using Xamarin.Forms.Shapes;
+using System;
+using AndroidGraphics = Android.Graphics;
 
 [assembly: ExportRenderer(typeof(MaterialCard), typeof(MaterialCardRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.Android
@@ -19,6 +25,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             : base(context)
         {
         }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
         {
             base.OnElementChanged(e);
@@ -89,32 +96,73 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             var customFrame = (MaterialCard)Element;
             if (customFrame != null)
             {
-                if (customFrame.HasShadow)
+                if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
                 {
+                    this.Elevation = 0;
+                    this.TranslationZ = 0;
 
-                    if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+                    bool hasShadowOrElevation = customFrame.HasShadow;
+
+                    if (hasShadowOrElevation)
                     {
-                        Control.StateListAnimator = new StateListAnimator();
+                        ViewCompat.SetElevation(this, Context.ToPixels(customFrame.AndroidElevation));
 
-                        SetOutlineSpotShadowColor(customFrame.ShadowColor.ToAndroid());
-                        SetOutlineAmbientShadowColor(customFrame.ShadowColor.ToAndroid());
-                        float elevation = ConvertDpToPixels(customFrame.AndroidElevation);
-                        Control.SetElevation(elevation);
+                        // Color only exists on Pie and beyond.
+                        if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
+                        {
+                            this.SetOutlineAmbientShadowColor(customFrame.ShadowColor.ToAndroid());
+                            this.SetOutlineSpotShadowColor(customFrame.ShadowColor.ToAndroid());
+                        }
+                    }
+
+                    if (hasShadowOrElevation)
+                    {
+                        // To have shadow show up, we need to clip.
+                        this.OutlineProvider = new RoundedCornerOutlineProvider(customFrame, Context.ToPixels);
+                        this.ClipToOutline = true;
                     }
                     else
                     {
-                        var borderColor = customFrame.ShadowColor.MultiplyAlpha(customFrame.AndroidBorderAlpha);
-                        Element.BorderColor = borderColor;
+                        this.OutlineProvider = null;
+                        this.ClipToOutline = false;
                     }
                 }
             }
         }
+    }
 
-        private float ConvertDpToPixels(float dpValue)
+    public class RoundedCornerOutlineProvider : ViewOutlineProvider
+    {
+        private readonly MaterialCard _pancake;
+        private readonly Func<double, float> _convertToPixels;
+
+        public RoundedCornerOutlineProvider(MaterialCard pancake, Func<double, float> convertToPixels)
         {
-            return TypedValue.ApplyDimension(ComplexUnitType.Dip, dpValue, Context.Resources.DisplayMetrics);
+            _pancake = pancake;
+            _convertToPixels = convertToPixels;
         }
 
+        public override void GetOutline(global::Android.Views.View view, Outline outline)
+        {
+            var path = CreateRoundedRectPath(view.Width, view.Height,
+                    _convertToPixels(_pancake.CornerRadius),
+                    _convertToPixels(_pancake.CornerRadius),
+                    _convertToPixels(_pancake.CornerRadius),
+                    _convertToPixels(_pancake.CornerRadius));
+            if (path.IsConvex)
+                outline.SetConvexPath(path);
+        }
 
+        public AndroidGraphics.Path CreateRoundedRectPath(float rectWidth, float rectHeight, float topLeft, float topRight, float bottomRight, float bottomLeft)
+        {
+            var path = new AndroidGraphics.Path();
+            var radii = new[] { topLeft, topLeft,
+                                topRight, topRight,
+                                bottomRight, bottomRight,
+                                bottomLeft, bottomLeft };
+            path.AddRoundRect(new RectF(0, 0, rectWidth, rectHeight), radii, AndroidGraphics.Path.Direction.Ccw);
+            path.Close();
+            return path;
+        }
     }
 }

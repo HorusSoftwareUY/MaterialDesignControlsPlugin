@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialCardPage"
-             xmlns:animations="clr-namespace:ExampleMaterialDesignControls.Animations"
              xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
@@ -27,32 +26,89 @@
                         Grid.Row="1"
                         VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="20,0,20,20"
-                             Spacing="10">
+                             Spacing="40">
 
                     <contentViews:InfoIndicatorView Message="MaterialCard follows the latest guidelines of Material Design 3" />
 
-                    <material3:MaterialCard x:Name="BackgroundFrame"
-                                            CornerRadius="15"
-                                            Type="Outlined"
-                                            BorderColor="DarkGray"
-                                            HorizontalOptions="FillAndExpand">
-                        <material:MaterialLabel Text="Outlined" />
-
+                    <material3:MaterialCard
+                        Type="Outlined">
+                        <material:MaterialLabel
+                            Text="Default outlined type" />
                     </material3:MaterialCard>
 
-                    <material3:MaterialCard CornerRadius="15"
-                                            Type="Filled"
-                                            BackgroundColor="LightGray"
-                                            HorizontalOptions="FillAndExpand">
-                        <material:MaterialLabel Text="Filled" />
+                    <material3:MaterialCard
+                        Type="Filled">
+                        <material:MaterialLabel
+                            Text="Default filled type" />
                     </material3:MaterialCard>
 
-                    <material3:MaterialCard CornerRadius="15"
-                                            Type="Elevated"
-                                            BackgroundColor="LightGray"
-                                            ShadowColor="Black"
-                                            HorizontalOptions="FillAndExpand">
-                        <material:MaterialLabel Text="Elevated" />
+                    <material3:MaterialCard
+                        Type="Elevated">
+                        <material:MaterialLabel
+                            Text="Default elevated type" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom">
+                        <material:MaterialLabel
+                            Text="Default custom type" />
+                    </material3:MaterialCard>
+
+                    <material:MaterialDivider />
+
+                    <material3:MaterialCard
+                        Type="Outlined"
+                        CornerRadius="20"
+                        BorderColor="DarkBlue"
+                        HorizontalOptions="FillAndExpand">
+                        <material:MaterialLabel
+                            Text="Outlined type" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Filled"
+                        CornerRadius="20"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="FillAndExpand">
+                        <material:MaterialLabel
+                            Text="Filled type" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Elevated"
+                        CornerRadius="20"
+                        ShadowColor="DarkBlue"
+                        HorizontalOptions="FillAndExpand">
+                        <material:MaterialLabel
+                            Text="Elevated type" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom"
+                        CornerRadius="20"
+                        CornerRadiusTopLeft="False"
+                        CornerRadiusTopRight="False"
+                        BackgroundColor="LightBlue"
+                        BorderColor="DarkBlue"
+                        HasShadow="True"
+                        ShadowColor="DarkBlue"
+                        HorizontalOptions="FillAndExpand">
+                        <material:MaterialLabel
+                            Text="Custom type" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom"
+                        CornerRadius="20"
+                        CornerRadiusTopLeft="False"
+                        CornerRadiusBottomRight="False"
+                        BackgroundColor="LightBlue"
+                        BorderColor="DarkBlue"
+                        HasShadow="True"
+                        ShadowColor="DarkBlue"
+                        HorizontalOptions="FillAndExpand">
+                        <material:MaterialLabel
+                            Text="Custom type" />
                     </material3:MaterialCard>
                 </StackLayout>
             </ScrollView>

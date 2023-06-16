@@ -14,6 +14,7 @@ namespace Plugin.MaterialDesignControls.Material3
     public partial class MaterialCard : Frame, ITouchAndPressEffectConsumer
     {
         #region Constructors
+
         public MaterialCard()
         {
             if (!_initialized)
@@ -22,13 +23,14 @@ namespace Plugin.MaterialDesignControls.Material3
                 Initialize();
             }
         }
+
         #endregion Constructors
 
         #region Attributes
+
         private bool _initialized = false;
 
         #endregion Attributes
-
 
         #region Properties
 
@@ -68,9 +70,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(IsEnabledProperty, value); }
         }
 
-
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.MaterialCardAnimation);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.TapAnimation);
 
         public AnimationTypes Animation
         {
@@ -79,7 +80,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.MaterialCardAnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.TapAnimationParameter);
 
         public double? AnimationParameter
         {
@@ -133,12 +134,30 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ShadowColorProperty =
-            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialCard), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialCard), defaultValue: Color.Default);
 
         public Color ShadowColor
         {
             get => (Color)GetValue(ShadowColorProperty);
             set => SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly new BindableProperty BackgroundColorProperty =
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialCard), defaultValue: Color.Default);
+
+        public new Color BackgroundColor
+        {
+            get { return (Color)GetValue(BackgroundColorProperty); }
+            set { SetValue(BackgroundColorProperty, value); }
+        }
+
+        public static readonly new BindableProperty BorderColorProperty =
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialCard), defaultValue: Color.Default);
+
+        public new Color BorderColor
+        {
+            get { return (Color)GetValue(BorderColorProperty); }
+            set { SetValue(BorderColorProperty, value); }
         }
 
         public static readonly BindableProperty HasBorderProperty =
@@ -151,6 +170,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         #region iOS
+
         public static readonly BindableProperty iOSBorderWidthProperty =
             BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(MaterialCard), 1f);
 
@@ -186,11 +206,13 @@ namespace Plugin.MaterialDesignControls.Material3
             get => (Size)GetValue(iOSShadowOffsetProperty);
             set => SetValue(iOSShadowOffsetProperty, value);
         }
+
         #endregion iOS
 
         #region Android
+
         public static readonly BindableProperty AndroidElevationProperty =
-            BindableProperty.Create(nameof(AndroidElevation), typeof(float), typeof(MaterialCard), defaultValue: 50.0f);
+            BindableProperty.Create(nameof(AndroidElevation), typeof(float), typeof(MaterialCard), defaultValue: 8.0f);
 
         public float AndroidElevation
         {
@@ -198,19 +220,9 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(AndroidElevationProperty, value);
         }
 
-        public static readonly BindableProperty AndroidBorderAlphaProperty =
-            BindableProperty.Create(nameof(AndroidBorderAlpha), typeof(double), typeof(MaterialCard), defaultValue: 0.1);
-
-        public double AndroidBorderAlpha
-        {
-            get => (double)GetValue(AndroidBorderAlphaProperty);
-            set => SetValue(AndroidBorderAlphaProperty, value);
-        }
         #endregion Android
 
-
         #endregion Properties
-
 
         #region Methods
 
@@ -223,108 +235,26 @@ namespace Plugin.MaterialDesignControls.Material3
             this.CornerRadius = 12f;
 
             Effects.Add(new TouchAndPressEffect());
-
-            SetCardType();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             switch (propertyName)
             {
-                case nameof(Type):
+                case "Renderer":
+                    base.OnPropertyChanged(propertyName);
                     SetCardType();
                     break;
 
-                case nameof(ShadowColor):
-                    if (Type == MaterialCardType.Custom || Type == MaterialCardType.Elevated)
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
-                    else
-                    {
-                        ShadowColor = Color.Transparent;
-                    }
-                    break;
-
+                case nameof(Type):
                 case nameof(base.BackgroundColor):
-                    if (Type == MaterialCardType.Outlined)
-                    {
-                        BackgroundColor = Color.Transparent;
-                    }
-                    else
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
-                    break;
-
                 case nameof(base.BorderColor):
-                    if (Type == MaterialCardType.Outlined || Type == MaterialCardType.Custom)
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
-                    else
-                    {
-                        BorderColor = Color.Transparent;
-                    }
-                    break;
-
-
                 case nameof(HasShadow):
-                    if (Type == MaterialCardType.Custom || Type == MaterialCardType.Elevated)
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
-                    else
-                    {
-                        HasShadow = false;
-                    }
+                        SetCardType();
                     break;
 
-                case nameof(HasBorder):
-                    if (Type == MaterialCardType.Custom || Type == MaterialCardType.Outlined)
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
-                    else
-                    {
-                        HasBorder = false;
-                    }
-                    break;
-
-                case nameof(iOSBorderWidth):
-                    if (Type == MaterialCardType.Custom)
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
-                    break;
-
-                case nameof(iOSShadowRadius):
-                    if (Type == MaterialCardType.Custom)
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
-                    break;
-
-                case nameof(iOSShadowOffset):
-                    if (Type == MaterialCardType.Custom)
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
-                    break;
-
-
-                case nameof(AndroidElevation):
-                    if (Type == MaterialCardType.Custom)
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
-                    break;
-
-                case nameof(AndroidBorderAlpha):
-                    if (Type == MaterialCardType.Custom)
-                    {
-                        base.OnPropertyChanged(propertyName);
-                    }
+                case nameof(ShadowColor):
+                        SetShadowColor();
                     break;
 
                 case nameof(IsEnabled):
@@ -341,32 +271,58 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             switch (Type)
             {
-                case MaterialCardType.Elevated:
-                    HasBorder = false;
-                    HasShadow = true;
-                    BorderColor = Color.Transparent;
-                    BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
-                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
+                case MaterialCardType.Outlined:
+                    HasBorder = true;
+                    base.HasShadow = false;
+                    base.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
+                    ShadowColor = Color.Transparent;
+                    base.BackgroundColor = Color.Transparent;
                     break;
                 case MaterialCardType.Filled:
-                    HasShadow = false;
                     HasBorder = false;
-                    BorderColor = Color.Transparent;
-                    BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
+                    base.HasShadow = false;
+                    base.BorderColor = Color.Transparent;
                     ShadowColor = Color.Transparent;
+                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.LightPrimaryColor;
                     break;
-                case MaterialCardType.Outlined:
-                    HasShadow = false;
-                    BackgroundColor = Color.Transparent;
-                    HasBorder = true;
-                    BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.BorderColor;
+                case MaterialCardType.Elevated:
+                    HasBorder = false;
+                    base.HasShadow = true;
+                    base.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.LightPrimaryColor;
+                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
+                    SetShadowColor();
+                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.LightPrimaryColor;
                     break;
+                case MaterialCardType.Custom:
+                    base.HasShadow = HasShadow;
+                    base.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
+                    SetShadowColor();
+                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.LightPrimaryColor;
+                    break;
+            }
+        }
+
+        private void SetShadowColor()
+        {
+            if (ShadowColor != Color.Transparent)
+            {
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
+                }
+                else if (ShadowColor.A == 1)
+                {
+                    ShadowColor = ShadowColor != Color.Default ?
+                        Color.FromRgba(ShadowColor.R, ShadowColor.G, ShadowColor.B, 0.5) :
+                        Color.FromRgba(DefaultStyles.ShadowColor.R, DefaultStyles.ShadowColor.G, DefaultStyles.ShadowColor.B, 0.5);
+                }
             }
         }
 
         public void ConsumeEvent(EventType gestureType)
         {
-            TouchAndPressAnimation.Animate(this, gestureType);
+            if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
+                TouchAndPressAnimation.Animate(this, gestureType);
         }
 
         public void ExecuteAction()
@@ -374,6 +330,7 @@ namespace Plugin.MaterialDesignControls.Material3
             if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
                 Command.Execute(CommandParameter);
         }
+
         #endregion Methods
     }
 }
