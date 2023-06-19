@@ -10,7 +10,7 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static Color BackgroundColor { get; set; } = Color.White;
 
-        public static Color ShadowColor { get; set; } = Color.Black; //Color.FromHex("#80000000");
+        public static Color ShadowColor { get; set; } = Color.Black;
 
         public static Color TextColor { get; set; } = Color.Black;
 
