@@ -6,7 +6,7 @@
     xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     ios:Page.UseSafeArea="True"
     BackgroundColor="White"
     NavigationPage.HasNavigationBar="false">
@@ -22,6 +22,10 @@
                 <StackLayout Padding="20,0,20,20" Spacing="20">
 
                     <contentViews:InfoIndicatorView Message="MaterialTopAppBar follows the latest guidelines of Material Design 3" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Type Center Aligned " />
 
                     <material3:MaterialTopAppBar
                         BackgroundColor="{StaticResource GradientColorTransparent1}"
@@ -38,6 +42,12 @@
                         </material3:MaterialTopAppBar.TrailingIcon>
                     </material3:MaterialTopAppBar>
 
+                    <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Type Small" />
+
                     <material3:MaterialTopAppBar
                         BackgroundColor="{StaticResource GradientColorTransparent1}"
                         HeadlineColor="{StaticResource GradientColor1}"
@@ -48,6 +58,12 @@
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
                         </material3:MaterialTopAppBar.LeadingIcon>
                     </material3:MaterialTopAppBar>
+
+                    <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Type Medium" />
 
                     <material3:MaterialTopAppBar
                         BackgroundColor="{StaticResource GradientColorTransparent1}"
@@ -60,12 +76,88 @@
                         </material3:MaterialTopAppBar.LeadingIcon>
                     </material3:MaterialTopAppBar>
 
+                    <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Type Large" />
+
                     <material3:MaterialTopAppBar
                         BackgroundColor="{StaticResource GradientColorTransparent1}"
                         HeadlineColor="{StaticResource GradientColor1}"
                         Headline="Type - Large"
+                        DescriptionFontSize="45"
                         LeadingIconCommand="{Binding BackCommand}"
                         Type="Large">
+                        <material3:MaterialTopAppBar.LeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
+                        </material3:MaterialTopAppBar.LeadingIcon>
+                    </material3:MaterialTopAppBar>
+
+                    <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Type CenterAligned with Indicator Busy in Icon" />
+
+                    <material3:MaterialTopAppBar
+                        BackgroundColor="{StaticResource GradientColorTransparent1}"
+                        HeadlineColor="{StaticResource GradientColor1}"
+                        Headline="Type - CenterAligned"
+                        TrailingIconCommand="{Binding VolumeCommand}"
+                        TrailingIconIsBusy="{Binding VolumeCommand.IsRunning}"
+                        Type="CenterAligned">
+                        <material3:MaterialTopAppBar.TrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.volume_blue.svg" />
+                        </material3:MaterialTopAppBar.TrailingIcon>
+                    </material3:MaterialTopAppBar>
+
+                    <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Type CenterAligned with Description" />
+
+                    <material3:MaterialTopAppBar
+                        BackgroundColor="{StaticResource GradientColorTransparent1}"
+                        HeadlineColor="{StaticResource GradientColor1}"
+                        Headline="Type - CenterAligned"
+                        Description="Provide a description here"
+                        Type="CenterAligned">
+                        <material3:MaterialTopAppBar.LeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
+                        </material3:MaterialTopAppBar.LeadingIcon>
+                    </material3:MaterialTopAppBar>
+
+                    <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Type Small with Description" />
+
+                    <material3:MaterialTopAppBar
+                        BackgroundColor="{StaticResource GradientColorTransparent1}"
+                        HeadlineColor="{StaticResource GradientColor1}"
+                        Headline="Type - Small"
+                        Description="Provide a description here"
+                        Type="Small">
+                        <material3:MaterialTopAppBar.LeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
+                        </material3:MaterialTopAppBar.LeadingIcon>
+                    </material3:MaterialTopAppBar>
+
+                    <material:MaterialDivider Margin="0,10" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Full API" />
+
+                    <material3:MaterialTopAppBar
+                        BackgroundColor="{StaticResource GradientColorTransparent1}"
+                        HeadlineColor="{StaticResource GradientColor1}"
+                        Headline="Type - Small"
+                        Description="Provide a description here"
+                        Type="Small">
                         <material3:MaterialTopAppBar.LeadingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
                         </material3:MaterialTopAppBar.LeadingIcon>
