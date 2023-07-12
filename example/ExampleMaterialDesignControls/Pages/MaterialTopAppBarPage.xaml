@@ -155,12 +155,36 @@
                     <material3:MaterialTopAppBar
                         BackgroundColor="{StaticResource GradientColorTransparent1}"
                         HeadlineColor="{StaticResource GradientColor1}"
-                        Headline="Type - Small"
+                        HeadlineFontSize="45"
+                        DescriptionColor="{StaticResource GradientColor11}"
+                        DescriptionFontSize="23"
+                        Headline="HeadLine"
                         Description="Provide a description here"
+                        BusyColor="{StaticResource DarkRedColor}"
+                        TrailingIconCommand="{Binding VolumeCommand}"
+                        LeadingIconCommand="{Binding BackCommand}"
+                        TrailingIconIsBusy="{Binding VolumeCommand.IsRunning}"
+                        DescriptionMarginAdjustment="25,10,0,0"
+                        HeadlineMarginAdjustment="38,0,0,0"
                         Type="Small">
+                        <material3:MaterialTopAppBar.HeadlineFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialTopAppBar.HeadlineFontFamily>
+                        <material3:MaterialTopAppBar.DescriptionFontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>monospace</OnPlatform.Android>
+                                <OnPlatform.iOS>Arial Rounded MT Bold</OnPlatform.iOS>
+                            </OnPlatform>
+                        </material3:MaterialTopAppBar.DescriptionFontFamily>
                         <material3:MaterialTopAppBar.LeadingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_blue.svg" />
                         </material3:MaterialTopAppBar.LeadingIcon>
+                        <material3:MaterialTopAppBar.TrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.volume_blue.svg" />
+                        </material3:MaterialTopAppBar.TrailingIcon>
                     </material3:MaterialTopAppBar>
                 </StackLayout>
             </ScrollView>
