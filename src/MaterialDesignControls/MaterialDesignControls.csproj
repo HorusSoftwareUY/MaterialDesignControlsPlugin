@@ -69,13 +69,16 @@
     <Compile Include="ControlsMaterial3\MaterialEditor.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
+    <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
     <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Implementations\CustomMaterial3\CustomActivityIndicator.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEditor.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomLabel.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomProgressBar.cs" />
     <Compile Include="Implementations\Deprecated\CustomDatePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialSelection.cs" />
     <Compile Include="ControlsMaterial3\MaterialTimePicker.cs" />

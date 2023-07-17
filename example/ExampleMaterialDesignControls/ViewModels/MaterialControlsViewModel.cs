@@ -110,5 +110,10 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await Navigation.PushAsync(new MaterialTopAppBarPage());
         });
+
+        public ICommand GoMaterialProgressIndicatorCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialProgressIndicatorPage());
+        });
     }
 }

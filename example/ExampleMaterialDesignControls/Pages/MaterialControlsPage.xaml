@@ -736,6 +736,42 @@
                             <contentViews:MaterialDesign3Badge />
                         </Grid>
                     </Frame>
+
+                    <Frame Grid.Row="10"
+                           Grid.Column="1"
+                           Padding="15"
+                           BackgroundColor="{StaticResource GradientColorTransparent3}"
+                           CornerRadius="16"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoMaterialProgressIndicatorCommand}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent3}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_switch.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="Material Progress Indicator"
+                                                        TextColor="{StaticResource GradientColor3}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                    </Frame>
                 </Grid>
             </ScrollView>
         </Grid>
