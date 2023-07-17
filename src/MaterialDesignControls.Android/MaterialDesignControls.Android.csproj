@@ -201,7 +201,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Renderers\CustomProgressBarRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialCardRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialDatePickerRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialDoublePickerRenderer.cs" />

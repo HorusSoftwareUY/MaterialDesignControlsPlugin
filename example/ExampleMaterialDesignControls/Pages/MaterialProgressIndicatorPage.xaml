@@ -10,6 +10,19 @@
              ios:Page.UseSafeArea="True"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="false">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LegendLabel"
+                   TargetType="material:MaterialLabel">
+                <Setter Property="LineBreakMode"
+                        Value="WordWrap" />
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="Margin"
+                        Value="0,10,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*"
               RowSpacing="0">
@@ -30,10 +43,19 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialProgressIndicator follows the latest guidelines of Material Design 3" />
 
-                    <!--<material:MaterialLabel Style="{StaticResource LegendLabel}"
-                                            Text="Elevated button:" />-->
+                    <material:MaterialLabel Style="{StaticResource LegendLabel}"
+                                            FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Circular" />
                     
-                    <material3:MaterialProgressIndicator ProgressIndicatorType="Circular" />
+                    <material3:MaterialProgressIndicator ProgressIndicatorType="Circular"
+                                                         TrackColor="DarkGray"
+                                                         IndicatorColor="MediumPurple"/>
+
+                    <material:MaterialLabel Style="{StaticResource LegendLabel}"
+                                            FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Linear" />
 
                     <material3:MaterialProgressIndicator  />
 
