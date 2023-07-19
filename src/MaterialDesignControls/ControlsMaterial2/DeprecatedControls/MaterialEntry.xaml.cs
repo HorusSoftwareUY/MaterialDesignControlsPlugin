@@ -412,6 +412,12 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.IsTabStop):
                     this.txtEntry.IsTabStop = this.IsTabStop;
                     break;
+
+                case nameof(this.TextColor):
+                case nameof(this.DisabledTextColor):
+                    this.txtEntry.TextColor = this.IsEnabled ? this.TextColor : this.DisabledTextColor;
+                    break;
+
                 case nameof(this.ReturnType):
                     this.txtEntry.ReturnType = this.ReturnType;
 
