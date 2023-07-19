@@ -1,26 +1,96 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialSegmentedPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialSegmentedPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             ios:Page.UseSafeArea="True"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialSegmented" LeadingIconCommand="{Binding BackCommand}">
+            <material3:MaterialTopAppBar Headline="MaterialSegmented"
+                                         LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.LeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.LeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="20">
-                    <material:MaterialSegmented
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
+
+                    <contentViews:InfoIndicatorView Message="MaterialSegmented follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialSegmented BackgroundColor="{StaticResource GradientColorTransparent5}"
+                                                 CornerRadius="20"
+                                                 HeightRequest="50"
+                                                 ItemsSource="{Binding Items2}"
+                                                 SegmentMargin="0"
+                                                 SelectedTextColor="Black"
+                                                 SelectedColor="DarkGray"
+                                                 UnselectedColor="Transparent"
+                                                 UnselectedTextColor="Black">
+                        <material3:MaterialSegmented.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                            </DataTemplate>
+                        </material3:MaterialSegmented.CustomSelectedIcon>
+                        <material3:MaterialSegmented.CustomUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add_b.svg" />
+                            </DataTemplate>
+                        </material3:MaterialSegmented.CustomUnselectedIcon>
+                    </material3:MaterialSegmented>
+
+                    <material3:MaterialSegmented BackgroundColor="{StaticResource GradientColorTransparent5}"
+                                                 CornerRadius="20"
+                                                 HeightRequest="50"
+                                                 ItemsSource="{Binding Items2}"
+                                                 SegmentMargin="0"
+                                                 Type="Filled"
+                                                 SelectedTextColor="Black"
+                                                 SelectedColor="DarkGray"
+                                                 UnselectedColor="Transparent"
+                                                 UnselectedTextColor="Black">
+                        <material3:MaterialSegmented.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                            </DataTemplate>
+                        </material3:MaterialSegmented.CustomSelectedIcon>
+                    </material3:MaterialSegmented>
+
+                    <material3:MaterialSegmented BackgroundColor="{StaticResource GradientColorTransparent5}"
+                                                 CornerRadius="20"
+                                                 HeightRequest="50"
+                                                 Type="Filled"
+                                                 ItemsSource="{Binding Items2}"
+                                                 SegmentMargin="0"
+                                                 SelectedColor="{StaticResource GradientColor5}"
+                                                 UnselectedColor="Transparent"
+                                                 UnselectedTextColor="{StaticResource GradientColor5}" />
+
+                    <material3:MaterialSegmented CornerRadius="10"
+                                                HeightRequest="50"
+                                                ItemsSource="{Binding Items}"
+                                                SegmentMargin="4"
+                                                 Type="Filled"
+                                                SelectedColor="{StaticResource GradientColor3}"
+                                                UnselectedTextColor="{StaticResource GradientColor3}" />
+
+
+                    <material:MaterialSegmented CornerRadius="10"
+                                                 HeightRequest="50"
+                                                 ItemsSource="{Binding Items}"
+                                                 SegmentMargin="4"
+                                                 SelectedColor="{StaticResource GradientColor3}"
+                                                 UnselectedTextColor="{StaticResource GradientColor3}" />
+
+                    <!--<material:MaterialSegmented
                         HeightRequest="50"
                         ItemsSource="{Binding Items}"
                         SegmentMargin="0"
@@ -138,7 +208,7 @@
                         Command="{Binding SaveCommand}"
                         HorizontalOptions="Fill"
                         Text="Save"
-                        VerticalOptions="EndAndExpand" />
+                        VerticalOptions="EndAndExpand" />-->
                 </StackLayout>
             </ScrollView>
         </Grid>

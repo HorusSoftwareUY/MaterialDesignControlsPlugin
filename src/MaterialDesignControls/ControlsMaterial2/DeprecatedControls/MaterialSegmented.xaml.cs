@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -8,6 +7,7 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
+    [Obsolete("MaterialSegmented is deprecated, please use MaterialSegmented of Material 3 instead.")]
     public partial class MaterialSegmented : ContentView
     {
         #region Attributes
