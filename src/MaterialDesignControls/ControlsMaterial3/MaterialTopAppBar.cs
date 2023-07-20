@@ -35,9 +35,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private ActivityIndicator _activityIndicatorLeading;
 
-        private double _descriptionDefaultFontSize = 16;
-        private double _descriptionTopMargin = 9;
-
         private double _descriptionLateralMargin = 10;
 
         private double _mediumDefaultFontSize = 28;
@@ -256,7 +253,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LeadingIconIsBusyProperty =
-        BindableProperty.Create(nameof(LeadingIconIsBusy), typeof(bool), typeof(MaterialButton), defaultValue: false);
+            BindableProperty.Create(nameof(LeadingIconIsBusy), typeof(bool), typeof(MaterialButton), defaultValue: false);
 
         public bool LeadingIconIsBusy
         {
@@ -265,7 +262,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BusyColorProperty =
-        BindableProperty.Create(nameof(BusyColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BusyColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color BusyColor
         {
@@ -325,18 +322,14 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
-                HeightRequest = 48,
                 TextColor = DescriptionColor,
                 FontSize = DescriptionFontSize,
                 FontFamily = DescriptionFontFamily
             };
 
-            Children.Add(_descriptionLabel, 0, 1);
-            Grid.SetColumnSpan(_descriptionLabel, 3);
-
             _leadingIconContentView = new ContentViewButton
             {
-                VerticalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 48,
                 HeightRequest = 48,
                 AnimationParameter = ButtonAnimationParameter,
@@ -351,21 +344,19 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 48,
                 HeightRequest = 48,
-                IsVisible = false,
+                IsVisible = false
             };
-
             Children.Add(_cntLeadingActivityIndicator, 0, 0);
 
             _trailingIconContentView = new ContentViewButton
             {
-                VerticalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 48,
                 HeightRequest = 48,
                 AnimationParameter = ButtonAnimationParameter,
                 Animation = ButtonAnimation,
                 IsVisible = false
             };
-
             Children.Add(_trailingIconContentView, 2, 0);
 
             _cntTrailingActivityIndicator = new ContentView
@@ -376,9 +367,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 HeightRequest = 48,
                 IsVisible = false
             };
-
             Children.Add(_cntTrailingActivityIndicator, 2, 0);
-
 
             SetType();
         }
@@ -414,6 +403,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(Description):
+                    if (!string.IsNullOrEmpty(Description))
+                    {
+                        Children.Add(_descriptionLabel, 0, 1);
+                        Grid.SetColumnSpan(_descriptionLabel, 3);
+                    }
+                    else
+                        Children.Remove(_descriptionLabel);
+
                     _descriptionLabel.Text = Description;
                     break;
                 case nameof(DescriptionColor):
@@ -482,12 +479,19 @@ namespace Plugin.MaterialDesignControls.Material3
                         SetScrollViewAnimation();
                     break;
 
-
                 case nameof(BusyColor):
                     if (_activityIndicatorTrailing == null || _activityIndicatorLeading == null)
                     {
-                        _activityIndicatorTrailing = new ActivityIndicator();
-                        _activityIndicatorLeading = new ActivityIndicator();
+                        _activityIndicatorTrailing = new ActivityIndicator
+                        {
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.Center
+                        };
+                        _activityIndicatorLeading = new ActivityIndicator
+                        {
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.Center
+                        };
                         _cntLeadingActivityIndicator.Content = _activityIndicatorLeading;
                         _cntTrailingActivityIndicator.Content = _activityIndicatorTrailing;
                     }
@@ -499,8 +503,16 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         if (_activityIndicatorTrailing == null)
                         {
-                            _activityIndicatorTrailing = new ActivityIndicator { Color = BusyColor};
+                            _activityIndicatorTrailing = new ActivityIndicator
+                            {
+                                HorizontalOptions = LayoutOptions.Center,
+                                VerticalOptions = LayoutOptions.Center,
+                                Color = BusyColor
+                            };
                         }
+
+                        _activityIndicatorTrailing.WidthRequest = IconSize;
+                        _activityIndicatorTrailing.HeightRequest = IconSize;
                         _activityIndicatorTrailing.IsVisible = true;
                         _activityIndicatorTrailing.IsRunning = true;
                         _cntTrailingActivityIndicator.Content = _activityIndicatorTrailing;
@@ -512,10 +524,19 @@ namespace Plugin.MaterialDesignControls.Material3
                     else
                     {
                         _trailingIconContentView.IsVisible = true;
+
                         if (_activityIndicatorTrailing == null)
                         {
-                            _activityIndicatorTrailing = new ActivityIndicator { Color = BusyColor };
+                            _activityIndicatorTrailing = new ActivityIndicator
+                            {
+                                HorizontalOptions = LayoutOptions.Center,
+                                VerticalOptions = LayoutOptions.Center,
+                                Color = BusyColor
+                            };
                         }
+
+                        _activityIndicatorTrailing.WidthRequest = IconSize;
+                        _activityIndicatorTrailing.HeightRequest = IconSize;
                         _activityIndicatorTrailing.IsVisible = false;
                         _activityIndicatorTrailing.IsRunning = false;
                         _cntTrailingActivityIndicator.Content = _activityIndicatorTrailing;
@@ -528,8 +549,16 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         if (_activityIndicatorLeading == null)
                         {
-                            _activityIndicatorLeading = new ActivityIndicator { Color = BusyColor};
+                            _activityIndicatorLeading = new ActivityIndicator
+                            {
+                                HorizontalOptions = LayoutOptions.Center,
+                                VerticalOptions = LayoutOptions.Center,
+                                Color = BusyColor
+                            };
                         }
+
+                        _activityIndicatorLeading.WidthRequest = IconSize;
+                        _activityIndicatorLeading.HeightRequest = IconSize;
                         _activityIndicatorLeading.IsVisible = true;
                         _activityIndicatorLeading.IsRunning = true;
                         _cntLeadingActivityIndicator.Content = _activityIndicatorLeading;
@@ -543,8 +572,16 @@ namespace Plugin.MaterialDesignControls.Material3
                         _leadingIconContentView.IsVisible = true;
                         if (_activityIndicatorLeading == null)
                         {
-                            _activityIndicatorLeading = new ActivityIndicator { Color = BusyColor};
+                            _activityIndicatorLeading = new ActivityIndicator
+                            {
+                                HorizontalOptions = LayoutOptions.Center,
+                                VerticalOptions = LayoutOptions.Center,
+                                Color = BusyColor
+                            };
                         }
+
+                        _activityIndicatorLeading.WidthRequest = IconSize;
+                        _activityIndicatorLeading.HeightRequest = IconSize;
                         _activityIndicatorLeading.IsVisible = false;
                         _activityIndicatorLeading.IsRunning = false;
                         _cntLeadingActivityIndicator.Content = _activityIndicatorLeading;
@@ -643,8 +680,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 case MaterialTopAppBarType.Small:
                     _headlineLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _headlineLabel.Margin = new Thickness(_smallLabelLateralMargin, HeadlineMarginAdjustment.Top, _smallLabelLateralMargin, HeadlineMarginAdjustment.Bottom);
-                    _descriptionLabel.FontSize = _descriptionDefaultFontSize;
-                    _descriptionLabel.HorizontalOptions = LayoutOptions.Start;
+                    _descriptionLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _descriptionLabel.Margin = new Thickness(_descriptionLateralMargin, DescriptionMarginAdjustment.Top, _descriptionLateralMargin, DescriptionMarginAdjustment.Bottom);
                     break;
                 case MaterialTopAppBarType.Medium:
@@ -653,8 +689,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     _headlineLabel.Margin = new Thickness(_mediumLabelLateralMargin, HeadlineMarginAdjustment.Top, _mediumLabelLateralMargin, HeadlineMarginAdjustment.Bottom);
                     _headlineLabel.FontSize = _mediumDefaultFontSize;
                     RowDefinitions[0].Height = new GridLength(_mediumRowHeight);
-                    _descriptionLabel.FontSize = _descriptionDefaultFontSize;
-                    _descriptionLabel.HorizontalOptions = LayoutOptions.Start;
+                    _descriptionLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _descriptionLabel.Margin = new Thickness(_descriptionLateralMargin, DescriptionMarginAdjustment.Top, _descriptionLateralMargin, DescriptionMarginAdjustment.Bottom);
                     break;
                 case MaterialTopAppBarType.Large:
@@ -663,8 +698,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     _headlineLabel.Margin = new Thickness(_largeLabelLateralMargin, HeadlineMarginAdjustment.Top, _largeLabelLateralMargin, HeadlineMarginAdjustment.Bottom);
                     _headlineLabel.FontSize = _largeDefaultFontSize;
                     RowDefinitions[0].Height = new GridLength(_largeRowHeight);
-                    _descriptionLabel.FontSize = _descriptionDefaultFontSize;
-                    _descriptionLabel.HorizontalOptions = LayoutOptions.Start;
+                    _descriptionLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _descriptionLabel.Margin = new Thickness(_descriptionLateralMargin, DescriptionMarginAdjustment.Top, _descriptionLateralMargin, DescriptionMarginAdjustment.Bottom);
                     break;
             }
