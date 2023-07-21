@@ -1,4 +1,5 @@
 ﻿using Plugin.MaterialDesignControls.Material3.Implementations;
+using System;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
@@ -120,7 +121,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     };
                     this.Content = _progressBar;
                     this.BackgroundColor = TrackColor;
-                    StartProgressIndicatorLinearAnimation();
+                    StartProgressIndicatorLinearAnimation_iOS();
                     break;
                 case MaterialProgressIndicatorType.Circular:
                     MinimumHeightRequest = 48;
@@ -135,9 +136,12 @@ namespace Plugin.MaterialDesignControls.Material3
                             IndicatorColor = this.IndicatorColor,
                             TrackColor = this.TrackColor,
                             IsIndeterminated = true,
-                            IsEnabled = this.IsEnabled
+                            IsEnabled = this.IsEnabled,
+                            ValuesPerTurn = 100,
+                            Value = 50
                         };
                         this.Content = _activityIndicator;
+                        StartProgressIndicatorCircularAnimation_iOS();
                     }
                     else
                     {
@@ -155,11 +159,39 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private void StartProgressIndicatorLinearAnimation()
+        private void StartProgressIndicatorLinearAnimation_iOS()
         {
             var animation = new Animation(v => _progressBar.Scale = v, 0.5, 1);
             animation.Commit(this, "ProgressLinearAnimation", 16, 1000, Easing.Linear, (v, c) => _progressBar.Scale = 1, () => true);
         }
+
+        private void StartProgressIndicatorCircularAnimation_iOS()
+        {
+            //var seconds = TimeSpan.FromSeconds(1);
+
+            //Device.StartTimer(seconds, () => {
+
+            //    // call your method to check for notifications here
+
+            //    // Returning true means you want to repeat this timer
+            //    return true;
+            //});
+
+            var mainAnimation = new Animation
+            {
+                { 0, 1, new Animation(v => _activityIndicator.Value = v, 50.0, 0, Easing.Linear) }
+            };
+            mainAnimation.Commit(this, "ProgressCircularAnimation", 16, 500, Easing.Linear, (v, c) => StopAnimation()/*, () => true*/);
+        }
+
+
+
+        private void StopAnimation()
+        {
+            //this.AbortAnimation("ProgressCircularAnimation");
+        }
+
+
 
         #endregion Methods
     }

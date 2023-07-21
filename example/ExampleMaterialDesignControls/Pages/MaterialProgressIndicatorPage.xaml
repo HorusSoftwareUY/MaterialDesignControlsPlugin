@@ -26,7 +26,7 @@
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*"
               RowSpacing="0">
-            <material3:MaterialTopAppBar Headline="MaterialButton"
+            <material3:MaterialTopAppBar Headline="MaterialProgressIndicator"
                                          LeadingIconCommand="{Binding BackCommand}"
                                          ScrollViewName="scrollView"
                                          Type="Large">

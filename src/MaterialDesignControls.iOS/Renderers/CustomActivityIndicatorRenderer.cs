@@ -26,18 +26,18 @@ namespace Plugin.MaterialDesignControls.iOS.Renderers
                 this.circularSlider.SetHandleType(Controls.CircularSlider.CircularSliderHandleType.CircularSliderHandleTypeBigCircle);
                 this.circularSlider.SetLineWidth(5);
                 this.circularSlider.SetMinimumValue(0);
-                //this.circularSlider.SetMaximumValue(formsControl.ValuesPerTurn);
+                this.circularSlider.SetMaximumValue(formsControl.ValuesPerTurn);
                 this.circularSlider.SetFilledColor(formsControl.IndicatorColor.ToUIColor());
                 this.circularSlider.SetUnfilledColor(formsControl.TrackColor.ToUIColor());
                 this.circularSlider.HandleColor = Color.Transparent.ToUIColor();
-                //this.circularSlider.ValueChanged += CircularSlider_ValueChanged;
-                this.circularSlider.SetCurrentValue(Convert.ToSingle(10));
+                this.circularSlider.ValueChanged += CircularSlider_ValueChanged;
+                this.circularSlider.SetCurrentValue(Convert.ToSingle(formsControl.InternalValue));
                 this.SetNativeControl(this.circularSlider);
 
-                //formsControl.InternalValueRefreshed += (sender, args) =>
-                //{
-                //    this.circularSlider.SetCurrentValue(Convert.ToSingle(formsControl.InternalValue));
-                //};
+                formsControl.InternalValueRefreshed += (sender, args) =>
+                {
+                    this.circularSlider.SetCurrentValue(Convert.ToSingle(formsControl.InternalValue));
+                };
             }
         }
 
@@ -59,18 +59,18 @@ namespace Plugin.MaterialDesignControls.iOS.Renderers
                 {
                     this.circularSlider.SetUnfilledColor(formsControl.TrackColor.ToUIColor());
                 }
-                //else if (e.PropertyName.Equals("ValuesPerTurn"))
-                //{
-                //    this.circularSlider.SetMaximumValue(formsControl.ValuesPerTurn);
-                //}
+                else if (e.PropertyName.Equals("ValuesPerTurn"))
+                {
+                    this.circularSlider.SetMaximumValue(formsControl.ValuesPerTurn);
+                }
             }
         }
 
         private void CircularSlider_ValueChanged(object sender, EventArgs e)
         {
-            if (this.Element is MaterialProgressIndicator formsControl)
+            if (this.Element is CustomActivityIndicator formsControl)
             {
-                //formsControl.InternalValue = this.circularSlider.CurrentValue;
+                formsControl.InternalValue = this.circularSlider.CurrentValue;
             }
         }
     }
