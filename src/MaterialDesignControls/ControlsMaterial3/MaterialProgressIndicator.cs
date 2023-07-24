@@ -162,19 +162,16 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void StartProgressIndicatorLinearAnimation_iOS()
         {
-            //var animation = new Animation(v => _progressBar.Scale = v, 0.5, 1);
-            //animation.Commit(this, "ProgressLinearAnimation", 16, 1000, Easing.Linear, (v, c) => _progressBar.Scale = 1, () => true);
-
             var index = 1;
             var mainAnimation = new Animation();
             mainAnimation.Add(0, 1, new Animation(v =>
             {
                 if (index % 2 != 0)
-                    Padding = new Thickness(0, 0, Width - (Width * v), 0); // Expanding boxview
+                    _progressBar.Margin = new Thickness(0, 0, Width - (Width * v), 0); // Expanding boxview
                 else
-                    Padding = new Thickness(Width * v, 0, 0, 0); // Collapsing boxview
+                    _progressBar.Margin = new Thickness(Width * v, 0, 0, 0); // Collapsing boxview
             }, 0, 1, Easing.CubicOut));
-            mainAnimation.Commit(this, "LinearAnimation" + Id, 16, 1000, Easing.Linear, (v, c) => ++index, () => true);
+            mainAnimation.Commit(this, "LinearAnimation" + Id, 16, 1500, Easing.Linear, (v, c) => ++index, () => true);
         }
 
         private void StartProgressIndicatorCircularAnimation_iOS()

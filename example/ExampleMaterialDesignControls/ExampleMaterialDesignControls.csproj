@@ -23,7 +23,6 @@
   </ItemGroup>
   <ItemGroup>
 	<Folder Include="Pages\" />
-	<Folder Include="ViewModels\" />
     <Folder Include="Resources\Svg\" />
     <Folder Include="Animations\" />
     <Folder Include="ContentViews\" />
