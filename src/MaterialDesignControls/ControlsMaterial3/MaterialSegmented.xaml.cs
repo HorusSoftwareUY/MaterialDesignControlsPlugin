@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using System.Linq;
 using Xamarin.Forms.Internals;
+using Plugin.MaterialDesignControls.Objects;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -22,8 +23,6 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Attributes
 
         private bool initialized = false;
-
-        private bool isItemsSourceSetted = false;
 
         #endregion Attributes
 
@@ -113,21 +112,18 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemsSourceProperty =
-            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<string>), typeof(MaterialSegmented), defaultValue: null, propertyChanged: OnItemsSourceChanged);
+            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<MaterialSegmentedObject>), typeof(MaterialSegmented), defaultValue: null, propertyChanged: OnItemsSourceChanged);
 
-        public IEnumerable<string> ItemsSource
+        public IEnumerable<MaterialSegmentedObject> ItemsSource
         {
-            get { return (IEnumerable<string>)GetValue(ItemsSourceProperty); }
+            get { return (IEnumerable<MaterialSegmentedObject>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
-        public static readonly BindableProperty SelectedItemProperty =
-            BindableProperty.Create(nameof(SelectedItem), typeof(string), typeof(MaterialSegmented), defaultValue: null, BindingMode.TwoWay, propertyChanged: OnSelectedItemChanged);
 
-        public string SelectedItem
+        public IEnumerable<MaterialSegmentedObject> SelectedItems
         {
-            get { return (string)GetValue(SelectedItemProperty); }
-            set { SetValue(SelectedItemProperty, value); }
+            get { return ItemsSource != null ? ItemsSource.Where(x => x.IsSelected) : Array.Empty<MaterialSegmentedObject>(); }
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
@@ -247,60 +243,14 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(BorderColorProperty, value); }
         }
 
-        public static readonly BindableProperty SelectedIconProperty =
-            BindableProperty.Create(nameof(SelectedIcon), typeof(string), typeof(MaterialSegmented), defaultValue: null);
+        public static readonly BindableProperty AllowMultiselectProperty =
+            BindableProperty.Create(nameof(AllowMultiselect), typeof(bool), typeof(MaterialSegmented), defaultValue: false);
 
-        public string SelectedIcon
+        public bool AllowMultiselect
         {
-            get { return (string)GetValue(SelectedIconProperty); }
-            set { SetValue(SelectedIconProperty, value); }
+            get { return (bool)GetValue(AllowMultiselectProperty); }
+            set { SetValue(AllowMultiselectProperty, value); }
         }
-
-        public static readonly BindableProperty CustomSelectedIconProperty =
-            BindableProperty.Create(nameof(CustomSelectedIcon), typeof(DataTemplate), typeof(MaterialSegmented), defaultValue: null);
-
-        public DataTemplate CustomSelectedIcon
-        {
-            get { return (DataTemplate)GetValue(CustomSelectedIconProperty); }
-            set { SetValue(CustomSelectedIconProperty, value); }
-        }
-
-        private bool SelectedIconIsVisible
-        {
-            get { return !string.IsNullOrEmpty(SelectedIcon) || CustomSelectedIcon != null; }
-        }
-
-        public static readonly BindableProperty UnselectedIconProperty =
-            BindableProperty.Create(nameof(UnselectedIcon), typeof(string), typeof(MaterialSegmented), defaultValue: null);
-
-        public string UnselectedIcon
-        {
-            get { return (string)GetValue(UnselectedIconProperty); }
-            set { SetValue(UnselectedIconProperty, value); }
-        }
-
-        public static readonly BindableProperty CustomUnselectedIconProperty =
-            BindableProperty.Create(nameof(CustomUnselectedIcon), typeof(DataTemplate), typeof(MaterialSegmented), defaultValue: null);
-
-        public DataTemplate CustomUnselectedIcon
-        {
-            get { return (DataTemplate)GetValue(CustomUnselectedIconProperty); }
-            set { SetValue(CustomUnselectedIconProperty, value); }
-        }
-
-        private bool UnselectedIconIsVisible
-        {
-            get { return !string.IsNullOrEmpty(UnselectedIcon) || CustomUnselectedIcon != null; }
-        }
-
-        //public static readonly BindableProperty ShowOnlySelectedIconProperty =
-        //    BindableProperty.Create(nameof(ShowOnlySelectedIcon), typeof(bool), typeof(MaterialSegmented), defaultValue: false);
-
-        //public bool ShowOnlySelectedIcon
-        //{
-        //    get { return (bool)GetValue(ShowOnlySelectedIconProperty); }
-        //    set { SetValue(ShowOnlySelectedIconProperty, value); }
-        //}
 
         #endregion Properties
 
@@ -343,14 +293,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var control = (MaterialSegmented)bindable;
             control.SetItemSource();
-            control.isItemsSourceSetted = true;
-        }
-
-        private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialSegmented)bindable;
-            if (control.isItemsSourceSetted)
-                control.SetItemSource();
         }
 
         private void SetItemSource()
@@ -364,7 +306,17 @@ namespace Plugin.MaterialDesignControls.Material3
                 int itemIdx = 0;
                 ItemsSource.ForEach(x => grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(ItemsSource.Count() / 100.0, GridUnitType.Star) }));
 
-                foreach (var item in ItemsSource)
+                IEnumerable<MaterialSegmentedObjectWithFrame> _internalItemsSource = ItemsSource.Select(x => new MaterialSegmentedObjectWithFrame()
+                {
+                    UnselectedIcon = x.UnselectedIcon,
+                    SelectedIcon = x.SelectedIcon,
+                    CustomSelectedIcon = x.CustomSelectedIcon,
+                    CustomUnselectedIcon = x.CustomUnselectedIcon,
+                    Text = x.Text,
+                    IsSelected = x.IsSelected
+                });
+
+                foreach (var item in _internalItemsSource)
                 {
                     mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
 
@@ -401,12 +353,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     }
 
                     var label = new MaterialLabel();
-                    label.Text = item.ToString().Trim();
+                    label.Text = item.Text.Trim();
                     label.HorizontalOptions = LayoutOptions.Center;
                     label.VerticalOptions = LayoutOptions.Center;
                     label.FontSize = FontSize;
                     label.FontFamily = FontFamily;
                     label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
+
+                    item.SetContainerAndLabel(frame, label);
 
                     var tapped = new TapGestureRecognizer();
                     tapped.Tapped += (s, e) =>
@@ -414,47 +368,51 @@ namespace Plugin.MaterialDesignControls.Material3
                         if (!IsEnabled)
                             return;
 
-                        foreach (var item in grid.Children)
+                        if (!AllowMultiselect)
                         {
-                            if (!SelectedIconIsVisible && !UnselectedIconIsVisible)
+                            var isThereSelection = _internalItemsSource.Where(x => x.IsSelected).Count() > 0;
+                            Console.WriteLine("Inside");
+
+                            if (isThereSelection)
                             {
-                                ((MaterialLabel)(((MaterialCard)item).Content)).TextColor = UnselectedTextColor;
-                            }
-                            //else
-                            //{
-                            //    ((MaterialLabel)(((Grid)(((MaterialCard)item).Content)).Children[1])).TextColor = UnselectedTextColor;
-                            //}
+                                Console.WriteLine("Inside2");
 
-                            ((MaterialCard)item).BackgroundColor = UnselectedColor;
+                                foreach (var insideItem in _internalItemsSource)
+                                {
+                                    Console.WriteLine("before insideItem = " + insideItem.Text + ", selected = " + insideItem.IsSelected);
+                                    insideItem.IsSelected = false;
+                                    Console.WriteLine("after insideItem = " + insideItem.Text + ", selected = " + insideItem.IsSelected);
+                                    SetContentAndColors(insideItem);
+                                    //if (!insideItem.Equals(item))
+                                    //{
+                                    //    Console.WriteLine("before insideItem = " + insideItem.Text + ", selected = " + insideItem.IsSelected);
+                                    //    insideItem.IsSelected = false;
+                                    //    Console.WriteLine("after insideItem = " + insideItem.Text + ", selected = " + insideItem.IsSelected);
+                                    //    SetContentAndColors(frame, label, insideItem);
+                                    //}
+                                }
 
-                            if (!label.Text.Equals(SelectedItem))
-                            {
-                                //if (UnselectedIconIsVisible)
+                                //foreach (var itemGrid in grid.Children)
                                 //{
-                                //    if (!string.IsNullOrEmpty(UnselectedIcon))
-                                //        ((CustomImage)(((Grid)((frame).Content)).Children[0])).SetImage(UnselectedIcon);
-                                //    else if (CustomUnselectedIcon != null)
-                                //        ((CustomImage)(((Grid)((frame).Content)).Children[0])).SetCustomImage(CustomUnselectedIcon.CreateContent() as View);
+                                //    if (((MaterialCard)itemGrid).Content is MaterialLabel label)
+                                //    {
+                                //        label.TextColor = UnselectedColor;
+                                //    }
+                                //    else
+                                //    {
+                                //        ((MaterialLabel)(((Grid)(((MaterialCard)itemGrid).Content)).Children[1])).TextColor = UnselectedTextColor;
+                                //    }
 
-                                //}
-                                //else if (SelectedIconIsVisible)
-                                //{
-                                //    ((CustomImage)(((Grid)((frame).Content)).Children[0])).IsVisible = false;
+                                //    ((MaterialCard)itemGrid).BackgroundColor = UnselectedColor;
                                 //}
                             }
+                            
                         }
 
-                        frame.BackgroundColor = SelectedColor;
-                        label.TextColor = SelectedTextColor;
-                        SelectedItem = label.Text.Trim();
-
-                        //if (SelectedIconIsVisible)
-                        //{
-                        //    if (!string.IsNullOrEmpty(SelectedIcon))
-                        //        ((CustomImage)(((Grid)((frame).Content)).Children[0])).SetImage(SelectedIcon);
-                        //    else if (CustomSelectedIcon != null)
-                        //        ((CustomImage)(((Grid)((frame).Content)).Children[0])).SetCustomImage(CustomSelectedIcon.CreateContent() as View);
-                        //}
+                        Console.WriteLine("before item = " + item.Text + ", selected = " + item.IsSelected);
+                        item.IsSelected = !item.IsSelected;
+                        Console.WriteLine("after item = " + item.Text + ", selected = " + item.IsSelected);
+                        SetContentAndColors(item);
 
                         if (CommandProperty != null && Command != null)
                             Command.Execute(CommandParameter);
@@ -462,208 +420,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         IsSelectedChanged?.Invoke(this, null);
                     };
 
-                    if (SelectedItem != null)
-                    {
-                        if (label.Text.Equals(SelectedItem))
-                        {
-                            frame.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
-                            label.TextColor = IsEnabled ? SelectedTextColor : DisabledSelectedTextColor;
-
-                            if (SelectedIconIsVisible)
-                            {
-                                var container = new Grid()
-                                {
-                                    BackgroundColor = Color.Transparent,
-                                    ColumnSpacing = 0,
-                                    RowSpacing = 0
-                                };
-                                container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
-                                container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
-
-                                var selectedIcon = new CustomImage()
-                                {
-                                    WidthRequest = 18,
-                                    MinimumHeightRequest = 18,
-                                    MinimumWidthRequest = 18,
-                                    HeightRequest = 18,
-                                    VerticalOptions = LayoutOptions.Center,
-                                    HorizontalOptions = LayoutOptions.Center,
-                                    IsVisible = true
-                                };
-
-                                selectedIcon.SetValue(Grid.ColumnProperty, 0);
-
-                                if (CustomSelectedIcon != null)
-                                {
-                                    selectedIcon.SetCustomImage(CustomSelectedIcon.CreateContent() as View);
-                                }
-                                else if (!string.IsNullOrWhiteSpace(SelectedIcon))
-                                {
-                                    selectedIcon.SetImage(SelectedIcon);
-                                }
-
-                                container.Children.Add(selectedIcon);
-
-                                label.SetValue(Grid.ColumnProperty, 1);
-
-                                container.Children.Add(label);
-
-                                frame.Content = container;
-                            }
-                        }
-                        else
-                        {
-                            if (UnselectedIconIsVisible)
-                            {
-                                var container = new Grid()
-                                {
-                                    BackgroundColor = Color.Transparent,
-                                    ColumnSpacing = 0,
-                                    RowSpacing = 0
-                                };
-                                container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
-                                container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
-
-                                var selectedIcon = new CustomImage()
-                                {
-                                    WidthRequest = 18,
-                                    MinimumHeightRequest = 18,
-                                    MinimumWidthRequest = 18,
-                                    HeightRequest = 18,
-                                    VerticalOptions = LayoutOptions.Center,
-                                    HorizontalOptions = LayoutOptions.Center,
-                                    IsVisible = true
-                                };
-
-                                selectedIcon.SetValue(Grid.ColumnProperty, 0);
-
-                                if (CustomUnselectedIcon != null)
-                                {
-                                    selectedIcon.SetCustomImage(CustomUnselectedIcon.CreateContent() as View);
-                                }
-                                else if (!string.IsNullOrWhiteSpace(UnselectedIcon))
-                                {
-                                    selectedIcon.SetImage(UnselectedIcon);
-                                }
-
-                                container.Children.Add(selectedIcon);
-
-                                label.SetValue(Grid.ColumnProperty, 1);
-
-                                container.Children.Add(label);
-
-                                frame.Content = container;
-                            }
-                            else
-                            {
-                                frame.Content = label;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (column < 1)
-                        {
-                            frame.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
-                            label.TextColor = IsEnabled ? SelectedTextColor : DisabledSelectedTextColor;
-                            SelectedItem = item.ToString().Trim();
-
-                            if (SelectedIconIsVisible)
-                            {
-                                var container = new Grid()
-                                {
-                                    BackgroundColor = Color.Transparent,
-                                    ColumnSpacing = 0,
-                                    RowSpacing = 0
-                                };
-                                container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
-                                container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
-
-                                var selectedIcon = new CustomImage()
-                                {
-                                    WidthRequest = 18,
-                                    MinimumHeightRequest = 18,
-                                    MinimumWidthRequest = 18,
-                                    HeightRequest = 18,
-                                    VerticalOptions = LayoutOptions.Center,
-                                    HorizontalOptions = LayoutOptions.Center,
-                                    IsVisible = true
-                                };
-
-                                selectedIcon.SetValue(Grid.ColumnProperty, 0);
-
-                                if (CustomSelectedIcon != null)
-                                {
-                                    selectedIcon.SetCustomImage(CustomSelectedIcon.CreateContent() as View);
-                                }
-                                else if (!string.IsNullOrWhiteSpace(SelectedIcon))
-                                {
-                                    selectedIcon.SetImage(SelectedIcon);
-                                }
-
-                                container.Children.Add(selectedIcon);
-
-                                label.SetValue(Grid.ColumnProperty, 1);
-
-                                container.Children.Add(label);
-
-                                frame.Content = container;
-                            }
-                        }
-                        else
-                        {
-                            if (UnselectedIconIsVisible)
-                            {
-                                var container = new Grid()
-                                {
-                                    BackgroundColor = Color.Transparent,
-                                    ColumnSpacing = 0,
-                                    RowSpacing = 0
-                                };
-                                container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
-                                container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
-
-                                var selectedIcon = new CustomImage()
-                                {
-                                    WidthRequest = 18,
-                                    MinimumHeightRequest = 18,
-                                    MinimumWidthRequest = 18,
-                                    HeightRequest = 18,
-                                    VerticalOptions = LayoutOptions.Center,
-                                    HorizontalOptions = LayoutOptions.Center,
-                                    IsVisible = true
-                                };
-
-                                selectedIcon.SetValue(Grid.ColumnProperty, 0);
-
-                                if (CustomUnselectedIcon != null)
-                                {
-                                    selectedIcon.SetCustomImage(CustomUnselectedIcon.CreateContent() as View);
-                                }
-                                else if (!string.IsNullOrWhiteSpace(UnselectedIcon))
-                                {
-                                    selectedIcon.SetImage(UnselectedIcon);
-                                }
-
-                                container.Children.Add(selectedIcon);
-
-                                label.SetValue(Grid.ColumnProperty, 1);
-
-                                container.Children.Add(label);
-
-                                frame.Content = container;
-                            }
-                            else
-                            {
-                                frame.Content = label;
-                            }
-                        }
-                    }
-
-                    if (!SelectedIconIsVisible && !UnselectedIconIsVisible) 
-                    {
-                        frame.Content = label;
-                    }
+                    SetContentAndColors(item);
 
                     frame.GestureRecognizers.Add(tapped);
                     frame.SetValue(Grid.ColumnProperty, column);
@@ -671,6 +428,119 @@ namespace Plugin.MaterialDesignControls.Material3
                     grid.Children.Add(frame);
                     column++;
                     itemIdx++;
+                }
+            }
+        }
+
+        private void SetContentAndColors(MaterialSegmentedObjectWithFrame item)
+        {
+            Console.WriteLine("set view");
+            if (item.IsSelected)
+            {
+                Console.WriteLine("select = " + item.Text);
+
+                item.Container.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
+                item.Label.TextColor = IsEnabled ? SelectedTextColor : DisabledSelectedTextColor;
+
+                if (item.SelectedIconIsVisible)
+                {
+                    var container = new Grid()
+                    {
+                        BackgroundColor = Color.Transparent,
+                        ColumnSpacing = 0,
+                        RowSpacing = 0
+                    };
+                    container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
+                    container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+
+                    var selectedIcon = new CustomImage()
+                    {
+                        WidthRequest = 18,
+                        MinimumHeightRequest = 18,
+                        MinimumWidthRequest = 18,
+                        HeightRequest = 18,
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.Center,
+                        IsVisible = true
+                    };
+
+                    selectedIcon.SetValue(Grid.ColumnProperty, 0);
+
+                    if (item.CustomSelectedIcon != null)
+                    {
+                        selectedIcon.SetCustomImage(item.CustomSelectedIcon);
+                    }
+                    else if (!string.IsNullOrWhiteSpace(item.SelectedIcon))
+                    {
+                        selectedIcon.SetImage(item.SelectedIcon);
+                    }
+
+                    container.Children.Add(selectedIcon);
+
+                    item.Label.SetValue(Grid.ColumnProperty, 1);
+
+                    container.Children.Add(item.Label);
+
+                    item.Container.Content = container;
+                }
+                else
+                {
+                    item.Container.Content = item.Label;
+                }
+            }
+            else
+            {
+                Console.WriteLine("unselect = " + item.Text);
+                item.Container.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
+                item.Label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
+
+                Console.WriteLine("unselect2 = " + item.Text);
+
+
+                if (item.UnselectedIconIsVisible)
+                {
+                    var container = new Grid()
+                    {
+                        BackgroundColor = Color.Transparent,
+                        ColumnSpacing = 0,
+                        RowSpacing = 0
+                    };
+                    container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
+                    container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+
+                    var selectedIcon = new CustomImage()
+                    {
+                        WidthRequest = 18,
+                        MinimumHeightRequest = 18,
+                        MinimumWidthRequest = 18,
+                        HeightRequest = 18,
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.Center,
+                        IsVisible = true
+                    };
+
+                    selectedIcon.SetValue(Grid.ColumnProperty, 0);
+
+                    if (item.CustomUnselectedIcon != null)
+                    {
+                        selectedIcon.SetCustomImage(item.CustomUnselectedIcon);
+                    }
+                    else if (!string.IsNullOrWhiteSpace(item.UnselectedIcon))
+                    {
+                        selectedIcon.SetImage(item.UnselectedIcon);
+                    }
+
+                    container.Children.Add(selectedIcon);
+
+                    item.Label.SetValue(Grid.ColumnProperty, 1);
+
+                    container.Children.Add(item.Label);
+
+                    item.Container.Content = container;
+                }
+                else
+                {
+                    item.Container.Content = item.Label;
                 }
             }
         }
@@ -683,5 +553,20 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         #endregion Methods
+
+        private class MaterialSegmentedObjectWithFrame : MaterialSegmentedObject
+        {
+            public Frame Container { get; private set; }
+
+            public MaterialLabel Label { get; private set; }
+
+            public void SetContainerAndLabel (Frame frame, MaterialLabel label)
+            {
+                this.Container = frame;
+                this.Label = label;
+            }
+        }
     }
+
+
 }

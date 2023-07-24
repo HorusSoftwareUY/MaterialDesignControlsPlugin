@@ -26,6 +26,49 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialSegmented follows the latest guidelines of Material Design 3" />
 
+                    <!--<material3:MaterialSegmented BackgroundColor="{StaticResource GradientColorTransparent5}"
+                                                 CornerRadius="20"
+                                                 HeightRequest="50"
+                                                 ItemsSource="{Binding Items}"
+                                                 SegmentMargin="0"
+                                                 SelectedTextColor="Black"
+                                                 SelectedColor="DarkGray"
+                                                 UnselectedColor="Transparent"
+                                                 UnselectedTextColor="Black">
+                        --><!--<material3:MaterialSegmented.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                            </DataTemplate>
+                        </material3:MaterialSegmented.CustomSelectedIcon>
+                        <material3:MaterialSegmented.CustomUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add_b.svg" />
+                            </DataTemplate>
+                        </material3:MaterialSegmented.CustomUnselectedIcon>--><!--
+                    </material3:MaterialSegmented>-->
+
+                    <material3:MaterialSegmented BackgroundColor="{StaticResource GradientColorTransparent5}"
+                                                 CornerRadius="20"
+                                                 HeightRequest="50"
+                                                 ItemsSource="{Binding Items}"
+                                                 SegmentMargin="0"
+                                                 SelectedTextColor="Black"
+                                                 AllowMultiselect="True"
+                                                 SelectedColor="DarkGray"
+                                                 UnselectedColor="Transparent"
+                                                 UnselectedTextColor="Black">
+                        <!--<material3:MaterialSegmented.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                            </DataTemplate>
+                        </material3:MaterialSegmented.CustomSelectedIcon>
+                        <material3:MaterialSegmented.CustomUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add_b.svg" />
+                            </DataTemplate>
+                        </material3:MaterialSegmented.CustomUnselectedIcon>-->
+                    </material3:MaterialSegmented>
+
                     <material3:MaterialSegmented BackgroundColor="{StaticResource GradientColorTransparent5}"
                                                  CornerRadius="20"
                                                  HeightRequest="50"
@@ -35,7 +78,7 @@
                                                  SelectedColor="DarkGray"
                                                  UnselectedColor="Transparent"
                                                  UnselectedTextColor="Black">
-                        <material3:MaterialSegmented.CustomSelectedIcon>
+                        <!--<material3:MaterialSegmented.CustomSelectedIcon>
                             <DataTemplate>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
                             </DataTemplate>
@@ -44,10 +87,32 @@
                             <DataTemplate>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add_b.svg" />
                             </DataTemplate>
-                        </material3:MaterialSegmented.CustomUnselectedIcon>
+                        </material3:MaterialSegmented.CustomUnselectedIcon>-->
                     </material3:MaterialSegmented>
 
                     <material3:MaterialSegmented BackgroundColor="{StaticResource GradientColorTransparent5}"
+                                                 CornerRadius="20"
+                                                 HeightRequest="50"
+                                                 ItemsSource="{Binding Items3}"
+                                                 SegmentMargin="0"
+                                                 SelectedTextColor="Black"
+                                                 SelectedColor="DarkGray"
+                                                 Type="Filled"
+                                                 UnselectedColor="Transparent"
+                                                 UnselectedTextColor="Black">
+                        <!--<material3:MaterialSegmented.CustomSelectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                            </DataTemplate>
+                        </material3:MaterialSegmented.CustomSelectedIcon>
+                        <material3:MaterialSegmented.CustomUnselectedIcon>
+                            <DataTemplate>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add_b.svg" />
+                            </DataTemplate>
+                        </material3:MaterialSegmented.CustomUnselectedIcon>-->
+                    </material3:MaterialSegmented>
+
+                    <!--<material3:MaterialSegmented BackgroundColor="{StaticResource GradientColorTransparent5}"
                                                  CornerRadius="20"
                                                  HeightRequest="50"
                                                  ItemsSource="{Binding Items2}"
@@ -88,7 +153,7 @@
                                                  ItemsSource="{Binding Items}"
                                                  SegmentMargin="4"
                                                  SelectedColor="{StaticResource GradientColor3}"
-                                                 UnselectedTextColor="{StaticResource GradientColor3}" />
+                                                 UnselectedTextColor="{StaticResource GradientColor3}" />-->
 
                     <!--<material:MaterialSegmented
                         HeightRequest="50"
