@@ -24,6 +24,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool initialized = false;
 
+        Dictionary<string, ContainerForObjects> containersWithItems = new Dictionary<string, ContainerForObjects>();
         #endregion Attributes
 
         #region Constructors
@@ -111,6 +112,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(DisabledUnselectedColorProperty, value); }
         }
 
+
+        //TODO: how to get selectedItems in MVVM?
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<MaterialSegmentedObject>), typeof(MaterialSegmented), defaultValue: null, propertyChanged: OnItemsSourceChanged);
 
@@ -120,10 +123,18 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ItemsSourceProperty, value); }
         }
 
-
         public IEnumerable<MaterialSegmentedObject> SelectedItems
         {
             get { return ItemsSource != null ? ItemsSource.Where(x => x.IsSelected) : Array.Empty<MaterialSegmentedObject>(); }
+        }
+
+        public static readonly BindableProperty SelectedItemProperty =
+            BindableProperty.Create(nameof(SelectedItem), typeof(MaterialSegmentedObject), typeof(MaterialSegmented), defaultValue: null, BindingMode.TwoWay, propertyChanged: OnSelectedItemChanged);
+
+        public MaterialSegmentedObject SelectedItem
+        {
+            get { return (MaterialSegmentedObject)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
@@ -306,17 +317,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 int itemIdx = 0;
                 ItemsSource.ForEach(x => grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(ItemsSource.Count() / 100.0, GridUnitType.Star) }));
 
-                IEnumerable<MaterialSegmentedObjectWithFrame> _internalItemsSource = ItemsSource.Select(x => new MaterialSegmentedObjectWithFrame()
-                {
-                    UnselectedIcon = x.UnselectedIcon,
-                    SelectedIcon = x.SelectedIcon,
-                    CustomSelectedIcon = x.CustomSelectedIcon,
-                    CustomUnselectedIcon = x.CustomUnselectedIcon,
-                    Text = x.Text,
-                    IsSelected = x.IsSelected
-                });
-
-                foreach (var item in _internalItemsSource)
+                foreach (var item in ItemsSource)
                 {
                     mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
 
@@ -360,7 +361,11 @@ namespace Plugin.MaterialDesignControls.Material3
                     label.FontFamily = FontFamily;
                     label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
 
-                    item.SetContainerAndLabel(frame, label);
+                    containersWithItems.Add(item.Text, new ContainerForObjects()
+                    {
+                        Container = frame,
+                        Label = label
+                    });
 
                     var tapped = new TapGestureRecognizer();
                     tapped.Tapped += (s, e) =>
@@ -370,49 +375,25 @@ namespace Plugin.MaterialDesignControls.Material3
 
                         if (!AllowMultiselect)
                         {
-                            var isThereSelection = _internalItemsSource.Where(x => x.IsSelected).Count() > 0;
-                            Console.WriteLine("Inside");
+                            var isThereSelection = ItemsSource.Where(x => x.IsSelected).Count() > 0;
 
                             if (isThereSelection)
                             {
-                                Console.WriteLine("Inside2");
-
-                                foreach (var insideItem in _internalItemsSource)
+                                foreach (var insideItem in ItemsSource)
                                 {
-                                    Console.WriteLine("before insideItem = " + insideItem.Text + ", selected = " + insideItem.IsSelected);
-                                    insideItem.IsSelected = false;
-                                    Console.WriteLine("after insideItem = " + insideItem.Text + ", selected = " + insideItem.IsSelected);
-                                    SetContentAndColors(insideItem);
-                                    //if (!insideItem.Equals(item))
-                                    //{
-                                    //    Console.WriteLine("before insideItem = " + insideItem.Text + ", selected = " + insideItem.IsSelected);
-                                    //    insideItem.IsSelected = false;
-                                    //    Console.WriteLine("after insideItem = " + insideItem.Text + ", selected = " + insideItem.IsSelected);
-                                    //    SetContentAndColors(frame, label, insideItem);
-                                    //}
+                                    if (!insideItem.Equals(item))
+                                    {
+                                        insideItem.IsSelected = false;
+                                        var container = containersWithItems[insideItem.Text];
+                                        SetContentAndColors(container.Container, container.Label, insideItem);
+                                    }
                                 }
-
-                                //foreach (var itemGrid in grid.Children)
-                                //{
-                                //    if (((MaterialCard)itemGrid).Content is MaterialLabel label)
-                                //    {
-                                //        label.TextColor = UnselectedColor;
-                                //    }
-                                //    else
-                                //    {
-                                //        ((MaterialLabel)(((Grid)(((MaterialCard)itemGrid).Content)).Children[1])).TextColor = UnselectedTextColor;
-                                //    }
-
-                                //    ((MaterialCard)itemGrid).BackgroundColor = UnselectedColor;
-                                //}
                             }
                             
                         }
 
-                        Console.WriteLine("before item = " + item.Text + ", selected = " + item.IsSelected);
                         item.IsSelected = !item.IsSelected;
-                        Console.WriteLine("after item = " + item.Text + ", selected = " + item.IsSelected);
-                        SetContentAndColors(item);
+                        SetContentAndColors(frame, label, item);
 
                         if (CommandProperty != null && Command != null)
                             Command.Execute(CommandParameter);
@@ -420,7 +401,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         IsSelectedChanged?.Invoke(this, null);
                     };
 
-                    SetContentAndColors(item);
+                    SetContentAndColors(frame, label, item);
 
                     frame.GestureRecognizers.Add(tapped);
                     frame.SetValue(Grid.ColumnProperty, column);
@@ -432,15 +413,12 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private void SetContentAndColors(MaterialSegmentedObjectWithFrame item)
+        private void SetContentAndColors(MaterialCard frame, MaterialLabel label, MaterialSegmentedObject item)
         {
-            Console.WriteLine("set view");
             if (item.IsSelected)
             {
-                Console.WriteLine("select = " + item.Text);
-
-                item.Container.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
-                item.Label.TextColor = IsEnabled ? SelectedTextColor : DisabledSelectedTextColor;
+                frame.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
+                label.TextColor = IsEnabled ? SelectedTextColor : DisabledSelectedTextColor;
 
                 if (item.SelectedIconIsVisible)
                 {
@@ -477,27 +455,23 @@ namespace Plugin.MaterialDesignControls.Material3
 
                     container.Children.Add(selectedIcon);
 
-                    item.Label.SetValue(Grid.ColumnProperty, 1);
+                    label.SetValue(Grid.ColumnProperty, 1);
 
-                    container.Children.Add(item.Label);
+                    container.Children.Add(label);
 
-                    item.Container.Content = container;
+                    frame.Content = container;
                 }
                 else
                 {
-                    item.Container.Content = item.Label;
+                    frame.Content = label;
                 }
             }
             else
             {
-                Console.WriteLine("unselect = " + item.Text);
-                item.Container.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
-                item.Label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
+                frame.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
+                label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
 
-                Console.WriteLine("unselect2 = " + item.Text);
-
-
-                if (item.UnselectedIconIsVisible)
+                if(item.UnselectedIconIsVisible)
                 {
                     var container = new Grid()
                     {
@@ -532,15 +506,15 @@ namespace Plugin.MaterialDesignControls.Material3
 
                     container.Children.Add(selectedIcon);
 
-                    item.Label.SetValue(Grid.ColumnProperty, 1);
+                    label.SetValue(Grid.ColumnProperty, 1);
 
-                    container.Children.Add(item.Label);
+                    container.Children.Add(label);
 
-                    item.Container.Content = container;
+                    frame.Content = container;
                 }
                 else
                 {
-                    item.Container.Content = item.Label;
+                    frame.Content = label;
                 }
             }
         }
@@ -552,21 +526,43 @@ namespace Plugin.MaterialDesignControls.Material3
             control.SetItemSource();
         }
 
-        #endregion Methods
-
-        private class MaterialSegmentedObjectWithFrame : MaterialSegmentedObject
+        private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            public Frame Container { get; private set; }
-
-            public MaterialLabel Label { get; private set; }
-
-            public void SetContainerAndLabel (Frame frame, MaterialLabel label)
+            var control = (MaterialSegmented)bindable;
+            if (newValue is MaterialSegmentedObject selectedItem && control.ItemsSource.Contains(selectedItem))
             {
-                this.Container = frame;
-                this.Label = label;
+                if(!control.AllowMultiselect)
+                {
+                    var isThereSelection = control.ItemsSource.Where(x => x.IsSelected).Count() > 0;
+
+                    if (isThereSelection)
+                    {
+                        foreach (var insideItem in control.ItemsSource)
+                        {
+                            if (!insideItem.Equals(selectedItem))
+                            {
+                                insideItem.IsSelected = false;
+                                var containers = control.containersWithItems[insideItem.Text];
+                                control.SetContentAndColors(containers.Container, containers.Label, insideItem);
+                            }
+                        }
+                    }
+
+                    selectedItem.IsSelected = !selectedItem.IsSelected;
+                    var container = control.containersWithItems[selectedItem.Text];
+                    control.SetContentAndColors(container.Container, container.Label, selectedItem);
+                }
             }
         }
+
+        #endregion Methods
+
+
+        private class ContainerForObjects
+        {
+            public MaterialCard Container { get; set; }
+
+            public MaterialLabel Label { get; set; }
+        }    
     }
-
-
 }
