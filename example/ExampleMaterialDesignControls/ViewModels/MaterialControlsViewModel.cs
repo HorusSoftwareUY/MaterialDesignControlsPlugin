@@ -120,5 +120,10 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await DisplayAlert("MaterialNavigationDrawer", "Comming Soon!", "Ok");
         });
+
+        public ICommand GoMaterialCardCommand => new Command(async () =>
+        {
+            await DisplayAlert("MaterialCard", "Comming Soon!", "Ok");
+        });
     }
 }
