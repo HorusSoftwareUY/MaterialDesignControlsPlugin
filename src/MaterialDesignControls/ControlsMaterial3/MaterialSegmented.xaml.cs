@@ -393,6 +393,9 @@ namespace Plugin.MaterialDesignControls.Material3
                         if (!IsEnabled)
                             return;
 
+                        if (item.IsSelected && !AllowMultiselect)
+                            return;
+
                         if (!AllowMultiselect)
                         {
                             var isThereSelection = ItemsSource.Where(x => x.IsSelected).Count() > 0;
@@ -412,14 +415,16 @@ namespace Plugin.MaterialDesignControls.Material3
                             
                         }
 
-                        item.IsSelected = !item.IsSelected;
-                        SetContentAndColors(frame, label, item);
-
-                        if (item.IsSelected && !AllowMultiselect)
+                        if (!item.IsSelected && !AllowMultiselect) 
                         {
                             SelectedItem = item;
                         }
-
+                        else
+                        {
+                            item.IsSelected = !item.IsSelected;
+                            SetContentAndColors(frame, label, item);
+                        }
+                        
                         if (CommandProperty != null && Command != null)
                             Command.Execute(CommandParameter);
 
@@ -573,12 +578,9 @@ namespace Plugin.MaterialDesignControls.Material3
                         }
                     }
 
-                    if (oldValue is null)
-                    {
-                        selectedItem.IsSelected = !selectedItem.IsSelected;
-                        var container = control.containersWithItems[selectedItem.Text];
-                        control.SetContentAndColors(container.Container, container.Label, selectedItem);
-                    }
+                    selectedItem.IsSelected = !selectedItem.IsSelected;
+                    var container = control.containersWithItems[selectedItem.Text];
+                    control.SetContentAndColors(container.Container, container.Label, selectedItem);
                 }
             }
         }
