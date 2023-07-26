@@ -9,73 +9,59 @@ namespace ExampleMaterialDesignControls.ViewModels
 {
     public class MaterialSegmentedViewModel : BaseViewModel
     {
-        private MaterialSegmentedObject selectedItem;
+        private MaterialSegmentedObject _selectedItem;
         public MaterialSegmentedObject SelectedItem
         {
-            get => selectedItem;
-            set => SetProperty(ref selectedItem, value);
+            get => _selectedItem;
+            set => SetProperty(ref _selectedItem, value);
         }
 
-        //   private string selectedSize;
-        //   public string SelectedSize
-        //   { 
-        //       get => selectedSize;
-        //       set => SetProperty(ref selectedSize, value);
-        //}
+        private MaterialSegmentedObject _selectedItem3;
+        public MaterialSegmentedObject SelectedItem3
+        {
+            get => _selectedItem3;
+            set => SetProperty(ref _selectedItem3, value);
+        }
 
-        private ObservableCollection<MaterialSegmentedObject> items;
+        private ObservableCollection<MaterialSegmentedObject> _items;
 
         public ObservableCollection<MaterialSegmentedObject> Items
         {
-            get { return items; }
-            set { SetProperty(ref items, value); }
+            get { return _items; }
+            set { SetProperty(ref _items, value); }
         }
 
-        private ObservableCollection<MaterialSegmentedObject> items2;
+        private ObservableCollection<MaterialSegmentedObject> _items2;
 
         public ObservableCollection<MaterialSegmentedObject> Items2
         {
-            get { return items2; }
-            set { SetProperty(ref items2, value); }
+            get { return _items2; }
+            set { SetProperty(ref _items2, value); }
         }
 
 
-        private ObservableCollection<MaterialSegmentedObject> items3;
+        private ObservableCollection<MaterialSegmentedObject> _items3;
 
         public ObservableCollection<MaterialSegmentedObject> Items3
         {
-            get { return items3; }
-            set { SetProperty(ref items3, value); }
+            get { return _items3; }
+            set { SetProperty(ref _items3, value); }
         }
 
-        private ObservableCollection<MaterialSegmentedObject> items4;
+        private ObservableCollection<MaterialSegmentedObject> _items4;
 
         public ObservableCollection<MaterialSegmentedObject> Items4
         {
-            get { return items4; }
-            set { SetProperty(ref items4, value); }
+            get { return _items4; }
+            set { SetProperty(ref _items4, value); }
         }
 
-        private ObservableCollection<MaterialSegmentedObject> sizes;
+        private ObservableCollection<MaterialSegmentedObject> _sizes;
 
         public ObservableCollection<MaterialSegmentedObject> Sizes
         {
-            get { return sizes; }
-            set { SetProperty(ref sizes, value); }
-        }
-
-        private ObservableCollection<string> onOff;
-        public ObservableCollection<string> OnOff
-        {
-            get { return onOff; }
-            set { SetProperty(ref onOff, value); }
-        }
-
-        private ObservableCollection<string> backlight;
-        public ObservableCollection<string> Backlight
-        {
-            get { return backlight; }
-            set { SetProperty(ref backlight, value); }
+            get { return _sizes; }
+            set { SetProperty(ref _sizes, value); }
         }
 
         private ObservableCollection<MaterialSegmentedObject> frecuently;
@@ -221,7 +207,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand SelectCommand => new Command(async () =>
         {
-            //await this.DisplayAlert.Invoke("Size", $"Selected command: {SelectedSize}", "Ok");
+            await this.DisplayAlert.Invoke("Size", $"Selected command: {SelectedItem3}", "Ok");
         });
     }
 }

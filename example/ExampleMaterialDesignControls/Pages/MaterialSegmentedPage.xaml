@@ -54,13 +54,15 @@
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Using Icons" />
+                                            Text="Using Icons and Command" />
 
                     <material3:MaterialSegmented BackgroundColor="White"
                                                  CornerRadius="25"
                                                  HeightRequest="50"
                                                  ItemsSource="{Binding Items3}"
                                                  SegmentMargin="4"
+                                                 SelectedItem="{Binding SelectedItem3}"
+                                                 Command="{Binding SelectCommand}"
                                                  SelectedColor="{StaticResource GradientColor5}"
                                                  UnselectedColor="White"
                                                  UnselectedTextColor="{StaticResource GradientColor5}" />
@@ -72,13 +74,11 @@
                                             Text="Multiple Selection" />
 
                     <material3:MaterialSegmented BackgroundColor="White"
-                                                 Command="{Binding SelectCommand}"
                                                  CornerRadius="20"
                                                  HeightRequest="50"
                                                  AllowMultiselect="True"
                                                  ItemsSource="{Binding Sizes}"
                                                  SelectedColor="{StaticResource GradientColor7}"
-                                                 SelectedItem="{Binding SelectedSize}"
                                                  UnselectedColor="White"
                                                  UnselectedTextColor="{StaticResource GradientColor7}" />
 

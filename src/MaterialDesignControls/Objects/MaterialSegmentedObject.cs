@@ -39,12 +39,35 @@ namespace Plugin.MaterialDesignControls.Objects
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            int hashCode = 0;
+            if (!string.IsNullOrWhiteSpace(Text))
+            {
+                hashCode += Text.GetHashCode();
+            }
+
+            if (!string.IsNullOrWhiteSpace(SelectedIcon))
+            {
+                hashCode += SelectedIcon.GetHashCode();
+            }
+
+            if (!string.IsNullOrWhiteSpace(UnselectedIcon))
+            {
+                hashCode += UnselectedIcon.GetHashCode();
+            }
+
+            if (CustomSelectedIcon != null)
+            {
+                hashCode += CustomSelectedIcon.GetHashCode();
+            }
+
+            if (CustomUnselectedIcon != null)
+            {
+                hashCode += CustomUnselectedIcon.GetHashCode();
+            }
+
+            return hashCode;
         }
 
-        public override string ToString()
-        {
-            return Text;
-        }
+        public override string ToString() => !string.IsNullOrWhiteSpace(Text) ? Text : "Unavailable";
     }
 }
