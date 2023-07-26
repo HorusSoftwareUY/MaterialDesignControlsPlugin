@@ -41,5 +41,10 @@ namespace Plugin.MaterialDesignControls.Objects
         {
             return base.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 }

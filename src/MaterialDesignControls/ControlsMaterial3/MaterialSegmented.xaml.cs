@@ -113,9 +113,8 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
 
-        //TODO: how to get selectedItems in MVVM?
         public static readonly BindableProperty ItemsSourceProperty =
-            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<MaterialSegmentedObject>), typeof(MaterialSegmented), defaultValue: null, propertyChanged: OnItemsSourceChanged);
+            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<MaterialSegmentedObject>), typeof(MaterialSegmented), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: OnItemsSourceChanged);
 
         public IEnumerable<MaterialSegmentedObject> ItemsSource
         {
@@ -246,7 +245,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BorderColorProperty =
-                BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialSegmented), defaultValue: Color.LightGray);
+                BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialSegmented), defaultValue: Color.Black);
 
         public Color BorderColor
         {
@@ -270,7 +269,6 @@ namespace Plugin.MaterialDesignControls.Material3
         private void Initialize()
         {
             mainFrame.CornerRadius = (float)CornerRadius;
-            mainFrame.BackgroundColor = BackgroundColor;
             mainFrame.HeightRequest = HeightRequest;
             mainFrame.MinimumHeightRequest = 40;
         }
@@ -287,12 +285,18 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (propertyName)
             {
                 case nameof(CornerRadius):
-                    mainFrame.CornerRadius = (float)CornerRadius;
-                    foreach (var item in ((Grid)mainFrame.Content).Children)
-                        ((CustomFrame)item).CornerRadius = (float)CornerRadius;
+                    if (Type == MaterialSegmentedType.Filled)
+                    {
+                        mainFrame.CornerRadius = (float)CornerRadius;
+                        foreach (var item in ((Grid)mainFrame.Content).Children)
+                            ((MaterialCard)item).CornerRadius = (float)CornerRadius;
+                    }
                     break;
                 case nameof(BackgroundColor):
-                    mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
+                    if (Type == MaterialSegmentedType.Filled)
+                    {
+                        mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
+                    }
                     break;
                 case nameof(HeightRequest):
                     mainFrame.HeightRequest = HeightRequest;
@@ -319,34 +323,50 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 foreach (var item in ItemsSource)
                 {
-                    mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
-
                     var frame = new MaterialCard();
                     frame.HasShadow = false;
                     frame.BorderColor = Color.Transparent;
-                    frame.Padding = new Thickness(10, 0);
+                    frame.Padding = new Thickness(12, 0);
                     frame.HorizontalOptions = LayoutOptions.Fill;
-                    frame.Margin = new Thickness(SegmentMargin);
+                    frame.VerticalOptions = LayoutOptions.Fill;
                     frame.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
-                    frame.CornerRadius = (CornerRadius - SegmentMargin) >= 0 ? ((float)CornerRadius - SegmentMargin) : 0;
 
                     if (Type == MaterialSegmentedType.Outlined)
                     {
-                        frame.BorderColor = Color.Black;
-                        frame.Margin = new Thickness(0);
+                        frame.CornerRadius = 16;
+
+                        grid.ColumnSpacing = 0;
+                        mainFrame.BorderColor = BorderColor;
+                        mainFrame.BackgroundColor = BorderColor;
+                        frame.Padding = new Thickness(12, 0);
+                        frame.BorderColor = BorderColor;
+
                         if (itemIdx == 0)
                         {
+                            frame.Margin = new Thickness(1, 1, 0, 1);
                             frame.CornerRadiusTopLeft = true;
                             frame.CornerRadiusBottomLeft = true;
                         }
                         else if (itemIdx == ItemsSource.Count() - 1)
                         {
+                            frame.Margin = new Thickness(0, 1, 1, 1);
                             frame.CornerRadiusBottomRight = true;
                             frame.CornerRadiusTopRight = true;
+                        }
+                        else
+                        {
+                            frame.Margin = new Thickness(0, 1);
+                            frame.CornerRadius = 0;
                         }
                     }
                     else
                     {
+                        mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
+                        grid.ColumnSpacing = 0;
+                        mainFrame.BorderColor = Color.Transparent;
+                        frame.CornerRadius = (CornerRadius - SegmentMargin) >= 0 ? ((float)CornerRadius - SegmentMargin) : 0;
+                        frame.Margin = new Thickness(SegmentMargin);
+
                         frame.CornerRadiusTopLeft = true;
                         frame.CornerRadiusBottomLeft = true;
                         frame.CornerRadiusBottomRight = true;
@@ -395,6 +415,11 @@ namespace Plugin.MaterialDesignControls.Material3
                         item.IsSelected = !item.IsSelected;
                         SetContentAndColors(frame, label, item);
 
+                        if (item.IsSelected && !AllowMultiselect)
+                        {
+                            SelectedItem = item;
+                        }
+
                         if (CommandProperty != null && Command != null)
                             Command.Execute(CommandParameter);
 
@@ -425,8 +450,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     var container = new Grid()
                     {
                         BackgroundColor = Color.Transparent,
-                        ColumnSpacing = 0,
-                        RowSpacing = 0
+                        ColumnSpacing = 12,
+                        HorizontalOptions = LayoutOptions.Center,
                     };
                     container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
                     container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
@@ -476,8 +501,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     var container = new Grid()
                     {
                         BackgroundColor = Color.Transparent,
-                        ColumnSpacing = 0,
-                        RowSpacing = 0
+                        ColumnSpacing = 12,
+                        HorizontalOptions = LayoutOptions.Center
                     };
                     container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
                     container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
@@ -548,9 +573,12 @@ namespace Plugin.MaterialDesignControls.Material3
                         }
                     }
 
-                    selectedItem.IsSelected = !selectedItem.IsSelected;
-                    var container = control.containersWithItems[selectedItem.Text];
-                    control.SetContentAndColors(container.Container, container.Label, selectedItem);
+                    if (oldValue is null)
+                    {
+                        selectedItem.IsSelected = !selectedItem.IsSelected;
+                        var container = control.containersWithItems[selectedItem.Text];
+                        control.SetContentAndColors(container.Container, container.Label, selectedItem);
+                    }
                 }
             }
         }
