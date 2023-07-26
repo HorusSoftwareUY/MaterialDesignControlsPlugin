@@ -12,7 +12,7 @@ Using the control:
 
 ```XML
                     
-<material3:MaterialProgressIndicator ProgressIndicatorType="Circular"
+<material3:MaterialProgressIndicator Type="Circular"
                                      TrackColor="DarkGray"
                                      IndicatorColor="MediumPurple"/>
 ```
@@ -20,16 +20,15 @@ Using the control:
 
 ## Documentation
 
-### Property ProgressIndicatorType
-You can choose Linear and circular, by default the circular type is selected.
+### Property Type
+You can choose Linear and Circular, by default the Circular type is selected.
 <br/>
 <br/>
 
 ### Property IndicatorColor
-This property changes the Indicatorcolor
+This property changes the Indicatorcolor.
 <br/>
 <br/>
 
 ### Property TrackColor:
-This property is to set the track color. **Only works on iOS for circular and linear types and for Android on Linear Type**
-
+This property is to set the track color. **Only works for Linear type**

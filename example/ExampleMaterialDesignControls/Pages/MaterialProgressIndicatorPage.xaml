@@ -10,55 +10,64 @@
              ios:Page.UseSafeArea="True"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="false">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Key="LegendLabel"
-                   TargetType="material:MaterialLabel">
-                <Setter Property="LineBreakMode"
-                        Value="WordWrap" />
-                <Setter Property="FontSize"
-                        Value="Small" />
-                <Setter Property="Margin"
-                        Value="0,10,0,0" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*"
               RowSpacing="0">
             <material3:MaterialTopAppBar Headline="MaterialProgressIndicator"
                                          LeadingIconCommand="{Binding BackCommand}"
-                                         ScrollViewName="scrollView"
                                          Type="Large">
                 <material3:MaterialTopAppBar.LeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.LeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView x:Name="scrollView"
-                        Grid.Row="1"
+            <ScrollView Grid.Row="1"
                         VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20"
-                             Spacing="10">
+                <StackLayout Padding="20"
+                             Spacing="20">
 
                     <contentViews:InfoIndicatorView Message="MaterialProgressIndicator follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialLabel Style="{StaticResource LegendLabel}"
-                                            FontFamily="{StaticResource SemiBoldFont}"
-                                            HorizontalTextAlignment="Center"
-                                            Text="Circular" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Circular" />
                     
-                    <material3:MaterialProgressIndicator ProgressIndicatorType="Circular"
-                                                         TrackColor="DarkGray"
-                                                         IndicatorColor="MediumPurple"/>
+                    <material3:MaterialProgressIndicator
+                        Type="Circular"
+                        TrackColor="DarkGray"
+                        IndicatorColor="MediumPurple" />
 
-                    <material:MaterialLabel Style="{StaticResource LegendLabel}"
-                                            FontFamily="{StaticResource SemiBoldFont}"
-                                            HorizontalTextAlignment="Center"
-                                            Text="Linear" />
+                    <material:MaterialDivider Margin="0,10" />
 
-                    <material3:MaterialProgressIndicator  />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Linear" />
 
+                    <material3:MaterialProgressIndicator
+                        Type="Linear"
+                        TrackColor="DarkGray"
+                        IndicatorColor="MediumPurple" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Full API" />
+
+                    <material3:MaterialProgressIndicator
+                        Type="Linear"
+                        TrackColor="LightGreen"
+                        IndicatorColor="DarkGreen"
+                        IsVisible="{Binding IsVisible}" />
+
+                    <material3:MaterialSwitch
+                        IsToggled="{Binding IsVisible}"
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="IsVisible"
+                        TextSide="Left" />
                 </StackLayout>
             </ScrollView>
         </Grid>

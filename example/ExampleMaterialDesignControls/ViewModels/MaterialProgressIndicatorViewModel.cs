@@ -6,5 +6,12 @@ namespace ExampleMaterialDesignControls.ViewModels
 {
     public class MaterialProgressIndicatorViewModel : BaseViewModel
     {
+        private bool isVisible = true;
+
+        public bool IsVisible
+        {
+            get { return isVisible; }
+            set { SetProperty(ref isVisible, value); }
+        }
     }
 }

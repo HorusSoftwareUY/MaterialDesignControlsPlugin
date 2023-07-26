@@ -1,4 +1,5 @@
 ﻿using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -8,34 +9,36 @@ namespace Plugin.MaterialDesignControls.Material3
 {
     public enum MaterialProgressIndicatorType
     {
-        Linear, Circular
+        Circular, Linear
     }
 
-    public class MaterialProgressIndicator : Frame
+    public class MaterialProgressIndicator : ContentView
     {
         #region Attributes and Properties
 
         private bool _initialized = false;
 
-        private CustomActivityIndicator _activityIndicator;
+        private bool _rendered = false;
 
-        private static BoxView _progressBar;
+        private BoxView _progressBar;
+
+        private CustomActivityIndicator _customActivityIndicator;
 
         #endregion Attributes and Properties
 
         #region Bindable properties
 
-        public static readonly BindableProperty ProgressIndicatorTypeProperty =
-            BindableProperty.Create(nameof(ProgressIndicatorType), typeof(MaterialProgressIndicatorType), typeof(MaterialProgressIndicator), defaultValue: MaterialProgressIndicatorType.Linear);
+        public static readonly BindableProperty TypeProperty =
+            BindableProperty.Create(nameof(Type), typeof(MaterialProgressIndicatorType), typeof(MaterialProgressIndicator), defaultValue: MaterialProgressIndicatorType.Circular);
 
-        public MaterialProgressIndicatorType ProgressIndicatorType
+        public MaterialProgressIndicatorType Type
         {
-            get { return (MaterialProgressIndicatorType)GetValue(ProgressIndicatorTypeProperty); }
-            set { SetValue(ProgressIndicatorTypeProperty, value); }
+            get { return (MaterialProgressIndicatorType)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
         }
 
         public static readonly BindableProperty IndicatorColorProperty =
-            BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(MaterialProgressIndicator), defaultValue: Color.Purple);
+            BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(MaterialProgressIndicator), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color IndicatorColor
         {
@@ -51,16 +54,13 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (Color)GetValue(TrackColorProperty); }
             set { SetValue(TrackColorProperty, value); }
         }
-        #endregion Bindable properties
 
+        #endregion Bindable properties
 
         #region Constructors
 
         public MaterialProgressIndicator()
         {
-            if (Children == null)
-                return;
-
             if (!_initialized)
                 Initialize();
         }
@@ -73,47 +73,70 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             _initialized = true;
 
-            this.Padding = 0;
-            this.IsClippedToBounds = true;
-            this.CornerRadius = 0;
-            this.HasShadow = false;
+            Padding = 0;
 
             SetProgressIndicatorType();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (Children == null)
-                return;
-
             if (!_initialized)
                 Initialize();
 
             switch (propertyName)
             {
-                case nameof(ProgressIndicatorType):
-                case nameof(TrackColor):
-                case nameof(IndicatorColor):
+                case nameof(Type):
                     SetProgressIndicatorType();
                     break;
-                case nameof(base.IsVisible):
-                    base.OnPropertyChanged(propertyName);
+                case nameof(TrackColor):
+                    if (Type == MaterialProgressIndicatorType.Linear)
+                        this.BackgroundColor = TrackColor;
                     break;
-                case nameof(IsEnabled):
-                    VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled");
+                case nameof(IndicatorColor):
+                    if (Type == MaterialProgressIndicatorType.Circular && _customActivityIndicator != null)
+                        _customActivityIndicator.Color = IndicatorColor;
+                    else if (Type == MaterialProgressIndicatorType.Linear && _progressBar != null)
+                        _progressBar.BackgroundColor = IndicatorColor;
+                    break;
+                case nameof(IsVisible):
+                    base.OnPropertyChanged(propertyName);
+
+                    if (Type == MaterialProgressIndicatorType.Circular)
+                    {
+                        // Handle circular animation
+                        if (_customActivityIndicator != null)
+                            _customActivityIndicator.IsRunning = IsVisible;
+                    }
+                    else
+                    {
+                        // Handle linear animation
+                        if (IsVisible)
+                            StartLinearAnimation();
+                        else
+                            this.AbortAnimation("LinearAnimation" + Id);
+                    }
+                    break;
+                case "Renderer":
+                    if (!_rendered)
+                        _rendered = true;
+                    else
+                    {
+                        // This property is setted on the view appearing and in the view dissapearing
+                        // So we abort the linear animation here
+                        if (Type == MaterialProgressIndicatorType.Linear)
+                            this.AbortAnimation("LinearAnimation" + Id);
+                    }
                     break;
             }
         }
 
         public void SetProgressIndicatorType()
         {
-            switch (ProgressIndicatorType)
+            switch (Type)
             {
                 case MaterialProgressIndicatorType.Linear:
-                    MinimumHeightRequest = 4;
                     HeightRequest = 4;
                     WidthRequest = -1;
-                    MinimumWidthRequest = -1;
                     _progressBar = new BoxView()
                     {
                         BackgroundColor = IndicatorColor,
@@ -122,45 +145,23 @@ namespace Plugin.MaterialDesignControls.Material3
                     };
                     this.Content = _progressBar;
                     this.BackgroundColor = TrackColor;
-                    StartProgressIndicatorLinearAnimation_iOS();
+                    StartLinearAnimation();
                     break;
                 case MaterialProgressIndicatorType.Circular:
-                    MinimumHeightRequest = 48;
                     HeightRequest = 48;
-                    WidthRequest = 4;
-                    MinimumWidthRequest = 4;
-
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        _activityIndicator = new CustomActivityIndicator()
-                        {
-                            IndicatorColor = this.IndicatorColor,
-                            TrackColor = this.TrackColor,
-                            IsIndeterminated = true,
-                            IsEnabled = this.IsEnabled,
-                            ValuesPerTurn = 100,
-                            Value = 50
-                        };
-                        this.Content = _activityIndicator;
-                        StartProgressIndicatorCircularAnimation_iOS();
-                    }
-                    else
-                    {
-                        var _activityIndicator = new ActivityIndicator()
-                        {
-                            Color = IndicatorColor,
-                            IsRunning = true,
-                            IsEnabled = this.IsEnabled
-                        };
-                        this.Content = _activityIndicator;
-                    }
-                    
+                    WidthRequest = 48;
                     this.BackgroundColor = Color.Transparent;
+                    _customActivityIndicator = new CustomActivityIndicator()
+                    {
+                        Color = IndicatorColor,
+                        IsRunning = true
+                    };
+                    this.Content = _customActivityIndicator;
                     break;
             }
         }
 
-        private void StartProgressIndicatorLinearAnimation_iOS()
+        private void StartLinearAnimation()
         {
             var index = 1;
             var mainAnimation = new Animation();
@@ -171,36 +172,9 @@ namespace Plugin.MaterialDesignControls.Material3
                 else
                     _progressBar.Margin = new Thickness(Width * v, 0, 0, 0); // Collapsing boxview
             }, 0, 1, Easing.CubicOut));
-            mainAnimation.Commit(this, "LinearAnimation" + Id, 16, 1500, Easing.Linear, (v, c) => ++index, () => true);
+            mainAnimation.Commit(this, "LinearAnimation" + Id, 16, 1500, Easing.Linear, (v, c) => ++index,
+            () => Type == MaterialProgressIndicatorType.Linear && IsVisible);
         }
-
-        private void StartProgressIndicatorCircularAnimation_iOS()
-        {
-            //var seconds = TimeSpan.FromSeconds(1);
-
-            //Device.StartTimer(seconds, () => {
-
-            //    // call your method to check for notifications here
-
-            //    // Returning true means you want to repeat this timer
-            //    return true;
-            //});
-
-            var mainAnimation = new Animation
-            {
-                { 0, 1, new Animation(v => _activityIndicator.Value = v, 50.0, 0, Easing.Linear) }
-            };
-            mainAnimation.Commit(this, "ProgressCircularAnimation", 16, 500, Easing.Linear, (v, c) => StopAnimation()/*, () => true*/);
-        }
-
-
-
-        private void StopAnimation()
-        {
-            //this.AbortAnimation("ProgressCircularAnimation");
-        }
-
-
 
         #endregion Methods
     }
