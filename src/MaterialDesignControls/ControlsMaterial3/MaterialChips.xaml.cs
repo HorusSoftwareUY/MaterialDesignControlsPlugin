@@ -93,7 +93,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty IsSelectedProperty =
-            BindableProperty.Create(nameof(IsSelected), typeof(bool), typeof(MaterialChips), defaultValue: null, propertyChanged: OnIsSelectedChanged);
+            BindableProperty.Create(nameof(IsSelected), typeof(bool), typeof(MaterialChips), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: OnIsSelectedChanged);
 
         public bool IsSelected
         {
