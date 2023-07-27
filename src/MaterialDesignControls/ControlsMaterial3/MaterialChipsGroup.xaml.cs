@@ -1,14 +1,18 @@
-﻿using System;
+﻿using Plugin.MaterialDesignControls.Animations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
+    public enum MaterialChipsGroupType
+    {
+        Assist, Filter, Input, Suggestion
+    }
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialChipsGroup : ContentView
     {
@@ -32,6 +36,24 @@ namespace Plugin.MaterialDesignControls
         #endregion Attributes
 
         #region Properties
+
+        public static readonly BindableProperty TypeProperty =
+            BindableProperty.Create(nameof(Type), typeof(MaterialChipsGroupType), typeof(MaterialChipsGroup), defaultValue: MaterialChipsType.Assist);
+
+        public MaterialChipsGroupType Type
+        {
+            get { return (MaterialChipsGroupType)GetValue(PaddingProperty); }
+            set { SetValue(PaddingProperty, value); }
+        }
+
+        public static readonly BindableProperty ToUpperProperty =
+            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialChips), defaultValue: false);
+
+        public bool ToUpper
+        {
+            get { return (bool)GetValue(ToUpperProperty); }
+            set { SetValue(ToUpperProperty, value); }
+        }
 
         public static readonly new BindableProperty PaddingProperty =
             BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(12, 0));
@@ -287,7 +309,6 @@ namespace Plugin.MaterialDesignControls
 
         #endregion Properties
 
-
         #region Methods
 
         private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
@@ -309,8 +330,8 @@ namespace Plugin.MaterialDesignControls
             {
                 foreach (var item in control.flexContainer.Children)
                 {
-                    if (item != null && item is MaterialChips)
-                        ((MaterialChips)item).IsSelected = ((MaterialChips)item).Text.Equals(control.SelectedItem);
+                    if (item is MaterialChips itemMC)
+                        itemMC.IsSelected = itemMC.Text.Equals(control.SelectedItem);
                 }
             }
         }
@@ -323,8 +344,8 @@ namespace Plugin.MaterialDesignControls
             {
                 foreach (var item in control.flexContainer.Children)
                 {
-                    if (item != null && item is MaterialChips)
-                        ((MaterialChips)item).IsSelected = control.SelectedItems.Contains(((MaterialChips)item).Text);
+                    if (item is MaterialChips itemMC)
+                        itemMC.IsSelected = control.SelectedItems.Contains((itemMC).Text);
                 }
             }
         }
@@ -354,7 +375,8 @@ namespace Plugin.MaterialDesignControls
                         DisabledTextColor = control.DisabledTextColor,
                         DisabledSelectedBackgroundColor = control.DisabledSelectedBackgroundColor,
                         DisabledSelectedTextColor = control.DisabledSelectedTextColor,
-                        IsEnabled = control.IsEnabled
+                        IsEnabled = control.IsEnabled,
+                        ToUpper = control.ToUpper
                     };
 
                     if (control.ChipsHeightRequest != (double)ChipsHeightRequestProperty.DefaultValue)

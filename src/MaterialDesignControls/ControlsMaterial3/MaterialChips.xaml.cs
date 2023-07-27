@@ -1,11 +1,19 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.MaterialDesignControls.Styles;
+using Xamarin.Forms.PlatformConfiguration.TizenSpecific;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
+
+    public enum MaterialChipsType
+    {
+        Assist, Filter, Input, Suggestion
+    }
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialChips : ContentView
     {
@@ -47,6 +55,15 @@ namespace Plugin.MaterialDesignControls
         #endregion Attributes
 
         #region Properties
+
+        public static readonly BindableProperty TypeProperty =
+            BindableProperty.Create(nameof(Type), typeof(MaterialChipsType), typeof(MaterialChips), defaultValue: MaterialChipsType.Assist);
+
+        public MaterialChipsType Type
+        {
+            get { return (MaterialChipsType)GetValue(PaddingProperty); }
+            set { SetValue(PaddingProperty, value); }
+        }
 
         public static readonly BindableProperty CommandProperty =
             BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialChips));
@@ -411,6 +428,30 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.BorderColor):
                     this.frmContainer.BorderColor = this.BorderColor;
                     break;
+
+                case nameof(this.Type):
+                    SetMaterialChipsType();
+                    break;
+            }
+        }
+
+        private void SetMaterialChipsType()
+        {
+            switch (Type)
+            {
+                case MaterialChipsType.Assist:
+
+                    break;
+                case MaterialChipsType.Filter:
+
+                    break;
+                case MaterialChipsType.Input:
+
+                    break;
+                case MaterialChipsType.Suggestion:
+
+                    break;
+               
             }
         }
 
@@ -431,7 +472,7 @@ namespace Plugin.MaterialDesignControls
             }
             else
             {
-                this.imgLeadingIcon.Command =  new Command(() =>
+                this.imgLeadingIcon.Command = new Command(() =>
                 {
                     if (this.IsEnabled && this.LeadingIconCommand != null)
                     {
