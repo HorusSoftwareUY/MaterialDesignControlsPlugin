@@ -721,7 +721,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="90">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_switch.svg" />
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_top_app_bar.svg" />
                                 </Frame>
                                 <material:MaterialLabel FontAttributes="Bold"
                                                         FontSize="{StaticResource Body2FontSize}"
@@ -757,7 +757,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="90">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_switch.svg" />
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_progress_indicator.svg" />
                                 </Frame>
                                 <material:MaterialLabel FontAttributes="Bold"
                                                         FontSize="{StaticResource Body2FontSize}"
@@ -793,7 +793,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="90">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_switch.svg" />
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_navigation_drawer.svg" />
                                 </Frame>
                                 <material:MaterialLabel FontAttributes="Bold"
                                                         FontSize="{StaticResource Body2FontSize}"
@@ -829,7 +829,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="90">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_switch.svg" />
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_card.svg" />
                                 </Frame>
                                 <material:MaterialLabel FontAttributes="Bold"
                                                         FontSize="{StaticResource Body2FontSize}"
