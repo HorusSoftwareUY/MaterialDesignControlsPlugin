@@ -78,7 +78,6 @@
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEditor.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomLabel.cs" />
-    <Compile Include="Implementations\CustomMaterial3\CustomProgressBar.cs" />
     <Compile Include="Implementations\Deprecated\CustomDatePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialSelection.cs" />
     <Compile Include="ControlsMaterial3\MaterialTimePicker.cs" />

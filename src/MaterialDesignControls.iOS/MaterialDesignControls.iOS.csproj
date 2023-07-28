@@ -87,7 +87,6 @@
     <Compile Include="Renderers\DeprecatedControls\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers.cs" />
-    <Compile Include="Renderers\CustomProgressBarRenderer.cs" />
     <Compile Include="Renderers\MaterialSliderRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialEditorRenderer.cs" />
