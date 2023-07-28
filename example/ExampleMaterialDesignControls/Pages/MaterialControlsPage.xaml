@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialControlsPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -32,7 +32,7 @@
                 <Grid Padding="0,0,0,20"
                       ColumnDefinitions="*,*"
                       ColumnSpacing="10"
-                      RowDefinitions="150,150,150,150,150,150,150,150,150,150,150"
+                      RowDefinitions="150,150,150,150,150,150,150,150,150,150,150,150"
                       RowSpacing="10">
 
                     <Frame Grid.Row="0"
@@ -721,7 +721,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="90">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_switch.svg" />
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_top_app_bar.svg" />
                                 </Frame>
                                 <material:MaterialLabel FontAttributes="Bold"
                                                         FontSize="{StaticResource Body2FontSize}"
@@ -730,6 +730,114 @@
                                                         LineBreakMode="TailTruncation"
                                                         Text="TopAppBar"
                                                         TextColor="{StaticResource GradientColor3}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="10"
+                           Grid.Column="1"
+                           Padding="15"
+                           BackgroundColor="{StaticResource GradientColorTransparent2}"
+                           CornerRadius="16"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoMaterialProgressIndicatorCommand}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent2}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_progress_indicator.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="ProgressIndicator"
+                                                        TextColor="{StaticResource GradientColor2}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="11"
+                           Grid.Column="0"
+                           Padding="15"
+                           BackgroundColor="{StaticResource GradientColorTransparent1}"
+                           CornerRadius="16"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoMaterialNavigationDrawerCommand}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent1}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_navigation_drawer.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="NavigationDrawer"
+                                                        TextColor="{StaticResource GradientColor1}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="11"
+                           Grid.Column="1"
+                           Padding="15"
+                           BackgroundColor="{StaticResource GradientColorTransparent2}"
+                           CornerRadius="16"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoMaterialCardCommand}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent2}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_card.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="Card"
+                                                        TextColor="{StaticResource GradientColor2}"
                                                         VerticalOptions="EndAndExpand" />
                             </StackLayout>
 

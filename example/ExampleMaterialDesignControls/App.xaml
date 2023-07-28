@@ -1008,5 +1008,15 @@
                 </OnPlatform>
             </Setter>
         </Style>
+
+        <!-- MaterialProgressIndicator -->
+        <Style TargetType="material3:MaterialProgressIndicator">
+            <Setter Property="Type"
+                    Value="Circular" />
+            <Setter Property="TrackColor"
+                    Value="LightBlue" />
+            <Setter Property="IndicatorColor"
+                    Value="DarkBlue" />
+        </Style>
     </Application.Resources>
 </Application>

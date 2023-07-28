@@ -31,9 +31,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private ContentView _cntLeadingActivityIndicator;
 
-        private ActivityIndicator _activityIndicatorTrailing;
+        private MaterialProgressIndicator _activityIndicatorTrailing;
 
-        private ActivityIndicator _activityIndicatorLeading;
+        private MaterialProgressIndicator _activityIndicatorLeading;
 
         private double _descriptionLateralMargin = 10;
 
@@ -482,12 +482,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(BusyColor):
                     if (_activityIndicatorTrailing == null || _activityIndicatorLeading == null)
                     {
-                        _activityIndicatorTrailing = new ActivityIndicator
+                        _activityIndicatorTrailing = new MaterialProgressIndicator
                         {
                             HorizontalOptions = LayoutOptions.Center,
                             VerticalOptions = LayoutOptions.Center
                         };
-                        _activityIndicatorLeading = new ActivityIndicator
+                        _activityIndicatorLeading = new MaterialProgressIndicator
                         {
                             HorizontalOptions = LayoutOptions.Center,
                             VerticalOptions = LayoutOptions.Center
@@ -495,26 +495,25 @@ namespace Plugin.MaterialDesignControls.Material3
                         _cntLeadingActivityIndicator.Content = _activityIndicatorLeading;
                         _cntTrailingActivityIndicator.Content = _activityIndicatorTrailing;
                     }
-                    _activityIndicatorTrailing.Color = BusyColor;
-                    _activityIndicatorLeading.Color = BusyColor;
+                    _activityIndicatorTrailing.IndicatorColor = BusyColor;
+                    _activityIndicatorLeading.IndicatorColor = BusyColor;
                     break;
                 case nameof(TrailingIconIsBusy):
                     if (TrailingIconIsBusy)
                     {
                         if (_activityIndicatorTrailing == null)
                         {
-                            _activityIndicatorTrailing = new ActivityIndicator
+                            _activityIndicatorTrailing = new MaterialProgressIndicator
                             {
                                 HorizontalOptions = LayoutOptions.Center,
                                 VerticalOptions = LayoutOptions.Center,
-                                Color = BusyColor
+                                IndicatorColor = BusyColor
                             };
                         }
 
                         _activityIndicatorTrailing.WidthRequest = IconSize;
                         _activityIndicatorTrailing.HeightRequest = IconSize;
                         _activityIndicatorTrailing.IsVisible = true;
-                        _activityIndicatorTrailing.IsRunning = true;
                         _cntTrailingActivityIndicator.Content = _activityIndicatorTrailing;
 
                         _cntTrailingActivityIndicator.IsVisible = true;
@@ -527,18 +526,17 @@ namespace Plugin.MaterialDesignControls.Material3
 
                         if (_activityIndicatorTrailing == null)
                         {
-                            _activityIndicatorTrailing = new ActivityIndicator
+                            _activityIndicatorTrailing = new MaterialProgressIndicator
                             {
                                 HorizontalOptions = LayoutOptions.Center,
                                 VerticalOptions = LayoutOptions.Center,
-                                Color = BusyColor
+                                IndicatorColor = BusyColor
                             };
                         }
 
                         _activityIndicatorTrailing.WidthRequest = IconSize;
                         _activityIndicatorTrailing.HeightRequest = IconSize;
                         _activityIndicatorTrailing.IsVisible = false;
-                        _activityIndicatorTrailing.IsRunning = false;
                         _cntTrailingActivityIndicator.Content = _activityIndicatorTrailing;
 
                         _cntTrailingActivityIndicator.IsVisible = false;
@@ -549,18 +547,17 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         if (_activityIndicatorLeading == null)
                         {
-                            _activityIndicatorLeading = new ActivityIndicator
+                            _activityIndicatorLeading = new MaterialProgressIndicator
                             {
                                 HorizontalOptions = LayoutOptions.Center,
                                 VerticalOptions = LayoutOptions.Center,
-                                Color = BusyColor
+                                IndicatorColor = BusyColor
                             };
                         }
 
                         _activityIndicatorLeading.WidthRequest = IconSize;
                         _activityIndicatorLeading.HeightRequest = IconSize;
                         _activityIndicatorLeading.IsVisible = true;
-                        _activityIndicatorLeading.IsRunning = true;
                         _cntLeadingActivityIndicator.Content = _activityIndicatorLeading;
 
                         _cntLeadingActivityIndicator.IsVisible = true;
@@ -572,18 +569,17 @@ namespace Plugin.MaterialDesignControls.Material3
                         _leadingIconContentView.IsVisible = true;
                         if (_activityIndicatorLeading == null)
                         {
-                            _activityIndicatorLeading = new ActivityIndicator
+                            _activityIndicatorLeading = new MaterialProgressIndicator
                             {
                                 HorizontalOptions = LayoutOptions.Center,
                                 VerticalOptions = LayoutOptions.Center,
-                                Color = BusyColor
+                                IndicatorColor = BusyColor
                             };
                         }
 
                         _activityIndicatorLeading.WidthRequest = IconSize;
                         _activityIndicatorLeading.HeightRequest = IconSize;
                         _activityIndicatorLeading.IsVisible = false;
-                        _activityIndicatorLeading.IsRunning = false;
                         _cntLeadingActivityIndicator.Content = _activityIndicatorLeading;
 
                         _cntLeadingActivityIndicator.IsVisible = false;
