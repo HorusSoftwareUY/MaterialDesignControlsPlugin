@@ -77,7 +77,7 @@ This property is to set if you want to allow multiselect items.
 <br/>
 
 ### Property ItemsSource
-This property is for displaying list of data. You should set a List of MaterialSegmentedObject.
+This property is for displaying list of data. You should set a List of MaterialSegmentedItem.
 Its definition is:
 - Text (string) :  Text showed
 - SelectedIcon (string): Icon used when item is selected
@@ -94,7 +94,7 @@ This property is the selected item of the control.
 <br/>
 
 ### Property CornerRadius
-This property is to set cornerradius of the control. By default is 16. **This property only works with type Filled**
+This property is to set cornerradius of the control. By default is 16.
 <br/>
 <br/>
 

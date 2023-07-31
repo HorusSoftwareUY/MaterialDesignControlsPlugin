@@ -143,7 +143,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ControlsMaterial2\DeprecatedControls\BaseMaterialFieldControl.cs" />
-    <Compile Include="Objects\MaterialSegmentedObject.cs" />
+    <Compile Include="Objects\MaterialSegmentedItem.cs" />
     <Compile Include="TextTransforms.cs" />
     <Compile Include="ControlsMaterial2\MaterialCustomControl.xaml.cs">
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>

@@ -9,63 +9,63 @@ namespace ExampleMaterialDesignControls.ViewModels
 {
     public class MaterialSegmentedViewModel : BaseViewModel
     {
-        private MaterialSegmentedObject _selectedItem;
-        public MaterialSegmentedObject SelectedItem
+        private MaterialSegmentedItem _selectedItem;
+        public MaterialSegmentedItem SelectedItem
         {
             get => _selectedItem;
             set => SetProperty(ref _selectedItem, value);
         }
 
-        private MaterialSegmentedObject _selectedItem3;
-        public MaterialSegmentedObject SelectedItem3
+        private MaterialSegmentedItem _selectedItem3;
+        public MaterialSegmentedItem SelectedItem3
         {
             get => _selectedItem3;
             set => SetProperty(ref _selectedItem3, value);
         }
 
-        private ObservableCollection<MaterialSegmentedObject> _items;
+        private ObservableCollection<MaterialSegmentedItem> _items;
 
-        public ObservableCollection<MaterialSegmentedObject> Items
+        public ObservableCollection<MaterialSegmentedItem> Items
         {
             get { return _items; }
             set { SetProperty(ref _items, value); }
         }
 
-        private ObservableCollection<MaterialSegmentedObject> _items2;
+        private ObservableCollection<MaterialSegmentedItem> _items2;
 
-        public ObservableCollection<MaterialSegmentedObject> Items2
+        public ObservableCollection<MaterialSegmentedItem> Items2
         {
             get { return _items2; }
             set { SetProperty(ref _items2, value); }
         }
 
 
-        private ObservableCollection<MaterialSegmentedObject> _items3;
+        private ObservableCollection<MaterialSegmentedItem> _items3;
 
-        public ObservableCollection<MaterialSegmentedObject> Items3
+        public ObservableCollection<MaterialSegmentedItem> Items3
         {
             get { return _items3; }
             set { SetProperty(ref _items3, value); }
         }
 
-        private ObservableCollection<MaterialSegmentedObject> _items4;
+        private ObservableCollection<MaterialSegmentedItem> _items4;
 
-        public ObservableCollection<MaterialSegmentedObject> Items4
+        public ObservableCollection<MaterialSegmentedItem> Items4
         {
             get { return _items4; }
             set { SetProperty(ref _items4, value); }
         }
 
-        private ObservableCollection<MaterialSegmentedObject> _sizes;
+        private ObservableCollection<MaterialSegmentedItem> _sizes;
 
-        public ObservableCollection<MaterialSegmentedObject> Sizes
+        public ObservableCollection<MaterialSegmentedItem> Sizes
         {
             get { return _sizes; }
             set { SetProperty(ref _sizes, value); }
         }
 
-        private ObservableCollection<MaterialSegmentedObject> frecuently;
-        public ObservableCollection<MaterialSegmentedObject> Frecuently
+        private ObservableCollection<MaterialSegmentedItem> frecuently;
+        public ObservableCollection<MaterialSegmentedItem> Frecuently
         {
             get { return frecuently; }
             set { SetProperty(ref frecuently, value); }
@@ -73,75 +73,75 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public MaterialSegmentedViewModel()
         {
-            Items = new ObservableCollection<MaterialSegmentedObject> 
+            Items = new ObservableCollection<MaterialSegmentedItem> 
             {
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt1",
                     IsSelected = true,
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt2",
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt3",
                 }
             };
 
-            Items2 = new ObservableCollection<MaterialSegmentedObject>
+            Items2 = new ObservableCollection<MaterialSegmentedItem>
             {
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt1",
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt2",
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt3",
                 }
             };
 
 
-            Items3 = new ObservableCollection<MaterialSegmentedObject>
+            Items3 = new ObservableCollection<MaterialSegmentedItem>
             {
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt1",
                     SelectedIcon = "email.png",
                     UnselectedIcon = "Cross.png"
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt2",
                     SelectedIcon = "checkbox_checked.png",
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt3",
                     SelectedIcon = "Cross.png"
                 }
             };
 
-            Items4 = new ObservableCollection<MaterialSegmentedObject>
+            Items4 = new ObservableCollection<MaterialSegmentedItem>
             {
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt1",
                     SelectedIcon = "checkbox_checked.png",
                     UnselectedIcon = "checkbox_disabledUnchecked.png"
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt2",
                     SelectedIcon = "checkbox_checked.png",
                     UnselectedIcon = "checkbox_disabledUnchecked.png"
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Opt3",
                     SelectedIcon = "checkbox_checked.png",
@@ -150,46 +150,46 @@ namespace ExampleMaterialDesignControls.ViewModels
             };
 
 
-            Sizes = new ObservableCollection<MaterialSegmentedObject> 
+            Sizes = new ObservableCollection<MaterialSegmentedItem> 
             {
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "XS"
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "S"
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "M",
                     IsSelected = true,
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "L"
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "XL"
                 }
             };
 
-            Frecuently = new ObservableCollection<MaterialSegmentedObject>()
+            Frecuently = new ObservableCollection<MaterialSegmentedItem>()
             {
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Daily"
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Weekly"
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Monthly",
                 },
-                new MaterialSegmentedObject
+                new MaterialSegmentedItem
                 {
                     Text = "Yearly"
                 }
