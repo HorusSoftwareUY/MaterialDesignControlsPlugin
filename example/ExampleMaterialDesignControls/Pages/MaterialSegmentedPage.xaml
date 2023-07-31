@@ -30,10 +30,12 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Outlined" />
 
-                    <material3:MaterialSegmented CornerRadius="20"
+                    <!--<material3:MaterialSegmented CornerRadius="20"
                                                  HeightRequest="50"
                                                  ItemsSource="{Binding Items}"
-                                                 SegmentMargin="0" />
+                                                 SegmentMargin="0" />-->
+
+                    <material3:MaterialSegmented ItemsSource="{Binding Items}" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -41,14 +43,17 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Filled" />
 
-                    <material3:MaterialSegmented CornerRadius="10"
+                    <!--<material3:MaterialSegmented CornerRadius="10"
                                                  HeightRequest="50"
                                                  ItemsSource="{Binding Items2}"
                                                  SegmentMargin="4"
                                                  BackgroundColor="{StaticResource GradientColorTransparent11}"
                                                  Type="Filled"
                                                  SelectedColor="{StaticResource GradientColor3}"
-                                                 UnselectedTextColor="{StaticResource GradientColor3}" />
+                                                 UnselectedTextColor="{StaticResource GradientColor3}" />-->
+
+                    <material3:MaterialSegmented ItemsSource="{Binding Items}"
+                                                 Type="Filled" />
 
                     <material:MaterialDivider Margin="0,10" />
 

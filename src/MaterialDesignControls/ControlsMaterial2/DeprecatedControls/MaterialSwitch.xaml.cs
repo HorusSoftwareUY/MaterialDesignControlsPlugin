@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -158,7 +159,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty OnColorProperty =
-            BindableProperty.Create(nameof(OnColor), typeof(Color), typeof(MaterialSwitch), defaultValue: Color.FromHex("#2e85cc"));
+            BindableProperty.Create(nameof(OnColor), typeof(Color), typeof(MaterialSwitch), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color OnColor
 	    {
