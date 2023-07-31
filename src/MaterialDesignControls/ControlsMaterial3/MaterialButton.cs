@@ -26,7 +26,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private MaterialLabel _textLabel;
 
-        private ActivityIndicator _activityIndicator;
+        private MaterialProgressIndicator _activityIndicator;
 
         private ContentView _cntActivityIndicator;
 
@@ -420,11 +420,11 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         if (_activityIndicator == null)
                         {
-                            _activityIndicator = new ActivityIndicator();
+                            _activityIndicator = new MaterialProgressIndicator();
                             _cntActivityIndicator.Content = _activityIndicator;
                         }
 
-                        _activityIndicator.Color = BusyColor;
+                        _activityIndicator.IndicatorColor = BusyColor;
                     }
                     break;
                 case nameof(IsBusy):
@@ -434,12 +434,11 @@ namespace Plugin.MaterialDesignControls.Material3
                         {
                             if (_activityIndicator == null)
                             {
-                                _activityIndicator = new ActivityIndicator { Color = BusyColor};
+                                _activityIndicator = new MaterialProgressIndicator { IndicatorColor = BusyColor};
                                 _cntActivityIndicator.Content = _activityIndicator;
                             }
 
                             _activityIndicator.IsVisible = true;
-                            _activityIndicator.IsRunning = true;
                         }
 
                         _cntActivityIndicator.IsVisible = true;
@@ -454,12 +453,11 @@ namespace Plugin.MaterialDesignControls.Material3
                         {
                             if (_activityIndicator == null)
                             {
-                                _activityIndicator = new ActivityIndicator();
+                                _activityIndicator = new MaterialProgressIndicator();
                                 _cntActivityIndicator.Content = _activityIndicator;
                             }
 
                             _activityIndicator.IsVisible = false;
-                            _activityIndicator.IsRunning = false;
                         }
 
                         _cntActivityIndicator.IsVisible = false;

@@ -38,6 +38,8 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialCheckbox](#materialcheckbox)
 - [MaterialSwitch](#materialswitch)
 - [MaterialTopAppBar](#materialtopappbar)
+- [MaterialProgressIndicator](#materialprogressindicator)
+
 
 ## Setup
 * Available on NuGet: [Plugin.MaterialDesignControls](https://www.nuget.org/packages/Plugin.MaterialDesignControls/) [![NuGet](https://img.shields.io/nuget/v/Plugin.MaterialDesignControls.svg?label=NuGet)](https://www.nuget.org/packages/Plugin.MaterialDesignControls/)
@@ -255,6 +257,15 @@ TopAppBar displays information and actions at the top of a screen.
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/topappbar_preview.png" width="300">
 <br/>
 [View documentation](MaterialTopAppBar.md)
+
+---
+
+### MaterialProgressIndicator
+MaterialProgressIndicator show the status of a process in real time
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materialprogressindicator_preview.png" width="300">
+<br/>
+[View documentation](MaterialProgressIndicator.md)
 
 ---
 
