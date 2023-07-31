@@ -23,6 +23,13 @@ namespace ExampleMaterialDesignControls.ViewModels
             set => SetProperty(ref _selectedItem3, value);
         }
 
+        private MaterialSegmentedItem _selectedItem5;
+        public MaterialSegmentedItem SelectedItem5
+        {
+            get => _selectedItem5;
+            set => SetProperty(ref _selectedItem5, value);
+        }
+
         private ObservableCollection<MaterialSegmentedItem> _items;
 
         public ObservableCollection<MaterialSegmentedItem> Items
@@ -69,6 +76,14 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             get { return frecuently; }
             set { SetProperty(ref frecuently, value); }
+        }
+
+        private ObservableCollection<MaterialSegmentedItem> _items5;
+
+        public ObservableCollection<MaterialSegmentedItem> Items5
+        {
+            get { return _items5; }
+            set { SetProperty(ref _items5, value); }
         }
 
         public MaterialSegmentedViewModel()
@@ -197,6 +212,30 @@ namespace ExampleMaterialDesignControls.ViewModels
 
             SelectedItem = Frecuently.First();
 
+
+            Items5 = new ObservableCollection<MaterialSegmentedItem>
+            {
+                new MaterialSegmentedItem
+                {
+                    Text = "Opt1",
+                    SelectedIcon = "checkbox_checked.png",
+                    UnselectedIcon = "checkbox_disabledUnchecked.png"
+                },
+                new MaterialSegmentedItem
+                {
+                    Text = "Opt2",
+                    SelectedIcon = "checkbox_checked.png",
+                    UnselectedIcon = "checkbox_disabledUnchecked.png"
+                },
+                new MaterialSegmentedItem
+                {
+                    Text = "Opt3",
+                    SelectedIcon = "checkbox_checked.png",
+                    IsSelected = true,
+                }
+            };
+
+            SelectedItem5 = Items5.Last();
         }
 
         public ICommand SaveCommand => new Command(async () =>
@@ -208,6 +247,11 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand SelectCommand => new Command(async () =>
         {
             await this.DisplayAlert.Invoke("Size", $"Selected command: {SelectedItem3}", "Ok");
+        });
+
+        public ICommand SelectItem5Command => new Command(async () =>
+        {
+            await this.DisplayAlert.Invoke("Size", $"Selected command: {SelectedItem5}", "Ok");
         });
     }
 }

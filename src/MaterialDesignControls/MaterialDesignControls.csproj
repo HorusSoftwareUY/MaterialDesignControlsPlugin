@@ -69,7 +69,7 @@
     <Compile Include="ControlsMaterial3\MaterialEditor.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
-    <Compile Include="ControlsMaterial3\MaterialSegmented.xaml.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
     <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
     <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
@@ -207,9 +207,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialSegmented.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
