@@ -98,7 +98,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand GoMaterialSearchBarCommand => new Command(async () =>
         {
-            await DisplayAlert("MaterialSearchBar", "Comming Soon!", "Ok");
+            await DisplayAlert("MaterialSearch", "Comming Soon!", "Ok");
         });
 
         public ICommand GoMaterialDividerCommand => new Command(async () =>
