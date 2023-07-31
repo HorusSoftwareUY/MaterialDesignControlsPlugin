@@ -535,7 +535,7 @@
                                                     HorizontalOptions="CenterAndExpand"
                                                     HorizontalTextAlignment="Center"
                                                     LineBreakMode="TailTruncation"
-                                                    Text="SearchBar"
+                                                    Text="Search"
                                                     TextColor="{StaticResource GradientColor9}"
                                                     VerticalOptions="EndAndExpand" />
                         </StackLayout>
