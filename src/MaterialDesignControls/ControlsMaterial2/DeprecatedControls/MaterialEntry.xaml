@@ -32,6 +32,7 @@
                                               HorizontalOptions="Start" />
                     <custom:CustomEntry x:Name="txtEntry"
                                         Grid.Column="1"
+                                        ios:VisualElement.IsLegacyColorModeEnabled="False"
                                         VerticalOptions="Center"
                                         HorizontalOptions="FillAndExpand" />
                     <custom:CustomImageButton x:Name="imgTrailingIcon"
