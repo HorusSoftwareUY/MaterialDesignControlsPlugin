@@ -7,7 +7,7 @@
         <Frame x:Name="frmContainer"
                HasShadow="false"
                CornerRadius="16"
-               Padding="12,0"
+               Padding="16,0"
                MinimumHeightRequest="32"
                HeightRequest="32">
             <StackLayout Spacing="0"
@@ -16,7 +16,7 @@
                 <custom:CustomImageButton x:Name="imgLeadingIcon"
                                           IsVisible="false"
                                           HorizontalOptions="Start"
-                                          Padding="0,0,4,0"
+                                          Margin="8,0,8,0"
                                           ImageWidthRequest="18"
                                           ImageHeightRequest="18"
                                           VerticalOptions="Center" />
@@ -29,7 +29,7 @@
                 <custom:CustomImageButton x:Name="imgTrailingIcon"
                                           IsVisible="false"
                                           HorizontalOptions="End"
-                                          Padding="4,0,0,0"
+                                          Margin="8,0,8,0"
                                           ImageWidthRequest="18"
                                           ImageHeightRequest="18"
                                           VerticalOptions="Center" />

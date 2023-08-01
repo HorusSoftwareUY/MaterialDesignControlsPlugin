@@ -3,8 +3,6 @@ using System.Windows.Input;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Plugin.MaterialDesignControls.Styles;
-using Xamarin.Forms.PlatformConfiguration.TizenSpecific;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -102,7 +100,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChips), defaultValue: new Thickness(12, 0));
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChips), defaultValue: new Thickness(16, 0));
 
         public new Thickness Padding
         {
@@ -430,6 +428,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(this.Type):
+                    Console.WriteLine("Enter set type");
                     SetMaterialChipsType();
                     break;
             }
@@ -437,21 +436,78 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetMaterialChipsType()
         {
+            Console.WriteLine("set aquí!!!!");
+
             switch (Type)
             {
                 case MaterialChipsType.Assist:
-
+                    TrailingIconIsVisible = false;
+                    if (LeadingIconIsVisible)
+                    {
+                        this.Padding = new Thickness(0, 0, 16, 0);
+                    }
+                    else
+                    {
+                        this.Padding = new Thickness(16, 0);
+                    }
+                    Console.WriteLine("Entro aquí!!!!");
                     break;
                 case MaterialChipsType.Filter:
-
+                    if (LeadingIconIsVisible && TrailingIconIsVisible)
+                    {
+                        this.Padding = new Thickness(0);
+                    }
+                    else if (LeadingIconIsVisible && !TrailingIconIsVisible)
+                    {
+                        this.Padding = new Thickness(0, 0, 16, 0);
+                    }
+                    else if (!LeadingIconIsVisible && TrailingIconIsVisible)
+                    {
+                        this.Padding = new Thickness(16, 0, 0, 0);
+                    }
+                    else
+                    {
+                        this.Padding = new Thickness(16, 0);
+                    }
                     break;
                 case MaterialChipsType.Input:
-
+                    if (LeadingIconIsVisible && TrailingIconIsVisible)
+                    {
+                        this.Padding = new Thickness(0);
+                        imgLeadingIcon.WidthRequest = 24;
+                        imgLeadingIcon.MinimumWidthRequest = 24;
+                    }
+                    else if (LeadingIconIsVisible && !TrailingIconIsVisible)
+                    {
+                        this.Padding = new Thickness(0, 0, 16, 0);
+                        imgLeadingIcon.WidthRequest = 18;
+                        imgLeadingIcon.MinimumWidthRequest = 18;
+                    }
+                    else if (!LeadingIconIsVisible && TrailingIconIsVisible)
+                    {
+                        this.Padding = new Thickness(16, 0, 0, 0);
+                        imgLeadingIcon.WidthRequest = 18;
+                        imgLeadingIcon.MinimumWidthRequest = 18;
+                    }
+                    else
+                    {
+                        this.Padding = new Thickness(16, 0);
+                        imgLeadingIcon.WidthRequest = 18;
+                        imgLeadingIcon.MinimumWidthRequest = 18;
+                    }
                     break;
                 case MaterialChipsType.Suggestion:
-
+                    TrailingIconIsVisible = false;
+                    if (LeadingIconIsVisible)
+                    {
+                        this.Padding = new Thickness(0, 0, 16, 0);
+                    }
+                    else
+                    {
+                        this.Padding = new Thickness(16, 0);
+                    }
                     break;
-               
+
             }
         }
 

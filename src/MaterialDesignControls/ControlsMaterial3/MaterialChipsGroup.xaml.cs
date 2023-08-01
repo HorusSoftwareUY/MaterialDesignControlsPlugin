@@ -8,11 +8,6 @@ using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    public enum MaterialChipsGroupType
-    {
-        Assist, Filter, Input, Suggestion
-    }
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialChipsGroup : ContentView
     {
@@ -38,16 +33,16 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(MaterialChipsGroupType), typeof(MaterialChipsGroup), defaultValue: MaterialChipsType.Assist);
+            BindableProperty.Create(nameof(Type), typeof(MaterialChipsType), typeof(MaterialChipsGroup), defaultValue: MaterialChipsType.Assist);
 
-        public MaterialChipsGroupType Type
+        public MaterialChipsType Type
         {
-            get { return (MaterialChipsGroupType)GetValue(PaddingProperty); }
-            set { SetValue(PaddingProperty, value); }
+            get { return (MaterialChipsType)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
         }
 
         public static readonly BindableProperty ToUpperProperty =
-            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialChips), defaultValue: false);
+            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialChipsGroup), defaultValue: false);
 
         public bool ToUpper
         {
@@ -65,7 +60,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ChipsPaddingProperty =
-            BindableProperty.Create(nameof(ChipsPadding), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(12, 0));
+            BindableProperty.Create(nameof(ChipsPadding), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(16, 0));
 
         public Thickness ChipsPadding
         {
@@ -376,7 +371,8 @@ namespace Plugin.MaterialDesignControls.Material3
                         DisabledSelectedBackgroundColor = control.DisabledSelectedBackgroundColor,
                         DisabledSelectedTextColor = control.DisabledSelectedTextColor,
                         IsEnabled = control.IsEnabled,
-                        ToUpper = control.ToUpper
+                        ToUpper = control.ToUpper,
+                        Type = control.Type
                     };
 
                     if (control.ChipsHeightRequest != (double)ChipsHeightRequestProperty.DefaultValue)
