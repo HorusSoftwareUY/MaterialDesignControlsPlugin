@@ -3,6 +3,7 @@ using System.Windows.Input;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.MaterialDesignControls.Styles;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -59,8 +60,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialChipsType Type
         {
-            get { return (MaterialChipsType)GetValue(PaddingProperty); }
-            set { SetValue(PaddingProperty, value); }
+            get { return (MaterialChipsType)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
         }
 
         public static readonly BindableProperty CommandProperty =
@@ -226,7 +227,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialChips), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color TextColor
         {
@@ -235,7 +236,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SelectedTextColorProperty =
-            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Black);
+            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.White);
 
         public Color SelectedTextColor
         {
@@ -244,7 +245,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialChips), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledTextColor
         {
@@ -253,7 +254,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledSelectedTextColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.White);
+            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Black);
 
         public Color DisabledSelectedTextColor
         {
@@ -262,7 +263,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: DefaultStyles.PrimaryContainerColor);
 
         public new Color BackgroundColor
         {
@@ -271,7 +272,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SelectedBackgroundColorProperty =
-            BindableProperty.Create(nameof(SelectedBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(SelectedBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color SelectedBackgroundColor
         {
@@ -280,7 +281,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.White);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray);
 
         public Color DisabledBackgroundColor
         {
@@ -289,7 +290,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledSelectedBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChips), defaultValue: Color.DarkGray);
 
         public Color DisabledSelectedBackgroundColor
         {
@@ -371,7 +372,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.lblText.FontFamily = this.FontFamily;
                     break;
                 case nameof(this.Padding):
-                    this.frmContainer.Padding = this.Padding;
+                    SetMaterialChipsType();
                     break;
                 case nameof(this.TextMargin):
                     this.lblText.Margin = this.TextMargin;
@@ -428,7 +429,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(this.Type):
-                    Console.WriteLine("Enter set type");
                     SetMaterialChipsType();
                     break;
             }
@@ -436,8 +436,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetMaterialChipsType()
         {
-            Console.WriteLine("set aquí!!!!");
-
             switch (Type)
             {
                 case MaterialChipsType.Assist:
@@ -450,7 +448,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         this.Padding = new Thickness(16, 0);
                     }
-                    Console.WriteLine("Entro aquí!!!!");
                     break;
                 case MaterialChipsType.Filter:
                     if (LeadingIconIsVisible && TrailingIconIsVisible)
