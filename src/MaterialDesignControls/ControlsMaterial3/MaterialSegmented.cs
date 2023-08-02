@@ -28,6 +28,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private Grid _grid;
 
         Dictionary<string, ContainerForObjects> containersWithItems = new Dictionary<string, ContainerForObjects>();
+
         #endregion Attributes
 
         #region Constructors
@@ -148,7 +149,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty HeightRequestProperty =
-            BindableProperty.Create(nameof(HeightRequest), typeof(double), typeof(MaterialSegmented), defaultValue: 40.0);
+            BindableProperty.Create(nameof(HeightRequest), typeof(double), typeof(MaterialSegmented), defaultValue: 42.0);
 
         public new double HeightRequest
         {
@@ -157,7 +158,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SegmentMarginProperty =
-            BindableProperty.Create(nameof(SegmentMargin), typeof(int), typeof(MaterialSegmented), defaultValue: 2);
+            BindableProperty.Create(nameof(SegmentMargin), typeof(int), typeof(MaterialSegmented), defaultValue: 0);
 
         public int SegmentMargin
         {
@@ -353,12 +354,11 @@ namespace Plugin.MaterialDesignControls.Material3
                         _grid.ColumnSpacing = 0;
                         _mainFrame.BorderColor = IsEnabled ? BorderColor : DisabledBorderColor;
                         _mainFrame.BackgroundColor = IsEnabled ? BorderColor : DisabledBorderColor;
-                        frame.Padding = new Thickness(12, 0);
                         frame.BorderColor = IsEnabled ? BorderColor : DisabledBorderColor;
 
                         if (itemIdx == 0)
                         {
-                            frame.Margin = new Thickness(1, 1, 0, 1);
+                            frame.Margin = new Thickness(1, 1, 1, 1);
                             frame.CornerRadiusTopLeft = true;
                             frame.CornerRadiusBottomLeft = true;
                         }
@@ -370,7 +370,11 @@ namespace Plugin.MaterialDesignControls.Material3
                         }
                         else
                         {
-                            frame.Margin = new Thickness(1, 1);
+                            if (Device.RuntimePlatform == Device.iOS)
+                                frame.Margin = new Thickness(0, 1, 1, 1);
+                            else
+                                frame.Margin = new Thickness(0, 1);
+
                             frame.CornerRadius = 0;
                         }
                     }

@@ -136,12 +136,12 @@ This property is to set cornerradius of the control. By default is 16.
 <br/>
 
 ### Property HeightRequest
-This property is to set heightrequest of the control. By default is 40.
+This property is to set heightrequest of the control. By default is 42.
 <br/>
 <br/>
 
 ### Property SegmentMargin
-This property is to set the separation of each segment inside the control, this applies to left, top, right and bottom. by default is 2.
+This property is to set the separation of each segment inside the control, this applies to left, top, right and bottom. by default is 0.
 <br/>
 <br/>
 
