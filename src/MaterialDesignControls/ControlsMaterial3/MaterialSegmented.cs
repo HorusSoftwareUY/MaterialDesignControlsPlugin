@@ -370,7 +370,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         }
                         else
                         {
-                            frame.Margin = new Thickness(0, 1);
+                            frame.Margin = new Thickness(1, 1);
                             frame.CornerRadius = 0;
                         }
                     }
