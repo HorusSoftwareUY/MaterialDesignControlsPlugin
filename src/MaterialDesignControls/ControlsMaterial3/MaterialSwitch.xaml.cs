@@ -337,7 +337,7 @@ namespace Plugin.MaterialDesignControls.Material3
             this.ThumbFrame.TranslationX = this._currentState == SwitchStateEnum.Left ? -this._xRef : this._xRef;
         }
 
-        private async static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is not MaterialSwitch view)
                 return;

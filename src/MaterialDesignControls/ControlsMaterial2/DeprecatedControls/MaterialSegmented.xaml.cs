@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
+    [Obsolete("MaterialSegmented is deprecated, please use MaterialSegmented of Material 3 instead.")]
     public partial class MaterialSegmented : ContentView
     {
         #region Attributes
@@ -59,7 +60,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedColorProperty =
-            BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: Color.FromHex("#2e85cc"));
+            BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color SelectedColor
         {

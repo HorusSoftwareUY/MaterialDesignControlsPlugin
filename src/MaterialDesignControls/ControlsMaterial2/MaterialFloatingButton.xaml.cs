@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -248,7 +249,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static new readonly BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: Color.FromHex("#2e85cc"));
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: DefaultStyles.PrimaryColor);
 
 
         public new Color BackgroundColor
