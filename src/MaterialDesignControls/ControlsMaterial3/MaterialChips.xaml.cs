@@ -381,7 +381,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.frmContainer.CornerRadius = (float)this.CornerRadius;
                     break;
                 case nameof(this.IsEnabled):
-                case nameof(IsSelected):
+                case nameof(this.IsSelected):
                 case nameof(this.SelectedTextColor):
                 case nameof(this.SelectedBackgroundColor):
                 case nameof(this.TextColor):

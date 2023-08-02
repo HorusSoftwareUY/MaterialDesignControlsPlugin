@@ -356,7 +356,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 {
                     var materialChips = new MaterialChips
                     {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
                         Text = item.ToString(),
                         FontSize = control.FontSize,
                         FontFamily = control.FontFamily,

@@ -47,10 +47,10 @@
                                             Text="Chips Group Control" />
                     <material3:MaterialChipsGroup AnimateError="True"
                                                  AssistiveText="{Binding Error}"
-                                                 ItemsSource="{Binding Sizes}"
                                                   Type="Suggestion"
                                                  LabelText="Sizes"
-                                                 SelectedItem="{Binding SelectedSizes}" />
+                                                 SelectedItem="{Binding SelectedSizes}"
+                                                  ItemsSource="{Binding Sizes}" />
                     <material3:MaterialChipsGroup ChipsHeightRequest="32"
                                                  ChipsPadding="16,0"
                                                  IsMultipleSelection="True"
