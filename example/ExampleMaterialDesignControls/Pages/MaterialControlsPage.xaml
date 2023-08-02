@@ -868,7 +868,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="90">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_card.svg" />
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_badge.svg" />
                                 </Frame>
                                 <material:MaterialLabel FontAttributes="Bold"
                                                         FontSize="{StaticResource Body2FontSize}"
