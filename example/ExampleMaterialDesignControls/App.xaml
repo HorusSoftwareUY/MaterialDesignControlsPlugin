@@ -273,7 +273,7 @@
         </Style>
 
         <!-- MaterialChips -->
-        <Style TargetType="material:MaterialChips">
+        <Style TargetType="material3:MaterialChips">
             <Setter Property="FontSize"
                     Value="{StaticResource Body2FontSize}" />
             <Setter Property="CornerRadius"
@@ -303,7 +303,7 @@
         </Style>
 
         <!-- MaterialChipsGroup -->
-        <Style TargetType="material:MaterialChipsGroup">
+        <Style TargetType="material3:MaterialChipsGroup">
             <Setter Property="LabelSize"
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="LabelTextColor"

@@ -27,18 +27,18 @@
                     <contentViews:InfoIndicatorView Message="MaterialDatePicker follows the latest guidelines of Material Design 3" />
 
                     <material3:MaterialChipsGroup AssistiveText="Please select at least 4 colors"
-                                                 AssistiveTextColor="{StaticResource GradientColor12}"
-                                                 BackgroundColor="{StaticResource GradientColorTransparent2}"
-                                                 ChipsHeightRequest="32"
-                                                 ChipsPadding="16,0"
-                                                 IsMultipleSelection="True"
-                                                 ItemsSource="{Binding Colors}"
-                                                 LabelText="Colors *"
-                                                 LabelTextColor="{StaticResource GradientColor2}"
-                                                 SelectedBackgroundColor="{StaticResource GradientColor2}"
-                                                 SelectedItems="{Binding SelectedColors}"
-                                                 SelectedTextColor="White"
-                                                 TextColor="{StaticResource GradientColor2}" />
+                                                  AssistiveTextColor="{StaticResource GradientColor12}"
+                                                  BackgroundColor="{StaticResource GradientColorTransparent2}"
+                                                  ChipsHeightRequest="32"
+                                                  ChipsPadding="16,0"
+                                                  IsMultipleSelection="True"
+                                                  ItemsSource="{Binding Colors}"
+                                                  LabelText="Colors *"
+                                                  LabelTextColor="{StaticResource GradientColor2}"
+                                                  SelectedBackgroundColor="{StaticResource GradientColor2}"
+                                                  SelectedItems="{Binding SelectedColors}"
+                                                  SelectedTextColor="White"
+                                                  TextColor="{StaticResource GradientColor2}" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -46,17 +46,17 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Chips Group Control" />
                     <material3:MaterialChipsGroup AnimateError="True"
-                                                 AssistiveText="{Binding Error}"
+                                                  AssistiveText="{Binding Error}"
                                                   Type="Suggestion"
-                                                 LabelText="Sizes"
-                                                 SelectedItem="{Binding SelectedSizes}"
+                                                  LabelText="Sizes"
+                                                  SelectedItem="{Binding SelectedSizes}"
                                                   ItemsSource="{Binding Sizes}" />
                     <material3:MaterialChipsGroup ChipsHeightRequest="32"
-                                                 ChipsPadding="16,0"
-                                                 IsMultipleSelection="True"
-                                                 ItemsSource="{Binding Colors}"
-                                                 LabelText="Colors"
-                                                 SelectedItems="{Binding SelectedColors}" />
+                                                  ChipsPadding="16,0"
+                                                  IsMultipleSelection="True"
+                                                  ItemsSource="{Binding Colors}"
+                                                  LabelText="Colors"
+                                                  SelectedItems="{Binding SelectedColors}" />
 
                     <material3:MaterialButton Margin="0,20,0,0"
                                               Command="{Binding TapCommand}"
@@ -70,12 +70,12 @@
                                             Text="Disabled / Enabled" />
 
                     <material3:MaterialChipsGroup ChipsHeightRequest="32"
-                                                 ChipsPadding="16,0"
-                                                 IsEnabled="{Binding IsColorSelectionEnabled}"
-                                                 IsMultipleSelection="True"
-                                                 ItemsSource="{Binding Colors}"
-                                                 LabelText="Colors"
-                                                 SelectedItems="{Binding SelectedColors}" />
+                                                  ChipsPadding="16,0"
+                                                  IsEnabled="{Binding IsColorSelectionEnabled}"
+                                                  IsMultipleSelection="True"
+                                                  ItemsSource="{Binding Colors}"
+                                                  LabelText="Colors"
+                                                  SelectedItems="{Binding SelectedColors}" />
 
                     <material3:MaterialChipsGroup />
 
@@ -101,39 +101,39 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <material3:MaterialChips Grid.Row="0"
-                                                Grid.Column="0"
-                                                BackgroundColor="{StaticResource GradientColorTransparent2}"
-                                                IsEnabled="true"
-                                                IsSelected="true"
-                                                SelectedBackgroundColor="{StaticResource GradientColor2}"
-                                                SelectedTextColor="White"
-                                                Text="Option A"
-                                                TextColor="{StaticResource GradientColor2}" />
+                                                 Grid.Column="0"
+                                                 BackgroundColor="{StaticResource GradientColorTransparent2}"
+                                                 IsEnabled="true"
+                                                 IsSelected="true"
+                                                 SelectedBackgroundColor="{StaticResource GradientColor2}"
+                                                 SelectedTextColor="White"
+                                                 Text="Option A"
+                                                 TextColor="{StaticResource GradientColor2}" />
                         <material3:MaterialChips Grid.Row="0"
-                                                Grid.Column="1"
-                                                IsEnabled="true"
-                                                IsSelected="false"
-                                                Text="Option B" />
+                                                 Grid.Column="1"
+                                                 IsEnabled="true"
+                                                 IsSelected="false"
+                                                 Text="Option B" />
                         <material3:MaterialChips Grid.Row="0"
-                                                Grid.Column="2"
-                                                IsEnabled="true"
-                                                IsSelected="false"
-                                                Text="Option C" />
+                                                 Grid.Column="2"
+                                                 IsEnabled="true"
+                                                 IsSelected="false"
+                                                 Text="Option C" />
                         <material3:MaterialChips Grid.Row="1"
-                                                Grid.Column="0"
-                                                IsEnabled="false"
-                                                IsSelected="true"
-                                                Text="Option D" />
+                                                 Grid.Column="0"
+                                                 IsEnabled="false"
+                                                 IsSelected="true"
+                                                 Text="Option D" />
                         <material3:MaterialChips Grid.Row="1"
-                                                Grid.Column="1"
-                                                IsEnabled="false"
-                                                IsSelected="false"
-                                                Text="Option E" />
+                                                 Grid.Column="1"
+                                                 IsEnabled="false"
+                                                 IsSelected="false"
+                                                 Text="Option E" />
                         <material3:MaterialChips Grid.Row="1"
-                                                Grid.Column="2"
-                                                IsEnabled="false"
-                                                IsSelected="false"
-                                                Text="Option F" />
+                                                 Grid.Column="2"
+                                                 IsEnabled="false"
+                                                 IsSelected="false"
+                                                 Text="Option F" />
                     </Grid>
 
                     <material:MaterialDivider Margin="0,10" />
@@ -145,36 +145,36 @@
                                 HorizontalOptions="FillAndExpand"
                                 Wrap="Wrap">
                         <material3:MaterialChips Margin="0,10,10,0"
-                                                IsEnabled="true"
-                                                IsSelected="false"
-                                                Text="Opt J"
-                                                ToUpper="True"
-                                                TrailingIcon="cancel.png"
-                                                TrailingIconCommand="{Binding IconTapCommand}" />
+                                                 IsEnabled="true"
+                                                 IsSelected="false"
+                                                 Text="Opt J"
+                                                 ToUpper="True"
+                                                 TrailingIcon="cancel.png"
+                                                 TrailingIconCommand="{Binding IconTapCommand}" />
                         <material3:MaterialChips Margin="0,10,10,0"
-                                                IsEnabled="true"
-                                                IsSelected="True"
-                                                Text="This is option K"
-                                                ToUpper="True"
-                                                TrailingIcon="cancel.png"
-                                                TrailingIconCommand="{Binding IconTapCommand}"
-                                                TrailingIconCommandParameter="Option K Clicked" />
+                                                 IsEnabled="true"
+                                                 IsSelected="True"
+                                                 Text="This is option K"
+                                                 ToUpper="True"
+                                                 TrailingIcon="cancel.png"
+                                                 TrailingIconCommand="{Binding IconTapCommand}"
+                                                 TrailingIconCommandParameter="Option K Clicked" />
                         <material3:MaterialChips Margin="0,10,10,0"
-                                                IsEnabled="true"
-                                                IsSelected="false"
-                                                Text="Option L"
-                                                ToUpper="True"
-                                                TrailingIcon="cancel.png"
-                                                TrailingIconCommand="{Binding IconTapCommand}"
-                                                TrailingIconCommandParameter="Option L Clicked" />
+                                                 IsEnabled="true"
+                                                 IsSelected="false"
+                                                 Text="Option L"
+                                                 ToUpper="True"
+                                                 TrailingIcon="cancel.png"
+                                                 TrailingIconCommand="{Binding IconTapCommand}"
+                                                 TrailingIconCommandParameter="Option L Clicked" />
                         <material3:MaterialChips Margin="0,10,10,0"
-                                                IsEnabled="true"
-                                                IsSelected="false"
-                                                LeadingIcon="delete.png"
-                                                LeadingIconCommand="{Binding IconTapCommand}"
-                                                LeadingIconCommandParameter="Delete command!"
-                                                Text="Option M"
-                                                ToUpper="True" />
+                                                 IsEnabled="true"
+                                                 IsSelected="false"
+                                                 LeadingIcon="delete.png"
+                                                 LeadingIconCommand="{Binding IconTapCommand}"
+                                                 LeadingIconCommandParameter="Delete command!"
+                                                 Text="Option M"
+                                                 ToUpper="True" />
                     </FlexLayout>
 
                     <material:MaterialDivider Margin="0,10" />
@@ -186,22 +186,22 @@
                                 HorizontalOptions="FillAndExpand"
                                 Wrap="Wrap">
                         <material3:MaterialChips Margin="0,10,10,0"
-                                                IsEnabled="true"
-                                                IsSelected="false"
-                                                Text="Opt A"
-                                                ToUpper="True"
-                                                TrailingIconCommand="{Binding IconTapCommand}">
+                                                 IsEnabled="true"
+                                                 IsSelected="false"
+                                                 Text="Opt A"
+                                                 ToUpper="True"
+                                                 TrailingIconCommand="{Binding IconTapCommand}">
                             <material3:MaterialChips.CustomTrailingIcon>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg" />
                             </material3:MaterialChips.CustomTrailingIcon>
                         </material3:MaterialChips>
                         <material3:MaterialChips Margin="0,10,10,0"
-                                                IsEnabled="true"
-                                                IsSelected="false"
-                                                LeadingIconCommand="{Binding IconTapCommand}"
-                                                LeadingIconCommandParameter="Delete command!"
-                                                Text="Opt Z"
-                                                ToUpper="True">
+                                                 IsEnabled="true"
+                                                 IsSelected="false"
+                                                 LeadingIconCommand="{Binding IconTapCommand}"
+                                                 LeadingIconCommandParameter="Delete command!"
+                                                 Text="Opt Z"
+                                                 ToUpper="True">
                             <material3:MaterialChips.CustomLeadingIcon>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dont_show_password_g.svg" />
                             </material3:MaterialChips.CustomLeadingIcon>
@@ -218,25 +218,25 @@
                                 HorizontalOptions="FillAndExpand"
                                 Wrap="Wrap">
                         <material3:MaterialChips Margin="0,10,10,0"
-                                                BackgroundColor="{StaticResource GradientColorTransparent2}"
-                                                SelectedBackgroundColor="{StaticResource GradientColor2}"
-                                                SelectedTextColor="White"
-                                                Text="Option A"
-                                                TextColor="{StaticResource GradientColor2}"
-                                                TrailingIconIsVisible="{Binding IsChipIconVisible}">
+                                                 BackgroundColor="{StaticResource GradientColorTransparent2}"
+                                                 SelectedBackgroundColor="{StaticResource GradientColor2}"
+                                                 SelectedTextColor="White"
+                                                 Text="Option A"
+                                                 TextColor="{StaticResource GradientColor2}"
+                                                 TrailingIconIsVisible="{Binding IsChipIconVisible}">
                             <material3:MaterialChips.CustomTrailingIcon>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg" />
                             </material3:MaterialChips.CustomTrailingIcon>
                         </material3:MaterialChips>
 
                         <material3:MaterialChips Margin="0,10,10,0"
-                                                BackgroundColor="{StaticResource GradientColorTransparent2}"
-                                                LeadingIcon="delete.png"
-                                                LeadingIconIsVisible="{Binding IsChipIconVisible}"
-                                                SelectedBackgroundColor="{StaticResource GradientColor2}"
-                                                SelectedTextColor="White"
-                                                Text="Option B"
-                                                TextColor="{StaticResource GradientColor2}" />
+                                                 BackgroundColor="{StaticResource GradientColorTransparent2}"
+                                                 LeadingIcon="delete.png"
+                                                 LeadingIconIsVisible="{Binding IsChipIconVisible}"
+                                                 SelectedBackgroundColor="{StaticResource GradientColor2}"
+                                                 SelectedTextColor="White"
+                                                 Text="Option B"
+                                                 TextColor="{StaticResource GradientColor2}" />
                     </FlexLayout>
 
                     <StackLayout Orientation="Horizontal"
