@@ -32,7 +32,7 @@
                 <Grid Padding="0,0,0,20"
                       ColumnDefinitions="*,*"
                       ColumnSpacing="10"
-                      RowDefinitions="150,150,150,150,150,150,150,150,150,150,150,150"
+                      RowDefinitions="150,150,150,150,150,150,150,150,150,150,150,150,150"
                       RowSpacing="10">
 
                     <Frame Grid.Row="0"
@@ -838,6 +838,42 @@
                                                         LineBreakMode="TailTruncation"
                                                         Text="Card"
                                                         TextColor="{StaticResource GradientColor2}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="12"
+                           Grid.Column="0"
+                           Padding="15"
+                           BackgroundColor="{StaticResource GradientColorTransparent3}"
+                           CornerRadius="16"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoMaterialBadgeCommand}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent3}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_card.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="Badge"
+                                                        TextColor="{StaticResource GradientColor3}"
                                                         VerticalOptions="EndAndExpand" />
                             </StackLayout>
 
