@@ -372,7 +372,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         DisabledSelectedTextColor = control.DisabledSelectedTextColor,
                         IsEnabled = control.IsEnabled,
                         ToUpper = control.ToUpper,
-                        Type = control.Type
+                        //Type = control.Type
                     };
 
                     if (control.ChipsHeightRequest != (double)ChipsHeightRequestProperty.DefaultValue)
