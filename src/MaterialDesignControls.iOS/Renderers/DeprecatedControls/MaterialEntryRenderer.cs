@@ -4,6 +4,7 @@ using System;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(MaterialEntryRenderer))]
 
@@ -14,9 +15,13 @@ namespace Plugin.MaterialDesignControls.iOS
     {
         public static void Init() { }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Entry> e)
         {
+            if (e.NewElement != null)
+                e.NewElement.OnThisPlatform().SetIsLegacyColorModeEnabled(false);
+
             base.OnElementChanged(e);
+
             if (this.Control != null)
             {
                 this.Control.BorderStyle = UITextBorderStyle.None;

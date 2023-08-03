@@ -153,6 +153,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Properties
 
         #region Events
+
         public event EventHandler TextChanged;
 
         public new event EventHandler<FocusEventArgs> Focused;
@@ -167,6 +168,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (ICommand)GetValue(TextChangedCommandProperty); }
             set { SetValue(TextChangedCommandProperty, value); }
         }
+
         #endregion Events
 
         #region Methods
