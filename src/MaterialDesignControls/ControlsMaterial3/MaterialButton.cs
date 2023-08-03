@@ -73,7 +73,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: DefaultStyles.ButtonAnimation);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: DefaultStyles.AnimationType);
 
         public AnimationTypes Animation
         {
@@ -82,7 +82,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: DefaultStyles.ButtonAnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: DefaultStyles.AnimationParameter);
 
         public double? AnimationParameter
         {
@@ -483,18 +483,18 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 case MaterialButtonType.Elevated:
                     _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
-                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
-                    _frameLayout.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
+                    _frameLayout.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
                     _frameLayout.HasShadow = true;
                     break;
                 case MaterialButtonType.Filled:
-                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.BackgroundColor;
+                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.OnPrimaryColor;
                     _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.PrimaryColor;
                     _frameLayout.BorderColor = Color.Transparent;
                     _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Tonal:
-                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.BackgroundColor;
+                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.OnPrimaryColor;
 
                     var defaultBackgroundColor = Color.FromRgba(DefaultStyles.PrimaryColor.R, DefaultStyles.PrimaryColor.G, DefaultStyles.PrimaryColor.B, 0.4);
                     _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : defaultBackgroundColor;
@@ -503,7 +503,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case MaterialButtonType.Outlined:
                     _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
-                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
                     _frameLayout.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
                     _frameLayout.HasShadow = false;
                     break;

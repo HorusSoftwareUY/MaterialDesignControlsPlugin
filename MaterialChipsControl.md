@@ -69,7 +69,6 @@ Command parameter for MaterialChips when is selected or pressed.
 
 ### Property IsEnabled:
 This property is to set the if the MaterialChips control is enabled.
-
 <br/>
 <br/>
 
@@ -107,7 +106,6 @@ This property is to set custom leading icon.
 This property is to set if the leading icon is visible.
 <br/>
 <br/>
-
 
 ### Property TrailingIcon:
 This property is to set the trailing icon.

@@ -151,7 +151,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.TextColor);
 
         public Color LabelTextColor
         {
@@ -160,7 +160,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Red);
+            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.ErrorColor);
 
         public Color AssistiveTextColor
         {
@@ -196,7 +196,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SelectedTextColorProperty =
-            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.White);
+            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.OnPrimaryColor);
 
         public Color SelectedTextColor
         {
@@ -214,7 +214,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledSelectedTextColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Black);
+            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.TextColor);
 
         public Color DisabledSelectedTextColor
         {
@@ -241,7 +241,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.DisableContainerColor);
 
         public Color DisabledBackgroundColor
         {
@@ -250,12 +250,21 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledSelectedBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.DarkGray);
+            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledSelectedBackgroundColor
         {
             get { return (Color)GetValue(DisabledSelectedBackgroundColorProperty); }
             set { SetValue(DisabledSelectedBackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty BorderColorProperty =
+           BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.PrimaryColor);
+
+        public Color BorderColor
+        {
+            get { return (Color)GetValue(BorderColorProperty); }
+            set { SetValue(BorderColorProperty, value); }
         }
 
         public static readonly BindableProperty FontSizeProperty =
@@ -268,7 +277,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialChipsGroup), defaultValue: null);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.FontFamily);
 
         public string FontFamily
         {
@@ -286,7 +295,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialChipsGroup), defaultValue: false);
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.AnimateError);
 
         public bool AnimateError
         {
@@ -370,6 +379,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         DisabledTextColor = control.DisabledTextColor,
                         DisabledSelectedBackgroundColor = control.DisabledSelectedBackgroundColor,
                         DisabledSelectedTextColor = control.DisabledSelectedTextColor,
+                        BorderColor = control.BorderColor,
                         IsEnabled = control.IsEnabled,
                         ToUpper = control.ToUpper,
                         Type = control.Type

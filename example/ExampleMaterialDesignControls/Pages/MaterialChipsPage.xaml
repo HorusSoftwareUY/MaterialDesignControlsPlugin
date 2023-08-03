@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialChipsPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -26,19 +26,42 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialDatePicker follows the latest guidelines of Material Design 3" />
 
-                    <material3:MaterialChipsGroup AssistiveText="Please select at least 4 colors"
-                                                  AssistiveTextColor="{StaticResource GradientColor12}"
-                                                  BackgroundColor="{StaticResource GradientColorTransparent2}"
-                                                  ChipsHeightRequest="32"
-                                                  ChipsPadding="16,0"
-                                                  IsMultipleSelection="True"
-                                                  ItemsSource="{Binding Colors}"
-                                                  LabelText="Colors *"
-                                                  LabelTextColor="{StaticResource GradientColor2}"
-                                                  SelectedBackgroundColor="{StaticResource GradientColor2}"
-                                                  SelectedItems="{Binding SelectedColors}"
-                                                  SelectedTextColor="White"
-                                                  TextColor="{StaticResource GradientColor2}" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Chip States" />
+
+                    <Grid RowSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <material3:MaterialChips
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Option A"
+                            IsSelected="True" />
+                        <material3:MaterialChips
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Option B"
+                            IsSelected="True"
+                            IsEnabled="False" />
+                        <material3:MaterialChips
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Option C"
+                            IsSelected="False" />
+                        <material3:MaterialChips
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="Option D"
+                            IsSelected="False"
+                            IsEnabled="False" />
+                    </Grid>
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -47,21 +70,19 @@
                                             Text="Chips Group Control" />
                     <material3:MaterialChipsGroup AnimateError="True"
                                                   AssistiveText="{Binding Error}"
-                                                  Type="Suggestion"
                                                   LabelText="Sizes"
                                                   SelectedItem="{Binding SelectedSizes}"
                                                   ItemsSource="{Binding Sizes}" />
-                    <material3:MaterialChipsGroup ChipsHeightRequest="32"
+                    <material3:MaterialChipsGroup AssistiveText="Please select at least 4 colors"
+                                                  ChipsHeightRequest="32"
                                                   ChipsPadding="16,0"
                                                   IsMultipleSelection="True"
                                                   ItemsSource="{Binding Colors}"
-                                                  LabelText="Colors"
+                                                  LabelText="Colors *"
                                                   SelectedItems="{Binding SelectedColors}" />
 
-                    <material3:MaterialButton Margin="0,20,0,0"
-                                              Command="{Binding TapCommand}"
-                                              Text="Save"
-                                              VerticalOptions="EndAndExpand" />
+                    <material3:MaterialButton Command="{Binding TapCommand}"
+                                              Text="Save" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -82,7 +103,7 @@
                     <StackLayout Orientation="Horizontal"
                                  Spacing="16">
                         <material:MaterialLabel FontSize="16"
-                                                Text="Color selection enabled"
+                                                Text="Selection enabled"
                                                 VerticalTextAlignment="Center" />
                         <Switch HorizontalOptions="EndAndExpand"
                                 IsToggled="{Binding IsColorSelectionEnabled}" />
@@ -90,68 +111,22 @@
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <Grid RowSpacing="16">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <material3:MaterialChips Grid.Row="0"
-                                                 Grid.Column="0"
-                                                 BackgroundColor="{StaticResource GradientColorTransparent2}"
-                                                 IsEnabled="true"
-                                                 IsSelected="true"
-                                                 SelectedBackgroundColor="{StaticResource GradientColor2}"
-                                                 SelectedTextColor="White"
-                                                 Text="Option A"
-                                                 TextColor="{StaticResource GradientColor2}" />
-                        <material3:MaterialChips Grid.Row="0"
-                                                 Grid.Column="1"
-                                                 IsEnabled="true"
-                                                 IsSelected="false"
-                                                 Text="Option B" />
-                        <material3:MaterialChips Grid.Row="0"
-                                                 Grid.Column="2"
-                                                 IsEnabled="true"
-                                                 IsSelected="false"
-                                                 Text="Option C" />
-                        <material3:MaterialChips Grid.Row="1"
-                                                 Grid.Column="0"
-                                                 IsEnabled="false"
-                                                 IsSelected="true"
-                                                 Text="Option D" />
-                        <material3:MaterialChips Grid.Row="1"
-                                                 Grid.Column="1"
-                                                 IsEnabled="false"
-                                                 IsSelected="false"
-                                                 Text="Option E" />
-                        <material3:MaterialChips Grid.Row="1"
-                                                 Grid.Column="2"
-                                                 IsEnabled="false"
-                                                 IsSelected="false"
-                                                 Text="Option F" />
-                    </Grid>
-
-                    <material:MaterialDivider Margin="0,10" />
-
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="PNG Icons" />
+
+
                     <FlexLayout Direction="Row"
                                 HorizontalOptions="FillAndExpand"
                                 Wrap="Wrap">
-                        <material3:MaterialChips Margin="0,10,10,0"
+                        <material3:MaterialChips Margin="10"
                                                  IsEnabled="true"
                                                  IsSelected="false"
                                                  Text="Opt J"
                                                  ToUpper="True"
                                                  TrailingIcon="cancel.png"
                                                  TrailingIconCommand="{Binding IconTapCommand}" />
-                        <material3:MaterialChips Margin="0,10,10,0"
+                        <material3:MaterialChips Margin="10"
                                                  IsEnabled="true"
                                                  IsSelected="True"
                                                  Text="This is option K"
@@ -159,7 +134,7 @@
                                                  TrailingIcon="cancel.png"
                                                  TrailingIconCommand="{Binding IconTapCommand}"
                                                  TrailingIconCommandParameter="Option K Clicked" />
-                        <material3:MaterialChips Margin="0,10,10,0"
+                        <material3:MaterialChips Margin="10"
                                                  IsEnabled="true"
                                                  IsSelected="false"
                                                  Text="Option L"
@@ -167,7 +142,7 @@
                                                  TrailingIcon="cancel.png"
                                                  TrailingIconCommand="{Binding IconTapCommand}"
                                                  TrailingIconCommandParameter="Option L Clicked" />
-                        <material3:MaterialChips Margin="0,10,10,0"
+                        <material3:MaterialChips Margin="10"
                                                  IsEnabled="true"
                                                  IsSelected="false"
                                                  LeadingIcon="delete.png"
