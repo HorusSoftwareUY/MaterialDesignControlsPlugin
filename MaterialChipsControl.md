@@ -41,19 +41,9 @@ Chips are compact elements that represent an input, attribute, or action.
     SelectedBackgroundColor="{StaticResource GradientColor2}"
     SelectedTextColor="White"
     LabelTextColor="{StaticResource GradientColor2}"
-    AssistiveText="Please select at least 4 colors"
-    AssistiveTextColor="Red" />
+    SupportingText="Please select at least 4 colors"
+    SupportingTextColor="Red" />
 ```
-<br/>
-<br/>
-
-### Property Type
-Property to change the type of the MaterialChip.
-#### Allowed Values:
-- Assits
-- Filter
-- Input
-- Suggestion
 <br/>
 <br/>
 
@@ -204,5 +194,15 @@ This property is to set the corner radious.
 
 ### Property ToUpper:
 This property is to set the if you wanna change the text to upper case.
+<br/>
+<br/>
+
+### Property ChipsAnimation:
+This property is to set the if you wanna change animation for chips.
+<br/>
+<br/>
+
+### Property ChipsAnimationParameter:
+This property is to set the if you wanna change animation parameter for chips. By default is 0.7.
 <br/>
 <br/>

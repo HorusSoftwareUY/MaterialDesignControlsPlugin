@@ -2,19 +2,13 @@
 using System.Windows.Input;
 using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using Plugin.MaterialDesignControls.Styles;
+using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-
-    public enum MaterialChipsType
-    {
-        Assist, Filter, Input, Suggestion
-    }
-
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialChips : ContentView
+    public partial class MaterialChips : ContentView, ITouchAndPressEffectConsumer
     {
         #region Constructors
 
@@ -23,46 +17,26 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!this.initialized)
             {
                 this.initialized = true;
-                this.InitializeComponent();
+                this.Initialize();
             }
-
-            AddMainTapGesture();
         }
-
-        private void AddMainTapGesture()
-        {
-            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += (s, e) =>
-            {
-                if (this.IsEnabled)
-                {
-                    if (CommandProperty != null && this.Command != null)
-                        this.Command.Execute(this.CommandParameter);
-                    else
-                        this.IsSelected = !this.IsSelected;
-                }
-            };
-            this.frmContainer.GestureRecognizers.Add(tapGestureRecognizer);
-        }
-
         #endregion Constructors
 
         #region Attributes
 
         private bool initialized = false;
 
+        private Frame _frmContainer;
+
+        private CustomImageButton _imgLeadingIcon;
+
+        private Label _lblText;
+
+        private CustomImageButton _imgTrailingIcon;
+
         #endregion Attributes
 
         #region Properties
-
-        public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(MaterialChipsType), typeof(MaterialChips), defaultValue: MaterialChipsType.Assist);
-
-        public MaterialChipsType Type
-        {
-            get { return (MaterialChipsType)GetValue(TypeProperty); }
-            set { SetValue(TypeProperty, value); }
-        }
 
         public static readonly BindableProperty CommandProperty =
             BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialChips));
@@ -334,6 +308,26 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ToUpperProperty, value); }
         }
 
+        public static readonly BindableProperty AnimationProperty =
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialChips), defaultValue: DefaultStyles.AnimationType);
+
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialChips), defaultValue: DefaultStyles.AnimationParameter);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
+        }
+
+        public ICustomAnimation CustomAnimation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         #endregion Properties
 
         #region Events
@@ -343,6 +337,61 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Events
 
         #region Methods
+
+        private void Initialize()
+        {
+            this._frmContainer = new Frame()
+            {
+                HasShadow = false,
+                CornerRadius = 16,
+                Padding = this.Padding,
+                MinimumHeightRequest = 32,
+                HeightRequest = 32,
+                BorderColor = this.BorderColor
+            };
+
+            StackLayout stackLayout = new StackLayout()
+            {
+                Spacing = 0,
+                HorizontalOptions = LayoutOptions.Center,
+                Orientation = StackOrientation.Horizontal
+            };
+
+            this._imgLeadingIcon = new CustomImageButton()
+            {
+                IsVisible = false,
+                Padding = new Thickness(8, 0, 8, 0),
+                ImageHeightRequest = 18,
+                ImageWidthRequest = 18,
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            this._lblText = new Label()
+            {
+                LineBreakMode = LineBreakMode.NoWrap,
+                Margin = new Thickness(1),
+                VerticalOptions = LayoutOptions.Center,
+                TextColor = this.TextColor
+            };
+
+            this._imgTrailingIcon = new CustomImageButton()
+            {
+                IsVisible = false,
+                Padding = new Thickness(8, 0, 8, 0),
+                ImageHeightRequest = 18,
+                ImageWidthRequest = 18,
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            stackLayout.Children.Add(this._imgLeadingIcon);
+            stackLayout.Children.Add(this._lblText);
+            stackLayout.Children.Add(this._imgTrailingIcon);
+
+            this._frmContainer.Content = stackLayout;
+            this.Content = this._frmContainer;
+            Effects.Add(new TouchAndPressEffect());
+            ApplyIsSelected();
+        }
 
         private static void OnIsSelectedChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -356,29 +405,29 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!this.initialized)
             {
                 this.initialized = true;
-                this.InitializeComponent();
+                this.Initialize();
             }
 
             switch (propertyName)
             {
                 case nameof(this.Text):
                 case nameof(this.ToUpper):
-                    this.lblText.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
+                    this._lblText.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
                     break;
                 case nameof(this.FontSize):
-                    this.lblText.FontSize = this.FontSize;
+                    this._lblText.FontSize = this.FontSize;
                     break;
                 case nameof(this.FontFamily):
-                    this.lblText.FontFamily = this.FontFamily;
+                    this._lblText.FontFamily = this.FontFamily;
                     break;
                 case nameof(this.Padding):
-                    SetMaterialChipsType();
+                    this._frmContainer.Padding = this.Padding;
                     break;
                 case nameof(this.TextMargin):
-                    this.lblText.Margin = this.TextMargin;
+                    this._lblText.Margin = this.TextMargin;
                     break;
                 case nameof(this.CornerRadius):
-                    this.frmContainer.CornerRadius = (float)this.CornerRadius;
+                    this._frmContainer.CornerRadius = (float)this.CornerRadius;
                     break;
                 case nameof(this.IsEnabled):
                 case nameof(this.IsSelected):
@@ -394,27 +443,27 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(TrailingIcon):
-                    imgTrailingIcon.SetImage(TrailingIcon);
-                    imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    _imgTrailingIcon.SetImage(TrailingIcon);
+                    _imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(CustomTrailingIcon):
-                    imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
-                    imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    _imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
+                    _imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(LeadingIcon):
-                    imgLeadingIcon.SetImage(LeadingIcon);
-                    imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+                    _imgLeadingIcon.SetImage(LeadingIcon);
+                    _imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(CustomLeadingIcon):
-                    imgLeadingIcon.SetCustomImage(CustomLeadingIcon);
-                    imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+                    _imgLeadingIcon.SetCustomImage(CustomLeadingIcon);
+                    _imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
 
                 case nameof(TrailingIconIsVisible):
-                    imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    _imgTrailingIcon.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(LeadingIconIsVisible):
-                    imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+                    _imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
 
                 case nameof(this.LeadingIconCommand):
@@ -425,97 +474,19 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(this.BorderColor):
-                    this.frmContainer.BorderColor = this.BorderColor;
+                    this._frmContainer.BorderColor = this.BorderColor;
                     break;
-
-                case nameof(this.Type):
-                    SetMaterialChipsType();
-                    break;
-            }
-        }
-
-        private void SetMaterialChipsType()
-        {
-            switch (Type)
-            {
-                case MaterialChipsType.Assist:
-                    TrailingIconIsVisible = false;
-                    if (LeadingIconIsVisible)
-                    {
-                        this.Padding = new Thickness(0, 0, 16, 0);
-                    }
-                    else
-                    {
-                        this.Padding = new Thickness(16, 0);
-                    }
-                    break;
-                case MaterialChipsType.Filter:
-                    if (LeadingIconIsVisible && TrailingIconIsVisible)
-                    {
-                        this.Padding = new Thickness(0);
-                    }
-                    else if (LeadingIconIsVisible && !TrailingIconIsVisible)
-                    {
-                        this.Padding = new Thickness(0, 0, 16, 0);
-                    }
-                    else if (!LeadingIconIsVisible && TrailingIconIsVisible)
-                    {
-                        this.Padding = new Thickness(16, 0, 0, 0);
-                    }
-                    else
-                    {
-                        this.Padding = new Thickness(16, 0);
-                    }
-                    break;
-                case MaterialChipsType.Input:
-                    if (LeadingIconIsVisible && TrailingIconIsVisible)
-                    {
-                        this.Padding = new Thickness(0);
-                        imgLeadingIcon.WidthRequest = 24;
-                        imgLeadingIcon.MinimumWidthRequest = 24;
-                    }
-                    else if (LeadingIconIsVisible && !TrailingIconIsVisible)
-                    {
-                        this.Padding = new Thickness(0, 0, 16, 0);
-                        imgLeadingIcon.WidthRequest = 18;
-                        imgLeadingIcon.MinimumWidthRequest = 18;
-                    }
-                    else if (!LeadingIconIsVisible && TrailingIconIsVisible)
-                    {
-                        this.Padding = new Thickness(16, 0, 0, 0);
-                        imgLeadingIcon.WidthRequest = 18;
-                        imgLeadingIcon.MinimumWidthRequest = 18;
-                    }
-                    else
-                    {
-                        this.Padding = new Thickness(16, 0);
-                        imgLeadingIcon.WidthRequest = 18;
-                        imgLeadingIcon.MinimumWidthRequest = 18;
-                    }
-                    break;
-                case MaterialChipsType.Suggestion:
-                    TrailingIconIsVisible = false;
-                    if (LeadingIconIsVisible)
-                    {
-                        this.Padding = new Thickness(0, 0, 16, 0);
-                    }
-                    else
-                    {
-                        this.Padding = new Thickness(16, 0);
-                    }
-                    break;
-
             }
         }
 
         private void AddIconTapGesture(bool isTrailingIcon)
         {
-            if (this.frmContainer.GestureRecognizers.Count > 0)
-                this.frmContainer.GestureRecognizers.RemoveAt(0); //Remove main tap gesture
+            if (this._frmContainer.GestureRecognizers.Count > 0)
+                this._frmContainer.GestureRecognizers.RemoveAt(0); //Remove main tap gesture
 
             if (isTrailingIcon)
             {
-                this.imgTrailingIcon.Command = new Command(() =>
+                this._imgTrailingIcon.Command = new Command(() =>
                 {
                     if (this.IsEnabled && this.TrailingIconCommand != null)
                     {
@@ -525,7 +496,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
             else
             {
-                this.imgLeadingIcon.Command = new Command(() =>
+                this._imgLeadingIcon.Command = new Command(() =>
                 {
                     if (this.IsEnabled && this.LeadingIconCommand != null)
                     {
@@ -541,27 +512,43 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 if (this.IsSelected)
                 {
-                    this.lblText.TextColor = this.SelectedTextColor;
-                    this.frmContainer.BackgroundColor = this.SelectedBackgroundColor;
+                    this._lblText.TextColor = this.SelectedTextColor;
+                    this._frmContainer.BackgroundColor = this.SelectedBackgroundColor;
                 }
                 else
                 {
-                    this.lblText.TextColor = this.TextColor;
-                    this.frmContainer.BackgroundColor = this.BackgroundColor;
+                    this._lblText.TextColor = this.TextColor;
+                    this._frmContainer.BackgroundColor = this.BackgroundColor;
                 }
             }
             else
             {
                 if (this.IsSelected)
                 {
-                    this.lblText.TextColor = this.DisabledSelectedTextColor;
-                    this.frmContainer.BackgroundColor = this.DisabledSelectedBackgroundColor;
+                    this._lblText.TextColor = this.DisabledSelectedTextColor;
+                    this._frmContainer.BackgroundColor = this.DisabledSelectedBackgroundColor;
                 }
                 else
                 {
-                    this.lblText.TextColor = this.DisabledTextColor;
-                    this.frmContainer.BackgroundColor = this.DisabledBackgroundColor;
+                    this._lblText.TextColor = this.DisabledTextColor;
+                    this._frmContainer.BackgroundColor = this.DisabledBackgroundColor;
                 }
+            }
+        }
+
+        public void ConsumeEvent(EventType gestureType)
+        {
+            TouchAndPressAnimation.Animate(this, gestureType);
+        }
+
+        public void ExecuteAction()
+        {
+            if (this.IsEnabled)
+            {
+                if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
+                    Command.Execute(CommandParameter);
+                else
+                    this.IsSelected = !this.IsSelected;
             }
         }
 

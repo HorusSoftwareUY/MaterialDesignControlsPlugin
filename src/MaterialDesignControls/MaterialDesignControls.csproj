@@ -64,8 +64,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
-    <Compile Include="ControlsMaterial3\MaterialChips.xaml.cs" />
-    <Compile Include="ControlsMaterial3\MaterialChipsGroup.xaml.cs" />
+    <Compile Include="ControlsMaterial3\MaterialChips.cs" />
+    <Compile Include="ControlsMaterial3\MaterialChipsGroup.cs" />
     <Compile Include="ControlsMaterial3\MaterialDatePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialDoublePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialEditor.cs" />
@@ -209,12 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialChips.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialChipsGroup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">

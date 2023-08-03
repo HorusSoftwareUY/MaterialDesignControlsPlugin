@@ -308,9 +308,9 @@
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="LabelTextColor"
                     Value="{StaticResource GradientColor1}" />
-            <Setter Property="AssistiveTextColor"
+            <Setter Property="SupportingTextColor"
                     Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveSize"
+            <Setter Property="SupportingSize"
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="FontSize"
                     Value="{StaticResource Body2FontSize}" />
