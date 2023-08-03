@@ -71,6 +71,7 @@
     <Compile Include="ControlsMaterial3\MaterialEditor.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
     <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
     <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
@@ -144,6 +145,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ControlsMaterial2\DeprecatedControls\BaseMaterialFieldControl.cs" />
+    <Compile Include="Objects\MaterialSegmentedItem.cs" />
     <Compile Include="TextTransforms.cs" />
     <Compile Include="ControlsMaterial2\MaterialCustomControl.xaml.cs">
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
@@ -151,7 +153,7 @@
     </Compile>
     <Compile Include="Utils\ColorAnimationUtil.cs" />
     <Compile Include="Utils\LoggerHelper.cs" />
-    <Compile Include="ControlsMaterial2\MaterialSegmented.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialSegmented.xaml.cs">
       <DependentUpon>MaterialSegmented.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
