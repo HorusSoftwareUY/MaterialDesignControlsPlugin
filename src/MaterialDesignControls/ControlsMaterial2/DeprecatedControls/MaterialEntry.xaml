@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <controls:BaseMaterialFieldControl xmlns="http://xamarin.com/schemas/2014/forms"
                                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                                   xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
                                    xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
                                    xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
                                    x:Class="Plugin.MaterialDesignControls.MaterialEntry">
@@ -32,7 +31,6 @@
                                               HorizontalOptions="Start" />
                     <custom:CustomEntry x:Name="txtEntry"
                                         Grid.Column="1"
-                                        ios:VisualElement.IsLegacyColorModeEnabled="False"
                                         VerticalOptions="Center"
                                         HorizontalOptions="FillAndExpand" />
                     <custom:CustomImageButton x:Name="imgTrailingIcon"
