@@ -269,6 +269,15 @@ MaterialProgressIndicator show the status of a process in real time
 
 ---
 
+### MaterialLabel
+MaterialLabel helps make writing legible and beautiful
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materiallabel_preview.png" width="300">
+<br/>
+[View documentation](MaterialLabelControl.md)
+
+---
+
 <br/>
 
 ## Effects

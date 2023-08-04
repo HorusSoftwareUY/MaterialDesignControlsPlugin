@@ -7,7 +7,15 @@ A divider is a thin line that groups content in lists and layouts.
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/divider.png" width="300">
 
-## Example MaterialDivider
+## Example
 ```XML
-<material:MaterialDivider Margin="0,10" />
+<material:MaterialDivider />
 ```
+
+## Documentation
+<br/>
+
+### Property Color
+This property is to set the divider color.
+<br/>
+<br/>

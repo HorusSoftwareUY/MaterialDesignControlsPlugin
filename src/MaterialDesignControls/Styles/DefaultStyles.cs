@@ -16,6 +16,8 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static Color DisableContainerColor { get; set; } = Color.FromHex("#f2f2f2");
 
+        public static Color OutlineVariantColor { get; set; } = Color.FromHex("#CAC4D0");
+
         public static double ButtonAnimationParameter { get; set; } = 0.7;
 
         public static AnimationTypes ButtonAnimation { get; set; } = AnimationTypes.Fade;
