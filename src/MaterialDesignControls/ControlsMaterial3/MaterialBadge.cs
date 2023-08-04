@@ -52,7 +52,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialBadge), defaultValue: 36.0);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialBadge), defaultValue: Font.Default.FontSize);
 
         public double FontSize
         {
@@ -187,13 +187,14 @@ namespace Plugin.MaterialDesignControls.Material3
                 case MaterialBadgeType.Small:
                     this._frmContainer.HeightRequest = 6;
                     this._frmContainer.WidthRequest = 6;
+                    this._frmContainer.CornerRadius = 3;
                     this._frmContainer.MinimumWidthRequest = 6;
                     this._frmContainer.MinimumHeightRequest = 6;
                     this._lblText.IsVisible = false;
                     break;
                 case MaterialBadgeType.Large:
-                    this._frmContainer.WidthRequest = -1;
-                    this._frmContainer.Padding = new Thickness(6, 4, 6, 4);
+                    this._frmContainer.WidthRequest = 34;
+                    this._frmContainer.Padding = new Thickness(4);
                     this._frmContainer.CornerRadius = 12;
                     this._frmContainer.HeightRequest = 16;
                     this._frmContainer.MinimumHeightRequest = 16;
