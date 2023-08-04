@@ -24,7 +24,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private ContentView _trailingIconContentView;
 
-        private MaterialLabel _textLabel;
+        private Plugin.MaterialDesignControls.MaterialLabel _textLabel;
 
         private MaterialProgressIndicator _activityIndicator;
 
@@ -312,7 +312,7 @@ namespace Plugin.MaterialDesignControls.Material3
             };
             _stcLayout.Children.Add(_leadingIconContentView);
 
-            _textLabel = new MaterialLabel
+            _textLabel = new Plugin.MaterialDesignControls.MaterialLabel
             {
                 LineBreakMode = LineBreakMode.NoWrap,
                 VerticalOptions = LayoutOptions.Center,

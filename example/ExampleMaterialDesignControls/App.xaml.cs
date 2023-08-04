@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Plugin.MaterialDesignControls.Styles;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
