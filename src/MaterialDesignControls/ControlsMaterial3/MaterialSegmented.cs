@@ -392,7 +392,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         frame.CornerRadiusTopRight = true;
                     }
 
-                    var label = new MaterialLabel();
+                    var label = new Plugin.MaterialDesignControls.MaterialLabel();
                     label.Text = item.Text.Trim();
                     label.HorizontalOptions = LayoutOptions.Center;
                     label.VerticalOptions = LayoutOptions.Center;
@@ -462,7 +462,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private void SetContentAndColors(MaterialCard frame, MaterialLabel label, MaterialSegmentedItem item)
+        private void SetContentAndColors(MaterialCard frame, Plugin.MaterialDesignControls.MaterialLabel label, MaterialSegmentedItem item)
         {
             if (item.IsSelected)
             {
@@ -611,7 +611,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             public MaterialCard Container { get; set; }
 
-            public MaterialLabel Label { get; set; }
+            public Plugin.MaterialDesignControls.MaterialLabel Label { get; set; }
         }
     }
 }

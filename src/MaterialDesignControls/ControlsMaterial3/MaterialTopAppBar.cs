@@ -19,9 +19,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool _initialized = false;
 
-        private MaterialLabel _headlineLabel;
+        private Plugin.MaterialDesignControls.MaterialLabel _headlineLabel;
 
-        private MaterialLabel _descriptionLabel;
+        private Plugin.MaterialDesignControls.MaterialLabel _descriptionLabel;
 
         private ContentViewButton _leadingIconContentView;
 
@@ -304,7 +304,7 @@ namespace Plugin.MaterialDesignControls.Material3
             ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
             ColumnDefinitions.Add(new ColumnDefinition { Width = 48 });
 
-            _headlineLabel = new MaterialLabel
+            _headlineLabel = new Plugin.MaterialDesignControls.MaterialLabel
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -317,7 +317,7 @@ namespace Plugin.MaterialDesignControls.Material3
             Children.Add(_headlineLabel, 0, 0);
             Grid.SetColumnSpan(_headlineLabel, 3);
 
-            _descriptionLabel = new MaterialLabel
+            _descriptionLabel = new Plugin.MaterialDesignControls.MaterialLabel
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,

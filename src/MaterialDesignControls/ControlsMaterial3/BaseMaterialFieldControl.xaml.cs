@@ -13,6 +13,7 @@ namespace Plugin.MaterialDesignControls.Material3
     public partial class BaseMaterialFieldControl : ContentView
     {
         #region Constructor
+
         public BaseMaterialFieldControl()
         {
             if (!this.initialized)
@@ -48,7 +49,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.CustomContent.FocusControl();
             });
         }
-        #endregion
+
+        #endregion Constructor
 
         #region Attributes
 
@@ -58,20 +60,22 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public IBaseMaterialFieldControl Control => this.CustomContent;
 
-        public MaterialLabel Label => this.lblLabel;
+        public Plugin.MaterialDesignControls.MaterialLabel Label => this.lblLabel;
 
-        public MaterialLabel SupportingLabel => this.lblSupporting;
+        public Plugin.MaterialDesignControls.MaterialLabel SupportingLabel => this.lblSupporting;
 
-        public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
+        public Plugin.MaterialDesignControls.MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
 
         public bool AnimatePlaceHolderAsLabel => this.AnimatePlaceholder && string.IsNullOrWhiteSpace(LabelText);
 
         public double PlaceHolderXPosition = 0;
 
         public double PlaceHolderYPosition = 0;
+
         #endregion Attributes
 
         #region Properties
+
         public static readonly BindableProperty CustomContentProperty =
             BindableProperty.Create(nameof(CustomContent), typeof(IBaseMaterialFieldControl), typeof(BaseMaterialFieldControl), defaultValue: new CustomEntry(), propertyChanged: OnCustomContentChanged);
 
@@ -98,6 +102,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
             set { SetValue(HorizontalTextAlignmentProperty, value); }
         }
+
         #endregion Properties
 
         #region Text
@@ -159,6 +164,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (bool)GetValue(AnimatePlaceholderProperty); }
             set { SetValue(AnimatePlaceholderProperty, value); }
         }
+
         #endregion Placeholder
 
         #region LabelText
@@ -274,6 +280,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (LineBreakMode)GetValue(SupportingLineBreakModeProperty); }
             set { SetValue(SupportingLineBreakModeProperty, value); }
         }
+
         #endregion SupportingText
 
         #region CornerRadius
@@ -322,7 +329,8 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (bool)GetValue(CornerRadiusBottomLeftProperty); }
             set { SetValue(CornerRadiusBottomLeftProperty, value); }
         }
-        #endregion
+
+        #endregion CornerRadius
 
         #region Border
 
@@ -352,6 +360,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (float)GetValue(iOSBorderWidthProperty); }
             set { SetValue(iOSBorderWidthProperty, value); }
         }
+
         #endregion Border
 
         #region Indicator
@@ -485,7 +494,7 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(UnfocusedCommandProperty, value); }
         }
 
-        #endregion
+        #endregion Events
 
         #region Methods
 
@@ -773,6 +782,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Methods
 
         #region AnimationPlaceHolder
+
         public async Task TransitionToTitle()
         {
             if (AnimatePlaceHolderAsLabel)
