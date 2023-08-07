@@ -199,7 +199,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ButtonAnimationProperty =
-            BindableProperty.Create(nameof(ButtonAnimation), typeof(AnimationTypes), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.ButtonAnimation);
+            BindableProperty.Create(nameof(ButtonAnimation), typeof(AnimationTypes), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.AnimationType);
 
         public AnimationTypes ButtonAnimation
         {
@@ -208,7 +208,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ButtonAnimationParameterProperty =
-            BindableProperty.Create(nameof(ButtonAnimationParameter), typeof(double?), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.ButtonAnimationParameter);
+            BindableProperty.Create(nameof(ButtonAnimationParameter), typeof(double?), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.AnimationParameter);
 
         public double? ButtonAnimationParameter
         {

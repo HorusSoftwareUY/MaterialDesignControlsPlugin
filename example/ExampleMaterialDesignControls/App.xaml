@@ -273,7 +273,7 @@
         </Style>
 
         <!-- MaterialChips -->
-        <Style TargetType="material:MaterialChips">
+        <!--<Style TargetType="material3:MaterialChips">
             <Setter Property="FontSize"
                     Value="{StaticResource Body2FontSize}" />
             <Setter Property="CornerRadius"
@@ -300,17 +300,17 @@
                     Value="{StaticResource WhiteColor}" />
             <Setter Property="FontFamily"
                     Value="{StaticResource RegularFont}" />
-        </Style>
+        </Style>-->
 
         <!-- MaterialChipsGroup -->
-        <Style TargetType="material:MaterialChipsGroup">
+        <!--<Style TargetType="material3:MaterialChipsGroup">
             <Setter Property="LabelSize"
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="LabelTextColor"
                     Value="{StaticResource GradientColor1}" />
-            <Setter Property="AssistiveTextColor"
+            <Setter Property="SupportingTextColor"
                     Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveSize"
+            <Setter Property="SupportingSize"
                     Value="{StaticResource Body3FontSize}" />
             <Setter Property="FontSize"
                     Value="{StaticResource Body2FontSize}" />
@@ -336,7 +336,7 @@
                     Value="{StaticResource WhiteColor}" />
             <Setter Property="FontFamily"
                     Value="{StaticResource RegularFont}" />
-        </Style>
+        </Style>-->
 
         <!-- BaseMaterialStyle -->
         <Style TargetType="material:BaseMaterialFieldControl"
