@@ -1,5 +1,6 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
@@ -25,7 +26,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Bindable properties
 
         public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(MaterialBadgeType), typeof(MaterialBadge), defaultValue: MaterialBadgeType.Small);
+            BindableProperty.Create(nameof(Type), typeof(MaterialBadgeType), typeof(MaterialBadge), defaultValue: MaterialBadgeType.Large);
 
         public MaterialBadgeType Type
         {
@@ -43,7 +44,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialBadge), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialBadge), defaultValue: DefaultStyles.OnPrimaryColor);
 
         public Color TextColor
         {
@@ -52,7 +53,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialBadge), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialBadge), defaultValue: DefaultStyles.PhoneFontSizes.LabelSmall);
 
         public double FontSize
         {
@@ -61,7 +62,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialBadge), defaultValue: null);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialBadge), defaultValue: DefaultStyles.FontFamily);
 
         public string FontFamily
         {
@@ -70,7 +71,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialBadge), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialBadge), defaultValue: DefaultStyles.ErrorColor);
 
         public new Color BackgroundColor
         {
@@ -112,16 +113,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-
             _initialized = true;
 
             this._frmContainer = new MaterialCard()
             {
-                Padding = new Thickness(0),
-                HeightRequest = 6,
-                MinimumHeightRequest = 6,  
-                WidthRequest = 6,
-                CornerRadius = 3,
                 BackgroundColor = this.BackgroundColor,
                 CornerRadiusBottomLeft = true,
                 CornerRadiusBottomRight = true,
@@ -133,9 +128,12 @@ namespace Plugin.MaterialDesignControls.Material3
 
             this._lblText = new Label()
             {
+                Text = this.Text,
+                TextColor = this.TextColor,
+                FontSize = this.FontSize,
+                FontFamily = this.FontFamily,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
-                
             };
 
             this._frmContainer.Content = this._lblText;
@@ -178,6 +176,11 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var control = (MaterialBadge)bindable;
             control._lblText.Text = (string)newValue;
+
+            if (!string.IsNullOrEmpty(control._lblText.Text) && control._lblText.Text.Length >= 2)
+                control._frmContainer.WidthRequest = -1;
+            else
+                control._frmContainer.WidthRequest = 16;
         }
 
         public void SetMaterialBadgeType()
@@ -185,6 +188,7 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (Type)
             {
                 case MaterialBadgeType.Small:
+                    this._frmContainer.Padding = new Thickness(0);
                     this._frmContainer.HeightRequest = 6;
                     this._frmContainer.WidthRequest = 6;
                     this._frmContainer.CornerRadius = 3;
@@ -193,12 +197,17 @@ namespace Plugin.MaterialDesignControls.Material3
                     this._lblText.IsVisible = false;
                     break;
                 case MaterialBadgeType.Large:
-                    this._frmContainer.WidthRequest = 34;
                     this._frmContainer.Padding = new Thickness(4);
                     this._frmContainer.CornerRadius = 12;
                     this._frmContainer.HeightRequest = 16;
                     this._frmContainer.MinimumHeightRequest = 16;
+                    this._frmContainer.MinimumWidthRequest = 16;
                     this._lblText.IsVisible = true;
+
+                    if (!string.IsNullOrEmpty(this._lblText.Text) && this._lblText.Text.Length >= 2)
+                        this._frmContainer.WidthRequest = -1;
+                    else
+                        this._frmContainer.WidthRequest = 16;
                     break;
             }
         }

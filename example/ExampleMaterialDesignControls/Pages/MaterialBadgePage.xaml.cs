@@ -11,7 +11,7 @@ namespace ExampleMaterialDesignControls.Pages
         public MaterialBadgePage()
         {
             InitializeComponent();
-            BindingContext = new MaterialSegmentedViewModel() { DisplayAlert = DisplayAlert, Navigation = Navigation };
+            BindingContext = new MaterialBadgeViewModel() { DisplayAlert = DisplayAlert, Navigation = Navigation };
         }
     }
 }

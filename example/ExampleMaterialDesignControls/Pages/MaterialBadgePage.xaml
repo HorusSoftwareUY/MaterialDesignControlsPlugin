@@ -26,21 +26,45 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialBadge follows the latest guidelines of Material Design 3" />
 
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Small Type" />
+
+                    <Grid
+                        ColumnDefinitions="*,*">
+                        <material3:MaterialBadge
+                            Type="Small" />
+
+                        <material3:MaterialBadge
+                            Grid.Column="1"
+                            Type="Small"
+                            BackgroundColor="Green" />
+                    </Grid>
+
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Large Type" />
-                    
-                    <material3:MaterialBadge BackgroundColor="Red"
-                                             Type="Large"
-                                             Text="10"
-                                             TextColor="White" />
 
+                    <Grid
+                        ColumnDefinitions="*,*">
+                        <material3:MaterialBadge
+                            Text="1" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
-                                            HorizontalTextAlignment="Center"
-                                            Text="Small Type" />
+                        <material3:MaterialBadge
+                            Grid.Column="1"
+                            Text="999+"
+                            BackgroundColor="Green" />
+                    </Grid>
 
-                    <material3:MaterialBadge BackgroundColor="Green" />
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Full API" />
+
+                    <material3:MaterialBadge
+                        Text="999+"
+                        BackgroundColor="Green" />
                 </StackLayout>
             </ScrollView>
         </Grid>
