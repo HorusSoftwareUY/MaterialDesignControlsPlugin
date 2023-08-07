@@ -1,4 +1,4 @@
-# MaterialChips & MaterialChipsGroup
+# MaterialChips
 Chips are compact elements that represent an input, attribute, or action.
 <br/>
 [View Material Design documentation](https://material.io/components/chips)
@@ -6,15 +6,9 @@ Chips are compact elements that represent an input, attribute, or action.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.gif" width="300">
 
-
-
-
-
 ## Documentation
  
-### Example:
-
-#### Example MaterialChips
+#### Example:
 
 ```XML
 <material:MaterialChips
@@ -26,26 +20,6 @@ Chips are compact elements that represent an input, attribute, or action.
     SelectedBackgroundColor="{StaticResource GradientColor2}"
     SelectedTextColor="White" />
 ```
-
-#### Example MaterialChipsGroup
-```XML
-<material:MaterialChipsGroup
-    LabelText="Colors *"
-    IsMultipleSelection="True"
-    SelectedItems="{Binding SelectedColors}"
-    ItemsSource="{Binding Colors}"
-    ChipsPadding="16,0"
-    ChipsHeightRequest="32"
-    BackgroundColor="{StaticResource GradientColorTransparent2}"
-    TextColor="{StaticResource GradientColor2}"
-    SelectedBackgroundColor="{StaticResource GradientColor2}"
-    SelectedTextColor="White"
-    LabelTextColor="{StaticResource GradientColor2}"
-    SupportingText="Please select at least 4 colors"
-    SupportingTextColor="Red" />
-```
-<br/>
-<br/>
 
 ### Property Command
 Command for MaterialChips when is selected or pressed.
@@ -197,12 +171,12 @@ This property is to set the if you wanna change the text to upper case.
 <br/>
 <br/>
 
-### Property ChipsAnimation:
+### Property Animation:
 This property is to set the if you wanna change animation for chips.
 <br/>
 <br/>
 
-### Property ChipsAnimationParameter:
+### Property AnimationParameter:
 This property is to set the if you wanna change animation parameter for chips. By default is 0.7.
 <br/>
 <br/>

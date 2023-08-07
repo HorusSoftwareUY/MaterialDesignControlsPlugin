@@ -74,7 +74,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ChipsHeightRequestProperty =
-            BindableProperty.Create(nameof(ChipsHeightRequest), typeof(double), typeof(MaterialChipsGroup), defaultValue: 0.0);
+            BindableProperty.Create(nameof(ChipsHeightRequest), typeof(double), typeof(MaterialChipsGroup), defaultValue: 32.0);
 
         public double ChipsHeightRequest
         {
@@ -307,7 +307,6 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(IsMultipleSelectionProperty, value); }
         }
 
-
         public static readonly BindableProperty AnimationProperty =
             BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialChips), defaultValue: DefaultStyles.AnimationType);
 
@@ -400,8 +399,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         AnimationParameter = control.AnimationParameter
                     };
 
-                    if (control.ChipsHeightRequest != (double)ChipsHeightRequestProperty.DefaultValue)
-                        materialChips.HeightRequest = control.ChipsHeightRequest;
+                    materialChips.HeightRequest = control.ChipsHeightRequest;
 
                     if (control.IsMultipleSelection)
                     {

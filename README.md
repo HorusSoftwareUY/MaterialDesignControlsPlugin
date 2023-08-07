@@ -94,7 +94,9 @@ Chips are compact elements that represent an input, attribute, or action.
 <br/>
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips_preview.png" width="300">
 <br/>
-[View documentation](MaterialChipsControl.md)
+[View MaterialChips documentation](MaterialChipsControl.md)
+<br/>
+[View MaterialChipsGroup documentation](MaterialChipsGroup.md)
 
 ---
 

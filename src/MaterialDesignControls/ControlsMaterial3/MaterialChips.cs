@@ -20,6 +20,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.Initialize();
             }
         }
+
         #endregion Constructors
 
         #region Attributes
@@ -475,6 +476,12 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(this.BorderColor):
                     this._frmContainer.BorderColor = this.BorderColor;
+                    break;
+
+                case nameof(base.Opacity):
+                case nameof(base.Scale):
+                case nameof(base.IsVisible):
+                    base.OnPropertyChanged(propertyName);
                     break;
             }
         }
