@@ -2,7 +2,7 @@
 
 namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
-    public class CustomLabel : MaterialLabel, IBaseMaterialFieldControl
+    public class CustomLabel : Plugin.MaterialDesignControls.MaterialLabel, IBaseMaterialFieldControl
     {
         public bool IsControlFocused() => false;
 

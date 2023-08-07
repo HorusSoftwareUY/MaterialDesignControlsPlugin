@@ -189,6 +189,8 @@
     <Compile Include="Implementations\ContentViewButton.cs" />
     <Compile Include="Effects\TouchReleaseEffect.cs" />
     <Compile Include="Effects\Effects.cs" />
+    <Compile Include="ControlsMaterial3\MaterialLabel.cs" />
+    <Compile Include="ControlsMaterial3\MaterialDivider.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

@@ -25,6 +25,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Attributes
 
         private Plugin.MaterialDesignControls.Material3.Implementations.CustomLabel lblCustom;
+
         #endregion Attributes
 
         #region Properties
