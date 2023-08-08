@@ -78,25 +78,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
         }
-
-        //public static readonly BindableProperty SizeProperty =
-        //    BindableProperty.Create(nameof(Size), typeof(double), typeof(MaterialBadge), defaultValue: 6.0);
-
-        //public double Size
-        //{
-        //    get { return (double)GetValue(SizeProperty); }
-        //    set { SetValue(SizeProperty, value); }
-        //}
-
-        //public static readonly BindableProperty CornerRadiusProperty =
-        //    BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(MaterialBadge), defaultValue: 3f);
-
-        //public float CornerRadius
-        //{
-        //    get { return (float)GetValue(CornerRadiusProperty); }
-        //    set { SetValue(CornerRadiusProperty, value); }
-        //}
-
         #endregion Bindable properties
 
         #region Constructors

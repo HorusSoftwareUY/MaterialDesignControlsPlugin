@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExampleMaterialDesignControls.Pages.MaterialBadgePage"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
@@ -26,47 +26,42 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialBadge follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Small Type" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Small Type" />
 
-                    <Grid
-                        ColumnDefinitions="*,*">
-                        <material3:MaterialBadge
-                            Type="Small" />
+                    <Grid ColumnDefinitions="*,*">
+                        <material3:MaterialBadge Type="Small" />
 
-                        <material3:MaterialBadge
-                            Grid.Column="1"
-                            Type="Small"
-                            BackgroundColor="Green" />
+                        <material3:MaterialBadge Grid.Column="1"
+                                                 Type="Small"
+                                                 BackgroundColor="Green" />
                     </Grid>
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Large Type" />
 
-                    <Grid
-                        ColumnDefinitions="*,*">
-                        <material3:MaterialBadge
-                            Text="1" />
+                    <Grid ColumnDefinitions="*,*">
+                        <material3:MaterialBadge Text="1" />
 
-                        <material3:MaterialBadge
-                            Grid.Column="1"
-                            Text="999+"
-                            BackgroundColor="Green" />
+                        <material3:MaterialBadge Grid.Column="1"
+                                                 Text="999+"
+                                                 BackgroundColor="Green" />
                     </Grid>
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Full API" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Full API" />
 
-                    <material3:MaterialBadge
-                        Text="999+"
-                        BackgroundColor="Green" />
+                    <material3:MaterialBadge Text="999+"
+                                             Type="Small"
+                                             TextColor="Black"
+                                             FontSize="15"
+                                             FontFamily="{StaticResource SemiBoldFont}"
+                                             BackgroundColor="Green" />
                 </StackLayout>
             </ScrollView>
         </Grid>
-  </ContentPage.Content>
+    </ContentPage.Content>
 </ContentPage>
