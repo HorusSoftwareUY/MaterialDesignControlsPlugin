@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Styles;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialChipsGroup : ContentView
     {
         #region Constructors
@@ -19,9 +17,10 @@ namespace Plugin.MaterialDesignControls
             if (!this.initialized)
             {
                 this.initialized = true;
-                this.InitializeComponent();
+                this.Initialized();
             }
         }
+
 
         #endregion Constructors
 
@@ -29,9 +28,23 @@ namespace Plugin.MaterialDesignControls
 
         private bool initialized = false;
 
+        private MaterialLabel _lblLabel;
+
+        private FlexLayout _flexContainer;
+
+        private MaterialLabel _lblSupporting;
+
         #endregion Attributes
 
         #region Properties
+        public static readonly BindableProperty ToUpperProperty =
+            BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialChipsGroup), defaultValue: false);
+
+        public bool ToUpper
+        {
+            get { return (bool)GetValue(ToUpperProperty); }
+            set { SetValue(ToUpperProperty, value); }
+        }
 
         public static readonly new BindableProperty PaddingProperty =
             BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(12, 0));
@@ -43,7 +56,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ChipsPaddingProperty =
-            BindableProperty.Create(nameof(ChipsPadding), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(12, 0));
+            BindableProperty.Create(nameof(ChipsPadding), typeof(Thickness), typeof(MaterialChipsGroup), defaultValue: new Thickness(16, 0));
 
         public Thickness ChipsPadding
         {
@@ -61,7 +74,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty ChipsHeightRequestProperty =
-            BindableProperty.Create(nameof(ChipsHeightRequest), typeof(double), typeof(MaterialChipsGroup), defaultValue: 0.0);
+            BindableProperty.Create(nameof(ChipsHeightRequest), typeof(double), typeof(MaterialChipsGroup), defaultValue: 32.0);
 
         public double ChipsHeightRequest
         {
@@ -123,17 +136,17 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(SelectedItemsProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveTextProperty =
-            BindableProperty.Create(nameof(AssistiveText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null, validateValue: OnAssistiveTextValidate);
+        public static readonly BindableProperty SupportingTextProperty =
+            BindableProperty.Create(nameof(SupportingText), typeof(string), typeof(MaterialChipsGroup), defaultValue: null, validateValue: OnSupportingTextValidate);
 
-        public string AssistiveText
+        public string SupportingText
         {
-            get { return (string)GetValue(AssistiveTextProperty); }
-            set { SetValue(AssistiveTextProperty, value); }
+            get { return (string)GetValue(SupportingTextProperty); }
+            set { SetValue(SupportingTextProperty, value); }
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.TextColor);
 
         public Color LabelTextColor
         {
@@ -141,13 +154,13 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LabelTextColorProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveTextColorProperty =
-            BindableProperty.Create(nameof(AssistiveTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray);
+        public static readonly BindableProperty SupportingTextColorProperty =
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.ErrorColor);
 
-        public Color AssistiveTextColor
+        public Color SupportingTextColor
         {
-            get { return (Color)GetValue(AssistiveTextColorProperty); }
-            set { SetValue(AssistiveTextColorProperty, value); }
+            get { return (Color)GetValue(SupportingTextColorProperty); }
+            set { SetValue(SupportingTextColorProperty, value); }
         }
 
         public static readonly BindableProperty LabelSizeProperty =
@@ -159,17 +172,17 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(LabelSizeProperty, value); }
         }
 
-        public static readonly BindableProperty AssistiveSizeProperty =
-            BindableProperty.Create(nameof(AssistiveSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
+        public static readonly BindableProperty SupportingSizeProperty =
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
 
-        public double AssistiveSize
+        public double SupportingSize
         {
-            get { return (double)GetValue(AssistiveSizeProperty); }
-            set { SetValue(AssistiveSizeProperty, value); }
+            get { return (double)GetValue(SupportingSizeProperty); }
+            set { SetValue(SupportingSizeProperty, value); }
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color TextColor
         {
@@ -178,7 +191,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedTextColorProperty =
-            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Black);
+            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.OnPrimaryColor);
 
         public Color SelectedTextColor
         {
@@ -187,7 +200,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledTextColor
         {
@@ -196,7 +209,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledSelectedTextColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.White);
+            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.TextColor);
 
         public Color DisabledSelectedTextColor
         {
@@ -205,7 +218,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.PrimaryContainerColor);
 
         public new Color BackgroundColor
         {
@@ -214,7 +227,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedBackgroundColorProperty =
-            BindableProperty.Create(nameof(SelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(SelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color SelectedBackgroundColor
         {
@@ -223,7 +236,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.White);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.DisableContainerColor);
 
         public Color DisabledBackgroundColor
         {
@@ -232,12 +245,21 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledSelectedBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledSelectedBackgroundColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledSelectedBackgroundColor
         {
             get { return (Color)GetValue(DisabledSelectedBackgroundColorProperty); }
             set { SetValue(DisabledSelectedBackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty BorderColorProperty =
+           BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.PrimaryColor);
+
+        public Color BorderColor
+        {
+            get { return (Color)GetValue(BorderColorProperty); }
+            set { SetValue(BorderColorProperty, value); }
         }
 
         public static readonly BindableProperty FontSizeProperty =
@@ -250,7 +272,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialChipsGroup), defaultValue: null);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.FontFamily);
 
         public string FontFamily
         {
@@ -268,7 +290,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialChipsGroup), defaultValue: false);
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.AnimateError);
 
         public bool AnimateError
         {
@@ -285,17 +307,34 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(IsMultipleSelectionProperty, value); }
         }
 
-        #endregion Properties
+        public static readonly BindableProperty AnimationProperty =
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialChips), defaultValue: DefaultStyles.AnimationType);
 
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialChips), defaultValue: DefaultStyles.AnimationParameter);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
+        }
+
+        #endregion Properties
 
         #region Methods
 
-        private static bool OnAssistiveTextValidate(BindableObject bindable, object value)
+        private static bool OnSupportingTextValidate(BindableObject bindable, object value)
         {
             var control = (MaterialChipsGroup)bindable;
 
             // Used to animate the error when the assistive text doesn't change
-            if (control.AnimateError && !string.IsNullOrEmpty(control.AssistiveText) && control.AssistiveText == (string)value)
+            if (control.AnimateError && !string.IsNullOrEmpty(control.SupportingText) && control.SupportingText == (string)value)
                 ShakeAnimation.Animate(control);
 
             return true;
@@ -305,12 +344,12 @@ namespace Plugin.MaterialDesignControls
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialChipsGroup)bindable;
-            if (control.flexContainer.Children != null && control.SelectedItem != null)
+            if (control._flexContainer.Children != null && control.SelectedItem != null)
             {
-                foreach (var item in control.flexContainer.Children)
+                foreach (var item in control._flexContainer.Children)
                 {
-                    if (item != null && item is MaterialChips)
-                        ((MaterialChips)item).IsSelected = ((MaterialChips)item).Text.Equals(control.SelectedItem);
+                    if (item is MaterialChips itemMC)
+                        itemMC.IsSelected = itemMC.Text.Equals(control.SelectedItem);
                 }
             }
         }
@@ -319,12 +358,12 @@ namespace Plugin.MaterialDesignControls
         private static void OnSelectedItemsChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialChipsGroup)bindable;
-            if (control.flexContainer.Children != null && control.SelectedItems != null && control.SelectedItems.Any())
+            if (control._flexContainer.Children != null && control.SelectedItems != null && control.SelectedItems.Any())
             {
-                foreach (var item in control.flexContainer.Children)
+                foreach (var item in control._flexContainer.Children)
                 {
-                    if (item != null && item is MaterialChips)
-                        ((MaterialChips)item).IsSelected = control.SelectedItems.Contains(((MaterialChips)item).Text);
+                    if (item is MaterialChips itemMC)
+                        itemMC.IsSelected = control.SelectedItems.Contains((itemMC).Text);
                 }
             }
         }
@@ -332,14 +371,13 @@ namespace Plugin.MaterialDesignControls
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialChipsGroup)bindable;
-            control.flexContainer.Children.Clear();
+            control._flexContainer.Children.Clear();
             if (!Equals(newValue, null) && newValue is IEnumerable)
             {
                 foreach (var item in (IEnumerable)newValue)
                 {
                     var materialChips = new MaterialChips
                     {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
                         Text = item.ToString(),
                         FontSize = control.FontSize,
                         FontFamily = control.FontFamily,
@@ -354,11 +392,14 @@ namespace Plugin.MaterialDesignControls
                         DisabledTextColor = control.DisabledTextColor,
                         DisabledSelectedBackgroundColor = control.DisabledSelectedBackgroundColor,
                         DisabledSelectedTextColor = control.DisabledSelectedTextColor,
-                        IsEnabled = control.IsEnabled
+                        BorderColor = control.BorderColor,
+                        IsEnabled = control.IsEnabled,
+                        ToUpper = control.ToUpper,
+                        Animation = control.Animation,
+                        AnimationParameter = control.AnimationParameter
                     };
 
-                    if (control.ChipsHeightRequest != (double)ChipsHeightRequestProperty.DefaultValue)
-                        materialChips.HeightRequest = control.ChipsHeightRequest;
+                    materialChips.HeightRequest = control.ChipsHeightRequest;
 
                     if (control.IsMultipleSelection)
                     {
@@ -373,7 +414,7 @@ namespace Plugin.MaterialDesignControls
 
                     materialChips.Command = new Command(() => SelectionCommand(control, materialChips));
 
-                    control.flexContainer.Children.Add(materialChips);
+                    control._flexContainer.Children.Add(materialChips);
 
                     if (control.ChipsFlexLayoutPercentageBasis > 0 && control.ChipsFlexLayoutPercentageBasis <= 1)
                         FlexLayout.SetBasis(materialChips, new FlexBasis((float)control.ChipsFlexLayoutPercentageBasis, true));
@@ -403,7 +444,7 @@ namespace Plugin.MaterialDesignControls
                 }
                 else
                 {
-                    foreach (var item in materialChipsGroup.flexContainer.Children)
+                    foreach (var item in materialChipsGroup._flexContainer.Children)
                     {
                         ((MaterialChips)item).IsSelected = false;
                     }
@@ -420,7 +461,7 @@ namespace Plugin.MaterialDesignControls
             if (!this.initialized)
             {
                 this.initialized = true;
-                this.InitializeComponent();
+                this.Initialized();
             }
 
             switch (propertyName)
@@ -429,43 +470,82 @@ namespace Plugin.MaterialDesignControls
                     base.OnPropertyChanged(propertyName);
                     break;
                 case nameof(this.LabelText):
-                    this.lblLabel.Text = this.LabelText;
-                    this.lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);
+                    this._lblLabel.Text = this.LabelText;
+                    this._lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);
                     break;
                 case nameof(this.LabelTextColor):
-                    this.lblLabel.TextColor = this.LabelTextColor;
+                    this._lblLabel.TextColor = this.LabelTextColor;
                     break;
                 case nameof(this.LabelSize):
-                    this.lblLabel.FontSize = this.LabelSize;
+                    this._lblLabel.FontSize = this.LabelSize;
                     break;
 
                 case nameof(this.Padding):
-                    this.flexContainer.Padding = this.Padding;
+                    this._flexContainer.Padding = this.Padding;
                     break;
 
-                case nameof(this.AssistiveText):
-                    this.lblAssistive.Text = this.AssistiveText;
-                    this.lblAssistive.IsVisible = !string.IsNullOrEmpty(this.AssistiveText);
-                    if (this.AnimateError && !string.IsNullOrEmpty(this.AssistiveText))
+                case nameof(this.SupportingText):
+                    this._lblSupporting.Text = this.SupportingText;
+                    this._lblSupporting.IsVisible = !string.IsNullOrEmpty(this.SupportingText);
+                    if (this.AnimateError && !string.IsNullOrEmpty(this.SupportingText))
                     {
                         ShakeAnimation.Animate(this);
                     }
                     break;
-                case nameof(this.AssistiveTextColor):
-                    this.lblAssistive.TextColor = this.AssistiveTextColor;
+                case nameof(this.SupportingTextColor):
+                    this._lblSupporting.TextColor = this.SupportingTextColor;
                     break;
-                case nameof(this.AssistiveSize):
-                    this.lblAssistive.FontSize = this.AssistiveSize;
+                case nameof(this.SupportingSize):
+                    this._lblSupporting.FontSize = this.SupportingSize;
                     break;
 
                 case nameof(IsEnabled):
-                    foreach (var view in flexContainer.Children)
+                    foreach (var view in _flexContainer.Children)
                     {
                         if (view is MaterialChips materialChips)
                             materialChips.IsEnabled = IsEnabled;
                     }
                     break;
             }
+        }
+
+
+        private void Initialized()
+        {
+            StackLayout stackLayout = new StackLayout()
+            {
+                Spacing = 2
+            };
+
+            this._lblLabel = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                Margin = new Thickness(14, 0, 14, 2),
+                HorizontalTextAlignment = TextAlignment.Start
+            };
+
+            this._flexContainer = new FlexLayout()
+            {
+                Wrap = FlexWrap.Wrap,
+                Direction = FlexDirection.Row,
+                JustifyContent = FlexJustify.Start
+            };
+
+            this._lblSupporting = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                Margin = new Thickness(14, 2, 14, 0),
+                HorizontalTextAlignment = TextAlignment.Start
+            };
+
+            stackLayout.Children.Add(this._lblLabel);
+            stackLayout.Children.Add(this._flexContainer);
+            stackLayout.Children.Add(this._lblSupporting);
+
+            this.Content = stackLayout;
+
         }
 
         #endregion Methods

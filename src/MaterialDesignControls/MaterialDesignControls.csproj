@@ -64,6 +64,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
+    <Compile Include="ControlsMaterial3\MaterialChips.cs" />
+    <Compile Include="ControlsMaterial3\MaterialChipsGroup.cs" />
     <Compile Include="ControlsMaterial3\MaterialDatePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialDoublePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialEditor.cs" />
@@ -93,7 +95,7 @@
     <Compile Include="Implementations\CustomSlider.cs" />
     <Compile Include="Implementations\Deprecated\CustomTimePicker.cs" />
     <Compile Include="Implementations\Deprecated\CustomEditor.cs" />
-    <Compile Include="ControlsMaterial2\MaterialChips.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialChips.xaml.cs">
       <DependentUpon>MaterialChips.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -122,7 +124,7 @@
       <DependentUpon>MaterialTimePicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialChipsGroup.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialChipsGroup.xaml.cs">
       <DependentUpon>MaterialChipsGroup.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
