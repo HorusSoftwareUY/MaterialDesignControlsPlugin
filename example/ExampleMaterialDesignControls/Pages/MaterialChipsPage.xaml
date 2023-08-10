@@ -43,7 +43,7 @@
                                                  Grid.Column="0"
                                                  Animation="Scale"
                                                  Text="Option A"
-                                                 IsSelected="True" />
+                                                 IsSelected="{Binding IsSelected}" />
                         <material3:MaterialChips Grid.Row="0"
                                                  Grid.Column="1"
                                                  Text="Option B"
@@ -59,6 +59,10 @@
                                                  IsSelected="False"
                                                  IsEnabled="False" />
                     </Grid>
+
+                    <material3:MaterialSwitch
+                        Text="IsSelected"
+                        IsToggled="{Binding IsSelected}" />
 
                     <material:MaterialDivider Margin="0,10" />
 
@@ -211,14 +215,9 @@
                                                  TextColor="{StaticResource GradientColor2}" />
                     </FlexLayout>
 
-                    <StackLayout Orientation="Horizontal"
-                                 Spacing="16">
-                        <material:MaterialLabel FontSize="16"
-                                                Text="Are icons visible?"
-                                                VerticalTextAlignment="Center" />
-                        <Switch HorizontalOptions="EndAndExpand"
-                                IsToggled="{Binding IsChipIconVisible}" />
-                    </StackLayout>
+                    <material3:MaterialSwitch
+                        Text="Are icons visible?"
+                        IsToggled="{Binding IsChipIconVisible}" />
 
                 </StackLayout>
             </ScrollView>
