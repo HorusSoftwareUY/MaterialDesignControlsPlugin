@@ -55,11 +55,14 @@
                                             Text="Full API" />
 
                     <material3:MaterialBadge Text="999+"
-                                             Type="Small"
+                                             Type="Large"
                                              TextColor="Black"
                                              FontSize="15"
                                              FontFamily="{StaticResource SemiBoldFont}"
-                                             BackgroundColor="Green" />
+                                             BackgroundColor="Green"
+                                             HeightRequest="50"
+                                             CornerRadius="4"
+                                             Padding="16,0" />
                 </StackLayout>
             </ScrollView>
         </Grid>

@@ -78,6 +78,25 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
         }
+
+        public static readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create(nameof(CornerRadius), typeof(double), typeof(MaterialBadge), defaultValue: 8.0);
+
+        public double CornerRadius
+        {
+            get { return (double)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly new BindableProperty PaddingProperty =
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(MaterialBadge), defaultValue: new Thickness(16, 0));
+
+        public new Thickness Padding
+        {
+            get { return (Thickness)GetValue(PaddingProperty); }
+            set { SetValue(PaddingProperty, value); }
+        }
+
         #endregion Bindable properties
 
         #region Constructors
@@ -96,6 +115,9 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             _initialized = true;
 
+            HorizontalOptions = LayoutOptions.Center;
+            VerticalOptions = LayoutOptions.Center;
+
             this._frmContainer = new MaterialCard()
             {
                 BackgroundColor = this.BackgroundColor,
@@ -103,8 +125,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 CornerRadiusBottomRight = true,
                 CornerRadiusTopLeft = true,
                 CornerRadiusTopRight = true,
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
+                CornerRadius = (float)CornerRadius,
+                Padding = 0
             };
 
             this._lblText = new Label()
@@ -113,8 +135,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 TextColor = this.TextColor,
                 FontSize = this.FontSize,
                 FontFamily = this.FontFamily,
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
             };
 
             this._frmContainer.Content = this._lblText;
@@ -143,12 +165,17 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(FontFamily):
                     this._lblText.FontFamily = FontFamily;
                     break;
-
-                //case nameof(CornerRadius):
-                //    this._frmContainer.CornerRadius = CornerRadius;
-                    //break;
                 case nameof(BackgroundColor):
                     this._frmContainer.BackgroundColor = BackgroundColor;
+                    break;
+                case nameof(CornerRadius):
+                    this._frmContainer.CornerRadius = (float)CornerRadius;
+                    break;
+                case nameof(Padding):
+                    this._frmContainer.Padding = Padding;
+                    break;
+                default:
+                    base.OnPropertyChanged(propertyName);
                     break;
             }
         }
@@ -158,10 +185,21 @@ namespace Plugin.MaterialDesignControls.Material3
             var control = (MaterialBadge)bindable;
             control._lblText.Text = (string)newValue;
 
-            if (!string.IsNullOrEmpty(control._lblText.Text) && control._lblText.Text.Length >= 2)
-                control._frmContainer.WidthRequest = -1;
+            control.SetPropertiesReleatedToText();
+        }
+
+        private void SetPropertiesReleatedToText()
+        {
+            if (!string.IsNullOrEmpty(this._lblText.Text) && this._lblText.Text.Length >= 2)
+            {
+                this._frmContainer.Padding = new Thickness(4, 0);
+                this._frmContainer.WidthRequest = -1;
+            }
             else
-                control._frmContainer.WidthRequest = 16;
+            {
+                this._frmContainer.Padding = new Thickness(0);
+                this._frmContainer.WidthRequest = 16;
+            }
         }
 
         public void SetMaterialBadgeType()
@@ -170,25 +208,21 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 case MaterialBadgeType.Small:
                     this._frmContainer.Padding = new Thickness(0);
-                    this._frmContainer.HeightRequest = 6;
-                    this._frmContainer.WidthRequest = 6;
-                    this._frmContainer.CornerRadius = 3;
-                    this._frmContainer.MinimumWidthRequest = 6;
-                    this._frmContainer.MinimumHeightRequest = 6;
+                    HeightRequest = 6;
+                    WidthRequest = 6;
+                    CornerRadius = 3;
+                    MinimumWidthRequest = 6;
+                    MinimumHeightRequest = 6;
                     this._lblText.IsVisible = false;
                     break;
                 case MaterialBadgeType.Large:
-                    this._frmContainer.Padding = new Thickness(4);
-                    this._frmContainer.CornerRadius = 12;
-                    this._frmContainer.HeightRequest = 16;
-                    this._frmContainer.MinimumHeightRequest = 16;
-                    this._frmContainer.MinimumWidthRequest = 16;
+                    CornerRadius = 8;
+                    HeightRequest = 16;
+                    MinimumHeightRequest = 16;
+                    MinimumWidthRequest = 16;
                     this._lblText.IsVisible = true;
 
-                    if (!string.IsNullOrEmpty(this._lblText.Text) && this._lblText.Text.Length >= 2)
-                        this._frmContainer.WidthRequest = -1;
-                    else
-                        this._frmContainer.WidthRequest = 16;
+                    SetPropertiesReleatedToText();
                     break;
             }
         }
