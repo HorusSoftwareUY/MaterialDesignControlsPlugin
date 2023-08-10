@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialBadgePage"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             ios:Page.UseSafeArea="True"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialBadge"
+                                         LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.LeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.LeadingIcon>
+            </material3:MaterialTopAppBar>
+
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
+
+                    <contentViews:InfoIndicatorView Message="MaterialBadge follows the latest guidelines of Material Design 3" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Small Type" />
+
+                    <Grid ColumnDefinitions="*,*">
+                        <material3:MaterialBadge Type="Small" />
+
+                        <material3:MaterialBadge Grid.Column="1"
+                                                 Type="Small"
+                                                 BackgroundColor="Green" />
+                    </Grid>
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Large Type" />
+
+                    <Grid ColumnDefinitions="*,*">
+                        <material3:MaterialBadge Text="1" />
+
+                        <material3:MaterialBadge Grid.Column="1"
+                                                 Text="999+"
+                                                 BackgroundColor="Green" />
+                    </Grid>
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Full API" />
+
+                    <material3:MaterialBadge Text="999+"
+                                             Type="Large"
+                                             TextColor="Black"
+                                             FontSize="15"
+                                             FontFamily="{StaticResource SemiBoldFont}"
+                                             BackgroundColor="Green"
+                                             HeightRequest="50"
+                                             CornerRadius="4"
+                                             Padding="16,0" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
