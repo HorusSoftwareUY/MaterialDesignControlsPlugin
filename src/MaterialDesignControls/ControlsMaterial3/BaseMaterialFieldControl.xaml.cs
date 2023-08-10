@@ -215,7 +215,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelLineBreakModeProperty =
-            BindableProperty.Create(nameof(LabelLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
+            BindableProperty.Create(nameof(LabelLineBreakMode), typeof(LineBreakMode), typeof(BaseMaterialFieldControl), defaultValue: LineBreakMode.NoWrap);
 
         public LineBreakMode LabelLineBreakMode
         {
@@ -273,7 +273,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingLineBreakModeProperty =
-            BindableProperty.Create(nameof(SupportingLineBreakMode), typeof(LineBreakMode), typeof(MaterialPicker), defaultValue: LineBreakMode.NoWrap);
+            BindableProperty.Create(nameof(SupportingLineBreakMode), typeof(LineBreakMode), typeof(BaseMaterialFieldControl), defaultValue: LineBreakMode.NoWrap);
 
         public LineBreakMode SupportingLineBreakMode
         {
@@ -353,7 +353,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty iOSBorderWidthProperty =
-            BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(MaterialCard), 1f);
+            BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(BaseMaterialFieldControl), 1f);
 
         public float iOSBorderWidth
         {
@@ -379,7 +379,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Background
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialEntry), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
 
         public new Color BackgroundColor
         {
@@ -477,7 +477,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Events
 
         public static readonly BindableProperty FocusedCommandProperty =
-           BindableProperty.Create(nameof(FocusedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+           BindableProperty.Create(nameof(FocusedCommand), typeof(ICommand), typeof(BaseMaterialFieldControl), defaultValue: null);
 
         public ICommand FocusedCommand
         {
@@ -486,7 +486,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty UnfocusedCommandProperty =
-            BindableProperty.Create(nameof(UnfocusedCommand), typeof(ICommand), typeof(MaterialEntry), defaultValue: null);
+            BindableProperty.Create(nameof(UnfocusedCommand), typeof(ICommand), typeof(BaseMaterialFieldControl), defaultValue: null);
 
         public ICommand UnfocusedCommand
         {

@@ -128,7 +128,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand GoMaterialBadgeCommand => new Command(async () =>
         {
-            await DisplayAlert("MaterialBadge", "Comming Soon!", "Ok");
+            await Navigation.PushAsync(new MaterialBadgePage());
         });
 
         public ICommand GoMaterialLabelCommand => new Command(async () =>

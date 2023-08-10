@@ -39,6 +39,7 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialSwitch](#materialswitch)
 - [MaterialTopAppBar](#materialtopappbar)
 - [MaterialProgressIndicator](#materialprogressindicator)
+- [MaterialBadge](#materialbadge)
 
 
 ## Setup
@@ -277,6 +278,15 @@ MaterialLabel helps make writing legible and beautiful
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materiallabel_preview.png" width="300">
 <br/>
 [View documentation](MaterialLabelControl.md)
+
+---
+
+### MaterialBadge
+Badges show notifications, counts, or status information on navigation items and icons
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materialbadge_preview.png" width="300">
+<br/>
+[View documentation](MaterialBadgeControl.md)
 
 ---
 
