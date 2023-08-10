@@ -84,7 +84,6 @@ This property is to set the SelectedItems.
 <br/>
 <br/>
 
-
 ### Property SupportingText:
 This property is to set the Supporting text.
 <br/>
@@ -134,7 +133,6 @@ This property is to set the text color of the chips when item is selected but th
 This property is to set the background color of the chips.
 <br/>
 <br/>
-
 
 ### Property SelectedBackgroundColor:
 This property is to set the background color of the chips when the item is selected.
