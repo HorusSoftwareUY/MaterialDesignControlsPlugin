@@ -56,6 +56,14 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref isColorSelectionEnabled, value); }
         }
 
+        private bool isSelected = true;
+
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set { SetProperty(ref isSelected, value); }
+        }
+
         private string error;
 
         public string Error
