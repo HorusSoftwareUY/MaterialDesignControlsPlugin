@@ -29,5 +29,18 @@ namespace Plugin.MaterialDesignControls.Objects
         {
             get { return !string.IsNullOrEmpty(SelectedIcon) || CustomSelectedIcon != null; }
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not MaterialNavigationDrawerItem toCompare)
+            {
+                return false;
+            }
+
+            var key = this.Section + "-" + this.Text;
+            var keyToCompare = toCompare.Section + "-" + toCompare.Text;
+
+            return key.Equals(keyToCompare, System.StringComparison.InvariantCultureIgnoreCase);
+        }
     }
 }
