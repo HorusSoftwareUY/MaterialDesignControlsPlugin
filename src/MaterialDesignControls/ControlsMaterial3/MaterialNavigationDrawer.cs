@@ -264,6 +264,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
+            this.Padding = Padding;
+
             StackLayout container = new StackLayout()
             {
                 Spacing = 0,
@@ -394,6 +396,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         frame.Animation = this.Animation;
                         frame.AnimationParameter = this.AnimationParameter;
                         frame.CustomAnimation = this.CustomAnimation;
+                        frame.IsEnabled = item.IsEnabled;
 
                         var contentContainer = new Grid()
                         {
@@ -416,10 +419,10 @@ namespace Plugin.MaterialDesignControls.Material3
                             MinimumHeightRequest = 24,
                             WidthRequest = 24,
                             MinimumWidthRequest = 24,
-                            HorizontalOptions = LayoutOptions.Start,
                             VerticalOptions = LayoutOptions.Center,
                             Margin = new Thickness(0),
-                            Padding = new Thickness(0)
+                            Padding = new Thickness(0),
+                            IsVisible = false
                         };
 
                         icon.SetValue(Grid.ColumnProperty, 0);
@@ -453,15 +456,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
                         frame.Content = contentContainer;
 
-                        containersWithItems.Add(key, new NavigationDrawerContainerForObjects()
-                        {
-                            Container = frame,
-                            Icon = icon,
-                            Label = label
-                        });
-
-                        var tapped = new TapGestureRecognizer();
-                        tapped.Tapped += (s, e) =>
+                        frame.Command = new Command(() =>
                         {
                             if (item.IsSelected || !item.IsEnabled)
                             {
@@ -487,15 +482,18 @@ namespace Plugin.MaterialDesignControls.Material3
                             item.IsSelected = !item.IsSelected;
                             SetContentAndColors(frame, icon, label, item);
 
-                            if (item.IsSelected && Command != null && Command.CanExecute(item))
-                            {
-                                Command.Execute(item); 
-                            }
-                        };
+                            if (item.IsEnabled && Command != null && Command.CanExecute(item))
+                                Command.Execute(item);
+                        });
+
+                        containersWithItems.Add(key, new NavigationDrawerContainerForObjects()
+                        {
+                            Container = frame,
+                            Icon = icon,
+                            Label = label
+                        });
 
                         SetContentAndColors(frame, icon, label,  item);
-
-                        frame.GestureRecognizers.Add(tapped);
 
                         _itemsContainer.Children.Add(frame);
                     }

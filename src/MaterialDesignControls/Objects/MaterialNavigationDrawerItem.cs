@@ -22,7 +22,7 @@ namespace Plugin.MaterialDesignControls.Objects
 
         public bool ShowActivityIndicator { get; set; } = true;
 
-        public bool IsEnabled { get; set; }
+        public bool IsEnabled { get; set; } = true;
 
         public bool UnselectedIconIsVisible
         {

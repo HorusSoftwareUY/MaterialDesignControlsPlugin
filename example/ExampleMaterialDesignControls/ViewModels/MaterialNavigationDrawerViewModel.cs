@@ -21,40 +21,41 @@ namespace ExampleMaterialDesignControls.ViewModels
             {
                 new MaterialNavigationDrawerItem
                 {
-                    SelectedIcon = "checkbox_checked.png",
-                    Text = "Opt1",
-                    BadgeText = "999+",
-                    UnselectedIcon = "checkbox_disabledUnchecked.png"
+                    SelectedIcon = "email.png",
+                    UnselectedIcon = "email.png",
+                    Text = "Inbox",
+                    BadgeText = "24"
                 },
                 new MaterialNavigationDrawerItem
                 {
-                    SelectedIcon = "checkbox_checked.png",
-                    Text = "Opt2",
+                    Text = "Outbox",
+                    IsEnabled = false
                 },
                 new MaterialNavigationDrawerItem
                 {
-                    SelectedIcon = "checkbox_checked.png",
-                    Text = "Opt3",
+                    Text = "Favorites",
+                    SelectedIcon = "starSelected.png",
+                    UnselectedIcon = "starUnselected.png",
                 },
                  new MaterialNavigationDrawerItem
                 {
-                    SelectedIcon = "checkbox_checked.png",
-                    Text = "Opt4",
-                    Section = "Second",
-                    BadgeText = "999+",
-                    UnselectedIcon = "checkbox_disabledUnchecked.png"
+                    SelectedIcon = "delete.png",
+                    UnselectedIcon = "delete.png",
+                    Text = "Trash",
                 },
                 new MaterialNavigationDrawerItem
                 {
-                    SelectedIcon = "checkbox_checked.png",
-                    Section = "Second",
-                    Text = "Opt5",
+                    Section = "Personal folders",
+                    SelectedIcon = "Payment.png",
+                    UnselectedIcon = "Payment.png",
+                    Text = "Family",
                 },
                 new MaterialNavigationDrawerItem
                 {
-                    SelectedIcon = "checkbox_checked.png",
-                    Section = "Third",
-                    Text = "Opt6",
+                    Section = "Personal folders",
+                    SelectedIcon = "Payment.png",
+                    UnselectedIcon = "Payment.png",
+                    Text = "Wedding",
                     ShowActivityIndicator = false
                 }
             };

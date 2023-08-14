@@ -2,6 +2,7 @@
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using System;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3.Implementations
@@ -118,7 +119,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         }
 
         public static readonly BindableProperty AnimationProperty =
-                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(CustomImageButton), defaultValue: DefaultStyles.AnimationType);
+                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationType);
 
         public AnimationTypes Animation
         {
@@ -127,7 +128,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(CustomImageButton), defaultValue: DefaultStyles.AnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationParameter);
 
         public double? AnimationParameter
         {
@@ -136,7 +137,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         }
 
         public static readonly BindableProperty CustomAnimationProperty =
-            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(CustomImageButton), defaultValue: null);
+            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(MaterialCard), defaultValue: null);
 
         public ICustomAnimation CustomAnimation
         {
@@ -144,12 +145,35 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             set { SetValue(CustomAnimationProperty, value); }
         }
 
+        public static readonly BindableProperty CommandProperty =
+            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialCard), defaultValue: null);
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+
+        public static readonly BindableProperty CommandParameterProperty =
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialCard), defaultValue: null);
+
+        public object CommandParameter
+        {
+            get { return GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+
+        #endregion
+
         public void ConsumeEvent(EventType gestureType)
         {
             TouchAndPressAnimation.Animate(this, gestureType);
         }
 
-        public void ExecuteAction(){ }
-        #endregion
+        public void ExecuteAction()
+        {
+            if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
+                Command.Execute(CommandParameter);
+        }
     }
 }
