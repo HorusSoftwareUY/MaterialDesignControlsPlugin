@@ -519,8 +519,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 return;
             }
 
-            Console.WriteLine("Show activity indicator!");
-
             frame.BackgroundColor = item.IsSelected ? ActiveIndicatorBackgroundColor : Color.Transparent;
             label.TextColor = item.IsSelected ? ActiveIndicatorLabelColor : LabelColor;
 
