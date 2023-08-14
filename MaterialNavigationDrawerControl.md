@@ -10,10 +10,9 @@ Navigation drawers let people switch between UI views on larger devices
 ## Example MaterialNavigationDrawer
 ```XML
 <material3:MaterialNavigationDrawer
-            Headline="Mail"
-            BackgroundColor="White"
-            Padding="28,0"
-            ItemsSource="{Binding Items}" />
+    Headline="Mail"
+    Command="{Binding TestCommand}"
+    ItemsSource="{Binding Items}" />
 ```
 
 ## Documentation
@@ -44,7 +43,6 @@ This property is to set the active indicator label color.
 
 ### Property ActiveIndicatorCornerRadius:
 This property is to set the active indicator corner radius. By default is 16.
-
 <br/>
 
 ### Property LabelColor:
@@ -109,13 +107,10 @@ Its definition is:
 - ShowActivityIndicator (bool) : show the activity indicator when the item is selected. By default is true.
 - IsEnabled (bool) : enable or disabled the item. by default is true.
 <br/>
-<br/>
 
 ### Property Command
 This property is to bind on the viewmodel.
 <br/>
-<br/>
-
 
 ### Property Animation:
 This property is to set the animation when the item is tapped.

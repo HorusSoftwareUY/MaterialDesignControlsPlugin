@@ -16,12 +16,12 @@ namespace Plugin.MaterialDesignControls.Objects
 
         public bool IsSelected { get; set; }
 
-        public bool UnselectedIconIsVisible
+        internal bool UnselectedIconIsVisible
         {
             get { return !string.IsNullOrEmpty(UnselectedIcon) || CustomUnselectedIcon != null; }
         }
 
-        public bool SelectedIconIsVisible
+        internal bool SelectedIconIsVisible
         {
             get { return !string.IsNullOrEmpty(SelectedIcon) || CustomSelectedIcon != null; }
         }
@@ -29,12 +29,9 @@ namespace Plugin.MaterialDesignControls.Objects
         public override bool Equals(object obj)
         {
             if (obj is not MaterialSegmentedItem toCompare)
-            {
                 return false;
-            }
-
-
-            return toCompare.Text.Equals(this.Text, System.StringComparison.InvariantCultureIgnoreCase);
+            else
+                return toCompare.Text.Equals(this.Text, System.StringComparison.InvariantCultureIgnoreCase);
         }
 
         public override string ToString() => !string.IsNullOrWhiteSpace(Text) ? Text : "Unavailable";

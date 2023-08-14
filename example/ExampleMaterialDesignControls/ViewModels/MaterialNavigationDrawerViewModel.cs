@@ -1,4 +1,5 @@
-﻿using Plugin.MaterialDesignControls.Objects;
+﻿using FFImageLoading.Svg.Forms;
+using Plugin.MaterialDesignControls.Objects;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -28,8 +29,10 @@ namespace ExampleMaterialDesignControls.ViewModels
                 },
                 new MaterialNavigationDrawerItem
                 {
+                    SelectedIcon = "email.png",
+                    UnselectedIcon = "email.png",
                     Text = "Outbox",
-                    IsEnabled = false
+                    BadgeText = "100+"
                 },
                 new MaterialNavigationDrawerItem
                 {
@@ -37,7 +40,7 @@ namespace ExampleMaterialDesignControls.ViewModels
                     SelectedIcon = "starSelected.png",
                     UnselectedIcon = "starUnselected.png",
                 },
-                 new MaterialNavigationDrawerItem
+                new MaterialNavigationDrawerItem
                 {
                     SelectedIcon = "delete.png",
                     UnselectedIcon = "delete.png",
@@ -45,18 +48,39 @@ namespace ExampleMaterialDesignControls.ViewModels
                 },
                 new MaterialNavigationDrawerItem
                 {
-                    Section = "Personal folders",
+                    Section = "Other samples",
                     SelectedIcon = "Payment.png",
                     UnselectedIcon = "Payment.png",
-                    Text = "Family",
+                    Text = "Selected by default",
+                    IsSelected = true
                 },
                 new MaterialNavigationDrawerItem
                 {
-                    Section = "Personal folders",
+                    Section = "Other samples",
                     SelectedIcon = "Payment.png",
                     UnselectedIcon = "Payment.png",
-                    Text = "Wedding",
+                    Text = "Disabled",
+                    IsEnabled = false
+                },
+                new MaterialNavigationDrawerItem
+                {
+                    Section = "Other samples",
+                    SelectedIcon = "Payment.png",
+                    UnselectedIcon = "Payment.png",
+                    Text = "Don't show active indicator",
                     ShowActivityIndicator = false
+                },
+                new MaterialNavigationDrawerItem
+                {
+                    Section = "Other samples",
+                    CustomSelectedIcon = new FFImageLoading.Svg.Forms.SvgCachedImage { Source = "resource://ExampleMaterialDesignControls.Resources.Svg.volume_blue.svg" },
+                    CustomUnselectedIcon = new FFImageLoading.Svg.Forms.SvgCachedImage { Source = "resource://ExampleMaterialDesignControls.Resources.Svg.volume.svg" },
+                    Text = "Custom icon",
+                },
+                new MaterialNavigationDrawerItem
+                {
+                    Section = "Other samples",
+                    Text = "Without icon",
                 }
             };
         }
@@ -65,6 +89,5 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await this.DisplayAlert.Invoke("Navigation Item", $"{obj}", "Ok");
         });
-
     }
 }

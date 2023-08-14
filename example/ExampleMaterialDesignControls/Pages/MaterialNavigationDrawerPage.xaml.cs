@@ -11,7 +11,6 @@ namespace ExampleMaterialDesignControls.Pages
         {
             InitializeComponent();
             BindingContext = new MaterialNavigationDrawerViewModel() { DisplayAlert = DisplayAlert, Navigation = Navigation };
-
         }
     }
 }

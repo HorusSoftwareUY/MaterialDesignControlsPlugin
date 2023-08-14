@@ -12,7 +12,7 @@
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialEntry"
+            <material3:MaterialTopAppBar Headline="MaterialNavigationDrawer"
                                          LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.LeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
@@ -21,9 +21,8 @@
 
             <ScrollView Grid.Row="1"
                         VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20"
-                             BackgroundColor="DarkGray"
-                             Spacing="20">
+                <StackLayout Spacing="20"
+                             Padding="20">
 
                     <contentViews:InfoIndicatorView Message="MaterialNavigationDrawer follows the latest guidelines of Material Design 3" />
 
@@ -31,12 +30,10 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Sample" />
 
-                    <material3:MaterialNavigationDrawer TabIndex="1"
-                                                        Headline="Mail"
-                                                        BackgroundColor="White"
-                                                        Padding="28,0"
-                                                        Command="{Binding TestCommand}"
-                                                        ItemsSource="{Binding Items}" />
+                    <material3:MaterialNavigationDrawer
+                        Headline="Mail"
+                        Command="{Binding TestCommand}"
+                        ItemsSource="{Binding Items}" />
                 </StackLayout>
             </ScrollView>
         </Grid>

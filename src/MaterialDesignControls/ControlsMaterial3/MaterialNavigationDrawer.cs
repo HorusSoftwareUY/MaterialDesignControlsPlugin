@@ -40,6 +40,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Attributes
 
         #region Properties
+
         public static readonly BindableProperty HeadlineProperty =
             BindableProperty.Create(nameof(Headline), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: null);
 
@@ -58,7 +59,6 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(HeadlineColorProperty, value); }
         }
 
-
         public static readonly BindableProperty HeadlineFontSizeProperty =
             BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
 
@@ -69,7 +69,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontFamilyProperty =
-            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: null);
+            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontFamily);
 
         public string HeadlineFontFamily
         {
@@ -178,7 +178,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty BadgeTextColorProperty =
-            BindableProperty.Create(nameof(BadgeTextColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(BadgeTextColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.TextColor);
 
         public Color BadgeTextColor
         {
@@ -205,7 +205,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BadgeBackgroundColorProperty =
-            BindableProperty.Create(nameof(BadgeBackgroundColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.ErrorColor);
+            BindableProperty.Create(nameof(BadgeBackgroundColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: Color.Transparent);
 
         public Color BadgeBackgroundColor
         {
@@ -273,7 +273,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 VerticalOptions = LayoutOptions.StartAndExpand,
             };
 
-            _itemsContainer = new StackLayout()
+            this._itemsContainer = new StackLayout()
             {
                 Spacing = 0,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -298,7 +298,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
             this.Content = container;
         }
-
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -336,7 +335,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
             }
         }
-
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -411,7 +409,6 @@ namespace Plugin.MaterialDesignControls.Material3
                             new ColumnDefinition { Width = GridLength.Star },
                             new ColumnDefinition { Width = GridLength.Auto }
                         };
-
 
                         var icon = new CustomImage()
                         {
@@ -498,7 +495,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         _itemsContainer.Children.Add(frame);
                     }
 
-                    MaterialDivider divider = new MaterialDivider()
+                    var divider = new MaterialDivider()
                     {
                         Color = DividerColor,
                         Margin = new Thickness(0, 16)
@@ -563,7 +560,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 }
             }
         }
-
 
         #endregion Methods
 

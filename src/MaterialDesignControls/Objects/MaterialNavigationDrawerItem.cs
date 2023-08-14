@@ -24,12 +24,12 @@ namespace Plugin.MaterialDesignControls.Objects
 
         public bool IsEnabled { get; set; } = true;
 
-        public bool UnselectedIconIsVisible
+        internal bool UnselectedIconIsVisible
         {
             get { return !string.IsNullOrEmpty(UnselectedIcon) || CustomUnselectedIcon != null; }
         }
 
-        public bool SelectedIconIsVisible
+        internal bool SelectedIconIsVisible
         {
             get { return !string.IsNullOrEmpty(SelectedIcon) || CustomSelectedIcon != null; }
         }
@@ -37,14 +37,13 @@ namespace Plugin.MaterialDesignControls.Objects
         public override bool Equals(object obj)
         {
             if (obj is not MaterialNavigationDrawerItem toCompare)
-            {
                 return false;
+            else
+            {
+                var key = this.Section + "-" + this.Text;
+                var keyToCompare = toCompare.Section + "-" + toCompare.Text;
+                return key.Equals(keyToCompare, System.StringComparison.InvariantCultureIgnoreCase);
             }
-
-            var key = this.Section + "-" + this.Text;
-            var keyToCompare = toCompare.Section + "-" + toCompare.Text;
-
-            return key.Equals(keyToCompare, System.StringComparison.InvariantCultureIgnoreCase);
         }
 
         public override string ToString() =>
