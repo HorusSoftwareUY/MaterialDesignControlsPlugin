@@ -1,5 +1,7 @@
 ﻿using Plugin.MaterialDesignControls.Objects;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.ViewModels
 {
@@ -53,9 +55,15 @@ namespace ExampleMaterialDesignControls.ViewModels
                     SelectedIcon = "checkbox_checked.png",
                     Section = "Third",
                     Text = "Opt6",
+                    ShowActivityIndicator = false
                 }
             };
         }
+
+        public ICommand TestCommand => new Command(async (obj) =>
+        {
+            await this.DisplayAlert.Invoke("Navigation Item", $"{obj}", "Ok");
+        });
 
     }
 }

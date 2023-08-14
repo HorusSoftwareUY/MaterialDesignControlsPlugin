@@ -240,7 +240,6 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand SaveCommand => new Command(async () =>
         {
-            Console.WriteLine(true);
             await this.DisplayAlert.Invoke("Frecuently", $"Selected item: {SelectedItem}", "Ok");
         });
 

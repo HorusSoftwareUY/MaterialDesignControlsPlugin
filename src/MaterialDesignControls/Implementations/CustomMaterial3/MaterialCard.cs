@@ -1,9 +1,21 @@
-﻿using Xamarin.Forms;
+﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Styles;
+using System;
+using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
-    public partial class MaterialCard : Frame
+    public partial class MaterialCard : Frame, ITouchAndPressEffectConsumer
     {
+        #region Constructor
+        public MaterialCard()
+        {
+
+            Effects.Add(new TouchAndPressEffect());
+        }
+        #endregion
+
         #region Attributes & Properties
 
         public static readonly BindableProperty iOSBorderWidthProperty =
@@ -104,6 +116,40 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             get => (Size)GetValue(iOSShadowOffsetProperty);
             set => SetValue(iOSShadowOffsetProperty, value);
         }
+
+        public static readonly BindableProperty AnimationProperty =
+                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(CustomImageButton), defaultValue: DefaultStyles.AnimationType);
+
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(CustomImageButton), defaultValue: DefaultStyles.AnimationParameter);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomAnimationProperty =
+            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(CustomImageButton), defaultValue: null);
+
+        public ICustomAnimation CustomAnimation
+        {
+            get { return (ICustomAnimation)GetValue(CustomAnimationProperty); }
+            set { SetValue(CustomAnimationProperty, value); }
+        }
+
+        public void ConsumeEvent(EventType gestureType)
+        {
+            TouchAndPressAnimation.Animate(this, gestureType);
+        }
+
+        public void ExecuteAction(){ }
         #endregion
     }
 }

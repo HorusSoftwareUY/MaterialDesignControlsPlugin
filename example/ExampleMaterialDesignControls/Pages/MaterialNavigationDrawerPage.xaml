@@ -32,10 +32,10 @@
 
                     <material3:MaterialNavigationDrawer TabIndex="1"
                                                         Headline="Prueba ND"
-                                                        BackgroundColor="DarkGray"
+                                                        Command="{Binding TestCommand}"
                                                         ItemsSource="{Binding Items}"/>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <!--<material:MaterialDivider Margin="0,10" />-->
 
                 </StackLayout>
             </ScrollView>

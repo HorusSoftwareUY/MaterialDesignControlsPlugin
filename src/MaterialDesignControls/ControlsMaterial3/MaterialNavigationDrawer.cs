@@ -1,4 +1,5 @@
-﻿using Plugin.MaterialDesignControls.Implementations;
+﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Objects;
 using Plugin.MaterialDesignControls.Styles;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3
@@ -58,7 +60,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty HeadlineFontSizeProperty =
-            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: 14.0);
+            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
 
         public double HeadlineFontSize
         {
@@ -103,7 +105,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelColorProperty =
-            BindableProperty.Create(nameof(LabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: Color.Blue);
+            BindableProperty.Create(nameof(LabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.TextColor);
 
         public Color LabelColor
         {
@@ -130,7 +132,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SectionLabelColorProperty =
-            BindableProperty.Create(nameof(SectionLabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: Color.Red);
+            BindableProperty.Create(nameof(SectionLabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color SectionLabelColor
         {
@@ -157,7 +159,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DividerColorProperty =
-            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.OutlineVariantColor);
 
         public Color DividerColor
         {
@@ -218,6 +220,42 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (IEnumerable<MaterialNavigationDrawerItem>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
+        }
+
+        public static readonly BindableProperty CommandProperty =
+            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialNavigationDrawer), defaultValue: null);
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationProperty =
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.AnimationType);
+
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.AnimationParameter);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomAnimationProperty =
+            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(MaterialNavigationDrawer), defaultValue: null);
+
+        public ICustomAnimation CustomAnimation
+        {
+            get { return (ICustomAnimation)GetValue(CustomAnimationProperty); }
+            set { SetValue(CustomAnimationProperty, value); }
         }
 
         #endregion Properties
@@ -310,7 +348,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
             if (ItemsSource != null)
             {
-                int itemIdx = 0;
+                int itemIdx = 1;
 
                 var groupedItems = ItemsSource.GroupBy(x => x.Section);
 
@@ -353,6 +391,9 @@ namespace Plugin.MaterialDesignControls.Material3
                         frame.CornerRadiusBottomRight = true;
                         frame.CornerRadiusTopLeft = true;
                         frame.CornerRadiusTopRight = true;
+                        frame.Animation = this.Animation;
+                        frame.AnimationParameter = this.AnimationParameter;
+                        frame.CustomAnimation = this.CustomAnimation;
 
                         var contentContainer = new Grid()
                         {
@@ -422,7 +463,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         var tapped = new TapGestureRecognizer();
                         tapped.Tapped += (s, e) =>
                         {
-                            if (item.IsSelected)
+                            if (item.IsSelected || !item.IsEnabled)
                             {
                                 return;
                             }
@@ -445,6 +486,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
                             item.IsSelected = !item.IsSelected;
                             SetContentAndColors(frame, icon, label, item);
+
+                            if (item.IsSelected && Command != null && Command.CanExecute(item))
+                            {
+                                Command.Execute(item); 
+                            }
                         };
 
                         SetContentAndColors(frame, icon, label,  item);
@@ -454,21 +500,29 @@ namespace Plugin.MaterialDesignControls.Material3
                         _itemsContainer.Children.Add(frame);
                     }
 
-
                     MaterialDivider divider = new MaterialDivider()
                     {
                         Color = DividerColor,
                         Margin = new Thickness(0, 16)
                     };
 
-                    if (itemIdx++ != groupedItems.Count() - 1)
+                    if (itemIdx++ != groupedItems.Count())
+                    {
                         _itemsContainer.Children.Add(divider);
+                    }
                 }
             }
         }
 
         private void SetContentAndColors(MaterialCard frame, CustomImage icon, Label label, MaterialNavigationDrawerItem item)
         {
+            if (!item.ShowActivityIndicator)
+            {
+                return;
+            }
+
+            Console.WriteLine("Show activity indicator!");
+
             frame.BackgroundColor = item.IsSelected ? ActiveIndicatorBackgroundColor : Color.Transparent;
             label.TextColor = item.IsSelected ? ActiveIndicatorLabelColor : LabelColor;
 
