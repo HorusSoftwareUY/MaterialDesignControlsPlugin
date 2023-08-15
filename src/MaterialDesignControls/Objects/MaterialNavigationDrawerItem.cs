@@ -20,7 +20,7 @@ namespace Plugin.MaterialDesignControls.Objects
 
         public bool IsSelected { get; set; }
 
-        public bool ShowActivityIndicator { get; set; } = true;
+        public bool ShowActiveIndicator { get; set; } = true;
 
         public bool IsEnabled { get; set; } = true;
 

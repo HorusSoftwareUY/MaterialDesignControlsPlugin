@@ -68,7 +68,7 @@ namespace ExampleMaterialDesignControls.ViewModels
                     SelectedIcon = "Payment.png",
                     UnselectedIcon = "Payment.png",
                     Text = "Don't show active indicator",
-                    ShowActivityIndicator = false
+                    ShowActiveIndicator = false
                 },
                 new MaterialNavigationDrawerItem
                 {

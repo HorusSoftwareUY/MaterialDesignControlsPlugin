@@ -258,6 +258,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CustomAnimationProperty, value); }
         }
 
+        public static readonly BindableProperty DisabledLabelColorProperty =
+            BindableProperty.Create(nameof(DisabledLabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.DisableColor);
+
+        public Color DisabledLabelColor
+        {
+            get { return (Color)GetValue(DisabledLabelColorProperty); }
+            set { SetValue(DisabledLabelColorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -405,7 +414,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
                         contentContainer.ColumnDefinitions = new ColumnDefinitionCollection()
                         {
-                            new ColumnDefinition { Width = 24 },
+                            new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Star },
                             new ColumnDefinition { Width = GridLength.Auto }
                         };
@@ -429,7 +438,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         label.VerticalTextAlignment = TextAlignment.Center;
                         label.FontSize = LabelFontSize;
                         label.FontFamily = LabelFontFamily;
-                        label.TextColor = item.IsSelected ? ActiveIndicatorLabelColor : LabelColor;
+                        label.TextColor = item.IsEnabled ? item.IsSelected ? ActiveIndicatorLabelColor : LabelColor : DisabledLabelColor;
                         label.Padding = new Thickness(12, 0);
 
                         label.SetValue(Grid.ColumnProperty, 1);
@@ -455,7 +464,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
                         frame.Command = new Command(() =>
                         {
-                            if (item.IsSelected || !item.IsEnabled)
+                            if ((item.IsSelected && item.ShowActiveIndicator) || !item.IsEnabled)
                             {
                                 return;
                             }
@@ -511,13 +520,19 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetContentAndColors(MaterialCard frame, CustomImage icon, Label label, MaterialNavigationDrawerItem item)
         {
-            if (!item.ShowActivityIndicator)
+            SetIcons(icon, item);
+
+            if (!item.ShowActiveIndicator)
             {
                 return;
             }
 
             frame.BackgroundColor = item.IsSelected ? ActiveIndicatorBackgroundColor : Color.Transparent;
-            label.TextColor = item.IsSelected ? ActiveIndicatorLabelColor : LabelColor;
+            label.TextColor = item.IsEnabled ? item.IsSelected ? ActiveIndicatorLabelColor : LabelColor : DisabledLabelColor;
+        }
+
+        public void SetIcons(CustomImage icon, MaterialNavigationDrawerItem item)
+        {
 
             if (item.IsSelected)
             {
@@ -534,7 +549,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         icon.SetImage(item.SelectedIcon);
                     }
                 }
-                else if(item.UnselectedIconIsVisible)
+                else if (item.UnselectedIconIsVisible)
                 {
                     icon.IsVisible = false;
                 }
