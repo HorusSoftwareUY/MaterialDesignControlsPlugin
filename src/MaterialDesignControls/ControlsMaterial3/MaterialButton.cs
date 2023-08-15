@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 
@@ -20,9 +21,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private StackLayout _stcLayout;
 
-        private ContentView _leadingIconContentView;
+        private CustomImage _leadingIconCustomImage;
 
-        private ContentView _trailingIconContentView;
+        private CustomImage _trailingIconCustomImage;
 
         private Plugin.MaterialDesignControls.MaterialLabel _textLabel;
 
@@ -181,21 +182,49 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
 
-        public View LeadingIcon
+        public string LeadingIcon
         {
-            get { return (View)GetValue(LeadingIconProperty); }
+            get { return (string)GetValue(LeadingIconProperty); }
             set { SetValue(LeadingIconProperty, value); }
         }
 
-        public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
+        public static readonly BindableProperty CustomLeadingIconProperty =
+            BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
 
-        public View TrailingIcon
+        public View CustomLeadingIcon
         {
-            get { return (View)GetValue(TrailingIconProperty); }
+            get { return (View)GetValue(CustomLeadingIconProperty); }
+            set { SetValue(CustomLeadingIconProperty, value); }
+        }
+
+        private bool LeadingIconIsVisible
+        {
+            get { return !string.IsNullOrEmpty(LeadingIcon) || CustomLeadingIcon != null; }
+        }
+
+        public static readonly BindableProperty TrailingIconProperty =
+            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
+
+        public string TrailingIcon
+        {
+            get { return (string)GetValue(TrailingIconProperty); }
             set { SetValue(TrailingIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomTrailingIconProperty =
+            BindableProperty.Create(nameof(CustomTrailingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
+
+        public View CustomTrailingIcon
+        {
+            get { return (View)GetValue(CustomTrailingIconProperty); }
+            set { SetValue(CustomTrailingIconProperty, value); }
+        }
+
+        private bool TrailingIconIsVisible
+        {
+            get { return !string.IsNullOrEmpty(TrailingIcon) || CustomTrailingIcon != null; }
         }
 
         public static readonly BindableProperty IconSizeProperty =
@@ -303,14 +332,14 @@ namespace Plugin.MaterialDesignControls.Material3
             };
             _frameLayout.Content = _stcLayout;
 
-            _leadingIconContentView = new ContentView
+            _leadingIconCustomImage = new CustomImage
             {
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = IconSize,
                 HeightRequest = IconSize,
                 IsVisible = false
             };
-            _stcLayout.Children.Add(_leadingIconContentView);
+            _stcLayout.Children.Add(_leadingIconCustomImage);
 
             _textLabel = new Plugin.MaterialDesignControls.MaterialLabel
             {
@@ -324,14 +353,14 @@ namespace Plugin.MaterialDesignControls.Material3
             };
             _stcLayout.Children.Add(_textLabel);
 
-            _trailingIconContentView = new ContentView
+            _trailingIconCustomImage = new CustomImage
             {
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = IconSize,
                 HeightRequest = IconSize,
                 IsVisible = false
             };
-            _stcLayout.Children.Add(_trailingIconContentView);
+            _stcLayout.Children.Add(_trailingIconCustomImage);
 
             _cntActivityIndicator = new ContentView
             {
@@ -383,24 +412,36 @@ namespace Plugin.MaterialDesignControls.Material3
                     _frameLayout.CornerRadius = Convert.ToInt32(CornerRadius);
                     break;
                 case nameof(LeadingIcon):
-                    if (LeadingIcon != null)
-                    {
-                        _leadingIconContentView.Content = LeadingIcon;
-                        _leadingIconContentView.IsVisible = true;
-                    }
+                    if (!string.IsNullOrEmpty(LeadingIcon))
+                        this._leadingIconCustomImage.SetImage(LeadingIcon);
+
+                    this._leadingIconCustomImage.IsVisible = LeadingIconIsVisible;
                     break;
+                case nameof(CustomLeadingIcon):
+                    if (CustomLeadingIcon != null)
+                        this._leadingIconCustomImage.SetCustomImage(CustomLeadingIcon);
+
+                    this._leadingIconCustomImage.IsVisible = LeadingIconIsVisible;
+                    break;
+
                 case nameof(TrailingIcon):
-                    if (TrailingIcon != null)
-                    {
-                        _trailingIconContentView.Content = TrailingIcon;
-                        _trailingIconContentView.IsVisible = true;
-                    }
+                    if (!string.IsNullOrEmpty(TrailingIcon))
+                        this._trailingIconCustomImage.SetImage(TrailingIcon);
+
+                    this._trailingIconCustomImage.IsVisible = TrailingIconIsVisible;
                     break;
+                case nameof(CustomTrailingIcon):
+                    if (CustomTrailingIcon != null)
+                        this._trailingIconCustomImage.SetCustomImage(CustomTrailingIcon);
+
+                    this._trailingIconCustomImage.IsVisible = TrailingIconIsVisible;
+                    break;
+
                 case nameof(IconSize):
-                    _leadingIconContentView.HeightRequest = IconSize;
-                    _leadingIconContentView.WidthRequest = IconSize;
-                    _trailingIconContentView.HeightRequest = IconSize;
-                    _trailingIconContentView.WidthRequest = IconSize;
+                    _leadingIconCustomImage.HeightRequest = IconSize;
+                    _leadingIconCustomImage.WidthRequest = IconSize;
+                    _trailingIconCustomImage.HeightRequest = IconSize;
+                    _trailingIconCustomImage.WidthRequest = IconSize;
                     break;
                 case nameof(IsEnabled):
                     VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled");
