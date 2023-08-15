@@ -15,9 +15,9 @@
               RowSpacing="0">
             <material3:MaterialTopAppBar Headline="MaterialProgressIndicator"
                                          LeadingIconCommand="{Binding BackCommand}">
-                <material3:MaterialTopAppBar.LeadingIcon>
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
-                </material3:MaterialTopAppBar.LeadingIcon>
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
             <ScrollView Grid.Row="1"

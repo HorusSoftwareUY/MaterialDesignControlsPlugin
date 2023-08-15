@@ -23,9 +23,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private Plugin.MaterialDesignControls.MaterialLabel _descriptionLabel;
 
-        private ContentViewButton _leadingIconContentView;
+        private CustomImageButton _leadingIconCustomImageButton;
 
-        private ContentViewButton _trailingIconContentView;
+        private CustomImageButton _trailingIconCustomImageButton;
 
         private ContentView _cntTrailingActivityIndicator;
 
@@ -154,21 +154,49 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(View), typeof(MaterialTopAppBar), defaultValue: null);
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialTopAppBar), defaultValue: null);
 
-        public View LeadingIcon
+        public string LeadingIcon
         {
-            get { return (View)GetValue(LeadingIconProperty); }
+            get { return (string)GetValue(LeadingIconProperty); }
             set { SetValue(LeadingIconProperty, value); }
         }
 
-        public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(View), typeof(MaterialTopAppBar), defaultValue: null);
+        public static readonly BindableProperty CustomLeadingIconProperty =
+            BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(MaterialTopAppBar), defaultValue: null);
 
-        public View TrailingIcon
+        public View CustomLeadingIcon
         {
-            get { return (View)GetValue(TrailingIconProperty); }
+            get { return (View)GetValue(CustomLeadingIconProperty); }
+            set { SetValue(CustomLeadingIconProperty, value); }
+        }
+
+        private bool LeadingIconIsVisible
+        {
+            get { return !string.IsNullOrEmpty(LeadingIcon) || CustomLeadingIcon != null; }
+        }
+
+        public static readonly BindableProperty TrailingIconProperty =
+            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialTopAppBar), defaultValue: null);
+
+        public string TrailingIcon
+        {
+            get { return (string)GetValue(TrailingIconProperty); }
             set { SetValue(TrailingIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomTrailingIconProperty =
+            BindableProperty.Create(nameof(CustomTrailingIcon), typeof(View), typeof(MaterialTopAppBar), defaultValue: null);
+
+        public View CustomTrailingIcon
+        {
+            get { return (View)GetValue(CustomTrailingIconProperty); }
+            set { SetValue(CustomTrailingIconProperty, value); }
+        }
+
+        private bool TrailingIconIsVisible
+        {
+            get { return !string.IsNullOrEmpty(TrailingIcon) || CustomTrailingIcon != null; }
         }
 
         public static readonly BindableProperty IconSizeProperty =
@@ -327,37 +355,39 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = DescriptionFontFamily
             };
 
-            _leadingIconContentView = new ContentViewButton
+            _leadingIconCustomImageButton = new CustomImageButton
             {
                 VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 48,
                 HeightRequest = 48,
                 AnimationParameter = ButtonAnimationParameter,
                 Animation = ButtonAnimation,
                 IsVisible = false
             };
-            Children.Add(_leadingIconContentView, 0, 0);
+            Children.Add(_leadingIconCustomImageButton, 0, 0);
 
             _cntLeadingActivityIndicator = new ContentView
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                WidthRequest = 48,
-                HeightRequest = 48,
+                WidthRequest = IconSize,
+                HeightRequest = IconSize,
                 IsVisible = false
             };
             Children.Add(_cntLeadingActivityIndicator, 0, 0);
 
-            _trailingIconContentView = new ContentViewButton
+            _trailingIconCustomImageButton = new CustomImageButton
             {
                 VerticalOptions = LayoutOptions.Center,
-                WidthRequest = 48,
-                HeightRequest = 48,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = IconSize,
+                HeightRequest = IconSize,
                 AnimationParameter = ButtonAnimationParameter,
                 Animation = ButtonAnimation,
                 IsVisible = false
             };
-            Children.Add(_trailingIconContentView, 2, 0);
+            Children.Add(_trailingIconCustomImageButton, 2, 0);
 
             _cntTrailingActivityIndicator = new ContentView
             {
@@ -427,48 +457,75 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(LeadingIconCommand):
-                    _leadingIconContentView.Command = LeadingIconCommand;
-                    _leadingIconContentView.IsVisible = true;
+                    _leadingIconCustomImageButton.Command = LeadingIconCommand;
+                    _leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(TrailingIconCommand):
-                    _trailingIconContentView.Command = TrailingIconCommand;
-                    _trailingIconContentView.IsVisible = true;
+                    _trailingIconCustomImageButton.Command = TrailingIconCommand;
+                    _trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
                     break;
+
+                //case nameof(LeadingIcon):
+                //    if (LeadingIcon != null)
+                //    {
+                //        LeadingIcon.WidthRequest = IconSize;
+                //        LeadingIcon.HeightRequest = IconSize;
+                //        LeadingIcon.HorizontalOptions = LayoutOptions.Center;
+                //        LeadingIcon.VerticalOptions = LayoutOptions.Center;
+                //        _leadingIconCustomImageButton.Content = LeadingIcon;
+                //        _leadingIconCustomImageButton.IsVisible = true;
+                //    }
+                //    break;
+                //case nameof(TrailingIcon):
+                //    if (TrailingIcon != null)
+                //    {
+                //        TrailingIcon.WidthRequest = IconSize;
+                //        TrailingIcon.HeightRequest = IconSize;
+                //        TrailingIcon.HorizontalOptions = LayoutOptions.Center;
+                //        TrailingIcon.VerticalOptions = LayoutOptions.Center;
+                //        _trailingIconCustomImageButton.Content = TrailingIcon;
+                //        _trailingIconCustomImageButton.IsVisible = true;
+                //    }
+                //    break;
 
                 case nameof(LeadingIcon):
-                    if (LeadingIcon != null)
-                    {
-                        LeadingIcon.WidthRequest = IconSize;
-                        LeadingIcon.HeightRequest = IconSize;
-                        LeadingIcon.HorizontalOptions = LayoutOptions.Center;
-                        LeadingIcon.VerticalOptions = LayoutOptions.Center;
-                        _leadingIconContentView.Content = LeadingIcon;
-                        _leadingIconContentView.IsVisible = true;
-                    }
+                    if (!string.IsNullOrEmpty(LeadingIcon))
+                        this._leadingIconCustomImageButton.SetImage(LeadingIcon);
+
+                    this._leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
                     break;
-                case nameof(TrailingIcon):
-                    if (TrailingIcon != null)
-                    {
-                        TrailingIcon.WidthRequest = IconSize;
-                        TrailingIcon.HeightRequest = IconSize;
-                        TrailingIcon.HorizontalOptions = LayoutOptions.Center;
-                        TrailingIcon.VerticalOptions = LayoutOptions.Center;
-                        _trailingIconContentView.Content = TrailingIcon;
-                        _trailingIconContentView.IsVisible = true;
-                    }
+                case nameof(CustomLeadingIcon):
+                    if (CustomLeadingIcon != null)
+                        this._leadingIconCustomImageButton.SetCustomImage(CustomLeadingIcon);
+
+                    this._leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
                     break;
 
+                case nameof(TrailingIcon):
+                    if (!string.IsNullOrEmpty(TrailingIcon))
+                        this._trailingIconCustomImageButton.SetImage(TrailingIcon);
+
+                    this._trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
+                    break;
+                case nameof(CustomTrailingIcon):
+                    if (CustomTrailingIcon != null)
+                        this._trailingIconCustomImageButton.SetCustomImage(CustomTrailingIcon);
+
+                    this._trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
+                    break;
+
+
                 case nameof(ButtonAnimation):
-                    _leadingIconContentView.Animation = ButtonAnimation;
-                    _trailingIconContentView.Animation = ButtonAnimation;
+                    _leadingIconCustomImageButton.Animation = ButtonAnimation;
+                    _trailingIconCustomImageButton.Animation = ButtonAnimation;
                     break;
                 case nameof(ButtonAnimationParameter):
-                    _leadingIconContentView.AnimationParameter = ButtonAnimationParameter;
-                    _trailingIconContentView.AnimationParameter = ButtonAnimationParameter;
+                    _leadingIconCustomImageButton.AnimationParameter = ButtonAnimationParameter;
+                    _trailingIconCustomImageButton.AnimationParameter = ButtonAnimationParameter;
                     break;
                 case nameof(ButtonCustomAnimation):
-                    _leadingIconContentView.CustomAnimation = ButtonCustomAnimation;
-                    _trailingIconContentView.CustomAnimation = ButtonCustomAnimation;
+                    _leadingIconCustomImageButton.CustomAnimation = ButtonCustomAnimation;
+                    _trailingIconCustomImageButton.CustomAnimation = ButtonCustomAnimation;
                     break;
 
                 case "Renderer":
@@ -518,11 +575,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
                         _cntTrailingActivityIndicator.IsVisible = true;
 
-                        _trailingIconContentView.IsVisible = false;
+                        _trailingIconCustomImageButton.IsVisible = false;
                     }
                     else
                     {
-                        _trailingIconContentView.IsVisible = true;
+                        _trailingIconCustomImageButton.IsVisible = true;
 
                         if (_activityIndicatorTrailing == null)
                         {
@@ -562,11 +619,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
                         _cntLeadingActivityIndicator.IsVisible = true;
 
-                        _leadingIconContentView.IsVisible = false;
+                        _leadingIconCustomImageButton.IsVisible = false;
                     }
                     else
                     {
-                        _leadingIconContentView.IsVisible = true;
+                        _leadingIconCustomImageButton.IsVisible = true;
                         if (_activityIndicatorLeading == null)
                         {
                             _activityIndicatorLeading = new MaterialProgressIndicator

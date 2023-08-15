@@ -181,25 +181,6 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(FontFamilyProperty, value); }
         }
 
-        //public static readonly BindableProperty LeadingIconProperty =
-        //    BindableProperty.Create(nameof(LeadingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
-
-        //public View LeadingIcon
-        //{
-        //    get { return (View)GetValue(LeadingIconProperty); }
-        //    set { SetValue(LeadingIconProperty, value); }
-        //}
-
-        //public static readonly BindableProperty TrailingIconProperty =
-        //    BindableProperty.Create(nameof(TrailingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
-
-        //public View TrailingIcon
-        //{
-        //    get { return (View)GetValue(TrailingIconProperty); }
-        //    set { SetValue(TrailingIconProperty, value); }
-        //}
-
-
         public static readonly BindableProperty LeadingIconProperty =
             BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
 

@@ -41,9 +41,9 @@
                                          LeadingIconCommand="{Binding BackCommand}"
                                          ScrollViewName="scrollView"
                                          Type="Large">
-                <material3:MaterialTopAppBar.LeadingIcon>
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
-                </material3:MaterialTopAppBar.LeadingIcon>
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
             <ScrollView x:Name="scrollView"
