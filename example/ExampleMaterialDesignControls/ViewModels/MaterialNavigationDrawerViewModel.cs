@@ -36,7 +36,7 @@ namespace ExampleMaterialDesignControls.ViewModels
                 },
                 new MaterialNavigationDrawerItem
                 {
-                    Text = "Favorites",
+                    Text = "Favorites (Different icons)",
                     SelectedIcon = "starSelected.png",
                     UnselectedIcon = "starUnselected.png",
                 },

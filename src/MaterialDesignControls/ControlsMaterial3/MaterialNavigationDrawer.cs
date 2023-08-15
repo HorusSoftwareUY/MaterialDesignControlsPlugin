@@ -426,7 +426,7 @@ namespace Plugin.MaterialDesignControls.Material3
                             WidthRequest = 24,
                             MinimumWidthRequest = 24,
                             VerticalOptions = LayoutOptions.Center,
-                            Margin = new Thickness(0),
+                            Margin = new Thickness(0, 0, 12, 0),
                             Padding = new Thickness(0),
                             IsVisible = false
                         };
@@ -439,7 +439,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         label.FontSize = LabelFontSize;
                         label.FontFamily = LabelFontFamily;
                         label.TextColor = item.IsEnabled ? item.IsSelected ? ActiveIndicatorLabelColor : LabelColor : DisabledLabelColor;
-                        label.Padding = new Thickness(12, 0);
+                        label.Padding = new Thickness(0,0, 12, 0);
 
                         label.SetValue(Grid.ColumnProperty, 1);
 
