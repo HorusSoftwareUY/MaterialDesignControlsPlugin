@@ -465,29 +465,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     _trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
                     break;
 
-                //case nameof(LeadingIcon):
-                //    if (LeadingIcon != null)
-                //    {
-                //        LeadingIcon.WidthRequest = IconSize;
-                //        LeadingIcon.HeightRequest = IconSize;
-                //        LeadingIcon.HorizontalOptions = LayoutOptions.Center;
-                //        LeadingIcon.VerticalOptions = LayoutOptions.Center;
-                //        _leadingIconCustomImageButton.Content = LeadingIcon;
-                //        _leadingIconCustomImageButton.IsVisible = true;
-                //    }
-                //    break;
-                //case nameof(TrailingIcon):
-                //    if (TrailingIcon != null)
-                //    {
-                //        TrailingIcon.WidthRequest = IconSize;
-                //        TrailingIcon.HeightRequest = IconSize;
-                //        TrailingIcon.HorizontalOptions = LayoutOptions.Center;
-                //        TrailingIcon.VerticalOptions = LayoutOptions.Center;
-                //        _trailingIconCustomImageButton.Content = TrailingIcon;
-                //        _trailingIconCustomImageButton.IsVisible = true;
-                //    }
-                //    break;
-
                 case nameof(LeadingIcon):
                     if (!string.IsNullOrEmpty(LeadingIcon))
                         this._leadingIconCustomImageButton.SetImage(LeadingIcon);
