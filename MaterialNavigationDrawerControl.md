@@ -42,7 +42,7 @@ This property is to set the active indicator label color.
 <br/>
 
 ### Property ActiveIndicatorCornerRadius:
-This property is to set the active indicator corner radius. By default is 16.
+This property is to set the active indicator corner radius. By default is 28.
 <br/>
 
 ### Property LabelColor:
