@@ -118,7 +118,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand GoMaterialNavigationDrawerCommand => new Command(async () =>
         {
-            await DisplayAlert("MaterialNavigationDrawer", "Comming Soon!", "Ok");
+            await Navigation.PushAsync(new MaterialNavigationDrawerPage());
         });
 
         public ICommand GoMaterialCardCommand => new Command(async () =>

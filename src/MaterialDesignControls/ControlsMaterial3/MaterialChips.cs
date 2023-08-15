@@ -327,7 +327,14 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(AnimationParameterProperty, value); }
         }
 
-        public ICustomAnimation CustomAnimation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public static readonly BindableProperty CustomAnimationProperty =
+            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(MaterialChips), defaultValue: null);
+
+        public ICustomAnimation CustomAnimation
+        {
+            get { return (ICustomAnimation)GetValue(CustomAnimationProperty); }
+            set { SetValue(CustomAnimationProperty, value); }
+        }
 
         #endregion Properties
 

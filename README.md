@@ -40,6 +40,7 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialTopAppBar](#materialtopappbar)
 - [MaterialProgressIndicator](#materialprogressindicator)
 - [MaterialBadge](#materialbadge)
+- [MaterialNAvigationDrawer](#materialnavigationdrawer)
 
 
 ## Setup
@@ -287,6 +288,16 @@ Badges show notifications, counts, or status information on navigation items and
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materialbadge_preview.png" width="300">
 <br/>
 [View documentation](MaterialBadgeControl.md)
+
+---
+
+### MaterialBadge
+Navigation drawers let people switch between UI views on larger devices
+<br/>
+<!-- TODO: update preview  -->
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materialbadge_preview.png" width="300">
+<br/>
+[View documentation](MaterialNavigationDrawerControl.md)
 
 ---
 

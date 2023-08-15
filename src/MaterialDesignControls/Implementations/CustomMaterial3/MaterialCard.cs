@@ -1,9 +1,22 @@
-﻿using Xamarin.Forms;
+﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Styles;
+using System;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
-    public partial class MaterialCard : Frame
+    public partial class MaterialCard : Frame, ITouchAndPressEffectConsumer
     {
+        #region Constructor
+        public MaterialCard()
+        {
+
+            Effects.Add(new TouchAndPressEffect());
+        }
+        #endregion
+
         #region Attributes & Properties
 
         public static readonly BindableProperty iOSBorderWidthProperty =
@@ -104,6 +117,63 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             get => (Size)GetValue(iOSShadowOffsetProperty);
             set => SetValue(iOSShadowOffsetProperty, value);
         }
+
+        public static readonly BindableProperty AnimationProperty =
+                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationType);
+
+        public AnimationTypes Animation
+        {
+            get { return (AnimationTypes)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty AnimationParameterProperty =
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationParameter);
+
+        public double? AnimationParameter
+        {
+            get { return (double?)GetValue(AnimationParameterProperty); }
+            set { SetValue(AnimationParameterProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomAnimationProperty =
+            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(MaterialCard), defaultValue: null);
+
+        public ICustomAnimation CustomAnimation
+        {
+            get { return (ICustomAnimation)GetValue(CustomAnimationProperty); }
+            set { SetValue(CustomAnimationProperty, value); }
+        }
+
+        public static readonly BindableProperty CommandProperty =
+            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(MaterialCard), defaultValue: null);
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+
+        public static readonly BindableProperty CommandParameterProperty =
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MaterialCard), defaultValue: null);
+
+        public object CommandParameter
+        {
+            get { return GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+
         #endregion
+
+        public void ConsumeEvent(EventType gestureType)
+        {
+            TouchAndPressAnimation.Animate(this, gestureType);
+        }
+
+        public void ExecuteAction()
+        {
+            if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
+                Command.Execute(CommandParameter);
+        }
     }
 }

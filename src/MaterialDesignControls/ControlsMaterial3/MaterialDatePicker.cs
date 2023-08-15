@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {

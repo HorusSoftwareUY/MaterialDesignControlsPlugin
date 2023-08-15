@@ -2,9 +2,13 @@
 
 namespace Plugin.MaterialDesignControls.Objects
 {
-    public class MaterialSegmentedItem
+    public class MaterialNavigationDrawerItem
     {
         public string Text { get; set; }
+
+        public string BadgeText { get; set; }
+
+        public string Section { get; set; }
 
         public string SelectedIcon { get; set; }
 
@@ -15,6 +19,10 @@ namespace Plugin.MaterialDesignControls.Objects
         public View CustomUnselectedIcon { get; set; }
 
         public bool IsSelected { get; set; }
+
+        public bool ShowActiveIndicator { get; set; } = true;
+
+        public bool IsEnabled { get; set; } = true;
 
         internal bool UnselectedIconIsVisible
         {
@@ -28,12 +36,17 @@ namespace Plugin.MaterialDesignControls.Objects
 
         public override bool Equals(object obj)
         {
-            if (obj is not MaterialSegmentedItem toCompare)
+            if (obj is not MaterialNavigationDrawerItem toCompare)
                 return false;
             else
-                return toCompare.Text.Equals(this.Text, System.StringComparison.InvariantCultureIgnoreCase);
+            {
+                var key = this.Section + "-" + this.Text;
+                var keyToCompare = toCompare.Section + "-" + toCompare.Text;
+                return key.Equals(keyToCompare, System.StringComparison.InvariantCultureIgnoreCase);
+            }
         }
 
-        public override string ToString() => !string.IsNullOrWhiteSpace(Text) ? Text : "Unavailable";
+        public override string ToString() =>
+            string.IsNullOrWhiteSpace(Text) ? "No defined text" : Text;
     }
 }
