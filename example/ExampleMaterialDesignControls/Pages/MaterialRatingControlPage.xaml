@@ -6,6 +6,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
              ios:Page.UseSafeArea="True"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="false">
@@ -22,6 +23,9 @@
                         VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="20,0,20,20"
                              Spacing="20">
+
+                    <contentViews:InfoIndicatorView Message="MaterialRating follows the latest guidelines of Material Design 3" />
+
 
                     <material3:MaterialRating ItemSize="5"
                                                      ItemsByRow="5"
