@@ -51,7 +51,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="ControlsMaterial2\MaterialRatingControl.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialRatingControl.xaml.cs">
       <DependentUpon>MaterialRatingControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -73,6 +73,7 @@
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialNavigationDrawer.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
+    <Compile Include="ControlsMaterial3\MaterialRatingControl.cs" />
     <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
     <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
     <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">

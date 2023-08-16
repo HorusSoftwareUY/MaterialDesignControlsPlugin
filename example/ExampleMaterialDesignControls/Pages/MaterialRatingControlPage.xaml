@@ -1,43 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialRatingControlPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialRatingControlPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialRatingControl" LeadingIconCommand="{Binding BackCommand}">
+            <material3:MaterialTopAppBar Headline="MaterialRatingControl"
+                                         LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="20">
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
 
-                    <material:MaterialRatingControl
-                        ItemSize="5"
-                        ItemsByRow="5"
-                        LabelSize="{StaticResource ButtonFontSize}"
-                        LabelText="How do you rate the service?"
-                        SelectedIcon="starSelected.png"
-                        UnSelectedIcon="starUnselected.png"
-                        Value="4" />
+                    <material3:MaterialRating ItemSize="5"
+                                                     ItemsByRow="5"
+                                                     LabelSize="{StaticResource ButtonFontSize}"
+                                                     LabelText="How do you rate the service?"
+                                                     SelectedIcon="starSelected.png"
+                                                     UnSelectedIcon="starUnselected.png"
+                                                     Value="4" />
 
                     <material:MaterialDivider Margin="0,0,0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Png Icons" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Png Icons" />
 
-                    <material:MaterialRatingControl
+                    <!--<material3:MaterialRatingControl
                         Animation="Fade"
                         AnimationParameter="0.1"
                         ItemSize="5"
@@ -155,7 +155,7 @@
                             Grid.Column="1"
                             Command="{Binding ShowCommand}"
                             Text="Show" />
-                    </Grid>
+                    </Grid>-->
 
                 </StackLayout>
             </ScrollView>
