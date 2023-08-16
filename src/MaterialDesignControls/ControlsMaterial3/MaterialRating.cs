@@ -1,5 +1,6 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 using System;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
@@ -139,7 +140,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialRating), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialRating), defaultValue: DefaultStyles.TextColor);
 
         public Color LabelTextColor
         {
@@ -148,7 +149,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRating), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRating), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
 
         public double LabelSize
         {
@@ -170,7 +171,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextColorProperty =
-            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialRating), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialRating), defaultValue: DefaultStyles.ErrorColor);
 
         public Color SupportingTextColor
         {
@@ -179,7 +180,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialRating), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialRating), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
 
         public double SupportingSize
         {
