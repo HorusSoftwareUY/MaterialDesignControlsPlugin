@@ -43,6 +43,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Attributes
 
         #region Properties
+
         public new static readonly BindableProperty AnimatePlaceholderProperty =
             BindableProperty.Create(nameof(AnimatePlaceholder), typeof(bool), typeof(MaterialDatePicker), defaultValue: false);
 
@@ -83,6 +84,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (string)GetValue(FormatProperty); }
             set { SetValue(FormatProperty, value); }
         }
+
         #endregion Properties
 
         #region Events

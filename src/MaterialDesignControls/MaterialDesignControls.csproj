@@ -113,7 +113,6 @@
       <DependentUpon>MaterialEntry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialLabel.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialPicker.xaml.cs">
       <DependentUpon>MaterialPicker.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -174,7 +173,6 @@
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialDivider.cs" />
     <Compile Include="ControlsMaterial2\MaterialFloatingButton.xaml.cs">
       <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -194,6 +192,8 @@
     <Compile Include="Effects\Effects.cs" />
     <Compile Include="ControlsMaterial3\MaterialLabel.cs" />
     <Compile Include="ControlsMaterial3\MaterialDivider.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialLabel.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialDivider.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

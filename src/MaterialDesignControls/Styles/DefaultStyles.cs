@@ -14,11 +14,19 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static Color TextColor { get; set; } = Color.FromHex("#1D1B20");
 
+        public static Color SurfaceContainerHighestColor { get; set; } = Color.FromHex("#E6E0E9");
+
+        public static Color OnSurfaceColor { get; set; } = Color.FromHex("#1D1B20");
+
+        public static Color OnSurfaceVariantColor { get; set; } = Color.FromHex("#49454F");
+
         public static Color ErrorColor { get; set; } = Color.FromHex("B3261E");
 
         public static Color DisableColor { get; set; } = Color.FromHex("#9791A1");
 
         public static Color DisableContainerColor { get; set; } = Color.FromHex("#E5E3E8");
+
+        public static Color OutlineColor { get; set; } = Color.FromHex("#79747E");
 
         public static Color OutlineVariantColor { get; set; } = Color.FromHex("#CAC4D0");
 

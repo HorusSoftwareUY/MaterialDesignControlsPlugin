@@ -61,7 +61,6 @@
                                               IsBusy="{Binding SaveFileCommand.IsRunning}"
                                               IsEnabled="{Binding IsEnabled}"
                                               IsVisible="{Binding IsVisible}"
-                                              Style="{StaticResource MaterialElevatedButtonStyle}"
                                               Text="Save file" />
 
                     <material:MaterialLabel Style="{StaticResource LegendLabel}"
@@ -73,7 +72,6 @@
                                               IsEnabled="{Binding IsEnabled}"
                                               IsVisible="{Binding IsVisible}"
                                               LeadingIcon="download.png"
-                                              Style="{StaticResource MaterialFilledButtonStyle}"
                                               Text="Download file" />
 
 
@@ -84,7 +82,6 @@
                                               IsBusy="{Binding OpenTutorialCommand.IsRunning}"
                                               IsEnabled="{Binding IsEnabled}"
                                               IsVisible="{Binding IsVisible}"
-                                              Style="{StaticResource MaterialTonalButtonStyle}"
                                               Text="Open tutorial">
                         <material3:MaterialButton.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
@@ -98,7 +95,6 @@
                                               IsBusy="{Binding CancelActionCommand.IsRunning}"
                                               IsEnabled="{Binding IsEnabled}"
                                               IsVisible="{Binding IsVisible}"
-                                              Style="{StaticResource MaterialOutlinedButtonStyle}"
                                               Text="Cancel action">
                         <material3:MaterialButton.CustomActivityIndicator>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
@@ -113,7 +109,6 @@
                                               IsEnabled="{Binding IsEnabled}"
                                               IsVisible="{Binding IsVisible}"
                                               LeadingIcon="delete.png"
-                                              Style="{StaticResource MaterialTextButtonStyle}"
                                               Text="Delete item" />
 
 
