@@ -1,12 +1,10 @@
 # MaterialDoublePicker
 Double pickers let users select two options in the same dialog.
 
-## Screenshot
-<!-- TODO: Change this  -->
+## iOS Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker.gif" width="300">
 
 ## Android Screenshot
-<!-- TODO: Change this  -->
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_android.png" width="300">
 
 ## Example MaterialDoublePickers

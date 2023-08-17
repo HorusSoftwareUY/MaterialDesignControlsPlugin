@@ -4,7 +4,6 @@ Switches toggle the state of a single item on or off.
 [View Material Design documentation](https://m3.material.io/components/switch/overview)
 
 ## Screenshot
-<!-- TODO change this  -->
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch.gif" width="300">
 
 ## Example MaterialSwitch

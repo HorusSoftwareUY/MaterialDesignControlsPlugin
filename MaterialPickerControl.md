@@ -2,7 +2,6 @@
 Pickers let users select an option.
 
 ## Screenshot
-<!-- TODO: Change this  -->
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/picker.gif" width="300">
 
 ## Example MaterialPickers
