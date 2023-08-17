@@ -1,7 +1,7 @@
 # MaterialSliderControl
 This control is a custom implementation of a slider. You can customize some properties that we show in Documentation topic. 
 <br/>
-[View Material Design documentation](https://material.io/components/sliders)
+[View Material Design documentation](https://m3.material.io/components/sliders/overview)
 
 ## Screenshot
 

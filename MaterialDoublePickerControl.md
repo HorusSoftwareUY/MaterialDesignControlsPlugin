@@ -1,12 +1,10 @@
 # MaterialDoublePicker
 Double pickers let users select two options in the same dialog.
 
-## Screenshot
-<!-- TODO: Change this  -->
+## iOS Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker.gif" width="300">
 
 ## Android Screenshot
-<!-- TODO: Change this  -->
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_android.png" width="300">
 
 ## Example MaterialDoublePickers
@@ -23,90 +21,7 @@ Using the control:
     SecondarySelectedItem="{Binding SecondarySelectedItem}" />
 ```
 
-
 ## Documentation
-We update this control to use VisualStateManager (See examble above). So we recommend use visual state to change the style of the control. 
-
-### Allowed States:
-- Normal
-- Focused
-- Disabled
-
-
-#### Example:
-
-Set style:
-
-```XML
-<Style TargetType="material3:MaterialDoublePicker">
-        <Setter Property="AnimateError"
-                Value="True" />
-        <Setter Property="SupportingTextColor"
-                Value="#c92726" />
-        <Setter Property="SupportingSize"
-                Value="12" />
-        <Setter Property="FontSize"
-                Value="16" />
-        <Setter Property="PlaceholderColor"
-                Value="#66839b" />
-        <Setter Property="LabelSize"
-                Value="12" />
-        <Setter Property="BackgroundColor"
-                Value="#0d2e85cc" />
-        <Setter Property="TrailingIcon"
-                Value="arrow_drop_down.png" />
-        <Setter Property="VisualStateManager.VisualStateGroups">
-        <VisualStateGroupList>
-                <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal">
-                        <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="#0d1a26" />
-                        <Setter Property="LabelTextColor"
-                                Value="#2e85cc" />
-                        <Setter Property="IndicatorColor"
-                                Value="#2e85cc" />
-                        <Setter Property="BorderColor"
-                                Value="#2e85cc" />
-                        <Setter Property="BackgroundColor"
-                                Value="#0d2e85cc" />
-                        </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Disabled">
-                        <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="#828282" />
-                        <Setter Property="LabelTextColor"
-                                Value="#828282" />
-                        <Setter Property="IndicatorColor"
-                                Value="#828282" />
-                        <Setter Property="BorderColor"
-                                Value="#828282" />
-                        <Setter Property="BackgroundColor"
-                                Value="#E3E3E3" />
-                        </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Focused">
-                        <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="#0d1a26" />
-                        <Setter Property="LabelTextColor"
-                                Value="#1f5988" />
-                        <Setter Property="IndicatorColor"
-                                Value="#1f5988" />
-                        <Setter Property="BorderColor"
-                                Value="#1f5988" />
-                        <Setter Property="BackgroundColor"
-                                Value="#1A2e85cc" />
-                        </VisualState.Setters>
-                </VisualState>
-                </VisualStateGroup>
-        </VisualStateGroupList>
-        </Setter>
-</Style>
-``` 
-<br/>
-<br/>
 
 ### Property CornerRadius:
 This property is to set the corner radius for the control. This is used only when you set HasBorder as true.
@@ -145,7 +60,6 @@ This property is to set if you wanna bottom left rounded.
 <br/>
 <br/>
 
-
 ### Property AnimateError:
 This property is to set the if you want or not animate the control on error.
 <br/>
@@ -162,6 +76,16 @@ This property is to set the horizontal text alignment.
 
 ### Property TextColor:
 This property is to set the text color.
+<br/>
+<br/>
+
+### Property FocusedTextColor:
+This property is to set the focused text color.
+<br/>
+<br/>
+
+### Property DisabledTextColor:
+This property is to set the disabled text color.
 <br/>
 <br/>
 
@@ -197,6 +121,16 @@ This property is to set the label.
 
 ### Property LabelTextColor:
 This property is to set the label color.
+<br/>
+<br/>
+
+### Property FocusedLabelTextColor:
+This property is to set the focused label color.
+<br/>
+<br/>
+
+### Property DisabledLabelTextColor:
+This property is to set the disabled label color.
 <br/>
 <br/>
 
@@ -241,6 +175,16 @@ This property is to set the supporting text margin.. By default uses (16,4,16,0)
 <br/>
 
 ### Property BorderColor:
+This property is to set the border color. This is enabled when you set the property HasBorder equals true.
+<br/>
+<br/>
+
+### Property FocusedBorderColor:
+This property is to set the focused border color. This is enabled when you set the property HasBorder equals true.
+<br/>
+<br/>
+
+### Property DisabledBorderColor:
 This property is to set the border color. This is enabled when you set the property HasBorder equals true.
 <br/>
 <br/>

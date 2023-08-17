@@ -1,10 +1,9 @@
 # MaterialTimePicker
 Time pickers let users select a time.
 <br/>
-[View Material Design documentation](https://material.io/components/time-pickers)
+[View Material Design documentation](https://m3.material.io/components/time-pickers/overview)
 
 ## Screenshot
-<!-- TODO: Change this  -->
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/time_picker.gif" width="300">
 
 ## Example MaterialTimePicker
@@ -15,89 +14,7 @@ Time pickers let users select a time.
     LeadingIcon="calendar.png" />
 ```
 
-
 ## Documentation
-We update this control to use VisualStateManager (See examble above). So we recommend use visual state to change the style of the control. 
-### Allowed States:
-- Normal
-- Focused
-- Disabled
-
-
-#### Example:
-
-Set style:
-
-```XML
-<Style TargetType="material3:MaterialTimePicker">
-        <Setter Property="AnimateError"
-                Value="True" />
-        <Setter Property="SupportingTextColor"
-                Value="#c92726" />
-        <Setter Property="SupportingSize"
-                Value="12" />
-        <Setter Property="FontSize"
-                Value="16" />
-        <Setter Property="PlaceholderColor"
-                Value="#66839b" />
-        <Setter Property="LabelSize"
-                Value="12" />
-        <Setter Property="BackgroundColor"
-                Value="#0d2e85cc" />
-        <Setter Property="TrailingIcon"
-                Value="arrow_drop_down.png" />
-        <Setter Property="VisualStateManager.VisualStateGroups">
-        <VisualStateGroupList>
-                <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal">
-                        <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="#0d1a26" />
-                        <Setter Property="LabelTextColor"
-                                Value="#2e85cc" />
-                        <Setter Property="IndicatorColor"
-                                Value="#2e85cc" />
-                        <Setter Property="BorderColor"
-                                Value="#2e85cc" />
-                        <Setter Property="BackgroundColor"
-                                Value="#0d2e85cc" />
-                        </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Disabled">
-                        <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="#828282" />
-                        <Setter Property="LabelTextColor"
-                                Value="#828282" />
-                        <Setter Property="IndicatorColor"
-                                Value="#828282" />
-                        <Setter Property="BorderColor"
-                                Value="#828282" />
-                        <Setter Property="BackgroundColor"
-                                Value="#E3E3E3" />
-                        </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Focused">
-                        <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="#0d1a26" />
-                        <Setter Property="LabelTextColor"
-                                Value="#1f5988" />
-                        <Setter Property="IndicatorColor"
-                                Value="#1f5988" />
-                        <Setter Property="BorderColor"
-                                Value="#1f5988" />
-                        <Setter Property="BackgroundColor"
-                                Value="#1A2e85cc" />
-                        </VisualState.Setters>
-                </VisualState>
-                </VisualStateGroup>
-        </VisualStateGroupList>
-        </Setter>
-</Style>
-``` 
-<br/>
-<br/>
 
 ### Property CornerRadius:
 This property is to set the corner radius for the control. This is used only when you set HasBorder as true.

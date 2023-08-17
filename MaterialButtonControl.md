@@ -1,7 +1,7 @@
 # MaterialButton
 Buttons allow users to take actions, and make choices, with a single tap.
 <br/>
-[View Material Design documentation](https://material.io/components/buttons)
+[View Material Design documentation](https://m3.material.io/components/buttons/overview)
 
 ## Screenshot
 
@@ -18,54 +18,6 @@ Using the control:
 ```
 
 ## Documentation
-
-We update this control to use VisualStateManager (See examble above). So we recommend use visual state to change the style of the control. 
-### Allowed States:
-- Normal
-- Disabled
-
-#### Example:
-
-Set style:
-
-```XML
-<Style TargetType="material3:MaterialButton"
-        x:Key="BaseMaterialButtonStyle">
-    <Setter Property="FontSize"
-            Value="{StaticResource ButtonFontSize}" />
-    <Setter Property="BusyColor"
-            Value="{StaticResource GradientColor1}" />
-    <Setter Property="FontFamily"
-            Value="{StaticResource SemiBoldFont}" />
-</Style>
-<Style TargetType="material3:MaterialButton"
-        BasedOn="{StaticResource BaseMaterialButtonStyle}">
-</Style>
-<Style TargetType="material3:MaterialButton"
-        BasedOn="{StaticResource BaseMaterialButtonStyle}"
-        x:Key="MaterialElevatedButtonStyle">
-    <Setter Property="VisualStateManager.VisualStateGroups">
-        <VisualStateGroupList>
-            <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal">
-                    <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="{StaticResource GradientColor1}" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Disabled">
-                    <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="DarkGray" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateGroupList>
-    </Setter>
-</Style>
-``` 
-<br/>
-<br/>
 
 ### Property ButtonType:
 #### Allowed values
@@ -115,8 +67,20 @@ This property is to set a custom animation when the button is tapped.
 This property is to set the text of the button.
 <br/>
 
-### Property TextCoolor:
+### Property TextColor:
 This property is to set the color of the button text.
+<br/>
+
+### Property DisabledTextColor:
+This property is to set the disabled color of the button text.
+<br/>
+
+### Property BackgroundColor:
+This property is to set the background color of the button.
+<br/>
+
+### Property DisabledBackgroundColor:
+This property is to set the disabled background color of the button.
 <br/>
 
 ### Property FontSize:
@@ -137,6 +101,10 @@ This property is to set the corner radius of the button.
 
 ### Property BorderColor:
 This property is to set the border color of the button.
+<br/>
+
+### Property DisabledBorderColor:
+This property is to set the disabled border color of the button.
 <br/>
 
 ### Property BusyColor:

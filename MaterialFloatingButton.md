@@ -1,7 +1,7 @@
 # MaterialFloatingButton
 This control is a custom implementation of a floating action button. You can customize some properties that we show in Documentation topic. 
 <br/>
-[View Material Design documentation](https://material.io/components/buttons-floating-action-button)
+[View Material Design documentation](https://m3.material.io/components/floating-action-button/overview)
 
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.gif" width="300">

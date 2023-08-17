@@ -1,10 +1,9 @@
 # MaterialSwitch
 Switches toggle the state of a single item on or off.
 <br/>
-[View Material Design documentation](https://material.io/components/switches)
+[View Material Design documentation](https://m3.material.io/components/switch/overview)
 
 ## Screenshot
-<!-- TODO change this  -->
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch.gif" width="300">
 
 ## Example MaterialSwitch
@@ -19,74 +18,25 @@ Switches toggle the state of a single item on or off.
 <br/>
 
 ## Documentation
-We update this control to use VisualStateManager (See examble above). So we recommend use visual state to change the style of the control. 
-### Allowed States:
-- Normal
-- Disabled
-
-#### Example:
-
-Set style:
-
-```XML
-<Style TargetType="material3:MaterialSwitch">
-    <Setter Property="AnimateError"
-            Value="True" />
-    <Setter Property="SupportingTextColor"
-            Value="#c92726" />
-    <Setter Property="SupportingSize"
-            Value="12" />
-    <Setter Property="TextColor"
-            Value="#0d1a26" />
-    <Setter Property="VisualStateManager.VisualStateGroups">
-        <VisualStateGroupList>
-            <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal">
-                    <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="#0d1a26" />
-                        <Setter Property="BackgroundOnUnselectedColor"
-                                Value="#2e85cc" />
-                        <Setter Property="BackgroundOnSelectedColor"
-                                Value="#2e85cc" />
-                        <Setter Property="ThumbUnselectedColor"
-                                Value="#2e85cc" />
-                        <Setter Property="ThumbSelectedColor"
-                                Value="#0d2e85cc" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Disabled">
-                    <VisualState.Setters>
-                        <Setter Property="TextColor"
-                                Value="#828282" />
-                        <Setter Property="BackgroundOnUnselectedColor"
-                                Value="#2e85cc" />
-                        <Setter Property="BackgroundOnSelectedColor"
-                                Value="#2e85cc" />
-                        <Setter Property="ThumbUnselectedColor"
-                                Value="#2e85cc" />
-                        <Setter Property="ThumbSelectedColor"
-                                Value="#0d2e85cc" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateGroupList>
-    </Setter>
-</Style>
-``` 
-<br/>
-<br/>
-
-## Documentation
 <br/>
 
 ### Property BackgroundOnUnselectedColor
-This property is to set the backgroundcolor when the switch toggled is false.
+This property is to set the background color when the switch toggled is false.
 <br/>
 <br/>
 
-### Property BackgroundSelectedColor
-This property is to set the backgroundcolor when the switch toggled is true.
+### Property DisabledBackgroundOnUnselectedColor
+This property is to set the disabled background color when the switch toggled is false.
+<br/>
+<br/>
+
+### Property BackgroundOnSelectedColor
+This property is to set the background color when the switch toggled is true.
+<br/>
+<br/>
+
+### Property DisabledBackgroundOnSelectedColor
+This property is to set the disabled background color when the switch toggled is true.
 <br/>
 <br/>
 
@@ -105,8 +55,18 @@ This property is to set the thumb color when the switch toggled is false.
 <br/>
 <br/>
 
+### Property DisabledThumbUnselectedColor
+This property is to set the disabled thumb color when the switch toggled is false.
+<br/>
+<br/>
+
 ### Property ThumbSelectedColor
 This property is to set the thumb color when the switch toggled is true.
+<br/>
+<br/>
+
+### Property DisabledThumbSelectedColor
+This property is to set the disabled thumb color when the switch toggled is true.
 <br/>
 <br/>
 
@@ -137,6 +97,11 @@ This property is to set the text value.
 
 ### Property TextColor:
 This property is to set the color of the text when the control is enabled.
+<br/>
+<br/>
+
+### Property DisabledTextColor:
+This property is to set the color of the text when the control is disabled.
 <br/>
 <br/>
 

@@ -1,4 +1,5 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Styles;
 using Plugin.MaterialDesignControls.Utils;
 using System;
 using System.Runtime.CompilerServices;
@@ -13,6 +14,7 @@ namespace Plugin.MaterialDesignControls.Material3
     public partial class MaterialSwitch : ContentView
     {
         #region Constructors
+
         public MaterialSwitch()
         {
             if (!_initialized)
@@ -25,14 +27,15 @@ namespace Plugin.MaterialDesignControls.Material3
             SwitchPanUpdate += (sender, e) =>
             {
                 //Color Animation
-                Color fromColor = IsToggled ? BackgroundOnSelectedColor : BackgroundOnUnselectedColor;
-                Color toColor = IsToggled ? BackgroundOnUnselectedColor : BackgroundOnSelectedColor;
+                Color fromColor = IsToggled ? (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor) : (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor);
+                Color toColor = IsToggled ? (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor) : (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor);
 
                 double t = e.Percentage * 0.01;
 
                 BackgroundColor = ColorAnimationUtil.ColorAnimation(fromColor, toColor, t);
             };
         }
+
         #endregion Constructors
 
         #region Attributes
@@ -62,7 +65,7 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(BackgroundColorProperty, value);
         }
 
-        public static readonly BindableProperty BackgroundOnUnselectedColorProperty = BindableProperty.Create(nameof(BackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), Color.LightGray);
+        public static readonly BindableProperty BackgroundOnUnselectedColorProperty = BindableProperty.Create(nameof(BackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.SurfaceContainerHighestColor);
 
         public Color BackgroundOnUnselectedColor
         {
@@ -70,13 +73,30 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(BackgroundOnUnselectedColorProperty, value);
         }
 
-        public static readonly BindableProperty BackgroundOnSelectedColorProperty = BindableProperty.Create(nameof(BackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), Color.FromHex("#aca3db"));
+        public static readonly BindableProperty DisabledBackgroundOnUnselectedColorProperty = BindableProperty.Create(nameof(DisabledBackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableContainerColor);
+
+        public Color DisabledBackgroundOnUnselectedColor
+        {
+            get => (Color)GetValue(DisabledBackgroundOnUnselectedColorProperty);
+            set => SetValue(DisabledBackgroundOnUnselectedColorProperty, value);
+        }
+
+        public static readonly BindableProperty BackgroundOnSelectedColorProperty = BindableProperty.Create(nameof(BackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.PrimaryColor);
 
         public Color BackgroundOnSelectedColor
         {
             get => (Color)GetValue(BackgroundOnSelectedColorProperty);
             set => SetValue(BackgroundOnSelectedColorProperty, value);
         }
+
+        public static readonly BindableProperty DisabledBackgroundOnSelectedColorProperty = BindableProperty.Create(nameof(DisabledBackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableColor);
+
+        public Color DisabledBackgroundOnSelectedColor
+        {
+            get => (Color)GetValue(DisabledBackgroundOnSelectedColorProperty);
+            set => SetValue(DisabledBackgroundOnSelectedColorProperty, value);
+        }
+
         #endregion BackgroundColor
 
         #region Toggled
@@ -97,10 +117,12 @@ namespace Plugin.MaterialDesignControls.Material3
             get => (ICommand)GetValue(ToggledCommandProperty);
             set => SetValue(ToggledCommandProperty, value);
         }
+
         #endregion Toggled
 
         #region Thumb
-        public static readonly BindableProperty ThumbUnselectedColorProperty = BindableProperty.Create(nameof(ThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), Color.DarkGray);
+
+        public static readonly BindableProperty ThumbUnselectedColorProperty = BindableProperty.Create(nameof(ThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.OutlineColor);
 
         public Color ThumbUnselectedColor
         {
@@ -108,12 +130,28 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(ThumbUnselectedColorProperty, value);
         }
 
-        public static readonly BindableProperty ThumbSelectedColorProperty = BindableProperty.Create(nameof(ThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), Color.FromHex("#7364c3"));
+        public static readonly BindableProperty DisabledThumbUnselectedColorProperty = BindableProperty.Create(nameof(DisabledThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableColor);
+
+        public Color DisabledThumbUnselectedColor
+        {
+            get => (Color)GetValue(DisabledThumbUnselectedColorProperty);
+            set => SetValue(DisabledThumbUnselectedColorProperty, value);
+        }
+
+        public static readonly BindableProperty ThumbSelectedColorProperty = BindableProperty.Create(nameof(ThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.OnPrimaryColor);
 
         public Color ThumbSelectedColor
         {
             get => (Color)GetValue(ThumbSelectedColorProperty);
             set => SetValue(ThumbSelectedColorProperty, value);
+        }
+
+        public static readonly BindableProperty DisabledThumbSelectedColorProperty = BindableProperty.Create(nameof(DisabledThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableContainerColor);
+
+        public Color DisabledThumbSelectedColor
+        {
+            get => (Color)GetValue(DisabledThumbSelectedColorProperty);
+            set => SetValue(DisabledThumbSelectedColorProperty, value);
         }
 
         public static readonly BindableProperty SelectedIconProperty =
@@ -155,6 +193,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Thumb
 
         #region Text
+
         public static readonly BindableProperty TextProperty =
             BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialSwitch), defaultValue: string.Empty);
 
@@ -165,7 +204,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: DefaultStyles.TextColor);
 
         public Color TextColor
         {
@@ -173,8 +212,17 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(TextColorProperty, value); }
         }
 
+        public static readonly BindableProperty DisabledTextColorProperty =
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: DefaultStyles.TextColor);
+
+        public Color DisabledTextColor
+        {
+            get { return (Color)GetValue(DisabledTextColorProperty); }
+            set { SetValue(DisabledTextColorProperty, value); }
+        }
+
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialSwitch), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialSwitch), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
 
         public double FontSize
         {
@@ -183,7 +231,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: null);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: DefaultStyles.FontFamily);
 
         public string FontFamily
         {
@@ -208,9 +256,11 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (LayoutOptions)GetValue(TextVerticalOptionsProperty); }
             set { SetValue(TextVerticalOptionsProperty, value); }
         }
+
         #endregion Text
 
         #region SupportingText
+
         public static readonly BindableProperty SupportingTextProperty =
                     BindableProperty.Create(nameof(SupportingText), typeof(string), typeof(MaterialSwitch), defaultValue: null, validateValue: OnSupportingTextValidate);
 
@@ -221,7 +271,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextColorProperty =
-            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: DefaultStyles.ErrorColor);
 
         public Color SupportingTextColor
         {
@@ -230,7 +280,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialSwitch), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialSwitch), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
 
         public double SupportingSize
         {
@@ -239,7 +289,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingFontFamilyProperty =
-            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: null);
+            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: DefaultStyles.FontFamily);
 
         public string SupportingFontFamily
         {
@@ -257,13 +307,14 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialSwitch), defaultValue: false);
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialSwitch), defaultValue: DefaultStyles.AnimateError);
 
         public bool AnimateError
         {
             get { return (bool)GetValue(AnimateErrorProperty); }
             set { SetValue(AnimateErrorProperty, value); }
         }
+
         #endregion SupportingText
 
         public static readonly BindableProperty TextHorizontalOptionsProperty =
@@ -362,7 +413,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.AbortAnimation("SwitchAnimation");
                     _currentState = SwitchStateEnum.Left;
                     IsToggled = false;
-                    ThumbFrame.BackgroundColor = ThumbUnselectedColor;
+                    ThumbFrame.BackgroundColor = IsEnabled ? ThumbUnselectedColor : DisabledThumbUnselectedColor;
                     SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
                 });
             }
@@ -371,7 +422,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.AbortAnimation("SwitchAnimation");
                 _currentState = SwitchStateEnum.Left;
                 IsToggled = false;
-                ThumbFrame.BackgroundColor = ThumbUnselectedColor;
+                ThumbFrame.BackgroundColor = IsEnabled ? ThumbUnselectedColor : DisabledThumbUnselectedColor;
                 SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
             }
 
@@ -417,7 +468,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     this.AbortAnimation("SwitchAnimation");
                     _currentState = SwitchStateEnum.Right;
                     IsToggled = true;
-                    ThumbFrame.BackgroundColor = ThumbSelectedColor;
+                    ThumbFrame.BackgroundColor = IsEnabled ? ThumbSelectedColor : DisabledThumbSelectedColor;
                     SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
                 });
             }
@@ -426,7 +477,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.AbortAnimation("SwitchAnimation");
                 _currentState = SwitchStateEnum.Right;
                 IsToggled = true;
-                ThumbFrame.BackgroundColor = ThumbSelectedColor;
+                ThumbFrame.BackgroundColor = IsEnabled ? ThumbSelectedColor : DisabledThumbSelectedColor;
                 SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
             }
 
@@ -520,22 +571,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     base.OnPropertyChanged(propertyName);
                     break;
 
-                case nameof(BackgroundOnSelectedColor):
-                    InitializeSwitchPanUpdate();
-                    break;
-
-                case nameof(BackgroundOnUnselectedColor):
-                    InitializeSwitchPanUpdate();
-                    break;
-
                 case nameof(Text):
                     lblLeft.Text = Text;
                     lblRight.Text = Text;
                     break;
 
                 case nameof(TextColor):
+                case nameof(DisabledTextColor):
                     SetTextColor();
-                    SetEnabledState();
                     LoadControl();
                     break;
 
@@ -572,7 +615,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(IsEnabled):
                     sw.IsEnabled = IsEnabled;
                     SetTextColor();
-                    SetEnabledState();
                     LoadControl();
                     break;
 
@@ -649,14 +691,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetTextColor()
         {
-            lblLeft.TextColor = TextColor;
-            lblRight.TextColor = TextColor;
-        }
-
-        private void SetEnabledState()
-        {
-            var state = IsEnabled ? "Normal" : "Disabled";
-            VisualStateManager.GoToState(this, state);
+            lblLeft.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+            lblRight.TextColor = IsEnabled ? TextColor : DisabledTextColor;
         }
 
         private async Task SizeTo(double scale)
@@ -665,20 +701,6 @@ namespace Plugin.MaterialDesignControls.Material3
             Easing easing = Easing.Linear;
 
             await ThumbFrame.ScaleTo(scale, length, easing);
-        }
-
-        private void InitializeSwitchPanUpdate()
-        {
-            SwitchPanUpdate += (sender, e) =>
-            {
-                //Color Animation
-                Color fromColor = IsToggled ? BackgroundOnSelectedColor : BackgroundOnUnselectedColor;
-                Color toColor = IsToggled ? BackgroundOnUnselectedColor : BackgroundOnSelectedColor;
-
-                double t = e.Percentage * 0.01;
-
-                BackgroundColor = ColorAnimationUtil.ColorAnimation(fromColor, toColor, t);
-            };
         }
 
         #endregion Methods

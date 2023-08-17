@@ -1,7 +1,8 @@
 # MaterialSegmentedControl
-This control is a custom implementation of a segmented control. You can customize some properties that we show in Documentation topic. 
+This control is a custom implementation of a segmented control. You can customize some properties that we show in Documentation topic.
+<br/>
+[View Material Design documentation](https://m3.material.io/components/segmented-buttons/overview)
 
-<!-- TODO: change this -->
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/segmented.gif" width="300">
 

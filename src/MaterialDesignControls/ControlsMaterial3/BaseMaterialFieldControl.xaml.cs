@@ -1,5 +1,6 @@
 using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 using Plugin.MaterialDesignControls.Utils;
 using System;
 using System.Threading.Tasks;
@@ -12,46 +13,6 @@ namespace Plugin.MaterialDesignControls.Material3
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BaseMaterialFieldControl : ContentView
     {
-        #region Constructor
-
-        public BaseMaterialFieldControl()
-        {
-            if (!this.initialized)
-            {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
-
-            //Set by default Trailing and Leading command to focus control
-            this.imgLeadingIcon.Command = new Command(() =>
-            {
-                if (this is MaterialSelection materialSelection)
-                {
-                    if (materialSelection.IsEnabled && materialSelection.Command != null && materialSelection.Command.CanExecute(materialSelection.CommandParameter))
-                    {
-                        materialSelection.Command.Execute(materialSelection.CommandParameter);
-                    }
-                    return;
-                }
-                this.CustomContent.FocusControl();
-            });
-
-            this.imgTrailingIcon.Command = new Command(() =>
-            {
-                if (this is MaterialSelection materialSelection)
-                {
-                    if (materialSelection.IsEnabled && materialSelection.Command != null && materialSelection.Command.CanExecute(materialSelection.CommandParameter))
-                    {
-                        materialSelection.Command.Execute(materialSelection.CommandParameter);
-                    }
-                    return;
-                }
-                this.CustomContent.FocusControl();
-            });
-        }
-
-        #endregion Constructor
-
         #region Attributes
 
         private bool initialized = false;
@@ -86,7 +47,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(BaseMaterialFieldControl), defaultValue: false);
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.AnimateError);
 
         public bool AnimateError
         {
@@ -108,7 +69,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Text
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.TextColor);
 
         public Color TextColor
         {
@@ -116,8 +77,26 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(TextColorProperty, value); }
         }
 
+        public static readonly BindableProperty FocusedTextColorProperty =
+            BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.TextColor);
+
+        public Color FocusedTextColor
+        {
+            get { return (Color)GetValue(FocusedTextColorProperty); }
+            set { SetValue(FocusedTextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledTextColorProperty =
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.DisableColor);
+
+        public Color DisabledTextColor
+        {
+            get { return (Color)GetValue(DisabledTextColorProperty); }
+            set { SetValue(DisabledTextColorProperty, value); }
+        }
+
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
 
         public double FontSize
         {
@@ -126,7 +105,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.FontFamily);
 
         public string FontFamily
         {
@@ -148,7 +127,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty PlaceholderColorProperty =
-            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
 
         public Color PlaceholderColor
         {
@@ -179,7 +158,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
 
         public Color LabelTextColor
         {
@@ -187,8 +166,26 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(LabelTextColorProperty, value); }
         }
 
+        public static readonly BindableProperty FocusedLabelTextColorProperty =
+            BindableProperty.Create(nameof(FocusedLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.PrimaryColor);
+
+        public Color FocusedLabelTextColor
+        {
+            get { return (Color)GetValue(FocusedLabelTextColorProperty); }
+            set { SetValue(FocusedLabelTextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledLabelTextColorProperty =
+            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+
+        public Color DisabledLabelTextColor
+        {
+            get { return (Color)GetValue(DisabledLabelTextColorProperty); }
+            set { SetValue(DisabledLabelTextColorProperty, value); }
+        }
+
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
 
         public double LabelSize
         {
@@ -197,7 +194,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelFontFamilyProperty =
-            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.FontFamily);
 
         public string LabelFontFamily
         {
@@ -237,7 +234,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextColorProperty =
-            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.ErrorColor);
 
         public Color SupportingTextColor
         {
@@ -246,7 +243,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
 
         public double SupportingSize
         {
@@ -255,7 +252,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingFontFamilyProperty =
-            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.FontFamily);
 
         public string SupportingFontFamily
         {
@@ -335,12 +332,30 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Border
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
 
         public Color BorderColor
         {
             get { return (Color)GetValue(BorderColorProperty); }
             set { SetValue(BorderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty FocusedBorderColorProperty =
+            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.PrimaryColor);
+
+        public Color FocusedBorderColor
+        {
+            get { return (Color)GetValue(FocusedBorderColorProperty); }
+            set { SetValue(FocusedBorderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledBorderColorProperty =
+            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.DisableColor);
+
+        public Color DisabledBorderColor
+        {
+            get { return (Color)GetValue(DisabledBorderColorProperty); }
+            set { SetValue(DisabledBorderColorProperty, value); }
         }
 
         public static readonly BindableProperty HasBorderProperty =
@@ -366,7 +381,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Indicator
 
         public static readonly BindableProperty IndicatorColorProperty =
-            BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.DarkGray);
+            BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
 
         public Color IndicatorColor
         {
@@ -374,18 +389,55 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(IndicatorColorProperty, value); }
         }
 
+        public static readonly BindableProperty FocusedIndicatorColorProperty =
+            BindableProperty.Create(nameof(FocusedIndicatorColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.PrimaryColor);
+
+        public Color FocusedIndicatorColor
+        {
+            get { return (Color)GetValue(FocusedIndicatorColorProperty); }
+            set { SetValue(FocusedIndicatorColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledIndicatorColorProperty =
+            BindableProperty.Create(nameof(DisabledIndicatorColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.DisableColor);
+
+        public Color DisabledIndicatorColor
+        {
+            get { return (Color)GetValue(DisabledIndicatorColorProperty); }
+            set { SetValue(DisabledIndicatorColorProperty, value); }
+        }
+
         #endregion Indicator
 
         #region Background
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
 
         public new Color BackgroundColor
         {
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
         }
+
+        public static readonly BindableProperty FocusedBackgroundColorProperty =
+            BindableProperty.Create(nameof(FocusedBackgroundColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
+
+        public Color FocusedBackgroundColor
+        {
+            get { return (Color)GetValue(FocusedBackgroundColorProperty); }
+            set { SetValue(FocusedBackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledBackgroundColorProperty =
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(BaseMaterialFieldControl), defaultValue: DefaultStyles.DisableContainerColor);
+
+        public Color DisabledBackgroundColor
+        {
+            get { return (Color)GetValue(DisabledBackgroundColorProperty); }
+            set { SetValue(DisabledBackgroundColorProperty, value); }
+        }
+
         #endregion Background
 
         #region Icons
@@ -496,6 +548,47 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion Events
 
+        #region Constructor
+
+        public BaseMaterialFieldControl()
+        {
+            if (!this.initialized)
+            {
+                this.initialized = true;
+                this.InitializeComponent();
+                InitializeDefaults();
+            }
+
+            //Set by default Trailing and Leading command to focus control
+            this.imgLeadingIcon.Command = new Command(() =>
+            {
+                if (this is MaterialSelection materialSelection)
+                {
+                    if (materialSelection.IsEnabled && materialSelection.Command != null && materialSelection.Command.CanExecute(materialSelection.CommandParameter))
+                    {
+                        materialSelection.Command.Execute(materialSelection.CommandParameter);
+                    }
+                    return;
+                }
+                this.CustomContent.FocusControl();
+            });
+
+            this.imgTrailingIcon.Command = new Command(() =>
+            {
+                if (this is MaterialSelection materialSelection)
+                {
+                    if (materialSelection.IsEnabled && materialSelection.Command != null && materialSelection.Command.CanExecute(materialSelection.CommandParameter))
+                    {
+                        materialSelection.Command.Execute(materialSelection.CommandParameter);
+                    }
+                    return;
+                }
+                this.CustomContent.FocusControl();
+            });
+        }
+
+        #endregion Constructor
+
         #region Methods
 
         private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
@@ -524,17 +617,61 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected void SetLabelTextColor()
         {
-            this.lblLabel.TextColor = LabelTextColor;
+            if (!IsEnabled)
+                lblLabel.TextColor = DisabledLabelTextColor;
+            else if (CustomContent.IsControlFocused())
+                lblLabel.TextColor = FocusedLabelTextColor;
+            else
+                lblLabel.TextColor = LabelTextColor;
         }
 
         private void SetBorderAndBackgroundColors()
         {
             if (CustomContent == null) return;
 
-            this.frmContainer.BackgroundColor = BackgroundColor;
-            this.frmContainer.BorderColor = HasBorder ? BorderColor : Color.Transparent;
-            this.indicator.Color = IndicatorColor;
-            this.frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
+            if (!IsEnabled)
+            {
+                frmContainer.BackgroundColor = DisabledBackgroundColor;
+                frmContainer.BorderColor = HasBorder ? DisabledBorderColor : Color.Transparent;
+                indicator.Color = DisabledIndicatorColor;
+            }
+            else if (CustomContent.IsControlFocused())
+            {
+                frmContainer.BackgroundColor = FocusedBackgroundColor;
+                frmContainer.BorderColor = HasBorder ? FocusedBorderColor : Color.Transparent;
+                indicator.Color = FocusedIndicatorColor;
+            }
+            else
+            {
+                frmContainer.BackgroundColor = BackgroundColor;
+                frmContainer.BorderColor = HasBorder ? BorderColor : Color.Transparent;
+                indicator.Color = IndicatorColor;
+            }
+
+            frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
+        }
+
+        public void InitializeDefaults()
+        {
+            SetLabelTextColor();
+            SetBorderAndBackgroundColors();
+
+            if (!IsEnabled)
+                CustomContent.SetTextColor(DisabledTextColor);
+            else if (CustomContent.IsControlFocused())
+                CustomContent.SetTextColor(FocusedTextColor);
+            else
+                CustomContent.SetTextColor(TextColor);
+
+            CustomContent.SetFontSize(FontSize);
+            CustomContent.SetPlaceholderColor(PlaceholderColor);
+            CustomContent.SetFontFamily(FontFamily);
+            SetAnimatedLabel();
+            lblLabel.FontSize = LabelSize;
+            lblLabel.FontFamily = FontFamily;
+            lblSupporting.FontFamily = FontFamily;
+            lblSupporting.TextColor = SupportingTextColor;
+            lblSupporting.FontSize = SupportingSize;
         }
 
         public void UpdateLayout(string propertyName)
@@ -543,21 +680,32 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 this.initialized = true;
                 InitializeComponent();
+                InitializeDefaults();
             }
 
             switch (propertyName)
             {
                 case nameof(IsEnabled):
                     CustomContent.SetIsEnabled(IsEnabled);
-                    CustomContent.SetTextColor(TextColor);
+
+                    if (!IsEnabled)
+                        CustomContent.SetTextColor(DisabledTextColor);
+                    else if (CustomContent.IsControlFocused())
+                        CustomContent.SetTextColor(FocusedTextColor);
+                    else
+                        CustomContent.SetTextColor(TextColor);
+
                     SetLabelTextColor();
                     this.lblLabel.TextColor = LabelTextColor;
                     SetBorderAndBackgroundColors();
-                    var state = IsEnabled ? "Normal" : "Disabled";
-                    VisualStateManager.GoToState(this, state);
                     break;
                 case nameof(TextColor):
-                    CustomContent.SetTextColor(TextColor);
+                    if (!IsEnabled)
+                        CustomContent.SetTextColor(DisabledTextColor);
+                    else if (CustomContent.IsControlFocused())
+                        CustomContent.SetTextColor(FocusedTextColor);
+                    else
+                        CustomContent.SetTextColor(TextColor);
                     break;
                 case nameof(FontSize):
                     CustomContent.SetFontSize(FontSize);
@@ -748,10 +896,15 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public async Task SetFocusChange()
         {
-            var state = CustomContent.IsControlFocused() ? "Focused" : CustomContent.IsControlEnabled() ? "Normal" : "Disabled";
-            VisualStateManager.GoToState(this, state);
             SetLabelTextColor();
-            CustomContent.SetTextColor(TextColor);
+
+            if (!IsEnabled)
+                CustomContent.SetTextColor(DisabledTextColor);
+            else if (CustomContent.IsControlFocused())
+                CustomContent.SetTextColor(FocusedTextColor);
+            else
+                CustomContent.SetTextColor(TextColor);
+
             SetBorderAndBackgroundColors();
 
             if (CustomContent.IsControlFocused())

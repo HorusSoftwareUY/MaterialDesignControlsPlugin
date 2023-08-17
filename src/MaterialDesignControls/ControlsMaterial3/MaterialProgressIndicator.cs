@@ -47,7 +47,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TrackColorProperty =
-            BindableProperty.Create(nameof(TrackColor), typeof(Color), typeof(MaterialProgressIndicator), defaultValue: Color.DarkGray);
+            BindableProperty.Create(nameof(TrackColor), typeof(Color), typeof(MaterialProgressIndicator), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
 
         public Color TrackColor
         {

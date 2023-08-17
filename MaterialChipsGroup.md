@@ -1,7 +1,7 @@
 # MaterialChipsGroup
 Chips are compact elements that represent an input, attribute, or action.
 <br/>
-[View Material Design documentation](https://material.io/components/chips)
+[View Material Design documentation](https://m3.material.io/components/chips/overview)
 
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.gif" width="300">

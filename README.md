@@ -40,7 +40,7 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialTopAppBar](#materialtopappbar)
 - [MaterialProgressIndicator](#materialprogressindicator)
 - [MaterialBadge](#materialbadge)
-- [MaterialNAvigationDrawer](#materialnavigationdrawer)
+- [MaterialNavigationDrawer](#materialnavigationdrawer)
 
 
 ## Setup
@@ -267,7 +267,7 @@ TopAppBar displays information and actions at the top of a screen.
 ### MaterialProgressIndicator
 MaterialProgressIndicator show the status of a process in real time
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materialprogressindicator_preview.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/progress_preview.png" width="300">
 <br/>
 [View documentation](MaterialProgressIndicator.md)
 
@@ -276,7 +276,7 @@ MaterialProgressIndicator show the status of a process in real time
 ### MaterialLabel
 MaterialLabel helps make writing legible and beautiful
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materiallabel_preview.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/label_preview.png" width="300">
 <br/>
 [View documentation](MaterialLabelControl.md)
 
@@ -285,17 +285,16 @@ MaterialLabel helps make writing legible and beautiful
 ### MaterialBadge
 Badges show notifications, counts, or status information on navigation items and icons
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materialbadge_preview.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/badge_preview.png" width="300">
 <br/>
 [View documentation](MaterialBadgeControl.md)
 
 ---
 
-### MaterialBadge
+### MaterialNavigationDrawer
 Navigation drawers let people switch between UI views on larger devices
 <br/>
-<!-- TODO: update preview  -->
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/materialbadge_preview.png" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/navigation_preview.png" width="300">
 <br/>
 [View documentation](MaterialNavigationDrawerControl.md)
 
