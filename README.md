@@ -40,7 +40,7 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialTopAppBar](#materialtopappbar)
 - [MaterialProgressIndicator](#materialprogressindicator)
 - [MaterialBadge](#materialbadge)
-- [MaterialNAvigationDrawer](#materialnavigationdrawer)
+- [MaterialNavigationDrawer](#materialnavigationdrawer)
 
 
 ## Setup
