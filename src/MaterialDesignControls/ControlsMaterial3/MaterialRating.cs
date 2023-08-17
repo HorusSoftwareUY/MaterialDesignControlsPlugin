@@ -1,7 +1,10 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Objects;
 using Plugin.MaterialDesignControls.Styles;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
@@ -38,6 +41,34 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Properties
 
+        public static readonly BindableProperty UseSameIconProperty =
+            BindableProperty.Create(nameof(UseSameIcon), typeof(bool), typeof(MaterialRating), defaultValue: true);
+
+        public bool UseSameIcon
+        {
+            get { return (bool)GetValue(UseSameIconProperty); }
+            set { SetValue(UseSameIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomSelectedIconsSourceProperty =
+            BindableProperty.Create(nameof(CustomSelectedIconsSource), typeof(IEnumerable<DataTemplate>), typeof(MaterialRating), defaultValue: null);
+
+        public IEnumerable<DataTemplate> CustomSelectedIconsSource
+        {
+            get { return (IEnumerable<DataTemplate>)GetValue(CustomSelectedIconsSourceProperty); }
+            set { SetValue(CustomSelectedIconsSourceProperty, value); }
+        }
+
+
+        public static readonly BindableProperty SelectedIconsSourceProperty =
+            BindableProperty.Create(nameof(SelectedIconsSource), typeof(IEnumerable<string>), typeof(MaterialRating), defaultValue: null);
+
+        public IEnumerable<string> SelectedIconsSource
+        {
+            get { return (IEnumerable<string>)GetValue(SelectedIconsSourceProperty); }
+            set { SetValue(SelectedIconsSourceProperty, value); }
+        }
+
         public static readonly BindableProperty SelectedIconProperty =
             BindableProperty.Create(nameof(SelectedIcon), typeof(string), typeof(MaterialRating), defaultValue: null);
 
@@ -65,13 +96,32 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(UnSelectedIconProperty, value); }
         }
 
-        public static readonly BindableProperty CustomUnSelectedIconProperty =
-            BindableProperty.Create(nameof(CustomUnSelectedIcon), typeof(DataTemplate), typeof(MaterialRating), defaultValue: null);
+        public static readonly BindableProperty CustomUnselectedIconProperty =
+            BindableProperty.Create(nameof(CustomUnselectedIcon), typeof(DataTemplate), typeof(MaterialRating), defaultValue: null);
 
-        public DataTemplate CustomUnSelectedIcon
+        public DataTemplate CustomUnselectedIcon
         {
-            get { return (DataTemplate)GetValue(CustomUnSelectedIconProperty); }
-            set { SetValue(CustomUnSelectedIconProperty, value); }
+            get { return (DataTemplate)GetValue(CustomUnselectedIconProperty); }
+            set { SetValue(CustomUnselectedIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomUnselectedIconsSourceProperty =
+            BindableProperty.Create(nameof(CustomUnselectedIconsSource), typeof(IEnumerable<DataTemplate>), typeof(MaterialRating), defaultValue: null);
+
+        public IEnumerable<DataTemplate> CustomUnselectedIconsSource
+        {
+            get { return (IEnumerable<DataTemplate>)GetValue(CustomUnselectedIconsSourceProperty); }
+            set { SetValue(CustomUnselectedIconsSourceProperty, value); }
+        }
+
+
+        public static readonly BindableProperty UnselectedIconsSourceProperty =
+            BindableProperty.Create(nameof(UnselectedIconsSource), typeof(IEnumerable<string>), typeof(MaterialRating), defaultValue: null);
+
+        public IEnumerable<string> UnselectedIconsSource
+        {
+            get { return (IEnumerable<string>)GetValue(UnselectedIconsSourceProperty); }
+            set { SetValue(UnselectedIconsSourceProperty, value); }
         }
 
         public static readonly BindableProperty ItemSizeProperty =
@@ -285,9 +335,14 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(UnSelectedIcon):
                 case nameof(CustomSelectedIcon):
                 case nameof(SelectedIcon):
-                case nameof(CustomUnSelectedIcon):
+                case nameof(CustomUnselectedIcon):
                 case nameof(AnimationParameter):
                 case nameof(Animation):
+                case nameof(UseSameIcon):
+                case nameof(this.CustomSelectedIconsSource):
+                case nameof(SelectedIconsSource):
+                case nameof(CustomUnselectedIconsSource):
+                case nameof(UnselectedIconsSource):
                     SetGridContent();
                     break;
                 case nameof(LabelText):
@@ -319,8 +374,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetGridContent()
         {
-            if (!ItemSize.HasValue || (String.IsNullOrEmpty(SelectedIcon) && CustomSelectedIcon == null)
-                                || (String.IsNullOrEmpty(UnSelectedIcon) && CustomUnSelectedIcon == null)
+            if (!ItemSize.HasValue || (UseSameIcon && String.IsNullOrEmpty(SelectedIcon) && CustomSelectedIcon == null)
+                                || (UseSameIcon && String.IsNullOrEmpty(UnSelectedIcon) && CustomUnselectedIcon == null)
+                                 || (!UseSameIcon && SelectedIconsSource is null && CustomSelectedIconsSource is null)
+                                 || (!UseSameIcon && CustomUnselectedIconsSource is null && UnselectedIconsSource is null)
                                 || !ItemsByRow.HasValue)
                 return;
 
@@ -375,7 +432,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     customImageButton.SetValue(Grid.RowProperty, i);
                     customImageButton.SetValue(Grid.ColumnProperty, j);
 
-                    SetIconsRatingControl(customImageButton, Value, this);
+                    SetIconsRatingControl(customImageButton, Value, this, populatedObjects - 1);
 
                     _grid.Children.Add(customImageButton);
                 }
@@ -413,28 +470,82 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             if (bindable is MaterialRating control && newValue != null && int.TryParse(newValue.ToString(), out int value))
             {
+                int idxPosition = 0;
                 foreach (CustomImageButton item in control._grid.Children)
                 {
-                    SetIconsRatingControl(item, value, control);
+                    SetIconsRatingControl(item, value, control, idxPosition++);
                 }
             }
         }
 
-        public static void SetIconsRatingControl(CustomImageButton item, int value, MaterialRating control)
+        public static void SetIconsRatingControl(CustomImageButton item, int value, MaterialRating control, int position)
         {
             if (item.CommandParameter != null && (int)item.CommandParameter <= value)
             {
-                if (!string.IsNullOrEmpty(control.SelectedIcon))
-                    item.SetImage(control.SelectedIcon);
-                else if (control.CustomSelectedIcon != null)
-                    item.SetCustomImage(control.CustomSelectedIcon.CreateContent() as View);
+                if (control.UseSameIcon)
+                {
+                    if (!string.IsNullOrEmpty(control.SelectedIcon))
+                        item.SetImage(control.SelectedIcon);
+                    else if (control.CustomSelectedIcon != null)
+                        item.SetCustomImage(control.CustomSelectedIcon.CreateContent() as View);
+                }
+                else
+                {
+                    if (control.SelectedIconsSource != null && position >= 0 && position < control.SelectedIconsSource.Count())
+                    {
+                        var selectedIcon = control.SelectedIconsSource.ElementAtOrDefault(position);
+
+                        if (!string.IsNullOrWhiteSpace(selectedIcon))
+                        {
+                            item.SetImage(selectedIcon);
+                            return;
+                        }
+                    }
+
+                    if (control.CustomSelectedIconsSource != null && position >= 0 && position < control.CustomSelectedIconsSource.Count())
+                    {
+                        var customSelectedIcon = control.CustomSelectedIconsSource.ElementAtOrDefault(position);
+                        if (customSelectedIcon is not null)
+                        {
+                            item.SetCustomImage(customSelectedIcon.CreateContent() as View);
+                            return;
+                        }
+                    }
+                }
             }
             else
             {
-                if (!string.IsNullOrEmpty(control.UnSelectedIcon))
-                    item.SetImage(control.UnSelectedIcon);
-                else if (control.CustomUnSelectedIcon != null)
-                    item.SetCustomImage(control.CustomUnSelectedIcon.CreateContent() as View);
+                if (control.UseSameIcon)
+                {
+                    if (!string.IsNullOrEmpty(control.UnSelectedIcon))
+                        item.SetImage(control.UnSelectedIcon);
+                    else if (control.CustomUnselectedIcon != null)
+                        item.SetCustomImage(control.CustomUnselectedIcon.CreateContent() as View);
+                }
+                else
+                {
+                    if (control.UnselectedIconsSource != null && position >= 0 && position < control.UnselectedIconsSource.Count())
+                    {
+                        var unselectedIcon = control.UnselectedIconsSource.ElementAtOrDefault(position);
+
+                        if (!string.IsNullOrWhiteSpace(unselectedIcon))
+                        {
+                            item.SetImage(unselectedIcon);
+                            return;
+                        }
+                    }
+
+                    if (control.CustomUnselectedIconsSource != null && position >= 0 && position < control.CustomUnselectedIconsSource.Count())
+                    {
+                        var customUnselectedIcon = control.CustomUnselectedIconsSource.ElementAtOrDefault(position);
+                        if (customUnselectedIcon is not null)
+                        {
+                            item.SetCustomImage(customUnselectedIcon.CreateContent() as View);
+                            return;
+                        }
+                    }
+                }
+                
             }
         }
 
