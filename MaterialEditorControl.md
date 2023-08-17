@@ -1,7 +1,7 @@
 # MaterialEditor
 Text fields let users enter and edit text.
 <br/>
-[View Material Design documentation](https://material.io/components/text-fields)
+[View Material Design documentation](https://m3.material.io/components/text-fields/overview)
 
 ## Screenshot
 <!-- TODO: Change this  -->

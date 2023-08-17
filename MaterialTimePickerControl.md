@@ -1,7 +1,7 @@
 # MaterialTimePicker
 Time pickers let users select a time.
 <br/>
-[View Material Design documentation](https://material.io/components/time-pickers)
+[View Material Design documentation](https://m3.material.io/components/time-pickers/overview)
 
 ## Screenshot
 <!-- TODO: Change this  -->

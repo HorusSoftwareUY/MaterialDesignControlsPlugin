@@ -1,7 +1,7 @@
 # MAterialBadge
 Badges show notifications, counts, or status information on navigation items and icons
 <br/>
-[View Material Design documentation](https://material.io/components/buttons)
+[View Material Design documentation](https://m3.material.io/components/badges/overview)
 
 ## Screenshot
 

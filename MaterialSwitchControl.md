@@ -1,7 +1,7 @@
 # MaterialSwitch
 Switches toggle the state of a single item on or off.
 <br/>
-[View Material Design documentation](https://material.io/components/switches)
+[View Material Design documentation](https://m3.material.io/components/switch/overview)
 
 ## Screenshot
 <!-- TODO change this  -->

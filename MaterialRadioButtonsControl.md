@@ -1,7 +1,7 @@
 # MaterialRadioButtons
 This control is a custom implementation of a radiobuttons. You can customize some properties that we show in Documentation topic. 
 <br/>
-[View Material Design documentation](https://material.io/components/radio-buttons)
+[View Material Design documentation](https://m3.material.io/components/radio-button/overview)
 
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.gif" width="300">

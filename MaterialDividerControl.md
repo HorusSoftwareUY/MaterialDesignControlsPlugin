@@ -1,7 +1,7 @@
 # MaterialDivider
 A divider is a thin line that groups content in lists and layouts.
 <br/>
-[View Material Design documentation](https://material.io/components/dividers)
+[View Material Design documentation](https://m3.material.io/components/divider/overview)
 
 ## Screenshot
 

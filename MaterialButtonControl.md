@@ -1,7 +1,7 @@
 # MaterialButton
 Buttons allow users to take actions, and make choices, with a single tap.
 <br/>
-[View Material Design documentation](https://material.io/components/buttons)
+[View Material Design documentation](https://m3.material.io/components/buttons/overview)
 
 ## Screenshot
 

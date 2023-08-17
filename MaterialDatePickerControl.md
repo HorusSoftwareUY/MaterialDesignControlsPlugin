@@ -1,7 +1,7 @@
 # MaterialDatePicker
 Date pickers let users select a date.
 <br/>
-[View Material Design documentation](https://material.io/components/date-pickers)
+[View Material Design documentation](https://m3.material.io/components/date-pickers/overview)
 
 ## Screenshot
 <!-- TODO: Change this  -->
