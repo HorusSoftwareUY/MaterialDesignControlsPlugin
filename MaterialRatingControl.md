@@ -8,7 +8,7 @@ This control allow to rate. You can customize some properties that we show in Do
 
 ## Example MaterialRating
 ```XML
-<material:MaterialRatingControl 
+<material3:MaterialRatingControl 
     x:Name="mrcWithoutSelectionPng"    
     LabelText="How do you rate...?(png icons)"   
     ItemSize="5"                                             
@@ -23,6 +23,22 @@ This control allow to rate. You can customize some properties that we show in Do
 ## Documentation
 <br/>
 
+
+### Property UseSameIcon:
+This property is to set if use the same icon for all items or use a different icon for item.
+<br/>
+<br/>
+
+### Property CustomSelectedIconsSource:
+This property is to set the icons for all items when an item is selected, you can use svgs. (Icon from first item is the first icon in the collection)
+<br/>
+<br/>
+
+### Property SelectedIconsSource:
+This property is to set the icons for all items when an item is selected, You can use image file types like png, jpg, etc. (Icon from first item is the first icon in the collection)
+<br/>
+<br/>
+
 ### Property SelectedIcon:
 This property is to select the icon that the control will use to selected item. You can use image file types like png, jpg, etc.
 <br/>
@@ -33,13 +49,23 @@ This property is to select the icon that the control will use to selected item. 
 <br/>
 <br/>
 
-### Property UnSelectedIcon:
+### Property UnselectedIcon:
 This property is to select the icon that the control will use to unselected items. You can use image file types like png, jpg, etc.
 <br/>
 <br/>
 
-### Property CustomUnSelectedIcon:
+### Property CustomUnselectedIcon:
 This property is to select the icon that the control will use to unselected items. You can use svgs.
+<br/>
+<br/>
+
+### Property CustomUnselectedIconsSource:
+This property is to set the icons for all items when an item is unselected, you can use svgs. (Icon from first item is the first icon in the collection)
+<br/>
+<br/>
+
+### Property UnelectedIconsSource:
+This property is to set the icons for all items when an item is unselected, You can use image file types like png, jpg, etc. (Icon from first item is the first icon in the collection)
 <br/>
 <br/>
 
