@@ -73,7 +73,6 @@
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialNavigationDrawer.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
-    <Compile Include="ControlsMaterial3\MaterialRating.cs" />
     <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
     <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
     <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
@@ -150,10 +149,6 @@
     <Compile Include="Objects\MaterialNavigationDrawerItem.cs" />
     <Compile Include="Objects\MaterialSegmentedItem.cs" />
     <Compile Include="TextTransforms.cs" />
-    <Compile Include="ControlsMaterial2\MaterialCustomControl.xaml.cs">
-      <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Utils\ColorAnimationUtil.cs" />
     <Compile Include="Utils\LoggerHelper.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialSegmented.xaml.cs">
@@ -195,6 +190,12 @@
     <Compile Include="ControlsMaterial3\MaterialDivider.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialLabel.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialDivider.cs" />
+    <Compile Include="ControlsMaterial3\MaterialCustomControl.cs" />
+    <Compile Include="ControlsMaterial3\MaterialRating.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialCustomControl.xaml.cs">
+      <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
