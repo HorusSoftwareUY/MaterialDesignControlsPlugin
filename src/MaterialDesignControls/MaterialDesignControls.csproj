@@ -51,7 +51,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="ControlsMaterial2\MaterialRatingControl.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialRatingControl.xaml.cs">
       <DependentUpon>MaterialRatingControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -149,10 +149,6 @@
     <Compile Include="Objects\MaterialNavigationDrawerItem.cs" />
     <Compile Include="Objects\MaterialSegmentedItem.cs" />
     <Compile Include="TextTransforms.cs" />
-    <Compile Include="ControlsMaterial2\MaterialCustomControl.xaml.cs">
-      <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Utils\ColorAnimationUtil.cs" />
     <Compile Include="Utils\LoggerHelper.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialSegmented.xaml.cs">
@@ -194,6 +190,12 @@
     <Compile Include="ControlsMaterial3\MaterialDivider.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialLabel.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialDivider.cs" />
+    <Compile Include="ControlsMaterial3\MaterialCustomControl.cs" />
+    <Compile Include="ControlsMaterial3\MaterialRating.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialCustomControl.xaml.cs">
+      <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

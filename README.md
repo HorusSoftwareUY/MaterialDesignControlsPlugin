@@ -300,6 +300,15 @@ Navigation drawers let people switch between UI views on larger devices
 
 ---
 
+### MaterialCustomControl
+This control provides a simple way to create custom controls with labels and support text that follow the Material Design Guidelines.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/customcontrol_preview.png" width="300">
+<br/>
+[View documentation](MaterialCustomControl.md)
+
+---
+
 <br/>
 
 ## Effects

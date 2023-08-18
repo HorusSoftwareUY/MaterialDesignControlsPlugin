@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialRatingControl is deprecated, please use MaterialRating of Material 3 instead.")]
     public partial class MaterialRatingControl : ContentView
     {
         #region Constructors

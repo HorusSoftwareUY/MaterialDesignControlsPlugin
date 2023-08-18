@@ -1,8 +1,10 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
+    [Obsolete("MaterialDivider is deprecated, please use MaterialDivider of Material 3 instead.")]
     public class MaterialDivider : BoxView
     {
         private bool Initialized = false;
