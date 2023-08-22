@@ -19,7 +19,7 @@
             </Style>
         </ResourceDictionary>
     </controls:BaseMaterialCheckBoxes.Resources>
-    <controls:BaseMaterialCheckboxes.Content>
+    <controls:BaseMaterialCheckBoxes.Content>
         <StackLayout Spacing="0"
                      VerticalOptions="Center">
             <StackLayout x:Name="container"
@@ -74,5 +74,5 @@
                                     Margin="14,2,14,0"
                                     HorizontalTextAlignment="Start" />
         </StackLayout>
-    </controls:BaseMaterialCheckboxes.Content>
+    </controls:BaseMaterialCheckBoxes.Content>
 </controls:BaseMaterialCheckBoxes>
