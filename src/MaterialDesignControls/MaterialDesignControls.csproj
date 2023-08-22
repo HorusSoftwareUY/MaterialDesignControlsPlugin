@@ -59,12 +59,14 @@
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ControlsMaterial3\BaseMaterialCheckBoxes.cs" />
     <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.xaml.cs">
       <DependentUpon>BaseMaterialFieldControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
     <Compile Include="ControlsMaterial3\MaterialBadge.cs" />
+    <Compile Include="ControlsMaterial3\MaterialCheckbox.xaml.cs" />
     <Compile Include="ControlsMaterial3\MaterialChips.cs" />
     <Compile Include="ControlsMaterial3\MaterialChipsGroup.cs" />
     <Compile Include="ControlsMaterial3\MaterialDatePicker.cs" />
@@ -155,11 +157,11 @@
       <DependentUpon>MaterialSegmented.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialCheckbox.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialCheckbox.xaml.cs">
       <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\BaseMaterialCheckboxes.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\BaseMaterialCheckboxes.cs" />
     <Compile Include="TextSide.cs" />
     <Compile Include="ControlsMaterial2\MaterialRadioButtons.xaml.cs">
       <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
@@ -216,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ControlsMaterial3\MaterialCheckbox.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
