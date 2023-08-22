@@ -19,7 +19,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.TextColor);
 
         public Color TextColor
         {
@@ -28,7 +28,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledTextColor
         {
@@ -37,7 +37,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
 
         public double FontSize
         {
@@ -77,7 +77,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
 
         public double SupportingSize
         {
@@ -315,7 +315,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
-        protected void UpdateLayout(string propertyName, StackLayout container, Label lblAssistive)
+        protected void UpdateLayout(string propertyName, StackLayout container, Label lblSupporting)
         {
             switch (propertyName)
             {
@@ -339,22 +339,22 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetIsEnabled();
                     break;
                 case nameof(SupportingText):
-                    lblAssistive.Text = SupportingText;
-                    lblAssistive.IsVisible = !string.IsNullOrEmpty(SupportingText);
+                    lblSupporting.Text = SupportingText;
+                    lblSupporting.IsVisible = !string.IsNullOrEmpty(SupportingText);
                     if (AnimateError && !string.IsNullOrEmpty(SupportingText))
                         Device.BeginInvokeOnMainThread(() => { ShakeAnimation.Animate(this); });
                     break;
                 case nameof(SupportingTextColor):
-                    lblAssistive.TextColor = SupportingTextColor;
+                    lblSupporting.TextColor = SupportingTextColor;
                     break;
                 case nameof(SupportingSize):
-                    lblAssistive.FontSize = SupportingSize;
+                    lblSupporting.FontSize = SupportingSize;
                     break;
                 case nameof(SupportingFontFamily):
-                    lblAssistive.FontFamily = SupportingFontFamily;
+                    lblSupporting.FontFamily = SupportingFontFamily;
                     break;
                 case nameof(SupportingMargin):
-                    lblAssistive.Margin = SupportingMargin;
+                    lblSupporting.Margin = SupportingMargin;
                     break;
 
             }

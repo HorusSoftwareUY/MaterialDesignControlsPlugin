@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <controls:BaseMaterialCheckBoxes xmlns="http://xamarin.com/schemas/2014/forms"
                                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                                 xmlns:controls="clr-namespace: Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+                                 xmlns:controls="clr-namespace:Plugin.MaterialDesignControls.Material3"
                                  xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
                                  x:Class="Plugin.MaterialDesignControls.Material3.MaterialCheckbox">
     <controls:BaseMaterialCheckBoxes.Resources>
@@ -37,13 +37,13 @@
                               x:Name="chk"
                               VerticalOptions="Center"
                               HorizontalOptions="Center"
-                              HeightRequest="18"
-                              WidthRequest="18" />
+                              HeightRequest="25"
+                              WidthRequest="25" />
                     <BoxView Grid.Column="0"
                              HorizontalOptions="Center"
                              VerticalOptions="Center"
-                             WidthRequest="18"
-                             HeightRequest="18" />
+                             WidthRequest="25"
+                             HeightRequest="25" />
                 </Grid>
                 <Grid x:Name="imageContainer"
                       IsVisible="False"
@@ -68,7 +68,7 @@
             </StackLayout>
             <BoxView x:Name="bxvLine"
                      HeightRequest="1" />
-            <controls:MaterialLabel x:Name="lblAssistive"
+            <controls:MaterialLabel x:Name="lblSupporting"
                                     IsVisible="false"
                                     LineBreakMode="NoWrap"
                                     Margin="14,2,14,0"

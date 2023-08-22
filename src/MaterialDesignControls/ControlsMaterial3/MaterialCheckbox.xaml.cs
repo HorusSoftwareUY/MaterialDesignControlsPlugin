@@ -55,7 +55,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 Initialize();
             }
 
-            UpdateLayout(propertyName, container, lblAssistive);
+            UpdateLayout(propertyName, container, lblSupporting);
 
             switch (propertyName)
             {
