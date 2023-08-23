@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialRadioButtons : BaseMaterialCheckboxes
+    public partial class MaterialRadioButtons : BaseMaterialCheckBoxes
     {
         #region Attributes
 
@@ -127,8 +128,8 @@ namespace Plugin.MaterialDesignControls
 
             UpdateLayout(propertyName, container, lblAssistive);
 
-            switch (propertyName) 
-	        { 
+            switch (propertyName)
+            {
                 case nameof(TranslationX):
                     base.OnPropertyChanged(propertyName);
                     break;
@@ -151,7 +152,7 @@ namespace Plugin.MaterialDesignControls
                     lblLabel.TextColor = IsEnabled ? LabelTextColor : DisabledLabelTextColor;
                     break;
                 case nameof(IsEnabled):
-                    lblLabel.TextColor = IsEnabled? LabelTextColor: DisabledLabelTextColor;
+                    lblLabel.TextColor = IsEnabled ? LabelTextColor : DisabledLabelTextColor;
                     break;
             }
         }
@@ -173,7 +174,7 @@ namespace Plugin.MaterialDesignControls
                     materialCheckbox.FontFamily = control.FontFamily;
                     materialCheckbox.BackgroundColor = control.BackgroundColor;
                     materialCheckbox.IsEnabled = control.IsEnabled;
-		            materialCheckbox.DisabledColor = control.DisabledColor;
+                    materialCheckbox.DisabledColor = control.DisabledColor;
                     materialCheckbox.DisabledTextColor = control.DisabledTextColor;
                     materialCheckbox.TextSide = control.TextSide;
                     materialCheckbox.TextHorizontalOptions = control.TextHorizontalOptions;
