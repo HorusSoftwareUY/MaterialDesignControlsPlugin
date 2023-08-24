@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<custom:CustomFrame xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls"
+                    xmlns:controls="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+                    IsClippedToBounds="True"
+                    x:Class=" Plugin.MaterialDesignControls.Material3.MaterialFloatingButton">
+    <StackLayout x:Name="container"
+                 VerticalOptions="Fill"
+                 HorizontalOptions="Fill"
+                 Spacing="0"
+                 Orientation="Horizontal">
+        <custom:CustomImage x:Name="imgLeft"
+                            IsVisible="False"
+                            VerticalOptions="Center" />
+        <controls:MaterialLabel x:Name="lblText"
+                                IsVisible="False"
+                                HorizontalOptions="Center"
+                                VerticalTextAlignment="Center" />
+        <custom:CustomImage x:Name="imgRight"
+                            IsVisible="False"
+                            HorizontalOptions="Center" />
+    </StackLayout>
+</custom:CustomFrame>

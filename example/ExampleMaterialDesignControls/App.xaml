@@ -260,7 +260,7 @@
         </Style>
 
         <!-- MaterialFloatingButton -->
-        <Style TargetType="material:MaterialFloatingButton">
+        <!--<Style TargetType="material:MaterialFloatingButton">
             <Setter Property="BackgroundColor"
                     Value="{StaticResource GradientColor1}" />
             <Setter Property="FontSize"
@@ -271,6 +271,6 @@
                     Value="Black" />
             <Setter Property="TextColor"
                     Value="White" />
-        </Style>
+        </Style>-->
     </Application.Resources>
 </Application>
