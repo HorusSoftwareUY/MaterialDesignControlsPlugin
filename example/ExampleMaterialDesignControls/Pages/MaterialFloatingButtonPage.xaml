@@ -45,10 +45,10 @@
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                              HorizontalOptions="Center"
-                                             Text="Large (Disabled)" />
-                    <material3:MaterialFloatingButton Animation="Scale"
-                                                      ButtonType="Large"
-                                                      Icon="download.png" />
+                                             Text="Large" />
+                    <material3:MaterialFloatingButton Icon="download.png"
+                                                      Animation="Scale"
+                                                      HorizontalOptions="Center" />
 
                     <material3:MaterialDivider Margin="0,10" />
 
@@ -72,7 +72,7 @@
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                              HorizontalOptions="Center"
-                                             Text="Extended (Left icon)" />
+                                             Text="Large (Left icon)" />
                     <material3:MaterialFloatingButton Animation="Fade"
                                                       BackgroundColor="{StaticResource GradientColor11}"
                                                       BorderColor="{StaticResource GradientColor11}"
