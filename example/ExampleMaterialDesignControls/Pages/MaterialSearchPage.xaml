@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls" xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:viewmodel="clr-namespace:ExampleMaterialDesignControls.ViewModels"
+    ios:Page.UseSafeArea="True"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialSearchPage"
+    x:DataType="viewmodel:MaterialSearchViewModel"
+    NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar Headline="MaterialSearch"
+                                         LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
+            </material3:MaterialTopAppBar>
+
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20">
+                    <material3:MaterialSwitch
+                        HeightRequest="50"
+                        Margin="0,5"
+                        IsToggled="{Binding SearchOnEveryTextChange}"
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="SearchOnEveryTextChange"
+                        TextSide="Left">
+                    </material3:MaterialSwitch>
+                    <material3:MaterialSearch
+                        LabelMargin="0"
+                        Text="{Binding TextSearch}"
+                        SearchCommand="{Binding SearchCommand}"
+                        SearchOnEveryTextChange="{Binding SearchOnEveryTextChange}"
+                        Placeholder="Write text to search">
+                        <material3:MaterialSearch.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_search_b_w.svg" />
+                        </material3:MaterialSearch.CustomTrailingIcon>
+                    </material3:MaterialSearch>
+                    <StackLayout Margin="0,24" BindableLayout.ItemsSource="{Binding ListStrings}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="viewmodel:ItemSearchSample">
+                                <material3:MaterialLabel
+                                    Type="BodyLarge"
+                                    Margin="0,10"
+                                    Text="{Binding ValueString}" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </StackLayout>
+
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+
