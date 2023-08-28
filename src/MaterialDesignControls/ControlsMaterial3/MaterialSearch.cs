@@ -10,7 +10,7 @@ namespace Plugin.MaterialDesignControls.Material3
 {
     public partial class MaterialSearch : BaseMaterialFieldControl
     {
-        #region Constructors
+        #region Propertys
         public static readonly BindableProperty SearchCommandProperty =
         BindableProperty.Create(nameof(SearchCommand), typeof(ICommand), typeof(MaterialSearch), defaultValue: null);
 
@@ -28,6 +28,29 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (bool)GetValue(SearchOnEveryTextChangeProperty); }
             set { SetValue(SearchOnEveryTextChangeProperty, value); }
         }
+
+        public static readonly BindableProperty TextProperty =
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialSearch), defaultValue: null, propertyChanged: OnTextChanged, defaultBindingMode: BindingMode.TwoWay);
+
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
+        #endregion Properties
+
+        #region Events
+
+        public event EventHandler TextChanged;
+
+        public new event EventHandler<FocusEventArgs> Focused;
+
+        public new event EventHandler<FocusEventArgs> Unfocused;
+
+        #endregion Events
+
+        #region Constructors
 
         public MaterialSearch()
         {
@@ -61,7 +84,6 @@ namespace Plugin.MaterialDesignControls.Material3
             this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
-
         private void SetStyle()
         {
             this.HasBorder = true;
@@ -73,7 +95,7 @@ namespace Plugin.MaterialDesignControls.Material3
             this.iOSBorderWidth = 1;
         }
 
-        #endregion Constructors
+        #endregion Constructor
 
         #region Attributes
 
@@ -82,29 +104,6 @@ namespace Plugin.MaterialDesignControls.Material3
         private int focusNextElementAttempts;
 
         #endregion Attributes
-
-        #region Properties
-
-        public static readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialSearch), defaultValue: null, propertyChanged: OnTextChanged, defaultBindingMode: BindingMode.TwoWay);
-
-        public string Text
-        {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
-        }
-
-        #endregion Properties
-
-        #region Events
-
-        public event EventHandler TextChanged;
-
-        public new event EventHandler<FocusEventArgs> Focused;
-
-        public new event EventHandler<FocusEventArgs> Unfocused;
-
-        #endregion Events
 
         #region Methods
 
@@ -246,7 +245,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 LoggerHelper.Log(ex);
             }
         }
-
 
         #endregion Methods
     }

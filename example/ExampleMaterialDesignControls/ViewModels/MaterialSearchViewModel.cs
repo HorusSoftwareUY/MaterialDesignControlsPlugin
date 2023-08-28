@@ -37,15 +37,6 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref textSearch, value); }
         }
 
-        // This could have a string parameter, or it might not have any parameter
-        // Search(string param)
-        // The string param is the TextProperty, taken directly from the control
-        [ICommand]
-        private async Task Search(object param)
-        {
-            ListStrings = new ObservableCollection<ItemSearchSample>(listStringFull.Where(x => x.ValueString.Contains(TextSearch)));
-        }
-
         public List<ItemSearchSample> listStringFull { get; set; }
 
         public MaterialSearchViewModel()
@@ -80,8 +71,17 @@ namespace ExampleMaterialDesignControls.ViewModels
             };
             ListStrings = new ObservableCollection<ItemSearchSample>(listStringFull);
         }
-    }
 
+        // This could have a string parameter, or it might not have any parameter
+        // Search(string param)
+        // The string param is the TextProperty, taken directly from the control
+
+        [ICommand]
+        private async Task Search(object param)
+        {
+            ListStrings = new ObservableCollection<ItemSearchSample>(listStringFull.Where(x => x.ValueString.Contains(TextSearch)));
+        }
+    }
     public class ItemSearchSample
     {
         public string ValueString { get; set; }
