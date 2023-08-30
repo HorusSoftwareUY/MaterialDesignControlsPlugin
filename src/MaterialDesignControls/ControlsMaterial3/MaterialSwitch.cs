@@ -1,4 +1,6 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using Plugin.MaterialDesignControls.Utils;
 using System;
@@ -6,11 +8,9 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialSwitch : ContentView
     {
         #region Constructors
@@ -20,20 +20,8 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!_initialized)
             {
                 _initialized = true;
-                InitializeComponent();
                 Initialize();
             }
-
-            SwitchPanUpdate += (sender, e) =>
-            {
-                //Color Animation
-                Color fromColor = IsToggled ? (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor) : (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor);
-                Color toColor = IsToggled ? (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor) : (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor);
-
-                double t = e.Percentage * 0.01;
-
-                BackgroundColor = ColorAnimationUtil.ColorAnimation(fromColor, toColor, t);
-            };
         }
 
         #endregion Constructors
@@ -50,6 +38,16 @@ namespace Plugin.MaterialDesignControls.Material3
         private bool _reduceThumbSize => CustomUnselectedIcon == null && string.IsNullOrWhiteSpace(UnselectedIcon);
 
         private bool _initialized = false;
+
+
+        private StackLayout _container;
+        private MaterialLabel lblLeft;
+        private Grid sw;
+        private MaterialCard BackgroundFrame;
+        private MaterialCard ThumbFrame;
+        private CustomImage imgIcon;
+        private MaterialLabel lblRight;
+        private MaterialLabel lblSupportingText;
 
         #endregion Attributes
 
@@ -344,7 +342,7 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(SpacingProperty, value); }
         }
 
-        public new static readonly BindableProperty IsEnabledProperty = 
+        public new static readonly BindableProperty IsEnabledProperty =
             BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(VisualElement), defaultValue: true, defaultBindingMode: BindingMode.TwoWay);
 
         public new bool IsEnabled
@@ -378,6 +376,135 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
+            StackLayout mainContainer = new StackLayout()
+            {
+                Spacing = 0,
+                Margin = 0,
+                Padding = 0
+            };
+
+            _container = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal,
+                Spacing = Spacing
+            };
+
+            lblLeft = new MaterialLabel()
+            {
+                IsVisible = TextSide == TextSide.Left,
+                TextColor = TextColor,
+                FontFamily = FontFamily,
+                FontSize = FontSize,
+                HorizontalOptions = TextHorizontalOptions
+            };
+
+            sw = new Grid();
+
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) =>
+            {
+                Console.WriteLine("tapped");
+                SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
+                if (_currentState == SwitchStateEnum.Right)
+                    GoToLeft();
+                else
+                    GoToRight();
+
+                Toggled?.Invoke(this, new ToggledEventArgs((bool)IsToggled));
+                ToggledCommand?.Execute((bool)IsToggled);
+            };
+
+            sw.GestureRecognizers.Clear();
+            sw.GestureRecognizers.Add(tapGestureRecognizer);
+
+            BackgroundFrame = new MaterialCard()
+            {
+                Padding = new Thickness(0),
+                CornerRadius = 15,
+                CornerRadiusBottomLeft = true,
+                CornerRadiusTopLeft = true,
+                CornerRadiusBottomRight = true,
+                CornerRadiusTopRight = true,
+                HasShadow = false,
+                HeightRequest = 32,
+                HorizontalOptions = LayoutOptions.Center,
+                IsClippedToBounds = true,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 52,
+                BackgroundColor = BackgroundColor
+            };
+
+            this.BackgroundFrame.GestureRecognizers.Add(tapGestureRecognizer);
+
+            ThumbFrame = new MaterialCard()
+            {
+                Padding = new Thickness(0),
+                CornerRadius = 12,
+                CornerRadiusBottomLeft = true,
+                CornerRadiusTopLeft = true,
+                CornerRadiusBottomRight = true,
+                CornerRadiusTopRight = true,
+                HasShadow = false,
+                HeightRequest = 24,
+                HorizontalOptions = LayoutOptions.Center,
+                IsClippedToBounds = true,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 24,
+                Margin = new Thickness(1, 0, 1, 0)
+            };
+
+            imgIcon = new CustomImage()
+            {
+                IsVisible = false,
+                WidthRequest = 22,
+                HeightRequest = 22,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+            };
+
+            this.ThumbFrame.Content = imgIcon;
+
+            sw.Children.Add(BackgroundFrame);
+            sw.Children.Add(ThumbFrame);
+
+            lblRight = new MaterialLabel()
+            {
+                IsVisible = TextSide == TextSide.Right,
+                TextColor = TextColor,
+                FontFamily = FontFamily,
+                FontSize = FontSize,
+                HorizontalOptions = TextHorizontalOptions
+            };
+
+            _container.Children.Add(lblLeft);
+            _container.Children.Add(sw);
+            _container.Children.Add(lblRight);
+
+            lblSupportingText = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                HorizontalTextAlignment = TextAlignment.Start,
+                TextColor = SupportingTextColor,
+                FontSize = SupportingSize,
+                FontFamily = SupportingFontFamily,
+                Margin = SupportingMargin
+            };
+
+            mainContainer.Children.Add(_container);
+            mainContainer.Children.Add(lblSupportingText);
+
+            SwitchPanUpdate += (sender, e) =>
+            {
+                //Color Animation
+                Color fromColor = IsToggled ? (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor) : (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor);
+                Color toColor = IsToggled ? (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor) : (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor);
+
+                double t = e.Percentage * 0.01;
+
+                BackgroundColor = ColorAnimationUtil.ColorAnimation(fromColor, toColor, t);
+            };
+
             lblLeft.VerticalOptions = TextVerticalOptions;
             lblRight.VerticalOptions = TextVerticalOptions;
             _container.Spacing = Spacing;
@@ -386,6 +513,8 @@ namespace Plugin.MaterialDesignControls.Material3
             this.SetBaseWidthRequest(Math.Max(this.BackgroundFrame.WidthRequest, this.ThumbFrame.WidthRequest * 2));
             this._xRef = ((this.BackgroundFrame.WidthRequest - this.ThumbFrame.WidthRequest) / 2) - 5;
             this.ThumbFrame.TranslationX = this._currentState == SwitchStateEnum.Left ? -this._xRef : this._xRef;
+
+            this.Content = mainContainer;
         }
 
         private static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
@@ -527,18 +656,6 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
-            if (_currentState == SwitchStateEnum.Right)
-                GoToLeft();
-            else
-                GoToRight();
-
-            Toggled?.Invoke(this, new ToggledEventArgs((bool)IsToggled));
-            ToggledCommand?.Execute((bool)IsToggled);
-        }
-
         private void SetBaseWidthRequest(double widthRequest)
         {
             base.WidthRequest = widthRequest;
@@ -557,7 +674,6 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!_initialized)
             {
                 _initialized = true;
-                InitializeComponent();
                 Initialize();
             }
 
@@ -649,7 +765,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(SwitchHorizontalOptions):
-                    sw.HorizontalOptions = SwitchHorizontalOptions;
                     sw.HorizontalOptions = SwitchHorizontalOptions;
                     break;
 
