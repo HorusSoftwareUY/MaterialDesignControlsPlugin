@@ -1,4 +1,5 @@
-using Plugin.MaterialDesignControls.Animations;
+﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using Plugin.MaterialDesignControls.Utils;
@@ -6,26 +7,42 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BaseMaterialFieldControl : ContentView
+   
+    public class BaseMaterialFieldControl : ContentView
     {
         #region Attributes
 
         private bool initialized = false;
-        
+
+        private MaterialCard frmContainer;
+
+        private Grid contentLayout;
+
+        private MaterialLabel lblLabel;
+
+        private MaterialLabel lblAnimatedLabel;
+
+        private CustomImageButton imgLeadingIcon;
+
+        private CustomImageButton imgTrailingIcon;
+
+        private BoxView indicator;
+
+        private MaterialLabel lblSupporting;
+
         public MaterialCard FrameContainer => this.frmContainer;
 
         public IBaseMaterialFieldControl Control => this.CustomContent;
 
-        public Plugin.MaterialDesignControls.MaterialLabel Label => this.lblLabel;
+        public MaterialLabel Label => this.lblLabel;
 
-        public Plugin.MaterialDesignControls.MaterialLabel SupportingLabel => this.lblSupporting;
+        public MaterialLabel SupportingLabel => this.lblSupporting;
 
-        public Plugin.MaterialDesignControls.MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
+        public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
 
         public bool AnimatePlaceHolderAsLabel => this.AnimatePlaceholder && string.IsNullOrWhiteSpace(LabelText);
 
@@ -38,7 +55,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static readonly BindableProperty CustomContentProperty =
-            BindableProperty.Create(nameof(CustomContent), typeof(IBaseMaterialFieldControl), typeof(BaseMaterialFieldControl), defaultValue: new CustomEntry(), propertyChanged: OnCustomContentChanged);
+            BindableProperty.Create(nameof(CustomContent), typeof(IBaseMaterialFieldControl), typeof(BaseMaterialFieldControl), defaultValue: new Implementations.CustomEntry(), propertyChanged: OnCustomContentChanged);
 
         public IBaseMaterialFieldControl CustomContent
         {
@@ -555,7 +572,7 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!this.initialized)
             {
                 this.initialized = true;
-                this.InitializeComponent();
+                this.Initialize();
                 InitializeDefaults();
             }
 
@@ -679,7 +696,7 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!this.initialized)
             {
                 this.initialized = true;
-                InitializeComponent();
+                Initialize();
                 InitializeDefaults();
             }
 
@@ -888,6 +905,117 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
+        private void Initialize()
+        {
+
+
+            StackLayout mainContainer = new StackLayout()
+            {
+                Spacing = 0
+            };
+
+            frmContainer = new MaterialCard()
+            {
+                CornerRadius = 10,
+                HasShadow = false,
+                CornerRadiusTopLeft = true,
+                CornerRadiusTopRight = true,
+                Padding = new Thickness(16, 8, 16, 8)
+            };
+
+            contentLayout = new Grid()
+            {
+                ColumnSpacing = 0,
+                RowSpacing = 0,
+                RowDefinitions = new RowDefinitionCollection()
+                {
+                    new RowDefinition(){ Height = 16 },
+                    new RowDefinition(){ Height = 24 }
+                },
+                ColumnDefinitions = new ColumnDefinitionCollection() 
+                {
+                    new ColumnDefinition(){Width = GridLength.Auto },
+                    new ColumnDefinition(){Width = GridLength.Star },
+                    new ColumnDefinition(){Width = GridLength.Auto }
+                }
+            };
+
+            lblLabel = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                HorizontalTextAlignment = TextAlignment.Start                               
+            };
+
+            lblLabel.SetValue(Grid.RowProperty, 0);
+            lblLabel.SetValue(Grid.ColumnProperty, 1);
+            lblLabel.SetValue(Grid.ColumnSpanProperty, 2);
+
+            lblAnimatedLabel = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+
+            lblAnimatedLabel.SetValue(Grid.RowProperty, 0);
+            lblAnimatedLabel.SetValue(Grid.ColumnProperty, 1);
+
+            imgLeadingIcon = new CustomImageButton()
+            {
+                IsVisible = false,
+                HorizontalOptions = LayoutOptions.Start,
+                Margin = new Thickness( -4, 0, 16, 0),
+                WidthRequest = 24,
+                HeightRequest = 24
+            };
+
+            imgLeadingIcon.SetValue(Grid.RowProperty, 0);
+            imgLeadingIcon.SetValue(Grid.ColumnProperty, 0);
+            imgLeadingIcon.SetValue(Grid.RowSpanProperty, 2);
+
+            imgTrailingIcon = new CustomImageButton()
+            {
+                IsVisible = false,
+                HorizontalOptions = LayoutOptions.End,
+                Margin = new Thickness(16, 0, -4, 0),
+                WidthRequest = 24,
+                HeightRequest = 24
+            };
+
+            imgTrailingIcon.SetValue(Grid.RowProperty, 0);
+            imgTrailingIcon.SetValue(Grid.ColumnProperty, 2);
+            imgTrailingIcon.SetValue(Grid.RowSpanProperty, 2);
+
+            contentLayout.Children.Add(lblLabel);
+            contentLayout.Children.Add(lblAnimatedLabel);
+            contentLayout.Children.Add(imgLeadingIcon);
+            contentLayout.Children.Add(imgTrailingIcon);
+
+            indicator = new BoxView()
+            {
+                HeightRequest = 1
+            };
+
+            lblSupporting = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                Margin = new Thickness(16, 4, 16, 0),
+                HorizontalTextAlignment = TextAlignment.Start
+            };
+
+            mainContainer.Children.Add(frmContainer);
+            mainContainer.Children.Add(indicator);
+            mainContainer.Children.Add(lblSupporting);
+
+            this.Content = mainContainer;
+
+        }
+
         private void SetHasBorder()
         {
             indicator.IsVisible = !HasBorder;
@@ -918,7 +1046,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
             await AnimatePlaceholderAction();
         }
-       
+
         public static string GetPropertyValue(object item, string propertyToSearch)
         {
             var properties = item.GetType().GetProperties();

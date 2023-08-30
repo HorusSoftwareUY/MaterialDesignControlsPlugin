@@ -59,10 +59,7 @@
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.xaml.cs">
-      <DependentUpon>BaseMaterialFieldControl.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.cs" />
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
     <Compile Include="ControlsMaterial3\MaterialBadge.cs" />
     <Compile Include="ControlsMaterial3\MaterialChips.cs" />
@@ -215,9 +212,6 @@
     <None Remove="ControlsMaterial2\DeprecatedControls\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
