@@ -219,27 +219,31 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoMaterialCodeEntryCommand}" />
                         </Frame.GestureRecognizers>
-                        <StackLayout>
-                            <Frame Padding="0"
-                                   BackgroundColor="{StaticResource GradientColorTransparent6}"
-                                   CornerRadius="45"
-                                   HasShadow="False"
-                                   HeightRequest="90"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="Center"
-                                   WidthRequest="90">
-                                <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                  Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_code.svg" />
-                            </Frame>
-                            <material:MaterialLabel FontAttributes="Bold"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Center"
-                                                    LineBreakMode="TailTruncation"
-                                                    Text="CodeEntry"
-                                                    TextColor="{StaticResource GradientColor6}"
-                                                    VerticalOptions="EndAndExpand" />
-                        </StackLayout>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent6}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_code.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="CodeEntry"
+                                                        TextColor="{StaticResource GradientColor6}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                        
                     </Frame>
 
                     <Frame Grid.Row="3"

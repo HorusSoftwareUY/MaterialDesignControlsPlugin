@@ -1,16 +1,11 @@
-﻿using System;
-using Plugin.MaterialDesignControls.Material3;
-using Plugin.MaterialDesignControls.Styles;
-using System.Windows.Input;
+﻿using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Utils;
-using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-	public class MaterialCustomControl : ContentView
+    public class MaterialCustomControl : ContentView
     {
         #region Attributes
 

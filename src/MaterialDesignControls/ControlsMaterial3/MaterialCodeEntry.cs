@@ -1,30 +1,42 @@
-﻿using System;
+﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Utils;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Implementations;
-using Plugin.MaterialDesignControls.Utils;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialCodeEntry : BaseMaterialFieldControl
+    public class MaterialCodeEntry : MaterialCustomControl
     {
         #region Constructors
 
         public MaterialCodeEntry()
         {
-            if (!this.initialized)
+            grdContainer = new Grid()
             {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
+                ColumnSpacing = 8,
+                RowDefinitions = new RowDefinitionCollection() { new RowDefinition() { Height = FieldHeightRequest } }
+            };
+
+            txtEntry = new CustomEntry()
+            {
+                IsCode = true,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                TextColor = Color.Transparent
+            };
+
+            grdContainer.Children.Add(txtEntry);
 
             txtEntry.Focused += HandleFocusChange;
             txtEntry.Unfocused += HandleFocusChange;
             txtEntry.TextChanged += TxtEntry_TextChanged;
+
+            base.CustomControl = grdContainer;
         }
 
         #endregion Constructors
@@ -32,6 +44,9 @@ namespace Plugin.MaterialDesignControls
         #region Attributes
 
         private bool initialized = false;
+
+        private Grid grdContainer;
+        private CustomEntry txtEntry;
 
         private List<Frame> frmContainers;
 
@@ -66,6 +81,16 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (bool)GetValue(IsCodeProperty); }
             set { SetValue(IsCodeProperty, value); }
+        }
+
+
+        public static readonly BindableProperty FieldHeightRequestProperty =
+            BindableProperty.Create(nameof(FieldHeightRequest), typeof(double), typeof(MaterialCodeEntry), defaultValue: 40.0);
+
+        public double FieldHeightRequest
+        {
+            get { return (double)GetValue(FieldHeightRequestProperty); }
+            set { SetValue(FieldHeightRequestProperty, value); }
         }
 
         public static readonly BindableProperty KeyboardProperty =
@@ -140,21 +165,113 @@ namespace Plugin.MaterialDesignControls
             set { SetValue(FieldWidthRequestProperty, value); }
         }
 
-        public override bool IsControlFocused
+        public static readonly BindableProperty TextColorProperty =
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.TextColor);
+
+        public Color TextColor
         {
-            get { return txtEntry.IsFocused; }
+            get { return (Color)GetValue(TextColorProperty); }
+            set { SetValue(TextColorProperty, value); }
         }
 
-        public override bool IsControlEnabled
+        public static readonly BindableProperty FocusedTextColorProperty =
+            BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.TextColor);
+
+        public Color FocusedTextColor
         {
-            get { return this.IsEnabled; }
+            get { return (Color)GetValue(FocusedTextColorProperty); }
+            set { SetValue(FocusedTextColorProperty, value); }
         }
 
-        public override Color BackgroundColorControl
+        public static readonly BindableProperty DisabledTextColorProperty =
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.DisableColor);
+
+        public Color DisabledTextColor
         {
-            get { return this.BackgroundColor; }
+            get { return (Color)GetValue(DisabledTextColorProperty); }
+            set { SetValue(DisabledTextColorProperty, value); }
         }
 
+        public static readonly BindableProperty FontSizeProperty =
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
+
+        public double FontSize
+        {
+            get { return (double)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty FontFamilyProperty =
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.FontFamily);
+
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
+        }
+
+        public static readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(MaterialCodeEntry), defaultValue: 0f);
+
+        public float CornerRadius
+        {
+            get { return (float)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly BindableProperty TypeProperty =
+            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialCodeEntry), defaultValue: FieldTypes.Filled);
+
+        public FieldTypes Type
+        {
+            get { return (FieldTypes)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
+
+        public static readonly BindableProperty BorderColorProperty =
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.PrimaryColor);
+
+        public Color BorderColor
+        {
+            get { return (Color)GetValue(BorderColorProperty); }
+            set { SetValue(BorderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty FocusedBorderColorProperty =
+            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.PrimaryColor);
+
+        public Color FocusedBorderColor
+        {
+            get { return (Color)GetValue(FocusedBorderColorProperty); }
+            set { SetValue(FocusedBorderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledBorderColorProperty =
+            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.LightGray);
+
+        public Color DisabledBorderColor
+        {
+            get { return (Color)GetValue(DisabledBorderColorProperty); }
+            set { SetValue(DisabledBorderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty FocusedBackgroundColorProperty =
+            BindableProperty.Create(nameof(FocusedBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.PrimaryContainerColor);
+
+        public Color FocusedBackgroundColor
+        {
+            get { return (Color)GetValue(FocusedBackgroundColorProperty); }
+            set { SetValue(FocusedBackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledBackgroundColorProperty =
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.LightGray);
+
+        public Color DisabledBackgroundColor
+        {
+            get { return (Color)GetValue(DisabledBackgroundColorProperty); }
+            set { SetValue(DisabledBackgroundColorProperty, value); }
+        }
         #endregion Properties
 
         #region Events
@@ -199,7 +316,10 @@ namespace Plugin.MaterialDesignControls
                 frameTapGestureRecognizer.Tapped += (s, e) =>
                 {
                     if (control.txtEntry.IsEnabled)
-                        control.txtEntry.Focus();
+                    {
+                        Console.WriteLine("Focus length changed");
+                        control.Focus();
+                    }
                 };
                 frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
                 control.frmContainers.Add(frmContainer);
@@ -223,17 +343,10 @@ namespace Plugin.MaterialDesignControls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!this.initialized)
-            {
-                this.initialized = true;
-                this.InitializeComponent();
-            }
-
             switch (propertyName)
             {
-                case nameof(base.TranslationX):
-                    base.OnPropertyChanged(propertyName);
-                    break;
+
+
                 case nameof(this.IsEnabled):
                     SetIsEnabled();
                     break;
@@ -280,17 +393,6 @@ namespace Plugin.MaterialDesignControls
                     this.txtEntry.MaxLength = this.Length;
                     break;
 
-                case nameof(this.LabelText):
-                    this.lblLabel.Text = this.LabelText;
-                    this.lblLabel.IsVisible = !string.IsNullOrEmpty(this.LabelText);
-                    break;
-                case nameof(this.LabelTextColor):
-                    SetLabelTextColor(lblLabel);
-                    break;
-                case nameof(this.LabelSize):
-                    this.lblLabel.FontSize = this.LabelSize;
-                    break;
-
                 case nameof(this.Padding):
                     this.grdContainer.Padding = this.Padding;
                     break;
@@ -305,21 +407,6 @@ namespace Plugin.MaterialDesignControls
                 case nameof(this.BackgroundColor):
                 case nameof(this.BorderColor):
                     SetTypeBackgroundAndBorderColor();
-                    break;
-
-                case nameof(this.AssistiveText):
-                    this.lblAssistive.Text = this.AssistiveText;
-                    this.lblAssistive.IsVisible = !string.IsNullOrEmpty(this.AssistiveText);
-                    if (this.AnimateError && !string.IsNullOrEmpty(this.AssistiveText))
-                    {
-                        ShakeAnimation.Animate(this);
-                    }
-                    break;
-                case nameof(this.AssistiveTextColor):
-                    this.lblAssistive.TextColor = this.AssistiveTextColor;
-                    break;
-                case nameof(this.AssistiveSize):
-                    this.lblAssistive.FontSize = this.AssistiveSize;
                     break;
 
                 case nameof(this.TabIndex):
@@ -367,71 +454,56 @@ namespace Plugin.MaterialDesignControls
                     this.txtEntry.IsCode = this.IsCode;
                     break;
 
-                case nameof(HorizontalTextAlignment):
-                    SetHorizontalTextAlignment();
+                default:
+                    base.OnPropertyChanged(propertyName);
                     break;
+                    //case nameof(HorizontalTextAlignment):
+                    //    SetHorizontalTextAlignment();
+                    //    break;
             }
         }
 
-        protected override void SetIsEnabled()
+        protected void SetIsEnabled()
         {
             txtEntry.IsEnabled = IsEnabled;
-            SetLabelTextColor(lblLabel);
+            //SetLabelTextColor(lblLabel);
             SetTextColor();
             SetTypeBackgroundAndBorderColor();
         }
 
-        protected override void SetPadding()
+        protected void SetPadding()
         {
             grdContainer.Padding = this.Padding;
         }
 
-        protected override void SetTextColor()
+        protected void SetTextColor()
         {
             if (lblCodes != null)
             {
                 foreach (var lblCode in lblCodes)
                 {
-                    if (IsControlEnabled)
-                        lblCode.TextColor = IsControlFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
+                    if (this.IsEnabled)
+                        lblCode.TextColor = txtEntry.IsFocused && FocusedTextColor != Color.Transparent ? FocusedTextColor : TextColor;
                     else
                         lblCode.TextColor = DisabledTextColor;
                 }
             }
         }
 
-        protected override void SetFontSize()
+        protected void SetFontSize()
         {
             if (lblCodes != null)
                 foreach (var lblCode in lblCodes)
                     lblCode.FontSize = this.FontSize;
         }
 
-        protected override void SetFontFamily()
+        protected void SetFontFamily()
         {
             if (lblCodes != null)
                 foreach (var lblCode in lblCodes)
                     lblCode.FontFamily = this.FontFamily;
-
-            this.lblLabel.FontFamily = this.FontFamily;
-            this.lblAssistive.FontFamily = this.FontFamily;
         }
 
-        protected override void SetPlaceholder()
-        {
-            throw new NotSupportedException();
-        }
-
-        protected override void SetPlaceholderColor()
-        {
-            throw new NotSupportedException();
-        }
-
-        protected override void SetHorizontalTextAlignment()
-        {
-            lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
-            lblAssistive.HorizontalTextAlignment = HorizontalTextAlignment;
-        }
 
         private void SetTypeBackgroundAndBorderColor()
         {
@@ -443,18 +515,18 @@ namespace Plugin.MaterialDesignControls
                     {
                         foreach (var frmContainer in frmContainers)
                         {
-                            if (IsControlEnabled)
-                                frmContainer.BackgroundColor = IsControlFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : BackgroundColorControl;
+                            if (this.IsEnabled)
+                                frmContainer.BackgroundColor = this.txtEntry.IsControlFocused() && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : this.BackgroundColor;
                             else
                                 frmContainer.BackgroundColor = DisabledBackgroundColor;
 
-                            if (IsControlEnabled)
-                                frmContainer.BorderColor = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
+                            if (this.IsEnabled)
+                                frmContainer.BorderColor = this.txtEntry.IsControlFocused() && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
                             else
                                 frmContainer.BorderColor = DisabledBorderColor;
                         }
                     }
-                    this.bxvLine.IsVisible = false;
+                    //this.bxvLine.IsVisible = false;
                     break;
                 case FieldTypes.Lined:
                     if (frmContainers != null)
@@ -466,12 +538,12 @@ namespace Plugin.MaterialDesignControls
                         }
                     }
 
-                    bxvLine.IsVisible = true;
-                    
-                    if (IsControlEnabled)
-                        bxvLine.Color = IsControlFocused &&  FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
-                    else
-                        bxvLine.Color = DisabledBorderColor;
+                    //bxvLine.IsVisible = true;
+
+                    //if (IsControlEnabled)
+                    //    bxvLine.Color = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
+                    //else
+                    //    bxvLine.Color = DisabledBorderColor;
 
                     if (frmContainers != null)
                         foreach (var frmContainer in frmContainers)
@@ -482,6 +554,8 @@ namespace Plugin.MaterialDesignControls
 
         public new bool Focus()
         {
+            Console.WriteLine("Focus ");
+
             Device.BeginInvokeOnMainThread(() =>
             {
                 txtEntry.Focus();
@@ -491,6 +565,8 @@ namespace Plugin.MaterialDesignControls
 
         public new bool Unfocus()
         {
+            Console.WriteLine("Unfocus ");
+
             Device.BeginInvokeOnMainThread(() =>
             {
                 txtEntry.Unfocus();
@@ -500,11 +576,12 @@ namespace Plugin.MaterialDesignControls
 
         private void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            SetLabelTextColor(lblLabel);
+            Console.WriteLine("Focused = " + txtEntry.IsFocused);
+            //SetLabelTextColor(lblLabel);
             SetTextColor();
             SetTypeBackgroundAndBorderColor();
 
-            if (IsControlFocused)
+            if (txtEntry.IsFocused)
                 Focused?.Invoke(this, e);
             else
                 Unfocused?.Invoke(this, e);
