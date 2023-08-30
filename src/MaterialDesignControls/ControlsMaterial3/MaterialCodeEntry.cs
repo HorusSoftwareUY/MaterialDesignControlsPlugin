@@ -46,6 +46,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private bool initialized = false;
 
         private Grid grdContainer;
+
         private CustomEntry txtEntry;
 
         private List<Frame> frmContainers;
@@ -82,7 +83,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (bool)GetValue(IsCodeProperty); }
             set { SetValue(IsCodeProperty, value); }
         }
-
 
         public static readonly BindableProperty FieldHeightRequestProperty =
             BindableProperty.Create(nameof(FieldHeightRequest), typeof(double), typeof(MaterialCodeEntry), defaultValue: 40.0);
@@ -139,7 +139,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
 
         public new Color BackgroundColor
         {
@@ -229,7 +229,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.OnSurfaceVariantColor);
 
         public Color BorderColor
         {
@@ -247,7 +247,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBorderColorProperty =
-            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledBorderColor
         {
@@ -256,7 +256,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FocusedBackgroundColorProperty =
-            BindableProperty.Create(nameof(FocusedBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.PrimaryContainerColor);
+            BindableProperty.Create(nameof(FocusedBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
 
         public Color FocusedBackgroundColor
         {
@@ -265,13 +265,14 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.DisableContainerColor);
 
         public Color DisabledBackgroundColor
         {
             get { return (Color)GetValue(DisabledBackgroundColorProperty); }
             set { SetValue(DisabledBackgroundColorProperty, value); }
         }
+
         #endregion Properties
 
         #region Events
@@ -316,10 +317,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 frameTapGestureRecognizer.Tapped += (s, e) =>
                 {
                     if (control.txtEntry.IsEnabled)
-                    {
-                        Console.WriteLine("Focus length changed");
-                        control.Focus();
-                    }
+                        control.txtEntry.Focus();
                 };
                 frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
                 control.frmContainers.Add(frmContainer);
@@ -343,10 +341,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
+            System.Diagnostics.Debug.WriteLine(propertyName);
+
             switch (propertyName)
             {
-
-
                 case nameof(this.IsEnabled):
                     SetIsEnabled();
                     break;
@@ -457,16 +455,13 @@ namespace Plugin.MaterialDesignControls.Material3
                 default:
                     base.OnPropertyChanged(propertyName);
                     break;
-                    //case nameof(HorizontalTextAlignment):
-                    //    SetHorizontalTextAlignment();
-                    //    break;
             }
         }
 
         protected void SetIsEnabled()
         {
             txtEntry.IsEnabled = IsEnabled;
-            //SetLabelTextColor(lblLabel);
+            SetLabelTextColor();
             SetTextColor();
             SetTypeBackgroundAndBorderColor();
         }
@@ -504,7 +499,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     lblCode.FontFamily = this.FontFamily;
         }
 
-
         private void SetTypeBackgroundAndBorderColor()
         {
             switch (this.Type)
@@ -516,12 +510,12 @@ namespace Plugin.MaterialDesignControls.Material3
                         foreach (var frmContainer in frmContainers)
                         {
                             if (this.IsEnabled)
-                                frmContainer.BackgroundColor = this.txtEntry.IsControlFocused() && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : this.BackgroundColor;
+                                frmContainer.BackgroundColor = this.txtEntry.IsFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : this.BackgroundColor;
                             else
                                 frmContainer.BackgroundColor = DisabledBackgroundColor;
 
                             if (this.IsEnabled)
-                                frmContainer.BorderColor = this.txtEntry.IsControlFocused() && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
+                                frmContainer.BorderColor = this.txtEntry.IsFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
                             else
                                 frmContainer.BorderColor = DisabledBorderColor;
                         }
@@ -554,8 +548,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public new bool Focus()
         {
-            Console.WriteLine("Focus ");
-
             Device.BeginInvokeOnMainThread(() =>
             {
                 txtEntry.Focus();
@@ -565,8 +557,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public new bool Unfocus()
         {
-            Console.WriteLine("Unfocus ");
-
             Device.BeginInvokeOnMainThread(() =>
             {
                 txtEntry.Unfocus();
@@ -576,8 +566,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void HandleFocusChange(object sender, FocusEventArgs e)
         {
-            Console.WriteLine("Focused = " + txtEntry.IsFocused);
-            //SetLabelTextColor(lblLabel);
+            SetLabelTextColor();
             SetTextColor();
             SetTypeBackgroundAndBorderColor();
 
