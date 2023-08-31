@@ -907,8 +907,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-
-
             StackLayout mainContainer = new StackLayout()
             {
                 Spacing = 0
@@ -956,7 +954,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
                 VerticalTextAlignment = TextAlignment.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Start,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
@@ -1007,6 +1005,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 Margin = new Thickness(16, 4, 16, 0),
                 HorizontalTextAlignment = TextAlignment.Start
             };
+
+            frmContainer.Content = contentLayout;
 
             mainContainer.Children.Add(frmContainer);
             mainContainer.Children.Add(indicator);
