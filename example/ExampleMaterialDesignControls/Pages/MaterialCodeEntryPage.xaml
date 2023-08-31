@@ -37,52 +37,27 @@
                                                  TabIndex="1"
                                                  Text="{Binding Code}" />
 
-                    <material:MaterialCodeEntry AnimateError="True"
-                                                AssistiveText="{Binding CodeError}"
-                                                BackgroundColor="{StaticResource GradientColorTransparent1}"
-                                                BorderColor="Transparent"
-                                                FieldHeightRequest="80"
-                                                FontSize="{StaticResource H5FontSize}"
-                                                Keyboard="Numeric"
-                                                LabelText="Code*"
-                                                Length="6"
-                                                ReturnType="Next"
-                                                TabIndex="2"
-                                                Text="{Binding Code}" />
 
-                    <!--<material:MaterialCodeEntry AnimateError="True"
-                                                AssistiveText="{Binding CodeError}"
-                                                FieldHeightRequest="60"
-                                                FieldWidthRequest="40"
-                                                FontSize="{StaticResource H5FontSize}"
-                                                Keyboard="Numeric"
-                                                LabelText="Code*"
-                                                Length="6"
-                                                ReturnType="Next"
-                                                TabIndex="1"
-                                                Text="{Binding Code}"
-                                                Type="Outlined" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialDivider Margin="0,10" />
-
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Types" />
 
-                    <material:MaterialCodeEntry Keyboard="Numeric"
+                    <material3:MaterialCodeEntry Keyboard="Numeric"
                                                 LabelText="Code 3"
                                                 Length="4"
                                                 ReturnType="Next"
                                                 TabIndex="3"
                                                 Type="Outlined" />
-                    <material:MaterialCodeEntry IsEnabled="False"
+                    <material3:MaterialCodeEntry IsEnabled="False"
                                                 Keyboard="Text"
                                                 LabelText="Code 4"
                                                 Length="6"
                                                 ReturnType="Next"
                                                 TabIndex="5"
                                                 Type="Filled" />
-                    <material:MaterialCodeEntry HorizontalTextAlignment="Center"
+                    <material3:MaterialCodeEntry HorizontalTextAlignment="Center"
                                                 Keyboard="Text"
                                                 KeyboardFlags="CapitalizeCharacter"
                                                 LabelText="Code 4"
@@ -94,7 +69,7 @@
 
                     <material3:MaterialButton Command="{Binding TapCommand}"
                                               Text="Save"
-                                              VerticalOptions="EndAndExpand" />-->
+                                              VerticalOptions="EndAndExpand" />
                 </StackLayout>
             </ScrollView>
         </Grid>

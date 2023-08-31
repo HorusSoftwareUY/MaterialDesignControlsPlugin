@@ -1,5 +1,4 @@
-﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Utils;
+﻿using Plugin.MaterialDesignControls.Utils;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -341,8 +340,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            System.Diagnostics.Debug.WriteLine(propertyName);
-
             switch (propertyName)
             {
                 case nameof(this.IsEnabled):
@@ -520,7 +517,6 @@ namespace Plugin.MaterialDesignControls.Material3
                                 frmContainer.BorderColor = DisabledBorderColor;
                         }
                     }
-                    //this.bxvLine.IsVisible = false;
                     break;
                 case FieldTypes.Lined:
                     if (frmContainers != null)
@@ -531,13 +527,6 @@ namespace Plugin.MaterialDesignControls.Material3
                             frmContainer.BorderColor = Color.Transparent;
                         }
                     }
-
-                    //bxvLine.IsVisible = true;
-
-                    //if (IsControlEnabled)
-                    //    bxvLine.Color = IsControlFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
-                    //else
-                    //    bxvLine.Color = DisabledBorderColor;
 
                     if (frmContainers != null)
                         foreach (var frmContainer in frmContainers)
