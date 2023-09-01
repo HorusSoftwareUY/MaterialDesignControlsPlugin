@@ -8,7 +8,7 @@ This control is a custom implementation of a Checkbox. You can customize some pr
 
 ## Example MaterialCheckbox
 ```XML
- <material:MaterialCheckbox 
+ <material3:MaterialCheckbox 
     x:Name="checkbox" 
     Text="Pickles"
     IsChecked="True" 
