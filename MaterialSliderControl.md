@@ -84,18 +84,40 @@ This property is to set the label text maximum color value on the control. When 
 <br/>
 <br/>
 
-### Property AssistiveText:
-This property is to set the error text on the control. 
+### Property SupportingText:
+This property is to set the supporting text.
 <br/>
 <br/>
 
-### Property AssistiveTextColor:
-This property is to set the error text color value on the control. By default is gray.
+### Property SupportingTextColor:
+This property is to set the supporting text color.
 <br/>
-<br/> 
+<br/>
 
-### Property AssistiveSize:
-This property is to set the error text font size value on the control. By default is gray. 
+### Property SupportingSize:
+This property is to set the supporting text size.
+<br/>
+<br/>
+
+### Property SupportingFontFamily:
+This property is to set the supporting text font family.
+<br/>
+<br/>
+
+### Property SupportingMargin:
+This property is to set the supporting text margin. By default uses (16,4,16,0).
+<br/>
+<br/>
+
+### Property SupportingLineBreakMode:
+This property is to set the Supporting LineBreakMode.
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
 <br/>
 <br/>
 
@@ -201,13 +223,3 @@ This property is to set the disabled inactive track color, when the control is d
 
 ### Property DisabledThumbColor:
 This property is to set the disabled thumb color, whe the control is disabled.
-
-
-
-
-
-
-
-
-
-

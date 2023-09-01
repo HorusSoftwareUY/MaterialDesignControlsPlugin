@@ -161,7 +161,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelValueSizeProperty =
-            BindableProperty.Create(nameof(LabelValueSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
+            BindableProperty.Create(nameof(LabelValueSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
 
         public double LabelValueSize
         {
@@ -210,7 +210,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMinimumSizeProperty =
-            BindableProperty.Create(nameof(LabelMinimumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.LabelSmall);
+            BindableProperty.Create(nameof(LabelMinimumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
 
         public double LabelMinimumSize
         {
@@ -250,7 +250,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMaximumSizeProperty =
-            BindableProperty.Create(nameof(LabelMaximumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.LabelSmall);
+            BindableProperty.Create(nameof(LabelMaximumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
 
         public double LabelMaximumSize
         {
@@ -314,7 +314,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion ImageMaximum
 
-        #region BackGroundImage
+        #region BackgroundImage
 
         public static readonly BindableProperty BackgroundImageProperty =
            BindableProperty.Create(nameof(BackgroundImage), typeof(string), typeof(MaterialSlider), defaultValue: null);
@@ -334,7 +334,7 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CustomBackgroundImageProperty, value); }
         }
 
-        #endregion BackGroundImage
+        #endregion BackgroundImage
 
         #region ThumbImage
 
@@ -381,7 +381,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Values
 
         public static readonly BindableProperty ActiveTrackColorProperty =
-            BindableProperty.Create(nameof(ActiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.PrimaryContainerColor);
+            BindableProperty.Create(nameof(ActiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color ActiveTrackColor
         {
@@ -399,7 +399,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ThumbColorProperty =
-            BindableProperty.Create(nameof(ThumbColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.OnPrimaryContainerColor);
+            BindableProperty.Create(nameof(ThumbColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color ThumbColor
         {
@@ -443,7 +443,6 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ShowIconsProperty, value); }
         }
 
-
         public static readonly BindableProperty DisabledActiveTrackColorProperty =
             BindableProperty.Create(nameof(DisabledActiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.DisableColor);
 
@@ -454,7 +453,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledInactiveTrackColorProperty =
-            BindableProperty.Create(nameof(DisabledInactiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledInactiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.DisableContainerColor);
 
         public Color DisabledInactiveTrackColor
         {
@@ -463,7 +462,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledThumbColorProperty =
-            BindableProperty.Create(nameof(DisabledThumbColor), typeof(Color), typeof(MaterialSlider), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(DisabledThumbColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledThumbColor
         {
@@ -627,9 +626,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetMinimumIconIsVisible();
                     SetMaximumIconIsVisible();
                     break;
+                default:
+                    base.OnPropertyChanged(propertyName);
+                    break;
             }
-
-            base.OnPropertyChanged(propertyName);
         }
 
         private void SetMinimumIconIsVisible()
