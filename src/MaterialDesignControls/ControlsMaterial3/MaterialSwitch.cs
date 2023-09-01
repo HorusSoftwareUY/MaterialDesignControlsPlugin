@@ -1,4 +1,4 @@
-﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
@@ -414,7 +414,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 ToggledCommand?.Execute((bool)IsToggled);
             };
 
-            sw.GestureRecognizers.Clear();
             sw.GestureRecognizers.Add(tapGestureRecognizer);
 
             BackgroundFrame = new MaterialCard()
@@ -453,13 +452,15 @@ namespace Plugin.MaterialDesignControls.Material3
                 Margin = new Thickness(1, 0, 1, 0)
             };
 
+            ThumbFrame.GestureRecognizers.Add(tapGestureRecognizer);
+
             imgIcon = new CustomImage()
             {
                 IsVisible = false,
                 WidthRequest = 22,
                 HeightRequest = 22,
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center
             };
 
             this.ThumbFrame.Content = imgIcon;
