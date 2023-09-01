@@ -25,8 +25,8 @@
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                              HorizontalOptions="Center"
-                                             Text="Regular" />
-                    <material3:MaterialFloatingButton Animation="Scale"
+                                             Text="Large" />
+                    <material3:MaterialFloatingButton ButtonType="Large"
                                                       Clicked="MaterialFloatingButton_Clicked"
                                                       HorizontalOptions="Center"
                                                       Icon="add_w.png" />
@@ -35,9 +35,17 @@
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalOptions="Center"
+                                            Text="Regular" />
+                    <material3:MaterialFloatingButton ButtonType="Regular"
+                                                      HorizontalOptions="Center"
+                                                      Icon="download.png" />
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
                                             Text="Small" />
-                    <material3:MaterialFloatingButton Animation="Scale"
-                                                      ButtonType="Small"
+                    <material3:MaterialFloatingButton ButtonType="Small"
                                                       HorizontalOptions="Center"
                                                       Icon="download.png" />
 
@@ -45,10 +53,11 @@
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                              HorizontalOptions="Center"
-                                             Text="Large" />
-                    <material3:MaterialFloatingButton Icon="download.png"
-                                                      Animation="Scale"
-                                                      HorizontalOptions="Center" />
+                                             Text="With text" />
+                    <material3:MaterialFloatingButton ButtonType="Large"
+                                                      Icon="download.png"
+                                                      HorizontalOptions="Center"
+                                                      Text="Download" />
 
                     <material3:MaterialDivider Margin="0,10" />
 
@@ -128,13 +137,21 @@
                                                           TextColor="{StaticResource GradientColor4}"
                                                           iOSShadowOffset="0,5"
                                                           iOSShadowOpacity="0.3"
-                                                          iOSShadowRadius="6" />
+                                                          iOSShadowRadius="6">
+                            <material3:MaterialFloatingButton.CustomIcon>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
+                            </material3:MaterialFloatingButton.CustomIcon>
+                        </material3:MaterialFloatingButton>
                         <material3:MaterialFloatingButton Animation="Fade"
                                                           BackgroundColor="{StaticResource GradientColor5}"
                                                           ButtonType="Large"
                                                           HorizontalOptions="Center"
                                                           Text="Add new item"
-                                                          ToUpper="True" />
+                                                          ToUpper="True">
+                            <material3:MaterialFloatingButton.CustomIcon>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
+                            </material3:MaterialFloatingButton.CustomIcon>
+                        </material3:MaterialFloatingButton>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

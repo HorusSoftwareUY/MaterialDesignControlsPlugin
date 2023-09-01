@@ -71,7 +71,6 @@
     <Compile Include="ControlsMaterial3\MaterialDoublePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialEditor.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
-    <Compile Include="ControlsMaterial3\MaterialFloatingButton.xaml.cs" />
     <Compile Include="ControlsMaterial3\MaterialNavigationDrawer.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
@@ -197,6 +196,7 @@
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ControlsMaterial3\MaterialFloatingButton.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -217,9 +217,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialFloatingButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
