@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-
+using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -62,7 +62,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.Black);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.TextColor);
 
         public Color LabelTextColor
         {
@@ -71,7 +71,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledLabelTextColorProperty =
-            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledLabelTextColor
         {
@@ -80,7 +80,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
 
         public double LabelSize
         {
@@ -89,7 +89,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelFontFamilyProperty =
-            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(MaterialRadioButtons), defaultValue: null);
+            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.FontFamily);
 
         public string LabelFontFamily
         {
@@ -98,7 +98,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMarginProperty =
-            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(MaterialRadioButtons), defaultValue: new Thickness(14, 0, 14, 2));
+            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(MaterialRadioButtons), defaultValue: new Thickness(16, 0, 16, 4));
 
         public Thickness LabelMargin
         {
@@ -114,7 +114,15 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-            lblLabel.TextColor = LabelTextColor;
+            lblLabel.TextColor = TextColor;
+            lblLabel.FontFamily = FontFamily;
+            lblLabel.FontSize = LabelSize;
+            lblLabel.Margin = LabelMargin;
+
+            lblSupporting.TextColor = SupportingTextColor;
+            lblSupporting.FontFamily = SupportingFontFamily;
+            lblSupporting.FontSize = SupportingSize;
+            lblSupporting.Margin = SupportingMargin;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -126,7 +134,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 Initialize();
             }
 
-            UpdateLayout(propertyName, container, lblAssistive);
+            UpdateLayout(propertyName, container, lblSupporting);
 
             switch (propertyName)
             {
@@ -166,6 +174,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 foreach (var item in (IEnumerable)newValue)
                 {
                     var materialCheckbox = new MaterialCheckbox();
+                    materialCheckbox.IsRadioButtonStyle = true;
                     materialCheckbox.Text = item.ToString();
                     materialCheckbox.Command = new Command(() => SelectionCommand(control, materialCheckbox));
                     materialCheckbox.Color = control.Color;

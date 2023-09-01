@@ -11,7 +11,7 @@
                                     Margin="14,0,14,2"
                                     HorizontalTextAlignment="Start" />
             <StackLayout x:Name="container" />
-            <controls:MaterialLabel x:Name="lblAssistive"
+            <controls:MaterialLabel x:Name="lblSupporting"
                                     IsVisible="false"
                                     LineBreakMode="NoWrap"
                                     Margin="14,2,14,0"

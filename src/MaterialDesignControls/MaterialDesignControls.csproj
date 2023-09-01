@@ -66,7 +66,10 @@
     </Compile>
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
     <Compile Include="ControlsMaterial3\MaterialBadge.cs" />
-    <Compile Include="ControlsMaterial3\MaterialCheckbox.xaml.cs" />
+    <Compile Include="ControlsMaterial3\MaterialCheckbox.xaml.cs">
+      <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ControlsMaterial3\MaterialChips.cs" />
     <Compile Include="ControlsMaterial3\MaterialChipsGroup.cs" />
     <Compile Include="ControlsMaterial3\MaterialDatePicker.cs" />
@@ -75,7 +78,10 @@
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialNavigationDrawer.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
-    <Compile Include="ControlsMaterial3\MaterialRadioButtons.xaml.cs" />
+    <Compile Include="ControlsMaterial3\MaterialRadioButtons.xaml.cs">
+      <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
     <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
     <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
@@ -199,6 +205,8 @@
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Implementations\CustomMaterial3\CustomRadioButton.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomCheckBox.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

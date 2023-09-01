@@ -41,6 +41,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CommandParameterProperty, value); }
         }
 
+        public static readonly BindableProperty IsRadioButtonStyleProperty =
+            BindableProperty.Create(nameof(IsRadioButtonStyle), typeof(bool), typeof(MaterialCheckbox), defaultValue: false, defaultBindingMode: BindingMode.OneWay);
+
+        public bool IsRadioButtonStyle
+        {
+            get { return (bool)GetValue(IsRadioButtonStyleProperty); }
+            set { SetValue(IsRadioButtonStyleProperty, value); }
+        }
+
         #endregion Properties
 
 
@@ -101,23 +110,27 @@ namespace Plugin.MaterialDesignControls.Material3
                         lblRightText.HorizontalOptions = TextHorizontalOptions;
                     break;
                 case nameof(IconHeightRequest):
-                    imageContainer.HeightRequest = IconHeightRequest;
                     customIcon.HeightRequest = IconHeightRequest;
                     break;
                 case nameof(IconWidthRequest):
-                    imageContainer.HeightRequest = IconWidthRequest;
                     customIcon.HeightRequest = IconWidthRequest;
                     break;
                 case nameof(Color):
                 case nameof(DisabledColor):
                     chk.Color = IsEnabled ? Color : DisabledColor;
+                    radioButton.Color = IsEnabled ? Color : DisabledColor;
                     break;
                 case nameof(SelectionHorizontalOptions):
                     chkContainer.HorizontalOptions = SelectionHorizontalOptions;
                     imageContainer.HorizontalOptions = SelectionHorizontalOptions;
+                    radioButtonContainer.HorizontalOptions = SelectionHorizontalOptions;
                     break;
                 case nameof(IsEnabled):
                     SetIsEnabled();
+                    break;
+                case nameof(IsRadioButtonStyle):
+                    chkContainer.IsVisible = false;
+                    radioButtonContainer.IsVisible = true;
                     break;
             }
         }
@@ -125,13 +138,30 @@ namespace Plugin.MaterialDesignControls.Material3
         private void Initialize()
         {
             container.Spacing = Spacing;
+
             chk.IsEnabled = IsEnabled;
             chk.Color = Color;
-            imageContainer.HeightRequest = IconHeightRequest;
-            imageContainer.WidthRequest = IconWidthRequest;
+
+            radioButton.IsEnabled = IsEnabled;
+            radioButton.Color = Color;
+
             customIcon.ImageHeightRequest = IconHeightRequest;
             customIcon.ImageWidthRequest = IconWidthRequest;
             customIcon.Padding = 0;
+
+            lblLeftText.TextColor = TextColor;
+            lblLeftText.FontFamily = FontFamily;
+            lblLeftText.FontSize = FontSize;
+
+            lblRightText.TextColor = TextColor;
+            lblRightText.FontFamily = FontFamily;
+            lblRightText.FontSize = FontSize;
+
+            lblSupporting.TextColor = SupportingTextColor;
+            lblSupporting.FontFamily = SupportingFontFamily;
+            lblSupporting.FontSize = SupportingSize;
+            lblSupporting.Margin = SupportingMargin;
+
             Effects.Add(new TouchAndPressEffect());
         }
 
@@ -185,6 +215,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             imageContainer.IsVisible = true;
             chkContainer.IsVisible = false;
+            radioButtonContainer.IsVisible = false;
             SetCustomIcon();
         }
 
@@ -194,6 +225,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 SetIcon();
 
             chk.IsChecked = IsChecked;
+            radioButton.IsChecked = IsChecked;
         }
 
         protected override void SetIsEnabled()
@@ -203,6 +235,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
             chk.IsEnabled = IsEnabled;
             chk.Color = IsEnabled ? Color : DisabledColor;
+            radioButton.IsEnabled = IsEnabled;
+            radioButton.Color = IsEnabled ? Color : DisabledColor;
             lblLeftText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
             lblRightText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
@@ -7,6 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialRadioButtons is deprecated, please use MaterialRadioButtons of Material 3 instead.")]
     public partial class MaterialRadioButtons : BaseMaterialCheckboxes
     {
         #region Attributes
