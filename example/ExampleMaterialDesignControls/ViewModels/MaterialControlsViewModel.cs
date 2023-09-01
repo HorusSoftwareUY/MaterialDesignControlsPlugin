@@ -135,5 +135,11 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await Navigation.PushAsync(new MaterialLabel());
         });
+
+        public ICommand GoMaterialIconButtonCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialIconButtonPage());
+        });
+        
     }
 }

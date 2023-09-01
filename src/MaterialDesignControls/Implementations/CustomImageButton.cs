@@ -19,7 +19,7 @@ namespace Plugin.MaterialDesignControls.Implementations
         }
 
         #endregion Constructors
-
+    
         #region Attributes
         private Image image;
 
