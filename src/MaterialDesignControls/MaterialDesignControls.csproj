@@ -205,6 +205,7 @@
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ControlsMaterial3\MaterialSearch.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomRadioButton.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomCheckBox.cs" />
     <Compile Include="ControlsMaterial3\MaterialFloatingButton.cs" />
