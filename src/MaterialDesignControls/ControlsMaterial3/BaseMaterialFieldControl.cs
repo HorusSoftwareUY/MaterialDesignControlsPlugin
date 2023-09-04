@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-
 namespace Plugin.MaterialDesignControls.Material3
 {
-   
     public class BaseMaterialFieldControl : ContentView
     {
         #region Attributes
@@ -573,7 +571,6 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 this.initialized = true;
                 this.Initialize();
-                InitializeDefaults();
             }
 
             //Set by default Trailing and Leading command to focus control
@@ -668,38 +665,12 @@ namespace Plugin.MaterialDesignControls.Material3
             frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
         }
 
-        public void InitializeDefaults()
-        {
-            SetLabelTextColor();
-            SetBorderAndBackgroundColors();
-
-            if (!IsEnabled)
-                CustomContent.SetTextColor(DisabledTextColor);
-            else if (CustomContent.IsControlFocused())
-                CustomContent.SetTextColor(FocusedTextColor);
-            else
-                CustomContent.SetTextColor(TextColor);
-
-            CustomContent.SetFontSize(FontSize);
-            CustomContent.SetPlaceholderColor(PlaceholderColor);
-            CustomContent.SetFontFamily(FontFamily);
-            SetAnimatedLabel();
-            lblLabel.FontSize = LabelSize;
-            lblLabel.FontFamily = FontFamily;
-            lblLabel.Margin = LabelMargin;
-            lblSupporting.FontFamily = FontFamily;
-            lblSupporting.TextColor = SupportingTextColor;
-            lblSupporting.FontSize = SupportingSize;
-            lblSupporting.Margin = SupportingMargin;
-        }
-
         public void UpdateLayout(string propertyName)
         {
             if (!this.initialized)
             {
                 this.initialized = true;
-                Initialize();
-                InitializeDefaults();
+                this.Initialize();
             }
 
             switch (propertyName)
@@ -909,7 +880,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-            StackLayout mainContainer = new StackLayout()
+            var mainContainer = new StackLayout()
             {
                 Spacing = 0
             };
@@ -1014,8 +985,34 @@ namespace Plugin.MaterialDesignControls.Material3
             mainContainer.Children.Add(indicator);
             mainContainer.Children.Add(lblSupporting);
 
-            this.Content = mainContainer;
+            InitializeDefaults();
 
+            this.Content = mainContainer;
+        }
+
+        public void InitializeDefaults()
+        {
+            SetLabelTextColor();
+            SetBorderAndBackgroundColors();
+
+            if (!IsEnabled)
+                CustomContent.SetTextColor(DisabledTextColor);
+            else if (CustomContent.IsControlFocused())
+                CustomContent.SetTextColor(FocusedTextColor);
+            else
+                CustomContent.SetTextColor(TextColor);
+
+            CustomContent.SetFontSize(FontSize);
+            CustomContent.SetPlaceholderColor(PlaceholderColor);
+            CustomContent.SetFontFamily(FontFamily);
+            SetAnimatedLabel();
+            lblLabel.FontSize = LabelSize;
+            lblLabel.FontFamily = FontFamily;
+            lblLabel.Margin = LabelMargin;
+            lblSupporting.FontFamily = FontFamily;
+            lblSupporting.TextColor = SupportingTextColor;
+            lblSupporting.FontSize = SupportingSize;
+            lblSupporting.Margin = SupportingMargin;
         }
 
         private void SetHasBorder()

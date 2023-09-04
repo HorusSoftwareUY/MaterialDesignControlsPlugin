@@ -205,6 +205,7 @@
     <Compile Include="Implementations\CustomMaterial3\CustomRadioButton.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomCheckBox.cs" />
     <Compile Include="ControlsMaterial3\MaterialFloatingButton.cs" />
+    <Compile Include="ControlsMaterial3\BaseMaterialCheckBoxes.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
