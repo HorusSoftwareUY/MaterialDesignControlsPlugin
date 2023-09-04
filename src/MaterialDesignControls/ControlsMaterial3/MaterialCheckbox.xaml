@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<controls:BaseMaterialCheckBoxes xmlns="http://xamarin.com/schemas/2014/forms"
+                                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                                 xmlns:controls="clr-namespace:Plugin.MaterialDesignControls.Material3"
+                                 xmlns:custom="clr-namespace:Plugin.MaterialDesignControls.Implementations"
+                                 xmlns:custom3="clr-namespace:Plugin.MaterialDesignControls.Material3.Implementations"
+                                 x:Class="Plugin.MaterialDesignControls.Material3.MaterialCheckbox">
+    <controls:BaseMaterialCheckBoxes.Resources>
+        <ResourceDictionary>
+            <Style x:Key="gridStyle"
+                   TargetType="Grid">
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </controls:BaseMaterialCheckBoxes.Resources>
+    <controls:BaseMaterialCheckBoxes.Content>
+        <StackLayout Spacing="0"
+                     VerticalOptions="Center">
+            <StackLayout x:Name="container"
+                         Orientation="Horizontal">
+                <controls:MaterialLabel x:Name="lblLeftText"
+                                        VerticalTextAlignment="Center"
+                                        IsVisible="False" />
+                <Grid x:Name="chkContainer"
+                      Style="{StaticResource gridStyle}"
+                      WidthRequest="40"
+                      HeightRequest="40">
+                    <custom3:CustomCheckBox
+                              x:Name="chk"
+                              VerticalOptions="Center"
+                              HorizontalOptions="Center"
+                              HeightRequest="24"
+                              WidthRequest="24" />
+                    <BoxView HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             WidthRequest="24"
+                             HeightRequest="24" />
+                </Grid>
+                <Grid x:Name="radioButtonContainer"
+                      IsVisible="False"
+                      Style="{StaticResource gridStyle}"
+                      WidthRequest="40"
+                      HeightRequest="40">
+                    <custom3:CustomRadioButton
+                              x:Name="radioButton"
+                              VerticalOptions="Center"
+                              HorizontalOptions="Center" />
+                    <BoxView HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             WidthRequest="24"
+                             HeightRequest="24" />
+                </Grid>
+                <Grid x:Name="imageContainer"
+                      IsVisible="False"
+                      Style="{StaticResource gridStyle}"
+                      WidthRequest="40"
+                      HeightRequest="40">
+                    <custom:CustomImageButton x:Name="customIcon"
+                                              HorizontalOptions="Start"
+                                              VerticalOptions="Center" />
+                    <BoxView BackgroundColor="Transparent"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             WidthRequest="24"
+                             HeightRequest="24" />
+                </Grid>
+                <controls:MaterialLabel x:Name="lblRightText"
+                                        VerticalTextAlignment="Center" />
+            </StackLayout>
+            <controls:MaterialLabel x:Name="lblSupporting"
+                                    IsVisible="false"
+                                    LineBreakMode="NoWrap"
+                                    Margin="14,2,14,0"
+                                    HorizontalTextAlignment="Start" />
+        </StackLayout>
+    </controls:BaseMaterialCheckBoxes.Content>
+</controls:BaseMaterialCheckBoxes>
