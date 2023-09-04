@@ -258,19 +258,5 @@
             <Setter Property="HeightRequest"
                     Value="1" />
         </Style>
-
-        <!-- MaterialFloatingButton -->
-        <Style TargetType="material:MaterialFloatingButton">
-            <Setter Property="BackgroundColor"
-                    Value="{StaticResource GradientColor1}" />
-            <Setter Property="FontSize"
-                    Value="{StaticResource ButtonFontSize}" />
-            <Setter Property="FontFamily"
-                    Value="{StaticResource SemiBoldFont}" />
-            <Setter Property="ShadowColor"
-                    Value="Black" />
-            <Setter Property="TextColor"
-                    Value="White" />
-        </Style>
     </Application.Resources>
 </Application>
