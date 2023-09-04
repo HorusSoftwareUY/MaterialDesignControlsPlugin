@@ -59,11 +59,7 @@
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial3\BaseMaterialCheckBoxes.cs" />
-    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.xaml.cs">
-      <DependentUpon>BaseMaterialFieldControl.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.cs" />
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
     <Compile Include="ControlsMaterial3\MaterialBadge.cs" />
     <Compile Include="ControlsMaterial3\MaterialCheckbox.xaml.cs">
@@ -209,6 +205,7 @@
     <Compile Include="Implementations\CustomMaterial3\CustomRadioButton.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomCheckBox.cs" />
     <Compile Include="ControlsMaterial3\MaterialFloatingButton.cs" />
+    <Compile Include="ControlsMaterial3\BaseMaterialCheckBoxes.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -228,15 +225,6 @@
     <None Remove="ControlsMaterial2\DeprecatedControls\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialCheckbox.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialRadioButtons.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
