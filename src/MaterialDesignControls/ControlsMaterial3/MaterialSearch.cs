@@ -10,9 +10,10 @@ namespace Plugin.MaterialDesignControls.Material3
 {
     public partial class MaterialSearch : BaseMaterialFieldControl
     {
-        #region Propertys
+        #region Properties
+
         public static readonly BindableProperty SearchCommandProperty =
-        BindableProperty.Create(nameof(SearchCommand), typeof(ICommand), typeof(MaterialSearch), defaultValue: null);
+            BindableProperty.Create(nameof(SearchCommand), typeof(ICommand), typeof(MaterialSearch), defaultValue: null);
 
         public ICommand SearchCommand
         {
@@ -21,7 +22,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchOnEveryTextChangeProperty =
-        BindableProperty.Create(nameof(SearchOnEveryTextChange), typeof(bool), typeof(MaterialSearch), defaultValue: false);
+            BindableProperty.Create(nameof(SearchOnEveryTextChange), typeof(bool), typeof(MaterialSearch), defaultValue: false);
 
         public bool SearchOnEveryTextChange
         {
@@ -69,22 +70,20 @@ namespace Plugin.MaterialDesignControls.Material3
             this.txtEntry.Focused += HandleFocusChange;
             this.txtEntry.Unfocused += HandleFocusChange;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
-            SetStyle();
+            SetDefaultStyle();
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
             {
                 if (txtEntry.IsControlEnabled())
-                {
                     this.txtEntry.Focus();
-                }
             };
 
             this.Label.GestureRecognizers.Clear();
             this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
-        private void SetStyle()
+        private void SetDefaultStyle()
         {
             this.HasBorder = true;
             this.CornerRadius = 25;
@@ -114,13 +113,9 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!control.txtEntry.IsFocused)
             {
                 if (!string.IsNullOrEmpty((string)newValue))
-                {
                     await control.TransitionToTitle();
-                }
                 else
-                {
                     await control.TransitionToPlaceholder();
-                }
             }
 
             control.txtEntry.Text = (string)newValue;
@@ -159,9 +154,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(this.SearchCommand):
                     if (!this.SearchOnEveryTextChange)
-                    {
                         this.txtEntry.ReturnCommand = SearchCommand;
-                    }
                     break;
             }
         }
@@ -196,9 +189,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 txtEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
             }
             else
-            {
                 Unfocused?.Invoke(this, e);
-            }
         }
 
         private async void TxtEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -206,44 +197,7 @@ namespace Plugin.MaterialDesignControls.Material3
             var changedByTextTransform = Text != null && txtEntry.Text != null && Text.ToLower() == txtEntry.Text.ToLower();
             this.Text = this.txtEntry.Text;
             if (this.SearchOnEveryTextChange)
-            {
                 this.SearchCommand?.Execute(this.Text);
-            }
-        }
-
-        private void FocusNextElement(int currentTabIndex)
-        {
-            try
-            {
-                if (focusNextElementAttempts >= 100)
-                    return;
-
-                ++focusNextElementAttempts;
-
-                var tabIndexes = this.GetTabIndexesOnParentPage(out int count);
-
-                if (tabIndexes != null)
-                {
-                    var nextElement = this.FindNextElement(true, tabIndexes, ref currentTabIndex);
-                    if (nextElement != null)
-                    {
-                        if (nextElement is Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry nextEntry && nextEntry.IsEnabled && !nextEntry.IsReadOnly)
-                        {
-                            nextEntry.Focus();
-                            string textInsideInput = nextEntry.Text;
-                            nextEntry.CursorPosition = string.IsNullOrEmpty(textInsideInput) ? 0 : textInsideInput.Length;
-                        }
-                        else if (nextElement is CustomEditor nextEditor && nextEditor.IsEnabled && !nextEditor.IsReadOnly)
-                            nextEditor.Focus();
-                        else
-                            this.FocusNextElement(++currentTabIndex);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LoggerHelper.Log(ex);
-            }
         }
 
         #endregion Methods

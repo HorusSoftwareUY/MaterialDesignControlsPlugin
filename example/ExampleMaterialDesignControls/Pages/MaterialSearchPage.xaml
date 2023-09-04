@@ -28,16 +28,18 @@
                         Text="SearchOnEveryTextChange"
                         TextSide="Left">
                     </material3:MaterialSwitch>
+
                     <material3:MaterialSearch
-                        LabelMargin="0"
                         Text="{Binding TextSearch}"
                         SearchCommand="{Binding SearchCommand}"
+                        TrailingIconCommand="{Binding SearchCommand}"
                         SearchOnEveryTextChange="{Binding SearchOnEveryTextChange}"
                         Placeholder="Write text to search">
                         <material3:MaterialSearch.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_search_b_w.svg" />
                         </material3:MaterialSearch.CustomTrailingIcon>
                     </material3:MaterialSearch>
+
                     <StackLayout Margin="0,24" BindableLayout.ItemsSource="{Binding ListStrings}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="viewmodel:ItemSearchSample">
@@ -54,4 +56,3 @@
         </Grid>
     </ContentPage.Content>
 </ContentPage>
-
