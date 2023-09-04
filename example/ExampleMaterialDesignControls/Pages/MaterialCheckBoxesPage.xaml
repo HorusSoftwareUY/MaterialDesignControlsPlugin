@@ -1,167 +1,165 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialCheckBoxesPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialCheckBoxesPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialCheckbox" LeadingIconCommand="{Binding BackCommand}">
+            <material3:MaterialTopAppBar Headline="MaterialCheckbox"
+                                         LeadingIconCommand="{Binding BackCommand}">
                 <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="10">
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text="Xamarin Forms Native Control" />
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="10">
+                    
+                    <contentViews:InfoIndicatorView Message="MaterialChips follows the latest guidelines of Material Design 3" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="Xamarin Forms Native Control" />
                     <StackLayout Spacing="5">
-                        <material:MaterialLabel
-                            Margin="0,0,0,5"
-                            FontSize="{StaticResource Body3FontSize}"
-                            Text="Extras" />
-                        <material:MaterialCheckbox IsCheckedChanged="Checkbox_IsCheckedChanged" Text="Pickles" />
-                        <material:MaterialCheckbox IsCheckedChanged="Checkbox_IsCheckedChanged" Text="Tomato" />
-                        <material:MaterialCheckbox IsCheckedChanged="Checkbox_IsCheckedChanged" Text="Lettuce" />
+                        <material:MaterialLabel Margin="0,0,0,5"
+                                                FontSize="{StaticResource Body3FontSize}"
+                                                Text="Extras" />
+                        <material3:MaterialCheckbox Text="Pickles" />
+                        <material3:MaterialCheckbox Text="Tomato" />
+                        <material3:MaterialCheckbox Text="Lettuce" />
                     </StackLayout>
 
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
                     <StackLayout Spacing="5">
-                        <material:MaterialLabel
-                            Margin="0,0,0,5"
-                            FontSize="{StaticResource Body3FontSize}"
-                            Text="Extras" />
-                        <material:MaterialCheckbox
-                            IsChecked="True"
-                            IsEnabled="False"
-                            Text="Pickles" />
-                        <material:MaterialCheckbox IsEnabled="False" Text="Tomato" />
-                        <material:MaterialCheckbox IsEnabled="False" Text="Lettuce" />
+                        <material:MaterialLabel Margin="0,0,0,5"
+                                                FontSize="{StaticResource Body3FontSize}"
+                                                Text="Extras" />
+                        <material3:MaterialCheckbox IsChecked="True"
+                                                   IsEnabled="False"
+                                                   Text="Pickles" />
+                        <material3:MaterialCheckbox IsEnabled="False"
+                                                   Text="Tomato" />
+                        <material3:MaterialCheckbox IsEnabled="False"
+                                                   Text="Lettuce" />
                     </StackLayout>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text="Custom Icon With .png File" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="Custom Icon With .png File" />
 
                     <StackLayout Spacing="5">
-                        <material:MaterialLabel
-                            Margin="0,0,0,5"
-                            FontSize="{StaticResource Body3FontSize}"
-                            Text="Extras" />
-                        <material:MaterialCheckbox
-                            DisabledSelectedIcon="checkbox_disabledChecked.png"
-                            DisabledUnselectedIcon="checkbox_disabledUnchecked.png"
-                            SelectedIcon="checkbox_checked.png"
-                            SelectionHorizontalOptions="EndAndExpand"
-                            Text="Pickles"
-                            TextSide="Left"
-                            UnselectedIcon="checkbox_unchecked.png" />
-                        <material:MaterialCheckbox
-                            DisabledSelectedIcon="checkbox_disabledChecked.png"
-                            DisabledUnselectedIcon="checkbox_disabledUnchecked.png"
-                            SelectedIcon="checkbox_checked.png"
-                            SelectionHorizontalOptions="EndAndExpand"
-                            Text="Tomato"
-                            TextSide="Left"
-                            UnselectedIcon="checkbox_unchecked.png" />
-                        <material:MaterialCheckbox
-                            DisabledSelectedIcon="checkbox_disabledChecked.png"
-                            DisabledUnselectedIcon="checkbox_disabledUnchecked.png"
-                            IsChecked="True"
-                            SelectedIcon="checkbox_checked.png"
-                            SelectionHorizontalOptions="EndAndExpand"
-                            Text="Lettuce"
-                            TextSide="Left"
-                            UnselectedIcon="checkbox_unchecked.png" />
+                        <material:MaterialLabel Margin="0,0,0,5"
+                                                FontSize="{StaticResource Body3FontSize}"
+                                                Text="Extras" />
+                        <material3:MaterialCheckbox DisabledSelectedIcon="checkbox_disabledChecked.png"
+                                                   DisabledUnselectedIcon="checkbox_disabledUnchecked.png"
+                                                   SelectedIcon="checkbox_checked.png"
+                                                   SelectionHorizontalOptions="EndAndExpand"
+                                                   Text="Pickles"
+                                                   TextSide="Left"
+                                                   UnselectedIcon="checkbox_unchecked.png" />
+                        <material3:MaterialCheckbox DisabledSelectedIcon="checkbox_disabledChecked.png"
+                                                   DisabledUnselectedIcon="checkbox_disabledUnchecked.png"
+                                                   SelectedIcon="checkbox_checked.png"
+                                                   SelectionHorizontalOptions="EndAndExpand"
+                                                   Text="Tomato"
+                                                   TextSide="Left"
+                                                   UnselectedIcon="checkbox_unchecked.png" />
+                        <material3:MaterialCheckbox DisabledSelectedIcon="checkbox_disabledChecked.png"
+                                                   DisabledUnselectedIcon="checkbox_disabledUnchecked.png"
+                                                   IsChecked="True"
+                                                   SelectedIcon="checkbox_checked.png"
+                                                   SelectionHorizontalOptions="EndAndExpand"
+                                                   Text="Lettuce"
+                                                   TextSide="Left"
+                                                   UnselectedIcon="checkbox_unchecked.png" />
                     </StackLayout>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text="Custom Icon With .svg File" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalOptions="Center"
+                                            Text="Custom Icon With .svg File" />
                     <StackLayout Margin="0,0,0,0">
-                        <material:MaterialCheckbox
-                            Animation="Fade"
-                            IsChecked="True"
-                            Text="Checkbox 1">
-                            <material:MaterialCheckbox.CustomSelectedIcon>
+                        <material3:MaterialCheckbox Animation="Fade"
+                                                   IsChecked="True"
+                                                   Text="Checkbox 1">
+                            <material3:MaterialCheckbox.CustomSelectedIcon>
                                 <DataTemplate>
                                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg" />
                                 </DataTemplate>
-                            </material:MaterialCheckbox.CustomSelectedIcon>
-                            <material:MaterialCheckbox.CustomUnselectedIcon>
+                            </material3:MaterialCheckbox.CustomSelectedIcon>
+                            <material3:MaterialCheckbox.CustomUnselectedIcon>
                                 <DataTemplate>
                                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg" />
                                 </DataTemplate>
-                            </material:MaterialCheckbox.CustomUnselectedIcon>
-                            <material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                            </material3:MaterialCheckbox.CustomUnselectedIcon>
+                            <material3:MaterialCheckbox.CustomDisabledSelectedIcon>
                                 <DataTemplate>
                                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg" />
                                 </DataTemplate>
-                            </material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                            <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                            </material3:MaterialCheckbox.CustomDisabledSelectedIcon>
+                            <material3:MaterialCheckbox.CustomDisabledUnselectedIcon>
                                 <DataTemplate>
                                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg" />
                                 </DataTemplate>
-                            </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                        </material:MaterialCheckbox>
+                            </material3:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                        </material3:MaterialCheckbox>
 
-                        <material:MaterialCheckbox Animation="Scale" Text="Checkbox 2">
-                            <material:MaterialCheckbox.CustomSelectedIcon>
+                        <material3:MaterialCheckbox Animation="Scale"
+                                                   Text="Checkbox 2">
+                            <material3:MaterialCheckbox.CustomSelectedIcon>
                                 <DataTemplate>
                                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_checked.svg" />
                                 </DataTemplate>
-                            </material:MaterialCheckbox.CustomSelectedIcon>
-                            <material:MaterialCheckbox.CustomUnselectedIcon>
+                            </material3:MaterialCheckbox.CustomSelectedIcon>
+                            <material3:MaterialCheckbox.CustomUnselectedIcon>
                                 <DataTemplate>
                                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg" />
                                 </DataTemplate>
-                            </material:MaterialCheckbox.CustomUnselectedIcon>
-                            <material:MaterialCheckbox.CustomDisabledSelectedIcon>
+                            </material3:MaterialCheckbox.CustomUnselectedIcon>
+                            <material3:MaterialCheckbox.CustomDisabledSelectedIcon>
                                 <DataTemplate>
                                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledChecked.svg" />
                                 </DataTemplate>
-                            </material:MaterialCheckbox.CustomDisabledSelectedIcon>
-                            <material:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                            </material3:MaterialCheckbox.CustomDisabledSelectedIcon>
+                            <material3:MaterialCheckbox.CustomDisabledUnselectedIcon>
                                 <DataTemplate>
                                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_disabledUnchecked.svg" />
                                 </DataTemplate>
-                            </material:MaterialCheckbox.CustomDisabledUnselectedIcon>
-                        </material:MaterialCheckbox>
+                            </material3:MaterialCheckbox.CustomDisabledUnselectedIcon>
+                        </material3:MaterialCheckbox>
                     </StackLayout>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialCheckbox
-                        AnimateError="True"
-                        Animation="Scale"
-                        AssistiveText="{Binding NameError}"
-                        IsChecked="{Binding IsChecked}"
-                        SelectedIcon="checkbox_checked.png"
-                        Text="I agree to the terms of service"
-                        UnselectedIcon="checkbox_unchecked.png" />
+                    <material3:MaterialCheckbox AnimateError="True"
+                                                Animation="Scale"
+                                                SupportingText="{Binding NameError}"
+                                                IsChecked="{Binding IsChecked}"
+                                                SelectedIcon="checkbox_checked.png"
+                                                Text="I agree to the terms of service"
+                                                UnselectedIcon="checkbox_unchecked.png"
+                                                IsCheckedChanged="Checkbox_IsCheckedChanged" />
 
-                    <material3:MaterialButton
-                        Margin="0,20,0,0"
-                        Command="{Binding SaveCommand}"
-                        HorizontalOptions="FillAndExpand"
-                        Text="Save" />
+                    <material3:MaterialButton Margin="0,20,0,0"
+                                              Command="{Binding SaveCommand}"
+                                              HorizontalOptions="FillAndExpand"
+                                              Text="Save" />
                 </StackLayout>
             </ScrollView>
         </Grid>

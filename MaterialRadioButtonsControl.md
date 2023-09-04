@@ -8,7 +8,7 @@ This control is a custom implementation of a radiobuttons. You can customize som
 
 ## Example MaterialRadioButton
 ```XML
- <material:MaterialRadioButtons 
+ <material3:MaterialRadioButtons 
     x:Name="radiobuttons" 
     LabelText="Rigtones" 
     ItemsSource="{Binding Rigtones}"
@@ -49,27 +49,27 @@ This propperty is to set the fontfamily of the text.
 <br/>
 <br/>
 
-### Property AssistiveText:
+### Property SupportingText:
 This property is to set the error text on the control. 
 <br/>
 <br/>
 
-### Property AssistiveTextColor:
+### Property SupportingTextColor:
 This property is to set the error text color value on the control.
 <br/>
 <br/>
 
-### Property AssistiveSize:
+### Property SupportingSize:
 This property is to set the error text font size value on the control. 
 <br/>
 <br/>
 
-### Property AssistiveFontFamily:
+### Property SupportingFontFamily:
 This property is to set the error text font family value on the control.
 <br/>
 <br/>
 
-### Property AssistiveMargin:
+### Property SupportingMargin:
 This property is to set the error text margin value on the control.
 <br/>
 <br/>

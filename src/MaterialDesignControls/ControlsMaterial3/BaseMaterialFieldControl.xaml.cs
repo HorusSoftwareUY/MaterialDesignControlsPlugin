@@ -203,7 +203,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMarginProperty =
-            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(16, 0, 16, 0));
+            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(0));
 
         public Thickness LabelMargin
         {
@@ -669,9 +669,11 @@ namespace Plugin.MaterialDesignControls.Material3
             SetAnimatedLabel();
             lblLabel.FontSize = LabelSize;
             lblLabel.FontFamily = FontFamily;
+            lblLabel.Margin = LabelMargin;
             lblSupporting.FontFamily = FontFamily;
             lblSupporting.TextColor = SupportingTextColor;
             lblSupporting.FontSize = SupportingSize;
+            lblSupporting.Margin = SupportingMargin;
         }
 
         public void UpdateLayout(string propertyName)
