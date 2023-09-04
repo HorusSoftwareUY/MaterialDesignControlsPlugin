@@ -26,7 +26,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 IsCode = true,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
-                TextColor = Color.Transparent
+                TextColor = Color.Transparent,
+                CursorColor = Color.Transparent
             };
 
             grdContainer.Children.Add(txtEntry);
