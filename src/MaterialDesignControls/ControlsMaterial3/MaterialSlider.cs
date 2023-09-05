@@ -12,12 +12,12 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialSlider() : base()
         {
-            StackLayout mainContainer = new StackLayout()
+            var mainContainer = new StackLayout()
             {
                 Spacing = 2
             };
 
-            Grid grid = new Grid()
+            var grid = new Grid()
             {
                 Padding = new Thickness(0),
                 VerticalOptions = LayoutOptions.FillAndExpand,
@@ -37,7 +37,7 @@ namespace Plugin.MaterialDesignControls.Material3
             grid.Children.Add(bckgImage);
 
 
-            StackLayout sliderContainer = new StackLayout()
+            var sliderContainer = new StackLayout()
             {
                 Orientation = StackOrientation.Horizontal,
                 VerticalOptions = LayoutOptions.FillAndExpand
@@ -55,14 +55,25 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.Start,
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
+                Text = LabelMinimumText,
+                TextColor = IsEnabled ? LabelMinimumTextColor : DisabledLabelMinimumTextColor,
+                FontSize = LabelMinimumSize,
             };
 
             slider = new CustomSlider()
             {
                 VerticalOptions = LayoutOptions.Center,
                 Margin = new Thickness(0, 10, 0, 10),
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Minimum = MinimumValue,
+                Maximum = MaximumValue,
+                ActiveTrackColor = ActiveTrackColor,
+                InactiveTrackColor = InactiveTrackColor,
+                ThumbColor = ThumbColor,
+                TrackHeight = TrackHeight,
+                TrackCornerRadius = TrackCornerRadius,
+                UserInteractionEnabled = UserInteractionEnabled,
             };
 
             slider.ValueChanged += OnValueChanged;
@@ -71,7 +82,10 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.End,
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
+                Text = LabelMaximumText,
+                TextColor = IsEnabled ? LabelMaximumTextColor : DisabledLabelMaximumTextColor,
+                FontSize = LabelMaximumSize,
             };
 
             imgMaximum = new CustomImageButton()
@@ -90,6 +104,11 @@ namespace Plugin.MaterialDesignControls.Material3
             grid.Children.Add(sliderContainer);
 
             mainContainer.Children.Add(grid);
+
+            SecondaryLabelTextColor = LabelValueColor;
+            DisabledSecondaryLabelTextColor = DisabledLabelValueColor;
+            SecondaryLabelFontSize = LabelValueSize;
+            SecondaryLabelFontFamily = LabelValueFontFamily;
 
             base.CustomControl = mainContainer;
         }
@@ -125,7 +144,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelValueColorProperty =
-            BindableProperty.Create(nameof(LabelValueColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(LabelValueColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.OnSurfaceVariantColor);
 
         public Color LabelValueColor
         {
@@ -143,12 +162,21 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelValueSizeProperty =
-            BindableProperty.Create(nameof(LabelValueSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
+            BindableProperty.Create(nameof(LabelValueSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
 
         public double LabelValueSize
         {
             get { return (double)GetValue(LabelValueSizeProperty); }
             set { SetValue(LabelValueSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty LabelValueFontFamilyProperty =
+            BindableProperty.Create(nameof(LabelValueFontFamily), typeof(string), typeof(MaterialSlider), defaultValue: DefaultStyles.FontFamily);
+
+        public string LabelValueFontFamily
+        {
+            get { return (string)GetValue(LabelValueFontFamilyProperty); }
+            set { SetValue(LabelValueFontFamilyProperty, value); }
         }
 
         public static readonly BindableProperty LabelValueIsVisibleProperty =
@@ -488,6 +516,9 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(LabelValueSize):
                     SecondaryLabelFontSize = LabelValueSize;
+                    break;
+                case nameof(LabelValueFontFamily):
+                    SecondaryLabelFontFamily = LabelValueFontFamily;
                     break;
                 case nameof(LabelValueIsVisible):
                     SecondaryLabelText = LabelValueIsVisible ? Value.ToString(LabelValueFormat) : string.Empty;

@@ -43,19 +43,13 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialSlider follows the latest guidelines of Material Design 3" />
 
-                    <material3:MaterialSlider x:Name="slider"
-                                             ActiveTrackColor="{StaticResource GradientColor1}"
-                                             InactiveTrackColor="{StaticResource GradientColorTransparent1}"
-                                             LabelText="Slider"
-                                             LabelTextColor="{StaticResource GradientColor1}"
-                                             LabelValueColor="{StaticResource GradientColor1}"
-                                             LabelValueFormat="0.00 km"
-                                             LabelValueIsVisible="True"
-                                             LabelValueSize="{StaticResource Body3FontSize}"
-                                             MaximumValue="100"
-                                             MinimumValue="0"
-                                             Style="{StaticResource SliderStyle}"
-                                             ThumbColor="{StaticResource GradientColor1}" />
+                    <material3:MaterialSlider
+                        x:Name="slider"
+                        LabelText="Slider"
+                        LabelValueFormat="0.00 km"
+                        LabelValueIsVisible="True"
+                        MaximumValue="100"
+                        MinimumValue="0" />
 
                     <material3:MaterialSlider x:Name="slider10"
                                              ActiveTrackColor="{StaticResource GradientColor3}"

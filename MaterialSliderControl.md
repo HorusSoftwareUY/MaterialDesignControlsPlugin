@@ -9,14 +9,12 @@ This control is a custom implementation of a slider. You can customize some prop
 
 ## Example MaterialSlider
 ```XML
- <material:MaterialSlider   
-    x:Name="slider" 
-    MinimumValue="0" 
-    MaximumValue="100" 
-    ThumbColor="BlueViolet"
+<material3:MaterialSlider
     LabelText="Slider"
-    ActiveTrackColor="BlueViolet"
-    InactiveTrackColor="LightPink"/>
+    LabelValueFormat="0.00 km"
+    LabelValueIsVisible="True"
+    MaximumValue="100"
+    MinimumValue="0" />
 ```
 
 <br/>
