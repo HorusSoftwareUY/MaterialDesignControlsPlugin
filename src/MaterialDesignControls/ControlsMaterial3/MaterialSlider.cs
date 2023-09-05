@@ -17,25 +17,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 Spacing = 2
             };
 
-            StackLayout headerContainer = new StackLayout()
-            {
-                Margin = new Thickness(0, 0, 14, 2),
-                Orientation = StackOrientation.Horizontal
-            };
-
-            lblValue = new MaterialLabel()
-            {
-                IsVisible = false,
-                LineBreakMode = LineBreakMode.NoWrap,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                HorizontalTextAlignment = TextAlignment.Start,
-                VerticalTextAlignment = TextAlignment.Center
-            };
-
-            headerContainer.Children.Add(lblValue);
-
-            mainContainer.Children.Add(headerContainer);
-
             Grid grid = new Grid()
             {
                 Padding = new Thickness(0),
@@ -54,6 +35,7 @@ namespace Plugin.MaterialDesignControls.Material3
             bckgImage.SetValue(Grid.RowProperty, 0);
 
             grid.Children.Add(bckgImage);
+
 
             StackLayout sliderContainer = new StackLayout()
             {
@@ -98,6 +80,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.End
             };
 
+
             sliderContainer.Children.Add(imgMinimum);
             sliderContainer.Children.Add(lblMinimum);
             sliderContainer.Children.Add(slider);
@@ -115,7 +98,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Attributes
 
-        private MaterialLabel lblValue;
         private CustomImage bckgImage;
         private CustomImageButton imgMinimum;
         private MaterialLabel lblMinimum;
@@ -486,7 +468,7 @@ namespace Plugin.MaterialDesignControls.Material3
             this.OldValue = e.OldValue;
 
             if (LabelValueIsVisible)
-                lblValue.Text = Value.ToString(LabelValueFormat);
+                SecondaryLabelText = Value.ToString(LabelValueFormat);
 
             ExecuteChanged();
         }
@@ -496,22 +478,20 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (propertyName)
             {
                 case nameof(LabelValueFormat):
-                    lblValue.Text = Value.ToString(LabelValueFormat);
+                    SecondaryLabelText = Value.ToString(LabelValueFormat);
                     break;
                 case nameof(LabelValueColor):
-                    lblValue.TextColor = LabelValueColor;
+                    SecondaryLabelTextColor = LabelValueColor;
                     break;
                 case nameof(DisabledLabelValueColor):
-                    lblValue.TextColor = IsEnabled ? LabelValueColor : DisabledLabelValueColor;
+                    DisabledSecondaryLabelTextColor = IsEnabled ? LabelValueColor : DisabledLabelValueColor;
                     break;
                 case nameof(LabelValueSize):
-                    lblValue.FontSize = LabelValueSize;
+                    SecondaryLabelFontSize = LabelValueSize;
                     break;
                 case nameof(LabelValueIsVisible):
-                    lblValue.IsVisible = LabelValueIsVisible;
-                    lblValue.Text = Value.ToString(LabelValueFormat);
+                    SecondaryLabelText = LabelValueIsVisible ? Value.ToString(LabelValueFormat) : string.Empty;
                     break;
-
                 case nameof(LabelMinimumText):
                     lblMinimum.Text = LabelMinimumText;
                     lblMinimum.IsVisible = !string.IsNullOrEmpty(LabelMinimumText) && (!ShowIcons || !MinimumIconIsVisible);
@@ -657,7 +637,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             if (!IsEnabled)
             {
-                lblValue.TextColor = DisabledLabelValueColor;
+                DisabledSecondaryLabelTextColor = DisabledLabelValueColor;
                 lblMinimum.TextColor = DisabledLabelMinimumTextColor;
                 lblMaximum.TextColor = DisabledLabelMaximumTextColor;
 
@@ -667,7 +647,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
             else
             {
-                lblValue.TextColor = LabelValueColor;
+                SecondaryLabelTextColor = LabelValueColor;
                 lblMinimum.TextColor = LabelMinimumTextColor;
                 lblMaximum.TextColor = LabelMaximumTextColor;
 

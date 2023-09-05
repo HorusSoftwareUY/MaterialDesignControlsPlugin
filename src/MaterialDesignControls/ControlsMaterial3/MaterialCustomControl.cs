@@ -254,8 +254,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var stackLayout = new StackLayout { Spacing = 0 };
 
-
-
             lblLabel = new Plugin.MaterialDesignControls.MaterialLabel
             {
                 IsVisible = false,
@@ -301,7 +299,7 @@ namespace Plugin.MaterialDesignControls.Material3
             };
 
             stackLayout.Children.Add(lblSupporting);
-
+            SecondaryLabelText = "";
             Content = stackLayout;
         }
 
