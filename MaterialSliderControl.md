@@ -29,8 +29,23 @@ This property is to add an event when the value change on the control.
 <br/>
 <br/>
 
-### Property LabelText:
-This property is to set the label text value.
+### Property LabelValueFormat
+This property is to set the format to use in the label value.
+<br/>
+<br/>
+
+### Property DisabledLabelValueColor
+This property is to set the color to use in the  label value text when is disabled.
+<br/>
+<br/>
+
+### Property LabelValueSize
+This property is to set the font size for the  label value text.
+<br/>
+<br/>
+
+### Property LabelValueIsVisible:
+This property is to set if the label value is visible, by default is false
 <br/>
 <br/>
 
@@ -43,6 +58,12 @@ This property is to set the color of the label text when the control is enabled.
 This property is to set the color of the label text when the control is disabled.
 <br/>
 <br/>
+
+### Property LabelText:
+This property is to set the label text value.
+<br/>
+<br/>
+
 
 ### Property LabelSize:
 This property is to set the fontsize of the label text.
