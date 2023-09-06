@@ -179,8 +179,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 40,
-                HeightRequest = 40,
-                BackgroundColor = Color.Red
+                HeightRequest = 40
             };
 
             chk = new CustomCheckBox()
@@ -189,7 +188,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 25,
                 HeightRequest = 25,
-                BackgroundColor = Color.Purple
+                IsChecked = IsChecked,
+                IsVisible = true
             };
 
             BoxView chkBoxView = new BoxView()
@@ -294,10 +294,12 @@ namespace Plugin.MaterialDesignControls.Material3
             lblLeftText.TextColor = TextColor;
             lblLeftText.FontFamily = FontFamily;
             lblLeftText.FontSize = FontSize;
+            lblLeftText.IsVisible = TextSide == TextSide.Left ? true : false;
 
             lblRightText.TextColor = TextColor;
             lblRightText.FontFamily = FontFamily;
             lblRightText.FontSize = FontSize;
+            lblRightText.IsVisible = TextSide == TextSide.Left ? false : true;
 
             lblSupporting.TextColor = SupportingTextColor;
             lblSupporting.FontFamily = SupportingFontFamily;
