@@ -268,7 +268,15 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = SecondaryLabelFontFamily
             };
 
-            var gridTexts = new Grid();
+            var gridTexts = new Grid
+            {
+                ColumnSpacing = 0,
+                ColumnDefinitions = new ColumnDefinitionCollection()
+                {
+                    new ColumnDefinition(){Width = GridLength.Star },
+                    new ColumnDefinition(){Width = GridLength.Auto }
+                }
+            };
             gridTexts.Children.Add(lblLabel, 0, 0);
             gridTexts.Children.Add(lblLabelSecondary, 1, 0);
 
@@ -378,7 +386,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(SecondaryLabelText):
                     lblLabelSecondary.Text = SecondaryLabelText;
-                    lblLabelSecondary.IsVisible = true;
+                    lblLabelSecondary.IsVisible = !string.IsNullOrEmpty(SecondaryLabelText);
                     break;
                 case nameof(SecondaryLabelTextColor):
                     SetLabelSecondaryTextColor();

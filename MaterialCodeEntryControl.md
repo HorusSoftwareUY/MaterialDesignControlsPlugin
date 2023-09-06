@@ -8,8 +8,7 @@ Code fields let users enter and edit pin codes.
 
 ## Example MaterialCodeEntry
 ```XML
-<material3:MaterialCodeEntry 
-    Type="Filled" 
+<material3:MaterialCodeEntry
     LabelText="Code*" 
     Length="6" 
     Keyboard="Numeric" 
@@ -89,21 +88,17 @@ This property is to set the corner radious.
 This property is to set the border color.
 <br/>
 
-
 ### Property FocusedBorderColor:
 This property is to set the focused border color.
 <br/>
-
 
 ### Property DisabledBorderColor:
 This property is to set the disabled border color.
 <br/>
 
-
 ### Property FocusedBackgroundColor:
 This property is to set the focuised background color.
 <br/>
-
 
 ### Property DisabledBackgroundColor:
 This property is to set the disabled background color.

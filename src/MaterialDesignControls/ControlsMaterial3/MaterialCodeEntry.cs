@@ -27,9 +27,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
                 TextColor = Color.Transparent,
-                CursorColor = Color.Transparent
+                CursorColor = Color.Transparent,
+                MaxLength = Length
             };
-
+            
             grdContainer.Children.Add(txtEntry);
 
             txtEntry.Focused += HandleFocusChange;
@@ -37,6 +38,8 @@ namespace Plugin.MaterialDesignControls.Material3
             txtEntry.TextChanged += TxtEntry_TextChanged;
 
             base.CustomControl = grdContainer;
+
+            OnLengthChanged();
         }
 
         #endregion Constructors
@@ -137,7 +140,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LengthProperty =
-            BindableProperty.Create(nameof(Length), typeof(int), typeof(MaterialCodeEntry), propertyChanged: OnLengthChanged, defaultValue: 0);
+            BindableProperty.Create(nameof(Length), typeof(int), typeof(MaterialCodeEntry), propertyChanged: OnLengthChanged, defaultValue: 6, defaultBindingMode: BindingMode.OneTime);
 
         public int Length
         {
@@ -280,43 +283,52 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private static void OnLengthChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            int length = (int)newValue;
             var control = (MaterialCodeEntry)bindable;
+            control.OnLengthChanged();
+        }
 
-            control.grdContainer.ColumnDefinitions = new ColumnDefinitionCollection();
-
-            control.frmContainers = new List<Frame>();
-            control.lblCodes = new List<Label>();
-
-            for (int i = 0; i < length; i++)
+        private void OnLengthChanged()
+        {
+            if (frmContainers != null)
             {
-                control.grdContainer.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+                foreach (var frame in frmContainers)
+                    grdContainer.Children.Remove(frame);
+            }
+
+            grdContainer.ColumnDefinitions = new ColumnDefinitionCollection();
+
+            frmContainers = new List<Frame>();
+            lblCodes = new List<Label>();
+
+            for (int i = 0; i < Length; i++)
+            {
+                grdContainer.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
 
                 var frmContainer = new Frame { HasShadow = false, Padding = new Thickness(0) };
                 TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
                 frameTapGestureRecognizer.Tapped += (s, e) =>
                 {
-                    if (control.txtEntry.IsEnabled)
-                        control.txtEntry.Focus();
+                    if (txtEntry.IsEnabled)
+                        txtEntry.Focus();
                 };
                 frmContainer.GestureRecognizers.Add(frameTapGestureRecognizer);
-                control.frmContainers.Add(frmContainer);
+                frmContainers.Add(frmContainer);
 
                 var lblCode = new MaterialLabel
                 {
                     HorizontalTextAlignment = TextAlignment.Center,
                     VerticalTextAlignment = TextAlignment.Center,
-                    TextColor = control.TextColor,
-                    FontSize = control.FontSize,
-                    FontFamily = control.FontFamily,
+                    TextColor = TextColor,
+                    FontSize = FontSize,
+                    FontFamily = FontFamily,
                 };
-                control.lblCodes.Add(lblCode);
+                lblCodes.Add(lblCode);
 
                 frmContainer.Content = lblCode;
-                control.grdContainer.Children.Add(frmContainer, i, 0);
+                grdContainer.Children.Add(frmContainer, i, 0);
             }
 
-            control.SetTypeBackgroundAndBorderColor();
+            SetTypeBackgroundAndBorderColor();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

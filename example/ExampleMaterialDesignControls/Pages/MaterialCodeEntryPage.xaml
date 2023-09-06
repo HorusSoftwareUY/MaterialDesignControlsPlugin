@@ -26,6 +26,51 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialButton follows the latest guidelines of Material Design 3" />
 
+                    <material3:MaterialCodeEntry LabelText="Code*"
+                                                 Length="6"
+                                                 Text="{Binding Code}" />
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                             HorizontalTextAlignment="Center"
+                                             Text="Keyboard and Length" />
+                    <material3:MaterialCodeEntry Keyboard="Numeric"
+                                                 LabelText="Code length 4"
+                                                 Length="4"
+                                                 ReturnType="Next"
+                                                 TabIndex="2" />
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                             HorizontalTextAlignment="Center"
+                                             Text="Disabled" />
+
+                    <material3:MaterialCodeEntry IsEnabled="False"
+                                                 Keyboard="Text"
+                                                 LabelText="Code length 6"
+                                                 Length="6"
+                                                 ReturnType="Next"
+                                                 TabIndex="3" />
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                             HorizontalTextAlignment="Center"
+                                             Text="HorizontalTextAlignment and TextTransform" />
+
+                    <material3:MaterialCodeEntry HorizontalTextAlignment="Center"
+                                                 LabelText="Code"
+                                                 ReturnType="Next"
+                                                 TabIndex="4"
+                                                 TextTransform="Uppercase" />
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                             HorizontalTextAlignment="Center"
+                                             Text="Full API" />
                     <material3:MaterialCodeEntry AnimateError="True"
                                                  SupportingText="{Binding CodeError}"
                                                  FontSize="{StaticResource H5FontSize}"
@@ -34,9 +79,15 @@
                                                  FieldHeightRequest="80"
                                                  Length="6"
                                                  ReturnType="Next"
-                                                 TabIndex="1"
-                                                 Text="{Binding Code}" />
-
+                                                 TabIndex="5"
+                                                 Text="{Binding Code}"
+                                                 BackgroundColor="White"
+                                                 FocusedBackgroundColor="LightBlue"
+                                                 BorderColor="Blue"
+                                                 FocusedBorderColor="DarkBlue"
+                                                 TextColor="Blue"
+                                                 FocusedTextColor="DarkBlue"
+                                                 CornerRadius="20" />
 
                     <material3:MaterialButton Command="{Binding TapCommand}"
                                               Text="Save"
