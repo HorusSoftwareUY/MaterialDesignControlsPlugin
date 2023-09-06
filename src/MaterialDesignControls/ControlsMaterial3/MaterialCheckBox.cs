@@ -88,6 +88,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(Text):
                     lblRightText.Text = Text;
+                    lblLeftText.Text = Text;
                     break;
                 case nameof(TextColor):
                     lblLeftText.TextColor = TextColor;
@@ -170,7 +171,7 @@ namespace Plugin.MaterialDesignControls.Material3
             lblLeftText = new MaterialLabel()
             {
                 VerticalTextAlignment = TextAlignment.Center,
-                IsVisible = true
+                IsVisible = false
             };
 
             chkContainer = new Grid()
@@ -178,7 +179,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 40,
-                HeightRequest = 40
+                HeightRequest = 40,
+                BackgroundColor = Color.Red
             };
 
             chk = new CustomCheckBox()
@@ -186,7 +188,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 25,
-                HeightRequest = 25
+                HeightRequest = 25,
+                BackgroundColor = Color.Purple
             };
 
             BoxView chkBoxView = new BoxView()
@@ -256,7 +259,7 @@ namespace Plugin.MaterialDesignControls.Material3
             lblRightText = new MaterialLabel()
             {
                 VerticalTextAlignment = TextAlignment.Center,
-                IsVisible = true
+                IsVisible = false
             };
 
             container.Children.Add(lblLeftText);
