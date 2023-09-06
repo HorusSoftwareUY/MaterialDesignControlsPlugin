@@ -32,13 +32,23 @@ This property is to set the format to use in the label value.
 <br/>
 <br/>
 
+### Property LabelValueColor
+This property is to set the color to use in the label value text.
+<br/>
+<br/>
+
 ### Property DisabledLabelValueColor
-This property is to set the color to use in the  label value text when is disabled.
+This property is to set the color to use in the label value text when is disabled.
 <br/>
 <br/>
 
 ### Property LabelValueSize
-This property is to set the font size for the  label value text.
+This property is to set the font size for the label value text.
+<br/>
+<br/>
+
+### Property LabelValueFontFamily:
+This property is to set the label value text font family.
 <br/>
 <br/>
 
@@ -61,7 +71,6 @@ This property is to set the color of the label text when the control is disabled
 This property is to set the label text value.
 <br/>
 <br/>
-
 
 ### Property LabelSize:
 This property is to set the fontsize of the label text.
