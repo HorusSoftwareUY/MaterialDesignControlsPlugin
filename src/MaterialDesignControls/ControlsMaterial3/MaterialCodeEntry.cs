@@ -43,8 +43,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Attributes
 
-        private bool initialized = false;
-
         private Grid grdContainer;
 
         private CustomEntry txtEntry;
@@ -73,15 +71,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (bool)GetValue(IsEnabledProperty); }
             set { SetValue(IsEnabledProperty, value); }
-        }
-
-        public static readonly BindableProperty IsCodeProperty =
-            BindableProperty.Create(nameof(IsCode), typeof(bool), typeof(MaterialCodeEntry), defaultValue: true);
-
-        public bool IsCode
-        {
-            get { return (bool)GetValue(IsCodeProperty); }
-            set { SetValue(IsCodeProperty, value); }
         }
 
         public static readonly BindableProperty FieldHeightRequestProperty =
@@ -217,15 +206,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (float)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
-        }
-
-        public static readonly BindableProperty TypeProperty =
-            BindableProperty.Create(nameof(Type), typeof(FieldTypes), typeof(MaterialCodeEntry), defaultValue: FieldTypes.Filled);
-
-        public FieldTypes Type
-        {
-            get { return (FieldTypes)GetValue(TypeProperty); }
-            set { SetValue(TypeProperty, value); }
         }
 
         public static readonly BindableProperty BorderColorProperty =
@@ -399,7 +379,6 @@ namespace Plugin.MaterialDesignControls.Material3
                             frmContainer.CornerRadius = Convert.ToInt32(CornerRadius);
                     break;
 
-                case nameof(this.Type):
                 case nameof(this.BackgroundColor):
                 case nameof(this.BorderColor):
                     SetTypeBackgroundAndBorderColor();
@@ -444,10 +423,6 @@ namespace Plugin.MaterialDesignControls.Material3
                             frmContainer.HorizontalOptions = LayoutOptions.Center;
                             frmContainer.WidthRequest = this.FieldWidthRequest;
                         }
-                    break;
-
-                case nameof(this.IsCode):
-                    this.txtEntry.IsCode = this.IsCode;
                     break;
 
                 default:
@@ -499,40 +474,20 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetTypeBackgroundAndBorderColor()
         {
-            switch (this.Type)
+            if (frmContainers != null)
             {
-                case FieldTypes.Filled:
-                case FieldTypes.Outlined:
-                    if (frmContainers != null)
-                    {
-                        foreach (var frmContainer in frmContainers)
-                        {
-                            if (this.IsEnabled)
-                                frmContainer.BackgroundColor = this.txtEntry.IsFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : this.BackgroundColor;
-                            else
-                                frmContainer.BackgroundColor = DisabledBackgroundColor;
+                foreach (var frmContainer in frmContainers)
+                {
+                    if (this.IsEnabled)
+                        frmContainer.BackgroundColor = this.txtEntry.IsFocused && FocusedBackgroundColor != Color.Transparent ? FocusedBackgroundColor : this.BackgroundColor;
+                    else
+                        frmContainer.BackgroundColor = DisabledBackgroundColor;
 
-                            if (this.IsEnabled)
-                                frmContainer.BorderColor = this.txtEntry.IsFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
-                            else
-                                frmContainer.BorderColor = DisabledBorderColor;
-                        }
-                    }
-                    break;
-                case FieldTypes.Lined:
-                    if (frmContainers != null)
-                    {
-                        foreach (var frmContainer in frmContainers)
-                        {
-                            frmContainer.BackgroundColor = Color.Transparent;
-                            frmContainer.BorderColor = Color.Transparent;
-                        }
-                    }
-
-                    if (frmContainers != null)
-                        foreach (var frmContainer in frmContainers)
-                            frmContainer.HeightRequest = 30;
-                    break;
+                    if (this.IsEnabled)
+                        frmContainer.BorderColor = this.txtEntry.IsFocused && FocusedBorderColor != Color.Transparent ? FocusedBorderColor : BorderColor;
+                    else
+                        frmContainer.BorderColor = DisabledBorderColor;
+                }
             }
         }
 

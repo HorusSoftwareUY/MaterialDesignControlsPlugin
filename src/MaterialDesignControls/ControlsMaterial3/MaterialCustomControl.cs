@@ -242,7 +242,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion SecondaryLabelText
 
-
         #region Constructor
 
         public MaterialCustomControl()
