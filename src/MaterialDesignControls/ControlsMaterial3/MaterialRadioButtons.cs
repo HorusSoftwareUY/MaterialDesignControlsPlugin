@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,6 +17,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool initialized = false;
 
+        private StackLayout container;
+        private MaterialLabel lblLabel;
+        private MaterialLabel lblSupporting;
+
         #endregion Attributes
 
         #region Constructors
@@ -23,7 +30,6 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!this.initialized)
             {
                 this.initialized = true;
-                this.InitializeComponent();
                 Initialize();
             }
         }
@@ -114,6 +120,32 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
+            StackLayout mainContainer = new StackLayout();
+
+            lblLabel = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                Margin = new Thickness(14, 0, 14, 2),
+                HorizontalTextAlignment = TextAlignment.Start,
+                Text = this.Text
+            };
+
+            container = new StackLayout();
+
+            lblSupporting = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                Margin = new Thickness(14, 2, 14, 0),
+                HorizontalTextAlignment = TextAlignment.Start,
+                Text = this.SupportingText
+            };
+
+            mainContainer.Children.Add(lblLabel);
+            mainContainer.Children.Add(container);
+            mainContainer.Children.Add(lblSupporting);
+
             lblLabel.TextColor = TextColor;
             lblLabel.FontFamily = FontFamily;
             lblLabel.FontSize = LabelSize;
@@ -123,6 +155,8 @@ namespace Plugin.MaterialDesignControls.Material3
             lblSupporting.FontFamily = SupportingFontFamily;
             lblSupporting.FontSize = SupportingSize;
             lblSupporting.Margin = SupportingMargin;
+
+            this.Content = mainContainer;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -130,7 +164,6 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!this.initialized)
             {
                 this.initialized = true;
-                this.InitializeComponent();
                 Initialize();
             }
 

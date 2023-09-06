@@ -1,4 +1,7 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -11,12 +14,23 @@ namespace Plugin.MaterialDesignControls.Material3
     {
         private bool Initialized = false;
 
+        private StackLayout container;
+        private MaterialLabel lblLeftText;
+        private Grid chkContainer;
+        private CustomCheckBox chk;
+        private Grid radioButtonContainer;
+        private CustomRadioButton radioButton;
+        private Grid imageContainer;
+        private CustomImageButton customIcon;
+        private MaterialLabel lblRightText;
+        private MaterialLabel lblSupporting;
+
+
         public MaterialCheckbox()
         {
             if (!this.Initialized)
             {
                 this.Initialized = true;
-                this.InitializeComponent();
                 Initialize();
             }
         }
@@ -60,7 +74,6 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!this.Initialized)
             {
                 this.Initialized = true;
-                this.InitializeComponent();
                 Initialize();
             }
 
@@ -102,6 +115,12 @@ namespace Plugin.MaterialDesignControls.Material3
                         lblLeftText.IsVisible = true;
                         lblRightText.IsVisible = false;
                     }
+                    else
+                    {
+                        lblRightText.Text = Text;
+                        lblRightText.IsVisible = true;
+                        lblLeftText.IsVisible = false;
+                    }
                     break;
                 case nameof(TextHorizontalOptions):
                     if (TextSide == TextSide.Left)
@@ -137,6 +156,126 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
+            StackLayout mainContainer = new StackLayout()
+            {
+                Spacing = 0,
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            container = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal
+            };
+
+            lblLeftText = new MaterialLabel()
+            {
+                VerticalTextAlignment = TextAlignment.Center,
+                IsVisible = true
+            };
+
+            chkContainer = new Grid()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 40,
+                HeightRequest = 40
+            };
+
+            chk = new CustomCheckBox()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 25,
+                HeightRequest = 25
+            };
+
+            BoxView chkBoxView = new BoxView()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 25,
+                HeightRequest = 25
+            };
+
+            chkContainer.Children.Add(chk);
+            chkContainer.Children.Add(chkBoxView);
+
+            radioButtonContainer = new Grid()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 40,
+                HeightRequest = 40,
+                IsVisible = false
+            };
+
+            radioButton = new CustomRadioButton()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center
+            };
+
+            BoxView radioButtonBoxView = new BoxView()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 25,
+                HeightRequest = 25
+            };
+
+            radioButtonContainer.Children.Add(radioButton);
+            radioButtonContainer.Children.Add(radioButtonBoxView);
+
+            imageContainer = new Grid()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 40,
+                HeightRequest = 40,
+                IsVisible = false
+            };
+
+            customIcon = new CustomImageButton()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Start
+            };
+
+            BoxView iconBoxView = new BoxView()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 25,
+                HeightRequest = 25,
+                BackgroundColor = Color.Transparent
+            };
+
+            imageContainer.Children.Add(chk);
+            imageContainer.Children.Add(iconBoxView);
+
+            lblRightText = new MaterialLabel()
+            {
+                VerticalTextAlignment = TextAlignment.Center,
+                IsVisible = true
+            };
+
+            container.Children.Add(lblLeftText);
+            container.Children.Add(chkContainer);
+            container.Children.Add(radioButtonContainer);
+            container.Children.Add(imageContainer);
+            container.Children.Add(lblRightText);
+
+            lblSupporting = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                Margin = new Thickness(14, 2, 14, 0),
+                HorizontalTextAlignment = TextAlignment.Start
+            };
+
+            mainContainer.Children.Add(container);
+            mainContainer.Children.Add(lblSupporting);
+
             container.Spacing = Spacing;
 
             chk.IsEnabled = IsEnabled;
@@ -163,6 +302,8 @@ namespace Plugin.MaterialDesignControls.Material3
             lblSupporting.Margin = SupportingMargin;
 
             Effects.Add(new TouchAndPressEffect());
+
+            this.Content = mainContainer;
         }
 
         private void SetCustomIcon()
