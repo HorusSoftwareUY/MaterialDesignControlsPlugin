@@ -97,6 +97,7 @@
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
     <Compile Include="Effects\Effects.cs" />
     <Compile Include="Renderers\Material3\MaterialActivityIndicatorRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialCheckBoxRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

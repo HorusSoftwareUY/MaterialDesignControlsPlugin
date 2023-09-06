@@ -1,7 +1,5 @@
 ﻿using System;
-using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
-using Plugin.MaterialDesignControls.Material3;
 using Plugin.MaterialDesignControls.Styles;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -10,7 +8,7 @@ using System.Linq;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-	public class MaterialRating : MaterialCustomControl
+    public class MaterialRating : MaterialCustomControl
     {
         #region Attributes
         private Grid _grid;
