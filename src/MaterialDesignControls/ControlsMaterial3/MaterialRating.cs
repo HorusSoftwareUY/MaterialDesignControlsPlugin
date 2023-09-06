@@ -11,11 +11,6 @@ namespace Plugin.MaterialDesignControls.Material3
     public class MaterialRating : MaterialCustomControl
     {
         #region Attributes
-
-        private bool initialized = false;
-
-        private Grid _gridMain;
-
         private Grid _grid;
 
         #endregion Attributes

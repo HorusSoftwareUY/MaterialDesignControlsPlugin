@@ -9,14 +9,12 @@ This control is a custom implementation of a slider. You can customize some prop
 
 ## Example MaterialSlider
 ```XML
- <material:MaterialSlider   
-    x:Name="slider" 
-    MinimumValue="0" 
-    MaximumValue="100" 
-    ThumbColor="BlueViolet"
+<material3:MaterialSlider
     LabelText="Slider"
-    ActiveTrackColor="BlueViolet"
-    InactiveTrackColor="LightPink"/>
+    LabelValueFormat="0.00 km"
+    LabelValueIsVisible="True"
+    MaximumValue="100"
+    MinimumValue="0" />
 ```
 
 <br/>
@@ -29,8 +27,33 @@ This property is to add an event when the value change on the control.
 <br/>
 <br/>
 
-### Property LabelText:
-This property is to set the label text value.
+### Property LabelValueFormat
+This property is to set the format to use in the label value.
+<br/>
+<br/>
+
+### Property LabelValueColor
+This property is to set the color to use in the label value text.
+<br/>
+<br/>
+
+### Property DisabledLabelValueColor
+This property is to set the color to use in the label value text when is disabled.
+<br/>
+<br/>
+
+### Property LabelValueSize
+This property is to set the font size for the label value text.
+<br/>
+<br/>
+
+### Property LabelValueFontFamily:
+This property is to set the label value text font family.
+<br/>
+<br/>
+
+### Property LabelValueIsVisible:
+This property is to set if the label value is visible, by default is false
 <br/>
 <br/>
 
@@ -41,6 +64,11 @@ This property is to set the color of the label text when the control is enabled.
 
 ### Property DisabledLabelTextColor:
 This property is to set the color of the label text when the control is disabled.
+<br/>
+<br/>
+
+### Property LabelText:
+This property is to set the label text value.
 <br/>
 <br/>
 
@@ -84,18 +112,40 @@ This property is to set the label text maximum color value on the control. When 
 <br/>
 <br/>
 
-### Property AssistiveText:
-This property is to set the error text on the control. 
+### Property SupportingText:
+This property is to set the supporting text.
 <br/>
 <br/>
 
-### Property AssistiveTextColor:
-This property is to set the error text color value on the control. By default is gray.
+### Property SupportingTextColor:
+This property is to set the supporting text color.
 <br/>
-<br/> 
+<br/>
 
-### Property AssistiveSize:
-This property is to set the error text font size value on the control. By default is gray. 
+### Property SupportingSize:
+This property is to set the supporting text size.
+<br/>
+<br/>
+
+### Property SupportingFontFamily:
+This property is to set the supporting text font family.
+<br/>
+<br/>
+
+### Property SupportingMargin:
+This property is to set the supporting text margin. By default uses (16,4,16,0).
+<br/>
+<br/>
+
+### Property SupportingLineBreakMode:
+This property is to set the Supporting LineBreakMode.
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
 <br/>
 <br/>
 
@@ -201,13 +251,3 @@ This property is to set the disabled inactive track color, when the control is d
 
 ### Property DisabledThumbColor:
 This property is to set the disabled thumb color, whe the control is disabled.
-
-
-
-
-
-
-
-
-
-
