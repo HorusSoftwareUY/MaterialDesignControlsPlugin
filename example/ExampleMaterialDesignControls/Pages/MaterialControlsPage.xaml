@@ -425,27 +425,31 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoMaterialSliderCommand}" />
                         </Frame.GestureRecognizers>
-                        <StackLayout>
-                            <Frame Padding="0"
-                                   BackgroundColor="{StaticResource GradientColorTransparent12}"
-                                   CornerRadius="45"
-                                   HasShadow="False"
-                                   HeightRequest="90"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="Center"
-                                   WidthRequest="90">
-                                <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                  Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_slider.svg" />
-                            </Frame>
-                            <material:MaterialLabel FontAttributes="Bold"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Center"
-                                                    LineBreakMode="TailTruncation"
-                                                    Text="Slider"
-                                                    TextColor="{StaticResource GradientColor12}"
-                                                    VerticalOptions="EndAndExpand" />
-                        </StackLayout>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent12}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_slider.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="Slider"
+                                                        TextColor="{StaticResource GradientColor12}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                        
                     </Frame>
 
                     <Frame Grid.Row="6"
@@ -591,27 +595,31 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoMaterialRadioButtonsCommand}" />
                         </Frame.GestureRecognizers>
-                        <StackLayout>
-                            <Frame Padding="0"
-                                   BackgroundColor="{StaticResource GradientColorTransparent7}"
-                                   CornerRadius="45"
-                                   HasShadow="False"
-                                   HeightRequest="90"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="Center"
-                                   WidthRequest="90">
-                                <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                  Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_radio.svg" />
-                            </Frame>
-                            <material:MaterialLabel FontAttributes="Bold"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Center"
-                                                    LineBreakMode="TailTruncation"
-                                                    Text="RadioButton"
-                                                    TextColor="{StaticResource GradientColor7}"
-                                                    VerticalOptions="EndAndExpand" />
-                        </StackLayout>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent7}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_radio.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="RadioButton"
+                                                        TextColor="{StaticResource GradientColor7}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                        
                     </Frame>
 
                     <Frame Grid.Row="8"
@@ -623,27 +631,31 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoMaterialFloatingButtonCommand}" />
                         </Frame.GestureRecognizers>
-                        <StackLayout>
-                            <Frame Padding="0"
-                                   BackgroundColor="{StaticResource GradientColorTransparent6}"
-                                   CornerRadius="45"
-                                   HasShadow="False"
-                                   HeightRequest="90"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="Center"
-                                   WidthRequest="90">
-                                <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                  Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_floating.svg" />
-                            </Frame>
-                            <material:MaterialLabel FontAttributes="Bold"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Center"
-                                                    LineBreakMode="TailTruncation"
-                                                    Text="FloatingButton"
-                                                    TextColor="{StaticResource GradientColor6}"
-                                                    VerticalOptions="EndAndExpand" />
-                        </StackLayout>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent6}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_floating.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="FloatingButton"
+                                                        TextColor="{StaticResource GradientColor6}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                        
                     </Frame>
 
                     <Frame Grid.Row="9"
@@ -655,27 +667,30 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoMaterialCheckboxesCommand}" />
                         </Frame.GestureRecognizers>
-                        <StackLayout>
-                            <Frame Padding="0"
-                                   BackgroundColor="{StaticResource GradientColorTransparent5}"
-                                   CornerRadius="45"
-                                   HasShadow="False"
-                                   HeightRequest="90"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="Center"
-                                   WidthRequest="90">
-                                <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                  Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_checkbox.svg" />
-                            </Frame>
-                            <material:MaterialLabel FontAttributes="Bold"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Center"
-                                                    LineBreakMode="TailTruncation"
-                                                    Text="Checkbox"
-                                                    TextColor="{StaticResource GradientColor5}"
-                                                    VerticalOptions="EndAndExpand" />
-                        </StackLayout>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent5}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_checkbox.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="Checkbox"
+                                                        TextColor="{StaticResource GradientColor5}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
                     </Frame>
 
                     <Frame Grid.Row="9"

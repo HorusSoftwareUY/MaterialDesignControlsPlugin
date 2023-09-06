@@ -1,21 +1,32 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using Plugin.MaterialDesignControls.Animations;
+﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Styles;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public enum MaterialFloatingButtonType
+    {
+        Regular, Small, Large
+    }
+
     public partial class MaterialFloatingButton : CustomFrame, ITouchAndPressEffectConsumer
     {
-
         #region Attributes
 
         private bool initilized = false;
+
+        private StackLayout container;
+
+        private CustomImage imgLeft;
+
+        private CustomImage imgRight;
+
+        private MaterialLabel lblText;
 
         public event EventHandler Clicked;
 
@@ -73,8 +84,8 @@ namespace Plugin.MaterialDesignControls
 
         public double IconWidthRequest
         {
-            get { return (double)GetValue(IconWidthRequestProperty ); }
-            set { SetValue(IconWidthRequestProperty , value); }
+            get { return (double)GetValue(IconWidthRequestProperty); }
+            set { SetValue(IconWidthRequestProperty, value); }
         }
 
         public static new readonly BindableProperty HasShadowProperty =
@@ -114,7 +125,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialFloatingButton), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialFloatingButton), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
 
         public double FontSize
         {
@@ -123,7 +134,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialFloatingButton), defaultValue: null);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialFloatingButton), defaultValue: DefaultStyles.FontFamily);
 
         public string FontFamily
         {
@@ -132,7 +143,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: Color.Gray);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: DefaultStyles.TextColor);
 
         public Color TextColor
         {
@@ -145,16 +156,16 @@ namespace Plugin.MaterialDesignControls
 
         public FontAttributes FontAttributes
         {
-            get { return (FontAttributes )GetValue(FontAttributesProperty); }
+            get { return (FontAttributes)GetValue(FontAttributesProperty); }
             set { SetValue(FontAttributesProperty, value); }
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: Color.White);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledTextColor
         {
-            get { return (Color)GetValue(DisabledTextColorProperty ); }
+            get { return (Color)GetValue(DisabledTextColorProperty); }
             set { SetValue(DisabledTextColorProperty, value); }
         }
 
@@ -192,19 +203,19 @@ namespace Plugin.MaterialDesignControls
         {
             get { return (Thickness)GetValue(PaddingProperty); }
             set { SetValue(PaddingProperty, value); }
-	    }
+        }
 
-        public static readonly BindableProperty ButtonSizeProperty =
-            BindableProperty.Create(nameof(ButtonSize), typeof(FloatingButtonSize), typeof(MaterialFloatingButton), defaultValue: FloatingButtonSize.Regular);
+        public static readonly BindableProperty ButtonTypeProperty =
+            BindableProperty.Create(nameof(ButtonType), typeof(MaterialFloatingButtonType), typeof(MaterialFloatingButton), defaultValue: MaterialFloatingButtonType.Regular);
 
-        public FloatingButtonSize ButtonSize
+        public MaterialFloatingButtonType ButtonType
         {
-            get { return (FloatingButtonSize)GetValue(ButtonSizeProperty ); }
-            set { SetValue(ButtonSizeProperty , value); }
+            get { return (MaterialFloatingButtonType)GetValue(ButtonTypeProperty); }
+            set { SetValue(ButtonTypeProperty, value); }
         }
 
         public static new readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(MaterialFloatingButton), defaultValue: 28.0F);
+            BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(MaterialFloatingButton), defaultValue: 16.0F);
 
         public new float CornerRadius
         {
@@ -222,7 +233,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialFloatingButton), defaultValue: AnimationTypes.None);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialFloatingButton), defaultValue: DefaultStyles.AnimationType);
 
         public AnimationTypes Animation
         {
@@ -231,7 +242,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialFloatingButton), defaultValue: null);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialFloatingButton), defaultValue: DefaultStyles.AnimationParameter);
 
         public double? AnimationParameter
         {
@@ -259,7 +270,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledBackgroundColor
         {
@@ -286,7 +297,6 @@ namespace Plugin.MaterialDesignControls
             if (!this.initilized)
             {
                 initilized = true;
-                InitializeComponent();
                 Initialize();
             }
         }
@@ -300,7 +310,6 @@ namespace Plugin.MaterialDesignControls
             if (!this.initilized)
             {
                 initilized = true;
-                InitializeComponent();
                 Initialize();
             }
 
@@ -313,6 +322,12 @@ namespace Plugin.MaterialDesignControls
                 case nameof(Text):
                 case nameof(ToUpper):
                     this.lblText.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
+
+                    if (ButtonType == MaterialFloatingButtonType.Large)
+                    {
+                        this.lblText.IsVisible = !string.IsNullOrWhiteSpace(Text);
+                        WidthRequest = lblText.IsVisible ? -1 : 72;
+                    }
                     break;
                 case nameof(HasShadow):
                     base.HasShadow = HasShadow;
@@ -339,8 +354,8 @@ namespace Plugin.MaterialDesignControls
                 case nameof(DisabledTextColor):
                     lblText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
                     break;
-                case nameof(ButtonSize):
-                    SetButtonSize();
+                case nameof(ButtonType):
+                    SetButtonType();
                     break;
                 case nameof(Icon):
                 case nameof(DisabledIcon):
@@ -364,7 +379,7 @@ namespace Plugin.MaterialDesignControls
                 case nameof(BackgroundColor):
                 case nameof(DisabledBackgroundColor):
                 case nameof(IsEnabled):
-                    container.BackgroundColor= IsEnabled ? BackgroundColor : DisabledBackgroundColor;
+                    container.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
                     lblText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
                     SetIcon();
                     break;
@@ -380,7 +395,7 @@ namespace Plugin.MaterialDesignControls
                 imgLeft.IsVisible = false;
                 imgRight.IsVisible = true;
                 lblText.Margin = new Thickness(0, 0, 6, 0);
-                Padding = new Thickness(16, 0, 16, 0);
+                Padding = new Thickness(16, 0);
             }
         }
 
@@ -436,56 +451,94 @@ namespace Plugin.MaterialDesignControls
             }
         }
 
-        private void SetButtonSize()
+        private void SetButtonType()
         {
             imgLeft.HeightRequest = IconHeightRequest;
             imgLeft.WidthRequest = IconWidthRequest;
             imgRight.HeightRequest = IconHeightRequest;
             imgRight.WidthRequest = IconWidthRequest;
 
-            if (ButtonSize == FloatingButtonSize.Mini)
+            if (ButtonType == MaterialFloatingButtonType.Small)
             {
                 HeightRequest = 40;
                 WidthRequest = 40;
-                CornerRadius = 20;
-	        }
-            else if (ButtonSize == FloatingButtonSize.Extended)
+                CornerRadius = 12;
+            }
+            else if (ButtonType == MaterialFloatingButtonType.Regular)
+            {
+                HeightRequest = 56;
+                WidthRequest = 56;
+                CornerRadius = 16;
+            }
+            else
             {
                 if (!string.IsNullOrEmpty(Text))
                     lblText.IsVisible = true;
+
                 if (string.IsNullOrEmpty(Icon) && CustomIcon == null)
-                { 
+                {
                     imgLeft.IsVisible = false;
                     imgRight.IsVisible = false;
                 }
 
-                HeightRequest = 48;
-                WidthRequest = -1;
-                CornerRadius = 24;
+                HeightRequest = 72;
+                WidthRequest = lblText.IsVisible ? -1 : 72;
+                CornerRadius = 22;
                 lblText.HorizontalTextAlignment = TextAlignment.Center;
                 lblText.Margin = new Thickness(6, 0, 0, 0);
-                Padding = new Thickness(12, 0, 20, 0);
+                Padding = new Thickness(12, 0);
             }
         }
 
         private void Initialize()
         {
-            imgLeft.Padding = 0;
-            imgRight.Padding = 0;
+            container = new StackLayout
+            {
+                Spacing = 0,
+                Orientation = StackOrientation.Horizontal,
+                Padding = Padding,
+                BackgroundColor = BackgroundColor
+            };
+
+            imgLeft = new CustomImage
+            {
+                VerticalOptions = LayoutOptions.Center,
+                Padding = 0,
+                HeightRequest = IconHeightRequest,
+                WidthRequest = IconWidthRequest
+            };
+            container.Children.Add(imgLeft);
+
+            lblText = new MaterialLabel
+            {
+                IsVisible = false,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalTextAlignment = TextAlignment.Center
+            };
+            container.Children.Add(lblText);
+
+            imgRight = new CustomImage
+            {
+                IsVisible = false,
+                VerticalOptions = LayoutOptions.Center,
+                Padding = 0,
+                HeightRequest = IconHeightRequest,
+                WidthRequest = IconWidthRequest
+            };
+            container.Children.Add(imgRight);
+
+            Content = container;
+
+            base.IsClippedToBounds = true;
             base.HasShadow = HasShadow;
-            container.Padding = Padding;
             base.Padding = 0;
             base.HeightRequest = HeightRequest;
             base.WidthRequest = WidthRequest;
             base.CornerRadius = CornerRadius;
-            container.BackgroundColor = BackgroundColor;
-            imgLeft.HeightRequest = IconHeightRequest;
-            imgLeft.WidthRequest = IconWidthRequest;
-            imgRight.HeightRequest = IconHeightRequest;
-            imgRight.WidthRequest = IconWidthRequest;
-            imgLeft.IsVisible = true;
             Effects.Add(new TouchAndPressEffect());
-	    }
+
+            SetButtonType();
+        }
 
         public void ConsumeEvent(EventType gestureType)
         {

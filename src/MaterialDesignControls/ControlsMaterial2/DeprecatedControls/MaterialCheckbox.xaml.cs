@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
 using Xamarin.Forms;
@@ -7,6 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialCheckbox is deprecated, please use MaterialCheckbox of Material 3 instead.")]
     public partial class MaterialCheckbox : BaseMaterialCheckboxes, ITouchAndPressEffectConsumer
     {
         private bool Initialized = false;

@@ -41,6 +41,9 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialProgressIndicator](#materialprogressindicator)
 - [MaterialBadge](#materialbadge)
 - [MaterialNavigationDrawer](#materialnavigationdrawer)
+- [MaterialLabel](#materiallabel)
+- [MaterialCustomControl](#materialcustomcontrol)
+- [MaterialSearch](#materialsearch)
 
 
 ## Setup
@@ -306,6 +309,15 @@ This control provides a simple way to create custom controls with labels and sup
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/customcontrol_preview.png" width="300">
 <br/>
 [View documentation](MaterialCustomControl.md)
+
+---
+
+### MaterialSearch
+MaterialSearch receives a text and executes a search action.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/search_preview.png" width="300">
+<br/>
+[View documentation](MaterialSearch.md)
 
 ---
 
