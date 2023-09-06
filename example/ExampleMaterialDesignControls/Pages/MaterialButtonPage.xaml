@@ -53,7 +53,31 @@
                              Spacing="10">
 
                     <contentViews:InfoIndicatorView Message="MaterialButton follows the latest guidelines of Material Design 3" />
+                    <material3:MaterialSnackBar Text="Probando" ActionText="Action" BackgroundColor="LightBlue">
+                    </material3:MaterialSnackBar>
 
+                    <material3:MaterialSnackBar Text="Probando  y prbando mas y mas a ver qye pedi cabron jeje jeje " ActionText="Action" BackgroundColor="LightBlue">
+                        <material3:MaterialSnackBar.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialSnackBar.CustomLeadingIcon>
+
+                    </material3:MaterialSnackBar>
+
+                    <material3:MaterialSnackBar Text="Probando" ActionText="Action" BackgroundColor="LightBlue">
+                        <material3:MaterialSnackBar.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialSnackBar.CustomTrailingIcon>
+
+                    </material3:MaterialSnackBar>
+
+                    <material3:MaterialSnackBar Text="Probando" ActionText="Action" BackgroundColor="LightBlue">
+                        <material3:MaterialSnackBar.CustomTrailingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialSnackBar.CustomTrailingIcon>
+                        <material3:MaterialSnackBar.CustomLeadingIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
+                        </material3:MaterialSnackBar.CustomLeadingIcon>
+                    </material3:MaterialSnackBar>
                     <material:MaterialLabel Style="{StaticResource LegendLabel}"
                                             Text="Elevated button:" />
                     <material3:MaterialButton ButtonType="Elevated"
