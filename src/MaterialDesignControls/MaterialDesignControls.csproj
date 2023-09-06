@@ -55,7 +55,7 @@
       <DependentUpon>MaterialRatingControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialSlider.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialSlider.xaml.cs">
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
     <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSlider.cs" />
     <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
       <SubType>Code</SubType>
