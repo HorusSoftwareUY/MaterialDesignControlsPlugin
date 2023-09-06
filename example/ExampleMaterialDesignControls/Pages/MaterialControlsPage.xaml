@@ -32,7 +32,7 @@
                 <Grid Padding="0,0,0,20"
                       ColumnDefinitions="*,*"
                       ColumnSpacing="10"
-                      RowDefinitions="150,150,150,150,150,150,150,150,150,150,150,150,150,150"
+                      RowDefinitions="150,150,150,150,150,150,150,150,150,150,150,150,150,150,150"
                       RowSpacing="10">
 
                     <Frame Grid.Row="0"
@@ -559,27 +559,31 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoMaterialDividerCommand}" />
                         </Frame.GestureRecognizers>
-                        <StackLayout>
-                            <Frame Padding="0"
-                                   BackgroundColor="{StaticResource GradientColorTransparent8}"
-                                   CornerRadius="45"
-                                   HasShadow="False"
-                                   HeightRequest="90"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="Center"
-                                   WidthRequest="90">
-                                <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                  Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_divider.svg" />
-                            </Frame>
-                            <material:MaterialLabel FontAttributes="Bold"
-                                                    FontSize="{StaticResource Body2FontSize}"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Center"
-                                                    LineBreakMode="TailTruncation"
-                                                    Text="Divider"
-                                                    TextColor="{StaticResource GradientColor8}"
-                                                    VerticalOptions="EndAndExpand" />
-                        </StackLayout>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent8}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_divider.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="Divider"
+                                                        TextColor="{StaticResource GradientColor8}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
                     </Frame>
 
                     <Frame Grid.Row="8"
@@ -932,7 +936,7 @@
                     <Frame Grid.Row="13"
                            Grid.Column="0"
                            Padding="15"
-                           BackgroundColor="{StaticResource GradientColorTransparent4}"
+                           BackgroundColor="{StaticResource GradientColorTransparent5}"
                            CornerRadius="16"
                            HasShadow="False">
                         <Frame.GestureRecognizers>
@@ -941,7 +945,7 @@
                         <Grid>
                             <StackLayout>
                                 <Frame Padding="0"
-                                       BackgroundColor="{StaticResource GradientColorTransparent4}"
+                                       BackgroundColor="{StaticResource GradientColorTransparent5}"
                                        CornerRadius="45"
                                        HasShadow="False"
                                        HeightRequest="90"
@@ -957,7 +961,79 @@
                                                         HorizontalTextAlignment="Center"
                                                         LineBreakMode="TailTruncation"
                                                         Text="IconButton"
-                                                        TextColor="{StaticResource GradientColor4}"
+                                                        TextColor="{StaticResource GradientColor5}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="13"
+                           Grid.Column="1"
+                           Padding="15"
+                           BackgroundColor="{StaticResource GradientColorTransparent6}"
+                           CornerRadius="16"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoMaterialSnackbarCommand}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent6}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_label.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="Snackbar"
+                                                        TextColor="{StaticResource GradientColor6}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="14"
+                           Grid.Column="0"
+                           Padding="15"
+                           BackgroundColor="{StaticResource GradientColorTransparent7}"
+                           CornerRadius="16"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoMaterialDialogCommand}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent7}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_label.svg" />
+                                </Frame>
+                                <material:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="Dialog"
+                                                        TextColor="{StaticResource GradientColor7}"
                                                         VerticalOptions="EndAndExpand" />
                             </StackLayout>
 

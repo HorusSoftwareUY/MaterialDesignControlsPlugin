@@ -140,6 +140,15 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await Navigation.PushAsync(new MaterialIconButtonPage());
         });
-        
+
+        public ICommand GoMaterialSnackbarCommand => new Command(async () =>
+        {
+            await DisplayAlert("MaterialSnackbar", "Comming Soon!", "Ok");
+        });
+
+        public ICommand GoMaterialDialogCommand => new Command(async () =>
+        {
+            await DisplayAlert("MaterialDialog", "Comming Soon!", "Ok");
+        });
     }
 }
