@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace ExampleMaterialDesignControls.ViewModels
@@ -7,6 +8,9 @@ namespace ExampleMaterialDesignControls.ViewModels
 	public partial class MaterialIconButtonViewModel : BaseViewModel
     {
         private string _controlTitle = "MaterialButton";
+
+        [ObservableProperty]
+        private bool _isEnabled = true;
 
         public MaterialIconButtonViewModel()
 		{

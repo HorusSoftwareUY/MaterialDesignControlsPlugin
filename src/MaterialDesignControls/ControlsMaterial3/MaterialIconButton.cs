@@ -18,7 +18,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static readonly BindableProperty ButtonTypeProperty =
-        BindableProperty.Create(nameof(ButtonType), typeof(MaterialIconButtonType), typeof(MaterialButton), defaultValue: MaterialIconButtonType.Standard);
+            BindableProperty.Create(nameof(ButtonType), typeof(MaterialIconButtonType), typeof(MaterialButton), defaultValue: MaterialIconButtonType.Standard);
 
         public MaterialIconButtonType ButtonType
         {
@@ -45,7 +45,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialIconButton), defaultValue: AnimationTypes.None);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialIconButton), defaultValue: DefaultStyles.AnimationType);
 
         public AnimationTypes Animation
         {
@@ -54,7 +54,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialIconButton), defaultValue: null);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialIconButton), defaultValue: DefaultStyles.AnimationParameter);
 
         public double? AnimationParameter
         {
@@ -72,7 +72,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-        BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Default);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.PrimaryColor);
 
         public new Color BackgroundColor
         {
@@ -81,7 +81,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty IconProperty =
-       BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialIconButton), defaultValue: null);
+            BindableProperty.Create(nameof(Icon), typeof(string), typeof(MaterialIconButton), defaultValue: null);
 
         public string Icon
         {
@@ -99,7 +99,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty PaddingIconProperty =
-        BindableProperty.Create(nameof(PaddingIcon), typeof(Thickness), typeof(MaterialIconButton), new Thickness(0));
+            BindableProperty.Create(nameof(PaddingIcon), typeof(Thickness), typeof(MaterialIconButton), new Thickness(8));
 
         public Thickness PaddingIcon
         {
@@ -139,8 +139,9 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
                 IsVisible = true,
+                Margin = PaddingIcon
             };
-            PaddingIcon = 8;
+
             circle = new Frame();
             circle.HasShadow = false;
             circle.HorizontalOptions = LayoutOptions.Center;
@@ -180,16 +181,12 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(HeightRequest):
                     if (HeightRequest >= minHeight)
-                    {
                         SetHeigthRequest();
-                    }
                     break;
 
                 case nameof(WidthRequest):
                     if (WidthRequest >= minWidth)
-                    {
                         SetWidthRequest();
-                    }
                     break;
 
                 case nameof(BackgroundColor):
@@ -227,7 +224,6 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 case MaterialIconButtonType.Standard:
                     this.customImage.Margin = this.PaddingIcon;
-     
                     this.circle.IsVisible = false;
                     break;
                 case MaterialIconButtonType.Filled:

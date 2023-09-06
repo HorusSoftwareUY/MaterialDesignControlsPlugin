@@ -7,10 +7,7 @@ MaterialIconButton displays an icon and can execute a command.<br/>
 
 ## Example MaterialTopAppBar
 ```XML
-<material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Outlined Type" />
-<material3:MaterialIconButton BackgroundColor="Green" ButtonType="Outlined" Animation="Scale" Command="{Binding OutlinedCommand}">
+<material3:MaterialIconButton Command="{Binding StandardCommand}">
     <material3:MaterialIconButton.CustomIcon>
         <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
     </material3:MaterialIconButton.CustomIcon>
@@ -20,6 +17,8 @@ MaterialIconButton displays an icon and can execute a command.<br/>
 ## Documentation
 
 ### Property ButtonType:
+This property is to set the type of the IconButton.
+<br/>
 #### Allowed values
 - Standard (Default)
 - Filled
@@ -37,7 +36,6 @@ This property is to specify a parameter for the command when the control is tapp
 ### Property Animation:
 This property is to set the animation of the control when is tapped.
 <br/>
-
 #### Allowed values
 - None (Default)
 - Fade 
@@ -65,9 +63,5 @@ This property is to set the icon.
 This property is to set a custom icon.
 <br/>
 
-### MarginIcon:
-This property is used to define the margin of the icon in relation to the circle.<br/>
-
-### MarginIcon:
-This property is used to define the margin of the icon in relation to the circle.<br/>
-
+### PaddingIcon:
+This property is used to define the padding of the icon in relation to the circle.<br/>

@@ -27,48 +27,66 @@
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Standard Type" />
-                    <material3:MaterialIconButton BackgroundColor="Green" Animation="Scale" Command="{Binding StandardCommand}">
+                    <material3:MaterialIconButton Command="{Binding StandardCommand}">
                         <material3:MaterialIconButton.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialIconButton.CustomIcon>
                     </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Filled Type" />
-                    <material3:MaterialIconButton BackgroundColor="Green" ButtonType="Filled" Animation="Scale" Command="{Binding FilledCommand}">
+                    <material3:MaterialIconButton ButtonType="Filled" Command="{Binding FilledCommand}">
                         <material3:MaterialIconButton.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialIconButton.CustomIcon>
                     </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Outlined Type" />
-                    <material3:MaterialIconButton BackgroundColor="Green" ButtonType="Outlined" Animation="Scale" Command="{Binding OutlinedCommand}">
+                    <material3:MaterialIconButton ButtonType="Outlined" Command="{Binding OutlinedCommand}">
                         <material3:MaterialIconButton.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialIconButton.CustomIcon>
                     </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
 
                      <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Tonal Type" />
-                    <material3:MaterialIconButton BackgroundColor="Green" ButtonType="Tonal" Animation="Scale" Command="{Binding TonalCommand}">
+                    <material3:MaterialIconButton ButtonType="Tonal" Command="{Binding TonalCommand}">
                         <material3:MaterialIconButton.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialIconButton.CustomIcon>
                     </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialSwitch IsToggled="{Binding IsEnabled}"
+                                              Text="Is enabled" />
+
+                    <material3:MaterialIconButton IsEnabled="{Binding IsEnabled}" ButtonType="Filled" Command="{Binding FilledCommand}">
+                        <material3:MaterialIconButton.CustomIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
+                        </material3:MaterialIconButton.CustomIcon>
+                    </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Full Api" />
-                    <material3:MaterialIconButton BackgroundColor="Red" ButtonType="Filled" HeightRequest="100" WidthRequest="100" PaddingIcon="20" Animation="Scale">
+                    <material3:MaterialIconButton BackgroundColor="Red" ButtonType="Filled" HeightRequest="100" WidthRequest="100" PaddingIcon="20" Animation="Scale" AnimationParameter="0.8">
                         <material3:MaterialIconButton.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialIconButton.CustomIcon>
                     </material3:MaterialIconButton>
-
                 </StackLayout>
             </ScrollView>
         </Grid>
