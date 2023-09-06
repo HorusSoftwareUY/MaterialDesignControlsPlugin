@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Plugin.MaterialDesignControls
+namespace Plugin.MaterialDesignControls.Material3
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MaterialRadioButtons : BaseMaterialCheckboxes
+    public partial class MaterialRadioButtons : BaseMaterialCheckBoxes
     {
         #region Attributes
 
@@ -61,7 +62,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.Black);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.TextColor);
 
         public Color LabelTextColor
         {
@@ -70,7 +71,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty DisabledLabelTextColorProperty =
-            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledLabelTextColor
         {
@@ -79,7 +80,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
 
         public double LabelSize
         {
@@ -88,7 +89,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelFontFamilyProperty =
-            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(MaterialRadioButtons), defaultValue: null);
+            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.FontFamily);
 
         public string LabelFontFamily
         {
@@ -97,7 +98,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty LabelMarginProperty =
-            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(MaterialRadioButtons), defaultValue: new Thickness(14, 0, 14, 2));
+            BindableProperty.Create(nameof(LabelMargin), typeof(Thickness), typeof(MaterialRadioButtons), defaultValue: new Thickness(16, 0, 16, 4));
 
         public Thickness LabelMargin
         {
@@ -113,7 +114,15 @@ namespace Plugin.MaterialDesignControls
 
         private void Initialize()
         {
-            lblLabel.TextColor = LabelTextColor;
+            lblLabel.TextColor = TextColor;
+            lblLabel.FontFamily = FontFamily;
+            lblLabel.FontSize = LabelSize;
+            lblLabel.Margin = LabelMargin;
+
+            lblSupporting.TextColor = SupportingTextColor;
+            lblSupporting.FontFamily = SupportingFontFamily;
+            lblSupporting.FontSize = SupportingSize;
+            lblSupporting.Margin = SupportingMargin;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -125,10 +134,10 @@ namespace Plugin.MaterialDesignControls
                 Initialize();
             }
 
-            UpdateLayout(propertyName, container, lblAssistive);
+            UpdateLayout(propertyName, container, lblSupporting);
 
-            switch (propertyName) 
-	        { 
+            switch (propertyName)
+            {
                 case nameof(TranslationX):
                     base.OnPropertyChanged(propertyName);
                     break;
@@ -151,7 +160,7 @@ namespace Plugin.MaterialDesignControls
                     lblLabel.TextColor = IsEnabled ? LabelTextColor : DisabledLabelTextColor;
                     break;
                 case nameof(IsEnabled):
-                    lblLabel.TextColor = IsEnabled? LabelTextColor: DisabledLabelTextColor;
+                    lblLabel.TextColor = IsEnabled ? LabelTextColor : DisabledLabelTextColor;
                     break;
             }
         }
@@ -165,6 +174,7 @@ namespace Plugin.MaterialDesignControls
                 foreach (var item in (IEnumerable)newValue)
                 {
                     var materialCheckbox = new MaterialCheckbox();
+                    materialCheckbox.IsRadioButtonStyle = true;
                     materialCheckbox.Text = item.ToString();
                     materialCheckbox.Command = new Command(() => SelectionCommand(control, materialCheckbox));
                     materialCheckbox.Color = control.Color;
@@ -173,7 +183,7 @@ namespace Plugin.MaterialDesignControls
                     materialCheckbox.FontFamily = control.FontFamily;
                     materialCheckbox.BackgroundColor = control.BackgroundColor;
                     materialCheckbox.IsEnabled = control.IsEnabled;
-		            materialCheckbox.DisabledColor = control.DisabledColor;
+                    materialCheckbox.DisabledColor = control.DisabledColor;
                     materialCheckbox.DisabledTextColor = control.DisabledTextColor;
                     materialCheckbox.TextSide = control.TextSide;
                     materialCheckbox.TextHorizontalOptions = control.TextHorizontalOptions;
