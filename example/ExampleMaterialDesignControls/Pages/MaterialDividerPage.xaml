@@ -6,6 +6,7 @@
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
     ios:Page.UseSafeArea="True"
     BackgroundColor="White"
     NavigationPage.HasNavigationBar="false">
@@ -19,6 +20,9 @@
 
             <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="20,0,20,20" Spacing="10">
+
+                    <contentViews:InfoIndicatorView Message="MaterialDivider follows the latest guidelines of Material Design 3" />
+
                     <material3:MaterialLabel
                         FontFamily="{StaticResource SemiBoldFont}"
                         HorizontalTextAlignment="Center"
