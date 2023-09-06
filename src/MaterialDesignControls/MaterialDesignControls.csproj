@@ -222,9 +222,4 @@
     <None Remove="Styles\" />
     <None Remove="ControlsMaterial2\DeprecatedControls\" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
 </Project>
