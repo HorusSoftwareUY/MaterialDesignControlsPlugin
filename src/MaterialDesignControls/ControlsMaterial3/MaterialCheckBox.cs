@@ -1,7 +1,6 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
-using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -9,7 +8,6 @@ using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialCheckbox : BaseMaterialCheckBoxes, ITouchAndPressEffectConsumer
     {
         private bool Initialized = false;
@@ -24,7 +22,6 @@ namespace Plugin.MaterialDesignControls.Material3
         private CustomImageButton customIcon;
         private MaterialLabel lblRightText;
         private MaterialLabel lblSupporting;
-
 
         public MaterialCheckbox()
         {
@@ -77,6 +74,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 Initialize();
             }
 
+            if (!this.Initialized)
+            {
+                this.Initialized = true;
+                Initialize();
+            }
+
             UpdateLayout(propertyName, container, lblSupporting);
 
             switch (propertyName)
@@ -88,7 +91,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(Text):
                     lblRightText.Text = Text;
-                    lblLeftText.Text = Text;
                     break;
                 case nameof(TextColor):
                     lblLeftText.TextColor = TextColor;
@@ -115,12 +117,6 @@ namespace Plugin.MaterialDesignControls.Material3
                         lblLeftText.Text = Text;
                         lblLeftText.IsVisible = true;
                         lblRightText.IsVisible = false;
-                    }
-                    else
-                    {
-                        lblRightText.Text = Text;
-                        lblRightText.IsVisible = true;
-                        lblLeftText.IsVisible = false;
                     }
                     break;
                 case nameof(TextHorizontalOptions):
@@ -179,7 +175,9 @@ namespace Plugin.MaterialDesignControls.Material3
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 40,
-                HeightRequest = 40
+                HeightRequest = 40,
+                IsClippedToBounds = false,
+                BackgroundColor = Color.Red
             };
 
             chk = new CustomCheckBox()
@@ -188,8 +186,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 25,
                 HeightRequest = 25,
-                IsChecked = IsChecked,
-                IsVisible = true
             };
 
             BoxView chkBoxView = new BoxView()
@@ -197,11 +193,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 25,
-                HeightRequest = 25
+                HeightRequest = 25,
+                BackgroundColor = Color.Green
             };
 
-            chkContainer.Children.Add(chk);
             chkContainer.Children.Add(chkBoxView);
+            chkContainer.Children.Add(chk);
 
             radioButtonContainer = new Grid()
             {
@@ -259,7 +256,6 @@ namespace Plugin.MaterialDesignControls.Material3
             lblRightText = new MaterialLabel()
             {
                 VerticalTextAlignment = TextAlignment.Center,
-                IsVisible = false
             };
 
             container.Children.Add(lblLeftText);
