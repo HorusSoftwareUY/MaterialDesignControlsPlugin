@@ -7,6 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("BaseMaterialCheckboxes is deprecated, please use BaseMaterialCheckboxes of Material 3 instead.")]
     public abstract class BaseMaterialCheckboxes : ContentView
     {
         #region Text

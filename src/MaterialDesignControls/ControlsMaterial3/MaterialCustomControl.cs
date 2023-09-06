@@ -16,6 +16,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private Plugin.MaterialDesignControls.MaterialLabel lblLabel;
 
+        private Plugin.MaterialDesignControls.MaterialLabel lblLabelSecondary;
+
         private Plugin.MaterialDesignControls.MaterialLabel lblSupporting;
 
         private ContentView cntCustomControl;
@@ -178,6 +180,74 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion SupportingText
 
+        #region SecondaryLabelText
+
+        public static readonly BindableProperty SecondaryLabelTextProperty =
+            BindableProperty.Create(nameof(SecondaryLabelText), typeof(string), typeof(MaterialCustomControl), defaultValue: null);
+
+        public string SecondaryLabelText
+        {
+            get { return (string)GetValue(SecondaryLabelTextProperty); }
+            set { SetValue(SecondaryLabelTextProperty, value); }
+        }
+
+        public static readonly BindableProperty SecondaryLabelTextColorProperty =
+            BindableProperty.Create(nameof(SecondaryLabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+
+        public Color SecondaryLabelTextColor
+        {
+            get { return (Color)GetValue(SecondaryLabelTextColorProperty); }
+            set { SetValue(SecondaryLabelTextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledSecondaryLabelTextColorProperty =
+            BindableProperty.Create(nameof(DisabledSecondaryLabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+
+        public Color DisabledSecondaryLabelTextColor
+        {
+            get { return (Color)GetValue(DisabledSecondaryLabelTextColorProperty); }
+            set { SetValue(DisabledSecondaryLabelTextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty SecondaryLabelFontSizeProperty =
+            BindableProperty.Create(nameof(SecondaryLabelFontSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
+
+        public double SecondaryLabelFontSize
+        {
+            get { return (double)GetValue(SecondaryLabelFontSizeProperty); }
+            set { SetValue(SecondaryLabelFontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty SecondaryLabelFontFamilyProperty =
+            BindableProperty.Create(nameof(SecondaryLabelFontFamily), typeof(string), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontFamily);
+
+        public string SecondaryLabelFontFamily
+        {
+            get { return (string)GetValue(SecondaryLabelFontFamilyProperty); }
+            set { SetValue(SecondaryLabelFontFamilyProperty, value); }
+        }
+
+        public static readonly BindableProperty SecondaryLabelMarginProperty =
+            BindableProperty.Create(nameof(SecondaryLabelMargin), typeof(Thickness), typeof(MaterialCustomControl), defaultValue: new Thickness(16, 0, 16, 4));
+
+        public Thickness SecondaryLabelMargin
+        {
+            get { return (Thickness)GetValue(SecondaryLabelMarginProperty); }
+            set { SetValue(SecondaryLabelMarginProperty, value); }
+        }
+
+        public static readonly BindableProperty SecondaryLabelLineBreakModeProperty =
+            BindableProperty.Create(nameof(SecondaryLabelLineBreakMode), typeof(LineBreakMode), typeof(MaterialCustomControl), defaultValue: LineBreakMode.NoWrap);
+
+        public LineBreakMode SecondaryLabelLineBreakMode
+        {
+            get { return (LineBreakMode)GetValue(SecondaryLabelLineBreakModeProperty); }
+            set { SetValue(SecondaryLabelLineBreakModeProperty, value); }
+        }
+
+        #endregion SecondaryLabelText
+
+
         #region Constructor
 
         public MaterialCustomControl()
@@ -194,9 +264,24 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = LabelFontFamily
             };
 
-            SetLabelTextColor();
+            lblLabelSecondary = new Plugin.MaterialDesignControls.MaterialLabel
+            {
+                IsVisible = false,
+                LineBreakMode = SecondaryLabelLineBreakMode,
+                Margin = SecondaryLabelMargin,
+                HorizontalTextAlignment = TextAlignment.End,
+                FontSize = SecondaryLabelFontSize,
+                FontFamily = SecondaryLabelFontFamily
+            };
 
-            stackLayout.Children.Add(lblLabel);
+            var gridTexts = new Grid();
+            gridTexts.Children.Add(lblLabel, 0, 0);
+            gridTexts.Children.Add(lblLabelSecondary, 1, 0);
+
+            SetLabelTextColor();
+            SetLabelSecondaryTextColor();
+
+            stackLayout.Children.Add(gridTexts);
 
             cntCustomControl = new ContentView();
 
@@ -214,7 +299,7 @@ namespace Plugin.MaterialDesignControls.Material3
             };
 
             stackLayout.Children.Add(lblSupporting);
-
+            SecondaryLabelText = "";
             Content = stackLayout;
         }
 
@@ -242,12 +327,16 @@ namespace Plugin.MaterialDesignControls.Material3
         protected void SetLabelTextColor()
             => lblLabel.TextColor = !IsEnabled ? DisabledLabelTextColor : LabelTextColor;
 
+        protected void SetLabelSecondaryTextColor()
+            => lblLabelSecondary.TextColor = !IsEnabled ? DisabledSecondaryLabelTextColor : SecondaryLabelTextColor;
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             switch (propertyName)
             {
                 case nameof(IsEnabled):
                     SetLabelTextColor();
+                    SetLabelSecondaryTextColor();
                     break;
                 case nameof(LabelFontFamily):
                     lblLabel.FontFamily = LabelFontFamily;
@@ -283,20 +372,35 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(SupportingMargin):
                     lblSupporting.Margin = SupportingMargin;
                     break;
-
                 case nameof(HorizontalTextAlignment):
                     lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
                     lblSupporting.HorizontalTextAlignment = HorizontalTextAlignment;
                     break;
-
                 case nameof(LabelLineBreakMode):
                     lblLabel.LineBreakMode = LabelLineBreakMode;
                     break;
-
                 case nameof(SupportingLineBreakMode):
                     lblSupporting.LineBreakMode = SupportingLineBreakMode;
                     break;
-
+                case nameof(SecondaryLabelText):
+                    lblLabelSecondary.Text = SecondaryLabelText;
+                    lblLabelSecondary.IsVisible = true;
+                    break;
+                case nameof(SecondaryLabelTextColor):
+                    SetLabelSecondaryTextColor();
+                    break;
+                case nameof(SecondaryLabelFontSize):
+                    lblLabelSecondary.FontSize = SecondaryLabelFontSize;
+                    break;
+                case nameof(SecondaryLabelFontFamily):
+                    lblLabelSecondary.FontFamily = SecondaryLabelFontFamily;
+                    break;
+                case nameof(SecondaryLabelMargin):
+                    lblLabelSecondary.Margin = SecondaryLabelMargin;
+                    break;
+                case nameof(SecondaryLabelLineBreakMode):
+                    lblLabelSecondary.LineBreakMode = SecondaryLabelLineBreakMode;
+                    break;
                 default:
                     base.OnPropertyChanged(propertyName);
                     break;
