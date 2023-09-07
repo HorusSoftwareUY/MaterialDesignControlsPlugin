@@ -7,19 +7,21 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-	public class MaterialSnackBar : ContentView
-	{
-		public CustomFrame mainContainer { get; set; }
+    public class MaterialSnackBar : ContentView
+    {
+        public CustomFrame mainContainer { get; set; }
 
-		public StackLayout stackContainer { get; set; }
+        public Grid gridContainer { get; set; }
 
-		public MaterialLabel lblText { get; set; }
+        public Grid superGridContainer { get; set; }
+
+        public MaterialLabel lblText { get; set; }
 
         private CustomImageButton _leadingIconCustomImageButton;
 
         private CustomImageButton _trailingIconCustomImageButton;
 
-		public Plugin.MaterialDesignControls.Material3.MaterialButton actionButton { get; set; }
+        public Plugin.MaterialDesignControls.Material3.MaterialButton actionButton { get; set; }
 
         public static readonly new BindableProperty BackgroundColorProperty =
             BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: Color.LightGray);
@@ -31,7 +33,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ShadowColorProperty =
-            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: Color.Black);
 
         public Color ShadowColor
         {
@@ -83,7 +85,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (string)GetValue(FontFamilyProperty); }
             set { SetValue(FontFamilyProperty, value); }
         }
-        
+
         public static readonly BindableProperty ActionTextProperty =
             BindableProperty.Create(nameof(ActionText), typeof(string), typeof(MaterialButton), defaultValue: null);
 
@@ -211,52 +213,85 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(IconSizeProperty, value); }
         }
 
-        public MaterialSnackBar()	
-		{
-			stackContainer = new StackLayout();
-			stackContainer.VerticalOptions = LayoutOptions.Start;
-            stackContainer.BackgroundColor = Color.Red;
-			stackContainer.HorizontalOptions = LayoutOptions.Fill;
-            stackContainer.Padding = new Thickness(16, 12, 8, 12);
-			lblText = new MaterialLabel() {VerticalOptions = LayoutOptions.Center};
-			actionButton = new MaterialButton() { ButtonType = MaterialButtonType.Text, HorizontalOptions = LayoutOptions.EndAndExpand, Padding = 0};
-			stackContainer.Orientation = StackOrientation.Horizontal;
+        public MaterialSnackBar()
+        {
+            gridContainer = new Grid
+            {
+                VerticalOptions = LayoutOptions.Fill,
+                HorizontalOptions = LayoutOptions.Fill,
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition { Width = GridLength.Auto },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition { Width = GridLength.Auto },
+                    new ColumnDefinition { Width = GridLength.Auto }
+                },
+                RowDefinitions =
+                {
+                    new RowDefinition { Height = GridLength.Auto }
+                },
+            };
 
-			mainContainer = new CustomFrame();
-            mainContainer.Margin = new Thickness(24, 0);
-            mainContainer.Padding = 0;
-            mainContainer.CornerRadius = 10;
-			mainContainer.IsClippedToBounds = true;
+            lblText = new MaterialLabel()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                Margin = new Thickness(16, 6),
+                TextColor = TextColor,
+                FontFamily = FontFamily,
+                FontSize = FontSize,
+            };
+
+            actionButton = new MaterialButton()
+            {
+                ButtonType = MaterialButtonType.Text,
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Margin = new Thickness(0, 4, 8, 4),
+                TextColor = ActionTextColor,
+                FontFamily = ActionFontFamily,
+                FontSize = ActionFontSize,
+                Padding = 0,
+            };
 
             _leadingIconCustomImageButton = new CustomImageButton
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Start,
                 BackgroundColor = Color.Green,
+                Margin = new Thickness(12, 0, 0, 0),
+                Padding = 0,
                 HeightRequest = IconSize,
                 WidthRequest = IconSize,
-                Padding = 0,
                 IsVisible = false
             };
 
             _trailingIconCustomImageButton = new CustomImageButton
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.End,
                 BackgroundColor = Color.Green,
                 HeightRequest = IconSize,
                 WidthRequest = IconSize,
-                Padding = new Thickness(12,0,4,0),
+                Margin = new Thickness(0, 0, 12, 0),
+                Padding = 0,
                 IsVisible = false
             };
 
-            stackContainer.Children.Add(_leadingIconCustomImageButton);
-            stackContainer.Children.Add(lblText);
-            stackContainer.Children.Add(actionButton);
-            stackContainer.Children.Add(_trailingIconCustomImageButton);
-            mainContainer.Content = stackContainer;
+            gridContainer.Children.Add(_leadingIconCustomImageButton, 0, 0);
+            gridContainer.Children.Add(lblText, 1, 0);
+            gridContainer.Children.Add(actionButton, 2, 0);
+            gridContainer.Children.Add(_trailingIconCustomImageButton, 3, 0);
 
-            Content = mainContainer;	
+            mainContainer = new CustomFrame()
+            {
+                Padding = 0,
+                CornerRadius = CornerRadius,
+                IsClippedToBounds = true,
+                Content = gridContainer,
+                HasShadow = true,
+                ShadowColor = ShadowColor,
+            };
+            Content = mainContainer;
         }
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -268,10 +303,9 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (propertyName)
             {
                 case nameof(BackgroundColor):
-                    stackContainer.BackgroundColor = BackgroundColor;
+                    gridContainer.BackgroundColor = BackgroundColor;
                     break;
                 case nameof(ShadowColor):
-                    mainContainer.ShadowColor = ShadowColor;
                     break;
                 case nameof(CornerRadius):
                     mainContainer.CornerRadius = CornerRadius;
@@ -306,16 +340,39 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(ActionCommandParameter):
                     actionButton.CommandParameter = ActionCommandParameter;
                     break;
+                case nameof(LeadingIconCommand):
+                    _leadingIconCustomImageButton.Command = LeadingIconCommand;
+                    _leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
+                    break;
+                case nameof(TrailingIconCommand):
+                    _trailingIconCustomImageButton.Command = TrailingIconCommand;
+                    _trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
+                    break;
+                case nameof(IconSize):
+                    _leadingIconCustomImageButton.ImageHeightRequest = IconSize;
+                    _leadingIconCustomImageButton.ImageWidthRequest = IconSize;
+                    _trailingIconCustomImageButton.ImageHeightRequest = IconSize;
+                    _trailingIconCustomImageButton.ImageWidthRequest = IconSize;
+
+                    _leadingIconCustomImageButton.HeightRequest = IconSize;
+                    _leadingIconCustomImageButton.WidthRequest = IconSize;
+                    _trailingIconCustomImageButton.HeightRequest = IconSize;
+                    _trailingIconCustomImageButton.WidthRequest = IconSize;
+                    break;
                 case nameof(LeadingIcon):
                     if (!string.IsNullOrEmpty(LeadingIcon))
+                    {
                         this._leadingIconCustomImageButton.SetImage(LeadingIcon);
+                    }
 
                     this._leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(CustomLeadingIcon):
                     if (CustomLeadingIcon != null)
+                    {
                         this._leadingIconCustomImageButton.SetCustomImage(CustomLeadingIcon);
-
+                        lblText.Margin = new Thickness(12, 6);
+                    }
                     this._leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(TrailingIcon):
@@ -330,17 +387,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
                     this._trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
                     break;
-                case nameof(LeadingIconCommand):
-                    _leadingIconCustomImageButton.Command = LeadingIconCommand;
-                    _leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
-                    break;
-                case nameof(TrailingIconCommand):
-                    _trailingIconCustomImageButton.Command = TrailingIconCommand;
-                    _trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
-                    break;
             }
         }
-
 
     }
 }
