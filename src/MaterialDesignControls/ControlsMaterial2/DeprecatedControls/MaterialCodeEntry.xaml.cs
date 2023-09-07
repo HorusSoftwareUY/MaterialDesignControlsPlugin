@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Obsolete("MaterialCodeEntry is deprecated, please use MaterialCodeEntry of Material 3 instead.")]
     public partial class MaterialCodeEntry : BaseMaterialFieldControl
     {
         #region Constructors
