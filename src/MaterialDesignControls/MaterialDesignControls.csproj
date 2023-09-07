@@ -55,16 +55,17 @@
       <DependentUpon>MaterialRatingControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialSlider.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialSlider.xaml.cs">
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.xaml.cs">
-      <DependentUpon>BaseMaterialFieldControl.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.cs" />
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
     <Compile Include="ControlsMaterial3\MaterialBadge.cs" />
+    <Compile Include="ControlsMaterial3\MaterialCheckbox.xaml.cs">
+      <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ControlsMaterial3\MaterialChips.cs" />
     <Compile Include="ControlsMaterial3\MaterialChipsGroup.cs" />
     <Compile Include="ControlsMaterial3\MaterialDatePicker.cs" />
@@ -73,8 +74,13 @@
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialNavigationDrawer.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
+    <Compile Include="ControlsMaterial3\MaterialRadioButtons.xaml.cs">
+      <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
     <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSlider.cs" />
     <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -155,13 +161,13 @@
       <DependentUpon>MaterialSegmented.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialCheckbox.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialCheckbox.xaml.cs">
       <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\BaseMaterialCheckboxes.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\BaseMaterialCheckboxes.cs" />
     <Compile Include="TextSide.cs" />
-    <Compile Include="ControlsMaterial2\MaterialRadioButtons.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialRadioButtons.xaml.cs">
       <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -169,7 +175,7 @@
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialFloatingButton.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialFloatingButton.xaml.cs">
       <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -196,6 +202,12 @@
       <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ControlsMaterial3\MaterialIconButton.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSearch.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomRadioButton.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomCheckBox.cs" />
+    <Compile Include="ControlsMaterial3\MaterialFloatingButton.cs" />
+    <Compile Include="ControlsMaterial3\BaseMaterialCheckBoxes.cs" />
     <Compile Include="ControlsMaterial3\MaterialSnackBar.cs" />
   </ItemGroup>
 
@@ -216,9 +228,6 @@
     <None Remove="ControlsMaterial2\DeprecatedControls\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

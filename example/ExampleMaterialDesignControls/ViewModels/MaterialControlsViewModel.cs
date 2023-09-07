@@ -98,7 +98,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand GoMaterialSearchBarCommand => new Command(async () =>
         {
-            await DisplayAlert("MaterialSearch", "Comming Soon!", "Ok");
+            await Navigation.PushAsync(new MaterialSearchPage());
         });
 
         public ICommand GoMaterialDividerCommand => new Command(async () =>
@@ -134,6 +134,21 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialLabelCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialLabel());
+        });
+
+        public ICommand GoMaterialIconButtonCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialIconButtonPage());
+        });
+
+        public ICommand GoMaterialSnackbarCommand => new Command(async () =>
+        {
+            await DisplayAlert("MaterialSnackbar", "Comming Soon!", "Ok");
+        });
+
+        public ICommand GoMaterialDialogCommand => new Command(async () =>
+        {
+            await DisplayAlert("MaterialDialog", "Comming Soon!", "Ok");
         });
     }
 }

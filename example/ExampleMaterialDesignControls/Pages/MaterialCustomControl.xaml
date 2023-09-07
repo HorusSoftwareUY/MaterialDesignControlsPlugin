@@ -25,6 +25,8 @@
                     <material3:MaterialCustomControl
                         AnimateError="True"
                         SupportingText="{Binding AssistiveText}"
+                        SecondaryLabelText="Lorem ipsum"
+                        SecondaryLabelTextColor="Blue"
                         LabelText="Value">
                         <material3:MaterialCustomControl.CustomControl>
                             <Slider />

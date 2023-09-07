@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    ios:Page.UseSafeArea="True"
+    NavigationPage.HasNavigationBar="False"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:tt="clr-namespace:Plugin.MaterialDesignControls.Implementations;assembly=Plugin.MaterialDesignControls" xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialIconButtonPage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <material3:MaterialTopAppBar
+                Headline="MaterialIconButton"
+                LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
+            </material3:MaterialTopAppBar>
+
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="15">
+                    <contentViews:InfoIndicatorView Message="MaterialIconButton follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Standard Type" />
+                    <material3:MaterialIconButton Command="{Binding StandardCommand}">
+                        <material3:MaterialIconButton.CustomIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
+                        </material3:MaterialIconButton.CustomIcon>
+                    </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Filled Type" />
+                    <material3:MaterialIconButton ButtonType="Filled" Command="{Binding FilledCommand}">
+                        <material3:MaterialIconButton.CustomIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
+                        </material3:MaterialIconButton.CustomIcon>
+                    </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Outlined Type" />
+                    <material3:MaterialIconButton ButtonType="Outlined" Command="{Binding OutlinedCommand}">
+                        <material3:MaterialIconButton.CustomIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
+                        </material3:MaterialIconButton.CustomIcon>
+                    </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Tonal Type" />
+                    <material3:MaterialIconButton ButtonType="Tonal" Command="{Binding TonalCommand}">
+                        <material3:MaterialIconButton.CustomIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
+                        </material3:MaterialIconButton.CustomIcon>
+                    </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialSwitch IsToggled="{Binding IsEnabled}"
+                                              Text="Is enabled" />
+
+                    <material3:MaterialIconButton IsEnabled="{Binding IsEnabled}" ButtonType="Filled" Command="{Binding FilledCommand}">
+                        <material3:MaterialIconButton.CustomIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
+                        </material3:MaterialIconButton.CustomIcon>
+                    </material3:MaterialIconButton>
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Full Api" />
+                    <material3:MaterialIconButton BackgroundColor="Red" ButtonType="Filled" HeightRequest="100" WidthRequest="100" PaddingIcon="20" Animation="Scale" AnimationParameter="0.8">
+                        <material3:MaterialIconButton.CustomIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
+                        </material3:MaterialIconButton.CustomIcon>
+                    </material3:MaterialIconButton>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
+

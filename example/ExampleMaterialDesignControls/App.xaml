@@ -110,12 +110,6 @@
         <Color x:Key="GradientGreenColor">#0c3900</Color>
         <Color x:Key="GradientGreenColorTransparent">#d9e7cb</Color>
 
-        <!-- MaterialLabel -->
-        <Style TargetType="material:MaterialLabel">
-            <Setter Property="TextColor"
-                    Value="#0d1a26" />
-        </Style>
-
         <!-- MaterialField -->
         <Style TargetType="material:MaterialField">
             <Setter Property="LabelSize"
@@ -191,15 +185,6 @@
                     Value="16" />
         </Style>
 
-        <!-- MaterialTimePicker -->
-        <Style TargetType="material:MaterialTimePicker"
-               BasedOn="{StaticResource BaseMaterialStyle}">
-            <Setter Property="BackgroundColor"
-                    Value="{StaticResource BackgroundMaterialColor}" />
-            <Setter Property="TrailingIcon"
-                    Value="arrow_drop_down.png" />
-        </Style>
-
         <!-- MaterialSelection -->
         <Style TargetType="material:MaterialSelection"
                BasedOn="{StaticResource BaseMaterialStyle}">
@@ -207,56 +192,6 @@
                     Value="{StaticResource BackgroundMaterialColor}" />
             <Setter Property="TrailingIcon"
                     Value="chevron_right.png" />
-        </Style>
-
-        <!-- MaterialCustomControl -->
-        <Style TargetType="material:MaterialCustomControl">
-            <Setter Property="AnimateError"
-                    Value="True" />
-            <Setter Property="LabelTextColor"
-                    Value="{StaticResource LabelTextColor}" />
-            <Setter Property="LabelSize"
-                    Value="{StaticResource Body3FontSize}" />
-            <Setter Property="AssistiveTextColor"
-                    Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveSize"
-                    Value="{StaticResource Body3FontSize}" />
-        </Style>
-
-        <!-- MaterialCheckbox -->
-        <Style TargetType="material:MaterialCheckbox">
-            <Setter Property="Color"
-                    Value="{StaticResource GradientColor1}" />
-            <Setter Property="AnimateError"
-                    Value="True" />
-            <Setter Property="AssistiveTextColor"
-                    Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveSize"
-                    Value="{StaticResource Body3FontSize}" />
-        </Style>
-
-        <!-- MaterialRadioButtons -->
-        <Style TargetType="material:MaterialRadioButtons">
-            <Setter Property="Color"
-                    Value="{StaticResource GradientColor1}" />
-            <Setter Property="AnimateError"
-                    Value="True" />
-            <Setter Property="AssistiveTextColor"
-                    Value="{StaticResource AssistiveTextColor}" />
-            <Setter Property="AssistiveSize"
-                    Value="{StaticResource Body3FontSize}" />
-            <Setter Property="LabelSize"
-                    Value="{StaticResource Body3FontSize}" />
-            <Setter Property="LabelTextColor"
-                    Value="{StaticResource LabelTextColor}" />
-        </Style>
-
-        <!-- MaterialDivider-->
-        <Style TargetType="material:MaterialDivider">
-            <Setter Property="BackgroundColor"
-                    Value="LightGray" />
-            <Setter Property="HeightRequest"
-                    Value="1" />
         </Style>
 
         <!-- MaterialFloatingButton -->
