@@ -71,7 +71,7 @@
                     <material3:MaterialSwitch IsToggled="{Binding IsEnabled}"
                                               Text="Is enabled" />
 
-                    <material3:MaterialIconButton IsEnabled="{Binding IsEnabled}" ButtonType="Filled" Command="{Binding FilledCommand}" BackgroundColor="LightGreen" DisabledBackgroundColor="Blue">
+                    <material3:MaterialIconButton IsEnabled="{Binding IsEnabled}" ButtonType="Filled" Command="{Binding FilledCommand}" BackgroundColor="LightGreen" DisabledBackgroundColor="LightGray">
                         <material3:MaterialIconButton.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialIconButton.CustomIcon>

@@ -971,7 +971,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="90">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_label.svg" />
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_icon_button.svg" />
                                 </Frame>
                                 <material:MaterialLabel FontAttributes="Bold"
                                                         FontSize="{StaticResource Body2FontSize}"
@@ -1007,7 +1007,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="90">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_label.svg" />
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_snackbar.svg" />
                                 </Frame>
                                 <material:MaterialLabel FontAttributes="Bold"
                                                         FontSize="{StaticResource Body2FontSize}"
@@ -1043,7 +1043,7 @@
                                        VerticalOptions="Center"
                                        WidthRequest="90">
                                     <ffimageloadingsvg:SvgCachedImage Margin="20"
-                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_label.svg" />
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dialog.svg" />
                                 </Frame>
                                 <material:MaterialLabel FontAttributes="Bold"
                                                         FontSize="{StaticResource Body2FontSize}"
