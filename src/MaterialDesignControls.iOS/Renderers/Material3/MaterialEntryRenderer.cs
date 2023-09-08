@@ -31,6 +31,9 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
 
                     if (customEntry.IsPassword && UIDevice.CurrentDevice.CheckSystemVersion(12, 0))
                         this.Control.TextContentType = UITextContentType.NewPassword;
+
+                    if (customEntry.CursorColor.HasValue)
+                        this.Control.TintColor = customEntry.CursorColor.Value.ToUIColor();
                 }
             }
         }
