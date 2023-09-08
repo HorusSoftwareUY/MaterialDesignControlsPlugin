@@ -71,10 +71,13 @@
                     <material3:MaterialSwitch IsToggled="{Binding IsEnabled}"
                                               Text="Is enabled" />
 
-                    <material3:MaterialIconButton IsEnabled="{Binding IsEnabled}" ButtonType="Filled" Command="{Binding FilledCommand}">
+                    <material3:MaterialIconButton IsEnabled="{Binding IsEnabled}" ButtonType="Filled" Command="{Binding FilledCommand}" BackgroundColor="LightGreen" DisabledBackgroundColor="Blue">
                         <material3:MaterialIconButton.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialIconButton.CustomIcon>
+                        <material3:MaterialIconButton.CustomDisabledIcon>
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.volume.svg" />
+                        </material3:MaterialIconButton.CustomDisabledIcon>
                     </material3:MaterialIconButton>
 
                     <material3:MaterialDivider Margin="0,10" />

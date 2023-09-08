@@ -27,6 +27,10 @@ This property is to set the type of the IconButton.
 <br/>
 <br/>
 
+### Property IsEnabled:
+This property is to set if the icon button is enabled or disabled.
+<br/>
+
 ### Property Command:
 This property is to set a command for execution when the control is tapped.<br/>
 
@@ -55,12 +59,24 @@ This property is to set a custom animation of the control when is tapped.
 This property is to set the background color for the circle in the Filled and Tonal types, and for the border in the Outlined type.
 <br/>
 
+### Property DisabledBackgroundColor:
+This property is to set the background color for the circle in the Filled and Tonal types when the icon button is disabled, and for the border in the Outlined type.
+<br/>
+
 ### Property Icon:
 This property is to set the icon.
 <br/>
 
+### Property DisabledIcon:
+This property is to set the icon when the icon button is disabled.
+<br/>
+
 ### Property CustomIcon:
 This property is to set a custom icon.
+<br/>
+
+### Property CustomDisabledIcon:
+This property is to set a custom icon when the icon button is disabled.
 <br/>
 
 ### PaddingIcon:
