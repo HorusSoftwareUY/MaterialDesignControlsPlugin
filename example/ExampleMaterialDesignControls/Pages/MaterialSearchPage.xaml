@@ -4,6 +4,7 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls" xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:viewmodel="clr-namespace:ExampleMaterialDesignControls.ViewModels"
     ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialSearchPage"
     x:DataType="viewmodel:MaterialSearchViewModel"
     NavigationPage.HasNavigationBar="false">

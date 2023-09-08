@@ -76,10 +76,7 @@
     <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
     <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
     <Compile Include="ControlsMaterial3\MaterialSlider.cs" />
-    <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
-      <DependentUpon>MaterialSwitch.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="ControlsMaterial3\MaterialSwitch.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomActivityIndicator.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEditor.cs" />
@@ -219,10 +216,5 @@
     <None Remove="ControlsMaterial3\" />
     <None Remove="Styles\" />
     <None Remove="ControlsMaterial2\DeprecatedControls\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

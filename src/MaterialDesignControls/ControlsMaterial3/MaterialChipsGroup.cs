@@ -17,10 +17,9 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!this.initialized)
             {
                 this.initialized = true;
-                this.Initialized();
+                this.Initialize();
             }
         }
-
 
         #endregion Constructors
 
@@ -37,6 +36,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Attributes
 
         #region Properties
+
         public static readonly BindableProperty ToUpperProperty =
             BindableProperty.Create(nameof(ToUpper), typeof(bool), typeof(MaterialChipsGroup), defaultValue: false);
 
@@ -164,7 +164,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
 
         public double LabelSize
         {
@@ -173,7 +173,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
 
         public double SupportingSize
         {
@@ -263,7 +263,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialChipsGroup), defaultValue: DefaultStyles.PhoneFontSizes.LabelLarge);
 
         public double FontSize
         {
@@ -461,7 +461,7 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!this.initialized)
             {
                 this.initialized = true;
-                this.Initialized();
+                this.Initialize();
             }
 
             switch (propertyName)
@@ -509,10 +509,9 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-
-        private void Initialized()
+        private void Initialize()
         {
-            StackLayout stackLayout = new StackLayout()
+            var stackLayout = new StackLayout()
             {
                 Spacing = 2
             };
@@ -522,7 +521,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
                 Margin = new Thickness(14, 0, 14, 2),
-                HorizontalTextAlignment = TextAlignment.Start
+                HorizontalTextAlignment = TextAlignment.Start,
+                TextColor = LabelTextColor,
+                FontFamily = FontFamily,
+                FontSize = LabelSize
             };
 
             this._flexContainer = new FlexLayout()
@@ -537,7 +539,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
                 Margin = new Thickness(14, 2, 14, 0),
-                HorizontalTextAlignment = TextAlignment.Start
+                HorizontalTextAlignment = TextAlignment.Start,
+                TextColor = SupportingTextColor,
+                FontFamily = FontFamily,
+                FontSize = SupportingSize
             };
 
             stackLayout.Children.Add(this._lblLabel);
@@ -545,7 +550,6 @@ namespace Plugin.MaterialDesignControls.Material3
             stackLayout.Children.Add(this._lblSupporting);
 
             this.Content = stackLayout;
-
         }
 
         #endregion Methods
