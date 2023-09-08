@@ -21,10 +21,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private CustomImageButton _trailingIconCustomImageButton;
 
-        public Plugin.MaterialDesignControls.Material3.MaterialButton actionButton { get; set; }
+        private Plugin.MaterialDesignControls.Material3.MaterialButton actionButton { get; set; }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: Color.LightGray);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: DefaultStyles.PrimaryColor);
 
         public new Color BackgroundColor
         {
@@ -33,7 +33,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ShadowColorProperty =
-            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: Color.Black);
+            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: DefaultStyles.ShadowColor);
 
         public Color ShadowColor
         {
@@ -42,7 +42,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(MaterialSnackBar), defaultValue: 10);
+            BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(MaterialSnackBar), defaultValue: 4);
 
         public int CornerRadius
         {
@@ -60,7 +60,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Default);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.OnPrimaryColor);
 
         public Color TextColor
         {
@@ -69,7 +69,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.PhoneFontSizes.LabelLarge);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.PhoneFontSizes.BodyMedium);
 
         public double FontSize
         {
@@ -96,7 +96,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionTextColorProperty =
-            BindableProperty.Create(nameof(ActionTextColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Default);
+            BindableProperty.Create(nameof(ActionTextColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.PrimaryContainerColor);
 
         public Color ActionTextColor
         {
@@ -219,6 +219,7 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 VerticalOptions = LayoutOptions.Fill,
                 HorizontalOptions = LayoutOptions.Fill,
+                BackgroundColor = BackgroundColor,
                 ColumnDefinitions =
                 {
                     new ColumnDefinition { Width = GridLength.Auto },
@@ -257,7 +258,6 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Start,
-                BackgroundColor = Color.Green,
                 Margin = new Thickness(12, 0, 0, 0),
                 Padding = 0,
                 HeightRequest = IconSize,
@@ -269,7 +269,6 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.End,
-                BackgroundColor = Color.Green,
                 HeightRequest = IconSize,
                 WidthRequest = IconSize,
                 Margin = new Thickness(0, 0, 12, 0),
@@ -363,6 +362,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     if (!string.IsNullOrEmpty(LeadingIcon))
                     {
                         this._leadingIconCustomImageButton.SetImage(LeadingIcon);
+                        lblText.Margin = new Thickness(8, 6);
                     }
 
                     this._leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
@@ -371,7 +371,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     if (CustomLeadingIcon != null)
                     {
                         this._leadingIconCustomImageButton.SetCustomImage(CustomLeadingIcon);
-                        lblText.Margin = new Thickness(12, 6);
+                        lblText.Margin = new Thickness(8, 6);
                     }
                     this._leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
                     break;
