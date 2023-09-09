@@ -30,6 +30,8 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static Color OutlineVariantColor { get; set; } = Color.FromHex("#CAC4D0");
 
+        public static Color ShadowColor { get; set; } = Color.FromHex("#000000");
+
         public static double AnimationParameter { get; set; } = 0.7;
 
         public static AnimationTypes AnimationType { get; set; } = AnimationTypes.Fade;

@@ -199,6 +199,7 @@
     <Compile Include="Implementations\CustomMaterial3\CustomCheckBox.cs" />
     <Compile Include="ControlsMaterial3\MaterialFloatingButton.cs" />
     <Compile Include="ControlsMaterial3\BaseMaterialCheckBoxes.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSnackBar.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomSlider.cs" />
     <Compile Include="Implementations\Deprecated\CustomSlider.cs" />
   </ItemGroup>
