@@ -35,6 +35,7 @@
                         ActionText="Action"
                         ActionCommand="{Binding ActionCommand}">
                     </material3:MaterialSnackBar>
+
                     <material3:MaterialDivider Margin="0,10" />
 
                     <material3:MaterialLabel
@@ -88,7 +89,7 @@
                         CornerRadius="18"
                         LeadingIconCommand="{Binding LeadingIconTapCommand}"
                         TrailingIconCommand="{Binding TrailingIconTapCommand}"
-                        IconSize="44">
+                        IconSize="60">
                         <material3:MaterialSnackBar.CustomLeadingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialSnackBar.CustomLeadingIcon>

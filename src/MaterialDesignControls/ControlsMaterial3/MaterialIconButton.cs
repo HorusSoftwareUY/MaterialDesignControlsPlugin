@@ -155,22 +155,14 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             MinimumHeightRequest = minHeight;
             MinimumWidthRequest = minWidth;
-            HorizontalOptions = LayoutOptions.Center;
-
-            SetSettings();
-
             HeightRequest = minHeight;
             WidthRequest = minHeight;
 
-            Content = Container;
-            Effects.Add(new TouchAndPressEffect());
-        }
+            HorizontalOptions = LayoutOptions.Center;
 
-        private void SetSettings()
-        {
             Container = new Grid();
             Container.Padding = shapeCircleMargin;
-            customImage = new CustomImage           
+            customImage = new CustomImage
             {
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
@@ -180,11 +172,18 @@ namespace Plugin.MaterialDesignControls.Material3
 
             circle = new Frame();
             circle.HasShadow = false;
+            circle.BackgroundColor = Color.Transparent;
             circle.HorizontalOptions = LayoutOptions.Center;
             circle.VerticalOptions = LayoutOptions.Center;
 
             Container.Children.Add(circle);
             Container.Children.Add(customImage);
+
+            Content = Container;
+            Effects.Add(new TouchAndPressEffect());
+
+            SetWidthRequest();
+            SetHeigthRequest();
         }
 
         #endregion Constructors
@@ -203,8 +202,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            base.OnPropertyChanged(propertyName);
-
             switch (propertyName)
             {
                 case nameof(Icon):
@@ -234,6 +231,9 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(IsEnabled):
                     ChangeStatusButton();
+                    break;
+                default:
+                    base.OnPropertyChanged(propertyName);
                     break;
             }
         }
@@ -272,6 +272,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetWidthRequest()
         {
+            if (Container == null)
+                return;
+
             var widthWhitoutMargin = WidthRequest - (shapeCircleMargin * 2);
             this.Container.WidthRequest = WidthRequest;
             this.circle.WidthRequest = widthWhitoutMargin;
@@ -281,6 +284,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetHeigthRequest()
         {
+            if (Container == null)
+                return;
+
             var heightWhitoutMargin = HeightRequest - (shapeCircleMargin*2);
             this.Container.HeightRequest = WidthRequest;
             this.circle.HeightRequest = heightWhitoutMargin;
@@ -294,6 +300,7 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (ButtonType)
             {
                 case MaterialIconButtonType.Standard:
+                    this.circle.BackgroundColor = Color.Transparent;
                     this.customImage.Margin = this.PaddingIcon;
                     this.circle.IsVisible = false;
                     break;

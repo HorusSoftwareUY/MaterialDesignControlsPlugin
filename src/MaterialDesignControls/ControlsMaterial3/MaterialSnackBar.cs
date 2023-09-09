@@ -17,9 +17,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialLabel lblText { get; set; }
 
-        private CustomImageButton _leadingIconCustomImageButton;
+        private MaterialIconButton _leadingIconCustomImageButton;
 
-        private CustomImageButton _trailingIconCustomImageButton;
+        private MaterialIconButton _trailingIconCustomImageButton;
 
         private Plugin.MaterialDesignControls.Material3.MaterialButton actionButton { get; set; }
 
@@ -205,7 +205,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty IconSizeProperty =
-            BindableProperty.Create(nameof(IconSize), typeof(int), typeof(MaterialSnackBar), defaultValue: 24);
+            BindableProperty.Create(nameof(IconSize), typeof(int), typeof(MaterialSnackBar), defaultValue: 48);
 
         public int IconSize
         {
@@ -254,25 +254,25 @@ namespace Plugin.MaterialDesignControls.Material3
                 Padding = 0,
             };
 
-            _leadingIconCustomImageButton = new CustomImageButton
+            _leadingIconCustomImageButton = new MaterialIconButton()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Start,
                 Margin = new Thickness(12, 0, 0, 0),
-                Padding = 0,
                 HeightRequest = IconSize,
                 WidthRequest = IconSize,
+                ButtonType = MaterialIconButtonType.Standard,
                 IsVisible = false
             };
 
-            _trailingIconCustomImageButton = new CustomImageButton
+            _trailingIconCustomImageButton = new MaterialIconButton()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.End,
+                Margin = new Thickness(0, 0, 12, 0),
                 HeightRequest = IconSize,
                 WidthRequest = IconSize,
-                Margin = new Thickness(0, 0, 12, 0),
-                Padding = 0,
+                ButtonType = MaterialIconButtonType.Standard,
                 IsVisible = false
             };
 
@@ -288,7 +288,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 IsClippedToBounds = true,
                 Content = gridContainer,
                 HasShadow = true,
-                ShadowColor = ShadowColor,
+                ShadowColor = ShadowColor
             };
             Content = mainContainer;
         }
@@ -349,11 +349,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     _trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(IconSize):
-                    _leadingIconCustomImageButton.ImageHeightRequest = IconSize;
-                    _leadingIconCustomImageButton.ImageWidthRequest = IconSize;
-                    _trailingIconCustomImageButton.ImageHeightRequest = IconSize;
-                    _trailingIconCustomImageButton.ImageWidthRequest = IconSize;
-
                     _leadingIconCustomImageButton.HeightRequest = IconSize;
                     _leadingIconCustomImageButton.WidthRequest = IconSize;
                     _trailingIconCustomImageButton.HeightRequest = IconSize;
