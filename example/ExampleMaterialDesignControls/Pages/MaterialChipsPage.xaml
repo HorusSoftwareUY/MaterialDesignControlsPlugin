@@ -125,30 +125,23 @@
                                                  IsSelected="false"
                                                  Text="Opt J"
                                                  ToUpper="True"
-                                                 TrailingIcon="cancel.png"
-                                                 TrailingIconCommand="{Binding IconTapCommand}" />
+                                                 TrailingIcon="cancel.png" />
                         <material3:MaterialChips Margin="10"
                                                  IsEnabled="true"
                                                  IsSelected="True"
                                                  Text="This is option K"
                                                  ToUpper="True"
-                                                 TrailingIcon="cancel.png"
-                                                 TrailingIconCommand="{Binding IconTapCommand}"
-                                                 TrailingIconCommandParameter="Option K Clicked" />
+                                                 TrailingIcon="cancel.png" />
                         <material3:MaterialChips Margin="10"
                                                  IsEnabled="true"
                                                  IsSelected="false"
                                                  Text="Option L"
                                                  ToUpper="True"
-                                                 TrailingIcon="cancel.png"
-                                                 TrailingIconCommand="{Binding IconTapCommand}"
-                                                 TrailingIconCommandParameter="Option L Clicked" />
+                                                 TrailingIcon="cancel.png" />
                         <material3:MaterialChips Margin="10"
                                                  IsEnabled="true"
                                                  IsSelected="false"
                                                  LeadingIcon="delete.png"
-                                                 LeadingIconCommand="{Binding IconTapCommand}"
-                                                 LeadingIconCommandParameter="Delete command!"
                                                  Text="Option M"
                                                  ToUpper="True" />
                     </FlexLayout>
@@ -165,8 +158,7 @@
                                                  IsEnabled="true"
                                                  IsSelected="false"
                                                  Text="Opt A"
-                                                 ToUpper="True"
-                                                 TrailingIconCommand="{Binding IconTapCommand}">
+                                                 ToUpper="True">
                             <material3:MaterialChips.CustomTrailingIcon>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_show_password_g.svg" />
                             </material3:MaterialChips.CustomTrailingIcon>
@@ -174,8 +166,6 @@
                         <material3:MaterialChips Margin="0,10,10,0"
                                                  IsEnabled="true"
                                                  IsSelected="false"
-                                                 LeadingIconCommand="{Binding IconTapCommand}"
-                                                 LeadingIconCommandParameter="Delete command!"
                                                  Text="Opt Z"
                                                  ToUpper="True">
                             <material3:MaterialChips.CustomLeadingIcon>

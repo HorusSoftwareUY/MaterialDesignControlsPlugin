@@ -1,5 +1,5 @@
 # MaterialSnackBar
-Badges show notifications, counts, or status information on navigation items and icons
+Snackbars show short updates about app processes at the bottom of the screen.
 <br/>
 [View Material Design documentation](https://m3.material.io/components/snackbar/overview)
 
@@ -12,9 +12,7 @@ Using the control:
 <material3:MaterialSnackBar
     Text="Lorem ipsum dolor sit amet"
     ActionText="Action"
-    ActionCommand="{Binding ActionCommand}">
-</material3:MaterialSnackBar>
-<material3:MaterialDivider Margin="0,10" />
+    ActionCommand="{Binding ActionCommand}" />
 ```
 
 ## Documentation
@@ -97,4 +95,3 @@ This property is to set the leading icon command.
 ### Property IconSize:
 This property is to set the sizes to the trailing and leading icons.
 <br/>
-

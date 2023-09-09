@@ -142,6 +142,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (bool)GetValue(IsEnabledProperty); }
             set { SetValue(IsEnabledProperty, value); }
         }
+
         private int minHeight = 48;
         private int minWidth = 48;
         private int shapeCircleMargin = 4;

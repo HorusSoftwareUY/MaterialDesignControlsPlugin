@@ -292,6 +292,7 @@ namespace Plugin.MaterialDesignControls.Material3
             };
             Content = mainContainer;
         }
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
@@ -389,7 +390,5 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
             }
         }
-
     }
 }
-
