@@ -1,16 +1,11 @@
-﻿using System;
-using Plugin.MaterialDesignControls.Material3;
-using Plugin.MaterialDesignControls.Styles;
-using System.Windows.Input;
+﻿using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Utils;
-using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-	public class MaterialCustomControl : ContentView
+    public class MaterialCustomControl : ContentView
     {
         #region Attributes
 
@@ -247,7 +242,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion SecondaryLabelText
 
-
         #region Constructor
 
         public MaterialCustomControl()
@@ -274,7 +268,15 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = SecondaryLabelFontFamily
             };
 
-            var gridTexts = new Grid();
+            var gridTexts = new Grid
+            {
+                ColumnSpacing = 0,
+                ColumnDefinitions = new ColumnDefinitionCollection()
+                {
+                    new ColumnDefinition(){Width = GridLength.Star },
+                    new ColumnDefinition(){Width = GridLength.Auto }
+                }
+            };
             gridTexts.Children.Add(lblLabel, 0, 0);
             gridTexts.Children.Add(lblLabelSecondary, 1, 0);
 
@@ -384,7 +386,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(SecondaryLabelText):
                     lblLabelSecondary.Text = SecondaryLabelText;
-                    lblLabelSecondary.IsVisible = true;
+                    lblLabelSecondary.IsVisible = !string.IsNullOrEmpty(SecondaryLabelText);
                     break;
                 case nameof(SecondaryLabelTextColor):
                     SetLabelSecondaryTextColor();

@@ -23,8 +23,18 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             if (Control != null)
             {
                 Control.Background = new ColorDrawable(AndroidGraphics.Color.Transparent);
-                Control.SetPadding(0, 0, 0, 0);
-                Control.Left = 0;
+
+                var customEntry = (Plugin.MaterialDesignControls.Material3.Implementations.CustomEntry)(e.NewElement == null ? e.OldElement : e.NewElement);
+                if (customEntry != null)
+                {
+                    if (customEntry.IsCode)
+                        Control.SetPadding(4, 0, 0, 0); // Workaround to fix an Android issue on the MaterialCodeEntry
+                    else
+                    {
+                        Control.SetPadding(0, 0, 0, 0);
+                        Control.Left = 0;
+                    }
+                }
 
                 if (Element.ReturnType == ReturnType.Default || Element.ReturnType == ReturnType.Next)
                     Control.ImeOptions = (ImeAction)ImeFlags.NoExtractUi;

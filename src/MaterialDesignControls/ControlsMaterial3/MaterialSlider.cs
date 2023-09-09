@@ -61,7 +61,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontSize = LabelMinimumSize,
             };
 
-            slider = new CustomSlider()
+            slider = new Plugin.MaterialDesignControls.Material3.Implementations.CustomSlider()
             {
                 VerticalOptions = LayoutOptions.Center,
                 Margin = new Thickness(0, 10, 0, 10),
@@ -120,7 +120,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private CustomImage bckgImage;
         private CustomImageButton imgMinimum;
         private MaterialLabel lblMinimum;
-        private CustomSlider slider;
+        private Plugin.MaterialDesignControls.Material3.Implementations.CustomSlider slider;
         private MaterialLabel lblMaximum;
         private CustomImageButton imgMaximum;
 
