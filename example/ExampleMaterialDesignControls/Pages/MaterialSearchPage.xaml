@@ -8,6 +8,7 @@
     xmlns:viewmodel="clr-namespace:ExampleMaterialDesignControls.ViewModels"
     xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
     ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialSearchPage"
     x:DataType="viewmodel:MaterialSearchViewModel"
     NavigationPage.HasNavigationBar="false">

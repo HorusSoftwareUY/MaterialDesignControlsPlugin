@@ -274,7 +274,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialChips), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialChips), defaultValue: DefaultStyles.PhoneFontSizes.LabelLarge);
 
         public double FontSize
         {
@@ -358,7 +358,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 BorderColor = this.BorderColor
             };
 
-            StackLayout stackLayout = new StackLayout()
+            var stackLayout = new StackLayout()
             {
                 Spacing = 0,
                 HorizontalOptions = LayoutOptions.Center,

@@ -20,7 +20,7 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static Color OnSurfaceVariantColor { get; set; } = Color.FromHex("#49454F");
 
-        public static Color ErrorColor { get; set; } = Color.FromHex("B3261E");
+        public static Color ErrorColor { get; set; } = Color.FromHex("#B3261E");
 
         public static Color DisableColor { get; set; } = Color.FromHex("#9791A1");
 
