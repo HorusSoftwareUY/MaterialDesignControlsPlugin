@@ -450,7 +450,6 @@ namespace Plugin.MaterialDesignControls.Material3
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (s, e) =>
             {
-                Console.WriteLine("tapped");
                 SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
                 if (_currentState == SwitchStateEnum.Right)
                     GoToLeft();

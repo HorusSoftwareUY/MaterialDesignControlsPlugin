@@ -2,7 +2,11 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls" xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:viewmodel="clr-namespace:ExampleMaterialDesignControls.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:viewmodel="clr-namespace:ExampleMaterialDesignControls.ViewModels"
+    xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
     ios:Page.UseSafeArea="True"
     BackgroundColor="White"
     x:Class="ExampleMaterialDesignControls.Pages.MaterialSearchPage"
@@ -21,6 +25,9 @@
             <ScrollView Grid.Row="1"
                         VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="20,0,20,20">
+
+                    <contentViews:InfoIndicatorView Message="MaterialSearch follows the latest guidelines of Material Design 3" />
+
                     <material3:MaterialSwitch
                         HeightRequest="50"
                         Margin="0,5"
