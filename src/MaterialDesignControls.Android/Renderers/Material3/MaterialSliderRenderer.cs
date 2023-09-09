@@ -11,6 +11,7 @@ using Plugin.MaterialDesignControls.Material3.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
+[assembly: ExportRenderer(typeof(CustomSlider), typeof(Plugin.MaterialDesignControls.Material3.Android.MaterialSliderRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.Android
 {
     public class MaterialSliderRenderer : SliderRenderer

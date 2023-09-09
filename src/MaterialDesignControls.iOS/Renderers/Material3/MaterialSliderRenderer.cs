@@ -3,7 +3,7 @@ using Plugin.MaterialDesignControls.Material3.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(CustomSlider), typeof(Plugin.MaterialDesignControls.iOS.MaterialSliderRenderer))]
+[assembly: ExportRenderer(typeof(CustomSlider), typeof(Plugin.MaterialDesignControls.Material3.iOS.MaterialSliderRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.iOS
 {
     public class MaterialSliderRenderer : SliderRenderer

@@ -18,7 +18,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static readonly BindableProperty ButtonTypeProperty =
-            BindableProperty.Create(nameof(ButtonType), typeof(MaterialIconButtonType), typeof(MaterialButton), defaultValue: MaterialIconButtonType.Standard);
+            BindableProperty.Create(nameof(ButtonType), typeof(MaterialIconButtonType), typeof(MaterialIconButton), defaultValue: MaterialIconButtonType.Standard);
 
         public MaterialIconButtonType ButtonType
         {
@@ -72,7 +72,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialIconButton), defaultValue: DefaultStyles.PrimaryColor);
 
         public new Color BackgroundColor
         {
@@ -81,7 +81,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialIconButton), defaultValue: DefaultStyles.DisableColor);
 
         public Color DisabledBackgroundColor
         {
@@ -135,7 +135,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty IsEnabledProperty =
-            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialButton), defaultValue: true);
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialIconButton), defaultValue: true);
 
         public new bool IsEnabled
         {
@@ -296,6 +296,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public void SetButtonStyle()
         {
+            if (circle == null)
+                return;
 
             switch (ButtonType)
             {

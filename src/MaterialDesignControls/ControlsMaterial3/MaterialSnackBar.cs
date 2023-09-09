@@ -9,19 +9,19 @@ namespace Plugin.MaterialDesignControls.Material3
 {
     public class MaterialSnackBar : ContentView
     {
-        public CustomFrame mainContainer { get; set; }
+        public CustomFrame _mainContainer;
 
-        public Grid gridContainer { get; set; }
+        public Grid _gridContainer;
 
-        public Grid superGridContainer { get; set; }
+        public Grid _superGridContainer;
 
-        public MaterialLabel lblText { get; set; }
+        private MaterialLabel _lblText;
 
-        private MaterialIconButton _leadingIconCustomImageButton;
+        private MaterialIconButton _leadingIconButton;
 
-        private MaterialIconButton _trailingIconCustomImageButton;
+        private MaterialIconButton _trailingIconButton;
 
-        private Plugin.MaterialDesignControls.Material3.MaterialButton actionButton { get; set; }
+        private Plugin.MaterialDesignControls.Material3.MaterialButton _actionButton;
 
         public static readonly new BindableProperty BackgroundColorProperty =
             BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: DefaultStyles.PrimaryColor);
@@ -215,7 +215,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialSnackBar()
         {
-            gridContainer = new Grid
+            _gridContainer = new Grid
             {
                 VerticalOptions = LayoutOptions.Fill,
                 HorizontalOptions = LayoutOptions.Fill,
@@ -233,7 +233,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 },
             };
 
-            lblText = new MaterialLabel()
+            _lblText = new MaterialLabel()
             {
                 VerticalOptions = LayoutOptions.Center,
                 Margin = new Thickness(16, 6),
@@ -242,7 +242,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontSize = FontSize,
             };
 
-            actionButton = new MaterialButton()
+            _actionButton = new MaterialButton()
             {
                 ButtonType = MaterialButtonType.Text,
                 HorizontalOptions = LayoutOptions.EndAndExpand,
@@ -254,7 +254,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 Padding = 0,
             };
 
-            _leadingIconCustomImageButton = new MaterialIconButton()
+            _leadingIconButton = new MaterialIconButton()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Start,
@@ -265,7 +265,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 IsVisible = false
             };
 
-            _trailingIconCustomImageButton = new MaterialIconButton()
+            _trailingIconButton = new MaterialIconButton()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.End,
@@ -276,21 +276,21 @@ namespace Plugin.MaterialDesignControls.Material3
                 IsVisible = false
             };
 
-            gridContainer.Children.Add(_leadingIconCustomImageButton, 0, 0);
-            gridContainer.Children.Add(lblText, 1, 0);
-            gridContainer.Children.Add(actionButton, 2, 0);
-            gridContainer.Children.Add(_trailingIconCustomImageButton, 3, 0);
+            _gridContainer.Children.Add(_leadingIconButton, 0, 0);
+            _gridContainer.Children.Add(_lblText, 1, 0);
+            _gridContainer.Children.Add(_actionButton, 2, 0);
+            _gridContainer.Children.Add(_trailingIconButton, 3, 0);
 
-            mainContainer = new CustomFrame()
+            _mainContainer = new CustomFrame()
             {
                 Padding = 0,
                 CornerRadius = CornerRadius,
                 IsClippedToBounds = true,
-                Content = gridContainer,
+                Content = _gridContainer,
                 HasShadow = true,
                 ShadowColor = ShadowColor
             };
-            Content = mainContainer;
+            Content = _mainContainer;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -303,85 +303,85 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (propertyName)
             {
                 case nameof(BackgroundColor):
-                    gridContainer.BackgroundColor = BackgroundColor;
+                    _gridContainer.BackgroundColor = BackgroundColor;
                     break;
                 case nameof(ShadowColor):
                     break;
                 case nameof(CornerRadius):
-                    mainContainer.CornerRadius = CornerRadius;
+                    _mainContainer.CornerRadius = CornerRadius;
                     break;
                 case nameof(Text):
-                    lblText.Text = Text;
+                    _lblText.Text = Text;
                     break;
                 case nameof(TextColor):
-                    lblText.TextColor = TextColor;
+                    _lblText.TextColor = TextColor;
                     break;
                 case nameof(FontSize):
-                    lblText.FontSize = FontSize;
+                    _lblText.FontSize = FontSize;
                     break;
                 case nameof(FontFamily):
-                    lblText.FontFamily = FontFamily;
+                    _lblText.FontFamily = FontFamily;
                     break;
                 case nameof(ActionText):
-                    actionButton.Text = ActionText;
+                    _actionButton.Text = ActionText;
                     break;
                 case nameof(ActionTextColor):
-                    actionButton.TextColor = ActionTextColor;
+                    _actionButton.TextColor = ActionTextColor;
                     break;
                 case nameof(ActionFontSize):
-                    actionButton.FontSize = ActionFontSize;
+                    _actionButton.FontSize = ActionFontSize;
                     break;
                 case nameof(ActionFontFamily):
-                    actionButton.FontFamily = ActionFontFamily;
+                    _actionButton.FontFamily = ActionFontFamily;
                     break;
                 case nameof(ActionCommand):
-                    actionButton.Command = ActionCommand;
+                    _actionButton.Command = ActionCommand;
                     break;
                 case nameof(ActionCommandParameter):
-                    actionButton.CommandParameter = ActionCommandParameter;
+                    _actionButton.CommandParameter = ActionCommandParameter;
                     break;
                 case nameof(LeadingIconCommand):
-                    _leadingIconCustomImageButton.Command = LeadingIconCommand;
-                    _leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
+                    _leadingIconButton.Command = LeadingIconCommand;
+                    _leadingIconButton.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(TrailingIconCommand):
-                    _trailingIconCustomImageButton.Command = TrailingIconCommand;
-                    _trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
+                    _trailingIconButton.Command = TrailingIconCommand;
+                    _trailingIconButton.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(IconSize):
-                    _leadingIconCustomImageButton.HeightRequest = IconSize;
-                    _leadingIconCustomImageButton.WidthRequest = IconSize;
-                    _trailingIconCustomImageButton.HeightRequest = IconSize;
-                    _trailingIconCustomImageButton.WidthRequest = IconSize;
+                    _leadingIconButton.HeightRequest = IconSize;
+                    _leadingIconButton.WidthRequest = IconSize;
+                    _trailingIconButton.HeightRequest = IconSize;
+                    _trailingIconButton.WidthRequest = IconSize;
                     break;
                 case nameof(LeadingIcon):
                     if (!string.IsNullOrEmpty(LeadingIcon))
                     {
-                        this._leadingIconCustomImageButton.SetImage(LeadingIcon);
-                        lblText.Margin = new Thickness(8, 6);
+                        this._leadingIconButton.SetImage(LeadingIcon);
+                        _lblText.Margin = new Thickness(8, 6);
                     }
 
-                    this._leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
+                    this._leadingIconButton.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(CustomLeadingIcon):
                     if (CustomLeadingIcon != null)
                     {
-                        this._leadingIconCustomImageButton.SetCustomImage(CustomLeadingIcon);
-                        lblText.Margin = new Thickness(8, 6);
+                        this._leadingIconButton.SetCustomImage(CustomLeadingIcon);
+                        _lblText.Margin = new Thickness(8, 6);
                     }
-                    this._leadingIconCustomImageButton.IsVisible = LeadingIconIsVisible;
+                    this._leadingIconButton.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(TrailingIcon):
                     if (!string.IsNullOrEmpty(TrailingIcon))
-                        this._trailingIconCustomImageButton.SetImage(TrailingIcon);
+                        this._trailingIconButton.SetImage(TrailingIcon);
 
-                    this._trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
+                    this._trailingIconButton.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(CustomTrailingIcon):
                     if (CustomTrailingIcon != null)
-                        this._trailingIconCustomImageButton.SetCustomImage(CustomTrailingIcon);
+                        this._trailingIconButton.SetCustomImage(CustomTrailingIcon);
 
-                    this._trailingIconCustomImageButton.IsVisible = TrailingIconIsVisible;
+                    this._trailingIconButton.IsVisible = TrailingIconIsVisible;
                     break;
             }
         }

@@ -45,10 +45,14 @@ namespace Plugin.MaterialDesignControls.Material3
 
             sliderContainer.SetValue(Grid.RowProperty, 0);
 
-            imgMinimum = new CustomImageButton()
+            imgMinimum = new CustomImage()
             {
                 IsVisible = false,
-                HorizontalOptions = LayoutOptions.Start
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 24,
+                HeightRequest = 24,
+                Padding = 6
             };
 
             lblMinimum = new MaterialLabel()
@@ -88,12 +92,15 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontSize = LabelMaximumSize,
             };
 
-            imgMaximum = new CustomImageButton()
+            imgMaximum = new CustomImage()
             {
                 IsVisible = false,
-                HorizontalOptions = LayoutOptions.End
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 24,
+                HeightRequest = 24,
+                Padding = 6
             };
-
 
             sliderContainer.Children.Add(imgMinimum);
             sliderContainer.Children.Add(lblMinimum);
@@ -118,11 +125,11 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Attributes
 
         private CustomImage bckgImage;
-        private CustomImageButton imgMinimum;
+        private CustomImage imgMinimum;
         private MaterialLabel lblMinimum;
         private Plugin.MaterialDesignControls.Material3.Implementations.CustomSlider slider;
         private MaterialLabel lblMaximum;
-        private CustomImageButton imgMaximum;
+        private CustomImage imgMaximum;
 
         public double OldValue;
 
