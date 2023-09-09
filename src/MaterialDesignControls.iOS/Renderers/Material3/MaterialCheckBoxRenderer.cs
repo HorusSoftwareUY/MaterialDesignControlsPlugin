@@ -1,19 +1,21 @@
 ﻿using System;
 using CoreGraphics;
 using System.ComponentModel;
-using Plugin.MaterialDesignControls.iOS.Renderers.Material3;
+using Plugin.MaterialDesignControls.Material3.iOS;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(CustomCheckBox), typeof(MaterialCheckBoxRenderer))]
-namespace Plugin.MaterialDesignControls.iOS.Renderers.Material3
+namespace Plugin.MaterialDesignControls.Material3.iOS
 {
 	public class MaterialCheckBoxRenderer : ViewRenderer<CustomCheckBox, UIView>
     {
         private const float SideLength = 18f;
         private bool firstTime = true;
+
+        public static void Init() { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<CustomCheckBox> e)
         {
@@ -28,6 +30,7 @@ namespace Plugin.MaterialDesignControls.iOS.Renderers.Material3
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
+
             if (e.PropertyName == CustomCheckBox.IsCheckedProperty.PropertyName || firstTime)
             {
                 SetNeedsDisplay();

@@ -14,11 +14,11 @@ namespace Plugin.MaterialDesignControls.Material3
     {
         #region Attributes
 
-        private bool initialized = false;
+        private bool _initialized = false;
 
-        private StackLayout container;
-        private MaterialLabel lblLabel;
-        private MaterialLabel lblSupporting;
+        private StackLayout _container;
+        private MaterialLabel _lblLabel;
+        private MaterialLabel _lblSupporting;
 
         #endregion Attributes
 
@@ -26,9 +26,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialRadioButtons()
         {
-            if (!this.initialized)
+            if (!_initialized)
             {
-                this.initialized = true;
+                _initialized = true;
                 Initialize();
             }
         }
@@ -119,54 +119,54 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-            StackLayout mainContainer = new StackLayout();
+            var mainContainer = new StackLayout();
 
-            lblLabel = new MaterialLabel()
+            _lblLabel = new MaterialLabel()
             {
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
                 Margin = new Thickness(14, 0, 14, 2),
                 HorizontalTextAlignment = TextAlignment.Start,
-                Text = this.Text
+                Text = Text
             };
 
-            container = new StackLayout();
+            _container = new StackLayout();
 
-            lblSupporting = new MaterialLabel()
+            _lblSupporting = new MaterialLabel()
             {
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
                 Margin = new Thickness(14, 2, 14, 0),
                 HorizontalTextAlignment = TextAlignment.Start,
-                Text = this.SupportingText
+                Text = SupportingText
             };
 
-            mainContainer.Children.Add(lblLabel);
-            mainContainer.Children.Add(container);
-            mainContainer.Children.Add(lblSupporting);
+            mainContainer.Children.Add(_lblLabel);
+            mainContainer.Children.Add(_container);
+            mainContainer.Children.Add(_lblSupporting);
 
-            lblLabel.TextColor = TextColor;
-            lblLabel.FontFamily = FontFamily;
-            lblLabel.FontSize = LabelSize;
-            lblLabel.Margin = LabelMargin;
+            _lblLabel.TextColor = TextColor;
+            _lblLabel.FontFamily = FontFamily;
+            _lblLabel.FontSize = LabelSize;
+            _lblLabel.Margin = LabelMargin;
 
-            lblSupporting.TextColor = SupportingTextColor;
-            lblSupporting.FontFamily = SupportingFontFamily;
-            lblSupporting.FontSize = SupportingSize;
-            lblSupporting.Margin = SupportingMargin;
+            _lblSupporting.TextColor = SupportingTextColor;
+            _lblSupporting.FontFamily = SupportingFontFamily;
+            _lblSupporting.FontSize = SupportingSize;
+            _lblSupporting.Margin = SupportingMargin;
 
-            this.Content = mainContainer;
+            Content = mainContainer;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!this.initialized)
+            if (!_initialized)
             {
-                this.initialized = true;
+                _initialized = true;
                 Initialize();
             }
 
-            UpdateLayout(propertyName, container, lblSupporting);
+            UpdateLayout(propertyName, _container, _lblSupporting);
 
             switch (propertyName)
             {
@@ -174,25 +174,25 @@ namespace Plugin.MaterialDesignControls.Material3
                     base.OnPropertyChanged(propertyName);
                     break;
                 case nameof(LabelText):
-                    lblLabel.Text = LabelText;
+                    _lblLabel.Text = LabelText;
                     if (!string.IsNullOrEmpty(LabelText))
-                        lblLabel.IsVisible = true;
+                        _lblLabel.IsVisible = true;
                     break;
                 case nameof(LabelFontFamily):
-                    lblLabel.FontFamily = LabelFontFamily;
+                    _lblLabel.FontFamily = LabelFontFamily;
                     break;
                 case nameof(LabelMargin):
-                    lblLabel.Margin = LabelMargin;
+                    _lblLabel.Margin = LabelMargin;
                     break;
                 case nameof(LabelSize):
-                    lblLabel.FontSize = LabelSize;
+                    _lblLabel.FontSize = LabelSize;
                     break;
                 case nameof(LabelTextColor):
                 case nameof(DisabledLabelTextColor):
-                    lblLabel.TextColor = IsEnabled ? LabelTextColor : DisabledLabelTextColor;
+                    _lblLabel.TextColor = IsEnabled ? LabelTextColor : DisabledLabelTextColor;
                     break;
                 case nameof(IsEnabled):
-                    lblLabel.TextColor = IsEnabled ? LabelTextColor : DisabledLabelTextColor;
+                    _lblLabel.TextColor = IsEnabled ? LabelTextColor : DisabledLabelTextColor;
                     break;
             }
         }
@@ -200,7 +200,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialRadioButtons)bindable;
-            control.container.Children.Clear();
+            control._container.Children.Clear();
             if (!Equals(newValue, null) && newValue is IEnumerable)
             {
                 foreach (var item in (IEnumerable)newValue)
@@ -236,7 +236,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     if (control.SelectedItem != null)
                         materialCheckbox.IsChecked = materialCheckbox.Text.Equals(control.SelectedItem);
 
-                    control.container.Children.Add(materialCheckbox);
+                    control._container.Children.Add(materialCheckbox);
                 }
             }
         }
@@ -248,7 +248,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
             if (materialRadioButtons is MaterialRadioButtons)
             {
-                foreach (var item in materialRadioButtons.container.Children)
+                foreach (var item in materialRadioButtons._container.Children)
                     ((MaterialCheckbox)item).IsChecked = false;
 
                 materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
@@ -259,9 +259,9 @@ namespace Plugin.MaterialDesignControls.Material3
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialRadioButtons)bindable;
-            if (control.container.Children != null && control.SelectedItem != null)
+            if (control._container.Children != null && control.SelectedItem != null)
             {
-                foreach (var item in control.container.Children)
+                foreach (var item in control._container.Children)
                     if (item != null && item is MaterialCheckbox)
                         ((MaterialCheckbox)item).IsChecked = ((MaterialCheckbox)item).Text.Equals(control.SelectedItem);
             }

@@ -87,7 +87,6 @@
     <Compile Include="Renderers\DeprecatedControls\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers.cs" />
-    <Compile Include="Renderers\MaterialSliderRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialEditorRenderer.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
@@ -98,6 +97,8 @@
     <Compile Include="Effects\Effects.cs" />
     <Compile Include="Renderers\Material3\MaterialActivityIndicatorRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialCheckBoxRenderer.cs" />
+    <Compile Include="Renderers\DeprecatedControls\MaterialSliderRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialSliderRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

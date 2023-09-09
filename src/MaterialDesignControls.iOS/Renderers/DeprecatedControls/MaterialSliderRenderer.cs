@@ -1,10 +1,12 @@
-﻿using Plugin.MaterialDesignControls.Implementations;
+﻿using System;
+using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(CustomSlider), typeof(Plugin.MaterialDesignControls.iOS.MaterialSliderRenderer))]
 namespace Plugin.MaterialDesignControls.iOS
 {
+    [Obsolete("MaterialSliderRenderer is deprecated, please use MaterialSliderRenderer of Material 3 instead.")]
     public class MaterialSliderRenderer : SliderRenderer
     {
         public static void Init() { }

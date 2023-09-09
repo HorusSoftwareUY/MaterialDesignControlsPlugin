@@ -12,22 +12,22 @@ namespace Plugin.MaterialDesignControls.Material3
     {
         private bool Initialized = false;
 
-        private StackLayout container;
-        private MaterialLabel lblLeftText;
-        private Grid chkContainer;
-        private CustomCheckBox chk;
-        private Grid radioButtonContainer;
-        private CustomRadioButton radioButton;
-        private Grid imageContainer;
-        private CustomImageButton customIcon;
-        private MaterialLabel lblRightText;
-        private MaterialLabel lblSupporting;
+        private StackLayout _container;
+        private MaterialLabel _lblLeftText;
+        private Grid _chkContainer;
+        private CustomCheckBox _chk;
+        private Grid _radioButtonContainer;
+        private CustomRadioButton _radioButton;
+        private Grid _imageContainer;
+        private CustomImageButton _customIcon;
+        private MaterialLabel _lblRightText;
+        private MaterialLabel _lblSupporting;
 
         public MaterialCheckbox()
         {
-            if (!this.Initialized)
+            if (!Initialized)
             {
-                this.Initialized = true;
+                Initialized = true;
                 Initialize();
             }
         }
@@ -63,24 +63,17 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion Properties
 
-
         #region Methods
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!this.Initialized)
+            if (!Initialized)
             {
-                this.Initialized = true;
+                Initialized = true;
                 Initialize();
             }
 
-            if (!this.Initialized)
-            {
-                this.Initialized = true;
-                Initialize();
-            }
-
-            UpdateLayout(propertyName, container, lblSupporting);
+            UpdateLayout(propertyName, _container, _lblSupporting);
 
             switch (propertyName)
             {
@@ -90,132 +83,112 @@ namespace Plugin.MaterialDesignControls.Material3
                     base.OnPropertyChanged(propertyName);
                     break;
                 case nameof(Text):
-                    lblRightText.Text = Text;
+                    _lblRightText.Text = Text;
                     break;
                 case nameof(TextColor):
-                    lblLeftText.TextColor = TextColor;
-                    lblRightText.TextColor = TextColor;
+                    _lblLeftText.TextColor = TextColor;
+                    _lblRightText.TextColor = TextColor;
                     break;
                 case nameof(DisabledTextColor):
                     if (!IsEnabled)
                     {
-                        lblLeftText.TextColor = DisabledTextColor;
-                        lblRightText.TextColor = DisabledTextColor;
+                        _lblLeftText.TextColor = DisabledTextColor;
+                        _lblRightText.TextColor = DisabledTextColor;
                     }
                     break;
                 case nameof(FontSize):
-                    lblLeftText.FontSize = FontSize;
-                    lblRightText.FontSize = FontSize;
+                    _lblLeftText.FontSize = FontSize;
+                    _lblRightText.FontSize = FontSize;
                     break;
                 case nameof(FontFamily):
-                    lblLeftText.FontFamily = FontFamily;
-                    lblRightText.FontFamily = FontFamily;
+                    _lblLeftText.FontFamily = FontFamily;
+                    _lblRightText.FontFamily = FontFamily;
                     break;
                 case nameof(TextSide):
                     if (TextSide == TextSide.Left)
                     {
-                        lblLeftText.Text = Text;
-                        lblLeftText.IsVisible = true;
-                        lblRightText.IsVisible = false;
+                        _lblLeftText.Text = Text;
+                        _lblLeftText.IsVisible = true;
+                        _lblRightText.IsVisible = false;
                     }
                     break;
                 case nameof(TextHorizontalOptions):
                     if (TextSide == TextSide.Left)
-                        lblLeftText.HorizontalOptions = TextHorizontalOptions;
+                        _lblLeftText.HorizontalOptions = TextHorizontalOptions;
                     else
-                        lblRightText.HorizontalOptions = TextHorizontalOptions;
+                        _lblRightText.HorizontalOptions = TextHorizontalOptions;
                     break;
                 case nameof(IconHeightRequest):
-                    customIcon.HeightRequest = IconHeightRequest;
+                    _customIcon.HeightRequest = IconHeightRequest;
                     break;
                 case nameof(IconWidthRequest):
-                    customIcon.HeightRequest = IconWidthRequest;
+                    _customIcon.HeightRequest = IconWidthRequest;
                     break;
                 case nameof(Color):
                 case nameof(DisabledColor):
-                    chk.Color = IsEnabled ? Color : DisabledColor;
-                    radioButton.Color = IsEnabled ? Color : DisabledColor;
+                    _chk.Color = IsEnabled ? Color : DisabledColor;
+                    _radioButton.Color = IsEnabled ? Color : DisabledColor;
                     break;
                 case nameof(SelectionHorizontalOptions):
-                    chkContainer.HorizontalOptions = SelectionHorizontalOptions;
-                    imageContainer.HorizontalOptions = SelectionHorizontalOptions;
-                    radioButtonContainer.HorizontalOptions = SelectionHorizontalOptions;
+                    _chkContainer.HorizontalOptions = SelectionHorizontalOptions;
+                    _imageContainer.HorizontalOptions = SelectionHorizontalOptions;
+                    _radioButtonContainer.HorizontalOptions = SelectionHorizontalOptions;
                     break;
                 case nameof(IsEnabled):
                     SetIsEnabled();
                     break;
                 case nameof(IsRadioButtonStyle):
-                    chkContainer.IsVisible = false;
-                    radioButtonContainer.IsVisible = true;
+                    _chkContainer.IsVisible = false;
+                    _radioButtonContainer.IsVisible = true;
                     break;
             }
         }
 
         private void Initialize()
         {
-            StackLayout mainContainer = new StackLayout()
+            var mainContainer = new StackLayout()
             {
                 Spacing = 0,
                 VerticalOptions = LayoutOptions.Center
             };
 
-            container = new StackLayout()
+            _container = new StackLayout()
             {
-                Orientation = StackOrientation.Horizontal
+                Orientation = StackOrientation.Horizontal,
+                Spacing = Spacing
             };
 
-            lblLeftText = new MaterialLabel()
+            _lblLeftText = new MaterialLabel()
             {
                 VerticalTextAlignment = TextAlignment.Center,
-                IsVisible = false
+                IsVisible = TextSide == TextSide.Left ? true : false,
+                TextColor = TextColor,
+                FontFamily = FontFamily,
+                FontSize = FontSize
             };
 
-            chkContainer = new Grid()
+            _chkContainer = new Grid()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 40,
-                HeightRequest = 40,
-                IsClippedToBounds = false,
-                BackgroundColor = Color.Red
+                HeightRequest = 40
             };
 
-            chk = new CustomCheckBox()
+            _chk = new CustomCheckBox()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 25,
                 HeightRequest = 25,
+                IsEnabled = IsEnabled,
+                Color = Color
             };
 
-            BoxView chkBoxView = new BoxView()
-            {
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
-                WidthRequest = 25,
-                HeightRequest = 25,
-                BackgroundColor = Color.Green
-            };
+            // Workaround to fix an alingment issue on iOS devices
+            _chk.Margin = Device.RuntimePlatform == Device.iOS ? new Thickness(0, 4, 0, 0) : new Thickness(0);
 
-            chkContainer.Children.Add(chkBoxView);
-            chkContainer.Children.Add(chk);
-
-            radioButtonContainer = new Grid()
-            {
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
-                WidthRequest = 40,
-                HeightRequest = 40,
-                IsVisible = false
-            };
-
-            radioButton = new CustomRadioButton()
-            {
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center
-            };
-
-            BoxView radioButtonBoxView = new BoxView()
+            var chkBoxView = new BoxView()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
@@ -223,10 +196,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 HeightRequest = 25
             };
 
-            radioButtonContainer.Children.Add(radioButton);
-            radioButtonContainer.Children.Add(radioButtonBoxView);
+            _chkContainer.Children.Add(_chk);
+            _chkContainer.Children.Add(chkBoxView);
 
-            imageContainer = new Grid()
+            _radioButtonContainer = new Grid()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
@@ -235,13 +208,44 @@ namespace Plugin.MaterialDesignControls.Material3
                 IsVisible = false
             };
 
-            customIcon = new CustomImageButton()
+            _radioButton = new CustomRadioButton()
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Start
+                HorizontalOptions = LayoutOptions.Center,
+                IsEnabled = IsEnabled,
+                Color = Color
             };
 
-            BoxView iconBoxView = new BoxView()
+            var radioButtonBoxView = new BoxView()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 25,
+                HeightRequest = 25
+            };
+
+            _radioButtonContainer.Children.Add(_radioButton);
+            _radioButtonContainer.Children.Add(radioButtonBoxView);
+
+            _imageContainer = new Grid()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 40,
+                HeightRequest = 40,
+                IsVisible = false
+            };
+
+            _customIcon = new CustomImageButton()
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Start,
+                ImageHeightRequest = IconHeightRequest,
+                ImageWidthRequest = IconWidthRequest,
+                Padding = 0
+            };
+
+            var iconBoxView = new BoxView()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
@@ -250,61 +254,41 @@ namespace Plugin.MaterialDesignControls.Material3
                 BackgroundColor = Color.Transparent
             };
 
-            imageContainer.Children.Add(chk);
-            imageContainer.Children.Add(iconBoxView);
+            _imageContainer.Children.Add(_customIcon);
+            _imageContainer.Children.Add(iconBoxView);
 
-            lblRightText = new MaterialLabel()
+            _lblRightText = new MaterialLabel()
             {
                 VerticalTextAlignment = TextAlignment.Center,
+                TextColor = TextColor,
+                FontFamily = FontFamily,
+                FontSize = FontSize,
+                IsVisible = TextSide == TextSide.Left ? false : true
             };
 
-            container.Children.Add(lblLeftText);
-            container.Children.Add(chkContainer);
-            container.Children.Add(radioButtonContainer);
-            container.Children.Add(imageContainer);
-            container.Children.Add(lblRightText);
+            _container.Children.Add(_lblLeftText);
+            _container.Children.Add(_chkContainer);
+            _container.Children.Add(_radioButtonContainer);
+            _container.Children.Add(_imageContainer);
+            _container.Children.Add(_lblRightText);
 
-            lblSupporting = new MaterialLabel()
+            _lblSupporting = new MaterialLabel()
             {
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
-                Margin = new Thickness(14, 2, 14, 0),
-                HorizontalTextAlignment = TextAlignment.Start
+                Margin = SupportingMargin,
+                HorizontalTextAlignment = TextAlignment.Start,
+                TextColor = SupportingTextColor,
+                FontFamily = SupportingFontFamily,
+                FontSize = SupportingSize
             };
 
-            mainContainer.Children.Add(container);
-            mainContainer.Children.Add(lblSupporting);
-
-            container.Spacing = Spacing;
-
-            chk.IsEnabled = IsEnabled;
-            chk.Color = Color;
-
-            radioButton.IsEnabled = IsEnabled;
-            radioButton.Color = Color;
-
-            customIcon.ImageHeightRequest = IconHeightRequest;
-            customIcon.ImageWidthRequest = IconWidthRequest;
-            customIcon.Padding = 0;
-
-            lblLeftText.TextColor = TextColor;
-            lblLeftText.FontFamily = FontFamily;
-            lblLeftText.FontSize = FontSize;
-            lblLeftText.IsVisible = TextSide == TextSide.Left ? true : false;
-
-            lblRightText.TextColor = TextColor;
-            lblRightText.FontFamily = FontFamily;
-            lblRightText.FontSize = FontSize;
-            lblRightText.IsVisible = TextSide == TextSide.Left ? false : true;
-
-            lblSupporting.TextColor = SupportingTextColor;
-            lblSupporting.FontFamily = SupportingFontFamily;
-            lblSupporting.FontSize = SupportingSize;
-            lblSupporting.Margin = SupportingMargin;
+            mainContainer.Children.Add(_container);
+            mainContainer.Children.Add(_lblSupporting);
 
             Effects.Add(new TouchAndPressEffect());
 
-            this.Content = mainContainer;
+            Content = mainContainer;
         }
 
         private void SetCustomIcon()
@@ -314,24 +298,24 @@ namespace Plugin.MaterialDesignControls.Material3
                 if (IsChecked)
                 {
                     if (CustomDisabledSelectedIcon != null)
-                        customIcon.SetCustomImage(CustomDisabledSelectedIcon.CreateContent() as View);
+                        _customIcon.SetCustomImage(CustomDisabledSelectedIcon.CreateContent() as View);
                     else if (CustomSelectedIcon != null)
-                        customIcon.SetCustomImage(CustomSelectedIcon.CreateContent() as View);
+                        _customIcon.SetCustomImage(CustomSelectedIcon.CreateContent() as View);
                     else if (DisabledUnselectedIcon != null)
-                        customIcon.SetImage(DisabledSelectedIcon);
+                        _customIcon.SetImage(DisabledSelectedIcon);
                     else
-                        customIcon.SetImage(SelectedIcon);
+                        _customIcon.SetImage(SelectedIcon);
                 }
                 else
                 {
                     if (CustomDisabledUnselectedIcon != null)
-                        customIcon.SetCustomImage(CustomDisabledUnselectedIcon.CreateContent() as View);
+                        _customIcon.SetCustomImage(CustomDisabledUnselectedIcon.CreateContent() as View);
                     else if (CustomUnselectedIcon != null)
-                        customIcon.SetCustomImage(CustomUnselectedIcon.CreateContent() as View);
+                        _customIcon.SetCustomImage(CustomUnselectedIcon.CreateContent() as View);
                     else if (DisabledUnselectedIcon != null)
-                        customIcon.SetImage(DisabledUnselectedIcon);
+                        _customIcon.SetImage(DisabledUnselectedIcon);
                     else
-                        customIcon.SetImage(UnselectedIcon);
+                        _customIcon.SetImage(UnselectedIcon);
                 }
             }
             else
@@ -339,25 +323,25 @@ namespace Plugin.MaterialDesignControls.Material3
                 if (IsChecked)
                 {
                     if (CustomSelectedIcon != null)
-                        customIcon.SetCustomImage(CustomSelectedIcon.CreateContent() as View);
+                        _customIcon.SetCustomImage(CustomSelectedIcon.CreateContent() as View);
                     else
-                        customIcon.SetImage(SelectedIcon);
+                        _customIcon.SetImage(SelectedIcon);
                 }
                 else
                 {
                     if (CustomUnselectedIcon != null)
-                        customIcon.SetCustomImage(CustomUnselectedIcon.CreateContent() as View);
+                        _customIcon.SetCustomImage(CustomUnselectedIcon.CreateContent() as View);
                     else
-                        customIcon.SetImage(UnselectedIcon);
+                        _customIcon.SetImage(UnselectedIcon);
                 }
             }
         }
 
         protected override void SetIcon()
         {
-            imageContainer.IsVisible = true;
-            chkContainer.IsVisible = false;
-            radioButtonContainer.IsVisible = false;
+            _imageContainer.IsVisible = true;
+            _chkContainer.IsVisible = false;
+            _radioButtonContainer.IsVisible = false;
             SetCustomIcon();
         }
 
@@ -366,8 +350,8 @@ namespace Plugin.MaterialDesignControls.Material3
             if (CustomSelectedIcon != null || SelectedIcon != null)
                 SetIcon();
 
-            chk.IsChecked = IsChecked;
-            radioButton.IsChecked = IsChecked;
+            _chk.IsChecked = IsChecked;
+            _radioButton.IsChecked = IsChecked;
         }
 
         protected override void SetIsEnabled()
@@ -375,12 +359,12 @@ namespace Plugin.MaterialDesignControls.Material3
             if (CustomSelectedIcon != null || SelectedIcon != null)
                 SetIcon();
 
-            chk.IsEnabled = IsEnabled;
-            chk.Color = IsEnabled ? Color : DisabledColor;
-            radioButton.IsEnabled = IsEnabled;
-            radioButton.Color = IsEnabled ? Color : DisabledColor;
-            lblLeftText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
-            lblRightText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+            _chk.IsEnabled = IsEnabled;
+            _chk.Color = IsEnabled ? Color : DisabledColor;
+            _radioButton.IsEnabled = IsEnabled;
+            _radioButton.Color = IsEnabled ? Color : DisabledColor;
+            _lblLeftText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+            _lblRightText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
         }
 
         public void ConsumeEvent(EventType gestureType)
