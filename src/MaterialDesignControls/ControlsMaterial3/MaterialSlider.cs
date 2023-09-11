@@ -1,4 +1,4 @@
-﻿using Plugin.MaterialDesignControls.Implementations;
+﻿using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using System;
 using System.Runtime.CompilerServices;
@@ -65,7 +65,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontSize = LabelMinimumSize,
             };
 
-            slider = new Plugin.MaterialDesignControls.Material3.Implementations.CustomSlider()
+            slider = new CustomSlider()
             {
                 VerticalOptions = LayoutOptions.Center,
                 Margin = new Thickness(0, 10, 0, 10),
@@ -127,7 +127,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private CustomImage bckgImage;
         private CustomImage imgMinimum;
         private MaterialLabel lblMinimum;
-        private Plugin.MaterialDesignControls.Material3.Implementations.CustomSlider slider;
+        private CustomSlider slider;
         private MaterialLabel lblMaximum;
         private CustomImage imgMaximum;
 

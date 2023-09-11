@@ -23,9 +23,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private Plugin.MaterialDesignControls.MaterialLabel _descriptionLabel;
 
-        private CustomImageButton _leadingIconCustomImageButton;
+        private MaterialIconButton _leadingIconCustomImageButton;
 
-        private CustomImageButton _trailingIconCustomImageButton;
+        private MaterialIconButton _trailingIconCustomImageButton;
 
         private ContentView _cntTrailingActivityIndicator;
 
@@ -200,7 +200,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty IconSizeProperty =
-            BindableProperty.Create(nameof(IconSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: 24.0);
+            BindableProperty.Create(nameof(IconSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: 48.0);
 
         public double IconSize
         {
@@ -355,12 +355,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = DescriptionFontFamily
             };
 
-            _leadingIconCustomImageButton = new CustomImageButton
+            _leadingIconCustomImageButton = new MaterialIconButton
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
-                WidthRequest = 48,
-                HeightRequest = 48,
+                WidthRequest = IconSize,
+                HeightRequest = IconSize,
                 AnimationParameter = ButtonAnimationParameter,
                 Animation = ButtonAnimation,
                 IsVisible = false
@@ -371,13 +371,13 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                WidthRequest = IconSize,
-                HeightRequest = IconSize,
+                WidthRequest = 24,
+                HeightRequest = 24,
                 IsVisible = false
             };
             Children.Add(_cntLeadingActivityIndicator, 0, 0);
 
-            _trailingIconCustomImageButton = new CustomImageButton
+            _trailingIconCustomImageButton = new MaterialIconButton
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
@@ -393,8 +393,8 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                WidthRequest = 48,
-                HeightRequest = 48,
+                WidthRequest = 24,
+                HeightRequest = 24,
                 IsVisible = false
             };
             Children.Add(_cntTrailingActivityIndicator, 2, 0);
