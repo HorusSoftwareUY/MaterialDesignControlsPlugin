@@ -19,7 +19,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private Grid _radioButtonContainer;
         private CustomRadioButton _radioButton;
         private Grid _imageContainer;
-        private CustomImageButton _customIcon;
+        private CustomImage _customIcon;
         private MaterialLabel _lblRightText;
         private MaterialLabel _lblSupporting;
 
@@ -122,7 +122,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     _customIcon.HeightRequest = IconHeightRequest;
                     break;
                 case nameof(IconWidthRequest):
-                    _customIcon.HeightRequest = IconWidthRequest;
+                    _customIcon.WidthRequest = IconWidthRequest;
                     break;
                 case nameof(Color):
                 case nameof(DisabledColor):
@@ -236,12 +236,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 IsVisible = false
             };
 
-            _customIcon = new CustomImageButton()
+            _customIcon = new CustomImage()
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Start,
-                ImageHeightRequest = IconHeightRequest,
-                ImageWidthRequest = IconWidthRequest,
+                HeightRequest = IconHeightRequest,
+                WidthRequest = IconWidthRequest,
                 Padding = 0
             };
 
