@@ -4,7 +4,7 @@ using System;
 using Xamarin.Forms;
 using Plugin.MaterialDesignControls.Styles;
 using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -14,10 +14,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialChips()
         {
-            if (!this.initialized)
+            if (!initialized)
             {
-                this.initialized = true;
-                this.Initialize();
+                initialized = true;
+                Initialize();
             }
         }
 
@@ -29,11 +29,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private Frame _frmContainer;
 
-        private CustomImageButton _imgLeadingIcon;
+        private CustomImage _imgLeadingIcon;
 
         private Label _lblText;
 
-        private CustomImageButton _imgTrailingIcon;
+        private CustomImage _imgTrailingIcon;
 
         #endregion Attributes
 
@@ -154,42 +154,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (bool)GetValue(TrailingIconIsVisibleProperty); }
             set { SetValue(TrailingIconIsVisibleProperty, value); }
-        }
-
-        public static readonly BindableProperty LeadingIconCommandProperty =
-            BindableProperty.Create(nameof(LeadingIconCommand), typeof(ICommand), typeof(MaterialChips));
-
-        public ICommand LeadingIconCommand
-        {
-            get { return (ICommand)GetValue(LeadingIconCommandProperty); }
-            set { SetValue(LeadingIconCommandProperty, value); }
-        }
-
-        public static readonly BindableProperty LeadingIconCommandParameterProperty =
-            BindableProperty.Create(nameof(LeadingIconCommandParameter), typeof(object), typeof(MaterialChips), defaultValue: null);
-
-        public object LeadingIconCommandParameter
-        {
-            get { return GetValue(LeadingIconCommandParameterProperty); }
-            set { SetValue(LeadingIconCommandParameterProperty, value); }
-        }
-
-        public static readonly BindableProperty TrailingIconCommandProperty =
-            BindableProperty.Create(nameof(TrailingIconCommand), typeof(ICommand), typeof(MaterialChips));
-
-        public ICommand TrailingIconCommand
-        {
-            get { return (ICommand)GetValue(TrailingIconCommandProperty); }
-            set { SetValue(TrailingIconCommandProperty, value); }
-        }
-
-        public static readonly BindableProperty TrailingIconCommandParameterProperty =
-            BindableProperty.Create(nameof(TrailingIconCommandParameter), typeof(object), typeof(MaterialChips), defaultValue: null);
-
-        public object TrailingIconCommandParameter
-        {
-            get { return GetValue(TrailingIconCommandParameterProperty); }
-            set { SetValue(TrailingIconCommandParameterProperty, value); }
         }
 
         public static readonly BindableProperty TextProperty =
@@ -348,14 +312,14 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-            this._frmContainer = new Frame()
+            _frmContainer = new Frame()
             {
                 HasShadow = false,
                 CornerRadius = 16,
-                Padding = this.Padding,
+                Padding = Padding,
                 MinimumHeightRequest = 32,
                 HeightRequest = 32,
-                BorderColor = this.BorderColor
+                BorderColor = BorderColor
             };
 
             var stackLayout = new StackLayout()
@@ -365,38 +329,38 @@ namespace Plugin.MaterialDesignControls.Material3
                 Orientation = StackOrientation.Horizontal
             };
 
-            this._imgLeadingIcon = new CustomImageButton()
+            _imgLeadingIcon = new CustomImage()
             {
                 IsVisible = false,
                 Padding = new Thickness(8, 0, 8, 0),
-                ImageHeightRequest = 18,
-                ImageWidthRequest = 18,
+                HeightRequest = 18,
+                WidthRequest = 18,
                 VerticalOptions = LayoutOptions.Center
             };
 
-            this._lblText = new Label()
+            _lblText = new Label()
             {
                 LineBreakMode = LineBreakMode.NoWrap,
                 Margin = new Thickness(1),
                 VerticalOptions = LayoutOptions.Center,
-                TextColor = this.TextColor
+                TextColor = TextColor
             };
 
-            this._imgTrailingIcon = new CustomImageButton()
+            _imgTrailingIcon = new CustomImage()
             {
                 IsVisible = false,
                 Padding = new Thickness(8, 0, 8, 0),
-                ImageHeightRequest = 18,
-                ImageWidthRequest = 18,
+                HeightRequest = 18,
+                WidthRequest = 18,
                 VerticalOptions = LayoutOptions.Center
             };
 
-            stackLayout.Children.Add(this._imgLeadingIcon);
-            stackLayout.Children.Add(this._lblText);
-            stackLayout.Children.Add(this._imgTrailingIcon);
+            stackLayout.Children.Add(_imgLeadingIcon);
+            stackLayout.Children.Add(_lblText);
+            stackLayout.Children.Add(_imgTrailingIcon);
 
-            this._frmContainer.Content = stackLayout;
-            this.Content = this._frmContainer;
+            _frmContainer.Content = stackLayout;
+            Content = _frmContainer;
             Effects.Add(new TouchAndPressEffect());
             ApplyIsSelected();
         }
@@ -410,44 +374,44 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!this.initialized)
+            if (!initialized)
             {
-                this.initialized = true;
-                this.Initialize();
+                initialized = true;
+                Initialize();
             }
 
             switch (propertyName)
             {
-                case nameof(this.Text):
-                case nameof(this.ToUpper):
-                    this._lblText.Text = this.ToUpper ? this.Text?.ToUpper() : this.Text;
+                case nameof(Text):
+                case nameof(ToUpper):
+                    _lblText.Text = ToUpper ? Text?.ToUpper() : Text;
                     break;
-                case nameof(this.FontSize):
-                    this._lblText.FontSize = this.FontSize;
+                case nameof(FontSize):
+                    _lblText.FontSize = FontSize;
                     break;
-                case nameof(this.FontFamily):
-                    this._lblText.FontFamily = this.FontFamily;
+                case nameof(FontFamily):
+                    _lblText.FontFamily = FontFamily;
                     break;
-                case nameof(this.Padding):
-                    this._frmContainer.Padding = this.Padding;
+                case nameof(Padding):
+                    _frmContainer.Padding = Padding;
                     break;
-                case nameof(this.TextMargin):
-                    this._lblText.Margin = this.TextMargin;
+                case nameof(TextMargin):
+                    _lblText.Margin = TextMargin;
                     break;
-                case nameof(this.CornerRadius):
-                    this._frmContainer.CornerRadius = (float)this.CornerRadius;
+                case nameof(CornerRadius):
+                    _frmContainer.CornerRadius = (float)CornerRadius;
                     break;
-                case nameof(this.IsEnabled):
-                case nameof(this.IsSelected):
-                case nameof(this.SelectedTextColor):
-                case nameof(this.SelectedBackgroundColor):
-                case nameof(this.TextColor):
-                case nameof(this.BackgroundColor):
-                case nameof(this.DisabledSelectedTextColor):
-                case nameof(this.DisabledSelectedBackgroundColor):
-                case nameof(this.DisabledTextColor):
-                case nameof(this.DisabledBackgroundColor):
-                    this.ApplyIsSelected();
+                case nameof(IsEnabled):
+                case nameof(IsSelected):
+                case nameof(SelectedTextColor):
+                case nameof(SelectedBackgroundColor):
+                case nameof(TextColor):
+                case nameof(BackgroundColor):
+                case nameof(DisabledSelectedTextColor):
+                case nameof(DisabledSelectedBackgroundColor):
+                case nameof(DisabledTextColor):
+                case nameof(DisabledBackgroundColor):
+                    ApplyIsSelected();
                     break;
 
                 case nameof(TrailingIcon):
@@ -474,15 +438,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     _imgLeadingIcon.IsVisible = LeadingIconIsVisible;
                     break;
 
-                case nameof(this.LeadingIconCommand):
-                    AddIconTapGesture(false);
-                    break;
-                case nameof(this.TrailingIconCommand):
-                    AddIconTapGesture(true);
-                    break;
-
-                case nameof(this.BorderColor):
-                    this._frmContainer.BorderColor = this.BorderColor;
+                case nameof(BorderColor):
+                    _frmContainer.BorderColor = BorderColor;
                     break;
 
                 case nameof(base.Opacity):
@@ -493,59 +450,32 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private void AddIconTapGesture(bool isTrailingIcon)
-        {
-            if (this._frmContainer.GestureRecognizers.Count > 0)
-                this._frmContainer.GestureRecognizers.RemoveAt(0); //Remove main tap gesture
-
-            if (isTrailingIcon)
-            {
-                this._imgTrailingIcon.Command = new Command(() =>
-                {
-                    if (this.IsEnabled && this.TrailingIconCommand != null)
-                    {
-                        this.TrailingIconCommand.Execute(this.TrailingIconCommandParameter);
-                    }
-                });
-            }
-            else
-            {
-                this._imgLeadingIcon.Command = new Command(() =>
-                {
-                    if (this.IsEnabled && this.LeadingIconCommand != null)
-                    {
-                        this.LeadingIconCommand.Execute(this.LeadingIconCommandParameter);
-                    }
-                });
-            }
-        }
-
         private void ApplyIsSelected()
         {
-            if (this.IsEnabled)
+            if (IsEnabled)
             {
-                if (this.IsSelected)
+                if (IsSelected)
                 {
-                    this._lblText.TextColor = this.SelectedTextColor;
-                    this._frmContainer.BackgroundColor = this.SelectedBackgroundColor;
+                    _lblText.TextColor = SelectedTextColor;
+                    _frmContainer.BackgroundColor = SelectedBackgroundColor;
                 }
                 else
                 {
-                    this._lblText.TextColor = this.TextColor;
-                    this._frmContainer.BackgroundColor = this.BackgroundColor;
+                    _lblText.TextColor = TextColor;
+                    _frmContainer.BackgroundColor = BackgroundColor;
                 }
             }
             else
             {
-                if (this.IsSelected)
+                if (IsSelected)
                 {
-                    this._lblText.TextColor = this.DisabledSelectedTextColor;
-                    this._frmContainer.BackgroundColor = this.DisabledSelectedBackgroundColor;
+                    _lblText.TextColor = DisabledSelectedTextColor;
+                    _frmContainer.BackgroundColor = DisabledSelectedBackgroundColor;
                 }
                 else
                 {
-                    this._lblText.TextColor = this.DisabledTextColor;
-                    this._frmContainer.BackgroundColor = this.DisabledBackgroundColor;
+                    _lblText.TextColor = DisabledTextColor;
+                    _frmContainer.BackgroundColor = DisabledBackgroundColor;
                 }
             }
         }
@@ -557,12 +487,12 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public void ExecuteAction()
         {
-            if (this.IsEnabled)
+            if (IsEnabled)
             {
                 if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
                     Command.Execute(CommandParameter);
                 else
-                    this.IsSelected = !this.IsSelected;
+                    IsSelected = !IsSelected;
             }
         }
 

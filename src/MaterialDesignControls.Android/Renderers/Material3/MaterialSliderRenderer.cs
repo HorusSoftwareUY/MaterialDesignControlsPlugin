@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿using System;
+using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
@@ -6,12 +7,12 @@ using Android.OS;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(CustomSlider), typeof(Plugin.MaterialDesignControls.Android.MaterialSliderRenderer))]
-namespace Plugin.MaterialDesignControls.Android
+[assembly: ExportRenderer(typeof(CustomSlider), typeof(Plugin.MaterialDesignControls.Material3.Android.MaterialSliderRenderer))]
+namespace Plugin.MaterialDesignControls.Material3.Android
 {
     public class MaterialSliderRenderer : SliderRenderer
     {

@@ -202,7 +202,7 @@ namespace Plugin.MaterialDesignControls.Material3
             if (bindable is MaterialRating control && newValue != null && int.TryParse(newValue.ToString(), out int value))
             {
                 int idxPosition = 0;
-                foreach (CustomImageButton item in control._grid.Children)
+                foreach (MaterialIconButton item in control._grid.Children)
                     SetIconsRatingControl(item, value, control, idxPosition++);
             }
         }
@@ -244,18 +244,16 @@ namespace Plugin.MaterialDesignControls.Material3
                     ++populatedObjects;
 
                     // Add element at i,j position on grid
-                    CustomImageButton customImageButton = new CustomImageButton()
+                    var customImageButton = new MaterialIconButton()
                     {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
-                        ImageHeightRequest = 34,
-                        ImageWidthRequest = 34,
-                        Padding = 6,
-                        BackgroundColor = Color.Transparent,
+                        ButtonType = MaterialIconButtonType.Standard,
                         IsVisible = true,
                         Command = new Command((e) => OnTapped((int)(e))),
                         CommandParameter = value + 1,
                         Animation = Animation,
+                        PaddingIcon = 4
                     };
 
                     if (AnimationParameter.HasValue)
@@ -282,7 +280,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        public static void SetIconsRatingControl(CustomImageButton item, int value, MaterialRating control, int position)
+        public static void SetIconsRatingControl(MaterialIconButton item, int value, MaterialRating control, int position)
         {
             if (item.CommandParameter != null && (int)item.CommandParameter <= value)
             {

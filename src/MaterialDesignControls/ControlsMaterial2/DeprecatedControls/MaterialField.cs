@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls
 {
+    [Obsolete("MaterialField is deprecated.")]
     public class MaterialField : ContentView
     {
         #region Constructors

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Material3;
 using Xamarin.Forms;
 
-namespace Plugin.MaterialDesignControls.Implementations
+namespace Plugin.MaterialDesignControls.Material3.Implementations
 {
     public class ContentViewButton : ContentView, ITouchAndPressEffectConsumer
     {
@@ -45,7 +46,14 @@ namespace Plugin.MaterialDesignControls.Implementations
             set => SetValue(AnimationParameterProperty, value);
         }
 
-        public ICustomAnimation CustomAnimation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public static readonly BindableProperty CustomAnimationProperty =
+            BindableProperty.Create(nameof(CustomAnimation), typeof(ICustomAnimation), typeof(ContentViewButton), defaultValue: null);
+
+        public ICustomAnimation CustomAnimation
+        {
+            get { return (ICustomAnimation)GetValue(CustomAnimationProperty); }
+            set { SetValue(CustomAnimationProperty, value); }
+        }
 
         #endregion Properties
 

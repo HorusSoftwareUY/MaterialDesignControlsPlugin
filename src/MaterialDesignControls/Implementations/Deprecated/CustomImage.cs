@@ -1,6 +1,9 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
+
 namespace Plugin.MaterialDesignControls.Implementations
 {
+    [Obsolete("CustomImage is deprecated, please use CustomImage of Material 3 instead.")]
     public class CustomImage : ContentView
     {
         private Image image;

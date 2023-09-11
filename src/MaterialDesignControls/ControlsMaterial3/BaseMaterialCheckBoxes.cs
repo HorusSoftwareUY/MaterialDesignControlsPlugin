@@ -189,7 +189,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty IconHeightRequestProperty =
-            BindableProperty.Create(nameof(IconHeightRequest), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: 24.0);
+            BindableProperty.Create(nameof(IconHeightRequest), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: 22.0);
 
         public double IconHeightRequest
         {
@@ -198,7 +198,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty IconWidthRequestProperty =
-            BindableProperty.Create(nameof(IconWidthRequest), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: 24.0);
+            BindableProperty.Create(nameof(IconWidthRequest), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: 22.0);
 
         public double IconWidthRequest
         {
