@@ -126,13 +126,10 @@
       <DependentUpon>MaterialChipsGroup.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialField.cs" />
-    <Compile Include="Implementations\CustomImageButton.cs" />
     <Compile Include="Animations\ShakeAnimation.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="AnimationTypes.cs" />
     <Compile Include="Animations\TouchAndPressAnimation.cs" />
-    <Compile Include="Implementations\CustomImage.cs" />
     <Compile Include="Implementations\Deprecated\DoublePicker.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialDoublePicker.xaml.cs">
       <DependentUpon>MaterialDoublePicker.xaml</DependentUpon>
@@ -170,7 +167,6 @@
       <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Implementations\CustomFrame.cs" />
     <Compile Include="FloatingButtonSize.cs" />
     <Compile Include="IconSide.cs" />
     <Compile Include="Styles\DefaultStyles.cs" />
@@ -180,7 +176,6 @@
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialFlatButton.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialOutlineButton.cs" />
     <Compile Include="ControlsMaterial3\MaterialTopAppBar.cs" />
-    <Compile Include="Implementations\ContentViewButton.cs" />
     <Compile Include="Effects\TouchReleaseEffect.cs" />
     <Compile Include="Effects\Effects.cs" />
     <Compile Include="ControlsMaterial3\MaterialLabel.cs" />
@@ -202,6 +197,13 @@
     <Compile Include="ControlsMaterial3\MaterialSnackBar.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomSlider.cs" />
     <Compile Include="Implementations\Deprecated\CustomSlider.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialField.cs" />
+    <Compile Include="Implementations\Deprecated\CustomImageButton.cs" />
+    <Compile Include="Implementations\CustomMaterial3\ContentViewButton.cs" />
+    <Compile Include="Implementations\Deprecated\CustomImage.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomImage.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomFrame.cs" />
+    <Compile Include="Implementations\Deprecated\CustomFrame.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

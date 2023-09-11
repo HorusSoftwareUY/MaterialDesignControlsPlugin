@@ -1,5 +1,4 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;

@@ -4,7 +4,7 @@ using System;
 using Xamarin.Forms;
 using Plugin.MaterialDesignControls.Styles;
 using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
