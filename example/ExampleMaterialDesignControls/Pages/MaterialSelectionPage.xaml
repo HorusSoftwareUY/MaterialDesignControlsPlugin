@@ -46,7 +46,7 @@
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Horizontal Text Aligment" />
+                                            Text="Horizontal Text Alignment" />
 
                     <material3:MaterialSelection Command="{Binding TapCommand}"
                                                  CommandParameter="Product selection"

@@ -67,6 +67,7 @@
     <Compile Include="ControlsMaterial3\MaterialChipsGroup.cs" />
     <Compile Include="ControlsMaterial3\MaterialCodeEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialDatePicker.cs" />
+    <Compile Include="ControlsMaterial3\MaterialDialog.cs" />
     <Compile Include="ControlsMaterial3\MaterialDoublePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialEditor.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
