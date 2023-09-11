@@ -1,4 +1,4 @@
-﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using System;
@@ -18,7 +18,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static readonly BindableProperty ButtonTypeProperty =
-            BindableProperty.Create(nameof(ButtonType), typeof(MaterialIconButtonType), typeof(MaterialButton), defaultValue: MaterialIconButtonType.Standard);
+            BindableProperty.Create(nameof(ButtonType), typeof(MaterialIconButtonType), typeof(MaterialIconButton), defaultValue: MaterialIconButtonType.Standard);
 
         public MaterialIconButtonType ButtonType
         {
@@ -72,12 +72,21 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialIconButton), defaultValue: DefaultStyles.PrimaryColor);
 
         public new Color BackgroundColor
         {
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledBackgroundColorProperty =
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialIconButton), defaultValue: DefaultStyles.DisableColor);
+
+        public Color DisabledBackgroundColor
+        {
+            get { return (Color)GetValue(DisabledBackgroundColorProperty); }
+            set { SetValue(DisabledBackgroundColorProperty, value); }
         }
 
         public static readonly BindableProperty IconProperty =
@@ -89,6 +98,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(IconProperty, value); }
         }
 
+        public static readonly BindableProperty DisabledIconProperty =
+        BindableProperty.Create(nameof(DisabledIcon), typeof(string), typeof(MaterialIconButton), defaultValue: null);
+
+        public string DisabledIcon
+        {
+            get { return (string)GetValue(DisabledIconProperty); }
+            set { SetValue(DisabledIconProperty, value); }
+        }
+
         public static readonly BindableProperty CustomIconProperty =
             BindableProperty.Create(nameof(CustomIcon), typeof(View), typeof(MaterialIconButton), defaultValue: null);
 
@@ -98,6 +116,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CustomIconProperty, value); }
         }
 
+        public static readonly BindableProperty CustomDisabledIconProperty =
+        BindableProperty.Create(nameof(CustomDisabledIcon), typeof(View), typeof(MaterialIconButton), defaultValue: null);
+
+        public View CustomDisabledIcon
+        {
+            get { return (View)GetValue(CustomDisabledIconProperty); }
+            set { SetValue(CustomDisabledIconProperty, value); }
+        }
+
         public static readonly BindableProperty PaddingIconProperty =
             BindableProperty.Create(nameof(PaddingIcon), typeof(Thickness), typeof(MaterialIconButton), new Thickness(8));
 
@@ -105,6 +132,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (Thickness)GetValue(PaddingIconProperty); }
             set { SetValue(PaddingIconProperty, value); }
+        }
+
+        public static readonly new BindableProperty IsEnabledProperty =
+            BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(MaterialIconButton), defaultValue: true);
+
+        public new bool IsEnabled
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
         }
 
         private int minHeight = 48;
@@ -119,22 +155,14 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             MinimumHeightRequest = minHeight;
             MinimumWidthRequest = minWidth;
-            HorizontalOptions = LayoutOptions.Center;
-
-            SetSettings();
-
             HeightRequest = minHeight;
             WidthRequest = minHeight;
 
-            Content = Container;
-            Effects.Add(new TouchAndPressEffect());
-        }
+            HorizontalOptions = LayoutOptions.Center;
 
-        private void SetSettings()
-        {
             Container = new Grid();
             Container.Padding = shapeCircleMargin;
-            customImage = new CustomImage           
+            customImage = new CustomImage
             {
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
@@ -144,11 +172,18 @@ namespace Plugin.MaterialDesignControls.Material3
 
             circle = new Frame();
             circle.HasShadow = false;
+            circle.BackgroundColor = Color.Transparent;
             circle.HorizontalOptions = LayoutOptions.Center;
             circle.VerticalOptions = LayoutOptions.Center;
 
             Container.Children.Add(circle);
             Container.Children.Add(customImage);
+
+            Content = Container;
+            Effects.Add(new TouchAndPressEffect());
+
+            SetWidthRequest();
+            SetHeigthRequest();
         }
 
         #endregion Constructors
@@ -167,8 +202,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            base.OnPropertyChanged(propertyName);
-
             switch (propertyName)
             {
                 case nameof(Icon):
@@ -196,11 +229,52 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(PaddingIcon):
                     this.customImage.Margin = PaddingIcon;
                     break;
+                case nameof(IsEnabled):
+                    ChangeStatusButton();
+                    break;
+                default:
+                    base.OnPropertyChanged(propertyName);
+                    break;
+            }
+        }
+
+        private void ChangeStatusButton()
+        {
+            if (IsEnabled)
+            {
+                if (!string.IsNullOrEmpty(Icon))
+                {
+                    this.customImage.SetImage(Icon);
+                    this.customImage.VerticalOptions = LayoutOptions.Fill;
+                }
+                else if (CustomIcon != null)
+                {
+                    this.customImage.SetCustomImage(CustomIcon);
+                    this.customImage.VerticalOptions = LayoutOptions.Fill;
+                }
+                SetButtonStyle();
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(DisabledIcon))
+                {
+                    this.customImage.SetImage(DisabledIcon);
+                    this.customImage.VerticalOptions = LayoutOptions.Fill;
+                }
+                else if (CustomDisabledIcon != null)
+                {
+                    this.customImage.SetCustomImage(CustomDisabledIcon);
+                    this.customImage.VerticalOptions = LayoutOptions.Fill;
+                }
+                SetButtonStyle();
             }
         }
 
         private void SetWidthRequest()
         {
+            if (Container == null)
+                return;
+
             var widthWhitoutMargin = WidthRequest - (shapeCircleMargin * 2);
             this.Container.WidthRequest = WidthRequest;
             this.circle.WidthRequest = widthWhitoutMargin;
@@ -210,6 +284,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetHeigthRequest()
         {
+            if (Container == null)
+                return;
+
             var heightWhitoutMargin = HeightRequest - (shapeCircleMargin*2);
             this.Container.HeightRequest = WidthRequest;
             this.circle.HeightRequest = heightWhitoutMargin;
@@ -219,25 +296,26 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public void SetButtonStyle()
         {
+            if (circle == null)
+                return;
 
             switch (ButtonType)
             {
                 case MaterialIconButtonType.Standard:
+                    this.circle.BackgroundColor = Color.Transparent;
                     this.customImage.Margin = this.PaddingIcon;
                     this.circle.IsVisible = false;
                     break;
                 case MaterialIconButtonType.Filled:
-                    this.circle.BackgroundColor = BackgroundColor;
-                    this.circle.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
+                    this.circle.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
                     this.circle.IsVisible = true;
                     break;
                 case MaterialIconButtonType.Outlined:
-                    this.circle.BorderColor = BackgroundColor;
-                    this.circle.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
+                    this.circle.BorderColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
                     this.circle.IsVisible = true;
                     break;
                 case MaterialIconButtonType.Tonal:
-                    var defaultBackgroundColor = BackgroundColor != Color.Default ? Color.FromRgba(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B, 0.4) : Color.FromRgba(Color.Default.R, Color.Default.G, Color.Default.B, 0.4);
+                    var defaultBackgroundColor = IsEnabled ? Color.FromRgba(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B, 0.4) : Color.FromRgba(DisabledBackgroundColor.R, DisabledBackgroundColor.G, DisabledBackgroundColor.B, 0.4);
                     this.circle.BackgroundColor = defaultBackgroundColor;
                     this.circle.IsVisible = true;
                     break;
@@ -266,4 +344,4 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #endregion Methods
     }
-}
+}   

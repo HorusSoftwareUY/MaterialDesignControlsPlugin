@@ -44,6 +44,8 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialLabel](#materiallabel)
 - [MaterialCustomControl](#materialcustomcontrol)
 - [MaterialSearch](#materialsearch)
+- [MaterialIconButton](#materialiconbutton)
+- [MaterialSnackBar](#materialsnackbar)
 
 
 ## Setup
@@ -318,6 +320,24 @@ MaterialSearch receives a text and executes a search action.
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/search_preview.png" width="300">
 <br/>
 [View documentation](MaterialSearch.md)
+
+---
+
+### MaterialIconButton
+MaterialIconButton displays an icon and can execute a command.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/iconbutton_preview.png" width="300">
+<br/>
+[View documentation](MaterialIconButton.md)
+
+---
+
+### MaterialSnackBar
+MaterialSnackBar show short updates about app processes at the bottom of the screen.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/snackbar_preview.png" width="300">
+<br/>
+[View documentation](MaterialSnackBar.md)
 
 ---
 

@@ -21,6 +21,7 @@ namespace Plugin.MaterialDesignControls.Implementations
         #endregion Constructors
     
         #region Attributes
+
         private Image image;
 
         private View customImage;

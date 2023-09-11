@@ -19,6 +19,8 @@ namespace Plugin.MaterialDesignControls.iOS
             Plugin.MaterialDesignControls.Material3.iOS.MaterialTimePickerRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialEditorRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialActivityIndicatorRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.iOS.MaterialSliderRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.iOS.MaterialCheckBoxRenderer.Init();
         }
     }
 }

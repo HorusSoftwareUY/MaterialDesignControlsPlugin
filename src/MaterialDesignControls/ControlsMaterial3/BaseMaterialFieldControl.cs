@@ -16,31 +16,31 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool initialized = false;
 
-        private MaterialCard frmContainer;
+        private MaterialCard _frmContainer;
 
-        private Grid contentLayout;
+        private Grid _contentLayout;
 
-        private MaterialLabel lblLabel;
+        private MaterialLabel _lblLabel;
 
-        private MaterialLabel lblAnimatedLabel;
+        private MaterialLabel _lblAnimatedLabel;
 
-        private CustomImageButton imgLeadingIcon;
+        private MaterialIconButton _leadingIconButton;
 
-        private CustomImageButton imgTrailingIcon;
+        private MaterialIconButton _trailingIconButton;
 
-        private BoxView indicator;
+        private BoxView _indicator;
 
-        private MaterialLabel lblSupporting;
+        private MaterialLabel _lblSupporting;
 
-        public MaterialCard FrameContainer => this.frmContainer;
+        public MaterialCard FrameContainer => this._frmContainer;
 
         public IBaseMaterialFieldControl Control => this.CustomContent;
 
-        public MaterialLabel Label => this.lblLabel;
+        public MaterialLabel Label => this._lblLabel;
 
-        public MaterialLabel SupportingLabel => this.lblSupporting;
+        public MaterialLabel SupportingLabel => this._lblSupporting;
 
-        public MaterialLabel AnimatedLabel => this.lblAnimatedLabel;
+        public MaterialLabel AnimatedLabel => this._lblAnimatedLabel;
 
         public bool AnimatePlaceHolderAsLabel => this.AnimatePlaceholder && string.IsNullOrWhiteSpace(LabelText);
 
@@ -574,7 +574,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
 
             //Set by default Trailing and Leading command to focus control
-            this.imgLeadingIcon.Command = new Command(() =>
+            this._leadingIconButton.Command = new Command(() =>
             {
                 if (this is MaterialSelection materialSelection)
                 {
@@ -587,7 +587,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.CustomContent.FocusControl();
             });
 
-            this.imgTrailingIcon.Command = new Command(() =>
+            this._trailingIconButton.Command = new Command(() =>
             {
                 if (this is MaterialSelection materialSelection)
                 {
@@ -607,13 +607,13 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (bindable is BaseMaterialFieldControl control && control.contentLayout != null)
+            if (bindable is BaseMaterialFieldControl control && control._contentLayout != null)
             {
-                control.contentLayout.Children.Add((View)newValue);
+                control._contentLayout.Children.Add((View)newValue);
 
                 if (control is MaterialEditor)
                 {
-                    control.contentLayout.RowDefinitions[1].Height = GridLength.Auto;
+                    control._contentLayout.RowDefinitions[1].Height = GridLength.Auto;
                 }
             }
         }
@@ -632,11 +632,11 @@ namespace Plugin.MaterialDesignControls.Material3
         protected void SetLabelTextColor()
         {
             if (!IsEnabled)
-                lblLabel.TextColor = DisabledLabelTextColor;
+                _lblLabel.TextColor = DisabledLabelTextColor;
             else if (CustomContent.IsControlFocused())
-                lblLabel.TextColor = FocusedLabelTextColor;
+                _lblLabel.TextColor = FocusedLabelTextColor;
             else
-                lblLabel.TextColor = LabelTextColor;
+                _lblLabel.TextColor = LabelTextColor;
         }
 
         private void SetBorderAndBackgroundColors()
@@ -645,24 +645,24 @@ namespace Plugin.MaterialDesignControls.Material3
 
             if (!IsEnabled)
             {
-                frmContainer.BackgroundColor = DisabledBackgroundColor;
-                frmContainer.BorderColor = HasBorder ? DisabledBorderColor : Color.Transparent;
-                indicator.Color = DisabledIndicatorColor;
+                _frmContainer.BackgroundColor = DisabledBackgroundColor;
+                _frmContainer.BorderColor = HasBorder ? DisabledBorderColor : Color.Transparent;
+                _indicator.Color = DisabledIndicatorColor;
             }
             else if (CustomContent.IsControlFocused())
             {
-                frmContainer.BackgroundColor = FocusedBackgroundColor;
-                frmContainer.BorderColor = HasBorder ? FocusedBorderColor : Color.Transparent;
-                indicator.Color = FocusedIndicatorColor;
+                _frmContainer.BackgroundColor = FocusedBackgroundColor;
+                _frmContainer.BorderColor = HasBorder ? FocusedBorderColor : Color.Transparent;
+                _indicator.Color = FocusedIndicatorColor;
             }
             else
             {
-                frmContainer.BackgroundColor = BackgroundColor;
-                frmContainer.BorderColor = HasBorder ? BorderColor : Color.Transparent;
-                indicator.Color = IndicatorColor;
+                _frmContainer.BackgroundColor = BackgroundColor;
+                _frmContainer.BorderColor = HasBorder ? BorderColor : Color.Transparent;
+                _indicator.Color = IndicatorColor;
             }
 
-            frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
+            _frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
         }
 
         public void UpdateLayout(string propertyName)
@@ -686,7 +686,7 @@ namespace Plugin.MaterialDesignControls.Material3
                         CustomContent.SetTextColor(TextColor);
 
                     SetLabelTextColor();
-                    this.lblLabel.TextColor = LabelTextColor;
+                    this._lblLabel.TextColor = LabelTextColor;
                     SetBorderAndBackgroundColors();
                     break;
                 case nameof(TextColor):
@@ -707,14 +707,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     CustomContent.SetFontFamily(FontFamily);
 
                     if (LabelFontFamily != null)
-                        this.lblLabel.FontFamily = LabelFontFamily;
+                        this._lblLabel.FontFamily = LabelFontFamily;
                     else if (LabelFontFamily == null && FontFamily != null)
-                        this.lblLabel.FontFamily = FontFamily;
+                        this._lblLabel.FontFamily = FontFamily;
 
                     if (SupportingFontFamily != null)
-                        this.lblSupporting.FontFamily = SupportingFontFamily;
+                        this._lblSupporting.FontFamily = SupportingFontFamily;
                     else if (SupportingFontFamily == null && FontFamily != null)
-                        this.lblSupporting.FontFamily = FontFamily;
+                        this._lblSupporting.FontFamily = FontFamily;
                     break;
                 case nameof(Placeholder):
                     CustomContent.SetPlaceholder(Placeholder);
@@ -725,26 +725,26 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetAnimatedLabel();
                     break;
                 case nameof(LabelText):
-                    this.lblLabel.Text = LabelText;
-                    this.lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
+                    this._lblLabel.Text = LabelText;
+                    this._lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
                     SetAnimatedLabel();
                     break;
                 case nameof(LabelTextColor):
                     SetLabelTextColor();
                     break;
                 case nameof(LabelSize):
-                    this.lblLabel.FontSize = LabelSize;
+                    this._lblLabel.FontSize = LabelSize;
                     break;
                 case nameof(LabelMargin):
-                    this.lblLabel.Margin = LabelMargin;
+                    this._lblLabel.Margin = LabelMargin;
                     break;
                 case nameof(Padding):
-                    frmContainer.Padding = this.Padding;
+                    _frmContainer.Padding = this.Padding;
                     break;
                 case nameof(CornerRadius):
                     if (HasBorder)
                     {
-                        this.frmContainer.CornerRadius = CornerRadius;
+                        this._frmContainer.CornerRadius = CornerRadius;
                     }
                     break;
                 case nameof(BackgroundColor):
@@ -753,78 +753,78 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetBorderAndBackgroundColors();
                     break;
                 case nameof(SupportingText):
-                    this.lblSupporting.Text = SupportingText;
-                    this.lblSupporting.IsVisible = !string.IsNullOrEmpty(SupportingText);
+                    this._lblSupporting.Text = SupportingText;
+                    this._lblSupporting.IsVisible = !string.IsNullOrEmpty(SupportingText);
                     if (AnimateError && !string.IsNullOrEmpty(SupportingText))
                         ShakeAnimation.Animate(this);
                     break;
                 case nameof(SupportingTextColor):
-                    this.lblSupporting.TextColor = SupportingTextColor;
+                    this._lblSupporting.TextColor = SupportingTextColor;
                     break;
                 case nameof(SupportingSize):
-                    this.lblSupporting.FontSize = SupportingSize;
+                    this._lblSupporting.FontSize = SupportingSize;
                     break;
                 case nameof(SupportingMargin):
-                    this.lblSupporting.Margin = SupportingMargin;
+                    this._lblSupporting.Margin = SupportingMargin;
                     break;
 
                 case nameof(LeadingIcon):
                     if (!string.IsNullOrEmpty(LeadingIcon))
-                        this.imgLeadingIcon.SetImage(LeadingIcon);
+                        this._leadingIconButton.SetImage(LeadingIcon);
 
-                    this.imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+                    this._leadingIconButton.IsVisible = LeadingIconIsVisible;
                     break;
                 case nameof(CustomLeadingIcon):
                     if (CustomLeadingIcon != null)
-                        this.imgLeadingIcon.SetCustomImage(CustomLeadingIcon);
+                        this._leadingIconButton.SetCustomImage(CustomLeadingIcon);
 
-                    this.imgLeadingIcon.IsVisible = LeadingIconIsVisible;
+                    this._leadingIconButton.IsVisible = LeadingIconIsVisible;
                     break;
 
                 case nameof(LeadingIconCommandParameter):
                     if (LeadingIconCommandParameter != null)
                     {
-                        this.imgLeadingIcon.CommandParameter = LeadingIconCommandParameter;
+                        this._leadingIconButton.CommandParameter = LeadingIconCommandParameter;
                     }
                     break;
 
                 case nameof(LeadingIconCommand):
                     if (LeadingIconCommand != null)
                     {
-                        this.imgLeadingIcon.Command = LeadingIconCommand;
+                        this._leadingIconButton.Command = LeadingIconCommand;
                     }
                     break;
 
                 case nameof(TrailingIcon):
                     if (!string.IsNullOrEmpty(TrailingIcon))
-                        this.imgTrailingIcon.SetImage(TrailingIcon);
+                        this._trailingIconButton.SetImage(TrailingIcon);
 
-                    this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    this._trailingIconButton.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(CustomTrailingIcon):
                     if (CustomTrailingIcon != null)
-                        this.imgTrailingIcon.SetCustomImage(CustomTrailingIcon);
+                        this._trailingIconButton.SetCustomImage(CustomTrailingIcon);
 
-                    this.imgTrailingIcon.IsVisible = TrailingIconIsVisible;
+                    this._trailingIconButton.IsVisible = TrailingIconIsVisible;
                     break;
                 case nameof(TrailingIconCommand):
                     if (TrailingIconCommand != null)
                     {
-                        this.imgTrailingIcon.Command = TrailingIconCommand;
+                        this._trailingIconButton.Command = TrailingIconCommand;
                     }
                     break;
 
                 case nameof(TrailingIconCommandParameter):
                     if (TrailingIconCommandParameter != null)
                     {
-                        this.imgTrailingIcon.CommandParameter = TrailingIconCommandParameter;
+                        this._trailingIconButton.CommandParameter = TrailingIconCommandParameter;
                     }
                     break;
 
                 case nameof(HorizontalTextAlignment):
                     CustomContent.SetHorizontalTextAlignment(HorizontalTextAlignment);
-                    this.lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
-                    this.lblSupporting.HorizontalTextAlignment = HorizontalTextAlignment;
+                    this._lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
+                    this._lblSupporting.HorizontalTextAlignment = HorizontalTextAlignment;
                     break;
 
                 case nameof(HasBorder):
@@ -832,48 +832,48 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(iOSBorderWidth):
-                    this.frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
+                    this._frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
                     break;
 
                 case nameof(CornerRadiusBottomLeft):
                     if (HasBorder)
                     {
-                        this.frmContainer.CornerRadiusBottomLeft = CornerRadiusBottomLeft;
+                        this._frmContainer.CornerRadiusBottomLeft = CornerRadiusBottomLeft;
                     }
                     break;
 
                 case nameof(CornerRadiusBottomRight):
                     if (HasBorder)
                     {
-                        this.frmContainer.CornerRadiusBottomRight = CornerRadiusBottomRight;
+                        this._frmContainer.CornerRadiusBottomRight = CornerRadiusBottomRight;
                     }
                     break;
 
                 case nameof(CornerRadiusTopRight):
                     if (HasBorder)
                     {
-                        this.frmContainer.CornerRadiusTopRight = CornerRadiusTopRight;
+                        this._frmContainer.CornerRadiusTopRight = CornerRadiusTopRight;
                     }
                     break;
 
                 case nameof(CornerRadiusTopLeft):
                     if (HasBorder)
                     {
-                        this.frmContainer.CornerRadiusTopLeft = CornerRadiusTopLeft;
+                        this._frmContainer.CornerRadiusTopLeft = CornerRadiusTopLeft;
                     }
                     break;
 
                 case nameof(AnimatePlaceholder):
-                    this.lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
+                    this._lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
                     SetAnimatedLabel();
                     break;
 
                 case nameof(this.LabelLineBreakMode):
-                    this.lblLabel.LineBreakMode = this.LabelLineBreakMode;
+                    this._lblLabel.LineBreakMode = this.LabelLineBreakMode;
                     break;
 
                 case nameof(this.SupportingLineBreakMode):
-                    this.lblSupporting.LineBreakMode = this.SupportingLineBreakMode;
+                    this._lblSupporting.LineBreakMode = this.SupportingLineBreakMode;
                     break;
             }
         }
@@ -885,7 +885,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 Spacing = 0
             };
 
-            frmContainer = new MaterialCard()
+            _frmContainer = new MaterialCard()
             {
                 CornerRadius = 10,
                 HasShadow = false,
@@ -894,7 +894,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 Padding = new Thickness(16, 8, 16, 8)
             };
 
-            contentLayout = new Grid()
+            _contentLayout = new Grid()
             {
                 ColumnSpacing = 0,
                 RowSpacing = 0,
@@ -911,18 +911,18 @@ namespace Plugin.MaterialDesignControls.Material3
                 }
             };
 
-            lblLabel = new MaterialLabel()
+            _lblLabel = new MaterialLabel()
             {
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
                 HorizontalTextAlignment = TextAlignment.Start                               
             };
 
-            lblLabel.SetValue(Grid.RowProperty, 0);
-            lblLabel.SetValue(Grid.ColumnProperty, 1);
-            lblLabel.SetValue(Grid.ColumnSpanProperty, 2);
+            _lblLabel.SetValue(Grid.RowProperty, 0);
+            _lblLabel.SetValue(Grid.ColumnProperty, 1);
+            _lblLabel.SetValue(Grid.ColumnSpanProperty, 2);
 
-            lblAnimatedLabel = new MaterialLabel()
+            _lblAnimatedLabel = new MaterialLabel()
             {
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
@@ -932,46 +932,46 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            lblAnimatedLabel.SetValue(Grid.RowProperty, 0);
-            lblAnimatedLabel.SetValue(Grid.ColumnProperty, 1);
+            _lblAnimatedLabel.SetValue(Grid.RowProperty, 0);
+            _lblAnimatedLabel.SetValue(Grid.ColumnProperty, 1);
 
-            imgLeadingIcon = new CustomImageButton()
+            _leadingIconButton = new MaterialIconButton()
             {
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.Start,
-                Margin = new Thickness( -4, 0, 16, 0),
-                WidthRequest = 24,
-                HeightRequest = 24
+                Margin = new Thickness( -4, 0, 2, 0),
+                PaddingIcon = 4,
+                ButtonType = MaterialIconButtonType.Standard
             };
 
-            imgLeadingIcon.SetValue(Grid.RowProperty, 0);
-            imgLeadingIcon.SetValue(Grid.ColumnProperty, 0);
-            imgLeadingIcon.SetValue(Grid.RowSpanProperty, 2);
+            _leadingIconButton.SetValue(Grid.RowProperty, 0);
+            _leadingIconButton.SetValue(Grid.ColumnProperty, 0);
+            _leadingIconButton.SetValue(Grid.RowSpanProperty, 2);
 
-            imgTrailingIcon = new CustomImageButton()
+            _trailingIconButton = new MaterialIconButton()
             {
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.End,
-                Margin = new Thickness(16, 0, -4, 0),
-                WidthRequest = 24,
-                HeightRequest = 24
+                Margin = new Thickness(2, 0, -4, 0),
+                PaddingIcon = 4,
+                ButtonType = MaterialIconButtonType.Standard
             };
 
-            imgTrailingIcon.SetValue(Grid.RowProperty, 0);
-            imgTrailingIcon.SetValue(Grid.ColumnProperty, 2);
-            imgTrailingIcon.SetValue(Grid.RowSpanProperty, 2);
+            _trailingIconButton.SetValue(Grid.RowProperty, 0);
+            _trailingIconButton.SetValue(Grid.ColumnProperty, 2);
+            _trailingIconButton.SetValue(Grid.RowSpanProperty, 2);
 
-            contentLayout.Children.Add(lblLabel);
-            contentLayout.Children.Add(lblAnimatedLabel);
-            contentLayout.Children.Add(imgLeadingIcon);
-            contentLayout.Children.Add(imgTrailingIcon);
+            _contentLayout.Children.Add(_lblLabel);
+            _contentLayout.Children.Add(_lblAnimatedLabel);
+            _contentLayout.Children.Add(_leadingIconButton);
+            _contentLayout.Children.Add(_trailingIconButton);
 
-            indicator = new BoxView()
+            _indicator = new BoxView()
             {
                 HeightRequest = 1
             };
 
-            lblSupporting = new MaterialLabel()
+            _lblSupporting = new MaterialLabel()
             {
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
@@ -979,11 +979,11 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalTextAlignment = TextAlignment.Start
             };
 
-            frmContainer.Content = contentLayout;
+            _frmContainer.Content = _contentLayout;
 
-            mainContainer.Children.Add(frmContainer);
-            mainContainer.Children.Add(indicator);
-            mainContainer.Children.Add(lblSupporting);
+            mainContainer.Children.Add(_frmContainer);
+            mainContainer.Children.Add(_indicator);
+            mainContainer.Children.Add(_lblSupporting);
 
             InitializeDefaults();
 
@@ -1006,18 +1006,18 @@ namespace Plugin.MaterialDesignControls.Material3
             CustomContent.SetPlaceholderColor(PlaceholderColor);
             CustomContent.SetFontFamily(FontFamily);
             SetAnimatedLabel();
-            lblLabel.FontSize = LabelSize;
-            lblLabel.FontFamily = FontFamily;
-            lblLabel.Margin = LabelMargin;
-            lblSupporting.FontFamily = FontFamily;
-            lblSupporting.TextColor = SupportingTextColor;
-            lblSupporting.FontSize = SupportingSize;
-            lblSupporting.Margin = SupportingMargin;
+            _lblLabel.FontSize = LabelSize;
+            _lblLabel.FontFamily = FontFamily;
+            _lblLabel.Margin = LabelMargin;
+            _lblSupporting.FontFamily = FontFamily;
+            _lblSupporting.TextColor = SupportingTextColor;
+            _lblSupporting.FontSize = SupportingSize;
+            _lblSupporting.Margin = SupportingMargin;
         }
 
         private void SetHasBorder()
         {
-            indicator.IsVisible = !HasBorder;
+            _indicator.IsVisible = !HasBorder;
             SetBorderAndBackgroundColors();
         }
 

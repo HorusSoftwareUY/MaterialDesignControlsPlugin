@@ -1,4 +1,6 @@
-﻿using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using Plugin.MaterialDesignControls.Utils;
 using System;
@@ -6,11 +8,9 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialSwitch : ContentView
     {
         #region Constructors
@@ -20,20 +20,8 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!_initialized)
             {
                 _initialized = true;
-                InitializeComponent();
                 Initialize();
             }
-
-            SwitchPanUpdate += (sender, e) =>
-            {
-                //Color Animation
-                Color fromColor = IsToggled ? (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor) : (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor);
-                Color toColor = IsToggled ? (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor) : (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor);
-
-                double t = e.Percentage * 0.01;
-
-                BackgroundColor = ColorAnimationUtil.ColorAnimation(fromColor, toColor, t);
-            };
         }
 
         #endregion Constructors
@@ -51,13 +39,23 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool _initialized = false;
 
+        private StackLayout _container;
+        private MaterialLabel _lblLeft;
+        private Grid _switchGrid;
+        private MaterialCard _backgroundFrame;
+        private MaterialCard _thumbFrame;
+        private CustomImage _imgIcon;
+        private MaterialLabel _lblRight;
+        private MaterialLabel _lblSupportingText;
+
         #endregion Attributes
 
         #region Properties
 
         #region Background
 
-        public new static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSwitch), Color.Default);
+        public new static readonly BindableProperty BackgroundColorProperty =
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSwitch), Color.Default);
 
         public new Color BackgroundColor
         {
@@ -65,7 +63,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(BackgroundColorProperty, value);
         }
 
-        public static readonly BindableProperty BackgroundOnUnselectedColorProperty = BindableProperty.Create(nameof(BackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.SurfaceContainerHighestColor);
+        public static readonly BindableProperty BackgroundOnUnselectedColorProperty =
+            BindableProperty.Create(nameof(BackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.SurfaceContainerHighestColor);
 
         public Color BackgroundOnUnselectedColor
         {
@@ -73,7 +72,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(BackgroundOnUnselectedColorProperty, value);
         }
 
-        public static readonly BindableProperty DisabledBackgroundOnUnselectedColorProperty = BindableProperty.Create(nameof(DisabledBackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableContainerColor);
+        public static readonly BindableProperty DisabledBackgroundOnUnselectedColorProperty =
+            BindableProperty.Create(nameof(DisabledBackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableContainerColor);
 
         public Color DisabledBackgroundOnUnselectedColor
         {
@@ -81,7 +81,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(DisabledBackgroundOnUnselectedColorProperty, value);
         }
 
-        public static readonly BindableProperty BackgroundOnSelectedColorProperty = BindableProperty.Create(nameof(BackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.PrimaryColor);
+        public static readonly BindableProperty BackgroundOnSelectedColorProperty =
+            BindableProperty.Create(nameof(BackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.PrimaryColor);
 
         public Color BackgroundOnSelectedColor
         {
@@ -89,7 +90,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(BackgroundOnSelectedColorProperty, value);
         }
 
-        public static readonly BindableProperty DisabledBackgroundOnSelectedColorProperty = BindableProperty.Create(nameof(DisabledBackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableColor);
+        public static readonly BindableProperty DisabledBackgroundOnSelectedColorProperty =
+            BindableProperty.Create(nameof(DisabledBackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableColor);
 
         public Color DisabledBackgroundOnSelectedColor
         {
@@ -122,7 +124,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Thumb
 
-        public static readonly BindableProperty ThumbUnselectedColorProperty = BindableProperty.Create(nameof(ThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.OutlineColor);
+        public static readonly BindableProperty ThumbUnselectedColorProperty =
+            BindableProperty.Create(nameof(ThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.OutlineColor);
 
         public Color ThumbUnselectedColor
         {
@@ -130,7 +133,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(ThumbUnselectedColorProperty, value);
         }
 
-        public static readonly BindableProperty DisabledThumbUnselectedColorProperty = BindableProperty.Create(nameof(DisabledThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableColor);
+        public static readonly BindableProperty DisabledThumbUnselectedColorProperty =
+            BindableProperty.Create(nameof(DisabledThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableColor);
 
         public Color DisabledThumbUnselectedColor
         {
@@ -138,7 +142,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(DisabledThumbUnselectedColorProperty, value);
         }
 
-        public static readonly BindableProperty ThumbSelectedColorProperty = BindableProperty.Create(nameof(ThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.OnPrimaryColor);
+        public static readonly BindableProperty ThumbSelectedColorProperty =
+            BindableProperty.Create(nameof(ThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.OnPrimaryColor);
 
         public Color ThumbSelectedColor
         {
@@ -146,7 +151,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set => SetValue(ThumbSelectedColorProperty, value);
         }
 
-        public static readonly BindableProperty DisabledThumbSelectedColorProperty = BindableProperty.Create(nameof(DisabledThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableContainerColor);
+        public static readonly BindableProperty DisabledThumbSelectedColorProperty =
+            BindableProperty.Create(nameof(DisabledThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableContainerColor);
 
         public Color DisabledThumbSelectedColor
         {
@@ -262,7 +268,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region SupportingText
 
         public static readonly BindableProperty SupportingTextProperty =
-                    BindableProperty.Create(nameof(SupportingText), typeof(string), typeof(MaterialSwitch), defaultValue: null, validateValue: OnSupportingTextValidate);
+            BindableProperty.Create(nameof(SupportingText), typeof(string), typeof(MaterialSwitch), defaultValue: null, validateValue: OnSupportingTextValidate);
 
         public string SupportingText
         {
@@ -306,6 +312,8 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(SupportingMarginProperty, value); }
         }
 
+        #endregion SupportingText
+
         public static readonly BindableProperty AnimateErrorProperty =
             BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialSwitch), defaultValue: DefaultStyles.AnimateError);
 
@@ -314,8 +322,6 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (bool)GetValue(AnimateErrorProperty); }
             set { SetValue(AnimateErrorProperty, value); }
         }
-
-        #endregion SupportingText
 
         public static readonly BindableProperty TextHorizontalOptionsProperty =
             BindableProperty.Create(nameof(TextHorizontalOptions), typeof(LayoutOptions), typeof(MaterialSwitch), defaultValue: LayoutOptions.Start);
@@ -344,7 +350,7 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(SpacingProperty, value); }
         }
 
-        public new static readonly BindableProperty IsEnabledProperty = 
+        public new static readonly BindableProperty IsEnabledProperty =
             BindableProperty.Create(nameof(IsEnabled), typeof(bool), typeof(VisualElement), defaultValue: true, defaultBindingMode: BindingMode.TwoWay);
 
         public new bool IsEnabled
@@ -378,14 +384,139 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-            lblLeft.VerticalOptions = TextVerticalOptions;
-            lblRight.VerticalOptions = TextVerticalOptions;
-            _container.Spacing = Spacing;
+            var mainContainer = new StackLayout()
+            {
+                Spacing = 0,
+                Margin = 0,
+                Padding = 0
+            };
+
+            _container = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal,
+                Spacing = Spacing
+            };
+
+            _switchGrid = new Grid();
+
+            _backgroundFrame = new MaterialCard()
+            {
+                Padding = new Thickness(0),
+                CornerRadius = 15,
+                CornerRadiusBottomLeft = true,
+                CornerRadiusTopLeft = true,
+                CornerRadiusBottomRight = true,
+                CornerRadiusTopRight = true,
+                HasShadow = false,
+                HeightRequest = 32,
+                HorizontalOptions = LayoutOptions.Center,
+                IsClippedToBounds = true,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 52,
+                BackgroundColor = BackgroundColor
+            };
+
+            _thumbFrame = new MaterialCard()
+            {
+                Padding = new Thickness(0),
+                CornerRadius = 12,
+                CornerRadiusBottomLeft = true,
+                CornerRadiusTopLeft = true,
+                CornerRadiusBottomRight = true,
+                CornerRadiusTopRight = true,
+                HasShadow = false,
+                HeightRequest = 24,
+                HorizontalOptions = LayoutOptions.Center,
+                IsClippedToBounds = true,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 24,
+                Margin = new Thickness(1, 0, 1, 0)
+            };
+
+            _imgIcon = new CustomImage()
+            {
+                IsVisible = false,
+                WidthRequest = 22,
+                HeightRequest = 22,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center
+            };
+
+            _thumbFrame.Content = _imgIcon;
+
+            _switchGrid.Children.Add(_backgroundFrame);
+            _switchGrid.Children.Add(_thumbFrame);
+
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) =>
+            {
+                SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
+                if (_currentState == SwitchStateEnum.Right)
+                    GoToLeft();
+                else
+                    GoToRight();
+
+                Toggled?.Invoke(this, new ToggledEventArgs((bool)IsToggled));
+                ToggledCommand?.Execute((bool)IsToggled);
+            };
+
+            var contentViewGesture = new ContentView();
+            contentViewGesture.GestureRecognizers.Add(tapGestureRecognizer);
+            _switchGrid.Children.Add(contentViewGesture);
+
+            _lblLeft = new MaterialLabel()
+            {
+                IsVisible = TextSide == TextSide.Left,
+                TextColor = TextColor,
+                FontFamily = FontFamily,
+                FontSize = FontSize,
+                HorizontalOptions = TextHorizontalOptions,
+                VerticalOptions = TextVerticalOptions
+            };
+
+            _lblRight = new MaterialLabel()
+            {
+                IsVisible = TextSide == TextSide.Right,
+                TextColor = TextColor,
+                FontFamily = FontFamily,
+                FontSize = FontSize,
+                HorizontalOptions = TextHorizontalOptions,
+                VerticalOptions = TextVerticalOptions
+            };
+
+            _container.Children.Add(_lblLeft);
+            _container.Children.Add(_switchGrid);
+            _container.Children.Add(_lblRight);
+
+            _lblSupportingText = new MaterialLabel()
+            {
+                IsVisible = false,
+                LineBreakMode = LineBreakMode.NoWrap,
+                HorizontalTextAlignment = TextAlignment.Start,
+                TextColor = SupportingTextColor,
+                FontSize = SupportingSize,
+                FontFamily = SupportingFontFamily,
+                Margin = SupportingMargin
+            };
+
+            mainContainer.Children.Add(_container);
+            mainContainer.Children.Add(_lblSupportingText);
+
+            SwitchPanUpdate += (sender, e) =>
+            {
+                //Color Animation
+                var fromColor = IsToggled ? (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor) : (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor);
+                var toColor = IsToggled ? (IsEnabled ? BackgroundOnUnselectedColor : DisabledBackgroundOnUnselectedColor) : (IsEnabled ? BackgroundOnSelectedColor : DisabledBackgroundOnSelectedColor);
+                var t = e.Percentage * 0.01;
+                BackgroundColor = ColorAnimationUtil.ColorAnimation(fromColor, toColor, t);
+            };
 
             // View
-            this.SetBaseWidthRequest(Math.Max(this.BackgroundFrame.WidthRequest, this.ThumbFrame.WidthRequest * 2));
-            this._xRef = ((this.BackgroundFrame.WidthRequest - this.ThumbFrame.WidthRequest) / 2) - 5;
-            this.ThumbFrame.TranslationX = this._currentState == SwitchStateEnum.Left ? -this._xRef : this._xRef;
+            this.SetBaseWidthRequest(Math.Max(this._backgroundFrame.WidthRequest, this._thumbFrame.WidthRequest * 2));
+            this._xRef = ((this._backgroundFrame.WidthRequest - this._thumbFrame.WidthRequest) / 2) - 5;
+            this._thumbFrame.TranslationX = this._currentState == SwitchStateEnum.Left ? -this._xRef : this._xRef;
+
+            this.Content = mainContainer;
         }
 
         private static void IsToggledChanged(BindableObject bindable, object oldValue, object newValue)
@@ -401,19 +532,19 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void GoToLeft(double percentage = 0.0)
         {
-            if (Math.Abs(ThumbFrame.TranslationX + _xRef) > 0.0)
+            if (Math.Abs(_thumbFrame.TranslationX + _xRef) > 0.0)
             {
                 this.AbortAnimation("SwitchAnimation");
                 new Animation
                 {
-                    {0, 1, new Animation(v => ThumbFrame.TranslationX = v, ThumbFrame.TranslationX, -_xRef)},
+                    {0, 1, new Animation(v => _thumbFrame.TranslationX = v, _thumbFrame.TranslationX, -_xRef)},
                     {0, 1, new Animation(_ => SendSwitchPanUpdatedEventArgs(PanStatusEnum.Running))}
                 }.Commit(this, "SwitchAnimation", 16, Convert.ToUInt32(_toggleAnimationDuration - (_toggleAnimationDuration * percentage / 100)), null, (_, __) =>
                 {
                     this.AbortAnimation("SwitchAnimation");
                     _currentState = SwitchStateEnum.Left;
                     IsToggled = false;
-                    ThumbFrame.BackgroundColor = IsEnabled ? ThumbUnselectedColor : DisabledThumbUnselectedColor;
+                    _thumbFrame.BackgroundColor = IsEnabled ? ThumbUnselectedColor : DisabledThumbUnselectedColor;
                     SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
                 });
             }
@@ -422,53 +553,47 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.AbortAnimation("SwitchAnimation");
                 _currentState = SwitchStateEnum.Left;
                 IsToggled = false;
-                ThumbFrame.BackgroundColor = IsEnabled ? ThumbUnselectedColor : DisabledThumbUnselectedColor;
+                _thumbFrame.BackgroundColor = IsEnabled ? ThumbUnselectedColor : DisabledThumbUnselectedColor;
                 SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
             }
 
             if (_reduceThumbSize)
             {
-                this.imgIcon.IsVisible = false;
+                this._imgIcon.IsVisible = false;
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
                     await SizeTo(_reduceTo);
                 });
             }
             else
-            {
                 SetUnselectedIconSource();
-            }
         }
 
         private void SetUnselectedIconSource()
         {
             if (CustomUnselectedIcon != null)
-            {
-                this.imgIcon.SetCustomImage(CustomUnselectedIcon);
-            }
+                _imgIcon.SetCustomImage(CustomUnselectedIcon);
             else if (!string.IsNullOrWhiteSpace(UnselectedIcon))
-            {
-                this.imgIcon.SetImage(UnselectedIcon);
-            }
+                _imgIcon.SetImage(UnselectedIcon);
         }
 
         private void GoToRight(double percentage = 0.0)
         {
-            if (Math.Abs(ThumbFrame.TranslationX - _xRef) > 0.0)
+            if (Math.Abs(_thumbFrame.TranslationX - _xRef) > 0.0)
             {
                 this.AbortAnimation("SwitchAnimation");
 
                 IsToggled = true;
                 new Animation
                 {
-                    {0, 1, new Animation(v => ThumbFrame.TranslationX = v, ThumbFrame.TranslationX, _xRef)},
+                    {0, 1, new Animation(v => _thumbFrame.TranslationX = v, _thumbFrame.TranslationX, _xRef)},
                     {0, 1, new Animation(_ => SendSwitchPanUpdatedEventArgs(PanStatusEnum.Running))}
                 }.Commit(this, "SwitchAnimation", 16, Convert.ToUInt32(_toggleAnimationDuration - (_toggleAnimationDuration * percentage / 100)), null, (_, __) =>
                 {
                     this.AbortAnimation("SwitchAnimation");
                     _currentState = SwitchStateEnum.Right;
                     IsToggled = true;
-                    ThumbFrame.BackgroundColor = IsEnabled ? ThumbSelectedColor : DisabledThumbSelectedColor;
+                    _thumbFrame.BackgroundColor = IsEnabled ? ThumbSelectedColor : DisabledThumbSelectedColor;
                     SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
                 });
             }
@@ -477,7 +602,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.AbortAnimation("SwitchAnimation");
                 _currentState = SwitchStateEnum.Right;
                 IsToggled = true;
-                ThumbFrame.BackgroundColor = IsEnabled ? ThumbSelectedColor : DisabledThumbSelectedColor;
+                _thumbFrame.BackgroundColor = IsEnabled ? ThumbSelectedColor : DisabledThumbSelectedColor;
                 SendSwitchPanUpdatedEventArgs(PanStatusEnum.Completed);
             }
 
@@ -486,57 +611,37 @@ namespace Plugin.MaterialDesignControls.Material3
                 Device.InvokeOnMainThreadAsync(async () =>
                 {
                     await SizeTo(_increazeTo);
-                    this.imgIcon.IsVisible = true;
+                    this._imgIcon.IsVisible = true;
                     SetSelectedIconSource();
                 });
             }
             else
-            {
                 SetSelectedIconSource();
-            }
         }
 
         private void SetSelectedIconSource()
         {
             if (CustomSelectedIcon != null)
-            {
-                this.imgIcon.SetCustomImage(CustomSelectedIcon);
-            }
+                _imgIcon.SetCustomImage(CustomSelectedIcon);
             else if (!string.IsNullOrWhiteSpace(SelectedIcon))
-            {
-                this.imgIcon.SetImage(SelectedIcon);
-            }
+                _imgIcon.SetImage(SelectedIcon);
         }
 
         private void SendSwitchPanUpdatedEventArgs(PanStatusEnum status)
         {
-            SwitchPanUpdatedEventArgs ev = new SwitchPanUpdatedEventArgs
+            var eventArgs = new SwitchPanUpdatedEventArgs
             {
                 XRef = _xRef,
                 IsToggled = IsToggled,
-                TranslateX = ThumbFrame.TranslationX,
+                TranslateX = _thumbFrame.TranslationX,
                 Status = status,
                 Percentage = IsToggled
-                    ? Math.Abs(ThumbFrame.TranslationX - _xRef) / (2 * _xRef) * 100
-                    : Math.Abs(ThumbFrame.TranslationX + _xRef) / (2 * _xRef) * 100
+                    ? Math.Abs(_thumbFrame.TranslationX - _xRef) / (2 * _xRef) * 100
+                    : Math.Abs(_thumbFrame.TranslationX + _xRef) / (2 * _xRef) * 100
             };
 
-            if (!double.IsNaN(ev.Percentage))
-            {
-                SwitchPanUpdate?.Invoke(this, ev);
-            }
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            SendSwitchPanUpdatedEventArgs(PanStatusEnum.Started);
-            if (_currentState == SwitchStateEnum.Right)
-                GoToLeft();
-            else
-                GoToRight();
-
-            Toggled?.Invoke(this, new ToggledEventArgs((bool)IsToggled));
-            ToggledCommand?.Execute((bool)IsToggled);
+            if (!double.IsNaN(eventArgs.Percentage))
+                SwitchPanUpdate?.Invoke(this, eventArgs);
         }
 
         private void SetBaseWidthRequest(double widthRequest)
@@ -557,7 +662,6 @@ namespace Plugin.MaterialDesignControls.Material3
             if (!_initialized)
             {
                 _initialized = true;
-                InitializeComponent();
                 Initialize();
             }
 
@@ -572,8 +676,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(Text):
-                    lblLeft.Text = Text;
-                    lblRight.Text = Text;
+                    _lblLeft.Text = Text;
+                    _lblRight.Text = Text;
                     break;
 
                 case nameof(TextColor):
@@ -583,74 +687,73 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(FontSize):
-                    lblLeft.FontSize = FontSize;
-                    lblRight.FontSize = FontSize;
+                    _lblLeft.FontSize = FontSize;
+                    _lblRight.FontSize = FontSize;
                     break;
 
                 case nameof(FontFamily):
-                    lblLeft.FontFamily = FontFamily;
-                    lblRight.FontFamily = FontFamily;
+                    _lblLeft.FontFamily = FontFamily;
+                    _lblRight.FontFamily = FontFamily;
                     break;
 
                 case nameof(TextVerticalOptions):
-                    lblLeft.VerticalOptions = TextVerticalOptions;
-                    lblRight.VerticalOptions = TextVerticalOptions;
+                    _lblLeft.VerticalOptions = TextVerticalOptions;
+                    _lblRight.VerticalOptions = TextVerticalOptions;
                     break;
 
                 case nameof(TextSide):
                     if (TextSide == TextSide.Right)
                     {
-                        lblLeft.IsVisible = false;
-                        lblRight.Text = Text;
-                        lblRight.IsVisible = true;
+                        _lblLeft.IsVisible = false;
+                        _lblRight.Text = Text;
+                        _lblRight.IsVisible = true;
                     }
                     else
                     {
-                        lblRight.IsVisible = false;
-                        lblLeft.Text = Text;
-                        lblLeft.IsVisible = true;
+                        _lblRight.IsVisible = false;
+                        _lblLeft.Text = Text;
+                        _lblLeft.IsVisible = true;
                     }
                     break;
 
                 case nameof(IsEnabled):
-                    sw.IsEnabled = IsEnabled;
+                    _switchGrid.IsEnabled = IsEnabled;
                     SetTextColor();
                     LoadControl();
                     break;
 
                 case nameof(SupportingText):
-                    lblSupportingText.Text = SupportingText;
-                    lblSupportingText.IsVisible = !string.IsNullOrEmpty(SupportingText);
+                    _lblSupportingText.Text = SupportingText;
+                    _lblSupportingText.IsVisible = !string.IsNullOrEmpty(SupportingText);
                     if (AnimateError && !string.IsNullOrEmpty(SupportingText))
                         ShakeAnimation.Animate(this);
                     break;
 
                 case nameof(SupportingTextColor):
-                    lblSupportingText.TextColor = SupportingTextColor;
+                    _lblSupportingText.TextColor = SupportingTextColor;
                     break;
 
                 case nameof(SupportingSize):
-                    lblSupportingText.FontSize = SupportingSize;
+                    _lblSupportingText.FontSize = SupportingSize;
                     break;
 
                 case nameof(SupportingFontFamily):
-                    lblSupportingText.FontFamily = SupportingFontFamily;
+                    _lblSupportingText.FontFamily = SupportingFontFamily;
                     break;
 
                 case nameof(SupportingMargin):
-                    lblSupportingText.Margin = SupportingMargin;
+                    _lblSupportingText.Margin = SupportingMargin;
                     break;
 
                 case nameof(TextHorizontalOptions):
                     if (TextSide == TextSide.Left)
-                        lblLeft.HorizontalOptions = TextHorizontalOptions;
+                        _lblLeft.HorizontalOptions = TextHorizontalOptions;
                     else
-                        lblRight.HorizontalOptions = TextHorizontalOptions;
+                        _lblRight.HorizontalOptions = TextHorizontalOptions;
                     break;
 
                 case nameof(SwitchHorizontalOptions):
-                    sw.HorizontalOptions = SwitchHorizontalOptions;
-                    sw.HorizontalOptions = SwitchHorizontalOptions;
+                    _switchGrid.HorizontalOptions = SwitchHorizontalOptions;
                     break;
 
                 case nameof(Spacing):
@@ -658,49 +761,48 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(BackgroundColor):
-                    BackgroundFrame.BackgroundColor = BackgroundColor;
+                    _backgroundFrame.BackgroundColor = BackgroundColor;
                     break;
 
                 case nameof(UnselectedIcon):
                     if (!string.IsNullOrEmpty(UnselectedIcon))
-                        this.imgIcon.SetImage(UnselectedIcon);
+                        this._imgIcon.SetImage(UnselectedIcon);
 
-                    this.imgIcon.IsVisible = !_reduceThumbSize && !IsToggled;
+                    this._imgIcon.IsVisible = !_reduceThumbSize && !IsToggled;
                     break;
                 case nameof(CustomUnselectedIcon):
                     if (CustomUnselectedIcon != null)
-                        this.imgIcon.SetCustomImage(CustomUnselectedIcon);
+                        this._imgIcon.SetCustomImage(CustomUnselectedIcon);
 
-                    this.imgIcon.IsVisible = !_reduceThumbSize && !IsToggled;
+                    this._imgIcon.IsVisible = !_reduceThumbSize && !IsToggled;
                     break;
 
                 case nameof(SelectedIcon):
                     if (!string.IsNullOrEmpty(SelectedIcon))
-                        this.imgIcon.SetImage(SelectedIcon);
+                        this._imgIcon.SetImage(SelectedIcon);
 
-                    this.imgIcon.IsVisible = IsToggled;
+                    this._imgIcon.IsVisible = IsToggled;
                     break;
                 case nameof(CustomSelectedIcon):
                     if (CustomSelectedIcon != null)
-                        this.imgIcon.SetCustomImage(CustomSelectedIcon);
+                        this._imgIcon.SetCustomImage(CustomSelectedIcon);
 
-                    this.imgIcon.IsVisible = IsToggled;
+                    this._imgIcon.IsVisible = IsToggled;
                     break;
             }
         }
 
         private void SetTextColor()
         {
-            lblLeft.TextColor = IsEnabled ? TextColor : DisabledTextColor;
-            lblRight.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+            _lblLeft.TextColor = IsEnabled ? TextColor : DisabledTextColor;
+            _lblRight.TextColor = IsEnabled ? TextColor : DisabledTextColor;
         }
 
         private async Task SizeTo(double scale)
         {
             uint length = 200;
-            Easing easing = Easing.Linear;
-
-            await ThumbFrame.ScaleTo(scale, length, easing);
+            var easing = Easing.Linear;
+            await _thumbFrame.ScaleTo(scale, length, easing);
         }
 
         #endregion Methods

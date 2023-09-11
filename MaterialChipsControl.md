@@ -86,26 +86,6 @@ This property is to set if the trailing icon is visible.
 <br/>
 <br/>
 
-### Property LeadingIconCommand:
-This property is to set the leading command.
-<br/>
-<br/>
-
-### Property LeadingIconCommandParameter:
-This property is to set the leading command parameter.
-<br/>
-<br/>
-
-### Property TrailingIconCommand:
-This property is to set the trailing command.
-<br/>
-<br/>
-
-### Property TrailingIconCommandParameter:
-This property is to set the trailing command parameter.
-<br/>
-<br/>
-
 ### Property Text:
 This property is to set the MaterialChips text.
 <br/>

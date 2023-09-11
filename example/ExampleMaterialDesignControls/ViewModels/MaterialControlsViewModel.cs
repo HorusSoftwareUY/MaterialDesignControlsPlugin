@@ -1,4 +1,4 @@
-﻿using System.Windows.Input;
+using System.Windows.Input;
 using ExampleMaterialDesignControls.Pages;
 using Xamarin.Forms;
 
@@ -109,8 +109,8 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialTopAppBarCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialTopAppBarPage());
-        });
-
+        });
+
         public ICommand GoMaterialProgressIndicatorCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialProgressIndicatorPage());
@@ -127,7 +127,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         });
 
         public ICommand GoMaterialBadgeCommand => new Command(async () =>
-        {
+        {
             await Navigation.PushAsync(new MaterialBadgePage());
         });
 
@@ -143,7 +143,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand GoMaterialSnackbarCommand => new Command(async () =>
         {
-            await DisplayAlert("MaterialSnackbar", "Comming Soon!", "Ok");
+            await Navigation.PushAsync(new MaterialSnackBarPage());
         });
 
         public ICommand GoMaterialDialogCommand => new Command(async () =>

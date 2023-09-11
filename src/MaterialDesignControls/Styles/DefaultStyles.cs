@@ -20,7 +20,7 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static Color OnSurfaceVariantColor { get; set; } = Color.FromHex("#49454F");
 
-        public static Color ErrorColor { get; set; } = Color.FromHex("B3261E");
+        public static Color ErrorColor { get; set; } = Color.FromHex("#B3261E");
 
         public static Color DisableColor { get; set; } = Color.FromHex("#9791A1");
 
@@ -29,6 +29,8 @@ namespace Plugin.MaterialDesignControls.Styles
         public static Color OutlineColor { get; set; } = Color.FromHex("#79747E");
 
         public static Color OutlineVariantColor { get; set; } = Color.FromHex("#CAC4D0");
+
+        public static Color ShadowColor { get; set; } = Color.FromHex("#000000");
 
         public static double AnimationParameter { get; set; } = 0.7;
 
