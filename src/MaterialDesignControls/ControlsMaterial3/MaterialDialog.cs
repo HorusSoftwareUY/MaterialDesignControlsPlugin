@@ -1,12 +1,10 @@
-﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Material3.Implementations;
+﻿using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -35,8 +33,6 @@ namespace Plugin.MaterialDesignControls.Material3
         private MaterialButton _acceptBtn;
 
         private MaterialSearch _materialSearch;
-
-        private MaterialCheckbox _materialCheckBox;
 
         #endregion Attributes
 
@@ -666,207 +662,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     _acceptBtn.CommandParameter = AcceptCommandParameter;
                     break;
 
-                //case nameof(IsEnabled):
-                //    CustomContent.SetIsEnabled(IsEnabled);
-
-                //    if (!IsEnabled)
-                //        CustomContent.SetTextColor(DisabledTextColor);
-                //    else if (CustomContent.IsControlFocused())
-                //        CustomContent.SetTextColor(FocusedTextColor);
-                //    else
-                //        CustomContent.SetTextColor(HeadlineColor);
-
-                //    SetLabelTextColor();
-                //    this._lblLabel.TextColor = LabelTextColor;
-                //    SetBorderAndBackgroundColors();
-                //    break;
-                //case nameof(HeadlineColor):
-                //    if (!IsEnabled)
-                //        CustomContent.SetTextColor(DisabledTextColor);
-                //    else if (CustomContent.IsControlFocused())
-                //        CustomContent.SetTextColor(FocusedTextColor);
-                //    else
-                //        CustomContent.SetTextColor(HeadlineColor);
-                //    break;
-                //case nameof(HeadlineFontFamily):
-                //    CustomContent.SetFontSize(HeadlineFontFamily);
-                //    SetAnimatedLabel();
-                //    break;
-                //case nameof(HeadlineFontFamily):
-                //case nameof(LabelFontFamily):
-                //case nameof(SupportingTextFontFamily):
-                //    CustomContent.SetFontFamily(HeadlineFontFamily);
-
-                //    if (LabelFontFamily != null)
-                //        this._lblLabel.FontFamily = LabelFontFamily;
-                //    else if (LabelFontFamily == null && HeadlineFontFamily != null)
-                //        this._lblLabel.FontFamily = HeadlineFontFamily;
-
-                //    if (SupportingTextFontFamily != null)
-                //        this._lblSupporting.FontFamily = SupportingTextFontFamily;
-                //    else if (SupportingTextFontFamily == null && HeadlineFontFamily != null)
-                //        this._lblSupporting.FontFamily = HeadlineFontFamily;
-                //    break;
-                //case nameof(Placeholder):
-                //    CustomContent.SetPlaceholder(Placeholder);
-                //    SetAnimatedLabel();
-                //    break;
-                //case nameof(PlaceholderColor):
-                //    CustomContent.SetPlaceholderColor(PlaceholderColor);
-                //    SetAnimatedLabel();
-                //    break;
-                //case nameof(LabelText):
-                //    this._lblLabel.Text = LabelText;
-                //    this._lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
-                //    SetAnimatedLabel();
-                //    break;
-                //case nameof(LabelTextColor):
-                //    SetLabelTextColor();
-                //    break;
-                //case nameof(LabelSize):
-                //    this._lblLabel.FontSize = LabelSize;
-                //    break;
-                //case nameof(LabelMargin):
-                //    this._lblLabel.Margin = LabelMargin;
-                //    break;
-                //case nameof(Padding):
-                //    _frmContainer.Padding = this.Padding;
-                //    break;
-                //case nameof(CornerRadius):
-                //    if (HasBorder)
-                //    {
-                //        this._frmContainer.CornerRadius = CornerRadius;
-                //    }
-                //    break;
-                //case nameof(BackgroundColor):
-                //case nameof(BorderColor):
-                //case nameof(IndicatorColor):
-                //    SetBorderAndBackgroundColors();
-                //    break;
-                //case nameof(SupportingText):
-                //    this._lblSupporting.Text = SupportingText;
-                //    this._lblSupporting.IsVisible = !string.IsNullOrEmpty(SupportingText);
-                //    if (AnimateError && !string.IsNullOrEmpty(SupportingText))
-                //        ShakeAnimation.Animate(this);
-                //    break;
-                //case nameof(SupportingTextColor):
-                //    this._lblSupporting.TextColor = SupportingTextColor;
-                //    break;
-                //case nameof(SupportingTextFontSize):
-                //    this._lblSupporting.FontSize = SupportingTextFontSize;
-                //    break;
-                //case nameof(SupportingMargin):
-                //    this._lblSupporting.Margin = SupportingMargin;
-                //    break;
-
-                //case nameof(LeadingIcon):
-                //    if (!string.IsNullOrEmpty(LeadingIcon))
-                //        this._leadingIconButton.SetImage(LeadingIcon);
-
-                //    this._leadingIconButton.IsVisible = LeadingIconIsVisible;
-                //    break;
-                //case nameof(CustomLeadingIcon):
-                //    if (CustomLeadingIcon != null)
-                //        this._leadingIconButton.SetCustomImage(CustomLeadingIcon);
-
-                //    this._leadingIconButton.IsVisible = LeadingIconIsVisible;
-                //    break;
-
-                //case nameof(LeadingIconCommandParameter):
-                //    if (LeadingIconCommandParameter != null)
-                //    {
-                //        this._leadingIconButton.CommandParameter = LeadingIconCommandParameter;
-                //    }
-                //    break;
-
-                //case nameof(LeadingIconCommand):
-                //    if (LeadingIconCommand != null)
-                //    {
-                //        this._leadingIconButton.Command = LeadingIconCommand;
-                //    }
-                //    break;
-
-                //case nameof(Icon):
-                //    if (!string.IsNullOrEmpty(Icon))
-                //        this._trailingIconButton.SetImage(Icon);
-
-                //    this._trailingIconButton.IsVisible = TrailingIconIsVisible;
-                //    break;
-                //case nameof(CustomIcon):
-                //    if (CustomIcon != null)
-                //        this._trailingIconButton.SetCustomImage(CustomIcon);
-
-                //    this._trailingIconButton.IsVisible = TrailingIconIsVisible;
-                //    break;
-                //case nameof(TrailingIconCommand):
-                //    if (TrailingIconCommand != null)
-                //    {
-                //        this._trailingIconButton.Command = TrailingIconCommand;
-                //    }
-                //    break;
-
-                //case nameof(TrailingIconCommandParameter):
-                //    if (TrailingIconCommandParameter != null)
-                //    {
-                //        this._trailingIconButton.CommandParameter = TrailingIconCommandParameter;
-                //    }
-                //    break;
-
-                //case nameof(HorizontalTextAlignment):
-                //    CustomContent.SetHorizontalTextAlignment(HorizontalTextAlignment);
-                //    this._lblLabel.HorizontalTextAlignment = HorizontalTextAlignment;
-                //    this._lblSupporting.HorizontalTextAlignment = HorizontalTextAlignment;
-                //    break;
-
-                //case nameof(HasBorder):
-                //    SetHasBorder();
-                //    break;
-
-                //case nameof(iOSBorderWidth):
-                //    this._frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
-                //    break;
-
-                //case nameof(CornerRadiusBottomLeft):
-                //    if (HasBorder)
-                //    {
-                //        this._frmContainer.CornerRadiusBottomLeft = CornerRadiusBottomLeft;
-                //    }
-                //    break;
-
-                //case nameof(CornerRadiusBottomRight):
-                //    if (HasBorder)
-                //    {
-                //        this._frmContainer.CornerRadiusBottomRight = CornerRadiusBottomRight;
-                //    }
-                //    break;
-
-                //case nameof(CornerRadiusTopRight):
-                //    if (HasBorder)
-                //    {
-                //        this._frmContainer.CornerRadiusTopRight = CornerRadiusTopRight;
-                //    }
-                //    break;
-
-                //case nameof(CornerRadiusTopLeft):
-                //    if (HasBorder)
-                //    {
-                //        this._frmContainer.CornerRadiusTopLeft = CornerRadiusTopLeft;
-                //    }
-                //    break;
-
-                //case nameof(AnimatePlaceholder):
-                //    this._lblLabel.IsVisible = !AnimatePlaceHolderAsLabel;
-                //    SetAnimatedLabel();
-                //    break;
-
-                //case nameof(this.LabelLineBreakMode):
-                //    this._lblLabel.LineBreakMode = this.LabelLineBreakMode;
-                //    break;
-
-                //case nameof(this.SupportingLineBreakMode):
-                //    this._lblSupporting.LineBreakMode = this.SupportingLineBreakMode;
-                //    break;
-
                 default:
                     base.OnPropertyChanged(propertyName);
                     break;
@@ -876,19 +671,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-            /*
-                    private StackLayout _btnsContainer;
-
-                    private MaterialButton _cancelBtn;
-
-                    private MaterialButton _acceptBtn;
-
-                    private MaterialSearch _materialSearch;
-
-                    private MaterialCheckbox _materialCheckBox;
-             
-             */
-
             var mainContainer = new StackLayout()
             {
                 Spacing = 0
@@ -964,6 +746,13 @@ namespace Plugin.MaterialDesignControls.Material3
             };
 
             container.Children.Add(_divider);
+
+            /*
+        private MaterialSearch _materialSearch;
+
+        private MaterialCheckbox _materialCheckBox;
+
+ */
 
             //TODO: options logic
 
