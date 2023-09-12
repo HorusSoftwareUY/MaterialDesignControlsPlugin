@@ -148,7 +148,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand GoMaterialDialogCommand => new Command(async () =>
         {
-            await DisplayAlert("MaterialDialog", "Comming Soon!", "Ok");
+            await Navigation.PushAsync(new MaterialDialogPage());
         });
     }
 }
