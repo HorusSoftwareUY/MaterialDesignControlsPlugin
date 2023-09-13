@@ -65,6 +65,9 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
             this.Control.AddConstraints(hConstraints);
             this.Control.AddConstraints(vConstraints);
 
+            if (element.CursorColor.HasValue)
+                this.Control.TintColor = element.CursorColor.Value.ToUIColor();
+
             Control.LayoutManager.UsesDefaultHyphenation = false;
             Control.LayoutManager.AllowsNonContiguousLayout = false;
         }
@@ -79,19 +82,6 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 || e.PropertyName == MaterialEditor.FontFamilyProperty.PropertyName)
                 SetFont();
         }
-
-        //protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
-        //{
-
-        //    base.OnElementChanged(e);
-        //    if (this.Control != null)
-        //    {
-
-        //        this.Control.
-
-        //    }
-
-        //}
 
         private void SetFont()
         {

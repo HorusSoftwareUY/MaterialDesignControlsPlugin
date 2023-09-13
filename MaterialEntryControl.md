@@ -313,6 +313,11 @@ This property is to set the indicator color.
 <br/>
 <br/>
 
+### Property CursorColor:
+This property is to set the cursor color. **Only supported on iOS**
+<br/>
+<br/>
+
 ### Property BackgroundColor:
 This property is to set the background color.
 <br/>

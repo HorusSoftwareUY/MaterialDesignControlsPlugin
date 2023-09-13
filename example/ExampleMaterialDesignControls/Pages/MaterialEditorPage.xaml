@@ -124,6 +124,8 @@
                                               AnimateError="True"
                                               MaxLength="100"
                                               Placeholder="Enter your description"
+                                              PlaceholderColor="Violet"
+                                              CursorColor="Violet"
                                               Keyboard="Text"
                                               TabIndex="6">
                         <material3:MaterialEditor.FontFamily>
