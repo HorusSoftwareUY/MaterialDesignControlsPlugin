@@ -35,7 +35,12 @@
                     <material3:MaterialDialog  Icon="checkbox_checked.png"
                                                HeadlineText="Reset Settings?"
                                                SupportingText="this will reset your app preferences back to ther default settings. The following settings will be erased:"
-                                               AcceptText="Accept" />
+                                               AcceptText="Accept"
+                                               ShowDivider="True"
+                                               ShowSearch="True"
+                                               Options="{Binding Rigtones}"
+                                               AllowMultiselect="True"
+                                               SearchPlaceholder="Test Placeholder"/>
 
 
                 </StackLayout>

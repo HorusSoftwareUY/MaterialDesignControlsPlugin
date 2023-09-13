@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -33,6 +34,10 @@ namespace Plugin.MaterialDesignControls.Material3
         private MaterialButton _acceptBtn;
 
         private MaterialSearch _materialSearch;
+
+        private IEnumerable<string> _fullOptions;
+
+        private StackLayout _optionsContainer;
 
         #endregion Attributes
 
@@ -361,7 +366,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Search
         public static readonly BindableProperty OptionsProperty =
-            BindableProperty.Create(nameof(Options), typeof(IEnumerable<string>), typeof(MaterialChipsGroup), defaultValue: null, propertyChanged: OnOptionsChanged);
+            BindableProperty.Create(nameof(Options), typeof(IEnumerable<string>), typeof(MaterialDialog), defaultValue: null, propertyChanged: OnOptionsChanged);
 
         public IEnumerable<string> Options
         {
@@ -397,11 +402,11 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchTextAlignmentProperty =
-            BindableProperty.Create(nameof(SearchTextAlignment), typeof(LayoutOptions), typeof(MaterialDialog), defaultValue: LayoutOptions.Start);
+            BindableProperty.Create(nameof(SearchTextAlignment), typeof(TextAlignment), typeof(MaterialDialog), defaultValue: TextAlignment.Start);
 
-        public LayoutOptions SearchTextAlignment
+        public TextAlignment SearchTextAlignment
         {
-            get { return (LayoutOptions)GetValue(SearchTextAlignmentProperty); }
+            get { return (TextAlignment)GetValue(SearchTextAlignmentProperty); }
             set { SetValue(SearchTextAlignmentProperty, value); }
         }
 
@@ -514,6 +519,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (double)GetValue(ItemCheckboxSizeProperty); }
             set { SetValue(ItemCheckboxSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty SelectedItemProperty =
+            BindableProperty.Create(nameof(SelectedItem), typeof(string), typeof(MaterialDialog), defaultValue: null, propertyChanged: OnSelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
+
+        public string SelectedItem
+        {
+            get { return (string)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
         }
         #endregion Items
 
@@ -662,6 +676,30 @@ namespace Plugin.MaterialDesignControls.Material3
                     _acceptBtn.CommandParameter = AcceptCommandParameter;
                     break;
 
+                case nameof(ShowSearch):
+                    _materialSearch.IsVisible = ShowSearch;
+                    break;
+
+                case nameof(SearchPlaceholder):
+                    _materialSearch.Placeholder = SearchPlaceholder;
+                    break;
+
+                case nameof(SearchTextAlignment):
+                    _materialSearch.HorizontalTextAlignment = SearchTextAlignment;
+                    break;
+
+                case nameof(SearchTextColor):
+                    _materialSearch.TextColor = SearchTextColor;
+                    break;
+
+                case nameof(SearchTextFontSize):
+                    _materialSearch.FontSize = SearchTextFontSize;
+                    break;
+
+                case nameof(SearchTextFontFamily):
+                    _materialSearch.FontFamily = SearchTextFontFamily;
+                    break;
+
                 default:
                     base.OnPropertyChanged(propertyName);
                     break;
@@ -742,19 +780,28 @@ namespace Plugin.MaterialDesignControls.Material3
             _divider = new MaterialDivider()
             {
                 IsVisible = ShowDivider,
-                Color = DividerColor
+                Color = DividerColor,
+                Margin = new Thickness(0, 0, 0, 16),
             };
 
             container.Children.Add(_divider);
 
-            /*
-        private MaterialSearch _materialSearch;
+            _materialSearch = new MaterialSearch()
+            {
+                IsVisible = ShowSearch,
+                Placeholder = SearchPlaceholder,
+                HorizontalTextAlignment = SearchTextAlignment,
+                TextColor = SearchTextColor,
+                FontSize = SearchTextFontSize,
+                FontFamily = SearchTextFontFamily,
+                SearchCommand = new Command(OnSearchCommand)
+            };
 
-        private MaterialCheckbox _materialCheckBox;
+            container.Children.Add(_materialSearch);
 
- */
+            _optionsContainer = new StackLayout();
 
-            //TODO: options logic
+            container.Children.Add(_optionsContainer);
 
             _btnsContainer = new StackLayout()
             {
@@ -800,52 +847,35 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private static void OnOptionsChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MaterialChipsGroup)bindable;
-            //control.flexContainer.Children.Clear();
-            if (!Equals(newValue, null) && newValue is IEnumerable)
+            var control = (MaterialDialog)bindable;
+            control._optionsContainer.Children.Clear();
+
+            if (!Equals(newValue, null) && newValue is IEnumerable<string> list)
             {
-                foreach (var item in (IEnumerable)newValue)
+                if (control._fullOptions is null)
+                    control._fullOptions = new List<string>(list);
+
+                foreach (var item in list)
                 {
-                    var materialChips = new MaterialChips
-                    {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        Text = item.ToString(),
-                        FontSize = control.FontSize,
-                        FontFamily = control.FontFamily,
-                        CornerRadius = control.CornerRadius,
-                        Padding = control.ChipsPadding,
-                        Margin = control.ChipsMargin,
-                        BackgroundColor = control.BackgroundColor,
-                        TextColor = control.TextColor,
-                        SelectedBackgroundColor = control.SelectedBackgroundColor,
-                        SelectedTextColor = control.SelectedTextColor,
-                        DisabledBackgroundColor = control.DisabledBackgroundColor,
-                        DisabledTextColor = control.DisabledTextColor,
-                        DisabledSelectedBackgroundColor = control.DisabledSelectedBackgroundColor,
-                        DisabledSelectedTextColor = control.DisabledSelectedTextColor,
-                        IsEnabled = control.IsEnabled
-                    };
+                    var materialCheckbox = new MaterialCheckbox();
+                    materialCheckbox.Text = item.ToString();
+                    materialCheckbox.Command = new Command(() => SelectionCommand(control, materialCheckbox));
+                    materialCheckbox.Color = control.ItemCheckboxColor;
+                    materialCheckbox.TextColor = control.ItemTextColor;
+                    materialCheckbox.FontSize = control.ItemTextFontSize;
+                    materialCheckbox.FontFamily = control.ItemTextFontFamily;
+                    materialCheckbox.IsEnabled = control.IsEnabled;
+                    materialCheckbox.IconHeightRequest = control.ItemCheckboxSize;
+                    materialCheckbox.IconWidthRequest = control.ItemCheckboxSize;
+                    materialCheckbox.SelectedIcon = control.ItemCheckboxSelectedIcon;
+                    materialCheckbox.UnselectedIcon = control.ItemCheckboxUnselectedIcon;
+                    materialCheckbox.CustomSelectedIcon = control.ItemCheckboxCustomSelectedIcon;
+                    materialCheckbox.CustomUnselectedIcon = control.ItemCheckboxCustomUnselectedIcon;
 
-                    //if (control.ChipsHeightRequest != (double)ChipsHeightRequestProperty.DefaultValue)
-                    //    materialChips.HeightRequest = control.ChipsHeightRequest;
+                    if (control.SelectedItem != null && !control.AllowMultiselect)
+                        materialCheckbox.IsChecked = materialCheckbox.Text.Equals(control.SelectedItem);
 
-                    if (control.IsMultipleSelection)
-                    {
-                        if (control.SelectedItems != null && control.SelectedItems.Any())
-                            materialChips.IsSelected = control.SelectedItems.Contains(materialChips.Text);
-                    }
-                    else
-                    {
-                        if (control.SelectedItem != null)
-                            materialChips.IsSelected = materialChips.Text.Equals(control.SelectedItem);
-                    }
-
-                    //materialChips.Command = new Command(() => SelectionCommand(control, materialChips));
-
-                    //control.flexContainer.Children.Add(materialChips);
-
-                    if (control.ChipsFlexLayoutPercentageBasis > 0 && control.ChipsFlexLayoutPercentageBasis <= 1)
-                        FlexLayout.SetBasis(materialChips, new FlexBasis((float)control.ChipsFlexLayoutPercentageBasis, true));
+                    control._optionsContainer.Children.Add(materialCheckbox);
                 }
             }
         }
@@ -861,6 +891,51 @@ namespace Plugin.MaterialDesignControls.Material3
                 _icon.SetCustomImage(CustomIcon);
             else
                 _icon.SetImage(Icon);
+        }
+
+        private static void SelectionCommand(MaterialDialog materialDialog, MaterialCheckbox materialCheckbox)
+        {
+            if (!materialDialog.AllowMultiselect)
+            {
+                foreach (var item in materialDialog._optionsContainer.Children)
+                    ((MaterialCheckbox)item).IsChecked = false;
+
+                materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
+                materialDialog.SelectedItem = materialCheckbox.Text;
+            }
+            else
+            {
+                materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
+            }
+        }
+
+        private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialDialog)bindable;
+            if (control._optionsContainer.Children != null && control.SelectedItem != null && !control.AllowMultiselect)
+            {
+                foreach (var item in control._optionsContainer.Children)
+                    if (item != null && item is MaterialCheckbox)
+                        ((MaterialCheckbox)item).IsChecked = ((MaterialCheckbox)item).Text.Equals(control.SelectedItem);
+            }
+        }
+
+        private void OnSearchCommand()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                Options = new List<string>();
+                await Task.Delay(500);
+                if (string.IsNullOrWhiteSpace(_materialSearch.Text))
+                {
+                    Options = new List<string>(_fullOptions);
+                }
+                else
+                {
+                    var search = _fullOptions.Where(x => x.ToLower().Contains(_materialSearch.Text.ToLower()));
+                    Options = new List<string>(search);
+                }
+            });
         }
 
         #endregion Methods
