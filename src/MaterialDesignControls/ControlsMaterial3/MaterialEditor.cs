@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
+using Plugin.MaterialDesignControls.Styles;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -23,6 +24,8 @@ namespace Plugin.MaterialDesignControls.Material3
             this.txtEditor.Focused += HandleFocusChange;
             this.txtEditor.Unfocused += HandleFocusChange;
             this.txtEditor.TextChanged += TxtEntry_TextChanged;
+
+            this.txtEditor.CursorColor = CursorColor;
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped += (s, e) =>
@@ -97,6 +100,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (double)GetValue(HeightRequestProperty); }
             set { SetValue(HeightRequestProperty, value); }
+        }
+
+        public static readonly BindableProperty CursorColorProperty =
+            BindableProperty.Create(nameof(CursorColor), typeof(Color), typeof(MaterialEditor), defaultValue: DefaultStyles.PrimaryColor);
+
+        public Color CursorColor
+        {
+            get { return (Color)GetValue(CursorColorProperty); }
+            set { SetValue(CursorColorProperty, value); }
         }
 
         #endregion Properties
@@ -175,9 +187,11 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(this.IsTabStop):
                     this.txtEditor.IsTabStop = this.IsTabStop;
                     break;
-
                 case nameof(AutoSize):
                     this.txtEditor.AutoSize = AutoSize;
+                    break;
+                case nameof(CursorColor):
+                    this.txtEditor.CursorColor = CursorColor;
                     break;
             }
         }

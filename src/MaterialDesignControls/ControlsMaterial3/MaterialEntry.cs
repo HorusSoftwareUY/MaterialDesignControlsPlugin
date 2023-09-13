@@ -1,4 +1,5 @@
 using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 using Plugin.MaterialDesignControls.Utils;
 using System;
 using System.Runtime.CompilerServices;
@@ -26,6 +27,8 @@ namespace Plugin.MaterialDesignControls.Material3
             this.txtEntry.Focused += HandleFocusChange;
             this.txtEntry.Unfocused += HandleFocusChange;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
+
+            this.txtEntry.CursorColor = CursorColor;
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
             frameTapGestureRecognizer.Tapped +=  (s, e) =>
@@ -151,11 +154,20 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CursorPositionProperty, value); }
         }
 
+        public static readonly BindableProperty CursorColorProperty =
+            BindableProperty.Create(nameof(CursorColor), typeof(Color), typeof(MaterialEntry), defaultValue: DefaultStyles.PrimaryColor);
+
+        public Color CursorColor
+        {
+            get { return (Color)GetValue(CursorColorProperty); }
+            set { SetValue(CursorColorProperty, value); }
+        }
+
         #endregion Properties
 
         #region Events
 
-        public event EventHandler TextChanged;
+        public event EventHandler TextChanged;  
 
         public new event EventHandler<FocusEventArgs> Focused;
 
@@ -275,6 +287,9 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(this.IsCode):
                     this.txtEntry.IsCode = this.IsCode;
+                    break;
+                case nameof(this.CursorColor):
+                    this.txtEntry.CursorColor = this.CursorColor;
                     break;
             }
         }

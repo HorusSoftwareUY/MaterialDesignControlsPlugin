@@ -21,6 +21,8 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
 
         public bool IsControlFocused() => this.IsFocused;
 
+        public Color? CursorColor { get; set; } = null;
+
         public void SetFontFamily(string fontFamily)
         {
             this.FontFamily = fontFamily;
