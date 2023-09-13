@@ -27,6 +27,7 @@ namespace Plugin.MaterialDesignControls.Material3
             this.txtEntry.Focused += HandleFocusChange;
             this.txtEntry.Unfocused += HandleFocusChange;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
+
             this.txtEntry.CursorColor = CursorColor;
 
             TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
@@ -154,7 +155,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CursorColorProperty =
-            BindableProperty.Create(nameof(CursorColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Red);
+            BindableProperty.Create(nameof(CursorColor), typeof(Color), typeof(MaterialEntry), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color CursorColor
         {

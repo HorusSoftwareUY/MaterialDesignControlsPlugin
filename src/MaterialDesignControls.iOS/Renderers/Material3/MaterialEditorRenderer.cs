@@ -81,21 +81,7 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
             else if (e.PropertyName == MaterialEditor.FontSizeProperty.PropertyName
                 || e.PropertyName == MaterialEditor.FontFamilyProperty.PropertyName)
                 SetFont();
-
         }
-
-        //protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
-        //{
-
-        //    base.OnElementChanged(e);
-        //    if (this.Control != null)
-        //    {
-
-        //        this.Control.
-
-        //    }
-
-        //}
 
         private void SetFont()
         {
