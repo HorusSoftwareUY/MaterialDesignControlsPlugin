@@ -66,20 +66,20 @@ namespace Plugin.MaterialDesignControls.Styles
         public static FontSizes TabletFontSizes { get; set; } = new FontSizes
         {
             DisplayLarge = 80,
-            DisplayMedium = 64,
-            DisplaySmall = 48,
-            HeadlineLarge = 40,
-            HeadlineMedium = 34,
-            HeadlineSmall = 28,
+            DisplayMedium = 62,
+            DisplaySmall = 50,
+            HeadlineLarge = 44,
+            HeadlineMedium = 38,
+            HeadlineSmall = 32,
             TitleLarge = 26,
-            TitleMedium = 18,
-            TitleSmall = 16,
-            LabelLarge = 16,
-            LabelMedium = 13,
-            LabelSmall = 12,
-            BodyLarge = 18,
-            BodyMedium = 16,
-            BodySmall = 13
+            TitleMedium = 19,
+            TitleSmall = 17,
+            LabelLarge = 17,
+            LabelMedium = 15,
+            LabelSmall = 14,
+            BodyLarge = 19,
+            BodyMedium = 17,
+            BodySmall = 15
         };
     }
 
