@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace Plugin.MaterialDesignControls.Objects
+namespace Plugin.MaterialDesignControls.Material3
 {
     public class MaterialSegmentedItem
     {

@@ -25,7 +25,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private MaterialLabel _supportingLbl;
 
-        private MaterialDivider _divider;
+        private MaterialDivider _topDivider;
+
+        private MaterialDivider _bottomDivider;
 
         private StackLayout _btnsContainer;
 
@@ -35,7 +37,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private MaterialSearch _materialSearch;
 
-        private IEnumerable<string> _fullOptions;
+        private IEnumerable<MaterialDialogItem> _fullItems;
 
         private StackLayout _optionsContainer;
 
@@ -366,24 +368,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Search
 
-        public static readonly BindableProperty OptionsProperty =
-            BindableProperty.Create(nameof(Options), typeof(IEnumerable<string>), typeof(MaterialDialog), defaultValue: null, propertyChanged: OnOptionsChanged);
-
-        public IEnumerable<string> Options
-        {
-            get { return (IEnumerable<string>)GetValue(OptionsProperty); }
-            set { SetValue(OptionsProperty, value); }
-        }
-
-        public static readonly BindableProperty AllowMultiselectProperty =
-            BindableProperty.Create(nameof(AllowMultiselect), typeof(bool), typeof(MaterialDialog), defaultValue: false);
-
-        public bool AllowMultiselect
-        {
-            get { return (bool)GetValue(AllowMultiselectProperty); }
-            set { SetValue(AllowMultiselectProperty, value); }
-        }
-
         public static readonly BindableProperty ShowSearchProperty =
             BindableProperty.Create(nameof(ShowSearch), typeof(bool), typeof(MaterialDialog), defaultValue: false);
 
@@ -450,6 +434,24 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Search
 
         #region Items
+
+        public static readonly BindableProperty AllowMultiselectProperty =
+            BindableProperty.Create(nameof(AllowMultiselect), typeof(bool), typeof(MaterialDialog), defaultValue: false);
+
+        public bool AllowMultiselect
+        {
+            get { return (bool)GetValue(AllowMultiselectProperty); }
+            set { SetValue(AllowMultiselectProperty, value); }
+        }
+
+        public static readonly BindableProperty ItemsSourceProperty =
+            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<MaterialDialogItem>), typeof(MaterialDialog), defaultValue: null, propertyChanged: OnItemsSourceChanged);
+
+        public IEnumerable<MaterialDialogItem> ItemsSource
+        {
+            get { return (IEnumerable<MaterialDialogItem>)GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value); }
+        }
 
         public static readonly BindableProperty ItemTextColorProperty =
             BindableProperty.Create(nameof(ItemTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceColor);
@@ -530,15 +532,6 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (double)GetValue(ItemCheckboxSizeProperty); }
             set { SetValue(ItemCheckboxSizeProperty, value); }
-        }
-
-        public static readonly BindableProperty SelectedItemProperty =
-            BindableProperty.Create(nameof(SelectedItem), typeof(string), typeof(MaterialDialog), defaultValue: null, propertyChanged: OnSelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
-
-        public string SelectedItem
-        {
-            get { return (string)GetValue(SelectedItemProperty); }
-            set { SetValue(SelectedItemProperty, value); }
         }
 
         #endregion Items
@@ -631,11 +624,13 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(ShowDivider):
-                    _divider.IsVisible = ShowDivider;
+                    _topDivider.IsVisible = ShowDivider;
+                    _bottomDivider.IsVisible = ShowDivider && ItemsSource != null && ItemsSource.Any();
                     break;
 
                 case nameof(DividerColor):
-                    _divider.Color = DividerColor;
+                    _topDivider.Color = DividerColor;
+                    _bottomDivider.Color = DividerColor;
                     break;
 
                 case nameof(ButtonsAlignment):
@@ -725,7 +720,6 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-
         private void Initialize()
         {
             _mainContainer = new CustomFrame()
@@ -781,12 +775,18 @@ namespace Plugin.MaterialDesignControls.Material3
             };
             container.Children.Add(_supportingLbl);
 
-            _divider = new MaterialDivider()
+            var stackLayoutOptions = new StackLayout
+            {
+                Spacing = 0,
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
+
+            _topDivider = new MaterialDivider()
             {
                 IsVisible = ShowDivider,
                 Color = DividerColor
             };
-            container.Children.Add(_divider);
+            stackLayoutOptions.Children.Add(_topDivider);
 
             _materialSearch = new MaterialSearch()
             {
@@ -797,17 +797,33 @@ namespace Plugin.MaterialDesignControls.Material3
                 BackgroundColor = SearchBackgroundColor,
                 FontSize = SearchTextFontSize,
                 FontFamily = SearchTextFontFamily,
+                Margin = new Thickness(0, 8, 0, 0),
                 SearchOnEveryTextChange = true,
                 SearchCommand = new Command(OnSearchCommand)
             };
 
-            container.Children.Add(_materialSearch);
+            stackLayoutOptions.Children.Add(_materialSearch);
 
             _optionsContainer = new StackLayout
             {
                 IsVisible = false,
+                VerticalOptions = LayoutOptions.FillAndExpand
             };
-            container.Children.Add(_optionsContainer);
+            var scrollViewOptions = new ScrollView
+            {
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
+            scrollViewOptions.Content = _optionsContainer;
+            stackLayoutOptions.Children.Add(scrollViewOptions);
+
+            _bottomDivider = new MaterialDivider()
+            {
+                IsVisible = ShowDivider && ItemsSource != null && ItemsSource.Any(),
+                Color = DividerColor
+            };
+            stackLayoutOptions.Children.Add(_bottomDivider);
+
+            container.Children.Add(stackLayoutOptions);
 
             _btnsContainer = new StackLayout()
             {
@@ -849,20 +865,20 @@ namespace Plugin.MaterialDesignControls.Material3
             this.Content = _mainContainer;
         }
 
-        private static void OnOptionsChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialDialog)bindable;
             control._optionsContainer.Children.Clear();
 
-            if (!Equals(newValue, null) && newValue is IEnumerable<string> list)
+            if (!Equals(newValue, null) && newValue is IEnumerable<MaterialDialogItem> list)
             {
-                if (control._fullOptions is null)
-                    control._fullOptions = new List<string>(list);
+                if (control._fullItems is null)
+                    control._fullItems = new List<MaterialDialogItem>(list);
 
                 foreach (var item in list)
                 {
                     var materialCheckbox = new MaterialCheckbox();
-                    materialCheckbox.Text = item.ToString();
+                    materialCheckbox.Text = item.Text;
                     materialCheckbox.Command = new Command(() => SelectionCommand(control, materialCheckbox));
                     materialCheckbox.Color = control.ItemCheckboxColor;
                     materialCheckbox.TextColor = control.ItemTextColor;
@@ -875,15 +891,31 @@ namespace Plugin.MaterialDesignControls.Material3
                     materialCheckbox.UnselectedIcon = control.ItemCheckboxUnselectedIcon;
                     materialCheckbox.CustomSelectedIcon = control.ItemCheckboxCustomSelectedIcon;
                     materialCheckbox.CustomUnselectedIcon = control.ItemCheckboxCustomUnselectedIcon;
-
-                    if (control.SelectedItem != null && !control.AllowMultiselect)
-                        materialCheckbox.IsChecked = materialCheckbox.Text.Equals(control.SelectedItem);
-
+                    materialCheckbox.IsChecked = item.IsSelected;
                     control._optionsContainer.Children.Add(materialCheckbox);
                 }
+
+                if (control.AllowMultiselect)
+                    control._acceptBtn.CommandParameter = control.ItemsSource.Where(x => x.IsSelected).ToList();
+                else
+                    control._acceptBtn.CommandParameter = control.ItemsSource.FirstOrDefault(x => x.IsSelected);
             }
 
-            control._optionsContainer.IsVisible = true;
+            control._optionsContainer.IsVisible = control.ItemsSource != null && control.ItemsSource.Any();
+            control._bottomDivider.IsVisible = control.ShowDivider && control.ItemsSource != null && control.ItemsSource.Any();
+        }
+
+        private static string GetPropertyValue(object item, string propertyToSearch)
+        {
+            var properties = item.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                if (property.Name.Equals(propertyToSearch, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return property.GetValue(item, null).ToString();
+                }
+            }
+            return item.ToString();
         }
 
         private void SetIcon()
@@ -901,31 +933,32 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private static void SelectionCommand(MaterialDialog materialDialog, MaterialCheckbox materialCheckbox)
         {
-            if (!materialDialog.AllowMultiselect)
+            if (materialDialog.AllowMultiselect)
             {
-                foreach (var item in materialDialog._optionsContainer.Children)
-                    ((MaterialCheckbox)item).IsChecked = false;
+                var item = materialDialog.ItemsSource.FirstOrDefault(x => x.Text == materialCheckbox.Text);
+                if (item != null)
+                    item.IsSelected = materialCheckbox.IsChecked;
 
-                materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
-                materialDialog.SelectedItem = materialCheckbox.Text;
+                materialDialog._acceptBtn.CommandParameter = materialDialog.ItemsSource.Where(x => x.IsSelected).ToList();
             }
             else
-                materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
-
-            // TODO: VER COMO HACER ESTO DE PASAR EL PARAMETRO PARA ATRAS.
-            materialDialog._acceptBtn.CommandParameter = materialDialog.SelectedItem;
-        }
-
-        private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (MaterialDialog)bindable;
-            if (control._optionsContainer.Children != null && control.SelectedItem != null && !control.AllowMultiselect)
             {
-                foreach (var item in control._optionsContainer.Children)
+                foreach (var checkbox in materialDialog._optionsContainer.Children)
+                    ((MaterialCheckbox)checkbox).IsChecked = false;
+
+                foreach (var item in materialDialog.ItemsSource)
+                    item.IsSelected = false;
+
+                materialCheckbox.IsChecked = true;
+
+                var selectedItem = materialDialog.ItemsSource.FirstOrDefault(x => x.Text == materialCheckbox.Text);
+                if (selectedItem != null)
                 {
-                    if (item != null && item is MaterialCheckbox)
-                        ((MaterialCheckbox)item).IsChecked = ((MaterialCheckbox)item).Text.Equals(control.SelectedItem);
+                    selectedItem.IsSelected = true;
+                    materialDialog._acceptBtn.CommandParameter = selectedItem;
                 }
+                else
+                    materialDialog._acceptBtn.CommandParameter = null;
             }
         }
 
@@ -933,16 +966,14 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                Options = new List<string>();
+                ItemsSource = new List<MaterialDialogItem>();
                 await Task.Delay(500);
                 if (string.IsNullOrWhiteSpace(_materialSearch.Text))
-                {
-                    Options = new List<string>(_fullOptions);
-                }
+                    ItemsSource = new List<MaterialDialogItem>(_fullItems);
                 else
                 {
-                    var search = _fullOptions.Where(x => x.ToLower().Contains(_materialSearch.Text.ToLower()));
-                    Options = new List<string>(search);
+                    var search = _fullItems.Where(x => x.Text.ToLower().Contains(_materialSearch.Text.ToLower()));
+                    ItemsSource = new List<MaterialDialogItem>(search);
                 }
             });
         }

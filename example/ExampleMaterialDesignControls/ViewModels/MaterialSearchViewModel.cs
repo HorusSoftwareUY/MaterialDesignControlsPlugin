@@ -79,7 +79,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         [ICommand]
         private async Task Search(object param)
         {
-            ListStrings = new ObservableCollection<ItemSearchSample>(listStringFull.Where(x => x.ValueString.Contains(TextSearch)));
+            ListStrings = new ObservableCollection<ItemSearchSample>(listStringFull.Where(x => x.ValueString.ToLower().Contains(TextSearch.ToLower())));
         }
     }
     public class ItemSearchSample
