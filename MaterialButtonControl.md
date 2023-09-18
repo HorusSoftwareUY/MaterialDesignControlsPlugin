@@ -7,8 +7,7 @@ Buttons allow users to take actions, and make choices, with a single tap.
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button_preview.gif" width="300">
 
-## Example MaterialButton
-Using the control:
+## Example
 ```XML
 <material:MaterialButton
     Text="Save" 

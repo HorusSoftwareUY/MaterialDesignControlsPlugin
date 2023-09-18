@@ -24,7 +24,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private Plugin.MaterialDesignControls.Material3.MaterialButton _actionButton;
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: DefaultStyles.InverseSurfaceColor);
 
         public new Color BackgroundColor
         {
@@ -41,6 +41,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ShadowColorProperty, value); }
         }
 
+        public static readonly BindableProperty HasShadowProperty =
+            BindableProperty.Create(nameof(HasShadow), typeof(bool), typeof(MaterialSnackBar), defaultValue: true);
+
+        public bool HasShadow
+        {
+            get { return (bool)GetValue(HasShadowProperty); }
+            set { SetValue(HasShadowProperty, value); }
+        }
+
         public static readonly BindableProperty CornerRadiusProperty =
             BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(MaterialSnackBar), defaultValue: 4);
 
@@ -51,7 +60,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialButton), defaultValue: "Text");
 
         public string Text
         {
@@ -240,6 +249,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 TextColor = TextColor,
                 FontFamily = FontFamily,
                 FontSize = FontSize,
+                Text = Text
             };
 
             _actionButton = new MaterialButton()
@@ -287,7 +297,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 CornerRadius = CornerRadius,
                 IsClippedToBounds = true,
                 Content = _gridContainer,
-                HasShadow = true,
+                HasShadow = HasShadow,
                 ShadowColor = ShadowColor
             };
             Content = _mainContainer;
@@ -306,6 +316,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     _gridContainer.BackgroundColor = BackgroundColor;
                     break;
                 case nameof(ShadowColor):
+                    _mainContainer.ShadowColor = ShadowColor;
+                    break;
+                case nameof(HasShadow):
+                    _mainContainer.HasShadow = HasShadow;
                     break;
                 case nameof(CornerRadius):
                     _mainContainer.CornerRadius = CornerRadius;

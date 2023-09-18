@@ -7,7 +7,7 @@ This control is a custom implementation of a slider. You can customize some prop
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/slider.gif" width="300">
 
-## Example MaterialSlider
+## Example
 ```XML
 <material3:MaterialSlider
     LabelText="Slider"
@@ -16,7 +16,6 @@ This control is a custom implementation of a slider. You can customize some prop
     MaximumValue="100"
     MinimumValue="0" />
 ```
-
 <br/>
 
 ## Documentation

@@ -6,10 +6,7 @@ Chips are compact elements that represent an input, attribute, or action.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.gif" width="300">
 
-## Documentation
- 
-#### Example:
-
+## Example
 ```XML
 <material:MaterialChipsGroup
     LabelText="Colors *"
@@ -28,6 +25,8 @@ Chips are compact elements that represent an input, attribute, or action.
 ```
 <br/>
 <br/>
+
+## Documentation
 
 ### Property ToUpper:
 This property is to set the if you wanna change the text to upper case.

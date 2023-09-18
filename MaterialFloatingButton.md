@@ -6,7 +6,7 @@ This control is a custom implementation of a floating action button. You can cus
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.gif" width="300">
 
-## Example MaterialFloatingButton
+## Example
 ```XML
  <material:MaterialFloatingButton
     Icon="add_b.png"

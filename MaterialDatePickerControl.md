@@ -6,7 +6,7 @@ Date pickers let users select a date.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/date_picker.gif" width="300">
 
-## Example MaterialDatePicker
+## Example
 ```XML
 <material3:MaterialDatePicker 
     LabelText="Start date" 

@@ -6,7 +6,7 @@ TopAppBar displays information and actions at the top of a screen.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/topappbar_preview.png" width="300">
 
-## Example MaterialTopAppBar
+## Example
 ```XML
  <material3:MaterialTopAppBar
     HeadlineColor="Black"

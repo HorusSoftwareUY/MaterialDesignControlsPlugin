@@ -32,6 +32,8 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static Color ShadowColor { get; set; } = Color.FromHex("#000000");
 
+        public static Color InverseSurfaceColor { get; set; } = Color.FromHex("#322F35");
+
         public static double AnimationParameter { get; set; } = 0.7;
 
         public static AnimationTypes AnimationType { get; set; } = AnimationTypes.Fade;

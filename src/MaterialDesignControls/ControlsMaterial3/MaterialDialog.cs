@@ -17,7 +17,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool initialized = false;
 
-        private MaterialCard _contentLayout;
+        private CustomFrame _mainContainer;
 
         private CustomImage _icon;
 
@@ -44,12 +44,30 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static new readonly BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.PrimaryContainerColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
 
         public new Color BackgroundColor
         {
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
+        }
+
+        public static readonly BindableProperty ShadowColorProperty =
+            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.ShadowColor);
+
+        public Color ShadowColor
+        {
+            get { return (Color)GetValue(ShadowColorProperty); }
+            set { SetValue(ShadowColorProperty, value); }
+        }
+
+        public static readonly BindableProperty HasShadowProperty =
+            BindableProperty.Create(nameof(HasShadow), typeof(bool), typeof(MaterialDialog), defaultValue: false);
+
+        public bool HasShadow
+        {
+            get { return (bool)GetValue(HasShadowProperty); }
+            set { SetValue(HasShadowProperty, value); }
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
@@ -104,7 +122,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Headline
 
         public static readonly BindableProperty HeadlineTextProperty =
-            BindableProperty.Create(nameof(HeadlineText), typeof(string), typeof(MaterialDialog), defaultValue: null);
+            BindableProperty.Create(nameof(HeadlineText), typeof(string), typeof(MaterialDialog), defaultValue: "HeadlineText");
 
         public string HeadlineText
         {
@@ -122,7 +140,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineColorProperty =
-            BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceColor);
 
         public Color HeadlineColor
         {
@@ -153,7 +171,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region SupportingText
 
         public static readonly BindableProperty SupportingTextProperty =
-            BindableProperty.Create(nameof(SupportingText), typeof(string), typeof(MaterialDialog), defaultValue: null);
+            BindableProperty.Create(nameof(SupportingText), typeof(string), typeof(MaterialDialog), defaultValue: "SupportingText");
 
         public string SupportingText
         {
@@ -171,7 +189,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextColorProperty =
-            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceVariantColor);
 
         public Color SupportingTextColor
         {
@@ -200,6 +218,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion SupportingText
 
         #region Divider
+
         public static readonly BindableProperty ShowDividerProperty =
             BindableProperty.Create(nameof(ShowDivider), typeof(bool), typeof(MaterialDialog), defaultValue: false);
 
@@ -210,7 +229,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DividerColorProperty =
-            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnPrimaryContainerColor);
+            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OutlineVariantColor);
 
         public Color DividerColor
         {
@@ -231,18 +250,17 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CancelTextProperty, value); }
         }
 
-        //TODO: check this property. If it's flat/text button always background color is transparent in materialButton
-        //public static readonly BindableProperty CancelBackgroundColorProperty =
-        //    BindableProperty.Create(nameof(CancelBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.TextColor);
+        public static readonly BindableProperty CancelBackgroundColorProperty =
+            BindableProperty.Create(nameof(CancelBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: Color.Transparent);
 
-        //public Color CancelBackgroundColor
-        //{
-        //    get { return (Color)GetValue(CancelBackgroundColorProperty); }
-        //    set { SetValue(CancelBackgroundColorProperty, value); }
-        //}
+        public Color CancelBackgroundColor
+        {
+            get { return (Color)GetValue(CancelBackgroundColorProperty); }
+            set { SetValue(CancelBackgroundColorProperty, value); }
+        }
 
         public static readonly BindableProperty CancelTextColorProperty =
-            BindableProperty.Create(nameof(CancelTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnPrimaryContainerColor);
+            BindableProperty.Create(nameof(CancelTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color CancelTextColor
         {
@@ -277,21 +295,12 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CancelCommandProperty, value); }
         }
 
-        public static readonly BindableProperty CancelCommandParameterProperty =
-            BindableProperty.Create(nameof(CancelCommandParameter), typeof(object), typeof(MaterialDialog), defaultValue: null);
-
-        public object CancelCommandParameter
-        {
-            get { return (object)GetValue(CancelCommandParameterProperty); }
-            set { SetValue(CancelCommandParameterProperty, value); }
-        }
-
         #endregion CancelButton
 
         #region AcceptButton
 
         public static readonly BindableProperty AcceptTextProperty =
-            BindableProperty.Create(nameof(AcceptText), typeof(string), typeof(MaterialDialog), defaultValue: null);
+            BindableProperty.Create(nameof(AcceptText), typeof(string), typeof(MaterialDialog), defaultValue: "AcceptText");
 
         public string AcceptText
         {
@@ -300,7 +309,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptBackgroundColorProperty =
-            BindableProperty.Create(nameof(AcceptBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnPrimaryContainerColor);
+            BindableProperty.Create(nameof(AcceptBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.PrimaryColor);
 
         public Color AcceptBackgroundColor
         {
@@ -344,16 +353,7 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(AcceptCommandProperty, value); }
         }
 
-        public static readonly BindableProperty AcceptCommandParameterProperty =
-            BindableProperty.Create(nameof(AcceptCommandParameter), typeof(object), typeof(MaterialDialog), defaultValue: null);
-
-        public object AcceptCommandParameter
-        {
-            get { return (object)GetValue(AcceptCommandParameterProperty); }
-            set { SetValue(AcceptCommandParameterProperty, value); }
-        }
         #endregion AcceptButton
-
 
         public static readonly BindableProperty ButtonsAlignmentProperty =
             BindableProperty.Create(nameof(ButtonsAlignment), typeof(LayoutOptions), typeof(MaterialDialog), defaultValue: LayoutOptions.End);
@@ -365,6 +365,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         #region Search
+
         public static readonly BindableProperty OptionsProperty =
             BindableProperty.Create(nameof(Options), typeof(IEnumerable<string>), typeof(MaterialDialog), defaultValue: null, propertyChanged: OnOptionsChanged);
 
@@ -419,6 +420,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(SearchTextColorProperty, value); }
         }
 
+        public static readonly BindableProperty SearchBackgroundColorProperty =
+            BindableProperty.Create(nameof(SearchBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
+
+        public Color SearchBackgroundColor
+        {
+            get { return (Color)GetValue(SearchBackgroundColorProperty); }
+            set { SetValue(SearchBackgroundColorProperty, value); }
+        }
+
         public static readonly BindableProperty SearchTextFontSizeProperty =
             BindableProperty.Create(nameof(SearchTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.PhoneFontSizes.BodyMedium);
 
@@ -440,8 +450,9 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Search
 
         #region Items
+
         public static readonly BindableProperty ItemTextColorProperty =
-            BindableProperty.Create(nameof(ItemTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(ItemTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceColor);
 
         public Color ItemTextColor
         {
@@ -529,6 +540,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (string)GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }
         }
+
         #endregion Items
 
         #region Constructor
@@ -557,11 +569,18 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (propertyName)
             {
                 case nameof(BackgroundColor):
-                    _contentLayout.BackgroundColor = BackgroundColor;
+                    _mainContainer.BackgroundColor = BackgroundColor;
+                    break;
+                case nameof(ShadowColor):
+                    _mainContainer.ShadowColor = ShadowColor;
+                    break;
+
+                case nameof(HasShadow):
+                    _mainContainer.HasShadow = HasShadow;
                     break;
 
                 case nameof(CornerRadius):
-                    _contentLayout.CornerRadius = CornerRadius;
+                    _mainContainer.CornerRadius = CornerRadius;
                     break;
 
                 case nameof(Icon):
@@ -617,8 +636,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(DividerColor):
                     _divider.Color = DividerColor;
-                    break;               
-                
+                    break;
+
                 case nameof(ButtonsAlignment):
                     _btnsContainer.HorizontalOptions = ButtonsAlignment;
                     break;
@@ -630,6 +649,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(CancelTextColor):
                     _cancelBtn.TextColor = CancelTextColor;
+                    break;
+
+                case nameof(CancelBackgroundColor):
+                    _cancelBtn.BackgroundColor = CancelBackgroundColor;
                     break;
 
                 case nameof(CancelFontSize):
@@ -664,16 +687,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     _cancelBtn.Command = CancelCommand;
                     break;
 
-                case nameof(CancelCommandParameter):
-                    _cancelBtn.CommandParameter = CancelCommandParameter;
-                    break;
-
                 case nameof(AcceptCommand):
                     _acceptBtn.Command = AcceptCommand;
-                    break;
-
-                case nameof(AcceptCommandParameter):
-                    _acceptBtn.CommandParameter = AcceptCommandParameter;
                     break;
 
                 case nameof(ShowSearch):
@@ -690,6 +705,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(SearchTextColor):
                     _materialSearch.TextColor = SearchTextColor;
+                    break;
+
+                case nameof(SearchBackgroundColor):
+                    _materialSearch.BackgroundColor = SearchBackgroundColor;
                     break;
 
                 case nameof(SearchTextFontSize):
@@ -709,46 +728,35 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-            var mainContainer = new StackLayout()
-            {
-                Spacing = 0
-            };
-
-            _contentLayout = new MaterialCard()
+            _mainContainer = new CustomFrame()
             {
                 BackgroundColor = this.BackgroundColor,
-                CornerRadiusBottomLeft = true,
-                CornerRadiusBottomRight = true,
-                CornerRadiusTopLeft = true,
-                CornerRadiusTopRight = true,
                 CornerRadius = this.CornerRadius,
-                Padding = new Thickness(24)
+                Padding = new Thickness(24),
+                HasShadow = this.HasShadow,
+                ShadowColor = ShadowColor,
+                IsClippedToBounds = true
             };
 
             var container = new StackLayout()
             {
-                Spacing = 0,
+                Spacing = 16,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
 
-            _contentLayout.Content = container;
-
-            mainContainer.Children.Add(_contentLayout);
+            _mainContainer.Content = container;
 
             _icon = new CustomImage()
             {
                 IsVisible = IconIsVisible,
                 WidthRequest = IconSize,
                 HeightRequest = IconSize,
-                HorizontalOptions = IconAlignment,
-                Margin = new Thickness(0, 0, 0, 16)
+                HorizontalOptions = IconAlignment
             };
 
-            if(IconIsVisible)
-            {
+            if (IconIsVisible)
                 SetIcon();
-            }
 
             container.Children.Add(_icon);
 
@@ -758,10 +766,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontSize = HeadlineFontSize,
                 Text = HeadlineText,
                 HorizontalOptions = HeadlineAlignment,
-                TextColor = HeadlineColor,
-                Margin = new Thickness(0, 0, 0, 16),
+                TextColor = HeadlineColor
             };
-
             container.Children.Add(_headlineLbl);
 
             _supportingLbl = new MaterialLabel()
@@ -771,19 +777,15 @@ namespace Plugin.MaterialDesignControls.Material3
                 Text = SupportingText,
                 HorizontalTextAlignment = SupportingTextAlignment,
                 TextColor = SupportingTextColor,
-                Margin = new Thickness(0, 0, 0, 16),
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
-
             container.Children.Add(_supportingLbl);
 
             _divider = new MaterialDivider()
             {
                 IsVisible = ShowDivider,
-                Color = DividerColor,
-                Margin = new Thickness(0, 0, 0, 16),
+                Color = DividerColor
             };
-
             container.Children.Add(_divider);
 
             _materialSearch = new MaterialSearch()
@@ -792,23 +794,27 @@ namespace Plugin.MaterialDesignControls.Material3
                 Placeholder = SearchPlaceholder,
                 HorizontalTextAlignment = SearchTextAlignment,
                 TextColor = SearchTextColor,
+                BackgroundColor = SearchBackgroundColor,
                 FontSize = SearchTextFontSize,
                 FontFamily = SearchTextFontFamily,
+                SearchOnEveryTextChange = true,
                 SearchCommand = new Command(OnSearchCommand)
             };
 
             container.Children.Add(_materialSearch);
 
-            _optionsContainer = new StackLayout();
-
+            _optionsContainer = new StackLayout
+            {
+                IsVisible = false,
+            };
             container.Children.Add(_optionsContainer);
 
             _btnsContainer = new StackLayout()
             {
-                Spacing = 0,
+                Spacing = 8,
                 HorizontalOptions = ButtonsAlignment,
                 Orientation = StackOrientation.Horizontal,
-                Margin = new Thickness(0, 16, 0, 0)
+                Margin = new Thickness(0)
             };
 
             _cancelBtn = new MaterialButton()
@@ -818,8 +824,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 TextColor = CancelTextColor,
                 FontSize = CancelFontSize,
                 FontFamily = CancelFontFamily,
+                BackgroundColor = CancelBackgroundColor,
                 Command = CancelCommand,
-                CommandParameter = CancelCommandParameter,
                 IsVisible = !String.IsNullOrWhiteSpace(CancelText)
             };
 
@@ -831,9 +837,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontSize = AcceptFontSize,
                 FontFamily = AcceptFontFamily,
                 BackgroundColor = AcceptBackgroundColor,
-                Margin = new Thickness(16, 0, 0, 0),
-                Command = AcceptCommand,
-                CommandParameter = AcceptCommandParameter
+                Margin = new Thickness(0),
+                Command = AcceptCommand
             };
 
             _btnsContainer.Children.Add(_cancelBtn);
@@ -841,9 +846,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
             container.Children.Add(_btnsContainer);
 
-            this.Content = mainContainer;
+            this.Content = _mainContainer;
         }
-
 
         private static void OnOptionsChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -878,6 +882,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     control._optionsContainer.Children.Add(materialCheckbox);
                 }
             }
+
+            control._optionsContainer.IsVisible = true;
         }
 
         private void SetIcon()
@@ -904,9 +910,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 materialDialog.SelectedItem = materialCheckbox.Text;
             }
             else
-            {
                 materialCheckbox.IsChecked = !materialCheckbox.IsChecked;
-            }
+
+            // TODO: VER COMO HACER ESTO DE PASAR EL PARAMETRO PARA ATRAS.
+            materialDialog._acceptBtn.CommandParameter = materialDialog.SelectedItem;
         }
 
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
@@ -915,8 +922,10 @@ namespace Plugin.MaterialDesignControls.Material3
             if (control._optionsContainer.Children != null && control.SelectedItem != null && !control.AllowMultiselect)
             {
                 foreach (var item in control._optionsContainer.Children)
+                {
                     if (item != null && item is MaterialCheckbox)
                         ((MaterialCheckbox)item).IsChecked = ((MaterialCheckbox)item).Text.Equals(control.SelectedItem);
+                }
             }
         }
 

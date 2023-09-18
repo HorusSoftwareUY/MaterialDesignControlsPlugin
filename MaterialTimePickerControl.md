@@ -6,7 +6,7 @@ Time pickers let users select a time.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/time_picker.gif" width="300">
 
-## Example MaterialTimePicker
+## Example
 ```XML
 <material3:MaterialTimePicker 
     LabelText="Start time" 

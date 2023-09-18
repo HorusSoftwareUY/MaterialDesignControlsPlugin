@@ -6,7 +6,7 @@ This control is a custom implementation of a Checkbox. You can customize some pr
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/checkbox.gif" width="300">
 
-## Example MaterialCheckbox
+## Example
 ```XML
  <material3:MaterialCheckbox 
     x:Name="checkbox" 

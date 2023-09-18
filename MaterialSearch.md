@@ -7,8 +7,7 @@ MaterialSearch receives a text and executes a search action.
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/search_preview.gif" width="300">
 
-## Example MaterialButton
-Using the control:
+## Example
 ```XML
 <material3:MaterialSearch
     Text="{Binding TextSearch}"

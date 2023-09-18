@@ -7,10 +7,7 @@ Double pickers let users select two options in the same dialog.
 ## Android Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_android.png" width="300">
 
-## Example MaterialDoublePickers
-
-Using the control:
-
+## Example
 ```XML
 <material:MaterialDoublePicker 
     LabelText="Double Picker" 

@@ -46,6 +46,7 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialSearch](#materialsearch)
 - [MaterialIconButton](#materialiconbutton)
 - [MaterialSnackBar](#materialsnackbar)
+- [MaterialDialog](#materialdialog)
 
 
 ## Setup
@@ -338,6 +339,15 @@ MaterialSnackBar show short updates about app processes at the bottom of the scr
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/snackbar_preview.png" width="300">
 <br/>
 [View documentation](MaterialSnackBar.md)
+
+---
+
+### MaterialDialog
+MaterialDialog provide important prompts in a user flow.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/dialog_preview.png" width="300">
+<br/>
+[View documentation](MaterialDialog.md)
 
 ---
 

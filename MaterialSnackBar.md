@@ -1,13 +1,14 @@
 # MaterialSnackBar
 Snackbars show short updates about app processes at the bottom of the screen.
 <br/>
+Currently, this control only represents the UI and guidelines proposed by Material, it doesn't provide the popup/alert behavior, you could resolve it with Rg.Plugins.Popup or with a similar implementation.
+<br/>
 [View Material Design documentation](https://m3.material.io/components/snackbar/overview)
 
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/snackbar_preview.png" width="300">
 
-## Example MaterialBadge
-Using the control:
+## Example
 ```XML
 <material3:MaterialSnackBar
     Text="Lorem ipsum dolor sit amet"
@@ -23,6 +24,11 @@ This property is to set the background color of the snackbar.
 
 ### ShadowColor:
 This property is to set the background color of the snackbar shadow.
+
+### Property HasShadow 
+This property is to set if the control will have shadow or not.
+<br/>
+<br/>
 
 ### Property Text:
 This property is to set the text of the label.
