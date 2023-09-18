@@ -6,7 +6,7 @@ Code fields let users enter and edit pin codes.
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/code.png" width="300">
 
-## Example MaterialCodeEntry
+## Example
 ```XML
 <material3:MaterialCodeEntry
     LabelText="Code*" 

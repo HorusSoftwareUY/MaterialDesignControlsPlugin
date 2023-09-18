@@ -6,10 +6,7 @@ Chips are compact elements that represent an input, attribute, or action.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.gif" width="300">
 
-## Documentation
- 
-#### Example:
-
+## Example
 ```XML
 <material:MaterialChips
     IsSelected="true"
@@ -20,6 +17,8 @@ Chips are compact elements that represent an input, attribute, or action.
     SelectedBackgroundColor="{StaticResource GradientColor2}"
     SelectedTextColor="White" />
 ```
+
+## Documentation
 
 ### Property Command
 Command for MaterialChips when is selected or pressed.

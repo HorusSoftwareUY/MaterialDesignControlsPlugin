@@ -5,7 +5,7 @@ MaterialIconButton displays an icon and can execute a command.<br/>
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/material_icon_button_preview.png" >
 
-## Example MaterialTopAppBar
+## Example
 ```XML
 <material3:MaterialIconButton Command="{Binding StandardCommand}">
     <material3:MaterialIconButton.CustomIcon>

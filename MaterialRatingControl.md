@@ -6,7 +6,7 @@ This control allow to rate. You can customize some properties that we show in Do
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/rating.gif" width="300">
 
-## Example MaterialRating
+## Example
 ```XML
 <material3:MaterialRating
     LabelText="How do you rate...?"

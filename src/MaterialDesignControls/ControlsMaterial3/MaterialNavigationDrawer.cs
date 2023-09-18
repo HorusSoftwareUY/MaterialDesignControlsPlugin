@@ -1,6 +1,5 @@
 ﻿using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
-using Plugin.MaterialDesignControls.Objects;
 using Plugin.MaterialDesignControls.Styles;
 using System;
 using System.Collections.Generic;

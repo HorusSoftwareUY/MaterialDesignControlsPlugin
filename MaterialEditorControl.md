@@ -6,7 +6,7 @@ Text fields let users enter and edit text.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/editor.gif" width="300">
 
-## Example MaterialEditor
+## Example
 ```XML
 <material3:MaterialEditor 
     LabelText="Description" 

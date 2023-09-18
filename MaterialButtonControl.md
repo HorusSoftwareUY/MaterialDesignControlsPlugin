@@ -7,8 +7,7 @@ Buttons allow users to take actions, and make choices, with a single tap.
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button_preview.gif" width="300">
 
-## Example MaterialButton
-Using the control:
+## Example
 ```XML
 <material:MaterialButton
     Text="Save" 
@@ -115,10 +114,18 @@ This property is to show a busy indicator in the button when a command is runnin
 <br/>
 
 ### Property LeadingIcon:
+This property is to set the leading icon with support for PNG, JPG or JPEG.
+<br/>
+
+### Property CustomLeadingIcon:
 This property is to set the leading icon with support for view, you can use SVG, font icon, PNG, JPG or JPEG.
 <br/>
 
 ### Property TrailingIcon:
+This property is to set the trailing icon with support for PNG, JPG or JPEG.
+<br/>
+
+### Property CustomTrailingIcon:
 This property is to set the trailing icon with support for view, you can use SVG, font icon, PNG, JPG or JPEG.
 <br/>
 

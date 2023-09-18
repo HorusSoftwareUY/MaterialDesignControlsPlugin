@@ -6,7 +6,7 @@ This control is a custom implementation of a radiobuttons. You can customize som
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.gif" width="300">
 
-## Example MaterialRadioButton
+## Example
 ```XML
  <material3:MaterialRadioButtons 
     x:Name="radiobuttons" 

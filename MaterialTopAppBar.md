@@ -6,7 +6,7 @@ TopAppBar displays information and actions at the top of a screen.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/topappbar_preview.png" width="300">
 
-## Example MaterialTopAppBar
+## Example
 ```XML
  <material3:MaterialTopAppBar
     HeadlineColor="Black"
@@ -71,10 +71,18 @@ This property is to set the description text margin to adjust it.
 <br/>
 
 ### Property LeadingIcon:
+This property is to set the leading icon with support for PNG, JPG or JPEG.
+<br/>
+
+### Property CustomLeadingIcon:
 This property is to set the leading icon with support for view, you can use SVG, font icon, PNG, JPG or JPEG.
 <br/>
 
 ### Property TrailingIcon:
+This property is to set the trailing icon with support for PNG, JPG or JPEG.
+<br/>
+
+### Property CustomTrailingIcon:
 This property is to set the trailing icon with support for view, you can use SVG, font icon, PNG, JPG or JPEG.
 <br/>
 

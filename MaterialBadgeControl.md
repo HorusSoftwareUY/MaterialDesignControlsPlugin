@@ -6,8 +6,7 @@ Badges show notifications, counts, or status information on navigation items and
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/badge_preview.gif" width="300">
 
-## Example MaterialBadge
-Using the control:
+## Example
 ```XML
 <material3:MaterialBadge 
     Text="999+"

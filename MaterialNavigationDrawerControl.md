@@ -6,7 +6,7 @@ Navigation drawers let people switch between UI views on larger devices
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/navigation_preview.png" width="300">
 
-## Example MaterialNavigationDrawer
+## Example
 ```XML
 <material3:MaterialNavigationDrawer
     Headline="Mail"

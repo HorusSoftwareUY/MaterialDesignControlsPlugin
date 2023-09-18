@@ -6,11 +6,8 @@ Progress indicators show the status of a process in real time
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/progress_preview.png" width="300">
 
-## Example MaterialProgressIndicator
-Using the control:
-
-```XML
-                    
+## Example
+```XML         
 <material3:MaterialProgressIndicator Type="Circular"
                                      TrackColor="DarkGray"
                                      IndicatorColor="MediumPurple"/>

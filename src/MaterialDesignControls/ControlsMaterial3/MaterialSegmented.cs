@@ -5,7 +5,6 @@ using System;
 using Xamarin.Forms;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using System.Linq;
-using Plugin.MaterialDesignControls.Objects;
 using Xamarin.Forms.Internals;
 using Plugin.MaterialDesignControls.Styles;
 

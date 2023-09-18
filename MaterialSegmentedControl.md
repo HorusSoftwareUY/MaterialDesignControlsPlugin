@@ -6,7 +6,7 @@ This control is a custom implementation of a segmented control. You can customiz
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/segmented.gif" width="300">
 
-## Example MaterialSegmented
+## Example
 ```XML
 <material3:MaterialSegmented BackgroundColor="White"
                             Command="{Binding SelectCommand}"
@@ -19,43 +19,6 @@ This control is a custom implementation of a segmented control. You can customiz
                             UnselectedColor="White"
                             UnselectedTextColor="#8959c0" />
 ```
-<br/>
-
-
-#### Example:
-
-Set style:
-
-```XML
-
-<Style TargetType="material3:MaterialSegmented">
-    <Setter Property="DisabledBackgroundColor"
-            Value="#f2f2f2" />
-    <Setter Property="DisabledSelectedColor"
-            Value="#808080" />
-    <Setter Property="DisabledUnselectedColor"
-            Value="{StaticResource WhiteColor}" />
-    <Setter Property="DisabledSelectedTextColor"
-            Value="{StaticResource WhiteColor}" />
-    <Setter Property="DisabledUnselectedTextColor"
-            Value="#808080" />
-    <Setter Property="DisabledBorderColor"
-            Value="#808080" />
-    <Setter Property="BackgroundColor"
-            Value="#eaf3fa" />
-    <Setter Property="SelectedColor"
-            Value="#2e85cc" />
-    <Setter Property="UnselectedColor"
-            Value="#eaf3fa" />
-    <Setter Property="SelectedTextColor"
-            Value="{StaticResource WhiteColor}" />
-    <Setter Property="UnselectedTextColor"
-            Value="#2e85cc" />
-    <Setter Property="BorderColor"
-            Value="#2e85cc" />
-</Style>
-``` 
-<br/>
 <br/>
 
 ## Documentation

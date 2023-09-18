@@ -6,7 +6,7 @@ Switches toggle the state of a single item on or off.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch.gif" width="300">
 
-## Example MaterialSwitch
+## Example
 ```XML
  <material:MaterialSwitch   
     Text="Bluetooth *"

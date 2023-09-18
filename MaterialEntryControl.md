@@ -6,9 +6,7 @@ Text fields let users enter and edit text.
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.gif" width="300">
 
-## Example MaterialEntry
-Using the control:
-
+## Example
 ```XML
 <material3:MaterialEntry
     LabelText="Name *"
