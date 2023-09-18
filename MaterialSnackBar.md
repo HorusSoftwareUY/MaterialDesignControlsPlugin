@@ -24,10 +24,10 @@ This property is to set the background color of the snackbar.
 
 ### ShadowColor:
 This property is to set the background color of the snackbar shadow.
+<br/>
 
 ### Property HasShadow 
 This property is to set if the control will have shadow or not.
-<br/>
 <br/>
 
 ### Property Text:
@@ -66,7 +66,7 @@ This property is to the font family of the action button.
 This property is to the command of the action button.
 <br/>
 
-### Property ActionCommand:
+### Property ActionCommandParameter:
 This property is to the command parameter of the action button.
 <br/>
 

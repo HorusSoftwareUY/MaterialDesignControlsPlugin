@@ -114,10 +114,18 @@ This property is to show a busy indicator in the button when a command is runnin
 <br/>
 
 ### Property LeadingIcon:
+This property is to set the leading icon with support for PNG, JPG or JPEG.
+<br/>
+
+### Property CustomLeadingIcon:
 This property is to set the leading icon with support for view, you can use SVG, font icon, PNG, JPG or JPEG.
 <br/>
 
 ### Property TrailingIcon:
+This property is to set the trailing icon with support for PNG, JPG or JPEG.
+<br/>
+
+### Property CustomTrailingIcon:
 This property is to set the trailing icon with support for view, you can use SVG, font icon, PNG, JPG or JPEG.
 <br/>
 

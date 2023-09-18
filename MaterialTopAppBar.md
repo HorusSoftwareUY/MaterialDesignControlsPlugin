@@ -71,10 +71,18 @@ This property is to set the description text margin to adjust it.
 <br/>
 
 ### Property LeadingIcon:
+This property is to set the leading icon with support for PNG, JPG or JPEG.
+<br/>
+
+### Property CustomLeadingIcon:
 This property is to set the leading icon with support for view, you can use SVG, font icon, PNG, JPG or JPEG.
 <br/>
 
 ### Property TrailingIcon:
+This property is to set the trailing icon with support for PNG, JPG or JPEG.
+<br/>
+
+### Property CustomTrailingIcon:
 This property is to set the trailing icon with support for view, you can use SVG, font icon, PNG, JPG or JPEG.
 <br/>
 
