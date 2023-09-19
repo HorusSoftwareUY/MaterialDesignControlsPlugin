@@ -1,5 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using Plugin.MaterialDesignControls.Material3;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.ViewModels
@@ -27,6 +30,40 @@ namespace ExampleMaterialDesignControls.ViewModels
                 error = value;
                 OnPropertyChanged();
             }
+        }
+
+        private ObservableCollection<string> _selectedIcons;
+
+        public ObservableCollection<string> SelectedIcons
+        {
+            get { return _selectedIcons; }
+            set { SetProperty(ref _selectedIcons, value); }
+        }
+
+        private ObservableCollection<DataTemplate> _unselectedIcons;
+
+        public ObservableCollection<DataTemplate> UnselectedIcons
+        {
+            get { return _unselectedIcons; }
+            set { SetProperty(ref _unselectedIcons, value); }
+        }
+
+
+        public MaterialRatingControlViewModel()
+        {
+            SelectedIcons = new ObservableCollection<string>
+            {
+                "checkbox_checked.png",
+                "checkbox_checked.png",
+                "starSelected.png",
+            };
+
+            UnselectedIcons = new ObservableCollection<DataTemplate>
+            {
+                new DataTemplate (() => new FFImageLoading.Svg.Forms.SvgCachedImage { Source = "resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg" }),
+                new DataTemplate (() => new FFImageLoading.Svg.Forms.SvgCachedImage { Source = "resource://ExampleMaterialDesignControls.Resources.Svg.checkbox_unchecked.svg" }),
+                new DataTemplate (() => new FFImageLoading.Svg.Forms.SvgCachedImage { Source = "resource://ExampleMaterialDesignControls.Resources.Svg.starUnselected.svg" }),
+            };
         }
 
         public delegate Task DisplayAlertType(string title, string message, string cancel);

@@ -51,28 +51,34 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="ControlsMaterial2\MaterialRatingControl.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialRatingControl.xaml.cs">
       <DependentUpon>MaterialRatingControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialSlider.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialSlider.xaml.cs">
       <DependentUpon>MaterialSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.xaml.cs">
-      <DependentUpon>BaseMaterialFieldControl.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="ControlsMaterial3\BaseMaterialFieldControl.cs" />
     <Compile Include="ControlsMaterial3\IBaseMaterialFieldControl.cs" />
+    <Compile Include="ControlsMaterial3\MaterialBadge.cs" />
+    <Compile Include="ControlsMaterial3\MaterialCheckBox.cs" />
+    <Compile Include="ControlsMaterial3\MaterialChips.cs" />
+    <Compile Include="ControlsMaterial3\MaterialChipsGroup.cs" />
+    <Compile Include="ControlsMaterial3\MaterialCodeEntry.cs" />
     <Compile Include="ControlsMaterial3\MaterialDatePicker.cs" />
+    <Compile Include="ControlsMaterial3\MaterialDialog.cs" />
     <Compile Include="ControlsMaterial3\MaterialDoublePicker.cs" />
     <Compile Include="ControlsMaterial3\MaterialEditor.cs" />
     <Compile Include="ControlsMaterial3\MaterialEntry.cs" />
+    <Compile Include="ControlsMaterial3\MaterialNavigationDrawer.cs" />
     <Compile Include="ControlsMaterial3\MaterialPicker.cs" />
-    <Compile Include="ControlsMaterial3\MaterialSwitch.xaml.cs">
-      <DependentUpon>MaterialSwitch.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="ControlsMaterial3\MaterialRadioButtons.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSegmented.cs" />
+    <Compile Include="ControlsMaterial3\MaterialProgressIndicator.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSlider.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSwitch.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomActivityIndicator.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomDatePicker.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomEditor.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomLabel.cs" />
@@ -87,10 +93,9 @@
     <Compile Include="Implementations\CustomMaterial3\CustomEntry.cs" />
     <Compile Include="Implementations\Deprecated\CustomPicker.cs" />
     <Compile Include="FieldTypes.cs" />
-    <Compile Include="Implementations\CustomSlider.cs" />
     <Compile Include="Implementations\Deprecated\CustomTimePicker.cs" />
     <Compile Include="Implementations\Deprecated\CustomEditor.cs" />
-    <Compile Include="ControlsMaterial2\MaterialChips.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialChips.xaml.cs">
       <DependentUpon>MaterialChips.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -106,7 +111,6 @@
       <DependentUpon>MaterialEntry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialLabel.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialPicker.xaml.cs">
       <DependentUpon>MaterialPicker.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -119,45 +123,40 @@
       <DependentUpon>MaterialTimePicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialChipsGroup.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialChipsGroup.xaml.cs">
       <DependentUpon>MaterialChipsGroup.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialField.cs" />
-    <Compile Include="Implementations\CustomImageButton.cs" />
     <Compile Include="Animations\ShakeAnimation.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
     <Compile Include="AnimationTypes.cs" />
     <Compile Include="Animations\TouchAndPressAnimation.cs" />
-    <Compile Include="Implementations\CustomImage.cs" />
     <Compile Include="Implementations\Deprecated\DoublePicker.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialDoublePicker.xaml.cs">
       <DependentUpon>MaterialDoublePicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialCodeEntry.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialCodeEntry.xaml.cs">
       <DependentUpon>MaterialCodeEntry.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ControlsMaterial2\DeprecatedControls\BaseMaterialFieldControl.cs" />
+    <Compile Include="Objects\MaterialNavigationDrawerItem.cs" />
+    <Compile Include="Objects\MaterialSegmentedItem.cs" />
     <Compile Include="TextTransforms.cs" />
-    <Compile Include="ControlsMaterial2\MaterialCustomControl.xaml.cs">
-      <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Utils\ColorAnimationUtil.cs" />
     <Compile Include="Utils\LoggerHelper.cs" />
-    <Compile Include="ControlsMaterial2\MaterialSegmented.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialSegmented.xaml.cs">
       <DependentUpon>MaterialSegmented.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialCheckbox.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialCheckbox.xaml.cs">
       <DependentUpon>MaterialCheckbox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\BaseMaterialCheckboxes.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\BaseMaterialCheckboxes.cs" />
     <Compile Include="TextSide.cs" />
-    <Compile Include="ControlsMaterial2\MaterialRadioButtons.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialRadioButtons.xaml.cs">
       <DependentUpon>MaterialRadioButtons.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -165,12 +164,10 @@
       <DependentUpon>MaterialSwitch.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ControlsMaterial2\MaterialDivider.cs" />
-    <Compile Include="ControlsMaterial2\MaterialFloatingButton.xaml.cs">
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialFloatingButton.xaml.cs">
       <DependentUpon>MaterialFloatingButton.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Implementations\CustomFrame.cs" />
     <Compile Include="FloatingButtonSize.cs" />
     <Compile Include="IconSide.cs" />
     <Compile Include="Styles\DefaultStyles.cs" />
@@ -180,9 +177,35 @@
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialFlatButton.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialOutlineButton.cs" />
     <Compile Include="ControlsMaterial3\MaterialTopAppBar.cs" />
-    <Compile Include="Implementations\ContentViewButton.cs" />
     <Compile Include="Effects\TouchReleaseEffect.cs" />
     <Compile Include="Effects\Effects.cs" />
+    <Compile Include="ControlsMaterial3\MaterialLabel.cs" />
+    <Compile Include="ControlsMaterial3\MaterialDivider.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialLabel.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialDivider.cs" />
+    <Compile Include="ControlsMaterial3\MaterialCustomControl.cs" />
+    <Compile Include="ControlsMaterial3\MaterialRating.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialCustomControl.xaml.cs">
+      <DependentUpon>MaterialCustomControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ControlsMaterial3\MaterialIconButton.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSearch.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomRadioButton.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomCheckBox.cs" />
+    <Compile Include="ControlsMaterial3\MaterialFloatingButton.cs" />
+    <Compile Include="ControlsMaterial3\BaseMaterialCheckBoxes.cs" />
+    <Compile Include="ControlsMaterial3\MaterialSnackBar.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomSlider.cs" />
+    <Compile Include="Implementations\Deprecated\CustomSlider.cs" />
+    <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialField.cs" />
+    <Compile Include="Implementations\Deprecated\CustomImageButton.cs" />
+    <Compile Include="Implementations\CustomMaterial3\ContentViewButton.cs" />
+    <Compile Include="Implementations\Deprecated\CustomImage.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomImage.cs" />
+    <Compile Include="Implementations\CustomMaterial3\CustomFrame.cs" />
+    <Compile Include="Implementations\Deprecated\CustomFrame.cs" />
+    <Compile Include="Objects\MaterialDialogItem.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -200,13 +223,5 @@
     <None Remove="ControlsMaterial3\" />
     <None Remove="Styles\" />
     <None Remove="ControlsMaterial2\DeprecatedControls\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="ControlsMaterial3\BaseMaterialFieldControl.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ControlsMaterial3\MaterialSwitch.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -1,144 +1,137 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialSegmentedPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialSegmentedPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             ios:Page.UseSafeArea="True"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialSegmented" LeadingIconCommand="{Binding BackCommand}">
-                <material3:MaterialTopAppBar.LeadingIcon>
+            <material3:MaterialTopAppBar Headline="MaterialSegmented"
+                                         LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
-                </material3:MaterialTopAppBar.LeadingIcon>
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="20">
-                    <material:MaterialSegmented
-                        HeightRequest="50"
-                        ItemsSource="{Binding Items}"
-                        SegmentMargin="0"
-                        SelectedItem="{Binding SelectedItem}"
-                        UnselectedTextColor="{StaticResource GradientColor1}" />
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
 
+                    <contentViews:InfoIndicatorView Message="MaterialSegmented follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialSegmented
-                        CornerRadius="10"
-                        HeightRequest="50"
-                        ItemsSource="{Binding Items}"
-                        SegmentMargin="4"
-                        SelectedColor="{StaticResource GradientColor3}"
-                        UnselectedTextColor="{StaticResource GradientColor3}" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Outlined" />
 
-                    <material:MaterialSegmented
-                        BackgroundColor="White"
-                        CornerRadius="25"
-                        HeightRequest="50"
-                        ItemsSource="{Binding Items}"
-                        SegmentMargin="4"
-                        SelectedColor="{StaticResource GradientColor5}"
-                        UnselectedColor="White"
-                        UnselectedTextColor="{StaticResource GradientColor5}" />
+                    <material3:MaterialSegmented ItemsSource="{Binding Items}" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Five Items" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Filled" />
 
-                    <material:MaterialSegmented
-                        BackgroundColor="White"
-                        Command="{Binding SelectCommand}"
-                        CornerRadius="20"
-                        HeightRequest="50"
-                        ItemsSource="{Binding Sizes}"
-                        SelectedColor="{StaticResource GradientColor7}"
-                        SelectedItem="{Binding SelectedSize}"
-                        UnselectedColor="White"
-                        UnselectedTextColor="{StaticResource GradientColor7}" />
-
-                    <material:MaterialSegmented
-                        BackgroundColor="White"
-                        CornerRadius="25"
-                        HeightRequest="50"
-                        IsEnabled="False"
-                        ItemsSource="{Binding Sizes}"
-                        SelectedColor="{StaticResource GradientColor9}"
-                        UnselectedColor="White"
-                        UnselectedTextColor="{StaticResource GradientColor9}" />
+                    <material3:MaterialSegmented ItemsSource="{Binding Items2}"
+                                                 Type="Filled" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Four Items" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Using Icons and Command" />
 
-                    <material:MaterialSegmented
-                        BackgroundColor="{StaticResource GradientColorTransparent5}"
-                        CornerRadius="20"
-                        HeightRequest="50"
-                        ItemsSource="{Binding Items2}"
-                        SegmentMargin="0"
-                        SelectedColor="{StaticResource GradientColor5}"
-                        UnselectedColor="Transparent"
-                        UnselectedTextColor="{StaticResource GradientColor5}" />
-
-
+                    <material3:MaterialSegmented BackgroundColor="White"
+                                                 CornerRadius="25"
+                                                 HeightRequest="50"
+                                                 ItemsSource="{Binding Items3}"
+                                                 SegmentMargin="4"
+                                                 SelectedItem="{Binding SelectedItem3}"
+                                                 Command="{Binding SelectCommand}"
+                                                 SelectedColor="{StaticResource GradientColor5}"
+                                                 UnselectedColor="White"
+                                                 UnselectedTextColor="{StaticResource GradientColor5}" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Three Items" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Multiple Selection" />
 
-                    <material:MaterialSegmented
-                        BackgroundColor="#F5F5F5"
-                        CornerRadius="20"
-                        HeightRequest="50"
-                        ItemsSource="{Binding Frecuently}"
-                        SegmentMargin="4"
-                        SelectedColor="{StaticResource GradientColor9}"
-                        UnselectedColor="#F5F5F5"
-                        UnselectedTextColor="{StaticResource GradientColor9}" />
+                    <material3:MaterialSegmented BackgroundColor="White"
+                                                 CornerRadius="20"
+                                                 HeightRequest="50"
+                                                 AllowMultiselect="True"
+                                                 ItemsSource="{Binding Sizes}"
+                                                 SelectedColor="{StaticResource GradientColor7}"
+                                                 UnselectedColor="White"
+                                                 UnselectedTextColor="{StaticResource GradientColor7}" />
 
                     <material:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Two Items" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Disabled" />
 
-                    <material:MaterialSegmented
-                        BackgroundColor="{StaticResource GradientColorTransparent11}"
-                        CornerRadius="10"
-                        HeightRequest="50"
-                        ItemsSource="{Binding Backlight}"
-                        SelectedColor="{StaticResource GradientColor11}"
-                        UnselectedColor="Transparent"
-                        UnselectedTextColor="{StaticResource GradientColor11}" />
+                    <material3:MaterialSegmented BackgroundColor="White"
+                                                 CornerRadius="25"
+                                                 HeightRequest="50"
+                                                 IsEnabled="False"
+                                                 ItemsSource="{Binding Sizes}"
+                                                 SelectedColor="{StaticResource GradientColor9}"
+                                                 UnselectedColor="White"
+                                                 UnselectedTextColor="{StaticResource GradientColor9}" />
 
-                    <StackLayout Margin="0,10" Orientation="Horizontal">
-                        <material:MaterialLabel Text="Notifications" VerticalOptions="Center" />
-                        <material:MaterialSegmented
-                            HorizontalOptions="EndAndExpand"
-                            IsSelectedChanged="MaterialSegmented_IsSelectedChanged"
-                            ItemsSource="{Binding OnOff}"
-                            SelectedColor="{StaticResource GradientColor1}" />
-                    </StackLayout>
-                    <material3:MaterialButton
-                        Command="{Binding SaveCommand}"
-                        HorizontalOptions="Fill"
-                        Text="Save"
-                        VerticalOptions="EndAndExpand" />
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Using Selected Item and IsSelectedChanged" />
+
+                    <material3:MaterialSegmented CornerRadius="20"
+                                                 HeightRequest="50"
+                                                 BackgroundColor="{StaticResource GradientColorTransparent11}"
+                                                 ItemsSource="{Binding Frecuently}"
+                                                 SelectedItem="{Binding SelectedItem}"
+                                                 IsSelectedChanged="MaterialSegmented_IsSelectedChanged"
+                                                 SegmentMargin="4"
+                                                 Type="Filled"
+                                                 SelectedColor="{StaticResource GradientColor9}"
+                                                 UnselectedColor="#F5F5F5"
+                                                 UnselectedTextColor="{StaticResource GradientColor9}" />
+
+                    <material3:MaterialButton Command="{Binding SaveCommand}"
+                                              HorizontalOptions="Fill"
+                                              Text="Save"
+                                              VerticalOptions="EndAndExpand" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Full API" />
+
+                    <material3:MaterialSegmented CornerRadius="20"
+                                                 HeightRequest="50"
+                                                 BackgroundColor="{StaticResource GradientColorTransparent11}"
+                                                 BorderColor="Yellow"
+                                                 ItemsSource="{Binding Items5}"
+                                                 IsSelectedChanged="MaterialSegmented_IsSelectedChanged"
+                                                 SegmentMargin="4"
+                                                 SelectedItem="{Binding SelectedItem5}"
+                                                 AllowMultiselect="True"
+                                                 Type="Filled"
+                                                 Command="{Binding SelectItem5Command}"
+                                                 SelectedColor="{StaticResource GradientColor9}"
+                                                 SelectedTextColor="Black"
+                                                 UnselectedColor="#F5F5F5"
+                                                 UnselectedTextColor="{StaticResource GradientColor9}" />
                 </StackLayout>
             </ScrollView>
         </Grid>

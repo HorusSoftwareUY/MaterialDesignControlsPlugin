@@ -1,34 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialRatingControlPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialRatingControlPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialRatingControl" LeadingIconCommand="{Binding BackCommand}">
-                <material3:MaterialTopAppBar.LeadingIcon>
+            <material3:MaterialTopAppBar Headline="MaterialRating"
+                                         LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
-                </material3:MaterialTopAppBar.LeadingIcon>
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="20">
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="20">
 
-                    <material:MaterialRatingControl
-                        ItemSize="5"
-                        ItemsByRow="5"
-                        LabelSize="{StaticResource ButtonFontSize}"
-                        LabelText="How do you rate the service?"
+                    <contentViews:InfoIndicatorView Message="MaterialRating follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialRating
                         SelectedIcon="starSelected.png"
-                        UnSelectedIcon="starUnselected.png"
-                        Value="4" />
+                        UnSelectedIcon="starUnselected.png" />
+
+                    <material:MaterialDivider Margin="0,0,0,10" />
+
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Different icons by item" />
+
+                    <material3:MaterialRating
+                        ItemSize="3"
+                        ItemsByRow="3"
+                        UseSameIcon="False"
+                        SelectedIconsSource="{Binding SelectedIcons}"
+                        CustomUnselectedIconsSource="{Binding UnselectedIcons}"
+                        Value="2"
+                        LabelSize="{StaticResource ButtonFontSize}"
+                        LabelText="How do you rate the service?" />
 
                     <material:MaterialDivider Margin="0,0,0,10" />
 
@@ -37,16 +54,14 @@
                         HorizontalTextAlignment="Center"
                         Text="Png Icons" />
 
-                    <material:MaterialRatingControl
-                        Animation="Fade"
-                        AnimationParameter="0.1"
+                    <material3:MaterialRating
                         ItemSize="5"
                         ItemsByRow="5"
                         LabelSize="{StaticResource ButtonFontSize}"
-                        LabelText="How do you rate...?(png icons)"
+                        LabelText="How do you rate...? (png icons)"
                         SelectedIcon="starSelected.png"
-                        UnSelectedIcon="starUnselected.png" />
-
+                        UnSelectedIcon="starUnselected.png"
+                        HorizontalTextAlignment="Center" />
 
                     <material:MaterialDivider Margin="0,0,0,10" />
 
@@ -55,32 +70,31 @@
                         HorizontalTextAlignment="Center"
                         Text="Svg Icons" />
 
-                    <material:MaterialRatingControl
+                    <material3:MaterialRating
                         ItemSize="5"
                         ItemsByRow="5"
                         LabelSize="{StaticResource ButtonFontSize}"
-                        LabelText="How do you...?(svg icons)"
+                        LabelText="How do you...? (svg icons)"
                         TabIndex="3">
-                        <material:MaterialRatingControl.CustomSelectedIcon>
+                        <material3:MaterialRating.CustomSelectedIcon>
                             <DataTemplate>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starSelected.svg" />
                             </DataTemplate>
-                        </material:MaterialRatingControl.CustomSelectedIcon>
-                        <material:MaterialRatingControl.CustomUnSelectedIcon>
+                        </material3:MaterialRating.CustomSelectedIcon>
+                        <material3:MaterialRating.CustomUnselectedIcon>
                             <DataTemplate>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.starUnselected.svg" />
                             </DataTemplate>
-                        </material:MaterialRatingControl.CustomUnSelectedIcon>
-                    </material:MaterialRatingControl>
+                        </material3:MaterialRating.CustomUnselectedIcon>
+                    </material3:MaterialRating>
 
                     <material:MaterialDivider Margin="0,0,0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Multiple Rows" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Multiple Rows" />
 
-                    <material:MaterialRatingControl
+                    <material3:MaterialRating
                         ItemSize="10"
                         ItemsByRow="5"
                         LabelSize="{StaticResource ButtonFontSize}"
@@ -90,12 +104,12 @@
 
                     <material:MaterialDivider Margin="0,0,0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Animations" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Animations" />
 
-                    <material:MaterialRatingControl
+                    <material3:MaterialRating
+                        Animation="None"
                         ItemSize="5"
                         ItemsByRow="5"
                         LabelSize="{StaticResource ButtonFontSize}"
@@ -103,7 +117,7 @@
                         SelectedIcon="starSelected.png"
                         UnSelectedIcon="starUnselected.png" />
 
-                    <material:MaterialRatingControl
+                    <material3:MaterialRating
                         Animation="Fade"
                         AnimationParameter="0.1"
                         ItemSize="5"
@@ -113,7 +127,7 @@
                         SelectedIcon="starSelected.png"
                         UnSelectedIcon="starUnselected.png" />
 
-                    <material:MaterialRatingControl
+                    <material3:MaterialRating
                         Animation="Scale"
                         AnimationParameter="1.5"
                         ItemSize="5"
@@ -125,16 +139,14 @@
 
                     <material:MaterialDivider Margin="0,0,0,10" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalTextAlignment="Center"
-                        Text="Assistive Text" />
+                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Supporting Text" />
 
-
-                    <material:MaterialRatingControl
+                    <material3:MaterialRating
                         AnimateError="True"
-                        AssistiveText="{Binding Error}"
-                        AssistiveTextColor="Red"
+                        SupportingText="{Binding Error}"
+                        SupportingTextColor="Red"
                         ItemSize="5"
                         ItemsByRow="5"
                         LabelSize="{StaticResource ButtonFontSize}"
@@ -147,16 +159,13 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <material3:MaterialButton
-                            ButtonType="Text"
-                            Command="{Binding ClearCommand}"
-                            Text="Clear" />
-                        <material3:MaterialButton
-                            Grid.Column="1"
-                            Command="{Binding ShowCommand}"
-                            Text="Show" />
+                        <material3:MaterialButton ButtonType="Text"
+                                                  Command="{Binding ClearCommand}"
+                                                  Text="Clear" />
+                        <material3:MaterialButton Grid.Column="1"
+                                                  Command="{Binding ShowCommand}"
+                                                  Text="Show" />
                     </Grid>
-
                 </StackLayout>
             </ScrollView>
         </Grid>

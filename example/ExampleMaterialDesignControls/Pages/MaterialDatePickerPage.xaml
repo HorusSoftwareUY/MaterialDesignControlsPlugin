@@ -14,9 +14,9 @@
         <Grid RowDefinitions="Auto,*">
             <material3:MaterialTopAppBar Headline="MaterialDatePicker"
                                          LeadingIconCommand="{Binding BackCommand}">
-                <material3:MaterialTopAppBar.LeadingIcon>
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
-                </material3:MaterialTopAppBar.LeadingIcon>
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
             <ScrollView Grid.Row="1"

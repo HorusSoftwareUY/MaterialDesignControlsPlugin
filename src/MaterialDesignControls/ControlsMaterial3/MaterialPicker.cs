@@ -128,6 +128,7 @@ namespace Plugin.MaterialDesignControls.Material3
             get { return (string)GetValue(PropertyPathProperty); }
             set { SetValue(PropertyPathProperty, value); }
         }
+
         #endregion Properties
 
         #region Methods

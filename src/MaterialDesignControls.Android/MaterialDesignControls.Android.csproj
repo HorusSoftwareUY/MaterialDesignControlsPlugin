@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Plugin.MaterialDesignControls.Android</RootNamespace>
     <AssemblyName>Plugin.MaterialDesignControls.Android</AssemblyName>
-    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v13.0</TargetFrameworkVersion>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
@@ -208,7 +208,6 @@
     <Compile Include="Renderers\Material3\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialTimePickerRenderer.cs" />
-    <Compile Include="Renderers\MaterialSliderRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers.cs" />
@@ -224,6 +223,8 @@
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
     <Compile Include="Effects\TouchReleaseEffect.cs" />
     <Compile Include="Effects\Effects.cs" />
+    <Compile Include="Renderers\DeprecatedControls\MaterialSliderRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialSliderRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

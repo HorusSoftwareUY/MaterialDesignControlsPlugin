@@ -67,6 +67,9 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\example\packages\Xamarin.Forms.5.0.0.1874\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialComponents">
+      <HintPath>..\..\example\packages\Xamarin.iOS.MaterialComponents.92.0.0\lib\Xamarin.iOS\MaterialComponents.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -84,7 +87,6 @@
     <Compile Include="Renderers\DeprecatedControls\MaterialEntryRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialPickerRenderer.cs" />
     <Compile Include="Renderers.cs" />
-    <Compile Include="Renderers\MaterialSliderRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialTimePickerRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialEditorRenderer.cs" />
     <Compile Include="Effects\TouchAndPressEffect.cs" />
@@ -93,6 +95,10 @@
     <Compile Include="Renderers\DeprecatedControls\MaterialDoublePickerRenderer.cs" />
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
     <Compile Include="Effects\Effects.cs" />
+    <Compile Include="Renderers\Material3\MaterialActivityIndicatorRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialCheckBoxRenderer.cs" />
+    <Compile Include="Renderers\DeprecatedControls\MaterialSliderRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialSliderRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

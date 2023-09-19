@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialProgressIndicatorPage"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*"
+              RowSpacing="0">
+            <material3:MaterialTopAppBar Headline="MaterialProgressIndicator"
+                                         LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
+            </material3:MaterialTopAppBar>
+
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20"
+                             Spacing="20">
+
+                    <contentViews:InfoIndicatorView Message="MaterialProgressIndicator follows the latest guidelines of Material Design 3" />
+
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Circular" />
+                    
+                    <material3:MaterialProgressIndicator
+                        Type="Circular"
+                        TrackColor="DarkGray"
+                        IndicatorColor="MediumPurple" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Linear" />
+
+                    <material3:MaterialProgressIndicator
+                        Type="Linear"
+                        TrackColor="DarkGray"
+                        IndicatorColor="MediumPurple" />
+
+                    <material:MaterialDivider Margin="0,10" />
+
+                    <material:MaterialLabel
+                        FontFamily="{StaticResource SemiBoldFont}"
+                        HorizontalTextAlignment="Center"
+                        Text="Full API" />
+
+                    <material3:MaterialProgressIndicator
+                        Type="Linear"
+                        TrackColor="LightGreen"
+                        IndicatorColor="DarkGreen"
+                        IsVisible="{Binding IsVisible}" />
+
+                    <material3:MaterialSwitch
+                        IsToggled="{Binding IsVisible}"
+                        SwitchHorizontalOptions="EndAndExpand"
+                        Text="IsVisible"
+                        TextSide="Left" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

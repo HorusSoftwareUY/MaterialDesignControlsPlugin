@@ -7,7 +7,6 @@ namespace Plugin.MaterialDesignControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [Obsolete("MaterialDatePicker is deprecated, please use MaterialDatePicker of Material 3 instead.")]
-
     public partial class MaterialDatePicker : BaseMaterialFieldControl
     {
         #region Constructors
