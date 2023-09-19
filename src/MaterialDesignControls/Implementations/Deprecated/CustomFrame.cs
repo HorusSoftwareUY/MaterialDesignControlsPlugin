@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 namespace Plugin.MaterialDesignControls.Implementations
 {
-    [Obsolete("CustomFrame is deprecated, please use CustomFrame of Material 3 instead.")]
+    [Obsolete("CustomFrame is deprecated, please use MaterialCard of Material 3 instead.")]
     public class CustomFrame : Frame
     {
         #region Properties

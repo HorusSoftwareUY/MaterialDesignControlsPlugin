@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.MaterialDesignControls.Implementations;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -22,9 +23,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private StackLayout container;
 
-        private CustomImage imgLeft;
+        private Plugin.MaterialDesignControls.Material3.Implementations.CustomImage imgLeft;
 
-        private CustomImage imgRight;
+        private Plugin.MaterialDesignControls.Material3.Implementations.CustomImage imgRight;
 
         private MaterialLabel lblText;
 
@@ -500,7 +501,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 BackgroundColor = BackgroundColor
             };
 
-            imgLeft = new CustomImage
+            imgLeft = new Plugin.MaterialDesignControls.Material3.Implementations.CustomImage
             {
                 VerticalOptions = LayoutOptions.Center,
                 Padding = 0,
@@ -517,7 +518,7 @@ namespace Plugin.MaterialDesignControls.Material3
             };
             container.Children.Add(lblText);
 
-            imgRight = new CustomImage
+            imgRight = new Plugin.MaterialDesignControls.Material3.Implementations.CustomImage
             {
                 IsVisible = false,
                 VerticalOptions = LayoutOptions.Center,

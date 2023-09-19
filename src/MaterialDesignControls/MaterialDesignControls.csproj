@@ -203,7 +203,6 @@
     <Compile Include="Implementations\CustomMaterial3\ContentViewButton.cs" />
     <Compile Include="Implementations\Deprecated\CustomImage.cs" />
     <Compile Include="Implementations\CustomMaterial3\CustomImage.cs" />
-    <Compile Include="Implementations\CustomMaterial3\CustomFrame.cs" />
     <Compile Include="Implementations\Deprecated\CustomFrame.cs" />
     <Compile Include="Objects\MaterialDialogItem.cs" />
   </ItemGroup>

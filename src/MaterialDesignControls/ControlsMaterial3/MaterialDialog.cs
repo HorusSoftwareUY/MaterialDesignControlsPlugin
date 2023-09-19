@@ -1,4 +1,5 @@
-﻿using Plugin.MaterialDesignControls.Material3.Implementations;
+﻿using Plugin.MaterialDesignControls.Implementations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using System;
 using System.Collections;
@@ -19,7 +20,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private CustomFrame _mainContainer;
 
-        private CustomImage _icon;
+        private Plugin.MaterialDesignControls.Material3.Implementations.CustomImage _icon;
 
         private MaterialLabel _headlineLbl;
 
@@ -741,7 +742,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
             _mainContainer.Content = container;
 
-            _icon = new CustomImage()
+            _icon = new Plugin.MaterialDesignControls.Material3.Implementations.CustomImage()
             {
                 IsVisible = IconIsVisible,
                 WidthRequest = IconSize,

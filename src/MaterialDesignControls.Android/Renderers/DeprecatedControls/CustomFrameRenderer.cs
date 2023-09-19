@@ -1,15 +1,19 @@
 ﻿using Android.Content;
 using Android.OS;
-using Plugin.MaterialDesignControls.Android.Renderers;
+using Plugin.MaterialDesignControls.Android;
 using Plugin.MaterialDesignControls.Implementations;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
+using System;
 
 [assembly: Xamarin.Forms.ExportRenderer(typeof(CustomFrame), typeof(CustomFrameRenderer))]
-namespace Plugin.MaterialDesignControls.Android.Renderers
+namespace Plugin.MaterialDesignControls.Android
 {
+    [Obsolete("CustomFrameRenderer is deprecated, please use MaterialCardRenderer of Material 3 instead.")]
     public class CustomFrameRenderer : Xamarin.Forms.Platform.Android.FastRenderers.FrameRenderer
     {
+        public static void Init() { }
+
         public CustomFrameRenderer(Context context) : base(context)
         {
         }

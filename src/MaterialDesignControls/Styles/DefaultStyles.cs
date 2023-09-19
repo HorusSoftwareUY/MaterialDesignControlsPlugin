@@ -16,6 +16,8 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static Color SurfaceContainerHighestColor { get; set; } = Color.FromHex("#E6E0E9");
 
+        public static Color SurfaceContainerLowColor { get; set; } = Color.FromHex("#F7F2FA");
+
         public static Color OnSurfaceColor { get; set; } = Color.FromHex("#1D1B20");
 
         public static Color OnSurfaceVariantColor { get; set; } = Color.FromHex("#49454F");

@@ -21,6 +21,8 @@ namespace Plugin.MaterialDesignControls.Material3.Android
 {
     public class MaterialCardRenderer : Xamarin.Forms.Platform.Android.FastRenderers.FrameRenderer
     {
+        public static void Init() { }
+
         public MaterialCardRenderer(Context context)
             : base(context)
         {

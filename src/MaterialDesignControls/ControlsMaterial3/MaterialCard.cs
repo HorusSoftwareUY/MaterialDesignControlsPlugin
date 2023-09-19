@@ -71,7 +71,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.TapAnimation);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationType);
 
         public AnimationTypes Animation
         {
@@ -80,7 +80,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.TapAnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationParameter);
 
         public double? AnimationParameter
         {
@@ -283,21 +283,21 @@ namespace Plugin.MaterialDesignControls.Material3
                     base.HasShadow = false;
                     base.BorderColor = Color.Transparent;
                     ShadowColor = Color.Transparent;
-                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.LightPrimaryColor;
+                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
                     break;
                 case MaterialCardType.Elevated:
                     HasBorder = false;
                     base.HasShadow = true;
-                    base.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.LightPrimaryColor;
+                    base.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
                     ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
                     SetShadowColor();
-                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.LightPrimaryColor;
+                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
                     break;
                 case MaterialCardType.Custom:
                     base.HasShadow = HasShadow;
                     base.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
                     SetShadowColor();
-                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.LightPrimaryColor;
+                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
                     break;
             }
         }

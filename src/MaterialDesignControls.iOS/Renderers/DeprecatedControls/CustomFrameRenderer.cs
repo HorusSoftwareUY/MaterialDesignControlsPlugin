@@ -1,14 +1,18 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using Plugin.MaterialDesignControls.Implementations;
-using Plugin.MaterialDesignControls.iOS.Renderers;
+using Plugin.MaterialDesignControls.iOS;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(CustomFrame), typeof(CustomFrameRenderer))]
-namespace Plugin.MaterialDesignControls.iOS.Renderers
+namespace Plugin.MaterialDesignControls.iOS
 {
+    [Obsolete("CustomFrameRenderer is deprecated, please use MaterialCardRenderer of Material 3 instead.")]
     public class CustomFrameRenderer : FrameRenderer
     {
+        public static void Init() { }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
         {
             base.OnElementChanged(e);

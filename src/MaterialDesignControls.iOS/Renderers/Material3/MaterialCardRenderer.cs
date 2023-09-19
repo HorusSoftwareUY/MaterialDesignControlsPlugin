@@ -14,6 +14,8 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
 {
     public class MaterialCardRenderer : ViewRenderer
     {
+        public static void Init() { }
+
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
             base.OnElementChanged(e);
