@@ -235,7 +235,7 @@ namespace ExampleMaterialDesignControls.ViewModels
                 }
             };
 
-            SelectedItem5 = Items5.Last();
+            SelectedItem5 = Items5.Where(i => i.IsSelected).Last();
         }
 
         public ICommand SaveCommand => new Command(async () =>
@@ -250,7 +250,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand SelectItem5Command => new Command(async () =>
         {
-            await this.DisplayAlert.Invoke("Size", $"Selected command: {SelectedItem5}", "Ok");
+            await this.DisplayAlert.Invoke("Option", $"Selected command: {string.Join("; ", Items5.Where(i => i.IsSelected).Select(i => i.Text))}", "Ok");
         });
     }
 }

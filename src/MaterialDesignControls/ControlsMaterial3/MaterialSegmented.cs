@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using System;
-using Xamarin.Forms;
 using Plugin.MaterialDesignControls.Material3.Implementations;
-using System.Linq;
-using Xamarin.Forms.Internals;
 using Plugin.MaterialDesignControls.Styles;
+using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -301,21 +301,24 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(CornerRadius):
                     if (Type == MaterialSegmentedType.Filled)
                     {
-                        _mainFrame.CornerRadius = (float)CornerRadius;
-                        foreach (var item in ((Grid)_mainFrame.Content).Children)
-                            ((MaterialCard)item).CornerRadius = (float)CornerRadius;
+                        _mainFrame.CornerRadius = CornerRadius;
+                        foreach (var item in _grid.Children)
+                            ((MaterialCard)item).CornerRadius = CornerRadius;
                     }
                     break;
+
                 case nameof(BackgroundColor):
-                    if (Type == MaterialSegmentedType.Filled)
-                    {
-                        _mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
-                    }
+                    SetBackgroundAndBorder();
                     break;
+
                 case nameof(HeightRequest):
                     _mainFrame.HeightRequest = HeightRequest;
                     break;
-            }
+
+                default:
+                    base.OnPropertyChanged(propertyName);
+                    break;
+            }            
         }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
@@ -324,12 +327,27 @@ namespace Plugin.MaterialDesignControls.Material3
             control.SetItemSource();
         }
 
+        private void SetBackgroundAndBorder()
+        {
+            _mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
+            if (Type == MaterialSegmentedType.Filled)
+            {
+                _mainFrame.BorderColor = _mainFrame.BackgroundColor;
+            }
+            else
+            {
+                _mainFrame.BorderColor = IsEnabled ? BorderColor : DisabledBorderColor;
+            }
+        }
+
         private void SetItemSource()
         {
+            SetBackgroundAndBorder();
+
             _grid.ColumnDefinitions = new ColumnDefinitionCollection();
             _grid.Children.Clear();
-
-            int column = 0;
+            _grid.ColumnSpacing = 0;
+            
             if (ItemsSource != null)
             {
                 int itemIdx = 0;
@@ -337,131 +355,126 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 foreach (var item in ItemsSource)
                 {
-                    var frame = new MaterialCard();
-                    frame.HasShadow = false;
-                    frame.BorderColor = Color.Transparent;
-                    frame.Padding = new Thickness(12, 0);
-                    frame.HorizontalOptions = LayoutOptions.Fill;
-                    frame.VerticalOptions = LayoutOptions.Fill;
-                    frame.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
-
-                    if (Type == MaterialSegmentedType.Outlined)
-                    {
-                        frame.CornerRadius = 16;
-
-                        _grid.ColumnSpacing = 0;
-                        _mainFrame.BorderColor = IsEnabled ? BorderColor : DisabledBorderColor;
-                        _mainFrame.BackgroundColor = IsEnabled ? BorderColor : DisabledBorderColor;
-                        frame.BorderColor = IsEnabled ? BorderColor : DisabledBorderColor;
-
-                        if (itemIdx == 0)
-                        {
-                            frame.Margin = new Thickness(1, 1, 1, 1);
-                            frame.CornerRadiusTopLeft = true;
-                            frame.CornerRadiusBottomLeft = true;
-                        }
-                        else if (itemIdx == ItemsSource.Count() - 1)
-                        {
-                            frame.Margin = new Thickness(0, 1, 1, 1);
-                            frame.CornerRadiusBottomRight = true;
-                            frame.CornerRadiusTopRight = true;
-                        }
-                        else
-                        {
-                            if (Device.RuntimePlatform == Device.iOS)
-                                frame.Margin = new Thickness(0, 1, 1, 1);
-                            else
-                                frame.Margin = new Thickness(0, 1);
-
-                            frame.CornerRadius = 0;
-                        }
-                    }
-                    else
-                    {
-                        _mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
-                        _grid.ColumnSpacing = 0;
-                        _mainFrame.BorderColor = Color.Transparent;
-                        frame.CornerRadius = (CornerRadius - SegmentMargin) >= 0 ? ((float)CornerRadius - SegmentMargin) : 0;
-                        frame.Margin = new Thickness(SegmentMargin);
-
-                        frame.CornerRadiusTopLeft = true;
-                        frame.CornerRadiusBottomLeft = true;
-                        frame.CornerRadiusBottomRight = true;
-                        frame.CornerRadiusTopRight = true;
-                    }
-
-                    var label = new Plugin.MaterialDesignControls.MaterialLabel();
-                    label.Text = item.Text.Trim();
-                    label.HorizontalOptions = LayoutOptions.Center;
-                    label.VerticalOptions = LayoutOptions.Center;
-                    label.FontSize = FontSize;
-                    label.FontFamily = FontFamily;
-                    label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
-
-                    containersWithItems.Add(item.Text, new ContainerForObjects()
-                    {
-                        Container = frame,
-                        Label = label
-                    });
-
-                    var tapped = new TapGestureRecognizer();
-                    tapped.Tapped += (s, e) =>
-                    {
-                        if (!IsEnabled)
-                            return;
-
-                        if (item.IsSelected && !AllowMultiselect)
-                            return;
-
-                        if (!AllowMultiselect)
-                        {
-                            var isThereSelection = ItemsSource.Where(x => x.IsSelected).Count() > 0;
-
-                            if (isThereSelection)
-                            {
-                                foreach (var insideItem in ItemsSource)
-                                {
-                                    if (!insideItem.Equals(item))
-                                    {
-                                        insideItem.IsSelected = false;
-                                        var container = containersWithItems[insideItem.Text];
-                                        SetContentAndColors(container.Container, container.Label, insideItem);
-                                    }
-                                }
-                            }
-
-                        }
-
-                        if (!item.IsSelected && !AllowMultiselect)
-                        {
-                            SelectedItem = item;
-                        }
-                        else
-                        {
-                            item.IsSelected = !item.IsSelected;
-                            SetContentAndColors(frame, label, item);
-                        }
-
-                        if (CommandProperty != null && Command != null)
-                            Command.Execute(CommandParameter);
-
-                        IsSelectedChanged?.Invoke(this, null);
-                    };
-
-                    SetContentAndColors(frame, label, item);
-
-                    frame.GestureRecognizers.Add(tapped);
-                    frame.SetValue(Grid.ColumnProperty, column);
-
+                    var frame = CreateVisualItem(item, itemIdx);
+                    frame.SetValue(Grid.ColumnProperty, itemIdx);
                     _grid.Children.Add(frame);
-                    column++;
+
                     itemIdx++;
                 }
             }
         }
 
-        private void SetContentAndColors(MaterialCard frame, Plugin.MaterialDesignControls.MaterialLabel label, MaterialSegmentedItem item)
+        private View CreateVisualItem(MaterialSegmentedItem item, int index)
         {
+            var frame = new MaterialCard();
+            frame.HasShadow = false;
+            frame.Padding = new Thickness(12, 0);
+            frame.HorizontalOptions = LayoutOptions.Fill;
+            frame.VerticalOptions = LayoutOptions.Fill;
+            frame.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
+            frame.BorderColor = frame.BackgroundColor;
+            frame.iOSBorderWidth = 1;
+            frame.Margin = new Thickness(0);
+
+            if (Type == MaterialSegmentedType.Outlined)
+            {
+                frame.BorderColor = IsEnabled ? BorderColor : DisabledBorderColor;
+                frame.CornerRadius = _mainFrame.CornerRadius;
+
+                if (index == 0)
+                {
+                    frame.CornerRadiusTopLeft = true;
+                    frame.CornerRadiusBottomLeft = true;
+                }
+                else if (index == ItemsSource.Count() - 1)
+                {
+                    frame.CornerRadiusBottomRight = true;
+                    frame.CornerRadiusTopRight = true;
+                }
+                else
+                {
+                    frame.CornerRadius = 0;
+                    frame.Margin = new Thickness(-1, 0);
+                }
+            }
+            else
+            {
+                frame.CornerRadius = (CornerRadius - SegmentMargin) >= 0 ? ((float)CornerRadius - SegmentMargin) : 0;
+                frame.Margin = new Thickness(SegmentMargin);
+                frame.CornerRadiusTopLeft = true;
+                frame.CornerRadiusBottomLeft = true;
+                frame.CornerRadiusBottomRight = true;
+                frame.CornerRadiusTopRight = true;
+            }
+
+            var label = new MaterialLabel();
+            label.Text = item.Text.Trim();
+            label.HorizontalOptions = LayoutOptions.Center;
+            label.VerticalOptions = LayoutOptions.Center;
+            label.FontSize = FontSize;
+            label.FontFamily = FontFamily;
+            label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
+
+            containersWithItems.Add(item.Text, new ContainerForObjects()
+            {
+                Container = frame,
+                Label = label
+            });
+
+            SetItemContentAndColors(frame, label, item);
+
+            frame.Command = new Command<MaterialSegmentedItem>(it =>
+            {
+                if (!AllowMultiselect)
+                {
+                    SelectedItem = it;
+                }
+                else
+                {
+                    SelectedItemChanged(it);
+                }
+
+                if (CommandProperty != null && Command != null)
+                    Command.Execute(CommandParameter);
+
+                IsSelectedChanged?.Invoke(this, null);
+            },
+            it => IsEnabled && (!it.IsSelected || AllowMultiselect));
+            frame.CommandParameter = item;
+
+            return frame;
+        }
+
+        private void SetItemContentAndColors(MaterialCard frame, MaterialLabel label, MaterialSegmentedItem item)
+        {
+            Grid container = null;
+            CustomImage selectedIcon = null;
+
+            if ((item.IsSelected && item.SelectedIconIsVisible) || (!item.IsSelected && item.UnselectedIconIsVisible))
+            {
+                container = new Grid()
+                {
+                    BackgroundColor = Color.Transparent,
+                    ColumnSpacing = 12,
+                    HorizontalOptions = LayoutOptions.Center,
+                };
+                container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
+                container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+
+                selectedIcon = new CustomImage()
+                {
+                    WidthRequest = 18,
+                    MinimumHeightRequest = 18,
+                    MinimumWidthRequest = 18,
+                    HeightRequest = 18,
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.Center,
+                    IsVisible = true
+                };
+
+                selectedIcon.SetValue(Grid.ColumnProperty, 0);
+            }
+
             if (item.IsSelected)
             {
                 frame.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
@@ -469,28 +482,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 if (item.SelectedIconIsVisible)
                 {
-                    var container = new Grid()
-                    {
-                        BackgroundColor = Color.Transparent,
-                        ColumnSpacing = 12,
-                        HorizontalOptions = LayoutOptions.Center,
-                    };
-                    container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
-                    container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
-
-                    var selectedIcon = new CustomImage()
-                    {
-                        WidthRequest = 18,
-                        MinimumHeightRequest = 18,
-                        MinimumWidthRequest = 18,
-                        HeightRequest = 18,
-                        VerticalOptions = LayoutOptions.Center,
-                        HorizontalOptions = LayoutOptions.Center,
-                        IsVisible = true
-                    };
-
-                    selectedIcon.SetValue(Grid.ColumnProperty, 0);
-
                     if (item.CustomSelectedIcon != null)
                     {
                         selectedIcon.SetCustomImage(item.CustomSelectedIcon);
@@ -500,10 +491,8 @@ namespace Plugin.MaterialDesignControls.Material3
                         selectedIcon.SetImage(item.SelectedIcon);
                     }
 
-                    container.Children.Add(selectedIcon);
-
                     label.SetValue(Grid.ColumnProperty, 1);
-
+                    container.Children.Add(selectedIcon);
                     container.Children.Add(label);
 
                     frame.Content = container;
@@ -520,28 +509,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 if (item.UnselectedIconIsVisible)
                 {
-                    var container = new Grid()
-                    {
-                        BackgroundColor = Color.Transparent,
-                        ColumnSpacing = 12,
-                        HorizontalOptions = LayoutOptions.Center
-                    };
-                    container.ColumnDefinitions.Add(new ColumnDefinition { Width = 18 });
-                    container.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
-
-                    var selectedIcon = new CustomImage()
-                    {
-                        WidthRequest = 18,
-                        MinimumHeightRequest = 18,
-                        MinimumWidthRequest = 18,
-                        HeightRequest = 18,
-                        VerticalOptions = LayoutOptions.Center,
-                        HorizontalOptions = LayoutOptions.Center,
-                        IsVisible = true
-                    };
-
-                    selectedIcon.SetValue(Grid.ColumnProperty, 0);
-
                     if (item.CustomUnselectedIcon != null)
                     {
                         selectedIcon.SetCustomImage(item.CustomUnselectedIcon);
@@ -551,10 +518,8 @@ namespace Plugin.MaterialDesignControls.Material3
                         selectedIcon.SetImage(item.UnselectedIcon);
                     }
 
-                    container.Children.Add(selectedIcon);
-
                     label.SetValue(Grid.ColumnProperty, 1);
-
+                    container.Children.Add(selectedIcon);
                     container.Children.Add(label);
 
                     frame.Content = container;
@@ -565,7 +530,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 }
             }
         }
-
 
         private static void OnTypeChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -578,28 +542,35 @@ namespace Plugin.MaterialDesignControls.Material3
             var control = (MaterialSegmented)bindable;
             if (newValue is MaterialSegmentedItem selectedItem && control.ItemsSource.Contains(selectedItem))
             {
-                if (!control.AllowMultiselect)
-                {
-                    var isThereSelection = control.ItemsSource.Where(x => x.IsSelected).Count() > 0;
+                control.SelectedItemChanged(selectedItem);
+            }
+        }
 
-                    if (isThereSelection)
+        private void SelectedItemChanged(MaterialSegmentedItem selectedItem)
+        {
+            if (!AllowMultiselect)
+            {
+                var isThereSelection = ItemsSource.Any(x => x.IsSelected);
+                if (isThereSelection)
+                {
+                    foreach (var insideItem in ItemsSource)
                     {
-                        foreach (var insideItem in control.ItemsSource)
+                        if (!insideItem.Equals(selectedItem))
                         {
-                            if (!insideItem.Equals(selectedItem))
-                            {
-                                insideItem.IsSelected = false;
-                                var containers = control.containersWithItems[insideItem.Text];
-                                control.SetContentAndColors(containers.Container, containers.Label, insideItem);
-                            }
+                            SetItemStatus(insideItem, false);
                         }
                     }
-
-                    selectedItem.IsSelected = !selectedItem.IsSelected;
-                    var container = control.containersWithItems[selectedItem.Text];
-                    control.SetContentAndColors(container.Container, container.Label, selectedItem);
                 }
             }
+
+            SetItemStatus(selectedItem, !selectedItem.IsSelected);
+        }
+
+        private void SetItemStatus(MaterialSegmentedItem item, bool selected)
+        {
+            item.IsSelected = selected;
+            var container = containersWithItems[item.Text];
+            SetItemContentAndColors(container.Container, container.Label, item);
         }
 
         #endregion Methods
@@ -608,8 +579,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private class ContainerForObjects
         {
             public MaterialCard Container { get; set; }
-
-            public Plugin.MaterialDesignControls.MaterialLabel Label { get; set; }
+            public MaterialLabel Label { get; set; }
         }
     }
 }
