@@ -192,10 +192,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(TextColor):
                     base.TextColor = this.TextColor;
                     break;
-                default:
-                    base.OnPropertyChanged(propertyName);
-                    break;
             }
+            base.OnPropertyChanged(propertyName);
         }
 
         #endregion Methods

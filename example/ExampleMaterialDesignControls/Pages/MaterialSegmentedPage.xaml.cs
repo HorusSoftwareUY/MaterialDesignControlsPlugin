@@ -14,7 +14,7 @@ namespace ExampleMaterialDesignControls.Pages
 
         void MaterialSegmented_IsSelectedChanged(System.Object sender, System.EventArgs e)
         {
-            DisplayAlert("Message","Segment Is Selected Changed","OK");
+            DisplayAlert("Message","Segment IsSelected Changed","OK");
         }
     }
 }

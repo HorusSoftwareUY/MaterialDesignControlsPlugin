@@ -341,3 +341,4 @@ ASALocalRun/
 healthchecksdb
 
 *.DS_Store
+*.designer.cs

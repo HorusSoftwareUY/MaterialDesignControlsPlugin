@@ -1,8 +1,6 @@
-﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Implementations;
+﻿using System.Windows.Input;
+using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Styles;
-using System;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3.Implementations
@@ -10,11 +8,12 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
     public partial class MaterialCard : Frame, ITouchAndPressEffectConsumer
     {
         #region Constructor
+
         public MaterialCard()
         {
-
             Effects.Add(new TouchAndPressEffect());
         }
+
         #endregion
 
         #region Attributes & Properties
