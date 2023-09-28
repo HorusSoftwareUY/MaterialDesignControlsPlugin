@@ -31,7 +31,9 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                 
                 var activeTrackColor = customSlider.ActiveTrackColor.ToAndroid();
                 var inactiveTrackColor = customSlider.InactiveTrackColor.ToAndroid();
-                
+
+                Control.SetPadding(0, 0, Control.Thumb.IntrinsicWidth, 0);
+
                 BuildVersionCodes androidVersion = Build.VERSION.SdkInt;
                 if (androidVersion >= BuildVersionCodes.M)
                 {
@@ -53,7 +55,6 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                     progressDrawable.SetLayerGravity(0, GravityFlags.CenterVertical);
                     progressDrawable.SetLayerHeight(1, trackHeight);
                     progressDrawable.SetLayerGravity(1, GravityFlags.CenterVertical);
-                    Control.SetPadding(0, 0, Control.Thumb.IntrinsicWidth, 0);
                     Control.ProgressDrawable = progressDrawable;
 
                     var progressToLevel = ((double)Control.Progress / (double)Control.Max) * 10000;
