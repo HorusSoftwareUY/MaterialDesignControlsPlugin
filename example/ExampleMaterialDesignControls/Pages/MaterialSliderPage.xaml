@@ -160,7 +160,7 @@
                                              Style="{StaticResource SliderStyle}"
                                              ThumbColor="Black">
                         <material3:MaterialSlider.CustomBackgroundImage>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.scale.svg" />
+                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.scale.svg" Aspect="AspectFill"  />
                         </material3:MaterialSlider.CustomBackgroundImage>
                     </material3:MaterialSlider>
 

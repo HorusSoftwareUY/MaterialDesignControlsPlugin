@@ -16,8 +16,7 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 Padding = new Thickness(0),
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 50
+                HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
             bckgImage = new CustomImage()
