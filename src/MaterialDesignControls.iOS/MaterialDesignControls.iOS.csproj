@@ -99,6 +99,7 @@
     <Compile Include="Renderers\Material3\MaterialCheckBoxRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialSliderRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialSliderRenderer.cs" />
+    <Compile Include="Utils\ImageSourceExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">
