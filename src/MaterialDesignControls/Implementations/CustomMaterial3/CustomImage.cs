@@ -7,8 +7,6 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
     {
         private Image image;
 
-        private View customImage;
-
         public CustomImage()
         {
             this.HorizontalOptions = LayoutOptions.FillAndExpand;
@@ -18,7 +16,6 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
 
         public void SetImage(string imageSource)
         {
-            customImage = null;
             image = new Image
             {
                 Aspect = Aspect.AspectFit,

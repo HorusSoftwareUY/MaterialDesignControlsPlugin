@@ -12,38 +12,21 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialSlider() : base()
         {
-            var mainContainer = new StackLayout()
-            {
-                Spacing = 2
-            };
-
-            var grid = new Grid()
+            var mainContainer = new Grid()
             {
                 Padding = new Thickness(0),
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 50,
-                Margin = new Thickness(0),
+                HeightRequest = 50
             };
 
             bckgImage = new CustomImage()
             {
-                IsVisible = false,
-                Padding = new Thickness(10, 0)
+                IsVisible = false
             };
 
             bckgImage.SetValue(Grid.RowProperty, 0);
-
-            grid.Children.Add(bckgImage);
-
-
-            var sliderContainer = new StackLayout()
-            {
-                Orientation = StackOrientation.Horizontal,
-                VerticalOptions = LayoutOptions.FillAndExpand
-            };
-
-            sliderContainer.SetValue(Grid.RowProperty, 0);
+            mainContainer.Children.Add(bckgImage);
 
             imgMinimum = new CustomImage()
             {
@@ -51,8 +34,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 24,
-                HeightRequest = 24,
-                Padding = 6
+                HeightRequest = 24
             };
 
             lblMinimum = new MaterialLabel()
@@ -62,13 +44,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 VerticalOptions = LayoutOptions.Center,
                 Text = LabelMinimumText,
                 TextColor = IsEnabled ? LabelMinimumTextColor : DisabledLabelMinimumTextColor,
-                FontSize = LabelMinimumSize,
+                FontSize = LabelMinimumSize
             };
 
             slider = new CustomSlider()
             {
                 VerticalOptions = LayoutOptions.Center,
-                Margin = new Thickness(0, 10, 0, 10),
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 Minimum = MinimumValue,
                 Maximum = MaximumValue,
@@ -77,7 +58,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 ThumbColor = ThumbColor,
                 TrackHeight = TrackHeight,
                 TrackCornerRadius = TrackCornerRadius,
-                UserInteractionEnabled = UserInteractionEnabled,
+                UserInteractionEnabled = UserInteractionEnabled
             };
 
             slider.ValueChanged += OnValueChanged;
@@ -98,25 +79,30 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 24,
-                HeightRequest = 24,
-                Padding = 6
+                HeightRequest = 24
             };
 
+            var sliderContainer = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Spacing = Device.RuntimePlatform == Device.iOS ? 8 : 2
+            };
+
+            sliderContainer.SetValue(Grid.RowProperty, 0);
             sliderContainer.Children.Add(imgMinimum);
             sliderContainer.Children.Add(lblMinimum);
             sliderContainer.Children.Add(slider);
             sliderContainer.Children.Add(lblMaximum);
             sliderContainer.Children.Add(imgMaximum);
 
-            grid.Children.Add(sliderContainer);
-
-            mainContainer.Children.Add(grid);
+            mainContainer.Children.Add(sliderContainer);
 
             SecondaryLabelTextColor = LabelValueColor;
             DisabledSecondaryLabelTextColor = DisabledLabelValueColor;
             SecondaryLabelFontSize = LabelValueSize;
             SecondaryLabelFontFamily = LabelValueFontFamily;
-
+            
             base.CustomControl = mainContainer;
         }
 

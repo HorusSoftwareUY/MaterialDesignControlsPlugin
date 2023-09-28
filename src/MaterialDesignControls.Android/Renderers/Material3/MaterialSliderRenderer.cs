@@ -3,8 +3,8 @@ using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using Android.Graphics.Drawables.Shapes;
 using Android.OS;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Plugin.MaterialDesignControls.Material3.Implementations;
@@ -28,43 +28,50 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             if (Control != null)
             {
                 var customSlider = (CustomSlider)Element;
-
-                if (customSlider.ThumbColor != Xamarin.Forms.Color.Transparent)
-                    Control.Thumb.SetColorFilter(customSlider.ThumbColor.ToAndroid(), PorterDuff.Mode.SrcIn);
-
+                
+                var activeTrackColor = customSlider.ActiveTrackColor.ToAndroid();
+                var inactiveTrackColor = customSlider.InactiveTrackColor.ToAndroid();
+                
                 BuildVersionCodes androidVersion = Build.VERSION.SdkInt;
-
                 if (androidVersion >= BuildVersionCodes.M)
                 {
-                    var trackCornerRadius = DpToPixels(customSlider.TrackCornerRadius);
-                    var trackHeight = DpToPixels(customSlider.TrackHeight);
+                    var trackCornerRadius = customSlider.TrackCornerRadius.DpToPixels(Context);
+                    var trackHeight = customSlider.TrackHeight.DpToPixels(Context);
 
-                    var progressGradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LeftRight, new int[] { customSlider.ActiveTrackColor.ToAndroid(), customSlider.ActiveTrackColor.ToAndroid() });
-                    progressGradientDrawable.SetCornerRadius(trackCornerRadius);
-                    var progress = new ClipDrawable(progressGradientDrawable, GravityFlags.Left, ClipDrawableOrientation.Horizontal);
+                    var radius = new float[] { trackCornerRadius, trackCornerRadius, trackCornerRadius, trackCornerRadius, trackCornerRadius, trackCornerRadius, trackCornerRadius, trackCornerRadius };
+                    var trackShape = new RoundRectShape(radius, new RectF(), radius);
+                    
+                    var background = new ShapeDrawable(trackShape);
+                    background.SetColorFilter(new PorterDuffColorFilter(inactiveTrackColor, PorterDuff.Mode.SrcIn));
 
-                    var background = new GradientDrawable();
-                    background.SetColor(customSlider.InactiveTrackColor.ToAndroid());
-                    background.SetCornerRadius(trackCornerRadius);
+                    var progress = new ShapeDrawable(trackShape);
+                    progress.SetColorFilter(new PorterDuffColorFilter(activeTrackColor, PorterDuff.Mode.SrcIn));
+                    var clippedProgress = new ClipDrawable(progress, GravityFlags.Start, ClipDrawableOrientation.Horizontal);
 
-                    var progressDrawable = new LayerDrawable(new Drawable[] { background, progress });
-
-                    progressDrawable.SetLayerHeight(0, (int)trackHeight);
-                    progressDrawable.SetLayerHeight(1, (int)trackHeight);
+                    var progressDrawable = new LayerDrawable(new Drawable[] { background, clippedProgress });
+                    progressDrawable.SetLayerHeight(0, trackHeight);
                     progressDrawable.SetLayerGravity(0, GravityFlags.CenterVertical);
+                    progressDrawable.SetLayerHeight(1, trackHeight);
                     progressDrawable.SetLayerGravity(1, GravityFlags.CenterVertical);
+                    Control.SetPadding(0, 0, Control.Thumb.IntrinsicWidth, 0);
                     Control.ProgressDrawable = progressDrawable;
+
+                    var progressToLevel = ((double)Control.Progress / (double)Control.Max) * 10000;
+                    Control.ProgressDrawable.SetLevel(Convert.ToInt32(progressToLevel));
                 }
                 else
                 {
-                    Element.MinimumTrackColor = customSlider.ActiveTrackColor;
+                    Control.ProgressTintList = ColorStateList.ValueOf(activeTrackColor);
+                    Control.ProgressTintMode = PorterDuff.Mode.SrcIn;
 
-                    Control.SecondaryProgressTintList = ColorStateList.ValueOf(customSlider.InactiveTrackColor.ToAndroid());
-                    Control.SecondaryProgressTintMode = PorterDuff.Mode.SrcIn;
-                    Control.SecondaryProgress = int.MaxValue;
+                    Control.ProgressBackgroundTintList = ColorStateList.ValueOf(inactiveTrackColor);
+                    Control.ProgressBackgroundTintMode = PorterDuff.Mode.SrcIn;
                 }
 
-                Control.SetPadding(52, Control.PaddingTop, 52, Control.PaddingBottom);
+                if (customSlider.ThumbImageSource == null && customSlider.ThumbColor != Xamarin.Forms.Color.Transparent)
+                {
+                    Control.Thumb.SetColorFilter(new PorterDuffColorFilter(customSlider.ThumbColor.ToAndroid(), PorterDuff.Mode.SrcIn));
+                }
 
                 if (customSlider.UserInteractionEnabled)
                 {
@@ -97,12 +104,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             int thumbTop = (seekbar.Height / 2 - thumb.IntrinsicHeight / 2);
 
             thumb.SetBounds(thumb.Bounds.Left, thumbTop, thumb.Bounds.Left + thumb.IntrinsicWidth, thumbTop + thumb.IntrinsicHeight);
-        }
-
-        private float DpToPixels(float valueInDp)
-        {
-            DisplayMetrics metrics = Context.Resources.DisplayMetrics;
-            return TypedValue.ApplyDimension(ComplexUnitType.Dip, valueInDp, metrics);
+            Control.SetPadding(thumb.IntrinsicWidth / 2, 0, thumb.IntrinsicWidth / 2, 0);
         }
     }
 }
