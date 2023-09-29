@@ -225,6 +225,7 @@
     <Compile Include="Effects\Effects.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialSliderRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialSliderRenderer.cs" />
+    <Compile Include="Utils\DimensionsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
