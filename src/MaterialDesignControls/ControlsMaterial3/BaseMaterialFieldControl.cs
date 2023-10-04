@@ -614,6 +614,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 {
                     control._contentLayout.RowDefinitions[1].Height = GridLength.Auto;
                 }
+
+                control.InitializeDefaults();
             }
         }
 
@@ -914,7 +916,8 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
-                HorizontalTextAlignment = TextAlignment.Start                               
+                HorizontalTextAlignment = TextAlignment.Start,
+                Padding = Device.RuntimePlatform == Device.iOS ? new Thickness(4, 0) : new Thickness(0)
             };
 
             _lblLabel.SetValue(Grid.RowProperty, 0);
