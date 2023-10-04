@@ -916,8 +916,7 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 IsVisible = false,
                 LineBreakMode = LineBreakMode.NoWrap,
-                HorizontalTextAlignment = TextAlignment.Start,
-                Padding = Device.RuntimePlatform == Device.iOS ? new Thickness(4, 0) : new Thickness(0)
+                HorizontalTextAlignment = TextAlignment.Start
             };
 
             _lblLabel.SetValue(Grid.RowProperty, 0);
