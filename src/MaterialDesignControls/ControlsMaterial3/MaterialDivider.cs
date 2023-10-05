@@ -18,7 +18,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 _initialized = true;
                 Initialize();
             }
-
+            Xamarin.Forms.PlatformConfiguration.AndroidSpecific.VisualElement.SetElevation(this, 0);
         }
 
         #endregion Constructor
