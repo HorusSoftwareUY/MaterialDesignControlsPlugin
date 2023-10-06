@@ -151,7 +151,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontSizeProperty =
-            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.PhoneFontSizes.HeadlineSmall);
+            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.HeadlineSmall);
 
         public double HeadlineFontSize
         {
@@ -200,7 +200,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextFontSizeProperty =
-            BindableProperty.Create(nameof(SupportingTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.PhoneFontSizes.BodyMedium);
+            BindableProperty.Create(nameof(SupportingTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.BodyMedium);
 
         public double SupportingTextFontSize
         {
@@ -271,7 +271,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CancelFontSizeProperty =
-            BindableProperty.Create(nameof(CancelFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.PhoneFontSizes.LabelLarge);
+            BindableProperty.Create(nameof(CancelFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.LabelLarge);
 
         public double CancelFontSize
         {
@@ -329,7 +329,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptFontSizeProperty =
-            BindableProperty.Create(nameof(AcceptFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.PhoneFontSizes.LabelLarge);
+            BindableProperty.Create(nameof(AcceptFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.LabelLarge);
 
         public double AcceptFontSize
         {
@@ -414,7 +414,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchTextFontSizeProperty =
-            BindableProperty.Create(nameof(SearchTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.PhoneFontSizes.BodyMedium);
+            BindableProperty.Create(nameof(SearchTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.BodyMedium);
 
         public double SearchTextFontSize
         {
@@ -463,7 +463,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemTextFontSizeProperty =
-            BindableProperty.Create(nameof(ItemTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.PhoneFontSizes.BodyMedium);
+            BindableProperty.Create(nameof(ItemTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.BodyMedium);
 
         public double ItemTextFontSize
         {

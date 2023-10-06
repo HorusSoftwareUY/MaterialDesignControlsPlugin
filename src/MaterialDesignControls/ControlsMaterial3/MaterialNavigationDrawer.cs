@@ -58,7 +58,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontSizeProperty =
-            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
+            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontSizes.TitleSmall);
 
         public double HeadlineFontSize
         {
@@ -112,7 +112,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelFontSizeProperty =
-            BindableProperty.Create(nameof(LabelFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PhoneFontSizes.LabelLarge);
+            BindableProperty.Create(nameof(LabelFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontSizes.LabelLarge);
 
         public double LabelFontSize
         {
@@ -139,7 +139,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SectionLabelFontSizeProperty =
-            BindableProperty.Create(nameof(SectionLabelFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PhoneFontSizes.TitleSmall);
+            BindableProperty.Create(nameof(SectionLabelFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontSizes.TitleSmall);
 
         public double SectionLabelFontSize
         {
@@ -185,7 +185,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BadgeFontSizeProperty =
-            BindableProperty.Create(nameof(BadgeFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PhoneFontSizes.LabelSmall);
+            BindableProperty.Create(nameof(BadgeFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontSizes.LabelSmall);
 
         public double BadgeFontSize
         {

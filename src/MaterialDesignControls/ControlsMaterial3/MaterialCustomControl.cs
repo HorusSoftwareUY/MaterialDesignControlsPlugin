@@ -80,7 +80,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontSizes.BodySmall);
 
         public double LabelSize
         {
@@ -138,7 +138,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontSizes.BodySmall);
 
         public double SupportingSize
         {
@@ -205,7 +205,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SecondaryLabelFontSizeProperty =
-            BindableProperty.Create(nameof(SecondaryLabelFontSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
+            BindableProperty.Create(nameof(SecondaryLabelFontSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontSizes.BodySmall);
 
         public double SecondaryLabelFontSize
         {

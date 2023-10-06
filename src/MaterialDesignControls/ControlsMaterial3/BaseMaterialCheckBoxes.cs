@@ -37,7 +37,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.FontSizes.BodyLarge);
 
         public double FontSize
         {
@@ -77,7 +77,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.FontSizes.BodySmall);
 
         public double SupportingSize
         {

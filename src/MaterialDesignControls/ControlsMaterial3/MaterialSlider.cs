@@ -154,7 +154,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelValueSizeProperty =
-            BindableProperty.Create(nameof(LabelValueSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
+            BindableProperty.Create(nameof(LabelValueSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.FontSizes.BodySmall);
 
         public double LabelValueSize
         {
@@ -212,7 +212,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMinimumSizeProperty =
-            BindableProperty.Create(nameof(LabelMinimumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
+            BindableProperty.Create(nameof(LabelMinimumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.FontSizes.BodyLarge);
 
         public double LabelMinimumSize
         {
@@ -252,7 +252,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMaximumSizeProperty =
-            BindableProperty.Create(nameof(LabelMaximumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
+            BindableProperty.Create(nameof(LabelMaximumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.FontSizes.BodyLarge);
 
         public double LabelMaximumSize
         {

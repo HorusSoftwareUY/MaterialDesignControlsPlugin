@@ -82,7 +82,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontSizeProperty =
-            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.PhoneFontSizes.TitleLarge);
+            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.FontSizes.TitleLarge);
 
         public double HeadlineFontSize
         {
@@ -127,7 +127,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DescriptionFontSizeProperty =
-            BindableProperty.Create(nameof(DescriptionFontSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.PhoneFontSizes.TitleMedium);
+            BindableProperty.Create(nameof(DescriptionFontSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.FontSizes.TitleMedium);
 
         public double DescriptionFontSize
         {

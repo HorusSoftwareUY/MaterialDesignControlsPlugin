@@ -46,42 +46,23 @@ namespace Plugin.MaterialDesignControls.Styles
 
         public static string FontFamilyMedium { get; set; } = null;
 
-        public static FontSizes PhoneFontSizes { get; set; } = new FontSizes
+        public static FontSizes FontSizes { get; set; } = new FontSizes
         {
-            DisplayLarge = 57,
-            DisplayMedium = 45,
-            DisplaySmall = 36,
-            HeadlineLarge = 32,
-            HeadlineMedium = 28,
-            HeadlineSmall = 24,
-            TitleLarge = 22,
-            TitleMedium = 16,
-            TitleSmall = 14,
-            LabelLarge = 14,
-            LabelMedium = 12,
-            LabelSmall = 11,
-            BodyLarge = 16,
-            BodyMedium = 14,
-            BodySmall = 12
-        };
-
-        public static FontSizes TabletFontSizes { get; set; } = new FontSizes
-        {
-            DisplayLarge = 80,
-            DisplayMedium = 62,
-            DisplaySmall = 50,
-            HeadlineLarge = 44,
-            HeadlineMedium = 38,
-            HeadlineSmall = 32,
-            TitleLarge = 26,
-            TitleMedium = 19,
-            TitleSmall = 17,
-            LabelLarge = 17,
-            LabelMedium = 15,
-            LabelSmall = 14,
-            BodyLarge = 19,
-            BodyMedium = 17,
-            BodySmall = 15
+            DisplayLarge = Device.Idiom == TargetIdiom.Tablet ? 80 : 57,
+            DisplayMedium = Device.Idiom == TargetIdiom.Tablet ? 62 : 45,
+            DisplaySmall = Device.Idiom == TargetIdiom.Tablet ? 50 : 36,
+            HeadlineLarge = Device.Idiom == TargetIdiom.Tablet ? 44 : 32,
+            HeadlineMedium = Device.Idiom == TargetIdiom.Tablet ? 38 : 28,
+            HeadlineSmall = Device.Idiom == TargetIdiom.Tablet ? 32 : 24,
+            TitleLarge = Device.Idiom == TargetIdiom.Tablet ? 26 : 22,
+            TitleMedium = Device.Idiom == TargetIdiom.Tablet ? 19 : 16,
+            TitleSmall = Device.Idiom == TargetIdiom.Tablet ? 17 : 14,
+            LabelLarge = Device.Idiom == TargetIdiom.Tablet ? 17 : 14,
+            LabelMedium = Device.Idiom == TargetIdiom.Tablet ? 15 : 12,
+            LabelSmall = Device.Idiom == TargetIdiom.Tablet ? 14 : 11,
+            BodyLarge = Device.Idiom == TargetIdiom.Tablet ? 19 : 16,
+            BodyMedium = Device.Idiom == TargetIdiom.Tablet ? 17 : 14,
+            BodySmall = Device.Idiom == TargetIdiom.Tablet ? 15 : 12
         };
     }
 

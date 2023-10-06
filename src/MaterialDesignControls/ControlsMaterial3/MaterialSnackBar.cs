@@ -78,7 +78,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.PhoneFontSizes.BodyMedium);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.FontSizes.BodyMedium);
 
         public double FontSize
         {
@@ -114,7 +114,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionFontSizeProperty =
-            BindableProperty.Create(nameof(ActionFontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.PhoneFontSizes.LabelLarge);
+            BindableProperty.Create(nameof(ActionFontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.FontSizes.LabelLarge);
 
         public double ActionFontSize
         {

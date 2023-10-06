@@ -85,7 +85,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.PhoneFontSizes.BodySmall);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialRadioButtons), defaultValue: DefaultStyles.FontSizes.BodySmall);
 
         public double LabelSize
         {
