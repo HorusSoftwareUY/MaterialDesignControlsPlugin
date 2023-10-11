@@ -12,5 +12,12 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await this.DisplayAlert(_controlTitle, $"Volume icon tapped!", "Ok");
         }
+
+        [ICommand]
+        private async Task VolumeWithWait()
+        {
+            await Task.Delay(2000);
+            await this.DisplayAlert(_controlTitle, $"Volume icon tapped!", "Ok");
+        }
     }
 }

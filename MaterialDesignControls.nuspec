@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>Plugin.MaterialDesignControls</id>
-       <version>3.0.0</version>
+       <version>3.0.1-alpha</version>
        <title>MaterialDesignControls Plugin for Xamarin Forms</title>
        <authors>Horus</authors>
        <owners>AgustinBonillaHorus</owners>
@@ -20,6 +20,7 @@
          </group>
          <group targetFramework="Xamarin.iOS10">
             <dependency id="Xamarin.Forms" version="5.0.0.1874" />
+            <dependency id="Xamarin.iOS.MaterialComponents" version="92.0.0" />
          </group>
          <group targetFramework=".NETStandard1.0">
             <dependency id="Xamarin.Forms" version="5.0.0.1874" />

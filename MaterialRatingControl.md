@@ -1,4 +1,4 @@
-# MaterialRatingControl
+# MaterialRating
 This control allow to rate. You can customize some properties that we show in Documentation topic. To clear the rating, you can tap on the selected item.
 <br/>
 
@@ -6,21 +6,31 @@ This control allow to rate. You can customize some properties that we show in Do
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/rating.gif" width="300">
 
-## Example MaterialRating
+## Example
 ```XML
-<material:MaterialRatingControl 
-    x:Name="mrcWithoutSelectionPng"    
-    LabelText="How do you rate...?(png icons)"   
-    ItemSize="5"                                             
-    ItemsByRow="5" 
-    Animation="Fade" 
-    AnimationParameter="0.1" 
+<material3:MaterialRating
+    LabelText="How do you rate...?"
     SelectedIcon="starSelected.png" 
-    UnSelectedIcon="starUnselected.png"  />
+    UnSelectedIcon="starUnselected.png" />
 ```
 <br/>
 
 ## Documentation
+<br/>
+
+### Property UseSameIcon:
+This property is to set if use the same icon for all items or use a different icon for item.
+<br/>
+<br/>
+
+### Property CustomSelectedIconsSource:
+This property is to set the icons for all items when an item is selected, you can use svgs. (Icon from first item is the first icon in the collection)
+<br/>
+<br/>
+
+### Property SelectedIconsSource:
+This property is to set the icons for all items when an item is selected, You can use image file types like png, jpg, etc. (Icon from first item is the first icon in the collection)
+<br/>
 <br/>
 
 ### Property SelectedIcon:
@@ -33,23 +43,33 @@ This property is to select the icon that the control will use to selected item. 
 <br/>
 <br/>
 
-### Property UnSelectedIcon:
+### Property UnselectedIcon:
 This property is to select the icon that the control will use to unselected items. You can use image file types like png, jpg, etc.
 <br/>
 <br/>
 
-### Property CustomUnSelectedIcon:
+### Property CustomUnselectedIcon:
 This property is to select the icon that the control will use to unselected items. You can use svgs.
 <br/>
 <br/>
 
+### Property CustomUnselectedIconsSource:
+This property is to set the icons for all items when an item is unselected, you can use svgs. (Icon from first item is the first icon in the collection)
+<br/>
+<br/>
+
+### Property UnelectedIconsSource:
+This property is to set the icons for all items when an item is unselected, You can use image file types like png, jpg, etc. (Icon from first item is the first icon in the collection)
+<br/>
+<br/>
+
 ### Property ItemSize:
-This property is to set the quantity of items that you want to use, by default is null.
+This property is to set the quantity of items that you want to use, by default is 5.
 <br/>
 <br/>
 
 ### Property ItemsByRow:
-This property is to set the quantity of items that you want to use by row, by default is null.
+This property is to set the quantity of items that you want to use by row, by default is 5.
 <br/>
 <br/>
 
@@ -64,44 +84,95 @@ This property is to set the value of the control. This can use to get the value 
 <br/>
 
 ### Property LabelText:
-This property is to set the label text value on the control.
+This property is to set the label.
 <br/>
 <br/>
 
 ### Property LabelTextColor:
-This property is to set the label text color value on the control. 
+This property is to set the label color.
+<br/>
+<br/>
+
+### Property DisabledLabelTextColor:
+This property is to set the disabled label color.
 <br/>
 <br/>
 
 ### Property LabelSize:
-This property is to set the label text font size value on the control. 
+This property is to set the label size.
 <br/>
 <br/>
 
-### Property AssistiveText:
-This property is to set the error text on the control. 
+### Property LabelFontFamily:
+This property is to set the label font family.
 <br/>
 <br/>
 
-### Property AssistiveTextColor:
-This property is to set the error text color value on the control. By default is gray.
+### Property LabelMargin:
+This property is to set the label margin family. By default uses (16,0,16,0).
 <br/>
-<br/> 
+<br/>
 
-### Property AssistiveSize:
-This property is to set the error text font size value on the control. By default is gray. 
+### Property LabelLineBreakMode:
+This property is to set the Label Line Break Mode
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
+<br/>
+<br/>
+
+### Property SupportingText:
+This property is to set the supporting text.
+<br/>
+<br/>
+
+### Property SupportingTextColor:
+This property is to set the supporting text color.
+<br/>
+<br/>
+
+### Property SupportingSize:
+This property is to set the supporting text size.
+<br/>
+<br/>
+
+### Property SupportingFontFamily:
+This property is to set the supporting text font family.
+<br/>
+<br/>
+
+### Property SupportingMargin:
+This property is to set the supporting text margin. By default uses (16,4,16,0).
+<br/>
+<br/>
+
+### Property SupportingLineBreakMode:
+This property is to set the Supporting LineBreakMode.
+#### Allowed values
+- NoWrap,
+- WordWrap,
+- CharacterWrap,
+- HeadTruncation,
+- TailTruncation,
+- MiddleTruncation
+<br/>
+<br/>
+
+### Property HorizontalTextAlignment:
+This property is to set the horizontal text alignment.
+#### Allowed Values:
+- Start
+- Center
+- End
 <br/>
 <br/>
 
 ### Property AnimateError:
 This property is to set if you can show a ShakeAnimation when there is a error with control. If the user doesn't rate.
-<br/>
-<br/>
-<br/>
-<br/>
-
-## Animations:
-You can animate the efect on pressed a item of rating control: currently supports fade and scale.
 <br/>
 <br/>
 

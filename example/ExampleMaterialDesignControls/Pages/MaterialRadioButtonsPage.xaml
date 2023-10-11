@@ -1,110 +1,106 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="ExampleMaterialDesignControls.Pages.MaterialRadioButtonsPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
-    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-    ios:Page.UseSafeArea="True"
-    BackgroundColor="White"
-    NavigationPage.HasNavigationBar="false">
+<ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialRadioButtonsPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
-            <material3:MaterialTopAppBar Headline="MaterialRadioButtons" LeadingIconCommand="{Binding BackCommand}">
-                <material3:MaterialTopAppBar.LeadingIcon>
+            <material3:MaterialTopAppBar Headline="MaterialRadioButtons"
+                                         LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
-                </material3:MaterialTopAppBar.LeadingIcon>
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
-            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-                <StackLayout Padding="20,0,20,20" Spacing="10">
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="10">
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text="Xamarin Native Control Selection" />
-                    <material:MaterialRadioButtons
-                        ItemsSource="{Binding Rigtones}"
-                        LabelText="Rigtones"
-                        SelectedItem="{Binding SelectedRigtone}"
-                        Spacing="0" />
+                    <contentViews:InfoIndicatorView Message="MaterialChips follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                             HorizontalOptions="Center"
+                                             Text="Xamarin Native Control Selection" />
+                    <material3:MaterialRadioButtons ItemsSource="{Binding Rigtones}"
+                                                    LabelText="Rigtones"
+                                                    SelectedItem="{Binding SelectedRigtone}"
+                                                    Spacing="0" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Xamarin Native Control Selection (Disabled)" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialRadioButtons
-                        IsEnabled="False"
-                        ItemsSource="{Binding Rigtones}"
-                        LabelText="Rigtones"
-                        SelectedItem="{Binding SelectedRigtone}"
-                        Spacing="0" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                             HorizontalOptions="Center"
+                                             HorizontalTextAlignment="Center"
+                                             Text="Xamarin Native Control Selection (Disabled)" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialRadioButtons IsEnabled="False"
+                                                    ItemsSource="{Binding Rigtones}"
+                                                    LabelText="Rigtones"
+                                                    SelectedItem="{Binding SelectedRigtone}"
+                                                    Spacing="0" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text=".png Files" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialRadioButtons
-                        AssistiveText="{Binding Error}"
-                        DisabledSelectedIcon="radioButton_disabledChecked.png"
-                        DisabledUnselectedIcon="radioButton_disabledUnchecked.png"
-                        ItemsSource="{Binding Sizes}"
-                        LabelText="Select your size (.png)"
-                        SelectedIcon="radioButton_checked.png"
-                        SelectedItem="{Binding SelectedSize}"
-                        SelectionHorizontalOptions="EndAndExpand"
-                        TextSide="Left"
-                        UnselectedIcon="radioButton_unchecked.png" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                             HorizontalOptions="Center"
+                                             Text=".png Files" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialRadioButtons SupportingText="{Binding Error}"
+                                                    DisabledSelectedIcon="radioButton_disabledChecked.png"
+                                                    DisabledUnselectedIcon="radioButton_disabledUnchecked.png"
+                                                    ItemsSource="{Binding Sizes}"
+                                                    LabelText="Select your size (.png)"
+                                                    SelectedIcon="radioButton_checked.png"
+                                                    SelectedItem="{Binding SelectedSize}"
+                                                    SelectionHorizontalOptions="EndAndExpand"
+                                                    TextSide="Left"
+                                                    UnselectedIcon="radioButton_unchecked.png" />
 
-                    <material:MaterialLabel
-                        FontFamily="{StaticResource SemiBoldFont}"
-                        HorizontalOptions="Center"
-                        Text=".svg Files" />
-                    <material:MaterialRadioButtons
-                        Animation="Scale"
-                        HorizontalOptions="FillAndExpand"
-                        ItemsSource="{Binding Places}"
-                        LabelText="Ship to (.svg):"
-                        SelectedItem="{Binding SelectedPlace}"
-                        Spacing="0">
-                        <material:MaterialRadioButtons.CustomSelectedIcon>
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                             HorizontalOptions="Center"
+                                             Text=".svg Files" />
+                    <material3:MaterialRadioButtons Animation="Scale"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    ItemsSource="{Binding Places}"
+                                                    LabelText="Ship to (.svg):"
+                                                    SelectedItem="{Binding SelectedPlace}"
+                                                    Spacing="0">
+                        <material3:MaterialRadioButtons.CustomSelectedIcon>
                             <DataTemplate>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_checked.svg" />
                             </DataTemplate>
-                        </material:MaterialRadioButtons.CustomSelectedIcon>
-                        <material:MaterialRadioButtons.CustomUnselectedIcon>
+                        </material3:MaterialRadioButtons.CustomSelectedIcon>
+                        <material3:MaterialRadioButtons.CustomUnselectedIcon>
                             <DataTemplate>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_unchecked.svg" />
                             </DataTemplate>
-                        </material:MaterialRadioButtons.CustomUnselectedIcon>
-                        <material:MaterialRadioButtons.CustomDisabledSelectedIcon>
+                        </material3:MaterialRadioButtons.CustomUnselectedIcon>
+                        <material3:MaterialRadioButtons.CustomDisabledSelectedIcon>
                             <DataTemplate>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledChecked.svg" />
                             </DataTemplate>
-                        </material:MaterialRadioButtons.CustomDisabledSelectedIcon>
-                        <material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
+                        </material3:MaterialRadioButtons.CustomDisabledSelectedIcon>
+                        <material3:MaterialRadioButtons.CustomDisabledUnselectedIcon>
                             <DataTemplate>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.radioButton_disabledUnchecked.svg" />
                             </DataTemplate>
-                        </material:MaterialRadioButtons.CustomDisabledUnselectedIcon>
-                    </material:MaterialRadioButtons>
+                        </material3:MaterialRadioButtons.CustomDisabledUnselectedIcon>
+                    </material3:MaterialRadioButtons>
 
-                    <material3:MaterialButton
-                        Margin="0,20,0,0"
-                        Command="{Binding SaveSizeCommand}"
-                        HorizontalOptions="FillAndExpand"
-                        Text="Save" />
+                    <material3:MaterialButton Margin="0,20,0,0"
+                                              Command="{Binding SaveSizeCommand}"
+                                              HorizontalOptions="FillAndExpand"
+                                              Text="Save" />
                 </StackLayout>
             </ScrollView>
         </Grid>

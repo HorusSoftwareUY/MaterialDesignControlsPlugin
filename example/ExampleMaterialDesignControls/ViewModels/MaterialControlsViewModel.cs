@@ -1,4 +1,4 @@
-﻿using System.Windows.Input;
+using System.Windows.Input;
 using ExampleMaterialDesignControls.Pages;
 using Xamarin.Forms;
 
@@ -98,7 +98,7 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand GoMaterialSearchBarCommand => new Command(async () =>
         {
-            await DisplayAlert("Material Search Bar", "Comming Soon!", "Ok");
+            await Navigation.PushAsync(new MaterialSearchPage());
         });
 
         public ICommand GoMaterialDividerCommand => new Command(async () =>
@@ -109,6 +109,46 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialTopAppBarCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialTopAppBarPage());
+        });
+
+        public ICommand GoMaterialProgressIndicatorCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialProgressIndicatorPage());
+        });
+
+        public ICommand GoMaterialNavigationDrawerCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialNavigationDrawerPage());
+        });
+
+        public ICommand GoMaterialCardCommand => new Command(async () =>
+        {
+            await DisplayAlert("MaterialCard", "Comming Soon!", "Ok");
+        });
+
+        public ICommand GoMaterialBadgeCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialBadgePage());
+        });
+
+        public ICommand GoMaterialLabelCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialLabel());
+        });
+
+        public ICommand GoMaterialIconButtonCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialIconButtonPage());
+        });
+
+        public ICommand GoMaterialSnackbarCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialSnackBarPage());
+        });
+
+        public ICommand GoMaterialDialogCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialDialogPage());
         });
     }
 }

@@ -38,6 +38,16 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialCheckbox](#materialcheckbox)
 - [MaterialSwitch](#materialswitch)
 - [MaterialTopAppBar](#materialtopappbar)
+- [MaterialProgressIndicator](#materialprogressindicator)
+- [MaterialBadge](#materialbadge)
+- [MaterialNavigationDrawer](#materialnavigationdrawer)
+- [MaterialLabel](#materiallabel)
+- [MaterialCustomControl](#materialcustomcontrol)
+- [MaterialSearch](#materialsearch)
+- [MaterialIconButton](#materialiconbutton)
+- [MaterialSnackBar](#materialsnackbar)
+- [MaterialDialog](#materialdialog)
+
 
 ## Setup
 * Available on NuGet: [Plugin.MaterialDesignControls](https://www.nuget.org/packages/Plugin.MaterialDesignControls/) [![NuGet](https://img.shields.io/nuget/v/Plugin.MaterialDesignControls.svg?label=NuGet)](https://www.nuget.org/packages/Plugin.MaterialDesignControls/)
@@ -92,7 +102,9 @@ Chips are compact elements that represent an input, attribute, or action.
 <br/>
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips_preview.png" width="300">
 <br/>
-[View documentation](MaterialChipsControl.md)
+[View MaterialChips documentation](MaterialChipsControl.md)
+<br/>
+[View MaterialChipsGroup documentation](MaterialChipsGroup.md)
 
 ---
 
@@ -255,6 +267,87 @@ TopAppBar displays information and actions at the top of a screen.
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/topappbar_preview.png" width="300">
 <br/>
 [View documentation](MaterialTopAppBar.md)
+
+---
+
+### MaterialProgressIndicator
+MaterialProgressIndicator show the status of a process in real time
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/progress_preview.png" width="300">
+<br/>
+[View documentation](MaterialProgressIndicator.md)
+
+---
+
+### MaterialLabel
+MaterialLabel helps make writing legible and beautiful
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/label_preview.png" width="300">
+<br/>
+[View documentation](MaterialLabelControl.md)
+
+---
+
+### MaterialBadge
+Badges show notifications, counts, or status information on navigation items and icons
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/badge_preview.png" width="300">
+<br/>
+[View documentation](MaterialBadgeControl.md)
+
+---
+
+### MaterialNavigationDrawer
+Navigation drawers let people switch between UI views on larger devices
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/navigation_preview.png" width="300">
+<br/>
+[View documentation](MaterialNavigationDrawerControl.md)
+
+---
+
+### MaterialCustomControl
+This control provides a simple way to create custom controls with labels and support text that follow the Material Design Guidelines.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/customcontrol_preview.png" width="300">
+<br/>
+[View documentation](MaterialCustomControl.md)
+
+---
+
+### MaterialSearch
+MaterialSearch receives a text and executes a search action.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/search_preview.png" width="300">
+<br/>
+[View documentation](MaterialSearch.md)
+
+---
+
+### MaterialIconButton
+MaterialIconButton displays an icon and can execute a command.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/iconbutton_preview.png" width="300">
+<br/>
+[View documentation](MaterialIconButton.md)
+
+---
+
+### MaterialSnackBar
+MaterialSnackBar show short updates about app processes at the bottom of the screen.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/snackbar_preview.png" width="300">
+<br/>
+[View documentation](MaterialSnackBar.md)
+
+---
+
+### MaterialDialog
+MaterialDialog provide important prompts in a user flow.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/dialog_preview.png" width="300">
+<br/>
+[View documentation](MaterialDialog.md)
 
 ---
 

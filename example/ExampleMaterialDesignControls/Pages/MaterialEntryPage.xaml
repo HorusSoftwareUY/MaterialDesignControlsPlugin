@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialEntryPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -14,9 +14,9 @@
         <Grid RowDefinitions="Auto,*">
             <material3:MaterialTopAppBar Headline="MaterialEntry"
                                          LeadingIconCommand="{Binding BackCommand}">
-                <material3:MaterialTopAppBar.LeadingIcon>
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
-                </material3:MaterialTopAppBar.LeadingIcon>
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
             <ScrollView Grid.Row="1"
@@ -210,6 +210,7 @@
                                              MaxLength="10"
                                              Placeholder="Placeholder"
                                              PlaceholderColor="Violet"
+                                             CursorColor="Violet"
                                              ReturnCommand="{Binding SearchCommand}"
                                              ReturnType="Search"
                                              TrailingIconCommand="{Binding HelpCommand}"

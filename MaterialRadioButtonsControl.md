@@ -1,14 +1,14 @@
 # MaterialRadioButtons
 This control is a custom implementation of a radiobuttons. You can customize some properties that we show in Documentation topic. 
 <br/>
-[View Material Design documentation](https://material.io/components/radio-buttons)
+[View Material Design documentation](https://m3.material.io/components/radio-button/overview)
 
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.gif" width="300">
 
-## Example MaterialRadioButton
+## Example
 ```XML
- <material:MaterialRadioButtons 
+ <material3:MaterialRadioButtons 
     x:Name="radiobuttons" 
     LabelText="Rigtones" 
     ItemsSource="{Binding Rigtones}"
@@ -49,27 +49,27 @@ This propperty is to set the fontfamily of the text.
 <br/>
 <br/>
 
-### Property AssistiveText:
+### Property SupportingText:
 This property is to set the error text on the control. 
 <br/>
 <br/>
 
-### Property AssistiveTextColor:
+### Property SupportingTextColor:
 This property is to set the error text color value on the control.
 <br/>
 <br/>
 
-### Property AssistiveSize:
+### Property SupportingSize:
 This property is to set the error text font size value on the control. 
 <br/>
 <br/>
 
-### Property AssistiveFontFamily:
+### Property SupportingFontFamily:
 This property is to set the error text font family value on the control.
 <br/>
 <br/>
 
-### Property AssistiveMargin:
+### Property SupportingMargin:
 This property is to set the error text margin value on the control.
 <br/>
 <br/>

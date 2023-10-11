@@ -1,19 +1,16 @@
 # MaterialFloatingButton
 This control is a custom implementation of a floating action button. You can customize some properties that we show in Documentation topic. 
 <br/>
-[View Material Design documentation](https://material.io/components/buttons-floating-action-button)
+[View Material Design documentation](https://m3.material.io/components/floating-action-button/overview)
 
 ## Screenshot
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.gif" width="300">
 
-## Example MaterialFloatingButton
+## Example
 ```XML
  <material:MaterialFloatingButton
     Icon="add_b.png"
-    BackgroundColor="#FAF9D5"
-    Animation="Scale"
-    FontSize="14"
-    ShadowColor="Black"/>
+    Command="{Binding TapCommand}" />
 ```
 <br/>
 
@@ -85,13 +82,13 @@ This property is to set the fontattributes of the text.
 <br/>
 <br/>
 
-### Property ButtonSize:
-This property is to set the size of button. It coulb be: Regular, Mini or Extended. By default is Regular.
+### Property Type:
+This property is to set the type of button. It coulb be: Regular, Large or Small. By default is Regular.
 <br/>
 <br/>
 
 ### Property Text:
-This property is to set the text of the button. This only appears when ButtonSize is Extended.
+This property is to set the text of the button. This only appears when ButtonSize is Large.
 <br/>
 <br/>
 
@@ -111,7 +108,7 @@ This property is to convert text to uppercase.
 <br/>
 
 ### Property IconSide:
-This property is to set if the icon will be in the right or left side. This only applies when ButtonSize is extended.
+This property is to set if the icon will be in the right or left side. This only applies when ButtonSize is Large.
 <br/>
 <br/>
 
@@ -152,11 +149,3 @@ This property is to bind on the viewmodel.
 
 ### Property CommandParameter
 This property is to set the parameter of the Command property.
-
-
-
-
-
-
-
-

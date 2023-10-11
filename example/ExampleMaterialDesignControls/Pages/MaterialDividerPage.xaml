@@ -5,49 +5,49 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
     ios:Page.UseSafeArea="True"
     BackgroundColor="White"
     NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
             <material3:MaterialTopAppBar Headline="MaterialDivider" LeadingIconCommand="{Binding BackCommand}">
-                <material3:MaterialTopAppBar.LeadingIcon>
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
-                </material3:MaterialTopAppBar.LeadingIcon>
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
             </material3:MaterialTopAppBar>
 
             <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                 <StackLayout Padding="20,0,20,20" Spacing="10">
-                    <Label
+
+                    <contentViews:InfoIndicatorView Message="MaterialDivider follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialLabel
                         FontFamily="{StaticResource SemiBoldFont}"
                         HorizontalTextAlignment="Center"
                         Text="Section 1" />
-                    <Label
-                        FontSize="{StaticResource Body2FontSize}"
+                    <material3:MaterialLabel
                         LineBreakMode="WordWrap"
                         Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi est sit amet facilisis magna etiam. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus." />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <Label
+                    <material3:MaterialLabel
                         FontFamily="{StaticResource SemiBoldFont}"
                         HorizontalTextAlignment="Center"
                         Text="Section 2" />
-                    <Label
-                        FontSize="{StaticResource Body2FontSize}"
+                    <material3:MaterialLabel
                         LineBreakMode="WordWrap"
                         Text="Quam viverra orci sagittis eu volutpat odio. Elementum pulvinar etiam non quam lacus suspendisse. Quam pellentesque nec nam aliquam sem et tortor. Amet risus nullam eget felis eget nunc." />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <Label
+                    <material3:MaterialLabel
                         FontFamily="{StaticResource SemiBoldFont}"
                         HorizontalTextAlignment="Center"
                         Text="Section 3" />
-                    <Label
-                        FontSize="{StaticResource Body2FontSize}"
+                    <material3:MaterialLabel
                         LineBreakMode="WordWrap"
                         Text="Ac auctor augue mauris augue neque gravida in fermentum et. Ultricies lacus sed turpis tincidunt id aliquet risus. Sed id semper risus in hendrerit gravida. A lacus vestibulum sed arcu non odio euismod." />
 

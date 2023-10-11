@@ -13,6 +13,8 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
             set { SetValue(IsCodeProperty, value); }
         }
 
+        public Color? CursorColor { get; set; } = null;
+
         public bool IsControlFocused() => this.IsFocused; 
 
         public bool IsControlEnabled() => this.IsEnabled; 

@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.ViewModels
 {
-    public class ProductDetailsViewModel : BaseViewModel
+    public class MaterialChipViewModel : BaseViewModel
     {
         private ObservableCollection<Item> items;
 
@@ -56,6 +56,14 @@ namespace ExampleMaterialDesignControls.ViewModels
             set { SetProperty(ref isColorSelectionEnabled, value); }
         }
 
+        private bool isSelected = true;
+
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set { SetProperty(ref isSelected, value); }
+        }
+
         private string error;
 
         public string Error
@@ -81,14 +89,8 @@ namespace ExampleMaterialDesignControls.ViewModels
         public DisplayAlertType DisplayAlert { get; set; }
 
         public ICommand TapCommand => new Command(OnTapCommand);
-        public ICommand IconTapCommand => new Command<string>(OnIconTapCommand);
 
-        private void OnIconTapCommand(string obj)
-        {
-            this.DisplayAlert("Chip icon command", obj, "Ok");
-        }
-
-        public ProductDetailsViewModel()
+        public MaterialChipViewModel()
         {
             Items = new ObservableCollection<Item>();
             Items.Add(new Item("Test 1", new Command(() => {

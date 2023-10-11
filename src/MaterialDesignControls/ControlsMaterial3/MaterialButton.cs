@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 
@@ -20,13 +21,13 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private StackLayout _stcLayout;
 
-        private ContentView _leadingIconContentView;
+        private CustomImage _leadingIconCustomImage;
 
-        private ContentView _trailingIconContentView;
+        private CustomImage _trailingIconCustomImage;
 
-        private MaterialLabel _textLabel;
+        private Plugin.MaterialDesignControls.MaterialLabel _textLabel;
 
-        private ActivityIndicator _activityIndicator;
+        private MaterialProgressIndicator _activityIndicator;
 
         private ContentView _cntActivityIndicator;
 
@@ -73,7 +74,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: DefaultStyles.ButtonAnimation);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: DefaultStyles.AnimationType);
 
         public AnimationTypes Animation
         {
@@ -82,7 +83,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: DefaultStyles.ButtonAnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: DefaultStyles.AnimationParameter);
 
         public double? AnimationParameter
         {
@@ -135,6 +136,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(TextColorProperty, value); }
         }
 
+        public static readonly BindableProperty DisabledTextColorProperty =
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Default);
+
+        public Color DisabledTextColor
+        {
+            get { return (Color)GetValue(DisabledTextColorProperty); }
+            set { SetValue(DisabledTextColorProperty, value); }
+        }
+
         public static readonly new BindableProperty BackgroundColorProperty =
             BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Default);
 
@@ -144,6 +154,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(BackgroundColorProperty, value); }
         }
 
+        public static readonly BindableProperty DisabledBackgroundColorProperty =
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Default);
+
+        public Color DisabledBackgroundColor
+        {
+            get { return (Color)GetValue(DisabledBackgroundColorProperty); }
+            set { SetValue(DisabledBackgroundColorProperty, value); }
+        }
+
         public static readonly BindableProperty BorderColorProperty =
             BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Default);
 
@@ -151,6 +170,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (Color)GetValue(BorderColorProperty); }
             set { SetValue(BorderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DisabledBorderColorProperty =
+            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialButton), defaultValue: Color.Default);
+
+        public Color DisabledBorderColor
+        {
+            get { return (Color)GetValue(DisabledBorderColorProperty); }
+            set { SetValue(DisabledBorderColorProperty, value); }
         }
 
         public static readonly BindableProperty BusyColorProperty =
@@ -163,7 +191,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: Font.Default.FontSize);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.FontSizes.LabelLarge);
 
         public double FontSize
         {
@@ -172,7 +200,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialButton), defaultValue: DefaultStyles.FontFamily);
 
         public string FontFamily
         {
@@ -181,21 +209,49 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
 
-        public View LeadingIcon
+        public string LeadingIcon
         {
-            get { return (View)GetValue(LeadingIconProperty); }
+            get { return (string)GetValue(LeadingIconProperty); }
             set { SetValue(LeadingIconProperty, value); }
         }
 
-        public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
+        public static readonly BindableProperty CustomLeadingIconProperty =
+            BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
 
-        public View TrailingIcon
+        public View CustomLeadingIcon
         {
-            get { return (View)GetValue(TrailingIconProperty); }
+            get { return (View)GetValue(CustomLeadingIconProperty); }
+            set { SetValue(CustomLeadingIconProperty, value); }
+        }
+
+        private bool LeadingIconIsVisible
+        {
+            get { return !string.IsNullOrEmpty(LeadingIcon) || CustomLeadingIcon != null; }
+        }
+
+        public static readonly BindableProperty TrailingIconProperty =
+            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
+
+        public string TrailingIcon
+        {
+            get { return (string)GetValue(TrailingIconProperty); }
             set { SetValue(TrailingIconProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomTrailingIconProperty =
+            BindableProperty.Create(nameof(CustomTrailingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
+
+        public View CustomTrailingIcon
+        {
+            get { return (View)GetValue(CustomTrailingIconProperty); }
+            set { SetValue(CustomTrailingIconProperty, value); }
+        }
+
+        private bool TrailingIconIsVisible
+        {
+            get { return !string.IsNullOrEmpty(TrailingIcon) || CustomTrailingIcon != null; }
         }
 
         public static readonly BindableProperty IconSizeProperty =
@@ -303,16 +359,16 @@ namespace Plugin.MaterialDesignControls.Material3
             };
             _frameLayout.Content = _stcLayout;
 
-            _leadingIconContentView = new ContentView
+            _leadingIconCustomImage = new CustomImage
             {
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = IconSize,
                 HeightRequest = IconSize,
                 IsVisible = false
             };
-            _stcLayout.Children.Add(_leadingIconContentView);
+            _stcLayout.Children.Add(_leadingIconCustomImage);
 
-            _textLabel = new MaterialLabel
+            _textLabel = new Plugin.MaterialDesignControls.MaterialLabel
             {
                 LineBreakMode = LineBreakMode.NoWrap,
                 VerticalOptions = LayoutOptions.Center,
@@ -324,14 +380,14 @@ namespace Plugin.MaterialDesignControls.Material3
             };
             _stcLayout.Children.Add(_textLabel);
 
-            _trailingIconContentView = new ContentView
+            _trailingIconCustomImage = new CustomImage
             {
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = IconSize,
                 HeightRequest = IconSize,
                 IsVisible = false
             };
-            _stcLayout.Children.Add(_trailingIconContentView);
+            _stcLayout.Children.Add(_trailingIconCustomImage);
 
             _cntActivityIndicator = new ContentView
             {
@@ -383,27 +439,39 @@ namespace Plugin.MaterialDesignControls.Material3
                     _frameLayout.CornerRadius = Convert.ToInt32(CornerRadius);
                     break;
                 case nameof(LeadingIcon):
-                    if (LeadingIcon != null)
-                    {
-                        _leadingIconContentView.Content = LeadingIcon;
-                        _leadingIconContentView.IsVisible = true;
-                    }
+                    if (!string.IsNullOrEmpty(LeadingIcon))
+                        this._leadingIconCustomImage.SetImage(LeadingIcon);
+
+                    this._leadingIconCustomImage.IsVisible = LeadingIconIsVisible;
                     break;
+                case nameof(CustomLeadingIcon):
+                    if (CustomLeadingIcon != null)
+                        this._leadingIconCustomImage.SetCustomImage(CustomLeadingIcon);
+
+                    this._leadingIconCustomImage.IsVisible = LeadingIconIsVisible;
+                    break;
+
                 case nameof(TrailingIcon):
-                    if (TrailingIcon != null)
-                    {
-                        _trailingIconContentView.Content = TrailingIcon;
-                        _trailingIconContentView.IsVisible = true;
-                    }
+                    if (!string.IsNullOrEmpty(TrailingIcon))
+                        this._trailingIconCustomImage.SetImage(TrailingIcon);
+
+                    this._trailingIconCustomImage.IsVisible = TrailingIconIsVisible;
                     break;
+                case nameof(CustomTrailingIcon):
+                    if (CustomTrailingIcon != null)
+                        this._trailingIconCustomImage.SetCustomImage(CustomTrailingIcon);
+
+                    this._trailingIconCustomImage.IsVisible = TrailingIconIsVisible;
+                    break;
+
                 case nameof(IconSize):
-                    _leadingIconContentView.HeightRequest = IconSize;
-                    _leadingIconContentView.WidthRequest = IconSize;
-                    _trailingIconContentView.HeightRequest = IconSize;
-                    _trailingIconContentView.WidthRequest = IconSize;
+                    _leadingIconCustomImage.HeightRequest = IconSize;
+                    _leadingIconCustomImage.WidthRequest = IconSize;
+                    _trailingIconCustomImage.HeightRequest = IconSize;
+                    _trailingIconCustomImage.WidthRequest = IconSize;
                     break;
                 case nameof(IsEnabled):
-                    VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled");
+                    SetButtonType();
                     break;
                 case nameof(ActivityIndicatorSize):
                     _cntActivityIndicator.HeightRequest = ActivityIndicatorSize;
@@ -420,11 +488,11 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         if (_activityIndicator == null)
                         {
-                            _activityIndicator = new ActivityIndicator();
+                            _activityIndicator = new MaterialProgressIndicator();
                             _cntActivityIndicator.Content = _activityIndicator;
                         }
 
-                        _activityIndicator.Color = BusyColor;
+                        _activityIndicator.IndicatorColor = BusyColor;
                     }
                     break;
                 case nameof(IsBusy):
@@ -434,12 +502,11 @@ namespace Plugin.MaterialDesignControls.Material3
                         {
                             if (_activityIndicator == null)
                             {
-                                _activityIndicator = new ActivityIndicator { Color = BusyColor};
+                                _activityIndicator = new MaterialProgressIndicator { IndicatorColor = BusyColor};
                                 _cntActivityIndicator.Content = _activityIndicator;
                             }
 
                             _activityIndicator.IsVisible = true;
-                            _activityIndicator.IsRunning = true;
                         }
 
                         _cntActivityIndicator.IsVisible = true;
@@ -454,12 +521,11 @@ namespace Plugin.MaterialDesignControls.Material3
                         {
                             if (_activityIndicator == null)
                             {
-                                _activityIndicator = new ActivityIndicator();
+                                _activityIndicator = new MaterialProgressIndicator();
                                 _cntActivityIndicator.Content = _activityIndicator;
                             }
 
                             _activityIndicator.IsVisible = false;
-                            _activityIndicator.IsRunning = false;
                         }
 
                         _cntActivityIndicator.IsVisible = false;
@@ -484,33 +550,32 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (ButtonType)
             {
                 case MaterialButtonType.Elevated:
-                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
-                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
-                    _frameLayout.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.DisableColor);
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
+                    _frameLayout.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
                     _frameLayout.HasShadow = true;
                     break;
                 case MaterialButtonType.Filled:
-                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.BackgroundColor;
-                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.PrimaryColor;
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.OnPrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.OnPrimaryColor);
+                    _frameLayout.BackgroundColor = IsEnabled ? (BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.PrimaryColor) : (DisabledBackgroundColor != Color.Default ? DisabledBackgroundColor : DefaultStyles.DisableColor);
                     _frameLayout.BorderColor = Color.Transparent;
                     _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Tonal:
-                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.BackgroundColor;
-
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.DisableColor);
                     var defaultBackgroundColor = Color.FromRgba(DefaultStyles.PrimaryColor.R, DefaultStyles.PrimaryColor.G, DefaultStyles.PrimaryColor.B, 0.4);
-                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : defaultBackgroundColor;
+                    _frameLayout.BackgroundColor = IsEnabled ? defaultBackgroundColor : (DisabledBackgroundColor != Color.Default ? DisabledBackgroundColor : DefaultStyles.DisableColor);
                     _frameLayout.BorderColor = Color.Transparent;
                     _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Outlined:
-                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
-                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.BackgroundColor;
-                    _frameLayout.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.DisableColor);
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
+                    _frameLayout.BorderColor = IsEnabled ? (BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor) : (DisabledBorderColor != Color.Default ? DisabledBorderColor : DefaultStyles.DisableColor);
                     _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Text:
-                    _textLabel.TextColor = TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor;
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.DisableColor);
                     _frameLayout.BackgroundColor = Color.Transparent;
                     _frameLayout.BorderColor = Color.Transparent;
                     _frameLayout.HasShadow = false;

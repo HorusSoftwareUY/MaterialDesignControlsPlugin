@@ -6,7 +6,7 @@ Displays a value with its respective label in read-only format.
 
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/field.png" width="300">
 
-## Example MaterialField
+## Example
 ```XML
 <material:MaterialField 
     LabelText="Mail" 
