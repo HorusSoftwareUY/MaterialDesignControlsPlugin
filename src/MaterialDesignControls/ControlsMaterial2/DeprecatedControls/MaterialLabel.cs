@@ -19,7 +19,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static new readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialLabel), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialLabel), defaultValue: MaterialColor.Text);
 
         public new Color TextColor
         {

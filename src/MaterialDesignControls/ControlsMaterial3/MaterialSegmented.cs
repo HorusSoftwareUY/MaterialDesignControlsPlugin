@@ -60,7 +60,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.PrimaryContainerColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.PrimaryContainer);
 
         public new Color BackgroundColor
         {
@@ -69,7 +69,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.DisableContainerColor);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.DisableContainer);
 
         public Color DisabledBackgroundColor
         {
@@ -78,7 +78,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SelectedColorProperty =
-            BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.Primary);
 
         public Color SelectedColor
         {
@@ -87,7 +87,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledSelectedColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledSelectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.Disable);
 
         public Color DisabledSelectedColor
         {
@@ -96,7 +96,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty UnselectedColorProperty =
-            BindableProperty.Create(nameof(UnselectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.PrimaryContainerColor);
+            BindableProperty.Create(nameof(UnselectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.PrimaryContainer);
 
         public Color UnselectedColor
         {
@@ -105,7 +105,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledUnselectedColorProperty =
-            BindableProperty.Create(nameof(DisabledUnselectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(DisabledUnselectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.OnPrimary);
 
         public Color DisabledUnselectedColor
         {
@@ -165,7 +165,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SelectedTextColorProperty =
-            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(SelectedTextColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.OnPrimary);
 
         public Color SelectedTextColor
         {
@@ -174,7 +174,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledSelectedTextColorProperty =
-            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(DisabledSelectedTextColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.OnPrimary);
 
         public Color DisabledSelectedTextColor
         {
@@ -183,7 +183,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty UnselectedTextColorProperty =
-            BindableProperty.Create(nameof(UnselectedTextColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(UnselectedTextColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.Primary);
 
         public Color UnselectedTextColor
         {
@@ -192,7 +192,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledUnselectedTextColorProperty =
-            BindableProperty.Create(nameof(DisabledUnselectedTextColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledUnselectedTextColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.Disable);
 
         public Color DisabledUnselectedTextColor
         {
@@ -210,7 +210,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialSegmented), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialSegmented), defaultValue: MaterialFontFamily.Default);
 
         public string FontFamily
         {
@@ -219,7 +219,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBorderColorProperty =
-            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.Disable);
 
         public Color DisabledBorderColor
         {
@@ -246,7 +246,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BorderColorProperty =
-                BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.PrimaryColor);
+                BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.Primary);
 
         public Color BorderColor
         {

@@ -45,7 +45,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialIconButton), defaultValue: DefaultStyles.AnimationType);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialIconButton), defaultValue: MaterialAnimation.Type);
 
         public AnimationTypes Animation
         {
@@ -54,7 +54,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialIconButton), defaultValue: DefaultStyles.AnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialIconButton), defaultValue: MaterialAnimation.Parameter);
 
         public double? AnimationParameter
         {
@@ -72,7 +72,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialIconButton), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialIconButton), defaultValue: MaterialColor.Primary);
 
         public new Color BackgroundColor
         {
@@ -81,7 +81,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialIconButton), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialIconButton), defaultValue: MaterialColor.Disable);
 
         public Color DisabledBackgroundColor
         {

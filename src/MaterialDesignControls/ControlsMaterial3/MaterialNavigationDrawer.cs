@@ -49,7 +49,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineColorProperty =
-            BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.Primary);
 
         public Color HeadlineColor
         {
@@ -58,7 +58,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontSizeProperty =
-            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontSizes.TitleSmall);
+            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: MaterialFontSize.TitleSmall);
 
         public double HeadlineFontSize
         {
@@ -67,7 +67,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontFamilyProperty =
-            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: MaterialFontFamily.Default);
 
         public string HeadlineFontFamily
         {
@@ -76,7 +76,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActiveIndicatorBackgroundColorProperty =
-            BindableProperty.Create(nameof(ActiveIndicatorBackgroundColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PrimaryContainerColor);
+            BindableProperty.Create(nameof(ActiveIndicatorBackgroundColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.PrimaryContainer);
 
         public Color ActiveIndicatorBackgroundColor
         {
@@ -85,7 +85,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActiveIndicatorLabelColorProperty =
-            BindableProperty.Create(nameof(ActiveIndicatorLabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.OnPrimaryContainerColor);
+            BindableProperty.Create(nameof(ActiveIndicatorLabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.OnPrimaryContainer);
 
         public Color ActiveIndicatorLabelColor
         {
@@ -103,7 +103,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelColorProperty =
-            BindableProperty.Create(nameof(LabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(LabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.Text);
 
         public Color LabelColor
         {
@@ -112,7 +112,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelFontSizeProperty =
-            BindableProperty.Create(nameof(LabelFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontSizes.LabelLarge);
+            BindableProperty.Create(nameof(LabelFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: MaterialFontSize.LabelLarge);
 
         public double LabelFontSize
         {
@@ -121,7 +121,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelFontFamilyProperty =
-            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: MaterialFontFamily.Default);
 
         public string LabelFontFamily
         {
@@ -130,7 +130,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SectionLabelColorProperty =
-            BindableProperty.Create(nameof(SectionLabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(SectionLabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.Primary);
 
         public Color SectionLabelColor
         {
@@ -139,7 +139,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SectionLabelFontSizeProperty =
-            BindableProperty.Create(nameof(SectionLabelFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontSizes.TitleSmall);
+            BindableProperty.Create(nameof(SectionLabelFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: MaterialFontSize.TitleSmall);
 
         public double SectionLabelFontSize
         {
@@ -148,7 +148,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SectionLabelFontFamilyProperty =
-            BindableProperty.Create(nameof(SectionLabelFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(SectionLabelFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: MaterialFontFamily.Default);
 
         public string SectionLabelFontFamily
         {
@@ -157,7 +157,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DividerColorProperty =
-            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.OutlineVariantColor);
+            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.OutlineVariant);
 
         public Color DividerColor
         {
@@ -176,7 +176,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public static readonly BindableProperty BadgeTextColorProperty =
-            BindableProperty.Create(nameof(BadgeTextColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(BadgeTextColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.Text);
 
         public Color BadgeTextColor
         {
@@ -185,7 +185,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BadgeFontSizeProperty =
-            BindableProperty.Create(nameof(BadgeFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontSizes.LabelSmall);
+            BindableProperty.Create(nameof(BadgeFontSize), typeof(double), typeof(MaterialNavigationDrawer), defaultValue: MaterialFontSize.LabelSmall);
 
         public double BadgeFontSize
         {
@@ -194,7 +194,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BadgeFontFamilyProperty =
-            BindableProperty.Create(nameof(BadgeFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(BadgeFontFamily), typeof(string), typeof(MaterialNavigationDrawer), defaultValue: MaterialFontFamily.Default);
 
         public string BadgeFontFamily
         {
@@ -230,7 +230,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.AnimationType);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialNavigationDrawer), defaultValue: MaterialAnimation.Type);
 
         public AnimationTypes Animation
         {
@@ -239,7 +239,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.AnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialNavigationDrawer), defaultValue: MaterialAnimation.Parameter);
 
         public double? AnimationParameter
         {
@@ -257,7 +257,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledLabelColorProperty =
-            BindableProperty.Create(nameof(DisabledLabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledLabelColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.Disable);
 
         public Color DisabledLabelColor
         {

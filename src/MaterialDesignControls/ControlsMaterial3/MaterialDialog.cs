@@ -46,7 +46,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static new readonly BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.SurfaceContainerHighest);
 
         public new Color BackgroundColor
         {
@@ -55,7 +55,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ShadowColorProperty =
-            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.ShadowColor);
+            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Shadow);
 
         public Color ShadowColor
         {
@@ -142,7 +142,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineColorProperty =
-            BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceColor);
+            BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OnSurface);
 
         public Color HeadlineColor
         {
@@ -151,7 +151,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontSizeProperty =
-            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.HeadlineSmall);
+            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.HeadlineSmall);
 
         public double HeadlineFontSize
         {
@@ -160,7 +160,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontFamilyProperty =
-            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string HeadlineFontFamily
         {
@@ -191,7 +191,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextColorProperty =
-            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OnSurfaceVariant);
 
         public Color SupportingTextColor
         {
@@ -200,7 +200,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextFontSizeProperty =
-            BindableProperty.Create(nameof(SupportingTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.BodyMedium);
+            BindableProperty.Create(nameof(SupportingTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.BodyMedium);
 
         public double SupportingTextFontSize
         {
@@ -209,7 +209,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextFontFamilyProperty =
-            BindableProperty.Create(nameof(SupportingTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(SupportingTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string SupportingTextFontFamily
         {
@@ -231,7 +231,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DividerColorProperty =
-            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OutlineVariantColor);
+            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OutlineVariant);
 
         public Color DividerColor
         {
@@ -262,7 +262,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CancelTextColorProperty =
-            BindableProperty.Create(nameof(CancelTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(CancelTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Primary);
 
         public Color CancelTextColor
         {
@@ -271,7 +271,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CancelFontSizeProperty =
-            BindableProperty.Create(nameof(CancelFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.LabelLarge);
+            BindableProperty.Create(nameof(CancelFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.LabelLarge);
 
         public double CancelFontSize
         {
@@ -280,7 +280,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CancelFontFamilyProperty =
-            BindableProperty.Create(nameof(CancelFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(CancelFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string CancelFontFamily
         {
@@ -311,7 +311,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptBackgroundColorProperty =
-            BindableProperty.Create(nameof(AcceptBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(AcceptBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Primary);
 
         public Color AcceptBackgroundColor
         {
@@ -320,7 +320,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptTextColorProperty =
-            BindableProperty.Create(nameof(AcceptTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(AcceptTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OnPrimary);
 
         public Color AcceptTextColor
         {
@@ -329,7 +329,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptFontSizeProperty =
-            BindableProperty.Create(nameof(AcceptFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.LabelLarge);
+            BindableProperty.Create(nameof(AcceptFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.LabelLarge);
 
         public double AcceptFontSize
         {
@@ -338,7 +338,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptFontFamilyProperty =
-            BindableProperty.Create(nameof(AcceptFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(AcceptFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string AcceptFontFamily
         {
@@ -396,7 +396,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchTextColorProperty =
-            BindableProperty.Create(nameof(SearchTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(SearchTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Text);
 
         public Color SearchTextColor
         {
@@ -405,7 +405,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchBackgroundColorProperty =
-            BindableProperty.Create(nameof(SearchBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
+            BindableProperty.Create(nameof(SearchBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.SurfaceContainerHighest);
 
         public Color SearchBackgroundColor
         {
@@ -414,7 +414,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchTextFontSizeProperty =
-            BindableProperty.Create(nameof(SearchTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.BodyMedium);
+            BindableProperty.Create(nameof(SearchTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.BodyMedium);
 
         public double SearchTextFontSize
         {
@@ -423,7 +423,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchTextFontFamilyProperty =
-            BindableProperty.Create(nameof(SearchTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(SearchTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string SearchTextFontFamily
         {
@@ -454,7 +454,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemTextColorProperty =
-            BindableProperty.Create(nameof(ItemTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceColor);
+            BindableProperty.Create(nameof(ItemTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OnSurface);
 
         public Color ItemTextColor
         {
@@ -463,7 +463,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemTextFontSizeProperty =
-            BindableProperty.Create(nameof(ItemTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.BodyMedium);
+            BindableProperty.Create(nameof(ItemTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.BodyMedium);
 
         public double ItemTextFontSize
         {
@@ -472,7 +472,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemTextFontFamilyProperty =
-            BindableProperty.Create(nameof(ItemTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(ItemTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string ItemTextFontFamily
         {
@@ -481,7 +481,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemCheckboxColorProperty =
-            BindableProperty.Create(nameof(ItemCheckboxColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(ItemCheckboxColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Primary);
 
         public Color ItemCheckboxColor
         {

@@ -19,7 +19,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialColor.Text);
 
         public Color TextColor
         {
@@ -28,7 +28,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialColor.Disable);
 
         public Color DisabledTextColor
         {
@@ -37,7 +37,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.FontSizes.BodyLarge);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialFontSize.BodyLarge);
 
         public double FontSize
         {
@@ -46,7 +46,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialFontFamily.Default);
 
         public string FontFamily
         {
@@ -68,7 +68,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextColorProperty =
-            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.ErrorColor);
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialColor.Error);
 
         public Color SupportingTextColor
         {
@@ -77,7 +77,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.FontSizes.BodySmall);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialFontSize.BodySmall);
 
         public double SupportingSize
         {
@@ -86,7 +86,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingFontFamilyProperty =
-            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialFontFamily.Default);
 
         public string SupportingFontFamily
         {
@@ -104,7 +104,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.AnimateError);
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialAnimation.AnimateOnError);
 
         public bool AnimateError
         {
@@ -263,7 +263,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.AnimationType);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialAnimation.Type);
 
         public AnimationTypes Animation
         {
@@ -272,7 +272,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.AnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialAnimation.Parameter);
 
         public double? AnimationParameter
         {
@@ -290,7 +290,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ColorProperty =
-            BindableProperty.Create(nameof(Color), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(Color), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialColor.Primary);
 
         public Color Color
         {
@@ -299,7 +299,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledColorProperty =
-            BindableProperty.Create(nameof(DisabledColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledColor), typeof(Color), typeof(BaseMaterialCheckBoxes), defaultValue: MaterialColor.Disable);
 
         public Color DisabledColor
         {

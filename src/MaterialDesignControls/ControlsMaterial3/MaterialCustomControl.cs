@@ -31,7 +31,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialCustomControl), defaultValue: DefaultStyles.AnimateError);
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialCustomControl), defaultValue: MaterialAnimation.AnimateOnError);
 
         public bool AnimateError
         {
@@ -62,7 +62,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelTextColorProperty =
-            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+            BindableProperty.Create(nameof(LabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: MaterialColor.OnSurfaceVariant);
 
         public Color LabelTextColor
         {
@@ -71,7 +71,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledLabelTextColorProperty =
-            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+            BindableProperty.Create(nameof(DisabledLabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: MaterialColor.OnSurfaceVariant);
 
         public Color DisabledLabelTextColor
         {
@@ -80,7 +80,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelSizeProperty =
-            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontSizes.BodySmall);
+            BindableProperty.Create(nameof(LabelSize), typeof(double), typeof(MaterialCustomControl), defaultValue: MaterialFontSize.BodySmall);
 
         public double LabelSize
         {
@@ -89,7 +89,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelFontFamilyProperty =
-            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(LabelFontFamily), typeof(string), typeof(MaterialCustomControl), defaultValue: MaterialFontFamily.Default);
 
         public string LabelFontFamily
         {
@@ -129,7 +129,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextColorProperty =
-            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: DefaultStyles.ErrorColor);
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: MaterialColor.Error);
 
         public Color SupportingTextColor
         {
@@ -138,7 +138,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontSizes.BodySmall);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialCustomControl), defaultValue: MaterialFontSize.BodySmall);
 
         public double SupportingSize
         {
@@ -147,7 +147,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingFontFamilyProperty =
-            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(MaterialCustomControl), defaultValue: MaterialFontFamily.Default);
 
         public string SupportingFontFamily
         {
@@ -187,7 +187,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SecondaryLabelTextColorProperty =
-            BindableProperty.Create(nameof(SecondaryLabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+            BindableProperty.Create(nameof(SecondaryLabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: MaterialColor.OnSurfaceVariant);
 
         public Color SecondaryLabelTextColor
         {
@@ -196,7 +196,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledSecondaryLabelTextColorProperty =
-            BindableProperty.Create(nameof(DisabledSecondaryLabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+            BindableProperty.Create(nameof(DisabledSecondaryLabelTextColor), typeof(Color), typeof(MaterialCustomControl), defaultValue: MaterialColor.OnSurfaceVariant);
 
         public Color DisabledSecondaryLabelTextColor
         {
@@ -205,7 +205,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SecondaryLabelFontSizeProperty =
-            BindableProperty.Create(nameof(SecondaryLabelFontSize), typeof(double), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontSizes.BodySmall);
+            BindableProperty.Create(nameof(SecondaryLabelFontSize), typeof(double), typeof(MaterialCustomControl), defaultValue: MaterialFontSize.BodySmall);
 
         public double SecondaryLabelFontSize
         {
@@ -214,7 +214,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SecondaryLabelFontFamilyProperty =
-            BindableProperty.Create(nameof(SecondaryLabelFontFamily), typeof(string), typeof(MaterialCustomControl), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(SecondaryLabelFontFamily), typeof(string), typeof(MaterialCustomControl), defaultValue: MaterialFontFamily.Default);
 
         public string SecondaryLabelFontFamily
         {

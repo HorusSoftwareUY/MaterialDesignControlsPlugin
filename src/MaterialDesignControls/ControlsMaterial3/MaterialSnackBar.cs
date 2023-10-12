@@ -24,7 +24,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private Plugin.MaterialDesignControls.Material3.MaterialButton _actionButton;
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: DefaultStyles.InverseSurfaceColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: MaterialColor.InverseSurface);
 
         public new Color BackgroundColor
         {
@@ -33,7 +33,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ShadowColorProperty =
-            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: DefaultStyles.ShadowColor);
+            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: MaterialColor.Shadow);
 
         public Color ShadowColor
         {
@@ -69,7 +69,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialButton), defaultValue: MaterialColor.OnPrimary);
 
         public Color TextColor
         {
@@ -78,7 +78,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.FontSizes.BodyMedium);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: MaterialFontSize.BodyMedium);
 
         public double FontSize
         {
@@ -87,7 +87,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialButton), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialButton), defaultValue: MaterialFontFamily.Default);
 
         public string FontFamily
         {
@@ -105,7 +105,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionTextColorProperty =
-            BindableProperty.Create(nameof(ActionTextColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.PrimaryContainerColor);
+            BindableProperty.Create(nameof(ActionTextColor), typeof(Color), typeof(MaterialButton), defaultValue: MaterialColor.PrimaryContainer);
 
         public Color ActionTextColor
         {
@@ -114,7 +114,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionFontSizeProperty =
-            BindableProperty.Create(nameof(ActionFontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.FontSizes.LabelLarge);
+            BindableProperty.Create(nameof(ActionFontSize), typeof(double), typeof(MaterialButton), defaultValue: MaterialFontSize.LabelLarge);
 
         public double ActionFontSize
         {
@@ -123,7 +123,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionFontFamilyProperty =
-            BindableProperty.Create(nameof(ActionFontFamily), typeof(string), typeof(MaterialButton), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(ActionFontFamily), typeof(string), typeof(MaterialButton), defaultValue: MaterialFontFamily.Default);
 
         public string ActionFontFamily
         {

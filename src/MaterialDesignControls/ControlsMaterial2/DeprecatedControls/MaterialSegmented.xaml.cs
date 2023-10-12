@@ -60,7 +60,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty SelectedColorProperty =
-            BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(SelectedColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.Primary);
 
         public Color SelectedColor
         {

@@ -250,7 +250,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static new readonly BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialFloatingButton), defaultValue: MaterialColor.Primary);
 
 
         public new Color BackgroundColor
