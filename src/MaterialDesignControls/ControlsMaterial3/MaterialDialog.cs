@@ -297,6 +297,24 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CancelCommandProperty, value); }
         }
 
+        public static readonly BindableProperty CancelIsEnabledProperty =
+            BindableProperty.Create(nameof(CancelIsEnabled), typeof(bool), typeof(MaterialDialog), defaultValue: true);
+
+        public bool CancelIsEnabled
+        {
+            get { return (bool)GetValue(CancelIsEnabledProperty); }
+            set { SetValue(CancelIsEnabledProperty, value); }
+        }
+
+        public static readonly BindableProperty CancelIsBusyProperty =
+            BindableProperty.Create(nameof(CancelIsBusy), typeof(bool), typeof(MaterialDialog), defaultValue: false);
+
+        public bool CancelIsBusy
+        {
+            get { return (bool)GetValue(CancelIsBusyProperty); }
+            set { SetValue(CancelIsBusyProperty, value); }
+        }
+
         #endregion CancelButton
 
         #region AcceptButton
@@ -353,6 +371,24 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (ICommand)GetValue(AcceptCommandProperty); }
             set { SetValue(AcceptCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty AcceptIsEnabledProperty =
+            BindableProperty.Create(nameof(AcceptIsEnabled), typeof(bool), typeof(MaterialDialog), defaultValue: true);
+
+        public bool AcceptIsEnabled
+        {
+            get { return (bool)GetValue(AcceptIsEnabledProperty); }
+            set { SetValue(AcceptIsEnabledProperty, value); }
+        }
+
+        public static readonly BindableProperty AcceptIsBusyProperty =
+            BindableProperty.Create(nameof(AcceptIsBusy), typeof(bool), typeof(MaterialDialog), defaultValue: false);
+
+        public bool AcceptIsBusy
+        {
+            get { return (bool)GetValue(AcceptIsBusyProperty); }
+            set { SetValue(AcceptIsBusyProperty, value); }
         }
 
         #endregion AcceptButton
@@ -658,6 +694,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     _cancelBtn.FontFamily = CancelFontFamily;
                     break;
 
+                case nameof(CancelIsEnabled):
+                    _cancelBtn.IsEnabled = CancelIsEnabled;
+                    break;
+
+                case nameof(CancelIsBusy):
+                    _cancelBtn.IsBusy = CancelIsBusy;
+                    break;
+
                 case nameof(AcceptText):
                     _acceptBtn.Text = AcceptText;
                     break;
@@ -676,6 +720,14 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(AcceptFontFamily):
                     _acceptBtn.FontFamily = AcceptFontFamily;
+                    break;
+
+                case nameof(AcceptIsEnabled):
+                    _acceptBtn.IsEnabled = AcceptIsEnabled;
+                    break;
+
+                case nameof(AcceptIsBusy):
+                    _acceptBtn.IsBusy = AcceptIsBusy;
                     break;
 
                 case nameof(CancelCommand):

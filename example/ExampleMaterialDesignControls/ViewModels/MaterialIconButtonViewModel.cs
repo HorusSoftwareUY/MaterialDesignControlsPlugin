@@ -19,6 +19,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         [ICommand]
         private async Task Standard()
         {
+            await Task.Delay(1500);
             await this.DisplayAlert(_controlTitle, $"Standard button command executed", "Ok");
         }
 
@@ -37,6 +38,7 @@ namespace ExampleMaterialDesignControls.ViewModels
         [ICommand]
         private async Task Tonal()
         {
+            await Task.Delay(1500);
             await this.DisplayAlert(_controlTitle, $"Filled button command executed", "Ok");
         }
 

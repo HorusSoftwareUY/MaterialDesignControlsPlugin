@@ -1,4 +1,5 @@
 using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using System;
@@ -143,6 +144,24 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(IsEnabledProperty, value); }
         }
 
+        public static readonly BindableProperty IsBusyProperty =
+            BindableProperty.Create(nameof(IsBusy), typeof(bool), typeof(MaterialIconButton), defaultValue: false);
+
+        public bool IsBusy
+        {
+            get { return (bool)GetValue(IsBusyProperty); }
+            set { SetValue(IsBusyProperty, value); }
+        }
+
+        public static readonly BindableProperty BusyColorProperty =
+            BindableProperty.Create(nameof(BusyColor), typeof(Color), typeof(MaterialIconButton), defaultValue: MaterialColor.Primary);
+
+        public Color BusyColor
+        {
+            get { return (Color)GetValue(BusyColorProperty); }
+            set { SetValue(BusyColorProperty, value); }
+        }
+
         private int minHeight = 48;
         private int minWidth = 48;
         private int shapeCircleMargin = 4;
@@ -162,7 +181,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
             Container = new Grid();
             Container.Padding = shapeCircleMargin;
-            customImage = new CustomImage
+            customImage = new Implementations.CustomImage
             {
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
@@ -190,11 +209,13 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Attributes
 
-        private CustomImage customImage;
+        private Implementations.CustomImage customImage;
 
         private Grid Container;
 
         private Frame circle;
+
+        private MaterialProgressIndicator activityIndicator;
 
         #endregion Attributes
 
@@ -232,6 +253,42 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(IsEnabled):
                     ChangeStatusButton();
                     break;
+
+                case nameof(IsBusy):
+                    if (IsBusy)
+                    {
+                        if (activityIndicator == null)
+                        {
+                            activityIndicator = new MaterialProgressIndicator
+                            {
+                                IndicatorColor = BusyColor,
+                                Margin = new Thickness(6)
+                            };
+                            Container.Children.Add(activityIndicator);
+                        }
+
+                        activityIndicator.IsVisible = true;
+                        circle.IsVisible = false;
+                        customImage.IsVisible = false;
+                    }
+                    else
+                    {
+                        if (activityIndicator == null)
+                        {
+                            activityIndicator = new MaterialProgressIndicator
+                            {
+                                IndicatorColor = BusyColor,
+                                Margin = new Thickness(6)
+                            };
+                            Container.Children.Add(activityIndicator);
+                        }
+
+                        activityIndicator.IsVisible = false;
+                        circle.IsVisible = true;
+                        customImage.IsVisible = true;
+                    }
+                    break;
+
                 default:
                     base.OnPropertyChanged(propertyName);
                     break;
