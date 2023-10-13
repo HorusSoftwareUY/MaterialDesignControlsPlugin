@@ -842,7 +842,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = CancelFontFamily,
                 BackgroundColor = CancelBackgroundColor,
                 Command = CancelCommand,
-                IsVisible = !String.IsNullOrWhiteSpace(CancelText)
+                IsVisible = !String.IsNullOrWhiteSpace(CancelText),
+                MinimumWidthRequest = 80
             };
 
             _acceptBtn = new MaterialButton()
@@ -854,7 +855,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = AcceptFontFamily,
                 BackgroundColor = AcceptBackgroundColor,
                 Margin = new Thickness(0),
-                Command = AcceptCommand
+                Command = AcceptCommand,
+                MinimumWidthRequest = 80
             };
 
             _btnsContainer.Children.Add(_cancelBtn);

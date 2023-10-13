@@ -19,6 +19,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool _initialized = false;
 
+        private bool _minimumWidthRequestSetted = false;
+
         private StackLayout _stcLayout;
 
         private CustomImage _leadingIconCustomImage;
@@ -317,6 +319,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ContentIsExpandedProperty, value); }
         }
 
+        public static new readonly BindableProperty MinimumWidthRequestProperty =
+            BindableProperty.Create(nameof(MinimumWidthRequest), typeof(double), typeof(MaterialButton), defaultValue: -1.0);
+
+        public new double MinimumWidthRequest
+        {
+            get { return (double)GetValue(MinimumWidthRequestProperty); }
+            set { SetValue(MinimumWidthRequestProperty, value); }
+        }
+
         public event EventHandler Clicked;
 
         #endregion Bindable properties
@@ -375,8 +386,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center,
                 Text = ToUpper ? Text?.ToUpper() : Text,
                 FontSize = FontSize,
-                FontFamily = FontFamily,
-
+                FontFamily = FontFamily
             };
             _stcLayout.Children.Add(_textLabel);
 
@@ -541,6 +551,15 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(ContentIsExpanded):
                     _stcLayout.HorizontalOptions = ContentIsExpanded ? LayoutOptions.FillAndExpand : LayoutOptions.Center;
                     _textLabel.HorizontalOptions = ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center;
+                    break;
+
+                case nameof(Width):
+                case nameof(MinimumWidthRequest):
+                    if (!_minimumWidthRequestSetted && MinimumWidthRequest != -1 && Width != -1 && Width < MinimumWidthRequest)
+                    {
+                        _minimumWidthRequestSetted = true;
+                        WidthRequest = MinimumWidthRequest;
+                    }
                     break;
             }
         }
