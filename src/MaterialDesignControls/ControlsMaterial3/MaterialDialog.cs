@@ -922,54 +922,48 @@ namespace Plugin.MaterialDesignControls.Material3
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialDialog)bindable;
-            control._optionsContainer.Children.Clear();
-
             if (!Equals(newValue, null) && newValue is IEnumerable<MaterialDialogItem> list)
-            {
-                if (control._fullItems is null)
-                    control._fullItems = new List<MaterialDialogItem>(list);
+                control._fullItems = new List<MaterialDialogItem>(list);
+            else
+                control._fullItems = null;
 
+            control.RefreshItemList(control._fullItems);
+        }
+
+        private void RefreshItemList(IEnumerable<MaterialDialogItem> list)
+        {
+            _optionsContainer.Children.Clear();
+
+            if (list != null)
+            {
                 foreach (var item in list)
                 {
                     var materialCheckbox = new MaterialCheckbox();
                     materialCheckbox.Text = item.Text;
-                    materialCheckbox.Command = new Command(() => SelectionCommand(control, materialCheckbox));
-                    materialCheckbox.Color = control.ItemCheckboxColor;
-                    materialCheckbox.TextColor = control.ItemTextColor;
-                    materialCheckbox.FontSize = control.ItemTextFontSize;
-                    materialCheckbox.FontFamily = control.ItemTextFontFamily;
-                    materialCheckbox.IsEnabled = control.IsEnabled;
-                    materialCheckbox.IconHeightRequest = control.ItemCheckboxSize;
-                    materialCheckbox.IconWidthRequest = control.ItemCheckboxSize;
-                    materialCheckbox.SelectedIcon = control.ItemCheckboxSelectedIcon;
-                    materialCheckbox.UnselectedIcon = control.ItemCheckboxUnselectedIcon;
-                    materialCheckbox.CustomSelectedIcon = control.ItemCheckboxCustomSelectedIcon;
-                    materialCheckbox.CustomUnselectedIcon = control.ItemCheckboxCustomUnselectedIcon;
+                    materialCheckbox.Command = new Command(() => SelectionCommand(this, materialCheckbox));
+                    materialCheckbox.Color = ItemCheckboxColor;
+                    materialCheckbox.TextColor = ItemTextColor;
+                    materialCheckbox.FontSize = ItemTextFontSize;
+                    materialCheckbox.FontFamily = ItemTextFontFamily;
+                    materialCheckbox.IsEnabled = IsEnabled;
+                    materialCheckbox.IconHeightRequest = ItemCheckboxSize;
+                    materialCheckbox.IconWidthRequest = ItemCheckboxSize;
+                    materialCheckbox.SelectedIcon = ItemCheckboxSelectedIcon;
+                    materialCheckbox.UnselectedIcon = ItemCheckboxUnselectedIcon;
+                    materialCheckbox.CustomSelectedIcon = ItemCheckboxCustomSelectedIcon;
+                    materialCheckbox.CustomUnselectedIcon = ItemCheckboxCustomUnselectedIcon;
                     materialCheckbox.IsChecked = item.IsSelected;
-                    control._optionsContainer.Children.Add(materialCheckbox);
+                    _optionsContainer.Children.Add(materialCheckbox);
                 }
 
-                if (control.AllowMultiselect)
-                    control._acceptBtn.CommandParameter = control.ItemsSource.Where(x => x.IsSelected).ToList();
+                if (AllowMultiselect)
+                    _acceptBtn.CommandParameter = ItemsSource.Where(x => x.IsSelected).ToList();
                 else
-                    control._acceptBtn.CommandParameter = control.ItemsSource.FirstOrDefault(x => x.IsSelected);
+                    _acceptBtn.CommandParameter = ItemsSource.FirstOrDefault(x => x.IsSelected);
             }
 
-            control._optionsContainer.IsVisible = control.ItemsSource != null && control.ItemsSource.Any();
-            control._bottomDivider.IsVisible = control.ShowDivider && control.ItemsSource != null && control.ItemsSource.Any();
-        }
-
-        private static string GetPropertyValue(object item, string propertyToSearch)
-        {
-            var properties = item.GetType().GetProperties();
-            foreach (var property in properties)
-            {
-                if (property.Name.Equals(propertyToSearch, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return property.GetValue(item, null).ToString();
-                }
-            }
-            return item.ToString();
+            _optionsContainer.IsVisible = list != null && list.Any();
+            _bottomDivider.IsVisible = ShowDivider && list != null && list.Any();
         }
 
         private void SetIcon()
@@ -1020,14 +1014,14 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                ItemsSource = new List<MaterialDialogItem>();
+                RefreshItemList(new List<MaterialDialogItem>());
                 await Task.Delay(500);
                 if (string.IsNullOrWhiteSpace(_materialSearch.Text))
-                    ItemsSource = new List<MaterialDialogItem>(_fullItems);
+                    RefreshItemList(new List<MaterialDialogItem>(_fullItems));
                 else
                 {
                     var search = _fullItems.Where(x => x.Text.ToLower().Contains(_materialSearch.Text.ToLower()));
-                    ItemsSource = new List<MaterialDialogItem>(search);
+                    RefreshItemList(new List<MaterialDialogItem>(search));
                 }
             });
         }
