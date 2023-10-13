@@ -1012,10 +1012,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void OnSearchCommand()
         {
-            Device.BeginInvokeOnMainThread(async () =>
+            Device.BeginInvokeOnMainThread(() =>
             {
-                RefreshItemList(new List<MaterialDialogItem>());
-                await Task.Delay(500);
                 if (string.IsNullOrWhiteSpace(_materialSearch.Text))
                     RefreshItemList(new List<MaterialDialogItem>(_fullItems));
                 else
