@@ -37,7 +37,8 @@
                         HeadlineText="Basic dialog"
                         SupportingText="Basic dialog with an accept button and cancel button."
                         AcceptText="Accept"
-                        AcceptCommand="{Binding AcceptCommand}"
+                        AcceptCommand="{Binding AcceptTaskCommand}"
+                        AcceptIsBusy="{Binding AcceptTaskCommand.IsRunning}"
                         CancelText="Cancel"
                         CancelCommand="{Binding CancelCommand}" />
 

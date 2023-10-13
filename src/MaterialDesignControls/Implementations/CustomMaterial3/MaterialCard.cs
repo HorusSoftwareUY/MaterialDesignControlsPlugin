@@ -118,7 +118,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         }
 
         public static readonly BindableProperty AnimationProperty =
-                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationType);
+                    BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: MaterialAnimation.Type);
 
         public AnimationTypes Animation
         {
@@ -127,7 +127,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: MaterialAnimation.Parameter);
 
         public double? AnimationParameter
         {

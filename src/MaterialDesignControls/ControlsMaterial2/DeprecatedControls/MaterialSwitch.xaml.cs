@@ -159,7 +159,7 @@ namespace Plugin.MaterialDesignControls
         }
 
         public static readonly BindableProperty OnColorProperty =
-            BindableProperty.Create(nameof(OnColor), typeof(Color), typeof(MaterialSwitch), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(OnColor), typeof(Color), typeof(MaterialSwitch), defaultValue: MaterialColor.Primary);
 
         public Color OnColor
 	    {

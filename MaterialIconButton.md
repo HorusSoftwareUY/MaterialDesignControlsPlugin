@@ -81,3 +81,10 @@ This property is to set a custom icon when the icon button is disabled.
 
 ### PaddingIcon:
 This property is used to define the padding of the icon in relation to the circle.<br/>
+
+### Property BusyColor:
+This property is to set the color of the busy indicator.
+
+### Property IsBusy:
+This property is to show a busy indicator in the button when a command is running.
+<br/>

@@ -27,8 +27,10 @@
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Standard Type" />
-                    <material3:MaterialIconButton Command="{Binding StandardCommand}">
+                                            Text="Standard Type with IsBusy" />
+                    <material3:MaterialIconButton
+                        Command="{Binding StandardCommand}"
+                        IsBusy="{Binding StandardCommand.IsRunning}">
                         <material3:MaterialIconButton.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialIconButton.CustomIcon>
@@ -60,8 +62,11 @@
 
                      <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Tonal Type" />
-                    <material3:MaterialIconButton ButtonType="Tonal" Command="{Binding TonalCommand}">
+                                            Text="Tonal Type with IsBusy" />
+                    <material3:MaterialIconButton
+                        ButtonType="Tonal"
+                        Command="{Binding TonalCommand}"
+                        IsBusy="{Binding TonalCommand.IsRunning}">
                         <material3:MaterialIconButton.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.mute.svg" />
                         </material3:MaterialIconButton.CustomIcon>

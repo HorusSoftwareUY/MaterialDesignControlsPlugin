@@ -46,7 +46,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static new readonly BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.SurfaceContainerHighest);
 
         public new Color BackgroundColor
         {
@@ -55,7 +55,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ShadowColorProperty =
-            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.ShadowColor);
+            BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Shadow);
 
         public Color ShadowColor
         {
@@ -142,7 +142,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineColorProperty =
-            BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceColor);
+            BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OnSurface);
 
         public Color HeadlineColor
         {
@@ -151,7 +151,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontSizeProperty =
-            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.HeadlineSmall);
+            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.HeadlineSmall);
 
         public double HeadlineFontSize
         {
@@ -160,7 +160,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontFamilyProperty =
-            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string HeadlineFontFamily
         {
@@ -191,7 +191,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextColorProperty =
-            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OnSurfaceVariant);
 
         public Color SupportingTextColor
         {
@@ -200,7 +200,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextFontSizeProperty =
-            BindableProperty.Create(nameof(SupportingTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.BodyMedium);
+            BindableProperty.Create(nameof(SupportingTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.BodyMedium);
 
         public double SupportingTextFontSize
         {
@@ -209,7 +209,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextFontFamilyProperty =
-            BindableProperty.Create(nameof(SupportingTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(SupportingTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string SupportingTextFontFamily
         {
@@ -231,7 +231,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DividerColorProperty =
-            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OutlineVariantColor);
+            BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OutlineVariant);
 
         public Color DividerColor
         {
@@ -262,7 +262,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CancelTextColorProperty =
-            BindableProperty.Create(nameof(CancelTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(CancelTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Primary);
 
         public Color CancelTextColor
         {
@@ -271,7 +271,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CancelFontSizeProperty =
-            BindableProperty.Create(nameof(CancelFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.LabelLarge);
+            BindableProperty.Create(nameof(CancelFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.LabelLarge);
 
         public double CancelFontSize
         {
@@ -280,7 +280,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CancelFontFamilyProperty =
-            BindableProperty.Create(nameof(CancelFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(CancelFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string CancelFontFamily
         {
@@ -297,6 +297,24 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CancelCommandProperty, value); }
         }
 
+        public static readonly BindableProperty CancelIsEnabledProperty =
+            BindableProperty.Create(nameof(CancelIsEnabled), typeof(bool), typeof(MaterialDialog), defaultValue: true);
+
+        public bool CancelIsEnabled
+        {
+            get { return (bool)GetValue(CancelIsEnabledProperty); }
+            set { SetValue(CancelIsEnabledProperty, value); }
+        }
+
+        public static readonly BindableProperty CancelIsBusyProperty =
+            BindableProperty.Create(nameof(CancelIsBusy), typeof(bool), typeof(MaterialDialog), defaultValue: false);
+
+        public bool CancelIsBusy
+        {
+            get { return (bool)GetValue(CancelIsBusyProperty); }
+            set { SetValue(CancelIsBusyProperty, value); }
+        }
+
         #endregion CancelButton
 
         #region AcceptButton
@@ -311,7 +329,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptBackgroundColorProperty =
-            BindableProperty.Create(nameof(AcceptBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(AcceptBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Primary);
 
         public Color AcceptBackgroundColor
         {
@@ -320,7 +338,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptTextColorProperty =
-            BindableProperty.Create(nameof(AcceptTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(AcceptTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OnPrimary);
 
         public Color AcceptTextColor
         {
@@ -329,7 +347,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptFontSizeProperty =
-            BindableProperty.Create(nameof(AcceptFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.LabelLarge);
+            BindableProperty.Create(nameof(AcceptFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.LabelLarge);
 
         public double AcceptFontSize
         {
@@ -338,7 +356,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AcceptFontFamilyProperty =
-            BindableProperty.Create(nameof(AcceptFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(AcceptFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string AcceptFontFamily
         {
@@ -353,6 +371,24 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (ICommand)GetValue(AcceptCommandProperty); }
             set { SetValue(AcceptCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty AcceptIsEnabledProperty =
+            BindableProperty.Create(nameof(AcceptIsEnabled), typeof(bool), typeof(MaterialDialog), defaultValue: true);
+
+        public bool AcceptIsEnabled
+        {
+            get { return (bool)GetValue(AcceptIsEnabledProperty); }
+            set { SetValue(AcceptIsEnabledProperty, value); }
+        }
+
+        public static readonly BindableProperty AcceptIsBusyProperty =
+            BindableProperty.Create(nameof(AcceptIsBusy), typeof(bool), typeof(MaterialDialog), defaultValue: false);
+
+        public bool AcceptIsBusy
+        {
+            get { return (bool)GetValue(AcceptIsBusyProperty); }
+            set { SetValue(AcceptIsBusyProperty, value); }
         }
 
         #endregion AcceptButton
@@ -396,7 +432,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchTextColorProperty =
-            BindableProperty.Create(nameof(SearchTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(SearchTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Text);
 
         public Color SearchTextColor
         {
@@ -405,7 +441,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchBackgroundColorProperty =
-            BindableProperty.Create(nameof(SearchBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
+            BindableProperty.Create(nameof(SearchBackgroundColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.SurfaceContainerHighest);
 
         public Color SearchBackgroundColor
         {
@@ -414,7 +450,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchTextFontSizeProperty =
-            BindableProperty.Create(nameof(SearchTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.BodyMedium);
+            BindableProperty.Create(nameof(SearchTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.BodyMedium);
 
         public double SearchTextFontSize
         {
@@ -423,7 +459,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SearchTextFontFamilyProperty =
-            BindableProperty.Create(nameof(SearchTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(SearchTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string SearchTextFontFamily
         {
@@ -454,7 +490,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemTextColorProperty =
-            BindableProperty.Create(nameof(ItemTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.OnSurfaceColor);
+            BindableProperty.Create(nameof(ItemTextColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.OnSurface);
 
         public Color ItemTextColor
         {
@@ -463,7 +499,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemTextFontSizeProperty =
-            BindableProperty.Create(nameof(ItemTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: DefaultStyles.FontSizes.BodyMedium);
+            BindableProperty.Create(nameof(ItemTextFontSize), typeof(double), typeof(MaterialDialog), defaultValue: MaterialFontSize.BodyMedium);
 
         public double ItemTextFontSize
         {
@@ -472,7 +508,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemTextFontFamilyProperty =
-            BindableProperty.Create(nameof(ItemTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(ItemTextFontFamily), typeof(string), typeof(MaterialDialog), defaultValue: MaterialFontFamily.Default);
 
         public string ItemTextFontFamily
         {
@@ -481,7 +517,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ItemCheckboxColorProperty =
-            BindableProperty.Create(nameof(ItemCheckboxColor), typeof(Color), typeof(MaterialDialog), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(ItemCheckboxColor), typeof(Color), typeof(MaterialDialog), defaultValue: MaterialColor.Primary);
 
         public Color ItemCheckboxColor
         {
@@ -658,6 +694,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     _cancelBtn.FontFamily = CancelFontFamily;
                     break;
 
+                case nameof(CancelIsEnabled):
+                    _cancelBtn.IsEnabled = CancelIsEnabled;
+                    break;
+
+                case nameof(CancelIsBusy):
+                    _cancelBtn.IsBusy = CancelIsBusy;
+                    break;
+
                 case nameof(AcceptText):
                     _acceptBtn.Text = AcceptText;
                     break;
@@ -676,6 +720,14 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(AcceptFontFamily):
                     _acceptBtn.FontFamily = AcceptFontFamily;
+                    break;
+
+                case nameof(AcceptIsEnabled):
+                    _acceptBtn.IsEnabled = AcceptIsEnabled;
+                    break;
+
+                case nameof(AcceptIsBusy):
+                    _acceptBtn.IsBusy = AcceptIsBusy;
                     break;
 
                 case nameof(CancelCommand):
@@ -842,7 +894,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = CancelFontFamily,
                 BackgroundColor = CancelBackgroundColor,
                 Command = CancelCommand,
-                IsVisible = !String.IsNullOrWhiteSpace(CancelText)
+                IsVisible = !String.IsNullOrWhiteSpace(CancelText),
+                MinimumWidthRequest = 80
             };
 
             _acceptBtn = new MaterialButton()
@@ -854,7 +907,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = AcceptFontFamily,
                 BackgroundColor = AcceptBackgroundColor,
                 Margin = new Thickness(0),
-                Command = AcceptCommand
+                Command = AcceptCommand,
+                MinimumWidthRequest = 80
             };
 
             _btnsContainer.Children.Add(_cancelBtn);
@@ -868,54 +922,48 @@ namespace Plugin.MaterialDesignControls.Material3
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialDialog)bindable;
-            control._optionsContainer.Children.Clear();
-
             if (!Equals(newValue, null) && newValue is IEnumerable<MaterialDialogItem> list)
-            {
-                if (control._fullItems is null)
-                    control._fullItems = new List<MaterialDialogItem>(list);
+                control._fullItems = new List<MaterialDialogItem>(list);
+            else
+                control._fullItems = null;
 
+            control.RefreshItemList(control._fullItems);
+        }
+
+        private void RefreshItemList(IEnumerable<MaterialDialogItem> list)
+        {
+            _optionsContainer.Children.Clear();
+
+            if (list != null)
+            {
                 foreach (var item in list)
                 {
                     var materialCheckbox = new MaterialCheckbox();
                     materialCheckbox.Text = item.Text;
-                    materialCheckbox.Command = new Command(() => SelectionCommand(control, materialCheckbox));
-                    materialCheckbox.Color = control.ItemCheckboxColor;
-                    materialCheckbox.TextColor = control.ItemTextColor;
-                    materialCheckbox.FontSize = control.ItemTextFontSize;
-                    materialCheckbox.FontFamily = control.ItemTextFontFamily;
-                    materialCheckbox.IsEnabled = control.IsEnabled;
-                    materialCheckbox.IconHeightRequest = control.ItemCheckboxSize;
-                    materialCheckbox.IconWidthRequest = control.ItemCheckboxSize;
-                    materialCheckbox.SelectedIcon = control.ItemCheckboxSelectedIcon;
-                    materialCheckbox.UnselectedIcon = control.ItemCheckboxUnselectedIcon;
-                    materialCheckbox.CustomSelectedIcon = control.ItemCheckboxCustomSelectedIcon;
-                    materialCheckbox.CustomUnselectedIcon = control.ItemCheckboxCustomUnselectedIcon;
+                    materialCheckbox.Command = new Command(() => SelectionCommand(this, materialCheckbox));
+                    materialCheckbox.Color = ItemCheckboxColor;
+                    materialCheckbox.TextColor = ItemTextColor;
+                    materialCheckbox.FontSize = ItemTextFontSize;
+                    materialCheckbox.FontFamily = ItemTextFontFamily;
+                    materialCheckbox.IsEnabled = IsEnabled;
+                    materialCheckbox.IconHeightRequest = ItemCheckboxSize;
+                    materialCheckbox.IconWidthRequest = ItemCheckboxSize;
+                    materialCheckbox.SelectedIcon = ItemCheckboxSelectedIcon;
+                    materialCheckbox.UnselectedIcon = ItemCheckboxUnselectedIcon;
+                    materialCheckbox.CustomSelectedIcon = ItemCheckboxCustomSelectedIcon;
+                    materialCheckbox.CustomUnselectedIcon = ItemCheckboxCustomUnselectedIcon;
                     materialCheckbox.IsChecked = item.IsSelected;
-                    control._optionsContainer.Children.Add(materialCheckbox);
+                    _optionsContainer.Children.Add(materialCheckbox);
                 }
 
-                if (control.AllowMultiselect)
-                    control._acceptBtn.CommandParameter = control.ItemsSource.Where(x => x.IsSelected).ToList();
+                if (AllowMultiselect)
+                    _acceptBtn.CommandParameter = ItemsSource.Where(x => x.IsSelected).ToList();
                 else
-                    control._acceptBtn.CommandParameter = control.ItemsSource.FirstOrDefault(x => x.IsSelected);
+                    _acceptBtn.CommandParameter = ItemsSource.FirstOrDefault(x => x.IsSelected);
             }
 
-            control._optionsContainer.IsVisible = control.ItemsSource != null && control.ItemsSource.Any();
-            control._bottomDivider.IsVisible = control.ShowDivider && control.ItemsSource != null && control.ItemsSource.Any();
-        }
-
-        private static string GetPropertyValue(object item, string propertyToSearch)
-        {
-            var properties = item.GetType().GetProperties();
-            foreach (var property in properties)
-            {
-                if (property.Name.Equals(propertyToSearch, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return property.GetValue(item, null).ToString();
-                }
-            }
-            return item.ToString();
+            _optionsContainer.IsVisible = list != null && list.Any();
+            _bottomDivider.IsVisible = ShowDivider && list != null && list.Any();
         }
 
         private void SetIcon()
@@ -966,14 +1014,14 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                ItemsSource = new List<MaterialDialogItem>();
+                RefreshItemList(new List<MaterialDialogItem>());
                 await Task.Delay(500);
                 if (string.IsNullOrWhiteSpace(_materialSearch.Text))
-                    ItemsSource = new List<MaterialDialogItem>(_fullItems);
+                    RefreshItemList(new List<MaterialDialogItem>(_fullItems));
                 else
                 {
                     var search = _fullItems.Where(x => x.Text.ToLower().Contains(_materialSearch.Text.ToLower()));
-                    ItemsSource = new List<MaterialDialogItem>(search);
+                    RefreshItemList(new List<MaterialDialogItem>(search));
                 }
             });
         }

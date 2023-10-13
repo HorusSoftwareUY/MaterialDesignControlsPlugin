@@ -136,7 +136,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelValueColorProperty =
-            BindableProperty.Create(nameof(LabelValueColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+            BindableProperty.Create(nameof(LabelValueColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.OnSurfaceVariant);
 
         public Color LabelValueColor
         {
@@ -145,7 +145,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledLabelValueColorProperty =
-            BindableProperty.Create(nameof(DisabledLabelValueColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledLabelValueColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.Disable);
 
         public Color DisabledLabelValueColor
         {
@@ -154,7 +154,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelValueSizeProperty =
-            BindableProperty.Create(nameof(LabelValueSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.FontSizes.BodySmall);
+            BindableProperty.Create(nameof(LabelValueSize), typeof(double), typeof(MaterialSlider), defaultValue: MaterialFontSize.BodySmall);
 
         public double LabelValueSize
         {
@@ -163,7 +163,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelValueFontFamilyProperty =
-            BindableProperty.Create(nameof(LabelValueFontFamily), typeof(string), typeof(MaterialSlider), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(LabelValueFontFamily), typeof(string), typeof(MaterialSlider), defaultValue: MaterialFontFamily.Default);
 
         public string LabelValueFontFamily
         {
@@ -194,7 +194,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMinimumTextColorProperty =
-            BindableProperty.Create(nameof(LabelMinimumTextColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(LabelMinimumTextColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.Text);
 
         public Color LabelMinimumTextColor
         {
@@ -203,7 +203,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledLabelMinimumTextColorProperty =
-            BindableProperty.Create(nameof(DisabledLabelMinimumTextColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledLabelMinimumTextColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.Disable);
 
         public Color DisabledLabelMinimumTextColor
         {
@@ -212,7 +212,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMinimumSizeProperty =
-            BindableProperty.Create(nameof(LabelMinimumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.FontSizes.BodyLarge);
+            BindableProperty.Create(nameof(LabelMinimumSize), typeof(double), typeof(MaterialSlider), defaultValue: MaterialFontSize.BodyLarge);
 
         public double LabelMinimumSize
         {
@@ -234,7 +234,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMaximumTextColorProperty =
-            BindableProperty.Create(nameof(LabelMaximumTextColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(LabelMaximumTextColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.Text);
 
         public Color LabelMaximumTextColor
         {
@@ -243,7 +243,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledLabelMaximumTextColorProperty =
-            BindableProperty.Create(nameof(DisabledLabelMaximumTextColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledLabelMaximumTextColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.Disable);
 
         public Color DisabledLabelMaximumTextColor
         {
@@ -252,7 +252,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LabelMaximumSizeProperty =
-            BindableProperty.Create(nameof(LabelMaximumSize), typeof(double), typeof(MaterialSlider), defaultValue: DefaultStyles.FontSizes.BodyLarge);
+            BindableProperty.Create(nameof(LabelMaximumSize), typeof(double), typeof(MaterialSlider), defaultValue: MaterialFontSize.BodyLarge);
 
         public double LabelMaximumSize
         {
@@ -383,7 +383,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Values
 
         public static readonly BindableProperty ActiveTrackColorProperty =
-            BindableProperty.Create(nameof(ActiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(ActiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.Primary);
 
         public Color ActiveTrackColor
         {
@@ -392,7 +392,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty InactiveTrackColorProperty =
-            BindableProperty.Create(nameof(InactiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
+            BindableProperty.Create(nameof(InactiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.SurfaceContainerHighest);
 
         public Color InactiveTrackColor
         {
@@ -401,7 +401,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ThumbColorProperty =
-            BindableProperty.Create(nameof(ThumbColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(ThumbColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.Primary);
 
         public Color ThumbColor
         {
@@ -446,7 +446,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledActiveTrackColorProperty =
-            BindableProperty.Create(nameof(DisabledActiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledActiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.Disable);
 
         public Color DisabledActiveTrackColor
         {
@@ -455,7 +455,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledInactiveTrackColorProperty =
-            BindableProperty.Create(nameof(DisabledInactiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.DisableContainerColor);
+            BindableProperty.Create(nameof(DisabledInactiveTrackColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.DisableContainer);
 
         public Color DisabledInactiveTrackColor
         {
@@ -464,7 +464,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledThumbColorProperty =
-            BindableProperty.Create(nameof(DisabledThumbColor), typeof(Color), typeof(MaterialSlider), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledThumbColor), typeof(Color), typeof(MaterialSlider), defaultValue: MaterialColor.Disable);
 
         public Color DisabledThumbColor
         {

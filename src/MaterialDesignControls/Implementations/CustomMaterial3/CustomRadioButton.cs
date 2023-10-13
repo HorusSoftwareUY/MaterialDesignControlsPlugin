@@ -19,7 +19,7 @@ namespace Plugin.MaterialDesignControls.Material3.Implementations
         }
 
         public static readonly BindableProperty ColorProperty =
-            BindableProperty.Create(nameof(Color), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(Color), typeof(Color), typeof(BaseMaterialCheckboxes), defaultValue: MaterialColor.Primary);
 
         public Color Color
         {

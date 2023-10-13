@@ -137,6 +137,14 @@ This property is to the font family of the cancel button.
 This property is to the command of the cancel button.
 <br/>
 
+### Property CancelIsBusy:
+This property is to show a busy indicator in the cancel button when a command is running.
+<br/>
+
+### Property AcceptIsEnabled:
+This property is to set if the cancel button is enabled or disabled.
+<br/>
+
 ### Property AcceptText:
 This property is to set the text of the accept button.
 <br/>
@@ -159,6 +167,14 @@ This property is to the font family of the accept button.
 
 ### Property AcceptCommand:
 This property is to the command of the accept button.
+<br/>
+
+### Property AcceptIsBusy:
+This property is to show a busy indicator in the accept button when a command is running.
+<br/>
+
+### Property AcceptIsEnabled:
+This property is to set if the accept button is enabled or disabled.
 <br/>
 
 ### Property ButtonsAlignment:

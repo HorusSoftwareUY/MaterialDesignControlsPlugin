@@ -19,6 +19,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool _initialized = false;
 
+        private bool _minimumWidthRequestSetted = false;
+
         private StackLayout _stcLayout;
 
         private CustomImage _leadingIconCustomImage;
@@ -74,7 +76,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: DefaultStyles.AnimationType);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialButton), defaultValue: MaterialAnimation.Type);
 
         public AnimationTypes Animation
         {
@@ -83,7 +85,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: DefaultStyles.AnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialButton), defaultValue: MaterialAnimation.Parameter);
 
         public double? AnimationParameter
         {
@@ -182,7 +184,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BusyColorProperty =
-            BindableProperty.Create(nameof(BusyColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BusyColor), typeof(Color), typeof(MaterialButton), defaultValue: MaterialColor.Primary);
 
         public Color BusyColor
         {
@@ -191,7 +193,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: DefaultStyles.FontSizes.LabelLarge);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: MaterialFontSize.LabelLarge);
 
         public double FontSize
         {
@@ -200,7 +202,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialButton), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialButton), defaultValue: MaterialFontFamily.Default);
 
         public string FontFamily
         {
@@ -317,6 +319,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ContentIsExpandedProperty, value); }
         }
 
+        public static new readonly BindableProperty MinimumWidthRequestProperty =
+            BindableProperty.Create(nameof(MinimumWidthRequest), typeof(double), typeof(MaterialButton), defaultValue: -1.0);
+
+        public new double MinimumWidthRequest
+        {
+            get { return (double)GetValue(MinimumWidthRequestProperty); }
+            set { SetValue(MinimumWidthRequestProperty, value); }
+        }
+
         public event EventHandler Clicked;
 
         #endregion Bindable properties
@@ -375,8 +386,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center,
                 Text = ToUpper ? Text?.ToUpper() : Text,
                 FontSize = FontSize,
-                FontFamily = FontFamily,
-
+                FontFamily = FontFamily
             };
             _stcLayout.Children.Add(_textLabel);
 
@@ -542,6 +552,15 @@ namespace Plugin.MaterialDesignControls.Material3
                     _stcLayout.HorizontalOptions = ContentIsExpanded ? LayoutOptions.FillAndExpand : LayoutOptions.Center;
                     _textLabel.HorizontalOptions = ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center;
                     break;
+
+                case nameof(Width):
+                case nameof(MinimumWidthRequest):
+                    if (!_minimumWidthRequestSetted && MinimumWidthRequest != -1 && Width != -1 && Width < MinimumWidthRequest)
+                    {
+                        _minimumWidthRequestSetted = true;
+                        WidthRequest = MinimumWidthRequest;
+                    }
+                    break;
             }
         }
 
@@ -550,32 +569,32 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (ButtonType)
             {
                 case MaterialButtonType.Elevated:
-                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.DisableColor);
-                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
-                    _frameLayout.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.Primary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.Disable);
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.OnPrimary;
+                    _frameLayout.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.OnPrimary;
                     _frameLayout.HasShadow = true;
                     break;
                 case MaterialButtonType.Filled:
-                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.OnPrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.OnPrimaryColor);
-                    _frameLayout.BackgroundColor = IsEnabled ? (BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.PrimaryColor) : (DisabledBackgroundColor != Color.Default ? DisabledBackgroundColor : DefaultStyles.DisableColor);
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.OnPrimary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.OnPrimary);
+                    _frameLayout.BackgroundColor = IsEnabled ? (BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.Primary) : (DisabledBackgroundColor != Color.Default ? DisabledBackgroundColor : MaterialColor.Disable);
                     _frameLayout.BorderColor = Color.Transparent;
                     _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Tonal:
-                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.DisableColor);
-                    var defaultBackgroundColor = Color.FromRgba(DefaultStyles.PrimaryColor.R, DefaultStyles.PrimaryColor.G, DefaultStyles.PrimaryColor.B, 0.4);
-                    _frameLayout.BackgroundColor = IsEnabled ? defaultBackgroundColor : (DisabledBackgroundColor != Color.Default ? DisabledBackgroundColor : DefaultStyles.DisableColor);
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.Primary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.Disable);
+                    var defaultBackgroundColor = Color.FromRgba(MaterialColor.Primary.R, MaterialColor.Primary.G, MaterialColor.Primary.B, 0.4);
+                    _frameLayout.BackgroundColor = IsEnabled ? defaultBackgroundColor : (DisabledBackgroundColor != Color.Default ? DisabledBackgroundColor : MaterialColor.Disable);
                     _frameLayout.BorderColor = Color.Transparent;
                     _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Outlined:
-                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.DisableColor);
-                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.OnPrimaryColor;
-                    _frameLayout.BorderColor = IsEnabled ? (BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor) : (DisabledBorderColor != Color.Default ? DisabledBorderColor : DefaultStyles.DisableColor);
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.Primary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.Disable);
+                    _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.OnPrimary;
+                    _frameLayout.BorderColor = IsEnabled ? (BorderColor != Color.Default ? BorderColor : MaterialColor.Primary) : (DisabledBorderColor != Color.Default ? DisabledBorderColor : MaterialColor.Disable);
                     _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Text:
-                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : DefaultStyles.PrimaryColor) : (DisabledTextColor != Color.Default ? DisabledTextColor : DefaultStyles.DisableColor);
+                    _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.Primary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.Disable);
                     _frameLayout.BackgroundColor = Color.Transparent;
                     _frameLayout.BorderColor = Color.Transparent;
                     _frameLayout.HasShadow = false;

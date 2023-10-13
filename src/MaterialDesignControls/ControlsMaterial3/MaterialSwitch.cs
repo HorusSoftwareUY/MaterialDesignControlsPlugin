@@ -63,7 +63,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BackgroundOnUnselectedColorProperty =
-            BindableProperty.Create(nameof(BackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.SurfaceContainerHighestColor);
+            BindableProperty.Create(nameof(BackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), MaterialColor.SurfaceContainerHighest);
 
         public Color BackgroundOnUnselectedColor
         {
@@ -72,7 +72,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBackgroundOnUnselectedColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableContainerColor);
+            BindableProperty.Create(nameof(DisabledBackgroundOnUnselectedColor), typeof(Color), typeof(MaterialSwitch), MaterialColor.DisableContainer);
 
         public Color DisabledBackgroundOnUnselectedColor
         {
@@ -81,7 +81,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BackgroundOnSelectedColorProperty =
-            BindableProperty.Create(nameof(BackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), MaterialColor.Primary);
 
         public Color BackgroundOnSelectedColor
         {
@@ -90,7 +90,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBackgroundOnSelectedColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledBackgroundOnSelectedColor), typeof(Color), typeof(MaterialSwitch), MaterialColor.Disable);
 
         public Color DisabledBackgroundOnSelectedColor
         {
@@ -124,7 +124,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Thumb
 
         public static readonly BindableProperty ThumbUnselectedColorProperty =
-            BindableProperty.Create(nameof(ThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.OutlineColor);
+            BindableProperty.Create(nameof(ThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), MaterialColor.Outline);
 
         public Color ThumbUnselectedColor
         {
@@ -133,7 +133,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledThumbUnselectedColorProperty =
-            BindableProperty.Create(nameof(DisabledThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledThumbUnselectedColor), typeof(Color), typeof(MaterialSwitch), MaterialColor.Disable);
 
         public Color DisabledThumbUnselectedColor
         {
@@ -142,7 +142,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ThumbSelectedColorProperty =
-            BindableProperty.Create(nameof(ThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(ThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), MaterialColor.OnPrimary);
 
         public Color ThumbSelectedColor
         {
@@ -151,7 +151,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledThumbSelectedColorProperty =
-            BindableProperty.Create(nameof(DisabledThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), DefaultStyles.DisableContainerColor);
+            BindableProperty.Create(nameof(DisabledThumbSelectedColor), typeof(Color), typeof(MaterialSwitch), MaterialColor.DisableContainer);
 
         public Color DisabledThumbSelectedColor
         {
@@ -209,7 +209,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: MaterialColor.Text);
 
         public Color TextColor
         {
@@ -218,7 +218,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: MaterialColor.Text);
 
         public Color DisabledTextColor
         {
@@ -227,7 +227,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialSwitch), defaultValue: DefaultStyles.FontSizes.BodyLarge);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialSwitch), defaultValue: MaterialFontSize.BodyLarge);
 
         public double FontSize
         {
@@ -236,7 +236,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: MaterialFontFamily.Default);
 
         public string FontFamily
         {
@@ -276,7 +276,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingTextColorProperty =
-            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: DefaultStyles.ErrorColor);
+            BindableProperty.Create(nameof(SupportingTextColor), typeof(Color), typeof(MaterialSwitch), defaultValue: MaterialColor.Error);
 
         public Color SupportingTextColor
         {
@@ -285,7 +285,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingSizeProperty =
-            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialSwitch), defaultValue: DefaultStyles.FontSizes.BodySmall);
+            BindableProperty.Create(nameof(SupportingSize), typeof(double), typeof(MaterialSwitch), defaultValue: MaterialFontSize.BodySmall);
 
         public double SupportingSize
         {
@@ -294,7 +294,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty SupportingFontFamilyProperty =
-            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(SupportingFontFamily), typeof(string), typeof(MaterialSwitch), defaultValue: MaterialFontFamily.Default);
 
         public string SupportingFontFamily
         {
@@ -314,7 +314,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion SupportingText
 
         public static readonly BindableProperty AnimateErrorProperty =
-            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialSwitch), defaultValue: DefaultStyles.AnimateError);
+            BindableProperty.Create(nameof(AnimateError), typeof(bool), typeof(MaterialSwitch), defaultValue: MaterialAnimation.AnimateOnError);
 
         public bool AnimateError
         {
