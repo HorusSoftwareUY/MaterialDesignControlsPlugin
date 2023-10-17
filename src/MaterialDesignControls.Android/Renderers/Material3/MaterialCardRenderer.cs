@@ -1,20 +1,16 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Android.Content;
+using Android.Graphics;
 using Android.Graphics.Drawables;
+using Android.Graphics.Drawables.Shapes;
+using Android.OS;
+using Android.Views;
+using AndroidX.Core.View;
+using Plugin.MaterialDesignControls.Material3;
+using Plugin.MaterialDesignControls.Material3.Android;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Plugin.MaterialDesignControls.Material3.Android;
-using Android.OS;
-using Plugin.MaterialDesignControls.Material3;
-using AndroidX.Core.View;
-using Android.Util;
-using Android.Animation;
-using Android.Graphics;
-using Android.Views;
-using Android.Graphics.Drawables.Shapes;
-using Xamarin.Forms.Shapes;
-using System;
-using AndroidGraphics = Android.Graphics;
 
 [assembly: ExportRenderer(typeof(MaterialCard), typeof(MaterialCardRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.Android
@@ -34,7 +30,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
 
             if (e.NewElement != null && Control != null)
             {
-                UpdateCornerRadius();
+                DrawBackgroundAndBorder();
                 DrawShadow();
             }
         }
@@ -43,37 +39,63 @@ namespace Plugin.MaterialDesignControls.Material3.Android
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == nameof(MaterialCard.CornerRadius) ||
-                e.PropertyName == nameof(MaterialCard))
+            if (e.PropertyName == nameof(MaterialCard) ||
+                e.PropertyName == MaterialCard.CornerRadiusProperty.PropertyName ||
+                e.PropertyName == MaterialCard.BackgroundColorProperty.PropertyName ||
+                e.PropertyName == MaterialCard.HasBorderProperty.PropertyName ||
+                e.PropertyName == MaterialCard.BorderColorProperty.PropertyName ||
+                e.PropertyName == MaterialCard.BorderWidthProperty.PropertyName)
             {
-                UpdateCornerRadius();
+                DrawBackgroundAndBorder();
+            }
+            else if (e.PropertyName == MaterialCard.HasShadowProperty.PropertyName ||
+                e.PropertyName == MaterialCard.ShadowColorProperty.PropertyName ||
+                e.PropertyName == MaterialCard.AndroidElevationProperty.PropertyName)
+            {
+                DrawShadow();
             }
         }
 
-        private void UpdateCornerRadius()
+        public void DrawShadow()
         {
-            if (Control.Background is GradientDrawable backgroundGradient)
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop && Element is MaterialCard card &&
+                (card.Type == MaterialCardType.Elevated || card.Type == MaterialCardType.Custom))
             {
-                var cornerRadius = (Element as MaterialCard)?.CornerRadius;
-                if (!cornerRadius.HasValue)
+                Elevation = 0;
+                TranslationZ = 0;
+
+                bool hasShadowOrElevation = card.HasShadow && card.AndroidElevation > 0;
+                if (hasShadowOrElevation)
                 {
-                    return;
-                }
+                    ViewCompat.SetElevation(this, Context.ToPixels(card.AndroidElevation));
 
-                if (!(Element is MaterialCard element))
+                    // Color only exists on Pie and beyond.
+                    if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
+                    {
+                        SetOutlineAmbientShadowColor(card.ShadowColor.ToAndroid());
+                        SetOutlineSpotShadowColor(card.ShadowColor.ToAndroid());
+                    }
+                    
+                    // To have shadow show up, we need to clip.
+                    OutlineProvider = new RoundedCornerOutlineProvider(card, Context.ToPixels);
+                    ClipToOutline = true;
+                }
+                else
                 {
-                    return;
+                    OutlineProvider = null;
+                    ClipToOutline = false;
                 }
+            }
+        }
 
-                double topLeft = element.CornerRadiusTopLeft ? cornerRadius.Value : 0;
-                double topRight = element.CornerRadiusTopRight ? cornerRadius.Value : 0;
-                double bottomLeft = element.CornerRadiusBottomLeft ? cornerRadius.Value : 0;
-                double bottomRight = element.CornerRadiusBottomRight ? cornerRadius.Value : 0;
-
-                var topLeftCorner = Context.ToPixels(topLeft);
-                var topRightCorner = Context.ToPixels(topRight);
-                var bottomLeftCorner = Context.ToPixels(bottomLeft);
-                var bottomRightCorner = Context.ToPixels(bottomRight);
+        private void DrawBackgroundAndBorder()
+        {
+            if (Element is MaterialCard card)
+            {
+                var topLeftCorner = Context.ToPixels(card.CornerRadius.TopLeft);
+                var topRightCorner = Context.ToPixels(card.CornerRadius.TopRight);
+                var bottomLeftCorner = Context.ToPixels(card.CornerRadius.BottomLeft);
+                var bottomRightCorner = Context.ToPixels(card.CornerRadius.BottomRight);
 
                 var cornerRadii = new[]
                 {
@@ -89,45 +111,31 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                     bottomLeftCorner,
                     bottomLeftCorner,
                 };
-                backgroundGradient.SetCornerRadii(cornerRadii);
-            }
-        }
 
-        public void DrawShadow()
-        {
-            var customFrame = (MaterialCard)Element;
-            if (customFrame != null)
-            {
-                if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+                if (card.Type == MaterialCardType.Custom)
                 {
-                    this.Elevation = 0;
-                    this.TranslationZ = 0;
+                    // Background that overrides native border to handle it ourselves
+                    var backgroundShape = new RoundRectShape(cornerRadii, new RectF(), null);
+                    var background = new ShapeDrawable(backgroundShape);
+                    background.SetColorFilter(new PorterDuffColorFilter(card.BackgroundColor.ToAndroid(), PorterDuff.Mode.SrcIn));
 
-                    bool hasShadowOrElevation = customFrame.HasShadow;
-
-                    if (hasShadowOrElevation)
+                    var borderOffset = card.HasBorder ? Convert.ToInt32(Context.ToPixels(card.BorderWidth)) : 0;
+                    if (borderOffset > 0 && Build.VERSION.SdkInt >= BuildVersionCodes.M)
                     {
-                        ViewCompat.SetElevation(this, Context.ToPixels(customFrame.AndroidElevation));
+                        var borderShape = new RoundRectShape(cornerRadii, new RectF(), null);
+                        var border = new ShapeDrawable(borderShape);
+                        border.SetColorFilter(new PorterDuffColorFilter(card.BorderColor.ToAndroid(), PorterDuff.Mode.SrcIn));
 
-                        // Color only exists on Pie and beyond.
-                        if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
-                        {
-                            this.SetOutlineAmbientShadowColor(customFrame.ShadowColor.ToAndroid());
-                            this.SetOutlineSpotShadowColor(customFrame.ShadowColor.ToAndroid());
-                        }
+                        var layerDrawable = new LayerDrawable(new Drawable[] { border, background });
+                        layerDrawable.SetLayerInset(1, borderOffset, borderOffset, borderOffset, borderOffset);
+                        Control.Background = layerDrawable;
                     }
+                }
 
-                    if (hasShadowOrElevation)
-                    {
-                        // To have shadow show up, we need to clip.
-                        this.OutlineProvider = new RoundedCornerOutlineProvider(customFrame, Context.ToPixels);
-                        this.ClipToOutline = true;
-                    }
-                    else
-                    {
-                        this.OutlineProvider = null;
-                        this.ClipToOutline = false;
-                    }
+                // If it's not custom card, just round corners and let background and border to be handled by default
+                if (Control.Background is GradientDrawable backgroundGradient)
+                {
+                    backgroundGradient.SetCornerRadii(cornerRadii);
                 }
             }
         }
@@ -135,35 +143,39 @@ namespace Plugin.MaterialDesignControls.Material3.Android
 
     public class RoundedCornerOutlineProvider : ViewOutlineProvider
     {
-        private readonly MaterialCard _pancake;
+        private readonly MaterialCard _card;
         private readonly Func<double, float> _convertToPixels;
 
-        public RoundedCornerOutlineProvider(MaterialCard pancake, Func<double, float> convertToPixels)
+        public RoundedCornerOutlineProvider(MaterialCard card, Func<double, float> convertToPixels)
         {
-            _pancake = pancake;
+            _card = card;
             _convertToPixels = convertToPixels;
         }
 
         public override void GetOutline(global::Android.Views.View view, Outline outline)
         {
             var path = CreateRoundedRectPath(view.Width, view.Height,
-                    _convertToPixels(_pancake.CornerRadius),
-                    _convertToPixels(_pancake.CornerRadius),
-                    _convertToPixels(_pancake.CornerRadius),
-                    _convertToPixels(_pancake.CornerRadius));
+                    _convertToPixels(_card.CornerRadius.TopLeft),
+                    _convertToPixels(_card.CornerRadius.TopRight),
+                    _convertToPixels(_card.CornerRadius.BottomRight),
+                    _convertToPixels(_card.CornerRadius.BottomLeft));
+
             if (path.IsConvex)
                 outline.SetConvexPath(path);
         }
 
-        public AndroidGraphics.Path CreateRoundedRectPath(float rectWidth, float rectHeight, float topLeft, float topRight, float bottomRight, float bottomLeft)
+        public Path CreateRoundedRectPath(float rectWidth, float rectHeight, float topLeft, float topRight, float bottomRight, float bottomLeft)
         {
-            var path = new AndroidGraphics.Path();
+            var path = new Path();
+
             var radii = new[] { topLeft, topLeft,
                                 topRight, topRight,
                                 bottomRight, bottomRight,
                                 bottomLeft, bottomLeft };
-            path.AddRoundRect(new RectF(0, 0, rectWidth, rectHeight), radii, AndroidGraphics.Path.Direction.Ccw);
+
+            path.AddRoundRect(0, 0, rectWidth, rectHeight, radii, Path.Direction.Ccw);
             path.Close();
+
             return path;
         }
     }

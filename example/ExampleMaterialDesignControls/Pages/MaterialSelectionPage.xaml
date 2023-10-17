@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -66,10 +66,6 @@
                     <material3:MaterialSelection Command="{Binding TapCommand}"
                                                  CommandParameter="Product selection"
                                                  HasBorder="True"
-                                                 CornerRadiusBottomLeft="True"
-                                                 CornerRadiusBottomRight="True"
-                                                 CornerRadiusTopRight="True"
-                                                 CornerRadiusTopLeft="True"
                                                  LabelText="Select Product"
                                                  Placeholder="Select product"
                                                  Text="{Binding SelectedText}" />
@@ -86,12 +82,8 @@
                                                  Placeholder="Select model"
                                                  Text="{Binding SelectedText}"
                                                  HasBorder="True"
-                                                 CornerRadius="10"
-                                                 CornerRadiusBottomLeft="True"
-                                                 CornerRadiusBottomRight="True"
-                                                 CornerRadiusTopRight="True"
-                                                 CornerRadiusTopLeft="False"
-                                                 iOSBorderWidth="3"
+                                                 CornerRadius="0,10,10,10"
+                                                 BorderWidth="3"
                                                  SupportingMargin="10,2,0,0"
                                                  SupportingText="Testing"
                                                  AnimateError="True"

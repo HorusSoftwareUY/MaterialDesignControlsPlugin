@@ -14,8 +14,7 @@
               RowSpacing="0">
             <material3:MaterialTopAppBar Headline="MaterialCard"
                                          LeadingIconCommand="{Binding BackCommand}"
-                                         ScrollViewName="scrollView"
-                                         Type="Large">
+                                         ScrollViewName="scrollView">
                 <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.CustomLeadingIcon>
@@ -57,8 +56,8 @@
 
                     <material3:MaterialCard
                         Type="Outlined"
-                        CornerRadius="20"
-                        BorderColor="DarkBlue"
+                        CornerRadius="20,20,0,20"
+                        BorderColor="Green"
                         HorizontalOptions="FillAndExpand"
                         Command="{Binding TapCommand}">
                         <material3:MaterialLabel
@@ -67,7 +66,7 @@
 
                     <material3:MaterialCard
                         Type="Filled"
-                        CornerRadius="20"
+                        CornerRadius="25"
                         BackgroundColor="LightBlue"
                         HorizontalOptions="FillAndExpand"
                         Command="{Binding TapCommand}">
@@ -78,7 +77,7 @@
                     <material3:MaterialCard
                         Type="Elevated"
                         CornerRadius="20"
-                        ShadowColor="DarkBlue"
+                        ShadowColor="Green"
                         HorizontalOptions="FillAndExpand"
                         Command="{Binding TapCommand}">
                         <material3:MaterialLabel
@@ -87,13 +86,11 @@
 
                     <material3:MaterialCard
                         Type="Custom"
-                        CornerRadius="20"
-                        CornerRadiusTopLeft="False"
-                        CornerRadiusTopRight="False"
+                        CornerRadius="0,0,20,20"
                         BackgroundColor="LightBlue"
                         BorderColor="DarkBlue"
-                        HasShadow="True"
-                        ShadowColor="DarkBlue"
+                        BorderWidth="2.5"
+                        ShadowColor="Red"
                         HorizontalOptions="FillAndExpand"
                         Command="{Binding TapCommand}">
                         <material3:MaterialLabel
@@ -102,12 +99,9 @@
 
                     <material3:MaterialCard
                         Type="Custom"
-                        CornerRadius="20"
-                        CornerRadiusTopLeft="False"
-                        CornerRadiusBottomRight="False"
-                        BackgroundColor="LightBlue"
+                        CornerRadius="0,20,20,0"
+                        BackgroundColor="LightYellow"
                         BorderColor="DarkBlue"
-                        HasShadow="True"
                         ShadowColor="DarkBlue"
                         HorizontalOptions="FillAndExpand"
                         Command="{Binding TapCommand}">

@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\Material3\MaterialCardRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialDatePickerRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialDoublePickerRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialEditorRenderer.cs" />
@@ -100,6 +99,8 @@
     <Compile Include="Renderers\Material3\MaterialSliderRenderer.cs" />
     <Compile Include="Renderers\DeprecatedControls\CustomFrameRenderer.cs" />
     <Compile Include="Utils\ImageSourceExtensions.cs" />
+    <Compile Include="Utils\DrawingExtensions.cs" />
+    <Compile Include="Renderers\Material3\MaterialCardRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

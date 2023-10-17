@@ -1,7 +1,5 @@
-﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Material3.Implementations;
+﻿using System.Runtime.CompilerServices;
 using Plugin.MaterialDesignControls.Styles;
-using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3
@@ -121,10 +119,6 @@ namespace Plugin.MaterialDesignControls.Material3
             this._frmContainer = new MaterialCard()
             {
                 BackgroundColor = this.BackgroundColor,
-                CornerRadiusBottomLeft = true,
-                CornerRadiusBottomRight = true,
-                CornerRadiusTopLeft = true,
-                CornerRadiusTopRight = true,
                 CornerRadius = (float)CornerRadius,
                 Padding = 0
             };

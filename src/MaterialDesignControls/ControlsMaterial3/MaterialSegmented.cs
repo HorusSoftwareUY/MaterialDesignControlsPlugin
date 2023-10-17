@@ -373,7 +373,7 @@ namespace Plugin.MaterialDesignControls.Material3
             frame.VerticalOptions = LayoutOptions.Fill;
             frame.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
             frame.BorderColor = frame.BackgroundColor;
-            frame.iOSBorderWidth = 1;
+            frame.BorderWidth = 1;
             frame.Margin = new Thickness(0);
 
             if (Type == MaterialSegmentedType.Outlined)
@@ -383,13 +383,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 if (index == 0)
                 {
-                    frame.CornerRadiusTopLeft = true;
-                    frame.CornerRadiusBottomLeft = true;
+                    frame.CornerRadius = new CornerRadius(CornerRadius, 0, CornerRadius, 0);
                 }
                 else if (index == ItemsSource.Count() - 1)
                 {
-                    frame.CornerRadiusBottomRight = true;
-                    frame.CornerRadiusTopRight = true;
+                    frame.CornerRadius = new CornerRadius(0, CornerRadius, 0, CornerRadius);
                 }
                 else
                 {
@@ -401,10 +399,6 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 frame.CornerRadius = (CornerRadius - SegmentMargin) >= 0 ? ((float)CornerRadius - SegmentMargin) : 0;
                 frame.Margin = new Thickness(SegmentMargin);
-                frame.CornerRadiusTopLeft = true;
-                frame.CornerRadiusBottomLeft = true;
-                frame.CornerRadiusBottomRight = true;
-                frame.CornerRadiusTopRight = true;
             }
 
             var label = new MaterialLabel();

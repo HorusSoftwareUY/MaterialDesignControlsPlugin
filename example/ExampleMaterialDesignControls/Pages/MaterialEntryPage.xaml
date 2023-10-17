@@ -165,11 +165,7 @@
 
                     <material3:MaterialEntry HasBorder="True"
                                              CornerRadius="10"
-                                             CornerRadiusBottomLeft="True"
-                                             CornerRadiusBottomRight="True"
-                                             CornerRadiusTopRight="True"
-                                             CornerRadiusTopLeft="True"
-                                             iOSBorderWidth="1"
+                                             BorderWidth="1"
                                              LabelText="Id"
                                              TabIndex="10"
                                              Keyboard="Numeric" />
@@ -182,12 +178,8 @@
 
                     <material3:MaterialEntry HasBorder="True"
                                              CornerRadius="10"
-                                             CornerRadiusBottomLeft="True"
-                                             CornerRadiusBottomRight="True"
-                                             CornerRadiusTopRight="True"
                                              AnimatePlaceholder="True"
-                                             CornerRadiusTopLeft="True"
-                                             iOSBorderWidth="1"
+                                             BorderWidth="1"
                                              Placeholder="Address"
                                              TabIndex="11" />
 
@@ -198,12 +190,8 @@
                                             Text="Full API" />
 
                     <material3:MaterialEntry HasBorder="True"
-                                             CornerRadius="10"
-                                             CornerRadiusBottomLeft="True"
-                                             CornerRadiusBottomRight="True"
-                                             CornerRadiusTopRight="True"
-                                             CornerRadiusTopLeft="False"
-                                             iOSBorderWidth="3"
+                                             CornerRadius="0,10,10,10"
+                                             BorderWidth="3"
                                              SupportingMargin="10,2,0,0"
                                              SupportingText="Testing"
                                              AnimateError="True"

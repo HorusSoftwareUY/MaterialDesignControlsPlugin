@@ -97,42 +97,6 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CustomAnimationProperty, value); }
         }
 
-        public static readonly BindableProperty CornerRadiusTopLeftProperty =
-            BindableProperty.Create(nameof(CornerRadiusTopLeft), typeof(bool), typeof(MaterialCard), true);
-
-        public bool CornerRadiusTopLeft
-        {
-            get { return (bool)GetValue(CornerRadiusTopLeftProperty); }
-            set { SetValue(CornerRadiusTopLeftProperty, value); }
-        }
-
-        public static readonly BindableProperty CornerRadiusTopRightProperty =
-            BindableProperty.Create(nameof(CornerRadiusTopRight), typeof(bool), typeof(MaterialCard), true);
-
-        public bool CornerRadiusTopRight
-        {
-            get { return (bool)GetValue(CornerRadiusTopRightProperty); }
-            set { SetValue(CornerRadiusTopRightProperty, value); }
-        }
-
-        public static readonly BindableProperty CornerRadiusBottomRightProperty =
-            BindableProperty.Create(nameof(CornerRadiusBottomRight), typeof(bool), typeof(MaterialCard), true);
-
-        public bool CornerRadiusBottomRight
-        {
-            get { return (bool)GetValue(CornerRadiusBottomRightProperty); }
-            set { SetValue(CornerRadiusBottomRightProperty, value); }
-        }
-
-        public static readonly BindableProperty CornerRadiusBottomLeftProperty =
-            BindableProperty.Create(nameof(CornerRadiusBottomLeft), typeof(bool), typeof(MaterialCard), true);
-
-        public bool CornerRadiusBottomLeft
-        {
-            get { return (bool)GetValue(CornerRadiusBottomLeftProperty); }
-            set { SetValue(CornerRadiusBottomLeftProperty, value); }
-        }
-
         public static readonly BindableProperty ShadowColorProperty =
             BindableProperty.Create(nameof(ShadowColor), typeof(Color), typeof(MaterialCard), defaultValue: Color.Default);
 
@@ -161,7 +125,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HasBorderProperty =
-            BindableProperty.Create(nameof(HasBorder), typeof(bool), typeof(MaterialCard), defaultValue: false);
+            BindableProperty.Create(nameof(HasBorder), typeof(bool), typeof(MaterialCard), defaultValue: true);
 
         public bool HasBorder
         {
@@ -169,16 +133,25 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(HasBorderProperty, value); }
         }
 
-        #region iOS
+        public static new readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create(nameof(CornerRadius), typeof(CornerRadius), typeof(MaterialCard), new CornerRadius(12));
 
-        public static readonly BindableProperty iOSBorderWidthProperty =
-            BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(MaterialCard), 1f);
-
-        public float iOSBorderWidth
+        public new CornerRadius CornerRadius
         {
-            get { return (float)GetValue(iOSBorderWidthProperty); }
-            set { SetValue(iOSBorderWidthProperty, value); }
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
         }
+
+        public static readonly BindableProperty BorderWidthProperty =
+            BindableProperty.Create(nameof(BorderWidth), typeof(float), typeof(MaterialCard), 1f);
+
+        public float BorderWidth
+        {
+            get { return (float)GetValue(BorderWidthProperty); }
+            set { SetValue(BorderWidthProperty, value); }
+        }
+
+        #region iOS
 
         public static readonly BindableProperty iOSShadowRadiusProperty =
             BindableProperty.Create(nameof(iOSShadowRadius), typeof(float), typeof(MaterialCard), defaultValue: 2.0f);
@@ -232,7 +205,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
             this.IsClippedToBounds = true;
             this.Padding = new Thickness(16);
-            this.CornerRadius = 12f;
 
             Effects.Add(new TouchAndPressEffect());
         }
@@ -247,14 +219,16 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(Type):
-                case nameof(base.BackgroundColor):
-                case nameof(base.BorderColor):
+                case nameof(BackgroundColor):
+                case nameof(HasBorder):
+                case nameof(BorderColor):
+                case nameof(BorderWidth):
                 case nameof(HasShadow):
-                        SetCardType();
+                    SetCardType();
                     break;
 
                 case nameof(ShadowColor):
-                        SetShadowColor();
+                    SetShadowColor();
                     break;
 
                 case nameof(IsEnabled):
@@ -272,32 +246,33 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (Type)
             {
                 case MaterialCardType.Outlined:
+                    HasShadow = false;
                     HasBorder = true;
-                    base.HasShadow = false;
                     base.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
-                    ShadowColor = Color.Transparent;
                     base.BackgroundColor = Color.Transparent;
+                    BorderColor = base.BorderColor;
+                    BackgroundColor = base.BackgroundColor;
                     break;
                 case MaterialCardType.Filled:
+                    HasShadow = false;
                     HasBorder = false;
-                    base.HasShadow = false;
-                    base.BorderColor = Color.Transparent;
-                    ShadowColor = Color.Transparent;
                     base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
+                    BackgroundColor = base.BackgroundColor;
                     break;
                 case MaterialCardType.Elevated:
                     HasBorder = false;
-                    base.HasShadow = true;
-                    base.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
+                    HasShadow = true;
                     ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
                     SetShadowColor();
                     base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
+                    BackgroundColor = base.BackgroundColor;
                     break;
                 case MaterialCardType.Custom:
-                    base.HasShadow = HasShadow;
-                    base.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
                     SetShadowColor();
+                    base.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
                     base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
+                    BorderColor = base.BorderColor;
+                    BackgroundColor = base.BackgroundColor;
                     break;
             }
         }
@@ -306,15 +281,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             if (ShadowColor != Color.Transparent)
             {
-                if (Device.RuntimePlatform == Device.Android)
-                {
-                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
-                }
-                else if (ShadowColor.A == 1)
+                if (ShadowColor.A == 1)
                 {
                     ShadowColor = ShadowColor != Color.Default ?
                         Color.FromRgba(ShadowColor.R, ShadowColor.G, ShadowColor.B, 0.5) :
                         Color.FromRgba(DefaultStyles.ShadowColor.R, DefaultStyles.ShadowColor.G, DefaultStyles.ShadowColor.B, 0.5);
+                }
+                else
+                {
+                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
                 }
             }
         }

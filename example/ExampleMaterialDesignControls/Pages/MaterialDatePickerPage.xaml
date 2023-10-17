@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialDatePickerPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -87,11 +87,7 @@
 
                     <material3:MaterialDatePicker HasBorder="True"
                                                   CornerRadius="10"
-                                                  CornerRadiusBottomLeft="True"
-                                                  CornerRadiusBottomRight="True"
                                                   LabelText="Label"
-                                                  CornerRadiusTopLeft="True"
-                                                  CornerRadiusTopRight="True"
                                                   Placeholder="Select date" />
 
                     <material:MaterialDivider Margin="0,10" />
@@ -107,17 +103,13 @@
                                                   SupportingLineBreakMode="WordWrap"
                                                   LabelText="Label"
                                                   LabelLineBreakMode="WordWrap"
-                                                  iOSBorderWidth="3"
+                                                  BorderWidth="3"
                                                   CornerRadius="10"
                                                   Placeholder="Select a date"
                                                   LeadingIconCommand="{Binding IconCommand}"
                                                   LeadingIconCommandParameter="Tapped (L)"
                                                   TrailingIconCommand="{Binding IconCommand}"
-                                                  TrailingIconCommandParameter="Tapped (T)"
-                                                  CornerRadiusBottomLeft="True"
-                                                  CornerRadiusBottomRight="True"
-                                                  CornerRadiusTopLeft="True"
-                                                  CornerRadiusTopRight="True">
+                                                  TrailingIconCommandParameter="Tapped (T)">
                         <material3:MaterialDatePicker.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
                         </material3:MaterialDatePicker.CustomTrailingIcon>

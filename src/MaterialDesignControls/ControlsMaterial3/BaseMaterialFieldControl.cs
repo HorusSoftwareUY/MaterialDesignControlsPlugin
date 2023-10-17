@@ -1,10 +1,9 @@
-﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Material3.Implementations;
-using Plugin.MaterialDesignControls.Styles;
-using Plugin.MaterialDesignControls.Utils;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Styles;
+using Plugin.MaterialDesignControls.Utils;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3
@@ -297,48 +296,12 @@ namespace Plugin.MaterialDesignControls.Material3
         #region CornerRadius
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(BaseMaterialFieldControl), defaultValue: 0f);
+            BindableProperty.Create(nameof(CornerRadius), typeof(CornerRadius), typeof(BaseMaterialFieldControl), defaultValue: new CornerRadius(0));
 
-        public float CornerRadius
+        public CornerRadius CornerRadius
         {
-            get { return (float)GetValue(CornerRadiusProperty); }
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
-        }
-
-        public static readonly BindableProperty CornerRadiusTopLeftProperty =
-            BindableProperty.Create(nameof(CornerRadiusTopLeft), typeof(bool), typeof(BaseMaterialFieldControl), false);
-
-        public bool CornerRadiusTopLeft
-        {
-            get { return (bool)GetValue(CornerRadiusTopLeftProperty); }
-            set { SetValue(CornerRadiusTopLeftProperty, value); }
-        }
-
-        public static readonly BindableProperty CornerRadiusTopRightProperty =
-            BindableProperty.Create(nameof(CornerRadiusTopRight), typeof(bool), typeof(BaseMaterialFieldControl), false);
-
-        public bool CornerRadiusTopRight
-        {
-            get { return (bool)GetValue(CornerRadiusTopRightProperty); }
-            set { SetValue(CornerRadiusTopRightProperty, value); }
-        }
-
-        public static readonly BindableProperty CornerRadiusBottomRightProperty =
-            BindableProperty.Create(nameof(CornerRadiusBottomRight), typeof(bool), typeof(BaseMaterialFieldControl), false);
-
-        public bool CornerRadiusBottomRight
-        {
-            get { return (bool)GetValue(CornerRadiusBottomRightProperty); }
-            set { SetValue(CornerRadiusBottomRightProperty, value); }
-        }
-
-        public static readonly BindableProperty CornerRadiusBottomLeftProperty =
-            BindableProperty.Create(nameof(CornerRadiusBottomLeft), typeof(bool), typeof(BaseMaterialFieldControl), false);
-
-        public bool CornerRadiusBottomLeft
-        {
-            get { return (bool)GetValue(CornerRadiusBottomLeftProperty); }
-            set { SetValue(CornerRadiusBottomLeftProperty, value); }
         }
 
         #endregion CornerRadius
@@ -381,13 +344,13 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(HasBorderProperty, value); }
         }
 
-        public static readonly BindableProperty iOSBorderWidthProperty =
-            BindableProperty.Create(nameof(iOSBorderWidth), typeof(float), typeof(BaseMaterialFieldControl), 1f);
+        public static readonly BindableProperty BorderWidthProperty =
+            BindableProperty.Create(nameof(BorderWidth), typeof(float), typeof(BaseMaterialFieldControl), 1f);
 
-        public float iOSBorderWidth
+        public float BorderWidth
         {
-            get { return (float)GetValue(iOSBorderWidthProperty); }
-            set { SetValue(iOSBorderWidthProperty, value); }
+            get { return (float)GetValue(BorderWidthProperty); }
+            set { SetValue(BorderWidthProperty, value); }
         }
 
         #endregion Border
@@ -663,7 +626,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 _indicator.Color = IndicatorColor;
             }
 
-            _frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
+            _frmContainer.BorderWidth = HasBorder ? BorderWidth : 0f;
         }
 
         public void UpdateLayout(string propertyName)
@@ -743,10 +706,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     _frmContainer.Padding = this.Padding;
                     break;
                 case nameof(CornerRadius):
-                    if (HasBorder)
-                    {
-                        this._frmContainer.CornerRadius = CornerRadius;
-                    }
+                    this._frmContainer.CornerRadius = CornerRadius;
                     break;
                 case nameof(BackgroundColor):
                 case nameof(BorderColor):
@@ -832,36 +792,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetHasBorder();
                     break;
 
-                case nameof(iOSBorderWidth):
-                    this._frmContainer.iOSBorderWidth = HasBorder ? iOSBorderWidth : 0f;
-                    break;
-
-                case nameof(CornerRadiusBottomLeft):
-                    if (HasBorder)
-                    {
-                        this._frmContainer.CornerRadiusBottomLeft = CornerRadiusBottomLeft;
-                    }
-                    break;
-
-                case nameof(CornerRadiusBottomRight):
-                    if (HasBorder)
-                    {
-                        this._frmContainer.CornerRadiusBottomRight = CornerRadiusBottomRight;
-                    }
-                    break;
-
-                case nameof(CornerRadiusTopRight):
-                    if (HasBorder)
-                    {
-                        this._frmContainer.CornerRadiusTopRight = CornerRadiusTopRight;
-                    }
-                    break;
-
-                case nameof(CornerRadiusTopLeft):
-                    if (HasBorder)
-                    {
-                        this._frmContainer.CornerRadiusTopLeft = CornerRadiusTopLeft;
-                    }
+                case nameof(BorderWidth):
+                    this._frmContainer.BorderWidth = HasBorder ? BorderWidth : 0f;
                     break;
 
                 case nameof(AnimatePlaceholder):
@@ -886,12 +818,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 Spacing = 0
             };
 
-            _frmContainer = new MaterialCard()
+            _frmContainer = new MaterialCard
             {
-                CornerRadius = 10,
+                CornerRadius = new CornerRadius(10, 10, 0, 0),
                 HasShadow = false,
-                CornerRadiusTopLeft = true,
-                CornerRadiusTopRight = true,
                 Padding = new Thickness(16, 8, 16, 8)
             };
 

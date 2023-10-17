@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialPickerPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -97,10 +97,6 @@
                                               LabelText="Option"
                                               HasBorder="True"
                                               CornerRadius="10"
-                                              CornerRadiusBottomLeft="True"
-                                              CornerRadiusBottomRight="True"
-                                              CornerRadiusTopLeft="True"
-                                              CornerRadiusTopRight="True"
                                               Placeholder="Select Option" />
 
 
@@ -126,10 +122,6 @@
                                               HasBorder="True"
                                               CornerRadius="10"
                                               AnimatePlaceholder="True"
-                                              CornerRadiusBottomLeft="True"
-                                              CornerRadiusBottomRight="True"
-                                              CornerRadiusTopLeft="True"
-                                              CornerRadiusTopRight="True"
                                               Placeholder="Select Option" />
 
 
@@ -147,7 +139,7 @@
                                               SupportingLineBreakMode="WordWrap"
                                               LabelText="Label"
                                               LabelLineBreakMode="WordWrap"
-                                              iOSBorderWidth="3"
+                                              BorderWidth="3"
                                               CornerRadius="10"
                                               AnimatePlaceholder="True"
                                               ItemsSource="{Binding ItemsSourceColors}"
@@ -157,11 +149,7 @@
                                               LeadingIconCommand="{Binding IconCommand}"
                                               LeadingIconCommandParameter="Tapped (L)"
                                               TrailingIconCommand="{Binding IconCommand}"
-                                              TrailingIconCommandParameter="Tapped (T)"
-                                              CornerRadiusBottomLeft="True"
-                                              CornerRadiusBottomRight="True"
-                                              CornerRadiusTopLeft="True"
-                                              CornerRadiusTopRight="True">
+                                              TrailingIconCommandParameter="Tapped (T)">
                         <material3:MaterialPicker.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
                         </material3:MaterialPicker.CustomTrailingIcon>
@@ -244,11 +232,7 @@
                                                     HasBorder="True"
                                                     CornerRadius="10"
                                                     Placeholder="Select an option"
-                                                    CornerRadiusBottomLeft="True"
                                                     AnimatePlaceholder="True"
-                                                    CornerRadiusBottomRight="True"
-                                                    CornerRadiusTopLeft="True"
-                                                    CornerRadiusTopRight="True"
                                                     Separator="/" />
                     <material3:MaterialButton Command="{Binding Tap3Command}"
                                               Text="Focus" />
@@ -268,7 +252,7 @@
                                                     SupportingLineBreakMode="WordWrap"
                                                     LabelText="Label"
                                                     LabelLineBreakMode="WordWrap"
-                                                    iOSBorderWidth="3"
+                                                    BorderWidth="3"
                                                     Separator=" - "
                                                     CornerRadius="10"
                                                     AnimatePlaceholder="True"
@@ -276,11 +260,7 @@
                                                     LeadingIconCommand="{Binding IconCommand}"
                                                     LeadingIconCommandParameter="Tapped (L)"
                                                     TrailingIconCommand="{Binding IconCommand}"
-                                                    TrailingIconCommandParameter="Tapped (T)"
-                                                    CornerRadiusBottomLeft="True"
-                                                    CornerRadiusBottomRight="True"
-                                                    CornerRadiusTopLeft="True"
-                                                    CornerRadiusTopRight="True">
+                                                    TrailingIconCommandParameter="Tapped (T)">
                         <material3:MaterialDoublePicker.CustomTrailingIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_help_b.svg" />
                         </material3:MaterialDoublePicker.CustomTrailingIcon>

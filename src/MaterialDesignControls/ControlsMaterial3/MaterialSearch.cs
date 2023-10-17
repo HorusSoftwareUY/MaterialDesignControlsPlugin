@@ -1,10 +1,7 @@
-﻿using Plugin.MaterialDesignControls.Implementations;
-using Plugin.MaterialDesignControls.Utils;
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -87,11 +84,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             this.HasBorder = true;
             this.CornerRadius = 25;
-            this.CornerRadiusBottomLeft = true;
-            this.CornerRadiusBottomRight = true;
-            this.CornerRadiusTopRight = true;
-            this.CornerRadiusTopLeft = true;
-            this.iOSBorderWidth = 1;
+            this.BorderWidth = 1;
         }
 
         #endregion Constructor
