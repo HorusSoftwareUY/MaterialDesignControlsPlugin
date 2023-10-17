@@ -38,7 +38,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static new readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialLabel), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialLabel), defaultValue: MaterialFontFamily.Default);
 
         public new string FontFamily
         {
@@ -47,7 +47,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyRegularProperty =
-            BindableProperty.Create(nameof(FontFamilyRegular), typeof(string), typeof(MaterialLabel), defaultValue: DefaultStyles.FontFamilyRegular);
+            BindableProperty.Create(nameof(FontFamilyRegular), typeof(string), typeof(MaterialLabel), defaultValue: MaterialFontFamily.Regular);
 
         public string FontFamilyRegular
         {
@@ -56,7 +56,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyMediumProperty =
-            BindableProperty.Create(nameof(FontFamilyMedium), typeof(string), typeof(MaterialLabel), defaultValue: DefaultStyles.FontFamilyMedium);
+            BindableProperty.Create(nameof(FontFamilyMedium), typeof(string), typeof(MaterialLabel), defaultValue: MaterialFontFamily.Medium);
 
         public string FontFamilyMedium
         {
@@ -65,7 +65,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static new readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialLabel), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialLabel), defaultValue: MaterialColor.Text);
 
         public new Color TextColor
         {
@@ -81,7 +81,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             base.FontFamily = this.FontFamily;
             base.TextColor = this.TextColor;
-            base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.BodyMedium : DefaultStyles.PhoneFontSizes.BodyMedium;
+            base.FontSize = MaterialFontSize.BodyMedium;
         }
 
         #endregion Constructors
@@ -101,77 +101,77 @@ namespace Plugin.MaterialDesignControls.Material3
                 case LabelTypes.DisplayLarge:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = -0.25;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.DisplayLarge : DefaultStyles.PhoneFontSizes.DisplayLarge;
+                    //base.FontSize = MaterialFontSize.DisplayLarge;
                     break;
                 case LabelTypes.DisplayMedium:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = 0;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.DisplayMedium : DefaultStyles.PhoneFontSizes.DisplayMedium;
+                    base.FontSize = MaterialFontSize.DisplayMedium;
                     break;
                 case LabelTypes.DisplaySmall:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = 0;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.DisplaySmall : DefaultStyles.PhoneFontSizes.DisplaySmall;
+                    base.FontSize = MaterialFontSize.DisplaySmall;
                     break;
                 case LabelTypes.HeadlineLarge:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = 0;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.HeadlineLarge : DefaultStyles.PhoneFontSizes.HeadlineLarge;
+                    base.FontSize = MaterialFontSize.HeadlineLarge;
                     break;
                 case LabelTypes.HeadlineMedium:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = 0;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.HeadlineMedium : DefaultStyles.PhoneFontSizes.HeadlineMedium;
+                    base.FontSize = MaterialFontSize.HeadlineMedium;
                     break;
                 case LabelTypes.HeadlineSmall:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = 0;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.HeadlineSmall : DefaultStyles.PhoneFontSizes.HeadlineSmall;
+                    base.FontSize = MaterialFontSize.HeadlineSmall;
                     break;
                 case LabelTypes.TitleLarge:
                     base.FontFamily = this.FontFamilyRegular;
                     base.CharacterSpacing = 0;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.TitleLarge : DefaultStyles.PhoneFontSizes.TitleLarge;
+                    base.FontSize = MaterialFontSize.TitleLarge;
                     break;
                 case LabelTypes.TitleMedium:
                     base.FontFamily = this.FontFamilyMedium;
                     base.CharacterSpacing = 0.15;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.TitleMedium : DefaultStyles.PhoneFontSizes.TitleMedium;
+                    base.FontSize = MaterialFontSize.TitleMedium;
                     break;
                 case LabelTypes.TitleSmall:
                     base.FontFamily = this.FontFamilyMedium;
                     base.CharacterSpacing = 0.1;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.TitleSmall : DefaultStyles.PhoneFontSizes.TitleSmall;
+                    base.FontSize = MaterialFontSize.TitleSmall;
                     break;
                 case LabelTypes.LabelLarge:
                     base.FontFamily = this.FontFamilyMedium;
                     base.CharacterSpacing = 0.1;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.LabelLarge : DefaultStyles.PhoneFontSizes.LabelLarge;
+                    base.FontSize = MaterialFontSize.LabelLarge;
                     break;
                 case LabelTypes.LabelMedium:
                     base.FontFamily = this.FontFamilyMedium;
                     base.CharacterSpacing = 0.5;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.LabelMedium : DefaultStyles.PhoneFontSizes.LabelMedium;
+                    base.FontSize = MaterialFontSize.LabelMedium;
                     break;
                 case LabelTypes.LabelSmall:
                     base.FontFamily = this.FontFamilyMedium;
                     base.CharacterSpacing = 0.5;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.LabelSmall : DefaultStyles.PhoneFontSizes.LabelSmall;
+                    base.FontSize = MaterialFontSize.LabelSmall;
                     break;
                 case LabelTypes.BodyLarge:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = 0.5;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.BodyLarge : DefaultStyles.PhoneFontSizes.BodyLarge;
+                    base.FontSize = MaterialFontSize.BodyLarge;
                     break;
                 case LabelTypes.BodyMedium:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = 0.25;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.BodyMedium : DefaultStyles.PhoneFontSizes.BodyMedium;
+                    base.FontSize = MaterialFontSize.BodyMedium;
                     break;
                 case LabelTypes.BodySmall:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = 0.4;
-                    base.FontSize = Device.Idiom == TargetIdiom.Tablet ? DefaultStyles.TabletFontSizes.BodySmall : DefaultStyles.PhoneFontSizes.BodySmall;
+                    base.FontSize = MaterialFontSize.BodySmall;
                     break;
             }
         }

@@ -89,7 +89,7 @@
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Set different font families, set Trailing icon with command  and  set Supporting text margin" />
+                                            Text="Set different font families, trailing icon with command and supporting text margin" />
 
                     <material3:MaterialEntry SupportingMargin="0,2,0,0"
                                              SupportingText="Testing"

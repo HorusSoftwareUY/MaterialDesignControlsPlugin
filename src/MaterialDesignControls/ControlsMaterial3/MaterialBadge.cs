@@ -42,7 +42,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialBadge), defaultValue: DefaultStyles.OnPrimaryColor);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialBadge), defaultValue: MaterialColor.OnPrimary);
 
         public Color TextColor
         {
@@ -51,7 +51,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialBadge), defaultValue: DefaultStyles.PhoneFontSizes.LabelSmall);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialBadge), defaultValue: MaterialFontSize.LabelSmall);
 
         public double FontSize
         {
@@ -60,7 +60,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialBadge), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialBadge), defaultValue: MaterialFontFamily.Default);
 
         public string FontFamily
         {
@@ -69,7 +69,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialBadge), defaultValue: DefaultStyles.ErrorColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialBadge), defaultValue: MaterialColor.Error);
 
         public new Color BackgroundColor
         {

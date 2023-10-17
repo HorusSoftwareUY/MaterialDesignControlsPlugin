@@ -103,6 +103,13 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
 
         [ICommand]
+        private async Task AcceptTask()
+        {
+            await Task.Delay(1000);
+            await this.DisplayAlert(_controlTitle, "Accept button was tapped", "Ok");
+        }
+
+        [ICommand]
         private async Task Cancel()
         {
             await this.DisplayAlert(_controlTitle, $"Cancel button was tapped", "Ok");

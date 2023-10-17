@@ -73,7 +73,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineColorProperty =
-           BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialTopAppBar), DefaultStyles.TextColor, BindingMode.OneTime);
+           BindableProperty.Create(nameof(HeadlineColor), typeof(Color), typeof(MaterialTopAppBar), MaterialColor.Text, BindingMode.OneTime);
 
         public Color HeadlineColor
         {
@@ -82,7 +82,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontSizeProperty =
-            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.PhoneFontSizes.TitleLarge);
+            BindableProperty.Create(nameof(HeadlineFontSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: MaterialFontSize.TitleLarge);
 
         public double HeadlineFontSize
         {
@@ -91,7 +91,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty HeadlineFontFamilyProperty =
-            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(HeadlineFontFamily), typeof(string), typeof(MaterialTopAppBar), defaultValue: MaterialFontFamily.Default);
 
         public string HeadlineFontFamily
         {
@@ -118,7 +118,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DescriptionColorProperty =
-           BindableProperty.Create(nameof(DescriptionColor), typeof(Color), typeof(MaterialTopAppBar), DefaultStyles.TextColor, BindingMode.OneTime);
+           BindableProperty.Create(nameof(DescriptionColor), typeof(Color), typeof(MaterialTopAppBar), MaterialColor.Text, BindingMode.OneTime);
 
         public Color DescriptionColor
         {
@@ -127,7 +127,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DescriptionFontSizeProperty =
-            BindableProperty.Create(nameof(DescriptionFontSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.PhoneFontSizes.TitleMedium);
+            BindableProperty.Create(nameof(DescriptionFontSize), typeof(double), typeof(MaterialTopAppBar), defaultValue: MaterialFontSize.TitleMedium);
 
         public double DescriptionFontSize
         {
@@ -136,7 +136,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DescriptionFontFamilyProperty =
-            BindableProperty.Create(nameof(DescriptionFontFamily), typeof(string), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(DescriptionFontFamily), typeof(string), typeof(MaterialTopAppBar), defaultValue: MaterialFontFamily.Default);
 
         public string DescriptionFontFamily
         {
@@ -227,7 +227,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ButtonAnimationProperty =
-            BindableProperty.Create(nameof(ButtonAnimation), typeof(AnimationTypes), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.AnimationType);
+            BindableProperty.Create(nameof(ButtonAnimation), typeof(AnimationTypes), typeof(MaterialTopAppBar), defaultValue: MaterialAnimation.Type);
 
         public AnimationTypes ButtonAnimation
         {
@@ -236,7 +236,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ButtonAnimationParameterProperty =
-            BindableProperty.Create(nameof(ButtonAnimationParameter), typeof(double?), typeof(MaterialTopAppBar), defaultValue: DefaultStyles.AnimationParameter);
+            BindableProperty.Create(nameof(ButtonAnimationParameter), typeof(double?), typeof(MaterialTopAppBar), defaultValue: MaterialAnimation.Parameter);
 
         public double? ButtonAnimationParameter
         {
@@ -290,7 +290,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BusyColorProperty =
-            BindableProperty.Create(nameof(BusyColor), typeof(Color), typeof(MaterialButton), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(BusyColor), typeof(Color), typeof(MaterialButton), defaultValue: MaterialColor.Primary);
 
         public Color BusyColor
         {

@@ -27,7 +27,7 @@
 
                     <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Filled Type with PropertyPath seted" />
+                                            Text="Filled Type with PropertyPath set" />
 
                     <material3:MaterialPicker x:Name="pckColors"
                                               LabelText="Label"
@@ -140,7 +140,7 @@
                                               LabelText="Label"
                                               LabelLineBreakMode="WordWrap"
                                               BorderWidth="3"
-                                              CornerRadius="10"
+                                              CornerRadius="10,0,10,10"
                                               AnimatePlaceholder="True"
                                               ItemsSource="{Binding ItemsSourceColors}"
                                               PickerRowHeight="100"

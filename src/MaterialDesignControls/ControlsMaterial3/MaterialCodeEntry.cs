@@ -131,7 +131,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly new BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: MaterialColor.SurfaceContainerHighest);
 
         public new Color BackgroundColor
         {
@@ -158,7 +158,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: MaterialColor.Text);
 
         public Color TextColor
         {
@@ -167,7 +167,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FocusedTextColorProperty =
-            BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.TextColor);
+            BindableProperty.Create(nameof(FocusedTextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: MaterialColor.Text);
 
         public Color FocusedTextColor
         {
@@ -176,7 +176,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: MaterialColor.Disable);
 
         public Color DisabledTextColor
         {
@@ -185,7 +185,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.PhoneFontSizes.BodyLarge);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialCodeEntry), defaultValue: MaterialFontSize.BodyLarge);
 
         public double FontSize
         {
@@ -194,7 +194,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.FontFamily);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialCodeEntry), defaultValue: MaterialFontFamily.Default);
 
         public string FontFamily
         {
@@ -212,7 +212,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.OnSurfaceVariantColor);
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: MaterialColor.OnSurfaceVariant);
 
         public Color BorderColor
         {
@@ -221,7 +221,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FocusedBorderColorProperty =
-            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(FocusedBorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: MaterialColor.Primary);
 
         public Color FocusedBorderColor
         {
@@ -230,7 +230,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBorderColorProperty =
-            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.DisableColor);
+            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: MaterialColor.Disable);
 
         public Color DisabledBorderColor
         {
@@ -239,7 +239,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FocusedBackgroundColorProperty =
-            BindableProperty.Create(nameof(FocusedBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.SurfaceContainerHighestColor);
+            BindableProperty.Create(nameof(FocusedBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: MaterialColor.SurfaceContainerHighest);
 
         public Color FocusedBackgroundColor
         {
@@ -248,7 +248,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: DefaultStyles.DisableContainerColor);
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(MaterialCodeEntry), defaultValue: MaterialColor.DisableContainer);
 
         public Color DisabledBackgroundColor
         {

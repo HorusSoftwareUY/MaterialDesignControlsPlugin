@@ -71,7 +71,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationProperty =
-            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationType);
+            BindableProperty.Create(nameof(Animation), typeof(AnimationTypes), typeof(MaterialCard), defaultValue: MaterialAnimation.Type);
 
         public AnimationTypes Animation
         {
@@ -80,7 +80,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty AnimationParameterProperty =
-            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: DefaultStyles.AnimationParameter);
+            BindableProperty.Create(nameof(AnimationParameter), typeof(double?), typeof(MaterialCard), defaultValue: MaterialAnimation.Parameter);
 
         public double? AnimationParameter
         {
@@ -248,7 +248,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 case MaterialCardType.Outlined:
                     HasShadow = false;
                     HasBorder = true;
-                    base.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
+                    base.BorderColor = BorderColor != Color.Default ? BorderColor : MaterialColor.Primary;
                     base.BackgroundColor = Color.Transparent;
                     BorderColor = base.BorderColor;
                     BackgroundColor = base.BackgroundColor;
@@ -256,21 +256,21 @@ namespace Plugin.MaterialDesignControls.Material3
                 case MaterialCardType.Filled:
                     HasShadow = false;
                     HasBorder = false;
-                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
+                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.SurfaceContainerLow;
                     BackgroundColor = base.BackgroundColor;
                     break;
                 case MaterialCardType.Elevated:
                     HasBorder = false;
                     HasShadow = true;
-                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
+                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : MaterialColor.Shadow;
                     SetShadowColor();
-                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
+                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.SurfaceContainerLow;
                     BackgroundColor = base.BackgroundColor;
                     break;
                 case MaterialCardType.Custom:
                     SetShadowColor();
-                    base.BorderColor = BorderColor != Color.Default ? BorderColor : DefaultStyles.PrimaryColor;
-                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : DefaultStyles.SurfaceContainerLowColor;
+                    base.BorderColor = BorderColor != Color.Default ? BorderColor : MaterialColor.Primary;
+                    base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.SurfaceContainerLow;
                     BorderColor = base.BorderColor;
                     BackgroundColor = base.BackgroundColor;
                     break;
@@ -285,11 +285,11 @@ namespace Plugin.MaterialDesignControls.Material3
                 {
                     ShadowColor = ShadowColor != Color.Default ?
                         Color.FromRgba(ShadowColor.R, ShadowColor.G, ShadowColor.B, 0.5) :
-                        Color.FromRgba(DefaultStyles.ShadowColor.R, DefaultStyles.ShadowColor.G, DefaultStyles.ShadowColor.B, 0.5);
+                        Color.FromRgba(MaterialColor.Shadow.R, MaterialColor.Shadow.G, MaterialColor.Shadow.B, 0.5);
                 }
                 else
                 {
-                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : DefaultStyles.ShadowColor;
+                    ShadowColor = ShadowColor != Color.Default ? ShadowColor : MaterialColor.Shadow;
                 }
             }
         }

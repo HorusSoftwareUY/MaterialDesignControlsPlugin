@@ -170,7 +170,6 @@
     </Compile>
     <Compile Include="FloatingButtonSize.cs" />
     <Compile Include="IconSide.cs" />
-    <Compile Include="Styles\DefaultStyles.cs" />
     <Compile Include="ControlsMaterial3\MaterialButton.cs" />
     <Compile Include="Animations\ICustomAnimation.cs" />
     <Compile Include="ControlsMaterial2\DeprecatedControls\MaterialButton.cs" />
@@ -205,6 +204,10 @@
     <Compile Include="Implementations\CustomMaterial3\CustomImage.cs" />
     <Compile Include="Implementations\Deprecated\CustomFrame.cs" />
     <Compile Include="Objects\MaterialDialogItem.cs" />
+    <Compile Include="Styles\MaterialColor.cs" />
+    <Compile Include="Styles\MaterialFontSize.cs" />
+    <Compile Include="Styles\MaterialAnimation.cs" />
+    <Compile Include="Styles\MaterialFontFamily.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">

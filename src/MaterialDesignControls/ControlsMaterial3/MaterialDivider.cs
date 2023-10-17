@@ -26,7 +26,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public static new readonly BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDivider), defaultValue: DefaultStyles.OutlineVariantColor);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(MaterialDivider), defaultValue: MaterialColor.OutlineVariant);
 
         public new Color BackgroundColor
         {
@@ -35,7 +35,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static new readonly BindableProperty ColorProperty =
-            BindableProperty.Create(nameof(Color), typeof(Color), typeof(MaterialDivider), defaultValue: DefaultStyles.OutlineVariantColor);
+            BindableProperty.Create(nameof(Color), typeof(Color), typeof(MaterialDivider), defaultValue: MaterialColor.OutlineVariant);
 
         public new Color Color
         {

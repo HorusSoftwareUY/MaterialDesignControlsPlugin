@@ -103,7 +103,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CursorColorProperty =
-            BindableProperty.Create(nameof(CursorColor), typeof(Color), typeof(MaterialEditor), defaultValue: DefaultStyles.PrimaryColor);
+            BindableProperty.Create(nameof(CursorColor), typeof(Color), typeof(MaterialEditor), defaultValue: MaterialColor.Primary);
 
         public Color CursorColor
         {
