@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-    public class BaseMaterialFieldControl : ContentView
+    public abstract class BaseMaterialFieldControl : ContentView
     {
         #region Attributes
 
@@ -626,6 +626,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 _indicator.Color = IndicatorColor;
             }
 
+            _frmContainer.HasBorder = HasBorder;
             _frmContainer.BorderWidth = HasBorder ? BorderWidth : 0f;
         }
 
@@ -811,7 +812,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        private void Initialize()
+        protected virtual void Initialize()
         {
             var mainContainer = new StackLayout()
             {
@@ -822,7 +823,8 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 CornerRadius = new CornerRadius(10, 10, 0, 0),
                 HasShadow = false,
-                Padding = new Thickness(16, 8, 16, 8)
+                Padding = new Thickness(16, 8),
+                Type = MaterialCardType.Custom
             };
 
             _contentLayout = new Grid()
@@ -921,7 +923,7 @@ namespace Plugin.MaterialDesignControls.Material3
             this.Content = mainContainer;
         }
 
-        public void InitializeDefaults()
+        protected virtual void InitializeDefaults()
         {
             SetLabelTextColor();
             SetBorderAndBackgroundColors();

@@ -18,7 +18,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool initialized = false;
 
-        private CustomFrame _mainContainer;
+        private MaterialCard _mainContainer;
 
         private Plugin.MaterialDesignControls.Material3.Implementations.CustomImage _icon;
 
@@ -775,14 +775,16 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-            _mainContainer = new CustomFrame()
+            _mainContainer = new MaterialCard
             {
-                BackgroundColor = this.BackgroundColor,
-                CornerRadius = this.CornerRadius,
+                BackgroundColor = BackgroundColor,
+                CornerRadius = CornerRadius,
                 Padding = new Thickness(24),
-                HasShadow = this.HasShadow,
+                HasShadow = HasShadow,
                 ShadowColor = ShadowColor,
-                IsClippedToBounds = true
+                IsClippedToBounds = true,
+                Type = MaterialCardType.Custom,
+                HasBorder = false
             };
 
             var container = new StackLayout()

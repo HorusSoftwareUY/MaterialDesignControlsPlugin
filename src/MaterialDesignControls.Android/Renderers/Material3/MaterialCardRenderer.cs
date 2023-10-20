@@ -44,7 +44,8 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                 e.PropertyName == MaterialCard.BackgroundColorProperty.PropertyName ||
                 e.PropertyName == MaterialCard.HasBorderProperty.PropertyName ||
                 e.PropertyName == MaterialCard.BorderColorProperty.PropertyName ||
-                e.PropertyName == MaterialCard.BorderWidthProperty.PropertyName)
+                e.PropertyName == MaterialCard.BorderWidthProperty.PropertyName ||
+                e.PropertyName == "OutlineColor")
             {
                 DrawBackgroundAndBorder();
             }
@@ -58,16 +59,16 @@ namespace Plugin.MaterialDesignControls.Material3.Android
 
         public void DrawShadow()
         {
+            Elevation = 0;
+            TranslationZ = 0;
+
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop && Element is MaterialCard card &&
                 (card.Type == MaterialCardType.Elevated || card.Type == MaterialCardType.Custom))
             {
-                Elevation = 0;
-                TranslationZ = 0;
-
                 bool hasShadowOrElevation = card.HasShadow && card.AndroidElevation > 0;
                 if (hasShadowOrElevation)
                 {
-                    ViewCompat.SetElevation(this, Context.ToPixels(card.AndroidElevation));
+                    ViewCompat.SetElevation(this, card.AndroidElevation);
 
                     // Color only exists on Pie and beyond.
                     if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
@@ -75,7 +76,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                         SetOutlineAmbientShadowColor(card.ShadowColor.ToAndroid());
                         SetOutlineSpotShadowColor(card.ShadowColor.ToAndroid());
                     }
-                    
+
                     // To have shadow show up, we need to clip.
                     OutlineProvider = new RoundedCornerOutlineProvider(card, Context.ToPixels);
                     ClipToOutline = true;
@@ -85,6 +86,10 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                     OutlineProvider = null;
                     ClipToOutline = false;
                 }
+            }
+            else
+            {
+                ViewCompat.SetElevation(this, 0);
             }
         }
 

@@ -17,18 +17,14 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialCard()
         {
-            if (!_initialized)
-            {
-                _initialized = true;
-                Initialize();
-            }
+            Initialize();
         }
 
         #endregion Constructors
 
         #region Attributes
 
-        private bool _initialized = false;
+        protected bool _initialized = false;
 
         #endregion Attributes
 
@@ -199,14 +195,19 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
-        private void Initialize()
+        protected virtual void Initialize()
         {
+            if (!_initialized)
+            {
+                this.IsClippedToBounds = true;
+                this.Padding = new Thickness(16);
+
+                Effects.Add(new TouchAndPressEffect());
+            }
+            
             _initialized = true;
 
-            this.IsClippedToBounds = true;
-            this.Padding = new Thickness(16);
-
-            Effects.Add(new TouchAndPressEffect());
+            Xamarin.Forms.PlatformConfiguration.AndroidSpecific.VisualElement.SetElevation(this, 0);
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -241,7 +242,7 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        public void SetCardType()
+        private void SetCardType()
         {
             switch (Type)
             {
@@ -258,6 +259,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     HasBorder = false;
                     base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.SurfaceContainerLow;
                     BackgroundColor = base.BackgroundColor;
+                    base.BorderColor = Color.Transparent;
+                    BorderColor = Color.Transparent;
                     break;
                 case MaterialCardType.Elevated:
                     HasBorder = false;
@@ -266,10 +269,12 @@ namespace Plugin.MaterialDesignControls.Material3
                     SetShadowColor();
                     base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.SurfaceContainerLow;
                     BackgroundColor = base.BackgroundColor;
+                    base.BorderColor = Color.Transparent;
+                    BorderColor = Color.Transparent;
                     break;
                 case MaterialCardType.Custom:
                     SetShadowColor();
-                    base.BorderColor = BorderColor != Color.Default ? BorderColor : MaterialColor.Primary;
+                    base.BorderColor = HasBorder ? (BorderColor != Color.Default ? BorderColor : MaterialColor.Primary) : Color.Transparent;
                     base.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.SurfaceContainerLow;
                     BorderColor = base.BorderColor;
                     BackgroundColor = base.BackgroundColor;
@@ -294,13 +299,13 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        public void ConsumeEvent(EventType gestureType)
+        public virtual void ConsumeEvent(EventType gestureType)
         {
             if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
                 TouchAndPressAnimation.Animate(this, gestureType);
         }
 
-        public void ExecuteAction()
+        public virtual void ExecuteAction()
         {
             if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
                 Command.Execute(CommandParameter);

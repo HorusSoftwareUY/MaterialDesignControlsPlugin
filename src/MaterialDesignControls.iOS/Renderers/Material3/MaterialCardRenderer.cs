@@ -1,13 +1,12 @@
-﻿using System;
+﻿using CoreAnimation;
+using CoreGraphics;
 using System.ComponentModel;
 using System.Linq;
-using CoreAnimation;
-using CoreGraphics;
 using Plugin.MaterialDesignControls.Material3;
 using Plugin.MaterialDesignControls.Material3.iOS;
-using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using UIKit;
 
 [assembly: ExportRenderer(typeof(MaterialCard), typeof(MaterialCardRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.iOS
@@ -30,7 +29,8 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 MaterialCard.ShadowColorProperty.PropertyName,
                 MaterialCard.iOSShadowOffsetProperty.PropertyName,
                 MaterialCard.iOSShadowOpacityProperty.PropertyName,
-                MaterialCard.iOSShadowRadiusProperty.PropertyName
+                MaterialCard.iOSShadowRadiusProperty.PropertyName,
+                "OutlineColor"
             };
 
             if (properties.Contains(e.PropertyName))
@@ -85,9 +85,9 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 // Remove previous border layer if any
                 var prevBorderLayer = Layer.Sublayers?.FirstOrDefault(x => x.Name == layerName);
                 prevBorderLayer?.RemoveFromSuperLayer();
-                var borderWidth = Element.Type == MaterialCardType.Custom ? Element.BorderWidth : (Element.Type == MaterialCardType.Outlined ? 1 : 0);
+                var borderWidth = Element.HasBorder ? (Element.Type == MaterialCardType.Custom ? Element.BorderWidth : (Element.Type == MaterialCardType.Outlined ? 1 : 0)) : 0;
 
-                if (Element.HasBorder)
+                if (borderWidth > 0)
                 {
                     var borderOffset = borderWidth * .8;
                     var borderLayer = new CAShapeLayer

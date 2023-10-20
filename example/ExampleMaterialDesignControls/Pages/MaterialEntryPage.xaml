@@ -207,6 +207,7 @@
                                              LeadingIconCommandParameter="Enter your phone (L)"
                                              FocusedCommand="{Binding FocusedCommand}"
                                              UnfocusedCommand="{Binding UnfocusedCommand}"
+                                             FocusedBackgroundColor="LightYellow"
                                              LabelText="Label Text"
                                              TabIndex="12"
                                              Keyboard="Numeric">
