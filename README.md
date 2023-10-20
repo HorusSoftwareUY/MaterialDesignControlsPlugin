@@ -86,6 +86,11 @@ xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.Mate
 xmlns:material="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
 ```
 
+## Styles
+You can override colors, font sizes, font families and animations to apply to all the Material controls.
+<br/>
+[View documentation](Styles.md)
+
 ## Controls
 
 ### MaterialButton
