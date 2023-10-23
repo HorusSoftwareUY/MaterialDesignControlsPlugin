@@ -28,29 +28,109 @@
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                              HorizontalOptions="Center"
-                                             Text="Large" />
-                    <material3:MaterialFloatingButton ButtonType="Large"
-                                                      Clicked="MaterialFloatingButton_Clicked"
-                                                      HorizontalOptions="Center"
-                                                      Icon="add_w.png" />
+                                             Text="Icon only" />
+
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,*">
+                        <material3:MaterialLabel
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontFamily="{StaticResource SemiBoldFont}"
+                            HorizontalOptions="Center"
+                            Text="Large" />
+                        <material3:MaterialFloatingButton
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            ButtonType="Large"
+                            Clicked="MaterialFloatingButton_Clicked"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HasShadow="False"
+                            Icon="download.png" />
+
+                        <material3:MaterialLabel
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontFamily="{StaticResource SemiBoldFont}"
+                            HorizontalOptions="Center"
+                            Text="Regular" />
+                        <material3:MaterialFloatingButton
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            ButtonType="Regular"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HasShadow="False"
+                            Icon="download.png" />
+
+                        <material3:MaterialLabel
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            FontFamily="{StaticResource SemiBoldFont}"
+                            HorizontalOptions="Center"
+                            Text="Small" />
+                        <material3:MaterialFloatingButton
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            ButtonType="Small"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HasShadow="False"
+                            Icon="download.png" />
+                    </Grid>
 
                     <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
-                                            HorizontalOptions="Center"
-                                            Text="Regular" />
-                    <material3:MaterialFloatingButton ButtonType="Regular"
-                                                      HorizontalOptions="Center"
-                                                      Icon="download.png" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                                             HorizontalOptions="Center"
+                                             Text="Icon only (with shadow)" />
 
-                    <material3:MaterialDivider Margin="0,10" />
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,*">
+                        <material3:MaterialLabel
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontFamily="{StaticResource SemiBoldFont}"
+                            HorizontalOptions="Center"
+                            Text="Large" />
+                        <material3:MaterialFloatingButton
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            ButtonType="Large"
+                            Clicked="MaterialFloatingButton_Clicked"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            BackgroundColor="{StaticResource GradientColor8}"
+                            Icon="add_w.png" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
-                                            HorizontalOptions="Center"
-                                            Text="Small" />
-                    <material3:MaterialFloatingButton ButtonType="Small"
-                                                      HorizontalOptions="Center"
-                                                      Icon="download.png" />
+                        <material3:MaterialLabel
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontFamily="{StaticResource SemiBoldFont}"
+                            HorizontalOptions="Center"
+                            Text="Regular" />
+                        <material3:MaterialFloatingButton
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            ButtonType="Regular"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            BackgroundColor="{StaticResource GradientColor8}"
+                            Icon="add_w.png" />
+
+                        <material3:MaterialLabel
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            FontFamily="{StaticResource SemiBoldFont}"
+                            HorizontalOptions="Center"
+                            Text="Small" />
+                        <material3:MaterialFloatingButton
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            ButtonType="Small"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            BackgroundColor="{StaticResource GradientColor8}"
+                            Icon="add_w.png" />
+                    </Grid>
 
                     <material3:MaterialDivider Margin="0,10" />
 
@@ -61,44 +141,128 @@
                                                       Icon="download.png"
                                                       HorizontalOptions="Center"
                                                       TextColor="White"
+                                                      FontSize="18"
+                                                      Text="Download" />
+
+                    <material3:MaterialFloatingButton ButtonType="Regular"
+                                                      Icon="download.png"
+                                                      HorizontalOptions="Center"
+                                                      TextColor="White"
+                                                      FontSize="16"
+                                                      Text="Download" />
+
+                    <material3:MaterialFloatingButton ButtonType="Small"
+                                                      Icon="download.png"
+                                                      HorizontalOptions="Center"
+                                                      TextColor="White"
                                                       Text="Download" />
 
                     <material3:MaterialDivider Margin="0,10" />
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                              HorizontalOptions="Center"
-                                             Text="Small (.svg)" />
-                    <material3:MaterialFloatingButton Animation="Scale"
-                                                      BackgroundColor="{StaticResource GradientColor8}"
-                                                      BorderColor="{StaticResource GradientColor8}"
-                                                      ButtonType="Small"
-                                                      Command="{Binding TapCommand}"
-                                                      CommandParameter="Floating button tapped!"
-                                                      HorizontalOptions="Center"
-                                                      TextColor="{StaticResource GradientColor8}">
-                        <material3:MaterialFloatingButton.CustomIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
-                        </material3:MaterialFloatingButton.CustomIcon>
-                    </material3:MaterialFloatingButton>
+                                             Text="Icon and animations (.svg)" />
+
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,*">
+                        <material3:MaterialLabel Grid.Row="0"
+                                                 Grid.Column="0"
+                                                 FontFamily="{StaticResource SemiBoldFont}"
+                                                 HorizontalTextAlignment="Center"
+                                                 Text="Small with Fade" />
+                        <material3:MaterialFloatingButton Grid.Row="1"
+                                                          Grid.Column="0"
+                                                          Animation="Fade"
+                                                          BackgroundColor="{StaticResource GradientColor8}"
+                                                          ButtonType="Small"
+                                                          Command="{Binding TapCommand}"
+                                                          CommandParameter="Floating button tapped!"
+                                                          HorizontalOptions="Center"
+                                                          VerticalOptions="Center"
+                                                          TextColor="{StaticResource GradientColor8}">
+                            <material3:MaterialFloatingButton.CustomIcon>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
+                            </material3:MaterialFloatingButton.CustomIcon>
+                        </material3:MaterialFloatingButton>
+
+                        <material3:MaterialLabel Grid.Row="0"
+                                                 Grid.Column="1"
+                                                 FontFamily="{StaticResource SemiBoldFont}"
+                                                 HorizontalTextAlignment="Center"
+                                                 Text="Regular without animation" />
+                        <material3:MaterialFloatingButton Grid.Row="1"
+                                                          Grid.Column="1"
+                                                          Animation="None"
+                                                          BackgroundColor="{StaticResource GradientColor8}"
+                                                          ButtonType="Regular"
+                                                          Command="{Binding TapCommand}"
+                                                          CommandParameter="Floating button tapped!"
+                                                          HorizontalOptions="Center"
+                                                          VerticalOptions="Center"
+                                                          TextColor="{StaticResource GradientColor8}">
+                            <material3:MaterialFloatingButton.CustomIcon>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
+                            </material3:MaterialFloatingButton.CustomIcon>
+                        </material3:MaterialFloatingButton>
+
+                        <material3:MaterialLabel Grid.Row="0"
+                                                 Grid.Column="2"
+                                                 FontFamily="{StaticResource SemiBoldFont}"
+                                                 HorizontalTextAlignment="Center"
+                                                 Text="Large with Scale" />
+                        <material3:MaterialFloatingButton Grid.Row="1"
+                                                          Grid.Column="2"
+                                                          Animation="Scale"
+                                                          BackgroundColor="{StaticResource GradientColor8}"
+                                                          ButtonType="Large"
+                                                          Command="{Binding TapCommand}"
+                                                          CommandParameter="Floating button tapped!"
+                                                          HorizontalOptions="Center"
+                                                          VerticalOptions="Center"
+                                                          TextColor="{StaticResource GradientColor8}">
+                            <material3:MaterialFloatingButton.CustomIcon>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
+                            </material3:MaterialFloatingButton.CustomIcon>
+                        </material3:MaterialFloatingButton>
+                    </Grid>
 
                     <material3:MaterialDivider Margin="0,10" />
 
-                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
-                                             HorizontalOptions="Center"
-                                             Text="Large (Left icon)" />
-                    <material3:MaterialFloatingButton Animation="Fade"
-                                                      BackgroundColor="{StaticResource GradientColor11}"
-                                                      BorderColor="{StaticResource GradientColor11}"
-                                                      ButtonType="Large"
-                                                      Command="{Binding EnableCommand}"
-                                                      HorizontalOptions="Center"
-                                                      Text="Add"
-                                                      TextColor="{StaticResource WhiteColor}">
-                        <material3:MaterialFloatingButton.CustomIcon>
-                            <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
-                        </material3:MaterialFloatingButton.CustomIcon>
-                    </material3:MaterialFloatingButton>
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*">
+                        <material3:MaterialLabel Grid.Row="0"
+                                                 Grid.Column="0"
+                                                 FontFamily="{StaticResource SemiBoldFont}"
+                                                 HorizontalTextAlignment="Center"
+                                                 Text="Left icon" />
+                        <material3:MaterialFloatingButton Grid.Row="1"
+                                                          Grid.Column="0"
+                                                          BackgroundColor="{StaticResource GradientColor11}"
+                                                          Command="{Binding EnableCommand}"
+                                                          HorizontalOptions="Center"
+                                                          Text="Add"
+                                                          TextColor="{StaticResource WhiteColor}">
+                            <material3:MaterialFloatingButton.CustomIcon>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
+                            </material3:MaterialFloatingButton.CustomIcon>
+                        </material3:MaterialFloatingButton>
 
+                        <material3:MaterialLabel Grid.Row="0"
+                                                 Grid.Column="1"
+                                                 FontFamily="{StaticResource SemiBoldFont}"
+                                                 HorizontalTextAlignment="Center"
+                                                 Text="Right icon" />
+                        <material3:MaterialFloatingButton Grid.Row="1"
+                                                          Grid.Column="1"
+                                                          BackgroundColor="{StaticResource GradientColor11}"
+                                                          Command="{Binding EnableCommand}"
+                                                          HorizontalOptions="Center"
+                                                          Text="Add"
+                                                          IconSide="Right"
+                                                          TextColor="{StaticResource WhiteColor}">
+                            <material3:MaterialFloatingButton.CustomIcon>
+                                <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
+                            </material3:MaterialFloatingButton.CustomIcon>
+                        </material3:MaterialFloatingButton>
+                    </Grid>
                     <material3:MaterialDivider Margin="0,10" />
 
                     <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
@@ -138,10 +302,7 @@
                                                           ButtonType="Large"
                                                           HorizontalOptions="Center"
                                                           Text="Add new item"
-                                                          TextColor="{StaticResource GradientColor4}"
-                                                          iOSShadowOffset="0,5"
-                                                          iOSShadowOpacity="0.3"
-                                                          iOSShadowRadius="6">
+                                                          TextColor="{StaticResource GradientColor4}">
                             <material3:MaterialFloatingButton.CustomIcon>
                                 <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_add.svg" />
                             </material3:MaterialFloatingButton.CustomIcon>
