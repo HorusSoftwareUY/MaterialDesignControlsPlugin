@@ -85,6 +85,40 @@
                     </material3:MaterialCard>
 
                     <material3:MaterialCard
+                        Type="Elevated"
+                        CornerRadius="20"
+                        IsEnabled="False"
+                        ShadowColor="Red"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding TapCommand}">
+                        <material3:MaterialLabel
+                            Text="Elevated type with customizations and command DISABLED" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom"
+                        CornerRadius="25,25,25,0"
+                        BackgroundColor="LightGoldenrodYellow"
+                        HasBorder="False"
+                        HorizontalOptions="FillAndExpand">
+                        <material3:MaterialLabel
+                            Text="Custom type with customizations" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom"
+                        CornerRadius="25"
+                        BackgroundColor="{Binding BackgroundColor}"
+                        BorderColor="{Binding BorderColor}"
+                        BorderWidth="1"                     
+                        ShadowColor="{Binding ShadowColor}"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding ChangeColorsCommand}">
+                        <material3:MaterialLabel
+                            Text="Custom type with dynamic colors and command" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
                         Type="Custom"
                         CornerRadius="0,0,20,20"
                         BackgroundColor="LightBlue"

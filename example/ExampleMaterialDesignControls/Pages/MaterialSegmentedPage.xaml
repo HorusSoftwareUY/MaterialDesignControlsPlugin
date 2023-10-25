@@ -29,7 +29,8 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Outlined" />
 
-                    <material3:MaterialSegmented ItemsSource="{Binding Items}" />
+                    <material3:MaterialSegmented ItemsSource="{Binding Items}"
+                                                 SelectedColor="#806750A4"/>
 
                     <material3:MaterialDivider Margin="0,10" />
 
@@ -47,8 +48,7 @@
                                             Text="Using Icons and Command" />
 
                     <material3:MaterialSegmented BackgroundColor="White"
-                                                 CornerRadius="25"
-                                                 HeightRequest="50"
+                                                 CornerRadius="20"
                                                  ItemsSource="{Binding Items3}"
                                                  SegmentMargin="4"
                                                  SelectedItem="{Binding SelectedItem3}"
@@ -94,7 +94,6 @@
                                             Text="Using Selected Item and IsSelectedChanged" />
 
                     <material3:MaterialSegmented CornerRadius="20"
-                                                 HeightRequest="50"
                                                  BackgroundColor="{StaticResource GradientColorTransparent11}"
                                                  ItemsSource="{Binding Frecuently}"
                                                  SelectedItem="{Binding SelectedItem}"

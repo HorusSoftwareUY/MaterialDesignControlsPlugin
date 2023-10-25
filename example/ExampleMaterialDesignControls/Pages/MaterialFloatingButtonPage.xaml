@@ -298,7 +298,7 @@
                     <StackLayout HorizontalOptions="CenterAndExpand"
                                  Orientation="Horizontal">
                         <material3:MaterialFloatingButton Animation="Fade"
-                                                          BackgroundColor="{StaticResource GradientColorTransparent4}"
+                                                          BackgroundColor="{StaticResource LightGrayColor}"
                                                           ButtonType="Large"
                                                           HorizontalOptions="Center"
                                                           Text="Add new item"

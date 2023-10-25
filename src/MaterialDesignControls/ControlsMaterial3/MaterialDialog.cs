@@ -1,13 +1,10 @@
-﻿using Plugin.MaterialDesignControls.Implementations;
-using Plugin.MaterialDesignControls.Material3.Implementations;
-using Plugin.MaterialDesignControls.Styles;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3
@@ -20,7 +17,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private MaterialCard _mainContainer;
 
-        private Plugin.MaterialDesignControls.Material3.Implementations.CustomImage _icon;
+        private CustomImage _icon;
 
         private MaterialLabel _headlineLbl;
 
@@ -577,11 +574,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public MaterialDialog()
         {
-            if (!this.initialized)
-            {
-                this.initialized = true;
-                this.Initialize();
-            }
+            Initialize();
         }
 
         #endregion Constructor
@@ -590,23 +583,18 @@ namespace Plugin.MaterialDesignControls.Material3
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (!this.initialized)
-            {
-                this.initialized = true;
-                this.Initialize();
-            }
-
             switch (propertyName)
             {
                 case nameof(BackgroundColor):
                     _mainContainer.BackgroundColor = BackgroundColor;
                     break;
                 case nameof(ShadowColor):
-                    _mainContainer.ShadowColor = ShadowColor;
-                    break;
-
                 case nameof(HasShadow):
                     _mainContainer.HasShadow = HasShadow;
+                    _mainContainer.AndroidElevation = HasShadow ? 8f : 0f;
+                    _mainContainer.iOSShadowRadius = HasShadow ? 5f : 0f;
+                    _mainContainer.iOSShadowOffset = HasShadow ? new Size(4, 8) : new Size(0, 0);
+                    _mainContainer.ShadowColor = HasShadow ? ShadowColor : Color.Transparent;
                     break;
 
                 case nameof(CornerRadius):
@@ -775,151 +763,156 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void Initialize()
         {
-            _mainContainer = new MaterialCard
+            if (!initialized)
             {
-                BackgroundColor = BackgroundColor,
-                CornerRadius = CornerRadius,
-                Padding = new Thickness(24),
-                HasShadow = HasShadow,
-                ShadowColor = ShadowColor,
-                IsClippedToBounds = true,
-                Type = MaterialCardType.Custom,
-                HasBorder = false
-            };
+                var container = new StackLayout
+                {
+                    Spacing = 16,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand
+                };
 
-            var container = new StackLayout()
-            {
-                Spacing = 16,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand
-            };
+                _mainContainer = new MaterialCard
+                {
+                    Type = MaterialCardType.Custom,
+                    BackgroundColor = BackgroundColor,
+                    CornerRadius = CornerRadius,
+                    Padding = new Thickness(24),
+                    IsClippedToBounds = true,
+                    HasShadow = false,
+                    HasBorder = false,
+                    ShadowColor = Color.Transparent,
+                    Content = container
+                };
 
-            _mainContainer.Content = container;
+                _icon = new CustomImage
+                {
+                    IsVisible = IconIsVisible,
+                    WidthRequest = IconSize,
+                    HeightRequest = IconSize,
+                    HorizontalOptions = IconAlignment
+                };
 
-            _icon = new Plugin.MaterialDesignControls.Material3.Implementations.CustomImage()
-            {
-                IsVisible = IconIsVisible,
-                WidthRequest = IconSize,
-                HeightRequest = IconSize,
-                HorizontalOptions = IconAlignment
-            };
+                if (IconIsVisible)
+                    SetIcon();
 
-            if (IconIsVisible)
-                SetIcon();
+                container.Children.Add(_icon);
 
-            container.Children.Add(_icon);
+                _headlineLbl = new MaterialLabel
+                {
+                    FontFamily = HeadlineFontFamily,
+                    FontSize = HeadlineFontSize,
+                    Text = HeadlineText,
+                    HorizontalOptions = HeadlineAlignment,
+                    TextColor = HeadlineColor
+                };
+                container.Children.Add(_headlineLbl);
 
-            _headlineLbl = new MaterialLabel()
-            {
-                FontFamily = HeadlineFontFamily,
-                FontSize = HeadlineFontSize,
-                Text = HeadlineText,
-                HorizontalOptions = HeadlineAlignment,
-                TextColor = HeadlineColor
-            };
-            container.Children.Add(_headlineLbl);
+                _supportingLbl = new MaterialLabel
+                {
+                    FontFamily = SupportingTextFontFamily,
+                    FontSize = SupportingTextFontSize,
+                    Text = SupportingText,
+                    HorizontalTextAlignment = SupportingTextAlignment,
+                    TextColor = SupportingTextColor,
+                    HorizontalOptions = LayoutOptions.FillAndExpand
+                };
+                container.Children.Add(_supportingLbl);
 
-            _supportingLbl = new MaterialLabel()
-            {
-                FontFamily = SupportingTextFontFamily,
-                FontSize = SupportingTextFontSize,
-                Text = SupportingText,
-                HorizontalTextAlignment = SupportingTextAlignment,
-                TextColor = SupportingTextColor,
-                HorizontalOptions = LayoutOptions.FillAndExpand
-            };
-            container.Children.Add(_supportingLbl);
+                var stackLayoutOptions = new StackLayout
+                {
+                    Spacing = 0,
+                    VerticalOptions = LayoutOptions.FillAndExpand
+                };
 
-            var stackLayoutOptions = new StackLayout
-            {
-                Spacing = 0,
-                VerticalOptions = LayoutOptions.FillAndExpand
-            };
+                _topDivider = new MaterialDivider
+                {
+                    IsVisible = ShowDivider,
+                    Color = DividerColor
+                };
+                stackLayoutOptions.Children.Add(_topDivider);
 
-            _topDivider = new MaterialDivider()
-            {
-                IsVisible = ShowDivider,
-                Color = DividerColor
-            };
-            stackLayoutOptions.Children.Add(_topDivider);
+                _materialSearch = new MaterialSearch
+                {
+                    IsVisible = ShowSearch,
+                    Placeholder = SearchPlaceholder,
+                    HorizontalTextAlignment = SearchTextAlignment,
+                    TextColor = SearchTextColor,
+                    BackgroundColor = SearchBackgroundColor,
+                    FontSize = SearchTextFontSize,
+                    FontFamily = SearchTextFontFamily,
+                    Margin = new Thickness(0, 8, 0, 0),
+                    SearchOnEveryTextChange = true,
+                    SearchCommand = new Command(OnSearchCommand)
+                };
 
-            _materialSearch = new MaterialSearch()
-            {
-                IsVisible = ShowSearch,
-                Placeholder = SearchPlaceholder,
-                HorizontalTextAlignment = SearchTextAlignment,
-                TextColor = SearchTextColor,
-                BackgroundColor = SearchBackgroundColor,
-                FontSize = SearchTextFontSize,
-                FontFamily = SearchTextFontFamily,
-                Margin = new Thickness(0, 8, 0, 0),
-                SearchOnEveryTextChange = true,
-                SearchCommand = new Command(OnSearchCommand)
-            };
+                stackLayoutOptions.Children.Add(_materialSearch);
 
-            stackLayoutOptions.Children.Add(_materialSearch);
+                _optionsContainer = new StackLayout
+                {
+                    IsVisible = false,
+                    VerticalOptions = LayoutOptions.FillAndExpand
+                };
+                var scrollViewOptions = new ScrollView
+                {
+                    VerticalOptions = LayoutOptions.FillAndExpand
+                };
+                scrollViewOptions.Content = _optionsContainer;
+                stackLayoutOptions.Children.Add(scrollViewOptions);
 
-            _optionsContainer = new StackLayout
-            {
-                IsVisible = false,
-                VerticalOptions = LayoutOptions.FillAndExpand
-            };
-            var scrollViewOptions = new ScrollView
-            {
-                VerticalOptions = LayoutOptions.FillAndExpand
-            };
-            scrollViewOptions.Content = _optionsContainer;
-            stackLayoutOptions.Children.Add(scrollViewOptions);
+                _bottomDivider = new MaterialDivider
+                {
+                    IsVisible = ShowDivider && ItemsSource != null && ItemsSource.Any(),
+                    Color = DividerColor
+                };
+                stackLayoutOptions.Children.Add(_bottomDivider);
 
-            _bottomDivider = new MaterialDivider()
-            {
-                IsVisible = ShowDivider && ItemsSource != null && ItemsSource.Any(),
-                Color = DividerColor
-            };
-            stackLayoutOptions.Children.Add(_bottomDivider);
+                container.Children.Add(stackLayoutOptions);
 
-            container.Children.Add(stackLayoutOptions);
+                _btnsContainer = new StackLayout
+                {
+                    Spacing = 8,
+                    HorizontalOptions = ButtonsAlignment,
+                    Orientation = StackOrientation.Horizontal,
+                    Margin = new Thickness(0)
+                };
 
-            _btnsContainer = new StackLayout()
-            {
-                Spacing = 8,
-                HorizontalOptions = ButtonsAlignment,
-                Orientation = StackOrientation.Horizontal,
-                Margin = new Thickness(0)
-            };
+                _cancelBtn = new MaterialButton
+                {
+                    ButtonType = MaterialButtonType.Text,
+                    Text = CancelText,
+                    TextColor = CancelTextColor,
+                    FontSize = CancelFontSize,
+                    FontFamily = CancelFontFamily,
+                    BackgroundColor = CancelBackgroundColor,
+                    Command = CancelCommand,
+                    IsVisible = !string.IsNullOrWhiteSpace(CancelText),
+                    MinimumWidthRequest = 80
+                };
 
-            _cancelBtn = new MaterialButton()
-            {
-                ButtonType = MaterialButtonType.Text,
-                Text = CancelText,
-                TextColor = CancelTextColor,
-                FontSize = CancelFontSize,
-                FontFamily = CancelFontFamily,
-                BackgroundColor = CancelBackgroundColor,
-                Command = CancelCommand,
-                IsVisible = !String.IsNullOrWhiteSpace(CancelText),
-                MinimumWidthRequest = 80
-            };
+                _acceptBtn = new MaterialButton
+                {
+                    ButtonType = MaterialButtonType.Filled,
+                    Text = AcceptText,
+                    TextColor = AcceptTextColor,
+                    FontSize = AcceptFontSize,
+                    FontFamily = AcceptFontFamily,
+                    BackgroundColor = AcceptBackgroundColor,
+                    Margin = new Thickness(0),
+                    Command = AcceptCommand,
+                    MinimumWidthRequest = 80
+                };
 
-            _acceptBtn = new MaterialButton()
-            {
-                ButtonType = MaterialButtonType.Filled,
-                Text = AcceptText,
-                TextColor = AcceptTextColor,
-                FontSize = AcceptFontSize,
-                FontFamily = AcceptFontFamily,
-                BackgroundColor = AcceptBackgroundColor,
-                Margin = new Thickness(0),
-                Command = AcceptCommand,
-                MinimumWidthRequest = 80
-            };
+                _btnsContainer.Children.Add(_cancelBtn);
+                _btnsContainer.Children.Add(_acceptBtn);
 
-            _btnsContainer.Children.Add(_cancelBtn);
-            _btnsContainer.Children.Add(_acceptBtn);
+                container.Children.Add(_btnsContainer);
 
-            container.Children.Add(_btnsContainer);
+                Content = _mainContainer;
 
-            this.Content = _mainContainer;
+                //Xamarin.Forms.PlatformConfiguration.AndroidSpecific.VisualElement.SetElevation(this, 0);
+                initialized = true;
+            }
         }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)

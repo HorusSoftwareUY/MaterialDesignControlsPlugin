@@ -3,7 +3,6 @@ using System.ComponentModel;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Graphics.Drawables.Shapes;
 using Android.OS;
 using Android.Views;
 using AndroidX.Core.View;
@@ -19,10 +18,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
     {
         public static void Init() { }
 
-        public MaterialCardRenderer(Context context)
-            : base(context)
-        {
-        }
+        public MaterialCardRenderer(Context context) : base(context) { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
         {
@@ -55,40 +51,42 @@ namespace Plugin.MaterialDesignControls.Material3.Android
             {
                 DrawShadow();
             }
+            else if (e.PropertyName == MaterialCard.TypeProperty.PropertyName)
+            {
+                DrawBackgroundAndBorder();
+                DrawShadow();
+            }
         }
 
         public void DrawShadow()
         {
-            Elevation = 0;
-            TranslationZ = 0;
-
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop && Element is MaterialCard card &&
-                (card.Type == MaterialCardType.Elevated || card.Type == MaterialCardType.Custom))
+            if (Element is MaterialCard card)
             {
-                bool hasShadowOrElevation = card.HasShadow && card.AndroidElevation > 0;
-                if (hasShadowOrElevation)
-                {
-                    ViewCompat.SetElevation(this, card.AndroidElevation);
+                Elevation = 0;
+                //TranslationZ = 0;
 
-                    // Color only exists on Pie and beyond.
+                var hasShadow = card.Type == MaterialCardType.Elevated || (card.Type == MaterialCardType.Custom && Element.HasShadow);
+                if (hasShadow)
+                {
+                    ViewCompat.SetElevation(this, Context.ToPixels(card.AndroidElevation));
+
+                    // Shadow color only exists on Pie and newer
                     if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
                     {
-                        SetOutlineAmbientShadowColor(card.ShadowColor.ToAndroid());
-                        SetOutlineSpotShadowColor(card.ShadowColor.ToAndroid());
+                        var shadowColor = card.ShadowColor.ToAndroid();
+                        SetOutlineAmbientShadowColor(shadowColor);
+                        SetOutlineSpotShadowColor(shadowColor);
                     }
 
-                    // To have shadow show up, we need to clip.
+                    // To show shadow we need to clip
                     OutlineProvider = new RoundedCornerOutlineProvider(card, Context.ToPixels);
                     ClipToOutline = true;
+
+                    return;
                 }
-                else
-                {
-                    OutlineProvider = null;
-                    ClipToOutline = false;
-                }
-            }
-            else
-            {
+
+                OutlineProvider = null;
+                ClipToOutline = false;
                 ViewCompat.SetElevation(this, 0);
             }
         }
@@ -116,31 +114,26 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                     bottomLeftCorner,
                     bottomLeftCorner,
                 };
+                                
+                var hasBorder = card.Type == MaterialCardType.Outlined || (card.Type == MaterialCardType.Custom && card.HasBorder);
+                var borderWidth = hasBorder ? Convert.ToInt32(Context.ToPixels(card.BorderWidth)) : 0;
+                var backgroundColor = card.Type == MaterialCardType.Outlined ? Xamarin.Forms.Color.Transparent : card.BackgroundColor;
+                var borderColor = hasBorder ? card.BorderColor : card.BackgroundColor;
 
-                if (card.Type == MaterialCardType.Custom)
-                {
-                    // Background that overrides native border to handle it ourselves
-                    var backgroundShape = new RoundRectShape(cornerRadii, new RectF(), null);
-                    var background = new ShapeDrawable(backgroundShape);
-                    background.SetColorFilter(new PorterDuffColorFilter(card.BackgroundColor.ToAndroid(), PorterDuff.Mode.SrcIn));
-
-                    var borderOffset = card.HasBorder ? Convert.ToInt32(Context.ToPixels(card.BorderWidth)) : 0;
-                    if (borderOffset > 0 && Build.VERSION.SdkInt >= BuildVersionCodes.M)
-                    {
-                        var borderShape = new RoundRectShape(cornerRadii, new RectF(), null);
-                        var border = new ShapeDrawable(borderShape);
-                        border.SetColorFilter(new PorterDuffColorFilter(card.BorderColor.ToAndroid(), PorterDuff.Mode.SrcIn));
-
-                        var layerDrawable = new LayerDrawable(new Drawable[] { border, background });
-                        layerDrawable.SetLayerInset(1, borderOffset, borderOffset, borderOffset, borderOffset);
-                        Control.Background = layerDrawable;
-                    }
-                }
-
-                // If it's not custom card, just round corners and let background and border to be handled by default
                 if (Control.Background is GradientDrawable backgroundGradient)
                 {
                     backgroundGradient.SetCornerRadii(cornerRadii);
+
+                    if (card.Type != MaterialCardType.Outlined)
+                    {
+                        backgroundGradient.SetTint(backgroundColor.ToAndroid());
+                        backgroundGradient.SetTintMode(PorterDuff.Mode.Multiply);
+                    }
+                  
+                    if (hasBorder)
+                    {
+                        backgroundGradient.SetStroke(borderWidth, borderColor.ToAndroid());
+                    }
                 }
             }
         }

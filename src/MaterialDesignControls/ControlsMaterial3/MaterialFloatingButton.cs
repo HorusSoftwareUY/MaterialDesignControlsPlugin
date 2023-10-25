@@ -501,8 +501,11 @@ namespace Plugin.MaterialDesignControls.Material3
                     Padding = Padding,
                     BackgroundColor = BackgroundColor,
                     Content = _container,
-                    HasBorder = false
-                };
+                    HasBorder = false,
+                    AndroidElevation = 6f,
+                    iOSShadowRadius = 5f,
+                    iOSShadowOffset = new Size(2, 6)
+            };
                 
                 Content = _mainContainer;
                 Effects.Add(new TouchAndPressEffect());

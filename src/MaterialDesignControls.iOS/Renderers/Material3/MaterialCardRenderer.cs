@@ -1,12 +1,12 @@
-﻿using CoreAnimation;
-using CoreGraphics;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
+using CoreAnimation;
+using CoreGraphics;
 using Plugin.MaterialDesignControls.Material3;
 using Plugin.MaterialDesignControls.Material3.iOS;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using UIKit;
 
 [assembly: ExportRenderer(typeof(MaterialCard), typeof(MaterialCardRenderer))]
 namespace Plugin.MaterialDesignControls.Material3.iOS
@@ -20,7 +20,7 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
             base.OnElementPropertyChanged(sender, e);
 
             var properties = new string[] {
-                MaterialCard.BackgroundProperty.PropertyName,
+                MaterialCard.BackgroundColorProperty.PropertyName,
                 MaterialCard.HasBorderProperty.PropertyName,
                 MaterialCard.BorderColorProperty.PropertyName,
                 MaterialCard.BorderWidthProperty.PropertyName,
@@ -30,6 +30,7 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 MaterialCard.iOSShadowOffsetProperty.PropertyName,
                 MaterialCard.iOSShadowOpacityProperty.PropertyName,
                 MaterialCard.iOSShadowRadiusProperty.PropertyName,
+                MaterialCard.TypeProperty.PropertyName,
                 "OutlineColor"
             };
 
@@ -63,6 +64,8 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 var prevBackgroundLayer = Layer.Sublayers?.FirstOrDefault(x => x.Name == layerName);
                 prevBackgroundLayer?.RemoveFromSuperLayer();
 
+                var backgroundColor = Element.Type == MaterialCardType.Outlined ? Color.Transparent : Element.BackgroundColor;
+
                 var backgroundLayer = new CAShapeLayer
                 {
                     Bounds = new CGRect(Bounds.X, Bounds.Y, Bounds.Width, Bounds.Height),
@@ -70,10 +73,12 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                     Name = layerName
                 };
 
-                backgroundLayer.Bounds.CreateRoundedRect(GetCornerRadius(), Element.BackgroundColor.ToUIColor());
+                backgroundLayer.Bounds.CreateRoundedRect(GetCornerRadius(), backgroundColor.ToUIColor());
                 Layer.InsertSublayer(backgroundLayer, 0);
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         private void DrawBorder()
@@ -85,7 +90,10 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 // Remove previous border layer if any
                 var prevBorderLayer = Layer.Sublayers?.FirstOrDefault(x => x.Name == layerName);
                 prevBorderLayer?.RemoveFromSuperLayer();
-                var borderWidth = Element.HasBorder ? (Element.Type == MaterialCardType.Custom ? Element.BorderWidth : (Element.Type == MaterialCardType.Outlined ? 1 : 0)) : 0;
+
+                var hasBorder = Element.Type == MaterialCardType.Outlined || (Element.Type == MaterialCardType.Custom && Element.HasBorder);
+                var borderWidth = hasBorder ? (Element.Type == MaterialCardType.Custom ? Element.BorderWidth : (Element.Type == MaterialCardType.Outlined ? 1 : 0)) : 0;
+                var borderColor = hasBorder ? Element.BorderColor : Element.BackgroundColor;
 
                 if (borderWidth > 0)
                 {
@@ -97,18 +105,21 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                         Name = layerName
                     };
 
-                    borderLayer.Bounds.CreateRoundedRect(GetCornerRadius(), null, Element.BorderColor.ToUIColor(), borderWidth);
+                    borderLayer.Bounds.CreateRoundedRect(GetCornerRadius(), null, borderColor.ToUIColor(), borderWidth);
                     Layer.InsertSublayer(borderLayer, 0);
                 }
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         private void DrawShadow()
         {
             try
             {
-                if (Element.HasShadow && (Element.Type == MaterialCardType.Elevated || Element.Type == MaterialCardType.Custom))
+                var hasShadow = Element.Type == MaterialCardType.Elevated || (Element.Type == MaterialCardType.Custom && Element.HasShadow);
+                if (hasShadow)
                 {
                     Layer.ShadowColor = Element.ShadowColor.ToCGColor();
                     Layer.ShadowRadius = (float)Element.iOSShadowRadius;
@@ -116,8 +127,14 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                     Layer.ShadowOffset = new CGSize((float)Element.iOSShadowOffset.Width, (float)Element.iOSShadowOffset.Height);
                     Layer.MasksToBounds = false;
                 }
+                else
+                {
+                    Layer.ShadowOpacity = 0f;
+                }
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         private double[] GetCornerRadius()
