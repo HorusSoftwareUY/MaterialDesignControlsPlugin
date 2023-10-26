@@ -282,8 +282,6 @@ namespace Plugin.MaterialDesignControls.Material3
                     HasShadow = false,
                     Padding = 0,
                     BorderWidth = 1,
-                    AndroidElevation = 0,
-                    ShadowColor = Color.Transparent,
                     Content = _itemsContainer
                 };
 
@@ -394,8 +392,6 @@ namespace Plugin.MaterialDesignControls.Material3
                 VerticalOptions = LayoutOptions.Fill,
                 BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor,
                 Margin = new Thickness(0),
-                AndroidElevation = 0,
-                ShadowColor = Color.Transparent,
                 HasBorder = false,
                 HasShadow = false
             };

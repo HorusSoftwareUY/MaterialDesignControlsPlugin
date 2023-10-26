@@ -65,7 +65,7 @@ namespace Plugin.MaterialDesignControls.Material3.Android
                 Elevation = 0;
                 //TranslationZ = 0;
 
-                var hasShadow = card.Type == MaterialCardType.Elevated || (card.Type == MaterialCardType.Custom && Element.HasShadow);
+                var hasShadow = card.Type == MaterialCardType.Elevated || (card.Type == MaterialCardType.Custom && card.HasShadow);
                 if (hasShadow)
                 {
                     ViewCompat.SetElevation(this, Context.ToPixels(card.AndroidElevation));

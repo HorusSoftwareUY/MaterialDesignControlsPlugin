@@ -588,13 +588,13 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(BackgroundColor):
                     _mainContainer.BackgroundColor = BackgroundColor;
                     break;
+
                 case nameof(ShadowColor):
+                    _mainContainer.ShadowColor = ShadowColor;
+                    break;
+
                 case nameof(HasShadow):
                     _mainContainer.HasShadow = HasShadow;
-                    _mainContainer.AndroidElevation = HasShadow ? 8f : 0f;
-                    _mainContainer.iOSShadowRadius = HasShadow ? 5f : 0f;
-                    _mainContainer.iOSShadowOffset = HasShadow ? new Size(4, 8) : new Size(0, 0);
-                    _mainContainer.ShadowColor = HasShadow ? ShadowColor : Color.Transparent;
                     break;
 
                 case nameof(CornerRadius):
@@ -779,9 +779,12 @@ namespace Plugin.MaterialDesignControls.Material3
                     CornerRadius = CornerRadius,
                     Padding = new Thickness(24),
                     IsClippedToBounds = true,
-                    HasShadow = false,
                     HasBorder = false,
-                    ShadowColor = Color.Transparent,
+                    HasShadow = HasShadow,
+                    ShadowColor = ShadowColor,
+                    AndroidElevation = 8f,
+                    iOSShadowRadius = 5f,
+                    iOSShadowOffset = new Size(4, 8),
                     Content = container
                 };
 
