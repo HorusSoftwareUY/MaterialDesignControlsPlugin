@@ -13,7 +13,7 @@ namespace Plugin.MaterialDesignControls.Material3
         Regular, Small, Large
     }
 
-    public partial class MaterialFloatingButton : ContentView, ITouchAndPressEffectConsumer
+    public partial class MaterialFloatingButton : ContentView
     {
         #region Attributes
 
@@ -29,7 +29,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private MaterialLabel _lblText;
 
-        public event EventHandler Clicked;
+        public event EventHandler Clicked
+        {
+            add => _mainContainer.Clicked += value;
+            remove => _mainContainer.Clicked -= value;
+        }
 
         #endregion Attributes
 
@@ -343,6 +347,26 @@ namespace Plugin.MaterialDesignControls.Material3
                     _lblText.TextColor = IsEnabled ? TextColor : DisabledTextColor;
                     SetIcon();
                     break;
+                case nameof(Command):
+                    _mainContainer.Command = Command;
+                    break;
+
+                case nameof(CommandParameter):
+                    _mainContainer.CommandParameter = CommandParameter;
+                    break;
+
+                case nameof(Animation):
+                    _mainContainer.Animation = Animation;
+                    break;
+
+                case nameof(AnimationParameter):
+                    _mainContainer.AnimationParameter = AnimationParameter;
+                    break;
+
+                case nameof(CustomAnimation):
+                    _mainContainer.CustomAnimation = CustomAnimation;
+                    break;
+
                 default:
                     base.OnPropertyChanged(propertyName);
                     break;
@@ -505,28 +529,13 @@ namespace Plugin.MaterialDesignControls.Material3
                     AndroidElevation = 6f,
                     iOSShadowRadius = 5f,
                     iOSShadowOffset = new Size(2, 6)
-            };
+                };
                 
                 Content = _mainContainer;
-                Effects.Add(new TouchAndPressEffect());
-
                 SetButtonType();
+
                 _initialized = true;
             }  
-        }
-
-        public void ConsumeEvent(EventType gestureType)
-        {
-            TouchAndPressAnimation.Animate(this, gestureType);
-        }
-
-        public void ExecuteAction()
-        {
-            if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
-                Command.Execute(CommandParameter);
-
-            if (IsEnabled && Clicked != null)
-                Clicked.Invoke(this, null);
         }
 
         #endregion Methods

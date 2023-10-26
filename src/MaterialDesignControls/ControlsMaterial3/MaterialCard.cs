@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Styles;
@@ -25,6 +26,13 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Attributes
 
         protected bool _initialized = false;
+        private event EventHandler _clickedEvent;
+
+        public event EventHandler Clicked
+        {
+            add => _clickedEvent += value;
+            remove => _clickedEvent -= value;
+        }
 
         #endregion Attributes
 
@@ -221,7 +229,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         public virtual void ConsumeEvent(EventType gestureType)
         {
-            if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
+            if (IsEnabled && (_clickedEvent != null || (Command != null && Command.CanExecute(CommandParameter))))
                 TouchAndPressAnimation.Animate(this, gestureType);
         }
 
@@ -229,6 +237,9 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             if (IsEnabled && Command != null && Command.CanExecute(CommandParameter))
                 Command.Execute(CommandParameter);
+
+            if (IsEnabled && _clickedEvent != null)
+                _clickedEvent.Invoke(this, null);
         }
 
         #endregion Methods

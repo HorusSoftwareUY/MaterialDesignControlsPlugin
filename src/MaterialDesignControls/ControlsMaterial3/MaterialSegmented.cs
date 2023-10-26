@@ -21,7 +21,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private bool _initialized = false;
 
-        private MaterialCard _mainFrame;
+        private MaterialCard _mainContainer;
 
         private Grid _itemsContainer;
 
@@ -273,7 +273,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     Padding = 0
                 };
 
-                _mainFrame = new MaterialCard
+                _mainContainer = new MaterialCard
                 {
                     Type = MaterialCardType.Custom,
                     CornerRadius = this.CornerRadius,
@@ -285,7 +285,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     Content = _itemsContainer
                 };
 
-                Content = _mainFrame;
+                Content = _mainContainer;
                 _initialized = true;
             }
         }
@@ -296,12 +296,12 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 case nameof(CornerRadius):
                 case nameof(SegmentMargin):
-                    _mainFrame.CornerRadius = CornerRadius;
+                    _mainContainer.CornerRadius = CornerRadius;
                     _itemsContainer.ColumnSpacing = SegmentMargin;
 
                     if (Type == MaterialSegmentedType.Filled)
                     {
-                        _mainFrame.Padding = SegmentMargin;
+                        _mainContainer.Padding = SegmentMargin;
 
                         foreach (var card in _containersWithItems.Values.Select(c => c.Container))
                         {
@@ -310,7 +310,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     }
                     else
                     {
-                        var cornerRadius = Math.Abs(CornerRadius - _mainFrame.BorderWidth);
+                        var cornerRadius = CornerRadius;
                         if (_containersWithItems.Values.FirstOrDefault() is ContainerForObjects first)
                         {
                             first.Container.CornerRadius = new CornerRadius(cornerRadius, 0, cornerRadius, 0);
@@ -328,7 +328,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
 
                 case nameof(HeightRequest):
-                    _mainFrame.HeightRequest = HeightRequest;
+                    _mainContainer.HeightRequest = HeightRequest;
                     break;
 
                 default:
@@ -345,16 +345,16 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void SetBackgroundAndBorder()
         {
-            _mainFrame.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
+            _mainContainer.BackgroundColor = IsEnabled ? BackgroundColor : DisabledBackgroundColor;
             if (Type == MaterialSegmentedType.Filled)
             {
-                _mainFrame.HasBorder = false;
-                _mainFrame.Padding = SegmentMargin;
+                _mainContainer.HasBorder = false;
+                _mainContainer.Padding = SegmentMargin;
             }
             else
             {
-                _mainFrame.HasBorder = true;
-                _mainFrame.BorderColor = IsEnabled ? BorderColor : DisabledBorderColor;
+                _mainContainer.HasBorder = true;
+                _mainContainer.BorderColor = IsEnabled ? BorderColor : DisabledBorderColor;
             }
         }
 
@@ -362,8 +362,8 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             SetBackgroundAndBorder();
 
-            _itemsContainer.ColumnDefinitions = new ColumnDefinitionCollection();
             _itemsContainer.Children.Clear();
+            _itemsContainer.ColumnDefinitions = new ColumnDefinitionCollection();
             _itemsContainer.ColumnSpacing = Type == MaterialSegmentedType.Outlined ? 0 : SegmentMargin;
             
             if (ItemsSource != null)
@@ -373,9 +373,9 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 foreach (var item in ItemsSource)
                 {
-                    var frame = CreateVisualItem(item, itemIdx);
-                    frame.SetValue(Grid.ColumnProperty, itemIdx);
-                    _itemsContainer.Children.Add(frame);
+                    var visualItem = CreateVisualItem(item, itemIdx);
+                    visualItem.SetValue(Grid.ColumnProperty, itemIdx);
+                    _itemsContainer.Children.Add(visualItem);
 
                     itemIdx++;
                 }
@@ -393,27 +393,35 @@ namespace Plugin.MaterialDesignControls.Material3
                 BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor,
                 Margin = new Thickness(0),
                 HasBorder = false,
-                HasShadow = false
+                HasShadow = false,
+                BorderWidth = _mainContainer.BorderWidth
             };
             
             if (Type == MaterialSegmentedType.Outlined)
             {
-                var cornerRadius = Math.Abs(CornerRadius - _mainFrame.BorderWidth);
+                var cornerRadius = CornerRadius;
                 card.HasBorder = true;
                 card.BorderColor = IsEnabled ? BorderColor : DisabledBorderColor;
 
-                if (index == 0)
+                if (ItemsSource.Count() > 1)
                 {
-                    card.CornerRadius = new CornerRadius(cornerRadius, 0, cornerRadius, 0);
-                }
-                else if (index == ItemsSource.Count() - 1)
-                {
-                    card.CornerRadius = new CornerRadius(0, cornerRadius, 0, cornerRadius);
+                    if (index == 0)
+                    {
+                        card.CornerRadius = new CornerRadius(cornerRadius, 0, cornerRadius, 0);
+                    }
+                    else if (index == ItemsSource.Count() - 1)
+                    {
+                        card.CornerRadius = new CornerRadius(0, cornerRadius, 0, cornerRadius);
+                    }
+                    else
+                    {
+                        card.CornerRadius = 0;
+                        card.Margin = new Thickness(-1, 0);
+                    }
                 }
                 else
                 {
-                    card.CornerRadius = 0;
-                    card.Margin = new Thickness(-1, 0);
+                    card.CornerRadius = cornerRadius;
                 }
             }
             else
@@ -461,7 +469,7 @@ namespace Plugin.MaterialDesignControls.Material3
             return card;
         }
 
-        private void SetItemContentAndColors(MaterialCard frame, MaterialLabel label, MaterialSegmentedItem item)
+        private void SetItemContentAndColors(MaterialCard card, MaterialLabel label, MaterialSegmentedItem item)
         {
             Grid container = null;
             CustomImage selectedIcon = null;
@@ -494,7 +502,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
             if (item.IsSelected)
             {
-                frame.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
+                card.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
                 label.TextColor = IsEnabled ? SelectedTextColor : DisabledSelectedTextColor;
 
                 if (item.SelectedIconIsVisible)
@@ -512,16 +520,16 @@ namespace Plugin.MaterialDesignControls.Material3
                     container.Children.Add(selectedIcon);
                     container.Children.Add(label);
 
-                    frame.Content = container;
+                    card.Content = container;
                 }
                 else
                 {
-                    frame.Content = label;
+                    card.Content = label;
                 }
             }
             else
             {
-                frame.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
+                card.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
                 label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
 
                 if (item.UnselectedIconIsVisible)
@@ -539,11 +547,11 @@ namespace Plugin.MaterialDesignControls.Material3
                     container.Children.Add(selectedIcon);
                     container.Children.Add(label);
 
-                    frame.Content = container;
+                    card.Content = container;
                 }
                 else
                 {
-                    frame.Content = label;
+                    card.Content = label;
                 }
             }
         }

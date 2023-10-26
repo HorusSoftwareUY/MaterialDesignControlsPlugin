@@ -30,6 +30,22 @@ namespace ExampleMaterialDesignControls.ViewModels
             set => SetProperty(ref _selectedItem5, value);
         }
 
+        private ObservableCollection<MaterialSegmentedItem> _items0;
+
+        public ObservableCollection<MaterialSegmentedItem> Items0
+        {
+            get { return _items0; }
+            set { SetProperty(ref _items0, value); }
+        }
+
+        private ObservableCollection<MaterialSegmentedItem> _items1;
+
+        public ObservableCollection<MaterialSegmentedItem> Items1
+        {
+            get { return _items1; }
+            set { SetProperty(ref _items1, value); }
+        }
+
         private ObservableCollection<MaterialSegmentedItem> _items;
 
         public ObservableCollection<MaterialSegmentedItem> Items
@@ -105,6 +121,9 @@ namespace ExampleMaterialDesignControls.ViewModels
                 }
             };
 
+            Items0 = new ObservableCollection<MaterialSegmentedItem>(Items.Take(1));
+            Items1 = new ObservableCollection<MaterialSegmentedItem>(Items.Take(2));
+            
             Items2 = new ObservableCollection<MaterialSegmentedItem>
             {
                 new MaterialSegmentedItem
