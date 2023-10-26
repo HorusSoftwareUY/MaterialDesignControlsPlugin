@@ -841,7 +841,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     BackgroundColor = SearchBackgroundColor,
                     FontSize = SearchTextFontSize,
                     FontFamily = SearchTextFontFamily,
-                    Margin = new Thickness(0, 8, 0, 0),
+                    Margin = new Thickness(0, 8),
                     SearchOnEveryTextChange = true,
                     SearchCommand = new Command(OnSearchCommand)
                 };
