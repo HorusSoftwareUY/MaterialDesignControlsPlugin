@@ -14,10 +14,15 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid x:Name="mainGrid"
-              Margin="20,20,20,0"
               RowDefinitions="56,*"
               RowSpacing="16">
+            <Grid.Margin>
+               <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="20,20,20,0" />
+                    <On Platform="iOS" Value="20,0" />
+                </OnPlatform> 
 
+            </Grid.Margin>
             <ffimageloading:CachedImage Grid.Row="0"
                                         Margin="0"
                                         Aspect="AspectFit"
