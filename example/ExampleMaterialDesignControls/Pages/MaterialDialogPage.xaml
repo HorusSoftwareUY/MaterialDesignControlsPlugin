@@ -29,7 +29,7 @@
                         HeadlineText="Basic dialog"
                         SupportingText="Basic dialog only with an accept button."
                         AcceptText="Accept"
-                        AcceptCommand="{Binding AcceptCommand}"/>
+                        AcceptCommand="{Binding AcceptCommand}" />
 
                     <material3:MaterialDivider Margin="0,10" />
 
@@ -90,13 +90,13 @@
                         HasShadow="True"
                         ShadowColor="DarkBlue"
                         CornerRadius="4"
-                        IconSize="30"
+                        IconSize="60"
                         IconAlignment="Start"
                         HeadlineColor="DarkBlue"
                         HeadlineAlignment="Start"
                         SupportingTextColor="Blue"
                         SupportingTextFontSize="13"
-                        BackgroundColor="SkyBlue"
+                        BackgroundColor="LightSkyBlue"
                         DividerColor="DarkBlue"
                         CancelTextColor="DarkBlue"
                         CancelFontSize="12"
@@ -104,7 +104,7 @@
                         AcceptBackgroundColor="Transparent"
                         AcceptFontSize="16"
                         SearchTextColor="DarkBlue"
-                        SearchBackgroundColor="SkyBlue"
+                        SearchBackgroundColor="LightSkyBlue"
                         SearchTextAlignment="Center"
                         ItemTextFontSize="14"
                         ItemTextColor="DarkBlue"

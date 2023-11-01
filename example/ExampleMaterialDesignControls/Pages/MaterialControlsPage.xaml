@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialControlsPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -14,16 +14,18 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid x:Name="mainGrid"
-              Margin="20,0,20,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="48" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+              RowDefinitions="56,*"
+              RowSpacing="16">
+            <Grid.Margin>
+               <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="20,20,20,0" />
+                    <On Platform="iOS" Value="20,0" />
+                </OnPlatform> 
 
+            </Grid.Margin>
             <ffimageloading:CachedImage Grid.Row="0"
                                         Margin="0"
                                         Aspect="AspectFit"
-                                        HeightRequest="36"
                                         HorizontalOptions="Center"
                                         Source="horus.png" />
 

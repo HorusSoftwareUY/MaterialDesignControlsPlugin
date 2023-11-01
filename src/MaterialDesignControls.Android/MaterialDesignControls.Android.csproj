@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\example\packages\Xamarin.Forms.5.0.0.1874\build\Xamarin.Forms.props" Condition="Exists('..\..\example\packages\Xamarin.Forms.5.0.0.1874\build\Xamarin.Forms.props')" />
   <Import Project="..\..\example\packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.props" Condition="Exists('..\..\example\packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.props')" />
@@ -220,11 +220,11 @@
     <Compile Include="Effects.cs" />
     <Compile Include="Utils\TextAlignmentHelper.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialDoublePickerRenderer.cs" />
-    <Compile Include="Renderers\CustomFrameRenderer.cs" />
     <Compile Include="Effects\TouchReleaseEffect.cs" />
     <Compile Include="Effects\Effects.cs" />
     <Compile Include="Renderers\DeprecatedControls\MaterialSliderRenderer.cs" />
     <Compile Include="Renderers\Material3\MaterialSliderRenderer.cs" />
+    <Compile Include="Renderers\DeprecatedControls\CustomFrameRenderer.cs" />
     <Compile Include="Utils\DimensionsHelper.cs" />
   </ItemGroup>
   <ItemGroup>

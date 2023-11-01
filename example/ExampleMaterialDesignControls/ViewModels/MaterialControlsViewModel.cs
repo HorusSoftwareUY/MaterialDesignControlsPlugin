@@ -109,8 +109,10 @@ namespace ExampleMaterialDesignControls.ViewModels
         public ICommand GoMaterialTopAppBarCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialTopAppBarPage());
-        });
-
+        });
+
+
+
         public ICommand GoMaterialProgressIndicatorCommand => new Command(async () =>
         {
             await Navigation.PushAsync(new MaterialProgressIndicatorPage());
@@ -123,11 +125,12 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public ICommand GoMaterialCardCommand => new Command(async () =>
         {
-            await DisplayAlert("MaterialCard", "Comming Soon!", "Ok");
+            await Navigation.PushAsync(new MaterialCardPage());
         });
 
         public ICommand GoMaterialBadgeCommand => new Command(async () =>
-        {
+        {
+
             await Navigation.PushAsync(new MaterialBadgePage());
         });
 

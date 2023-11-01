@@ -1,11 +1,11 @@
-using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Material3.Implementations;
-using Plugin.MaterialDesignControls.Styles;
-using Plugin.MaterialDesignControls.Utils;
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Styles;
+using Plugin.MaterialDesignControls.Utils;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3
@@ -402,10 +402,6 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 Padding = new Thickness(0),
                 CornerRadius = 15,
-                CornerRadiusBottomLeft = true,
-                CornerRadiusTopLeft = true,
-                CornerRadiusBottomRight = true,
-                CornerRadiusTopRight = true,
                 HasShadow = false,
                 HeightRequest = 32,
                 HorizontalOptions = LayoutOptions.Center,
@@ -419,10 +415,6 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 Padding = new Thickness(0),
                 CornerRadius = 12,
-                CornerRadiusBottomLeft = true,
-                CornerRadiusTopLeft = true,
-                CornerRadiusBottomRight = true,
-                CornerRadiusTopRight = true,
                 HasShadow = false,
                 HeightRequest = 24,
                 HorizontalOptions = LayoutOptions.Center,

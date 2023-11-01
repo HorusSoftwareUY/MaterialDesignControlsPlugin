@@ -39,8 +39,7 @@
               RowSpacing="0">
             <material3:MaterialTopAppBar Headline="MaterialButton"
                                          LeadingIconCommand="{Binding BackCommand}"
-                                         ScrollViewName="scrollView"
-                                         Type="Large">
+                                         ScrollViewName="scrollView">
                 <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.CustomLeadingIcon>

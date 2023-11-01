@@ -12,6 +12,7 @@ namespace Plugin.MaterialDesignControls.Android
             MaterialTimePickerRenderer.Init();
             MaterialEditorRenderer.Init();
             MaterialSliderRenderer.Init();
+            CustomFrameRenderer.Init();
             Plugin.MaterialDesignControls.Material3.Android.MaterialEntryRenderer.Init();
             Plugin.MaterialDesignControls.Material3.Android.MaterialPickerRenderer.Init();
             Plugin.MaterialDesignControls.Material3.Android.MaterialDoublePickerRenderer.Init();
@@ -19,6 +20,7 @@ namespace Plugin.MaterialDesignControls.Android
             Plugin.MaterialDesignControls.Material3.Android.MaterialTimePickerRenderer.Init();
             Plugin.MaterialDesignControls.Material3.Android.MaterialEditorRenderer.Init();
             Plugin.MaterialDesignControls.Material3.Android.MaterialSliderRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.Android.MaterialCardRenderer.Init();
         }
     }
 }

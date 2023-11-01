@@ -47,6 +47,7 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 - [MaterialIconButton](#materialiconbutton)
 - [MaterialSnackBar](#materialsnackbar)
 - [MaterialDialog](#materialdialog)
+- [MaterialCard](#materialcard)
 
 
 ## Setup
@@ -353,6 +354,15 @@ MaterialDialog provide important prompts in a user flow.
 <img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/dialog_preview.png" width="300">
 <br/>
 [View documentation](MaterialDialog.md)
+
+---
+
+### MaterialCard
+MaterialCard display content and actions about a single subject.
+<br/>
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/card_preview.png" width="300">
+<br/>
+[View documentation](MaterialCard.md)
 
 ---
 

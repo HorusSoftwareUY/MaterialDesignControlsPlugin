@@ -12,6 +12,7 @@ namespace Plugin.MaterialDesignControls.iOS
             MaterialTimePickerRenderer.Init();
             MaterialEditorRenderer.Init();
             MaterialSliderRenderer.Init();
+            CustomFrameRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialEntryRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialPickerRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialDoublePickerRenderer.Init();
@@ -21,6 +22,7 @@ namespace Plugin.MaterialDesignControls.iOS
             Plugin.MaterialDesignControls.Material3.iOS.MaterialActivityIndicatorRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialSliderRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialCheckBoxRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.iOS.MaterialCardRenderer.Init();
         }
     }
 }

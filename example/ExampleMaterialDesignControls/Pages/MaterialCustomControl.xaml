@@ -29,7 +29,7 @@
                         SecondaryLabelTextColor="Blue"
                         LabelText="Value">
                         <material3:MaterialCustomControl.CustomControl>
-                            <Slider />
+                            <Slider MaximumTrackColor="Coral" />
                         </material3:MaterialCustomControl.CustomControl>
                     </material3:MaterialCustomControl>
 

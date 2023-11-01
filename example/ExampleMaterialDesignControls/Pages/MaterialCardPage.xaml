@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExampleMaterialDesignControls.Pages.MaterialCardPage"
+             xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*"
+              RowSpacing="0">
+            <material3:MaterialTopAppBar Headline="MaterialCard"
+                                         LeadingIconCommand="{Binding BackCommand}"
+                                         ScrollViewName="scrollView">
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
+            </material3:MaterialTopAppBar>
+
+            <ScrollView x:Name="scrollView"
+                        Grid.Row="1"
+                        VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,0,20,20"
+                             Spacing="40">
+
+                    <contentViews:InfoIndicatorView Message="MaterialCard follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialCard
+                        Type="Outlined">
+                        <material3:MaterialLabel
+                            Text="Default outlined type" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Filled">
+                        <material3:MaterialLabel
+                            Text="Default filled type" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Elevated">
+                        <material3:MaterialLabel
+                            Text="Default elevated type" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom">
+                        <material3:MaterialLabel
+                            Text="Default custom type" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialDivider />
+
+                    <material3:MaterialCard
+                        Type="Outlined"
+                        CornerRadius="20,20,0,20"
+                        BorderColor="Green"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding TapCommand}">
+                        <material3:MaterialLabel
+                            Text="Outlined type with customizations and command" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Filled"
+                        CornerRadius="25"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding TapCommand}">
+                        <material3:MaterialLabel
+                            Text="Filled type with customizations and command" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Elevated"
+                        CornerRadius="20"
+                        ShadowColor="Green"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding TapCommand}">
+                        <material3:MaterialLabel
+                            Text="Elevated type with customizations and command" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Elevated"
+                        CornerRadius="20"
+                        IsEnabled="False"
+                        ShadowColor="Red"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding TapCommand}">
+                        <material3:MaterialLabel
+                            Text="Elevated type with customizations and command DISABLED" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom"
+                        CornerRadius="25,25,25,0"
+                        BackgroundColor="LightGoldenrodYellow"
+                        HasBorder="False"
+                        HorizontalOptions="FillAndExpand">
+                        <material3:MaterialLabel
+                            Text="Custom type with customizations" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom"
+                        CornerRadius="25"
+                        BackgroundColor="{Binding BackgroundColor}"
+                        BorderColor="{Binding BorderColor}"
+                        BorderWidth="1"                     
+                        ShadowColor="{Binding ShadowColor}"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding ChangeColorsCommand}">
+                        <material3:MaterialLabel
+                            Text="Custom type with dynamic colors and command" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom"
+                        CornerRadius="0,0,20,20"
+                        BackgroundColor="LightBlue"
+                        BorderColor="DarkBlue"
+                        BorderWidth="2.5"
+                        ShadowColor="Red"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding TapCommand}">
+                        <material3:MaterialLabel
+                            Text="Custom type with customizations and command" />
+                    </material3:MaterialCard>
+
+                    <material3:MaterialCard
+                        Type="Custom"
+                        CornerRadius="0,20,20,0"
+                        BackgroundColor="LightYellow"
+                        BorderColor="DarkBlue"
+                        ShadowColor="DarkBlue"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding TapCommand}">
+                        <material3:MaterialLabel
+                            Text="Custom type with customizations and command" />
+                    </material3:MaterialCard>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

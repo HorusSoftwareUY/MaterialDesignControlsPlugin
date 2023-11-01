@@ -1,11 +1,10 @@
-﻿using Plugin.MaterialDesignControls.Animations;
-using Plugin.MaterialDesignControls.Material3.Implementations;
-using Plugin.MaterialDesignControls.Styles;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Plugin.MaterialDesignControls.Animations;
+using Plugin.MaterialDesignControls.Material3.Implementations;
+using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
 
 namespace Plugin.MaterialDesignControls.Material3
@@ -394,10 +393,6 @@ namespace Plugin.MaterialDesignControls.Material3
                         frame.VerticalOptions = LayoutOptions.Fill;
                         frame.BackgroundColor = item.IsSelected ? ActiveIndicatorBackgroundColor : Color.Transparent;
                         frame.CornerRadius = ActiveIndicatorCornerRadius;
-                        frame.CornerRadiusBottomLeft = true;
-                        frame.CornerRadiusBottomRight = true;
-                        frame.CornerRadiusTopLeft = true;
-                        frame.CornerRadiusTopRight = true;
                         frame.Animation = this.Animation;
                         frame.AnimationParameter = this.AnimationParameter;
                         frame.CustomAnimation = this.CustomAnimation;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Plugin.MaterialDesignControls.Implementations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
@@ -9,7 +10,7 @@ namespace Plugin.MaterialDesignControls.Material3
 {
     public class MaterialSnackBar : ContentView
     {
-        public CustomFrame _mainContainer;
+        public MaterialCard _mainContainer;
 
         public Grid _gridContainer;
 
@@ -51,11 +52,11 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(MaterialSnackBar), defaultValue: 4);
+            BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(MaterialSnackBar), defaultValue: 4f);
 
-        public int CornerRadius
+        public float CornerRadius
         {
-            get { return (int)GetValue(CornerRadiusProperty); }
+            get { return (float)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
         }
 
@@ -228,7 +229,7 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 VerticalOptions = LayoutOptions.Fill,
                 HorizontalOptions = LayoutOptions.Fill,
-                BackgroundColor = BackgroundColor,
+                BackgroundColor = Color.Transparent,
                 ColumnDefinitions =
                 {
                     new ColumnDefinition { Width = GridLength.Auto },
@@ -291,14 +292,17 @@ namespace Plugin.MaterialDesignControls.Material3
             _gridContainer.Children.Add(_actionButton, 2, 0);
             _gridContainer.Children.Add(_trailingIconButton, 3, 0);
 
-            _mainContainer = new CustomFrame()
+            _mainContainer = new MaterialCard
             {
                 Padding = 0,
                 CornerRadius = CornerRadius,
                 IsClippedToBounds = true,
                 Content = _gridContainer,
                 HasShadow = HasShadow,
-                ShadowColor = ShadowColor
+                ShadowColor = ShadowColor,
+                Type = MaterialCardType.Custom,
+                HasBorder = false,
+                BackgroundColor = BackgroundColor
             };
             Content = _mainContainer;
         }
@@ -313,7 +317,7 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (propertyName)
             {
                 case nameof(BackgroundColor):
-                    _gridContainer.BackgroundColor = BackgroundColor;
+                    _mainContainer.BackgroundColor = BackgroundColor;
                     break;
                 case nameof(ShadowColor):
                     _mainContainer.ShadowColor = ShadowColor;
