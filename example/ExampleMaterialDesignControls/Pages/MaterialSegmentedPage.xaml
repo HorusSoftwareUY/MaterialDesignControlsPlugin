@@ -29,15 +29,6 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Outlined" />
 
-                    <!--<material3:MaterialSegmented ItemsSource="{Binding Items0}"
-                                                 SelectedColor="#6750A4"/>
-
-                    <material3:MaterialSegmented ItemsSource="{Binding Items1}"
-                                                 BorderColor="Red"
-                                                 BackgroundColor="Yellow"
-                                                 SelectedColor="#806750A4"
-                                                 AllowMultiselect="True" />-->
-
                     <material3:MaterialSegmented ItemsSource="{Binding Items}" />
 
                     <material3:MaterialDivider Margin="0,10" />
