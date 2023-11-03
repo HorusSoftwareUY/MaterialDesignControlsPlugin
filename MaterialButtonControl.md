@@ -4,16 +4,16 @@ Buttons allow users to take actions, and make choices, with a single tap.
 [View Material Design documentation](https://m3.material.io/components/buttons/overview)
 
 ## Screenshot
-
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button_preview.gif" width="300">
+<img src="screenshots/button.gif" width="300">
 
 ## Example
 ```XML
-<material:MaterialButton
-    Text="Save" 
-    Icon="save.png" 
-    Command="{Binding TapCommand}" 
-    CommandParameter="Saved" />
+<material3:MaterialButton
+    Text="Download" 
+    LeadingIcon="download.png" 
+    Command="{Binding DownloadCommand}" 
+    CommandParameter="Saved"
+    IsBusy="{Binding DownloadCommand.IsRunning}" />
 ```
 
 ## Documentation

@@ -4,7 +4,7 @@ Badges show notifications, counts, or status information on navigation items and
 [View Material Design documentation](https://m3.material.io/components/badges/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/badge.png" width="300">
+<img src="screenshots/badge.png" width="300">
 
 ## Example
 ```XML
