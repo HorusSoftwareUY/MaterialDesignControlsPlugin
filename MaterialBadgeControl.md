@@ -1,10 +1,10 @@
-# MAterialBadge
+# MaterialBadge
 Badges show notifications, counts, or status information on navigation items and icons
 <br/>
 [View Material Design documentation](https://m3.material.io/components/badges/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/badge_preview.gif" width="300">
+<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/badge.png" width="300">
 
 ## Example
 ```XML
