@@ -4,11 +4,11 @@ This control is a custom implementation of a floating action button. You can cus
 [View Material Design documentation](https://m3.material.io/components/floating-action-button/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button.gif" width="300">
+<img src="screenshots/floating_button.gif" width="300">
 
 ## Example
 ```XML
- <material:MaterialFloatingButton
+ <material3:MaterialFloatingButton
     Icon="add_b.png"
     Command="{Binding TapCommand}" />
 ```

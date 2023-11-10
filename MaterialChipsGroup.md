@@ -4,22 +4,21 @@ Chips are compact elements that represent an input, attribute, or action.
 [View Material Design documentation](https://m3.material.io/components/chips/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips.gif" width="300">
+<img src="screenshots/chipsgroup.gif" width="300">
 
 ## Example
 ```XML
-<material:MaterialChipsGroup
+<material3:MaterialChipsGroup
     LabelText="Colors *"
     IsMultipleSelection="True"
     SelectedItems="{Binding SelectedColors}"
     ItemsSource="{Binding Colors}"
     ChipsPadding="16,0"
     ChipsHeightRequest="32"
-    BackgroundColor="{StaticResource GradientColorTransparent2}"
-    TextColor="{StaticResource GradientColor2}"
-    SelectedBackgroundColor="{StaticResource GradientColor2}"
+    BackgroundColor="LightGray"
+    TextColor="Black"
+    SelectedBackgroundColor="Blue"
     SelectedTextColor="White"
-    LabelTextColor="{StaticResource GradientColor2}"
     SupportingText="Please select at least 4 colors"
     SupportingTextColor="Red" />
 ```

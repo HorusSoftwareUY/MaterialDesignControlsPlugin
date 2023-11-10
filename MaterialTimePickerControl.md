@@ -4,7 +4,7 @@ Time pickers let users select a time.
 [View Material Design documentation](https://m3.material.io/components/time-pickers/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/time_picker.gif" width="300">
+<img src="screenshots/timepicker.gif" width="300">
 
 ## Example
 ```XML

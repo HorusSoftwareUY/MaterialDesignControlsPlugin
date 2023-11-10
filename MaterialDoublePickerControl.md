@@ -2,20 +2,22 @@
 Double pickers let users select two options in the same dialog.
 
 ## iOS Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker.gif" width="300">
+<img src="screenshots/doublepicker-ios.gif" width="300">
 
 ## Android Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_android.png" width="300">
+<img src="screenshots/doublepicker-android.gif" width="300">
 
 ## Example
 ```XML
-<material:MaterialDoublePicker 
+<material3:MaterialDoublePicker 
     LabelText="Double Picker" 
     Separator=" - "
     ItemsSource="{Binding ItemsSource}" 
-    SecondaryItemsSource="{Binding SecondaryItemsSource}"
     SelectedItem="{Binding SelectedItem}" 
-    SecondarySelectedItem="{Binding SecondarySelectedItem}" />
+    PropertyPath="Name"
+    SecondaryItemsSource="{Binding SecondaryItemsSource}"
+    SecondarySelectedItem="{Binding SecondarySelectedItem}"
+    SecondaryPropertyPath="Name" />
 ```
 
 ## Documentation

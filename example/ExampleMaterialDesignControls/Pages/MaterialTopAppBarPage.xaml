@@ -6,7 +6,6 @@
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              ios:Page.UseSafeArea="True"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="false">
@@ -14,8 +13,7 @@
         <Grid RowDefinitions="Auto,*">
             <material3:MaterialTopAppBar Headline="MaterialTopAppBar"
                                          LeadingIconCommand="{Binding BackCommand}"
-                                         ScrollViewName="scrollView"
-                                         Type="Large">
+                                         ScrollViewName="scrollView">
                 <material3:MaterialTopAppBar.CustomLeadingIcon>
                     <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
                 </material3:MaterialTopAppBar.CustomLeadingIcon>
@@ -29,13 +27,13 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialTopAppBar follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource RegularFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource RegularFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="The MaterialTopAppBar above uses the ScrollViewName to bind the control to a ScrollView and run an animation when scrolling down." />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Type Center Aligned " />
 
@@ -53,8 +51,8 @@
                         </material3:MaterialTopAppBar.CustomTrailingIcon>
                     </material3:MaterialTopAppBar>
 
-                    <material:MaterialDivider Margin="0,10" />
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialDivider Margin="0,10" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Type Small" />
 
@@ -68,8 +66,8 @@
                         </material3:MaterialTopAppBar.CustomLeadingIcon>
                     </material3:MaterialTopAppBar>
 
-                    <material:MaterialDivider Margin="0,10" />
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialDivider Margin="0,10" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Type Medium" />
 
@@ -83,8 +81,8 @@
                         </material3:MaterialTopAppBar.CustomLeadingIcon>
                     </material3:MaterialTopAppBar>
 
-                    <material:MaterialDivider Margin="0,10" />
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialDivider Margin="0,10" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Type Large" />
 
@@ -98,8 +96,8 @@
                         </material3:MaterialTopAppBar.CustomLeadingIcon>
                     </material3:MaterialTopAppBar>
 
-                    <material:MaterialDivider Margin="0,10" />
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialDivider Margin="0,10" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Type CenterAligned with Indicator Busy in Icon" />
 
@@ -114,8 +112,8 @@
                         </material3:MaterialTopAppBar.CustomTrailingIcon>
                     </material3:MaterialTopAppBar>
 
-                    <material:MaterialDivider Margin="0,10" />
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialDivider Margin="0,10" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Type CenterAligned with Description" />
 
@@ -130,8 +128,8 @@
                         </material3:MaterialTopAppBar.CustomLeadingIcon>
                     </material3:MaterialTopAppBar>
 
-                    <material:MaterialDivider Margin="0,10" />
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialDivider Margin="0,10" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Type Small with Description" />
 
@@ -146,8 +144,8 @@
                         </material3:MaterialTopAppBar.CustomLeadingIcon>
                     </material3:MaterialTopAppBar>
 
-                    <material:MaterialDivider Margin="0,10" />
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialDivider Margin="0,10" />
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Full API" />
 

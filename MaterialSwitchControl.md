@@ -8,7 +8,7 @@ Switches toggle the state of a single item on or off.
 
 ## Example
 ```XML
- <material:MaterialSwitch   
+ <material3:MaterialSwitch   
     Text="Bluetooth *"
     IsToggled="False"
     TextColor="#0d1a26"

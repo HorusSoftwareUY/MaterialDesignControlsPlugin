@@ -4,7 +4,7 @@ Text fields let users enter and edit text.
 [View Material Design documentation](https://m3.material.io/components/text-fields/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry.gif" width="300">
+<img src="screenshots/entry.gif" width="300">
 
 ## Example
 ```XML

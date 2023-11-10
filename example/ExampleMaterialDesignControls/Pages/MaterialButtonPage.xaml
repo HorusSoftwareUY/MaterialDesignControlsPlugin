@@ -6,7 +6,6 @@
              xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              ios:Page.UseSafeArea="True"
              BackgroundColor="White"
@@ -14,7 +13,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LegendLabel"
-                   TargetType="material:MaterialLabel">
+                   TargetType="material3:MaterialLabel">
                 <Setter Property="LineBreakMode"
                         Value="WordWrap" />
                 <Setter Property="FontSize"
@@ -23,7 +22,7 @@
                         Value="0,10,0,0" />
             </Style>
             <Style x:Key="SubtitleLabel"
-                   TargetType="material:MaterialLabel">
+                   TargetType="material3:MaterialLabel">
                 <Setter Property="HorizontalTextAlignment"
                         Value="Center" />
                 <Setter Property="FontSize"
@@ -53,7 +52,7 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialButton follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialLabel Style="{StaticResource LegendLabel}"
+                    <material3:MaterialLabel Style="{StaticResource LegendLabel}"
                                             Text="Elevated button:" />
                     <material3:MaterialButton ButtonType="Elevated"
                                               Command="{Binding SaveFileCommand}"
@@ -62,7 +61,7 @@
                                               IsVisible="{Binding IsVisible}"
                                               Text="Save file" />
 
-                    <material:MaterialLabel Style="{StaticResource LegendLabel}"
+                    <material3:MaterialLabel Style="{StaticResource LegendLabel}"
                                             Text="Filled button with leading png icon:" />
                     
                     <material3:MaterialButton ButtonType="Filled"
@@ -74,7 +73,7 @@
                                               Text="Download file" />
 
 
-                    <material:MaterialLabel Style="{StaticResource LegendLabel}"
+                    <material3:MaterialLabel Style="{StaticResource LegendLabel}"
                                             Text="Tonal button with trailing svg icon:" />
                     <material3:MaterialButton ButtonType="Tonal"
                                               Command="{Binding OpenTutorialCommand}"
@@ -87,7 +86,7 @@
                         </material3:MaterialButton.CustomTrailingIcon>
                     </material3:MaterialButton>
 
-                    <material:MaterialLabel Style="{StaticResource LegendLabel}"
+                    <material3:MaterialLabel Style="{StaticResource LegendLabel}"
                                             Text="Outlined button with custom activity indicator:" />
                     <material3:MaterialButton ButtonType="Outlined"
                                               Command="{Binding CancelActionCommand}"
@@ -100,7 +99,7 @@
                         </material3:MaterialButton.CustomActivityIndicator>
                     </material3:MaterialButton>
 
-                    <material:MaterialLabel Style="{StaticResource LegendLabel}"
+                    <material3:MaterialLabel Style="{StaticResource LegendLabel}"
                                             Text="Text button:" />
                     <material3:MaterialButton ButtonType="Text"
                                               Command="{Binding DeleteItemCommand}"
@@ -117,9 +116,9 @@
                     <material3:MaterialSwitch IsToggled="{Binding IsVisible}"
                                               Text="Is visible" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel Style="{StaticResource SubtitleLabel}"
+                    <material3:MaterialLabel Style="{StaticResource SubtitleLabel}"
                                             Text="Animations" />
 
                     <material3:MaterialButton Animation="None"
@@ -137,9 +136,9 @@
                         </material3:MaterialButton.CustomAnimation>
                     </material3:MaterialButton>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel Style="{StaticResource SubtitleLabel}"
+                    <material3:MaterialLabel Style="{StaticResource SubtitleLabel}"
                                             Text="Events" />
 
                     <material3:MaterialButton Animation="Fade"

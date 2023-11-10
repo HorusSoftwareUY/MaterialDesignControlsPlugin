@@ -4,7 +4,7 @@ This control is a custom implementation of a segmented control. You can customiz
 [View Material Design documentation](https://m3.material.io/components/segmented-buttons/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/segmented.gif" width="300">
+<img src="screenshots/segmented.gif" width="300">
 
 ## Example
 ```XML

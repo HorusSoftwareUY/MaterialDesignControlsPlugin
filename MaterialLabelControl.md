@@ -4,7 +4,7 @@ Labels help make writing legible and beautiful.
 [View Material Design documentation](https://m3.material.io/styles/typography/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/label_preview.png" width="300">
+<img src="screenshots/label.gif" width="300">
 
 ## Example
 ```XML

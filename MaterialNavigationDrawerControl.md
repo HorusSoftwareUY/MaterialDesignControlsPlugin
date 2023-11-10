@@ -4,7 +4,7 @@ Navigation drawers let people switch between UI views on larger devices
 [View Material Design documentation](https://m3.material.io/components/navigation-drawer/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/navigation_preview.png" width="300">
+<img src="screenshots/navigation.gif" width="300">
 
 ## Example
 ```XML

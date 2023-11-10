@@ -1,14 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
              x:Class="ExampleMaterialDesignControls.Pages.ShippingPage"
              Title="Shipping"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:controls="clr-namespace:SkeletonExample.Controls" 
              ios:Page.UseSafeArea="True"
              IconImageSource="Shipping.png"
              BackgroundColor="White">
@@ -20,7 +17,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <material:MaterialLabel Text="Shipping" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Subtitle1FontSize}" Grid.Row="0" />
+            <material3:MaterialLabel Text="Shipping" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Subtitle1FontSize}" Grid.Row="0" />
 
             <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                 <StackLayout Spacing="30">
@@ -30,9 +27,9 @@
                                 <ffimageloading:CachedImage Source="shoes_1.jpg" Aspect="AspectFill"/>
                             </Frame>
                             <StackLayout>
-                                <material:MaterialLabel Text="Nike - Air Max 97" TextColor="{StaticResource BlackColor}" FontSize="{StaticResource Body1FontSize}" FontFamily="{StaticResource SemiBoldFont}"/>
-                                <material:MaterialLabel Text="Size: 7.5" TextColor="{StaticResource BlackColor}" FontSize="{StaticResource Body2FontSize}" FontFamily="{StaticResource RegularFont}"/>
-                                <material:MaterialLabel Text="$170" TextColor="{StaticResource GradientColor1}" FontSize="{StaticResource H6FontSize}" FontFamily="{StaticResource BoldFont}"/>
+                                <material3:MaterialLabel Text="Nike - Air Max 97" TextColor="{StaticResource BlackColor}" FontSize="{StaticResource Body1FontSize}" FontFamily="{StaticResource SemiBoldFont}"/>
+                                <material3:MaterialLabel Text="Size: 7.5" TextColor="{StaticResource BlackColor}" FontSize="{StaticResource Body2FontSize}" FontFamily="{StaticResource RegularFont}"/>
+                                <material3:MaterialLabel Text="$170" TextColor="{StaticResource GradientColor1}" FontSize="{StaticResource H6FontSize}" FontFamily="{StaticResource BoldFont}"/>
                             </StackLayout>
                         </StackLayout>
                     </Frame>
@@ -51,10 +48,10 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                            <material:MaterialDatePicker Type="Lined" LabelText="Date" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" Grid.Column="0" />
-                            <material:MaterialTimePicker Type="Lined" LabelText="Time" Grid.Column="1"/>
+                            <material3:MaterialDatePicker LabelText="Date" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" Grid.Column="0" />
+                            <material3:MaterialTimePicker LabelText="Time" Grid.Column="1"/>
                     </Grid>
-                    <material:MaterialEditor Type="Lined" LabelText="Comments" Placeholder="Add comments" HeightRequest="80"/>
+                    <material3:MaterialEditor LabelText="Comments" Placeholder="Add comments" HeightRequest="80"/>
                 </StackLayout>
             </ScrollView>
 

@@ -4,7 +4,7 @@ Date pickers let users select a date.
 [View Material Design documentation](https://m3.material.io/components/date-pickers/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/date_picker.gif" width="300">
+<img src="screenshots/datepicker.gif" width="300">
 
 ## Example
 ```XML

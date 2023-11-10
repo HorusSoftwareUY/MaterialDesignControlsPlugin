@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
              ios:Page.UseSafeArea="True"
@@ -25,7 +24,7 @@
                              Spacing="20">
                     <contentViews:InfoIndicatorView Message="MaterialPicker and MaterialDoublePicker follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Filled Type with PropertyPath set" />
 
@@ -52,9 +51,9 @@
                                                   Text="Show" />
                     </Grid>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Implement SelectedIndexChanged" />
 
@@ -72,9 +71,9 @@
                     <material3:MaterialButton Command="{Binding TapCommand}"
                                               Text="Save" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Horizontal Text Alignment" />
 
@@ -86,9 +85,9 @@
                                               TrailingIcon=""
                                               Placeholder="Select Option" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Using Border" />
 
@@ -100,9 +99,9 @@
                                               Placeholder="Select Option" />
 
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Animate placeholder" />
 
@@ -111,9 +110,9 @@
                                               AnimatePlaceholder="True"
                                               Placeholder="Select Option" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Animate placeholder with border" />
 
@@ -125,9 +124,9 @@
                                               Placeholder="Select Option" />
 
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Full API" />
 
@@ -176,9 +175,9 @@
                         </material3:MaterialPicker.SupportingFontFamily>
                     </material3:MaterialPicker>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource BoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource BoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="MaterialDoublePicker" />
 
@@ -209,9 +208,9 @@
                                                   Text="Show" />
                     </Grid>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Implement SelectedIndexesChanged" />
 
@@ -222,9 +221,9 @@
                     <Label x:Name="lblSelectedIndexes"
                            Text="Selected Indexes: -" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Separator, animation with border and focus" />
 
@@ -238,9 +237,9 @@
                                               Text="Focus" />
 
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="MaterialDoublePicker Full API" />
 

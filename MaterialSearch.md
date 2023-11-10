@@ -5,7 +5,7 @@ MaterialSearch receives a text and executes a search action.
 
 ## Screenshot
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/search_preview.gif" width="300">
+<img src="screenshots/search.gif" width="300">
 
 ## Example
 ```XML
