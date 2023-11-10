@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
              ios:Page.UseSafeArea="True"
@@ -26,7 +25,7 @@
 
                     <contentViews:InfoIndicatorView Message="MaterialChips follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Chip States" />
 
@@ -64,9 +63,9 @@
                         Text="IsSelected"
                         IsToggled="{Binding IsSelected}" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Chips Group Control" />
                     <material3:MaterialChipsGroup AnimateError="True"
@@ -85,9 +84,9 @@
                     <material3:MaterialButton Command="{Binding TapCommand}"
                                               Text="Save" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Disabled / Enabled" />
 
@@ -103,16 +102,16 @@
 
                     <StackLayout Orientation="Horizontal"
                                  Spacing="16">
-                        <material:MaterialLabel FontSize="16"
+                        <material3:MaterialLabel FontSize="16"
                                                 Text="Selection enabled"
                                                 VerticalTextAlignment="Center" />
                         <Switch HorizontalOptions="EndAndExpand"
                                 IsToggled="{Binding IsColorSelectionEnabled}" />
                     </StackLayout>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="PNG Icons" />
 
@@ -146,9 +145,9 @@
                                                  ToUpper="True" />
                     </FlexLayout>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="SVG Icons" />
                     <FlexLayout Direction="Row"
@@ -174,9 +173,9 @@
                         </material3:MaterialChips>
                     </FlexLayout>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Icons Visible" />
 

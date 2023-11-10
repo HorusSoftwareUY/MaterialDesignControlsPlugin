@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="ExampleMaterialDesignControls.Pages.MaterialSelectionPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
              ios:Page.UseSafeArea="True"
@@ -42,9 +41,9 @@
                                                  Placeholder="Select user"
                                                  Text="{Binding SelectedText}" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Horizontal Text Alignment" />
 
@@ -56,9 +55,9 @@
                                                  Placeholder="Select product"
                                                  Text="{Binding SelectedText}" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="With Border" />
 
@@ -66,17 +65,13 @@
                     <material3:MaterialSelection Command="{Binding TapCommand}"
                                                  CommandParameter="Product selection"
                                                  HasBorder="True"
-                                                 CornerRadiusBottomLeft="True"
-                                                 CornerRadiusBottomRight="True"
-                                                 CornerRadiusTopRight="True"
-                                                 CornerRadiusTopLeft="True"
                                                  LabelText="Select Product"
                                                  Placeholder="Select product"
                                                  Text="{Binding SelectedText}" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalTextAlignment="Center"
                                             Text="Full API" />
 
@@ -86,12 +81,8 @@
                                                  Placeholder="Select model"
                                                  Text="{Binding SelectedText}"
                                                  HasBorder="True"
-                                                 CornerRadius="10"
-                                                 CornerRadiusBottomLeft="True"
-                                                 CornerRadiusBottomRight="True"
-                                                 CornerRadiusTopRight="True"
-                                                 CornerRadiusTopLeft="False"
-                                                 iOSBorderWidth="3"
+                                                 CornerRadius="0,10,10,10"
+                                                 BorderWidth="3"
                                                  SupportingMargin="10,2,0,0"
                                                  SupportingText="Testing"
                                                  AnimateError="True"

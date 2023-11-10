@@ -4,7 +4,7 @@ TopAppBar displays information and actions at the top of a screen.
 [View Material Design documentation](https://m3.material.io/components/top-app-bar/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/topappbar_preview.png" width="300">
+<img src="screenshots/topappbar.gif" width="300">
 
 ## Example
 ```XML

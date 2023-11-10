@@ -6,7 +6,7 @@ Currently, this control only represents the UI and guidelines proposed by Materi
 [View Material Design documentation](https://m3.material.io/components/dialogs/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/dialogs_preview.png" width="300">
+<img src="screenshots/dialogs.gif" width="300">
 
 ## Example
 ```XML

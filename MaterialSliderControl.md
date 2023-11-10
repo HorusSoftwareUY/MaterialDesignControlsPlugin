@@ -5,7 +5,7 @@ This control is a custom implementation of a slider. You can customize some prop
 
 ## Screenshot
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/slider.gif" width="300">
+<img src="screenshots/slider.gif" width="300">
 
 ## Example
 ```XML

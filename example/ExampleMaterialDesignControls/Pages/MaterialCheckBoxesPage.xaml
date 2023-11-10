@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
              ios:Page.UseSafeArea="True"
@@ -27,11 +26,11 @@
                     
                     <contentViews:InfoIndicatorView Message="MaterialChips follows the latest guidelines of Material Design 3" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalOptions="Center"
                                             Text="Xamarin Forms Native Control" />
                     <StackLayout Spacing="5">
-                        <material:MaterialLabel Margin="0,0,0,5"
+                        <material3:MaterialLabel Margin="0,0,0,5"
                                                 FontSize="{StaticResource Body3FontSize}"
                                                 Text="Extras" />
                         <material3:MaterialCheckbox Text="Pickles" />
@@ -43,7 +42,7 @@
                     <material3:MaterialDivider Margin="0,10" />
 
                     <StackLayout Spacing="5">
-                        <material:MaterialLabel Margin="0,0,0,5"
+                        <material3:MaterialLabel Margin="0,0,0,5"
                                                 FontSize="{StaticResource Body3FontSize}"
                                                 Text="Extras" />
                         <material3:MaterialCheckbox IsChecked="True"
@@ -62,7 +61,7 @@
                                             Text="Custom Icon With .png File" />
 
                     <StackLayout Spacing="5">
-                        <material:MaterialLabel Margin="0,0,0,5"
+                        <material3:MaterialLabel Margin="0,0,0,5"
                                                 FontSize="{StaticResource Body3FontSize}"
                                                 Text="Extras" />
                         <material3:MaterialCheckbox DisabledSelectedIcon="checkbox_disabledChecked.png"

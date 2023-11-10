@@ -3,12 +3,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="ExampleMaterialDesignControls.ContentViews.InfoIndicatorView"
-    xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
     BackgroundColor="{StaticResource GradientGreenColorTransparent}"
     HasShadow="False"
     CornerRadius="20"
     Padding="16">
-    <material:MaterialLabel
+    <material3:MaterialLabel
             x:Name="lblMessage"
             FontSize="{StaticResource Body3FontSize}"
             HorizontalTextAlignment="Center"

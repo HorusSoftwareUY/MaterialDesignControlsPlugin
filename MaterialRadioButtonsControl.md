@@ -4,7 +4,7 @@ This control is a custom implementation of a radiobuttons. You can customize som
 [View Material Design documentation](https://m3.material.io/components/radio-button/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radiobuttons.gif" width="300">
+<img src="screenshots/radiobuttons.gif" width="300">
 
 ## Example
 ```XML

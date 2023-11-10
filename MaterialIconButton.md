@@ -3,7 +3,7 @@ MaterialIconButton displays an icon and can execute a command.<br/>
 [View Material Design documentation](https://m3.material.io/components/icon-buttons)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/material_icon_button_preview.png" >
+<img src="screenshots/icon-button.gif" >
 
 ## Example
 ```XML

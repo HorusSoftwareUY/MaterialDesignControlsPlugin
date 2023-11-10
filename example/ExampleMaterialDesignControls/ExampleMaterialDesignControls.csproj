@@ -72,6 +72,9 @@
     <ProjectReference Include="..\..\src\MaterialDesignControls\MaterialDesignControls.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Pages\MaterialCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\MaterialBadgePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

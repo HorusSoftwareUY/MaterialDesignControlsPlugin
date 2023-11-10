@@ -4,7 +4,7 @@ Text fields let users enter and edit text.
 [View Material Design documentation](https://m3.material.io/components/text-fields/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/editor.gif" width="300">
+<img src="screenshots/editor.gif" width="300">
 
 ## Example
 ```XML
@@ -88,26 +88,10 @@ This property is to set the event after the text changed.
 
 ### Property CornerRadius:
 This property is to set the corner radius for the control. This is used only when you set HasBorder as true.
-<br/>
-<br/>
 
-### Property CornerRadiusTopLeft:
-This property is to set if you wanna top left rounded.
-<br/>
-<br/>
-
-### Property CornerRadiusTopRight:
-This property is to set if you wanna top right rounded.
-<br/>
-<br/>
-
-### Property CornerRadiusBottomRight:
-This property is to set if you wanna bottom right rounded.
-<br/>
-<br/>
-
-### Property CornerRadiusBottomLeft:
-This property is to set if you wanna bottom left rounded.
+CornerRadius supports a uniform radius to the four corners or you can set a different corner radius for each corner:
+- CornerRadius="10"
+- CornerRadius="0,10,10,10"
 <br/>
 <br/>
 
@@ -245,8 +229,8 @@ This property is to set if this control has border or not.
 <br/>
 <br/>
 
-### Property iOSBorderWidth:
-This property is to set the border width. **Only supported on iOS**
+### Property BorderWidth:
+This property is to set the border width.
 <br/>
 <br/>
 

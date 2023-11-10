@@ -4,7 +4,7 @@ Time pickers let users select a time.
 [View Material Design documentation](https://m3.material.io/components/time-pickers/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/time_picker.gif" width="300">
+<img src="screenshots/timepicker.gif" width="300">
 
 ## Example
 ```XML
@@ -18,41 +18,12 @@ Time pickers let users select a time.
 
 ### Property CornerRadius:
 This property is to set the corner radius for the control. This is used only when you set HasBorder as true.
-```XML
- <material3:MaterialTimePicker 
-    HorizontalTextAlignment="Start"
-    Placeholder="Select time"
-    HasBorder="True"
-    LabelText="Label"
-    CornerRadius="10"
-    CornerRadiusBottomLeft="True"
-    CornerRadiusBottomRight="True"
-    CornerRadiusTopLeft="True"
-    CornerRadiusTopRight="True" />
-```
-<br/>
-<br/>
 
-### Property CornerRadiusTopLeft:
-This property is to set if you wanna top left rounded.
+CornerRadius supports a uniform radius to the four corners or you can set a different corner radius for each corner:
+- CornerRadius="10"
+- CornerRadius="0,10,10,10"
 <br/>
 <br/>
-
-### Property CornerRadiusTopRight:
-This property is to set if you wanna top right rounded.
-<br/>
-<br/>
-
-### Property CornerRadiusBottomRight:
-This property is to set if you wanna bottom right rounded.
-<br/>
-<br/>
-
-### Property CornerRadiusBottomLeft:
-This property is to set if you wanna bottom left rounded.
-<br/>
-<br/>
-
 
 ### Property AnimateError:
 This property is to set the if you want or not animate the control on error.
@@ -158,8 +129,8 @@ This property is to set if this control has border or not.
 <br/>
 <br/>
 
-### Property iOSBorderWidth:
-This property is to set the border width. **Only supported on iOS**
+### Property BorderWidth:
+This property is to set the border width.
 <br/>
 <br/>
 

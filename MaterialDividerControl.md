@@ -5,11 +5,11 @@ A divider is a thin line that groups content in lists and layouts.
 
 ## Screenshot
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/divider.png" width="300">
+<img src="screenshots/divider.png" width="300">
 
 ## Example
 ```XML
-<material:MaterialDivider />
+<material3:MaterialDivider />
 ```
 
 ## Documentation

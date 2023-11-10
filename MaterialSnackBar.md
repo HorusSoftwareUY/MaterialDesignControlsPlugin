@@ -6,7 +6,7 @@ Currently, this control only represents the UI and guidelines proposed by Materi
 [View Material Design documentation](https://m3.material.io/components/snackbar/overview)
 
 ## Screenshot
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/snackbar_preview.png" width="300">
+<img src="screenshots/snackbar.gif" width="300">
 
 ## Example
 ```XML

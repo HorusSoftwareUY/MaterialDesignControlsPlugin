@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
              x:Class="ExampleMaterialDesignControls.Pages.AddCardPage"
              Title="Add Card"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:controls="clr-namespace:SkeletonExample.Controls" 
              ios:Page.UseSafeArea="True"
              IconImageSource="Payment.png"
              BackgroundColor="White">
@@ -19,7 +17,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <material:MaterialLabel Text="Add Card" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Subtitle1FontSize}"/>
+            <material3:MaterialLabel Text="Add Card" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource BlackColor}" FontAttributes="Bold" FontSize="{StaticResource Subtitle1FontSize}"/>
             <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                 <StackLayout>
                     <Frame BackgroundColor="{StaticResource BlackColor}" HeightRequest="220" HorizontalOptions="FillAndExpand" CornerRadius="25" HasShadow="False" Padding="0" Margin="0,0,0,30" IsClippedToBounds="True">
@@ -37,9 +35,9 @@
                                     <RowDefinition Height="20"/>
                                 </Grid.RowDefinitions>
                                 <ffimageloading:CachedImage Grid.Column="1" Grid.Row="0" Aspect="AspectFit" VerticalOptions="FillAndExpand" Source="Visa.png" WidthRequest="10" sk:Skeleton.IsBusy="{Binding IsBusy}" sk:Skeleton.Hide="True"/>
-                                <material:MaterialLabel Text="5213 6450 5408 7516" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource H5FontSize}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
-                                <material:MaterialLabel Text="Jhon Horus" ToUpper="True" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Grid.Column="0" Grid.Row="3" />
-                                <material:MaterialLabel Text="11/25" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="3"/>
+                                <material3:MaterialLabel Text="5213 6450 5408 7516" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource H5FontSize}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
+                                <material3:MaterialLabel Text="Jhon Horus" TextTransform="Uppercase" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" Grid.Column="0" Grid.Row="3" />
+                                <material3:MaterialLabel Text="11/25" TextColor="{StaticResource WhiteColor}" FontAttributes="Bold" FontSize="{StaticResource Body1FontSize}" HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="3"/>
                             </Grid>
                         </AbsoluteLayout>
                     </Frame>
@@ -51,7 +49,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <material:MaterialDatePicker Type="Lined" LabelText="Expiry" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" Grid.Column="0" />
+                            <material3:MaterialDatePicker LabelText="Expiry" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" Grid.Column="0" />
                             <material3:MaterialEntry LabelText="CVV" Placeholder="XXX" Keyboard="Telephone" TabIndex="2" ReturnType="Next" Grid.Column="1"/>
                         </Grid>
                     </StackLayout>

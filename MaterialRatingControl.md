@@ -4,7 +4,7 @@ This control allow to rate. You can customize some properties that we show in Do
 
 ## Screenshot
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/rating.gif" width="300">
+<img src="screenshots/rating.gif" width="300">
 
 ## Example
 ```XML

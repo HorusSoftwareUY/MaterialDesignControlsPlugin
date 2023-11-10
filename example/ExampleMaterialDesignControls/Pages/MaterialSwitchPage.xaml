@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
              xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
              xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
              ios:Page.UseSafeArea="True"
@@ -33,9 +32,9 @@
                                               SupportingText="Bluetooth is required">
                     </material3:MaterialSwitch>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalOptions="Center"
                                             Text="With Selected Icon" />
 
@@ -46,9 +45,9 @@
                                               TextSide="Left">
                     </material3:MaterialSwitch>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalOptions="Center"
                                             Text="With Selected and Unselected Icon" />
 
@@ -60,9 +59,9 @@
                                               TextSide="Left">
                     </material3:MaterialSwitch>
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalOptions="Center"
                                             Text="Enabled / Disabled" />
 
@@ -76,9 +75,9 @@
                                               Text="Bluetooth"
                                               TextSide="Left" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalOptions="Center"
                                             Text="Text to the Right and Toggled Event" />
 
@@ -87,9 +86,9 @@
                                               Toggled="Switch_toggled"
                                               TextHorizontalOptions="EndAndExpand" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalOptions="Center"
                                             Text="Required" />
 
@@ -102,9 +101,9 @@
                                               HorizontalOptions="FillAndExpand"
                                               Text="Save" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalOptions="Center"
                                             Text="Only Switch with custom colors" />
 
@@ -113,9 +112,9 @@
                                               ThumbSelectedColor="Green"
                                               ThumbUnselectedColor="Red" />
 
-                    <material:MaterialDivider Margin="0,10" />
+                    <material3:MaterialDivider Margin="0,10" />
 
-                    <material:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
+                    <material3:MaterialLabel FontFamily="{StaticResource SemiBoldFont}"
                                             HorizontalOptions="Center"
                                             Text="Full API" />
 
@@ -128,6 +127,9 @@
                                               ThumbSelectedColor="Green"
                                               ThumbUnselectedColor="Red"
                                               Text="Default True"
+                                              BorderOnSelectedColor="Green"
+                                              BorderOnUnselectedColor="Red"
+                                              BorderWidth="3"
                                               ToggledCommand="{Binding ToggledCommand}"
                                               Toggled="Switch_toggled"
                                               TextSide="Left">

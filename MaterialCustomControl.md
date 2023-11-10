@@ -4,7 +4,7 @@ This control provides a simple way to create custom controls with labels and sup
 
 ## Screenshot
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/customcontrol_preview.png" width="300">
+<img src="screenshots/custom.png" width="300">
 
 ## Example
 ```XML
