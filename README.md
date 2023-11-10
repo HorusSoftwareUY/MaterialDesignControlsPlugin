@@ -2,66 +2,59 @@
 
 <img src="https://raw.githubusercontent.com/HorusSoftwareUY/MaterialDesignControlsPlugin/master/icon.png" width="128">
 
-MaterialDesignControls Plugin for Xamarin.Forms, provides a collection of Xamarin.Forms controls that follow the [Material Design Guidelines](https://material.io/design/components/selection-controls.html)
+MaterialDesignControls Plugin for Xamarin.Forms, provides a collection of Xamarin.Forms controls that follow the [Material Design 3 Guidelines](https://m3.material.io/design/components/selection-controls.html).
+
 
 
 ## Coming soon
 [.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/what-is-maui)            
-We're developing the next version of the plugin for .NET MAUI, bringing you exciting features and improvements.
-
-[Google Material Design 3](https://m3.material.io/)            
-We're currently upgrading the suite to incorporate the Google Material 3 guidelines. 
-        
+We're developing the next version of the plugin for .NET MAUI, bringing you exciting features and improvements.    
 
 ## Demo
 
 <img src="screenshots/controls.gif" width="300">
 
-## Controls Index
-- [MaterialDesignControls Plugin for Xamarin Forms](#materialdesigncontrols-plugin-for-xamarin-forms)
-  - [Coming soon](#coming-soon)
-  - [Demo](#demo)
-  - [Controls Index](#controls-index)
-  - [Setup](#setup)
-  - [API Usage](#api-usage)
-  - [Styles](#styles)
-  - [Controls](#controls)
-    - [MaterialButton](#materialbutton)
-    - [MaterialChips \& MaterialChipsGroup](#materialchips--materialchipsgroup)
-    - [MaterialDatePicker](#materialdatepicker)
-    - [MaterialEditor](#materialeditor)
-    - [MaterialEntry](#materialentry)
-    - [MaterialCodeEntry](#materialcodeentry)
-    - [MaterialField](#materialfield)
-    - [MaterialPicker](#materialpicker)
-    - [MaterialDoublePicker](#materialdoublepicker)
-    - [MaterialSelection](#materialselection)
-    - [MaterialTimePicker](#materialtimepicker)
-    - [MaterialRating](#materialrating)
-    - [MaterialSlider](#materialslider)
-    - [MaterialSegmented](#materialsegmented)
-    - [MaterialDivider](#materialdivider)
-    - [MaterialRadioButtons](#materialradiobuttons)
-    - [MaterialFloatingButton](#materialfloatingbutton)
-    - [MaterialCheckbox](#materialcheckbox)
-    - [MaterialSwitch](#materialswitch)
-    - [MaterialTopAppBar](#materialtopappbar)
-    - [MaterialProgressIndicator](#materialprogressindicator)
-    - [MaterialLabel](#materiallabel)
-    - [MaterialBadge](#materialbadge)
-    - [MaterialNavigationDrawer](#materialnavigationdrawer)
-    - [MaterialCustomControl](#materialcustomcontrol)
-    - [MaterialSearch](#materialsearch)
-    - [MaterialIconButton](#materialiconbutton)
-    - [MaterialSnackBar](#materialsnackbar)
-    - [MaterialDialog](#materialdialog)
-    - [MaterialCard](#materialcard)
-  - [Effects](#effects)
-    - [TouchAndPressEffect](#touchandpresseffect)
-  - [Demo](#demo-1)
-  - [Developed by](#developed-by)
-  - [Contributions](#contributions)
-  - [License](#license)
+## Content table
+- [Setup](#setup)
+- [API Usage](#api-usage)
+- [Styles](#styles)
+- [Controls](#controls)
+  - [MaterialButton](#materialbutton)
+  - [MaterialChips \& MaterialChipsGroup](#materialchips--materialchipsgroup)
+  - [MaterialDatePicker](#materialdatepicker)
+  - [MaterialEditor](#materialeditor)
+  - [MaterialEntry](#materialentry)
+  - [MaterialCodeEntry](#materialcodeentry)
+  - [MaterialField](#materialfield)
+  - [MaterialPicker](#materialpicker)
+  - [MaterialDoublePicker](#materialdoublepicker)
+  - [MaterialSelection](#materialselection)
+  - [MaterialTimePicker](#materialtimepicker)
+  - [MaterialRating](#materialrating)
+  - [MaterialSlider](#materialslider)
+  - [MaterialSegmented](#materialsegmented)
+  - [MaterialDivider](#materialdivider)
+  - [MaterialRadioButtons](#materialradiobuttons)
+  - [MaterialFloatingButton](#materialfloatingbutton)
+  - [MaterialCheckbox](#materialcheckbox)
+  - [MaterialSwitch](#materialswitch)
+  - [MaterialTopAppBar](#materialtopappbar)
+  - [MaterialProgressIndicator](#materialprogressindicator)
+  - [MaterialLabel](#materiallabel)
+  - [MaterialBadge](#materialbadge)
+  - [MaterialNavigationDrawer](#materialnavigationdrawer)
+  - [MaterialCustomControl](#materialcustomcontrol)
+  - [MaterialSearch](#materialsearch)
+  - [MaterialIconButton](#materialiconbutton)
+  - [MaterialSnackBar](#materialsnackbar)
+  - [MaterialDialog](#materialdialog)
+  - [MaterialCard](#materialcard)
+- [Effects](#effects)
+  - [TouchAndPressEffect](#touchandpresseffect)
+- [Sample app](#sample-app)
+- [Developed by](#developed-by)
+- [Contributions](#contributions)
+- [License](#license)
 
 
 ## Setup
@@ -89,7 +82,7 @@ or if you're using **Android**:
 ```C#
 Plugin.MaterialDesignControls.Android.Renderer.Init();           
 ```
-You must add this namespace to your xaml files:
+You must add this namespace to your xaml files **(deprecated)**:
 
 ```XML
 xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
@@ -405,7 +398,7 @@ public class MyControl : ContentView, ITouchAndPressEffectConsumer
 ```
 
 
-## Demo
+## Sample app
 https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/tree/master/example
 
 
