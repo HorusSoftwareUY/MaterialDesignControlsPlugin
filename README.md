@@ -12,7 +12,7 @@ We're developing the next version of the plugin for .NET MAUI, bringing you exci
 
 ## Demo
 
-<img src="screenshots/controls.gif" width="300">
+<img src="screenshots/Controls.gif" width="300">
 
 ## Content table
 - [Setup](#setup)
