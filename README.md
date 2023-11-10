@@ -15,39 +15,53 @@ We're currently upgrading the suite to incorporate the Google Material 3 guideli
 
 ## Demo
 
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/Controls_Final.gif" width="300">
+<img src="screenshots/controls.gif" width="300">
 
 ## Controls Index
-- [MaterialButton](#materialbutton)
-- [MaterialChips & MaterialChipsGroup](#materialchips_&_materialchipsgroup)
-- [MaterialDatePicker](#materialdatepicker)
-- [MaterialEditor](#materialeditor)
-- [MaterialEntry](#materialentry)
-- [MaterialCodeEntry](#materialcodeentry)
-- [MaterialField](#materialfield)
-- [MaterialPicker](#materialpicker)
-- [MaterialDoublePicker](#materialdoublepicker)
-- [MaterialSelection](#materialselection)
-- [MaterialTimePicker](#materialtimepicker)
-- [MaterialRating](#materialrating)
-- [MaterialSlider](#materialslider)
-- [MaterialSegmented](#materialsegmented)
-- [MaterialDivider](#materialdivider)
-- [MaterialRadioButtons](#materialradiobuttons)
-- [MaterialFloatingButton](#materialfloatingbutton)
-- [MaterialCheckbox](#materialcheckbox)
-- [MaterialSwitch](#materialswitch)
-- [MaterialTopAppBar](#materialtopappbar)
-- [MaterialProgressIndicator](#materialprogressindicator)
-- [MaterialBadge](#materialbadge)
-- [MaterialNavigationDrawer](#materialnavigationdrawer)
-- [MaterialLabel](#materiallabel)
-- [MaterialCustomControl](#materialcustomcontrol)
-- [MaterialSearch](#materialsearch)
-- [MaterialIconButton](#materialiconbutton)
-- [MaterialSnackBar](#materialsnackbar)
-- [MaterialDialog](#materialdialog)
-- [MaterialCard](#materialcard)
+- [MaterialDesignControls Plugin for Xamarin Forms](#materialdesigncontrols-plugin-for-xamarin-forms)
+  - [Coming soon](#coming-soon)
+  - [Demo](#demo)
+  - [Controls Index](#controls-index)
+  - [Setup](#setup)
+  - [API Usage](#api-usage)
+  - [Styles](#styles)
+  - [Controls](#controls)
+    - [MaterialButton](#materialbutton)
+    - [MaterialChips \& MaterialChipsGroup](#materialchips--materialchipsgroup)
+    - [MaterialDatePicker](#materialdatepicker)
+    - [MaterialEditor](#materialeditor)
+    - [MaterialEntry](#materialentry)
+    - [MaterialCodeEntry](#materialcodeentry)
+    - [MaterialField](#materialfield)
+    - [MaterialPicker](#materialpicker)
+    - [MaterialDoublePicker](#materialdoublepicker)
+    - [MaterialSelection](#materialselection)
+    - [MaterialTimePicker](#materialtimepicker)
+    - [MaterialRating](#materialrating)
+    - [MaterialSlider](#materialslider)
+    - [MaterialSegmented](#materialsegmented)
+    - [MaterialDivider](#materialdivider)
+    - [MaterialRadioButtons](#materialradiobuttons)
+    - [MaterialFloatingButton](#materialfloatingbutton)
+    - [MaterialCheckbox](#materialcheckbox)
+    - [MaterialSwitch](#materialswitch)
+    - [MaterialTopAppBar](#materialtopappbar)
+    - [MaterialProgressIndicator](#materialprogressindicator)
+    - [MaterialLabel](#materiallabel)
+    - [MaterialBadge](#materialbadge)
+    - [MaterialNavigationDrawer](#materialnavigationdrawer)
+    - [MaterialCustomControl](#materialcustomcontrol)
+    - [MaterialSearch](#materialsearch)
+    - [MaterialIconButton](#materialiconbutton)
+    - [MaterialSnackBar](#materialsnackbar)
+    - [MaterialDialog](#materialdialog)
+    - [MaterialCard](#materialcard)
+  - [Effects](#effects)
+    - [TouchAndPressEffect](#touchandpresseffect)
+  - [Demo](#demo-1)
+  - [Developed by](#developed-by)
+  - [Contributions](#contributions)
+  - [License](#license)
 
 
 ## Setup
@@ -97,7 +111,7 @@ You can override colors, font sizes, font families and animations to apply to al
 ### MaterialButton
 Buttons allow users to take actions, and make choices, with a single tap.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/button_preview.png" width="300">
+<img src="screenshots/button_preview.png" width="300">
 <br/>
 [View documentation](MaterialButtonControl.md)
 
@@ -106,7 +120,7 @@ Buttons allow users to take actions, and make choices, with a single tap.
 ### MaterialChips & MaterialChipsGroup
 Chips are compact elements that represent an input, attribute, or action.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/chips_preview.png" width="300">
+<img src="screenshots/chips_preview.png" width="300">
 <br/>
 [View MaterialChips documentation](MaterialChipsControl.md)
 <br/>
@@ -117,7 +131,7 @@ Chips are compact elements that represent an input, attribute, or action.
 ### MaterialDatePicker
 Date pickers let users select a date.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/date_picker_preview.png" width="300">
+<img src="screenshots/datepicker_preview.png" width="300">
 <br/>
 [View documentation](MaterialDatePickerControl.md)
 
@@ -126,7 +140,7 @@ Date pickers let users select a date.
 ### MaterialEditor
 Text fields let users enter and edit text.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/editor_preview.png" width="300">
+<img src="screenshots/editor_preview.png" width="300">
 <br/>
 [View documentation](MaterialEditorControl.md)
 
@@ -135,7 +149,7 @@ Text fields let users enter and edit text.
 ### MaterialEntry
 Text fields let users enter and edit text.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/entry_preview.png" width="300">
+<img src="screenshots/entry_preview.png" width="300">
 <br/>
 [View documentation](MaterialEntryControl.md)
 
@@ -144,7 +158,7 @@ Text fields let users enter and edit text.
 ### MaterialCodeEntry
 Code fields let users enter and edit pin codes.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/code_preview.png" width="300">
+<img src="screenshots/code_preview.png" width="300">
 <br/>
 [View documentation](MaterialCodeEntryControl.md)
 
@@ -153,7 +167,7 @@ Code fields let users enter and edit pin codes.
 ### MaterialField
 Displays a value with its respective label in read-only format.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/field_preview.png" width="300">
+<img src="screenshots/field_preview.png" width="300">
 <br/>
 [View documentation](MaterialFieldControl.md)
 
@@ -162,7 +176,7 @@ Displays a value with its respective label in read-only format.
 ### MaterialPicker
 Pickers let users select an option.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/picker_preview.png" width="300">
+<img src="screenshots/picker_preview.png" width="300">
 <br/>
 [View documentation](MaterialPickerControl.md)
 
@@ -171,7 +185,7 @@ Pickers let users select an option.
 ### MaterialDoublePicker
 Double pickers let users select two options in the same dialog.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/double_picker_preview.png" width="300">
+<img src="screenshots/doublepicker_preview.png" width="300">
 <br/>
 [View documentation](MaterialDoublePickerControl.md)
 
@@ -180,7 +194,7 @@ Double pickers let users select two options in the same dialog.
 ### MaterialSelection
 Selection let users select an option.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/selection_preview.png" width="300">
+<img src="screenshots/selection_preview.png" width="300">
 <br/>
 [View documentation](MaterialSelectionControl.md)
 
@@ -189,7 +203,7 @@ Selection let users select an option.
 ### MaterialTimePicker
 Time pickers let users select a time.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/time_picker_preview.png" width="300">
+<img src="screenshots/timepicker_preview.png" width="300">
 <br/>
 [View documentation](MaterialTimePickerControl.md)
 
@@ -198,7 +212,7 @@ Time pickers let users select a time.
 ### MaterialRating
 Displays a rating control
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/rating_preview.png" width="300">
+<img src="screenshots/rating_preview.png" width="300">
 <br/>
 [View documentation](MaterialRatingControl.md)
 
@@ -207,7 +221,7 @@ Displays a rating control
 ### MaterialSlider
 Displays a slider control
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/slider_preview.png" width="300">
+<img src="screenshots/slider_preview.png" width="300">
 <br/>
 [View documentation](MaterialSliderControl.md)
 
@@ -216,7 +230,7 @@ Displays a slider control
 ### MaterialSegmented
 Displays a segmented control
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/segmented_preview.png" width="300">
+<img src="screenshots/segmented_preview.png" width="300">
 <br/>
 [View documentation](MaterialSegmentedControl.md)
 
@@ -225,7 +239,7 @@ Displays a segmented control
 ### MaterialDivider
 A divider is a thin line that groups content in lists and layouts.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/divider_preview.png" width="300">
+<img src="screenshots/divider_preview.png" width="300">
 <br/>
 [View documentation](MaterialDividerControl.md)
 
@@ -234,7 +248,7 @@ A divider is a thin line that groups content in lists and layouts.
 ### MaterialRadioButtons
 Displays a radiobuttons control
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/radio_preview.png" width="300">
+<img src="screenshots/radio_preview.png" width="300">
 <br/>
 [View documentation](MaterialRadioButtonsControl.md)
 
@@ -243,7 +257,7 @@ Displays a radiobuttons control
 ### MaterialFloatingButton
 Displays a floating button
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/floating_button_preview.png" width="300">
+<img src="screenshots/floatingbutton_preview.png" width="300">
 <br/>
 [View documentation](MaterialFloatingButton.md)
 
@@ -252,7 +266,7 @@ Displays a floating button
 ### MaterialCheckbox
 Displays a checkbox control
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/checkbox_preview.png" width="300">
+<img src="screenshots/checkbox_preview.png" width="300">
 <br/>
 [View documentation](MaterialCheckboxControl.md)
 
@@ -261,7 +275,7 @@ Displays a checkbox control
 ### MaterialSwitch
 Switches toggle the state of a single item on or off.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/switch_preview.png" width="300">
+<img src="screenshots/switch_preview.png" width="300">
 <br/>
 [View documentation](MaterialSwitchControl.md)
 
@@ -270,7 +284,7 @@ Switches toggle the state of a single item on or off.
 ### MaterialTopAppBar
 TopAppBar displays information and actions at the top of a screen.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/topappbar_preview.png" width="300">
+<img src="screenshots/topappbar_preview.png" width="300">
 <br/>
 [View documentation](MaterialTopAppBar.md)
 
@@ -279,7 +293,7 @@ TopAppBar displays information and actions at the top of a screen.
 ### MaterialProgressIndicator
 MaterialProgressIndicator show the status of a process in real time
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/progress_preview.png" width="300">
+<img src="screenshots/progress_preview.png" width="300">
 <br/>
 [View documentation](MaterialProgressIndicator.md)
 
@@ -288,7 +302,7 @@ MaterialProgressIndicator show the status of a process in real time
 ### MaterialLabel
 MaterialLabel helps make writing legible and beautiful
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/label_preview.png" width="300">
+<img src="screenshots/label_preview.png" width="300">
 <br/>
 [View documentation](MaterialLabelControl.md)
 
@@ -297,7 +311,7 @@ MaterialLabel helps make writing legible and beautiful
 ### MaterialBadge
 Badges show notifications, counts, or status information on navigation items and icons
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/badge_preview.png" width="300">
+<img src="screenshots/badge_preview.png" width="300">
 <br/>
 [View documentation](MaterialBadgeControl.md)
 
@@ -306,7 +320,7 @@ Badges show notifications, counts, or status information on navigation items and
 ### MaterialNavigationDrawer
 Navigation drawers let people switch between UI views on larger devices
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/navigation_preview.png" width="300">
+<img src="screenshots/navigation_preview.png" width="300">
 <br/>
 [View documentation](MaterialNavigationDrawerControl.md)
 
@@ -315,7 +329,7 @@ Navigation drawers let people switch between UI views on larger devices
 ### MaterialCustomControl
 This control provides a simple way to create custom controls with labels and support text that follow the Material Design Guidelines.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/customcontrol_preview.png" width="300">
+<img src="screenshots/customcontrol_preview.png" width="300">
 <br/>
 [View documentation](MaterialCustomControl.md)
 
@@ -324,7 +338,7 @@ This control provides a simple way to create custom controls with labels and sup
 ### MaterialSearch
 MaterialSearch receives a text and executes a search action.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/search_preview.png" width="300">
+<img src="screenshots/search_preview.png" width="300">
 <br/>
 [View documentation](MaterialSearch.md)
 
@@ -333,7 +347,7 @@ MaterialSearch receives a text and executes a search action.
 ### MaterialIconButton
 MaterialIconButton displays an icon and can execute a command.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/iconbutton_preview.png" width="300">
+<img src="screenshots/iconbutton_preview.png" width="300">
 <br/>
 [View documentation](MaterialIconButton.md)
 
@@ -342,7 +356,7 @@ MaterialIconButton displays an icon and can execute a command.
 ### MaterialSnackBar
 MaterialSnackBar show short updates about app processes at the bottom of the screen.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/snackbar_preview.png" width="300">
+<img src="screenshots/snackbar_preview.png" width="300">
 <br/>
 [View documentation](MaterialSnackBar.md)
 
@@ -351,7 +365,7 @@ MaterialSnackBar show short updates about app processes at the bottom of the scr
 ### MaterialDialog
 MaterialDialog provide important prompts in a user flow.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/dialog_preview.png" width="300">
+<img src="screenshots/dialog_preview.png" width="300">
 <br/>
 [View documentation](MaterialDialog.md)
 
@@ -360,7 +374,7 @@ MaterialDialog provide important prompts in a user flow.
 ### MaterialCard
 MaterialCard display content and actions about a single subject.
 <br/>
-<img src="https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/blob/master/screenshots/card_preview.png" width="300">
+<img src="screenshots/card_preview.png" width="300">
 <br/>
 [View documentation](MaterialCard.md)
 

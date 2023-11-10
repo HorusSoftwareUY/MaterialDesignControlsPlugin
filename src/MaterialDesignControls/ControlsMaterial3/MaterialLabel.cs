@@ -101,7 +101,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 case LabelTypes.DisplayLarge:
                     base.FontFamily = this.FontFamily;
                     base.CharacterSpacing = -0.25;
-                    //base.FontSize = MaterialFontSize.DisplayLarge;
+                    base.FontSize = MaterialFontSize.DisplayLarge;
                     break;
                 case LabelTypes.DisplayMedium:
                     base.FontFamily = this.FontFamily;
