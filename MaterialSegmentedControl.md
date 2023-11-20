@@ -139,6 +139,16 @@ This propperty is to set the fontfamily of the segment text.
 <br/>
 <br/>
 
+### Property SelectedFontSize:
+This property is to set the fontsize of the selected segment text.
+<br/>
+<br/>
+
+### Property SelectedFontFamily
+This propperty is to set the fontfamily of the selected segment text.
+<br/>
+<br/>
+
 ### Property IsEnabled
 This property is to set if the control is enabled or not. By default is True.
 <br/>

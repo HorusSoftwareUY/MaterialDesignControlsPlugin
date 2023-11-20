@@ -128,7 +128,11 @@
                                                  SelectedColor="{StaticResource GradientColor9}"
                                                  SelectedTextColor="Black"
                                                  UnselectedColor="#F5F5F5"
-                                                 UnselectedTextColor="{StaticResource GradientColor9}" />
+                                                 UnselectedTextColor="{StaticResource GradientColor9}"
+                                                 FontSize="13"
+                                                 SelectedFontSize="18"
+                                                 FontFamily="{StaticResource LightFont}"
+                                                 SelectedFontFamily="{StaticResource BoldFont}" />
                 </StackLayout>
             </ScrollView>
         </Grid>
