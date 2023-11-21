@@ -13,6 +13,10 @@ namespace Plugin.MaterialDesignControls.Android
 
         public static void Init()
         {
+            // Prevent stripping by linker
+            new TouchAndPressEffect();
+            new TouchReleaseEffect();
+
             _allEffects = new List<PlatformEffect>(typeof(Effects).Assembly.GetTypes()
                 .Where(t => typeof(PlatformEffect).IsAssignableFrom(t))
                 .Select(t => (PlatformEffect)Activator.CreateInstance(t)));
