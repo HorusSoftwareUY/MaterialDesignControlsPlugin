@@ -233,7 +233,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CustomSelectedIconProperty =
-            BindableProperty.Create(nameof(CustomSelectedIcon), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
+            BindableProperty.Create(nameof(CustomSelectedIcon), typeof(View), typeof(MaterialSwitch), defaultValue: null);
 
         public View CustomSelectedIcon
         {
@@ -242,7 +242,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty UnselectedIconProperty =
-            BindableProperty.Create(nameof(UnselectedIcon), typeof(string), typeof(BaseMaterialFieldControl), defaultValue: null);
+            BindableProperty.Create(nameof(UnselectedIcon), typeof(string), typeof(MaterialSwitch), defaultValue: null);
 
         public string UnselectedIcon
         {
@@ -251,7 +251,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CustomUnselectedIconProperty =
-            BindableProperty.Create(nameof(CustomUnselectedIcon), typeof(View), typeof(BaseMaterialFieldControl), defaultValue: null);
+            BindableProperty.Create(nameof(CustomUnselectedIcon), typeof(View), typeof(MaterialSwitch), defaultValue: null);
 
         public View CustomUnselectedIcon
         {

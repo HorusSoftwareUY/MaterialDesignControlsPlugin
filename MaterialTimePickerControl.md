@@ -217,3 +217,8 @@ This property is to set Time.
 This property is to set time Format.
 <br/>
 <br/>
+
+### Property Padding:
+This property is to set the padding of the control. By default uses (16, 8).
+<br/>
+<br/>
