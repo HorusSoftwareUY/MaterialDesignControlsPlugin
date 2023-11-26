@@ -59,16 +59,17 @@
 
                     <material3:MaterialDialog
                         HeadlineText="Quick selection dialog"
-                        SupportingText="Quick selection dialog with a list of items and a Search."
+                        SupportingText="Quick multiple-selection dialog with a list of items and a Search."
                         AcceptText="Accept"
-                        AcceptCommand="{Binding AcceptSelectionCommand}"
+                        AcceptCommand="{Binding AcceptMultipleSelectionCommand}"
                         CancelText="Cancel"
                         CancelCommand="{Binding CancelCommand}"
                         ShowDivider="True"
                         ItemsSource="{Binding ItemsSourceColors}"
                         ShowSearch="True"
                         SearchPlaceholder="Write text to search"
-                        HeightRequest="500" />
+                        HeightRequest="500"
+                        AllowMultiselect="True" />
 
                     <material3:MaterialDivider Margin="0,10" />
 
@@ -100,15 +101,18 @@
                         DividerColor="DarkBlue"
                         CancelTextColor="DarkBlue"
                         CancelFontSize="12"
-                        AcceptTextColor="DarkBlue"
-                        AcceptBackgroundColor="Transparent"
+                        CancelCornerRadius="4"
+                        AcceptTextColor="LightSkyBlue"
+                        AcceptBackgroundColor="DarkBlue"
                         AcceptFontSize="16"
+                        AcceptCornerRadius="4"
                         SearchTextColor="DarkBlue"
                         SearchBackgroundColor="LightSkyBlue"
                         SearchTextAlignment="Center"
                         ItemTextFontSize="14"
                         ItemTextColor="DarkBlue"
-                        HeightRequest="500">
+                        HeightRequest="500"
+                        ItemCheckboxSpacing="0">
                         <material3:MaterialDialog.CustomIcon>
                             <ffimageloadingsvg:SvgCachedImage Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_dialog.svg" />
                         </material3:MaterialDialog.CustomIcon>

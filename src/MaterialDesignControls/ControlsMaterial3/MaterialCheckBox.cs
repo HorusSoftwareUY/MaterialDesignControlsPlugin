@@ -171,7 +171,9 @@ namespace Plugin.MaterialDesignControls.Material3
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 40,
-                HeightRequest = 40
+                HeightRequest = 40,
+                MinimumWidthRequest = 40,
+                MinimumHeightRequest = 40
             };
 
             _chk = new CustomCheckBox()
@@ -204,6 +206,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 40,
                 HeightRequest = 40,
+                MinimumWidthRequest = 40,
+                MinimumHeightRequest = 40,
                 IsVisible = false
             };
 
@@ -232,6 +236,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = LayoutOptions.Center,
                 WidthRequest = 40,
                 HeightRequest = 40,
+                MinimumWidthRequest = 40,
+                MinimumHeightRequest = 40,
                 IsVisible = false
             };
 

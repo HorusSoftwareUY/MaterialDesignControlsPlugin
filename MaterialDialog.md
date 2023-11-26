@@ -133,6 +133,10 @@ This property is to the font size of the cancel button.
 This property is to the font family of the cancel button.
 <br/>
 
+### Property CancelCornerRadius:
+This property is to set the corner radius of cancel button.
+<br/>
+
 ### Property CancelCommand:
 This property is to the command of the cancel button.
 <br/>
@@ -163,6 +167,10 @@ This property is to the font size of the accept button.
 
 ### Property AcceptFontFamily:
 This property is to the font family of the accept button.
+<br/>
+
+### Property AcceptCornerRadius:
+This property is to set the corner radius of accept button.
 <br/>
 
 ### Property AcceptCommand:
@@ -264,4 +272,8 @@ This property is to set the icon when is unchecked. It is a DataTemplate propert
 
 ### Property ItemCheckboxSize
 This property is to set the size of the checkbox.
+<br/>
+
+### Property ItemCheckboxSpacing
+This property is to set the spacing of the checkbox.
 <br/>

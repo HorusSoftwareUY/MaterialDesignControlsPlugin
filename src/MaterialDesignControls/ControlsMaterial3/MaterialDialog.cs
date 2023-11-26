@@ -313,6 +313,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CancelIsBusyProperty, value); }
         }
 
+        public static readonly BindableProperty CancelCornerRadiusProperty =
+            BindableProperty.Create(nameof(CancelCornerRadius), typeof(float), typeof(MaterialDialog), defaultValue: 20f);
+
+        public float CancelCornerRadius
+        {
+            get { return (float)GetValue(CancelCornerRadiusProperty); }
+            set { SetValue(CancelCornerRadiusProperty, value); }
+        }
+
         #endregion CancelButton
 
         #region AcceptButton
@@ -387,6 +396,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (bool)GetValue(AcceptIsBusyProperty); }
             set { SetValue(AcceptIsBusyProperty, value); }
+        }
+
+        public static readonly BindableProperty AcceptCornerRadiusProperty =
+            BindableProperty.Create(nameof(AcceptCornerRadius), typeof(float), typeof(MaterialDialog), defaultValue: 20f);
+
+        public float AcceptCornerRadius
+        {
+            get { return (float)GetValue(AcceptCornerRadiusProperty); }
+            set { SetValue(AcceptCornerRadiusProperty, value); }
         }
 
         #endregion AcceptButton
@@ -568,6 +586,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ItemCheckboxSizeProperty, value); }
         }
 
+        public static readonly BindableProperty ItemCheckboxSpacingProperty =
+            BindableProperty.Create(nameof(ItemCheckboxSpacing), typeof(double), typeof(MaterialDialog), defaultValue: 10.0);
+
+        public double ItemCheckboxSpacing
+        {
+            get { return (double)GetValue(ItemCheckboxSpacingProperty); }
+            set { SetValue(ItemCheckboxSpacingProperty, value); }
+        }
+
         #endregion Items
 
         #region Constructor
@@ -691,6 +718,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     _cancelBtn.IsBusy = CancelIsBusy;
                     break;
 
+                case nameof(CancelCornerRadius):
+                    _cancelBtn.CornerRadius = CancelCornerRadius;
+                    break;
+
                 case nameof(AcceptText):
                     _acceptBtn.Text = AcceptText;
                     break;
@@ -717,6 +748,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(AcceptIsBusy):
                     _acceptBtn.IsBusy = AcceptIsBusy;
+                    break;
+
+                case nameof(AcceptCornerRadius):
+                    _acceptBtn.CornerRadius = AcceptCornerRadius;
                     break;
 
                 case nameof(CancelCommand):
@@ -890,7 +925,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     BackgroundColor = CancelBackgroundColor,
                     Command = CancelCommand,
                     IsVisible = !string.IsNullOrWhiteSpace(CancelText),
-                    MinimumWidthRequest = 80
+                    MinimumWidthRequest = 80,
+                    CornerRadius = CancelCornerRadius
                 };
 
                 _acceptBtn = new MaterialButton
@@ -903,7 +939,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     BackgroundColor = AcceptBackgroundColor,
                     Margin = new Thickness(0),
                     Command = AcceptCommand,
-                    MinimumWidthRequest = 80
+                    MinimumWidthRequest = 80,
+                    CornerRadius = AcceptCornerRadius
                 };
 
                 _btnsContainer.Children.Add(_cancelBtn);
@@ -913,7 +950,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 Content = _mainContainer;
 
-                //Xamarin.Forms.PlatformConfiguration.AndroidSpecific.VisualElement.SetElevation(this, 0);
                 initialized = true;
             }
         }
@@ -952,6 +988,8 @@ namespace Plugin.MaterialDesignControls.Material3
                     materialCheckbox.CustomSelectedIcon = ItemCheckboxCustomSelectedIcon;
                     materialCheckbox.CustomUnselectedIcon = ItemCheckboxCustomUnselectedIcon;
                     materialCheckbox.IsChecked = item.IsSelected;
+                    materialCheckbox.Spacing = ItemCheckboxSpacing;
+                    materialCheckbox.IsRadioButtonStyle = !AllowMultiselect;
                     _optionsContainer.Children.Add(materialCheckbox);
                 }
 
