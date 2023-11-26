@@ -355,3 +355,8 @@ This property is to set the Supporting LineBreakMode.
 - MiddleTruncation
 <br/>
 <br/>
+
+### Property Padding:
+This property is to set the padding of the control. By default uses (16, 8).
+<br/>
+<br/>

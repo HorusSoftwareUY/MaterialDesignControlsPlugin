@@ -49,7 +49,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Properties
 
         public new static readonly BindableProperty AnimatePlaceholderProperty =
-                BindableProperty.Create(nameof(AnimatePlaceholder), typeof(bool), typeof(BaseMaterialFieldControl), defaultValue: false);
+                BindableProperty.Create(nameof(AnimatePlaceholder), typeof(bool), typeof(MaterialTimePicker), defaultValue: false);
 
         public new bool AnimatePlaceholder => false;
 

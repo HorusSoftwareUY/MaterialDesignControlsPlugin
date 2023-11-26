@@ -214,6 +214,24 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(FontFamilyProperty, value); }
         }
 
+        public static readonly BindableProperty SelectedFontSizeProperty =
+            BindableProperty.Create(nameof(SelectedFontSize), typeof(double), typeof(MaterialSegmented), defaultValue: MaterialFontSize.LabelLarge);
+
+        public double SelectedFontSize
+        {
+            get { return (double)GetValue(SelectedFontSizeProperty); }
+            set { SetValue(SelectedFontSizeProperty, value); }
+        }
+
+        public static readonly BindableProperty SelectedFontFamilyProperty =
+            BindableProperty.Create(nameof(SelectedFontFamily), typeof(string), typeof(MaterialSegmented), defaultValue: MaterialFontFamily.Default);
+
+        public string SelectedFontFamily
+        {
+            get { return (string)GetValue(SelectedFontFamilyProperty); }
+            set { SetValue(SelectedFontFamilyProperty, value); }
+        }
+
         public static readonly BindableProperty DisabledBorderColorProperty =
             BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(MaterialSegmented), defaultValue: MaterialColor.Disable);
 
@@ -504,6 +522,8 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 card.BackgroundColor = IsEnabled ? SelectedColor : DisabledSelectedColor;
                 label.TextColor = IsEnabled ? SelectedTextColor : DisabledSelectedTextColor;
+                label.FontSize = SelectedFontSize;
+                label.FontFamily = SelectedFontFamily;
 
                 if (item.SelectedIconIsVisible)
                 {
@@ -531,6 +551,8 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 card.BackgroundColor = IsEnabled ? UnselectedColor : DisabledUnselectedColor;
                 label.TextColor = IsEnabled ? UnselectedTextColor : DisabledUnselectedTextColor;
+                label.FontSize = FontSize;
+                label.FontFamily = FontFamily;
 
                 if (item.UnselectedIconIsVisible)
                 {

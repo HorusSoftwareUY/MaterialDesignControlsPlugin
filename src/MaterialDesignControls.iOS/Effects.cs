@@ -13,6 +13,9 @@ namespace Plugin.MaterialDesignControls.iOS
 
         public static void Init()
         {
+            // Prevent stripping by linker
+            new TouchAndPressEffect();
+
             _allEffects = new List<PlatformEffect>(typeof(Effects).Assembly.GetTypes()
                 .Where(t => typeof(PlatformEffect).IsAssignableFrom(t))
                 .Select(t => (PlatformEffect)Activator.CreateInstance(t)));

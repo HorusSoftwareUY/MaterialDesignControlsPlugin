@@ -77,6 +77,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(HorizontalTextAlignmentProperty, value); }
         }
 
+        public static readonly new BindableProperty PaddingProperty =
+            BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(BaseMaterialFieldControl), defaultValue: new Thickness(16, 8));
+
+        public new Thickness Padding
+        {
+            get { return (Thickness)GetValue(PaddingProperty); }
+            set { SetValue(PaddingProperty, value); }
+        }
+
         #endregion Properties
 
         #region Text
@@ -704,7 +713,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     this._lblLabel.Margin = LabelMargin;
                     break;
                 case nameof(Padding):
-                    _frmContainer.Padding = this.Padding;
+                    _frmContainer.Padding = Padding;
                     break;
                 case nameof(CornerRadius):
                     this._frmContainer.CornerRadius = CornerRadius;
@@ -823,7 +832,7 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 CornerRadius = new CornerRadius(10, 10, 0, 0),
                 HasShadow = false,
-                Padding = new Thickness(16, 8),
+                Padding = Padding,
                 Type = MaterialCardType.Custom
             };
 
@@ -833,14 +842,14 @@ namespace Plugin.MaterialDesignControls.Material3
                 RowSpacing = 0,
                 RowDefinitions = new RowDefinitionCollection()
                 {
-                    new RowDefinition(){ Height = 16 },
-                    new RowDefinition(){ Height = 24 }
+                    new RowDefinition { Height = 16 },
+                    new RowDefinition { Height = 24 }
                 },
                 ColumnDefinitions = new ColumnDefinitionCollection() 
                 {
-                    new ColumnDefinition(){Width = GridLength.Auto },
-                    new ColumnDefinition(){Width = GridLength.Star },
-                    new ColumnDefinition(){Width = GridLength.Auto }
+                    new ColumnDefinition { Width = GridLength.Auto },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Auto }
                 }
             };
 

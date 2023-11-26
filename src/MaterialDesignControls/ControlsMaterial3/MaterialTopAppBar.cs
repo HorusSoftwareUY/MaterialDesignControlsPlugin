@@ -37,9 +37,6 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private double _descriptionLateralMargin = 10;
 
-        private double _mediumDefaultFontSize = 28;
-        private double _largeDefaultFontSize = 32;
-
         private int _smallRowHeight = 48;
         private int _mediumRowHeight = 106;
         private int _largeRowHeight = 106;
@@ -636,7 +633,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     int maxHeight = Type == MaterialTopAppBarType.Large ? _largeRowHeight : _mediumRowHeight;
                     int minHeight = _smallRowHeight;
 
-                    double maxFontSize = Type == MaterialTopAppBarType.Large ? _largeDefaultFontSize : _mediumDefaultFontSize;
+                    double maxFontSize = Type == MaterialTopAppBarType.Large ? MaterialFontSize.HeadlineMedium : MaterialFontSize.HeadlineSmall;
                     double minFontSize = HeadlineFontSize;
 
                     int maxLabelLateralMargin = Type == MaterialTopAppBarType.Large ? _largeLabelLateralMargin : _mediumLabelLateralMargin;
@@ -708,25 +705,37 @@ namespace Plugin.MaterialDesignControls.Material3
             switch (Type)
             {
                 case MaterialTopAppBarType.Small:
+                    _leadingIconCustomImageButton.VerticalOptions = LayoutOptions.Center;
+                    _cntLeadingActivityIndicator.VerticalOptions = LayoutOptions.Center;
+                    _trailingIconCustomImageButton.VerticalOptions = LayoutOptions.Center;
+                    _cntTrailingActivityIndicator.VerticalOptions = LayoutOptions.Center;
                     _headlineLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _headlineLabel.Margin = new Thickness(_smallLabelLateralMargin, HeadlineMarginAdjustment.Top, _smallLabelLateralMargin, HeadlineMarginAdjustment.Bottom);
                     _descriptionLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _descriptionLabel.Margin = new Thickness(_descriptionLateralMargin, DescriptionMarginAdjustment.Top, _descriptionLateralMargin, DescriptionMarginAdjustment.Bottom);
                     break;
                 case MaterialTopAppBarType.Medium:
+                    _leadingIconCustomImageButton.VerticalOptions = LayoutOptions.Start;
+                    _cntLeadingActivityIndicator.VerticalOptions = LayoutOptions.Start;
+                    _trailingIconCustomImageButton.VerticalOptions = LayoutOptions.Start;
+                    _cntTrailingActivityIndicator.VerticalOptions = LayoutOptions.Start;
                     _headlineLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _headlineLabel.VerticalOptions = LayoutOptions.End;
                     _headlineLabel.Margin = new Thickness(_mediumLabelLateralMargin, HeadlineMarginAdjustment.Top, _mediumLabelLateralMargin, HeadlineMarginAdjustment.Bottom);
-                    _headlineLabel.FontSize = _mediumDefaultFontSize;
+                    _headlineLabel.FontSize = MaterialFontSize.HeadlineSmall;
                     RowDefinitions[0].Height = new GridLength(_mediumRowHeight);
                     _descriptionLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _descriptionLabel.Margin = new Thickness(_descriptionLateralMargin, DescriptionMarginAdjustment.Top, _descriptionLateralMargin, DescriptionMarginAdjustment.Bottom);
                     break;
                 case MaterialTopAppBarType.Large:
+                    _leadingIconCustomImageButton.VerticalOptions = LayoutOptions.Start;
+                    _cntLeadingActivityIndicator.VerticalOptions = LayoutOptions.Start;
+                    _trailingIconCustomImageButton.VerticalOptions = LayoutOptions.Start;
+                    _cntTrailingActivityIndicator.VerticalOptions = LayoutOptions.Start;
                     _headlineLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _headlineLabel.VerticalOptions = LayoutOptions.End;
                     _headlineLabel.Margin = new Thickness(_largeLabelLateralMargin, HeadlineMarginAdjustment.Top, _largeLabelLateralMargin, HeadlineMarginAdjustment.Bottom);
-                    _headlineLabel.FontSize = _largeDefaultFontSize;
+                    _headlineLabel.FontSize = MaterialFontSize.HeadlineMedium;
                     RowDefinitions[0].Height = new GridLength(_largeRowHeight);
                     _descriptionLabel.HorizontalTextAlignment = TextAlignment.Start;
                     _descriptionLabel.Margin = new Thickness(_descriptionLateralMargin, DescriptionMarginAdjustment.Top, _descriptionLateralMargin, DescriptionMarginAdjustment.Bottom);

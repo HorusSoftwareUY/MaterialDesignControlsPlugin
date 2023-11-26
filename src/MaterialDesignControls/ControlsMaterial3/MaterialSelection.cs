@@ -32,7 +32,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
 
         public new static readonly BindableProperty AnimatePlaceholderProperty =
-            BindableProperty.Create(nameof(AnimatePlaceholder), typeof(bool), typeof(BaseMaterialFieldControl), defaultValue: false);
+            BindableProperty.Create(nameof(AnimatePlaceholder), typeof(bool), typeof(MaterialSelection), defaultValue: false);
 
         public new bool AnimatePlaceholder => false;
 
