@@ -60,24 +60,15 @@ namespace Plugin.MaterialDesignControls.Material3
             txtEntry.SetValue(Grid.ColumnProperty, 1);
             txtEntry.SetValue(Grid.RowProperty, 0);
             txtEntry.SetValue(Grid.RowSpanProperty, 2);
-            txtEntry.VerticalOptions = LayoutOptions.Center;
+
             txtEntry.ReturnType = ReturnType.Search;
             CustomContent = txtEntry;
 
             this.txtEntry.Focused += HandleFocusChange;
             this.txtEntry.Unfocused += HandleFocusChange;
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
+
             SetDefaultStyle();
-
-            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
-            frameTapGestureRecognizer.Tapped += (s, e) =>
-            {
-                if (txtEntry.IsControlEnabled())
-                    this.txtEntry.Focus();
-            };
-
-            this.Label.GestureRecognizers.Clear();
-            this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         private void SetDefaultStyle()
@@ -103,13 +94,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var control = (MaterialSearch)bindable;
 
-            if (!control.txtEntry.IsFocused)
-            {
-                if (!string.IsNullOrEmpty((string)newValue))
-                    await control.TransitionToTitle();
-                else
-                    await control.TransitionToPlaceholder();
-            }
+            await control.HandlePlaceholderTransition(newValue);
 
             control.txtEntry.Text = (string)newValue;
         }
@@ -191,6 +176,12 @@ namespace Plugin.MaterialDesignControls.Material3
             this.Text = this.txtEntry.Text;
             if (this.SearchOnEveryTextChange)
                 this.SearchCommand?.Execute(this.Text);
+        }
+
+        internal override void OnControlTappedEvent()
+        {
+            if (txtEntry.IsControlEnabled())
+                this.Focus();
         }
 
         #endregion Methods

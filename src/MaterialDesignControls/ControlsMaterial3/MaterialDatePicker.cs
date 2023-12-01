@@ -22,16 +22,6 @@ namespace Plugin.MaterialDesignControls.Material3
             pckDate.Focused += HandleFocusChange;
             pckDate.Unfocused += HandleFocusChange;
             pckDate.SetBinding(DatePicker.DateProperty, new Binding() { Source = this, Path = DateProperty.PropertyName });
-
-            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
-            frameTapGestureRecognizer.Tapped += (s, e) =>
-            {
-                if (this.pckDate.IsControlEnabled())
-                    this.pckDate.Focus();
-            };
-
-            this.Label.GestureRecognizers.Clear();
-            this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
@@ -154,6 +144,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 Focused?.Invoke(this, e);
             else
                 Unfocused?.Invoke(this, e);
+        }
+
+        internal override void OnControlTappedEvent()
+        {
+            if (pckDate.IsControlEnabled())
+                this.Focus();
         }
 
         #endregion Methods

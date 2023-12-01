@@ -180,7 +180,15 @@
                                              AnimatePlaceholder="True"
                                              BorderWidth="1"
                                              Placeholder="Address"
-                                             TabIndex="11" />
+                                             TabIndex="11"
+                                             IsVisible="{Binding IsVisible}"
+                                             IsEnabled="{Binding IsEnabled}" />
+
+                    <material3:MaterialSwitch IsToggled="{Binding IsEnabled}"
+                                              Text="Is enabled" />
+
+                    <material3:MaterialSwitch IsToggled="{Binding IsVisible}"
+                                              Text="Is visible" />
 
                     <material3:MaterialDivider Margin="0,10" />
 

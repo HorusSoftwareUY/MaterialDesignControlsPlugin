@@ -26,17 +26,6 @@ namespace Plugin.MaterialDesignControls.Material3
             this.txtEditor.TextChanged += TxtEntry_TextChanged;
 
             this.txtEditor.CursorColor = CursorColor;
-
-            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
-            frameTapGestureRecognizer.Tapped += (s, e) =>
-            {
-                if (txtEditor.IsControlEnabled())
-                {
-                    this.txtEditor.Focus();
-                }
-            };
-            this.Label.GestureRecognizers.Clear();
-            this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
@@ -125,10 +114,12 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
-        private static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
+        private async static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialEditor)bindable;
             control.txtEditor.Text = (string)newValue;
+
+            await control.HandlePlaceholderTransition(newValue);
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -228,6 +219,12 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             this.Text = this.txtEditor.Text;
             this.TextChanged?.Invoke(this, e);
+        }
+
+        internal override void OnControlTappedEvent()
+        {
+            if (txtEditor.IsControlEnabled())
+                this.Focus();
         }
 
         #endregion Methods

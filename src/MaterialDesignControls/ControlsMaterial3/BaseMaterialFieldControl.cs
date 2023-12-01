@@ -649,6 +649,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
             switch (propertyName)
             {
+                case nameof(base.IsVisible):
+                    base.OnPropertyChanged(propertyName);
+                    break;
+
                 case nameof(IsEnabled):
                     CustomContent.SetIsEnabled(IsEnabled);
 
@@ -833,7 +837,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 CornerRadius = new CornerRadius(10, 10, 0, 0),
                 HasShadow = false,
                 Padding = Padding,
-                Type = MaterialCardType.Custom
+                Type = MaterialCardType.Custom,
+                Animation = AnimationTypes.None
             };
 
             _contentLayout = new Grid()
@@ -870,12 +875,21 @@ namespace Plugin.MaterialDesignControls.Material3
                 LineBreakMode = LineBreakMode.NoWrap,
                 VerticalTextAlignment = TextAlignment.Center,
                 HorizontalTextAlignment = TextAlignment.Start,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
             _lblAnimatedLabel.SetValue(Grid.RowProperty, 0);
             _lblAnimatedLabel.SetValue(Grid.ColumnProperty, 1);
+
+            var frameTapGestureRecognizer = new TapGestureRecognizer();
+            frameTapGestureRecognizer.Command = new Command(OnControlTappedEvent);
+            //frameTapGestureRecognizer.Tapped += (s, e) =>
+            //{
+            //    OnControlTappedEvent();
+            //};
+            _lblLabel.GestureRecognizers.Add(frameTapGestureRecognizer);
+            _lblAnimatedLabel.GestureRecognizers.Add(frameTapGestureRecognizer);
 
             _leadingIconButton = new MaterialIconButton()
             {
@@ -1001,9 +1015,22 @@ namespace Plugin.MaterialDesignControls.Material3
             return item.ToString();
         }
 
+        internal abstract void OnControlTappedEvent();
+
         #endregion Methods
 
         #region AnimationPlaceHolder
+
+        public async Task HandlePlaceholderTransition(object newValue)
+        {
+            if (!Control.IsControlFocused())
+            {
+                if (newValue is not null)
+                    await TransitionToTitle();
+                else
+                    await TransitionToPlaceholder();
+            }
+        }
 
         public async Task TransitionToTitle()
         {

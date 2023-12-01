@@ -29,18 +29,6 @@ namespace Plugin.MaterialDesignControls.Material3
             this.txtEntry.TextChanged += TxtEntry_TextChanged;
 
             this.txtEntry.CursorColor = CursorColor;
-
-            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
-            frameTapGestureRecognizer.Tapped +=  (s, e) =>
-            {
-                if (txtEntry.IsControlEnabled())
-                {
-                    this.txtEntry.Focus();
-                }
-            };
-
-            this.Label.GestureRecognizers.Clear();
-            this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
@@ -190,17 +178,7 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var control = (MaterialEntry)bindable;
 
-            if (!control.txtEntry.IsFocused)
-            {
-                if (!string.IsNullOrEmpty((string)newValue))
-                {
-                    await control.TransitionToTitle();
-                }
-                else
-                {
-                    await control.TransitionToPlaceholder();
-                }
-            }
+            await control.HandlePlaceholderTransition(newValue);
 
             control.txtEntry.Text = (string)newValue;
         }
@@ -387,6 +365,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 txtEntry.Text = txtEntry.Text.ToLower();
             else if (TextTransform == TextTransforms.Uppercase)
                 txtEntry.Text = txtEntry.Text.ToUpper();
+        }
+
+        internal override void OnControlTappedEvent()
+        {
+            if (txtEntry.IsControlEnabled())
+                this.Focus();
         }
 
         #endregion Methods

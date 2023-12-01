@@ -67,7 +67,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
-        private static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
+        private async static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialSelection)bindable;
             if (string.IsNullOrEmpty((string)newValue))
@@ -80,6 +80,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 control.lblCustom.Text = (string)newValue;
                 control.lblCustom.TextColor = control.TextColor;
             }
+
+            await control.HandlePlaceholderTransition(newValue);
         }
 
         private static void OnCommandChanged(BindableObject bindable, object oldValue, object newValue)
@@ -125,6 +127,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 this.lblCustom.TextColor = this.PlaceholderColor;
             }
         }
+
+        internal override void OnControlTappedEvent()
+        { }
+
         #endregion Methods
     }
 }
