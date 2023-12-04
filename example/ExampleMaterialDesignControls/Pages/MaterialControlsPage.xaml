@@ -1064,6 +1064,41 @@
                             <contentViews:MaterialDesign3Badge />
                         </Grid>
                     </Frame>
+
+                    <Frame Grid.Row="14"
+                           Grid.Column="1"
+                           Padding="15"
+                           BackgroundColor="{StaticResource GradientColorTransparent8}"
+                           CornerRadius="16"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoMaterialBottomSheetCommand}" />
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <StackLayout>
+                                <Frame Padding="0"
+                                       BackgroundColor="{StaticResource GradientColorTransparent8}"
+                                       CornerRadius="45"
+                                       HasShadow="False"
+                                       HeightRequest="90"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="Center"
+                                       WidthRequest="90">
+                                    <ffimageloadingsvg:SvgCachedImage Margin="20"
+                                                                      Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_bottomsheet.svg" />
+                                </Frame>
+                                <material3:MaterialLabel FontAttributes="Bold"
+                                                        FontSize="{StaticResource Body2FontSize}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        Text="BottomSheet"
+                                                        TextColor="{StaticResource GradientColor8}"
+                                                        VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+                            <contentViews:MaterialDesign3Badge />
+                        </Grid>
+                    </Frame>
                 </Grid>
             </ScrollView>
         </Grid>

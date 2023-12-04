@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialBottomSheetPage"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid
+            RowDefinitions="Auto,*"
+            RowSpacing="0">
+            <material3:MaterialTopAppBar
+                Headline="MaterialBottomSheet"
+                LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage
+                        Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
+            </material3:MaterialTopAppBar>
+
+            <ScrollView
+                Grid.Row="1"
+                VerticalScrollBarVisibility="Never">
+                <StackLayout
+                    Padding="20,0,20,20"
+                    Spacing="10">
+
+                    <contentViews:InfoIndicatorView
+                        Message="MaterialBottomSheet follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialButton
+                        ButtonType="Text"
+                        Command="{Binding OpenBottomSheetCommand}"
+                        Text="Open MaterialBottomSheet" />
+
+                </StackLayout>
+            </ScrollView>
+
+            <material3:MaterialBottomSheet
+                x:Name="materialBottomSheet"
+                Grid.Row="1"
+                ContainerHeight="400">
+                <material3:MaterialBottomSheet.ContainerContent>
+                    <StackLayout
+                        HeightRequest="300"
+                        BackgroundColor="SkyBlue"
+                        VerticalOptions="Start"
+                        Margin="16,0">
+                        <material3:MaterialLabel
+                            HorizontalTextAlignment="Center"
+                            Text="MaterialBottomSheet sample" />
+
+                        <material3:MaterialButton
+                            ButtonType="Text"
+                            Command="{Binding CloseBottomSheetCommand}"
+                            Text="Close" />
+
+                        <material3:MaterialLabel
+                            HorizontalTextAlignment="Center"
+                            VerticalOptions="EndAndExpand"
+                            Text="Last label" />
+
+                    </StackLayout>
+                </material3:MaterialBottomSheet.ContainerContent>
+            </material3:MaterialBottomSheet>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

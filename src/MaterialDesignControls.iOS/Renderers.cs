@@ -23,6 +23,7 @@ namespace Plugin.MaterialDesignControls.iOS
             Plugin.MaterialDesignControls.Material3.iOS.MaterialSliderRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialCheckBoxRenderer.Init();
             Plugin.MaterialDesignControls.Material3.iOS.MaterialCardRenderer.Init();
+            Plugin.MaterialDesignControls.Material3.iOS.MaterialBottomSheetRenderer.Init();
         }
     }
 }

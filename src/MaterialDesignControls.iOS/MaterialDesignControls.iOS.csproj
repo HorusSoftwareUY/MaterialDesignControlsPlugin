@@ -101,6 +101,7 @@
     <Compile Include="Utils\ImageSourceExtensions.cs" />
     <Compile Include="Utils\DrawingExtensions.cs" />
     <Compile Include="Renderers\Material3\MaterialCardRenderer.cs" />
+    <Compile Include="Renderers\Material3\MaterialBottomSheetRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaterialDesignControls\MaterialDesignControls.csproj">

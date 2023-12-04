@@ -208,6 +208,7 @@
     <Compile Include="Styles\MaterialFontSize.cs" />
     <Compile Include="Styles\MaterialAnimation.cs" />
     <Compile Include="Styles\MaterialFontFamily.cs" />
+    <Compile Include="ControlsMaterial3\MaterialBottomSheet.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
