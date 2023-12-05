@@ -1,4 +1,5 @@
 ﻿using ExampleMaterialDesignControls.ViewModels;
+using Plugin.MaterialDesignControls.Material3;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.Pages
@@ -14,8 +15,8 @@ namespace ExampleMaterialDesignControls.Pages
 				IsModalPage = isModalPage,
                 DisplayAlert = DisplayAlert,
 				Navigation = Navigation,
-				OpenBottomSheetControl = async () => await materialBottomSheet.Open(),
-                CloseBottomSheetControl = async () => await materialBottomSheet.Close()
+				OpenBottomSheetControl = async (controlName) => await this.FindByName<MaterialBottomSheet>(controlName).Open(),
+                CloseBottomSheetControl = async (controlName) => await this.FindByName<MaterialBottomSheet>(controlName).Close()
             };
         }
     }

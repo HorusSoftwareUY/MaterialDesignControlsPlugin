@@ -7,8 +7,9 @@ namespace Plugin.MaterialDesignControls.Utils
         private const string Prefix = "[Plugin.MaterialDesignControls]";
 
         public static void Log(Exception ex)
-        {
-            Console.WriteLine($"{Prefix} - {ex.Message} - {ex.StackTrace}");
-        }
+            => Console.WriteLine($"{Prefix} - {ex.Message} - {ex.StackTrace}");
+
+        public static void Log(string text)
+            => Console.WriteLine($"{Prefix} - {text}");
     }
 }

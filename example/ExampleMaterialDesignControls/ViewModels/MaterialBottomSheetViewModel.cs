@@ -7,14 +7,14 @@ namespace ExampleMaterialDesignControls.ViewModels
 {
 	public partial class MaterialBottomSheetViewModel : BaseViewModel
     {
-        public Action OpenBottomSheetControl { get; set; }
+        public Action<string> OpenBottomSheetControl { get; set; }
 
-        public Action CloseBottomSheetControl { get; set; }
+        public Action<string> CloseBottomSheetControl { get; set; }
 
         [ICommand]
-        private async Task OpenBottomSheet()
+        private async Task OpenBottomSheet(string controlName)
         {
-            OpenBottomSheetControl?.Invoke();
+            OpenBottomSheetControl?.Invoke(controlName);
         }
 
         [ICommand]
@@ -24,9 +24,9 @@ namespace ExampleMaterialDesignControls.ViewModels
         }
 
         [ICommand]
-        private async Task CloseBottomSheet()
+        private async Task CloseBottomSheet(string controlName)
         {
-            CloseBottomSheetControl?.Invoke();
+            CloseBottomSheetControl?.Invoke(controlName);
         }
     }
 }

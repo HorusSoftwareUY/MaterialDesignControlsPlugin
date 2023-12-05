@@ -153,5 +153,10 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await Navigation.PushAsync(new MaterialDialogPage());
         });
+
+        public ICommand GoMaterialBottomSheetCommand => new Command(async () =>
+        {
+            await Navigation.PushAsync(new MaterialBottomSheetPage());
+        });
     }
 }

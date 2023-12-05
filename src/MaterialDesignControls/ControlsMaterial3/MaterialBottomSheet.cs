@@ -12,8 +12,6 @@ namespace Plugin.MaterialDesignControls.Material3
     {
         #region Attributes and Properties
 
-        private const double _hidingThreshold = 0.4;
-
         private double _currentPosition = 0;
 
         private double _bottomSafeArea = 0;
@@ -43,7 +41,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region Bindable properties
 
         public static BindableProperty ContainerHeightProperty =
-            BindableProperty.Create(nameof(ContainerHeight), typeof(double), typeof(MaterialBottomSheet), defaultValue: 400.0, propertyChanged: OnContainerHeightChanged);
+            BindableProperty.Create(nameof(ContainerHeight), typeof(double), typeof(MaterialBottomSheet), defaultValue: -1.0, propertyChanged: OnContainerHeightChanged);
 
         public double ContainerHeight
         {
@@ -51,13 +49,31 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ContainerHeightProperty, value); OnPropertyChanged(); }
         }
 
-        public static BindableProperty ContainerContentProperty =
-            BindableProperty.Create(nameof(ContainerContent), typeof(View), typeof(MaterialBottomSheet), defaultValue: default(View), propertyChanged: OnContainerContentChanged);
+        public static BindableProperty MaximumHeightRequestProperty =
+            BindableProperty.Create(nameof(MaximumHeightRequest), typeof(double), typeof(MaterialBottomSheet), defaultValue: -1.0);
 
-        public View ContainerContent
+        public double MaximumHeightRequest
         {
-            get { return (View)GetValue(ContainerContentProperty); }
-            set { SetValue(ContainerContentProperty, value); OnPropertyChanged(); }
+            get { return (double)GetValue(MaximumHeightRequestProperty); }
+            set { SetValue(MaximumHeightRequestProperty, value); OnPropertyChanged(); }
+        }
+
+        public static new BindableProperty ContentProperty =
+            BindableProperty.Create(nameof(Content), typeof(View), typeof(MaterialBottomSheet), defaultValue: default(View), propertyChanged: OnContentChanged);
+
+        public new View Content
+        {
+            get { return (View)GetValue(ContentProperty); }
+            set { SetValue(ContentProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly BindableProperty ContentVerticalOptionsProperty =
+            BindableProperty.Create(nameof(ContentVerticalOptions), typeof(LayoutOptions), typeof(MaterialBottomSheet), defaultValue: LayoutOptions.Start);
+
+        public LayoutOptions ContentVerticalOptions
+        {
+            get { return (LayoutOptions)GetValue(ContentVerticalOptionsProperty); }
+            set { SetValue(ContentVerticalOptionsProperty, value); }
         }
 
         public static readonly BindableProperty ScrimColorProperty =
@@ -150,6 +166,33 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(AnimationDurationProperty, value); }
         }
 
+        public static readonly BindableProperty DismissThresholdProperty =
+            BindableProperty.Create(nameof(DismissThreshold), typeof(double), typeof(MaterialBottomSheet), defaultValue: 0.4);
+
+        public double DismissThreshold
+        {
+            get { return (double)GetValue(DismissThresholdProperty); }
+            set { SetValue(DismissThresholdProperty, value); }
+        }
+
+        public static readonly BindableProperty IsSwipeEnabledProperty =
+            BindableProperty.Create(nameof(IsSwipeEnabled), typeof(bool), typeof(MaterialBottomSheet), defaultValue: true);
+
+        public bool IsSwipeEnabled
+        {
+            get { return (bool)GetValue(IsSwipeEnabledProperty); }
+            set { SetValue(IsSwipeEnabledProperty, value); }
+        }
+
+        public static readonly BindableProperty DismissWhenScrimIsTappedProperty =
+            BindableProperty.Create(nameof(DismissWhenScrimIsTapped), typeof(bool), typeof(MaterialBottomSheet), defaultValue: true);
+
+        public bool DismissWhenScrimIsTapped
+        {
+            get { return (bool)GetValue(DismissWhenScrimIsTappedProperty); }
+            set { SetValue(DismissWhenScrimIsTappedProperty, value); }
+        }
+
         #endregion Bindable properties
 
         #region Constructors
@@ -166,7 +209,11 @@ namespace Plugin.MaterialDesignControls.Material3
             };
 
             var scrimTapGestureRecognizer = new TapGestureRecognizer();
-            scrimTapGestureRecognizer.Tapped += async (s, e) => await Close();
+            scrimTapGestureRecognizer.Tapped += async (s, e) =>
+            {
+                if (DismissWhenScrimIsTapped)
+                    await Close();
+            };
             _scrimBoxView.GestureRecognizers.Add(scrimTapGestureRecognizer);
 
             mainLayout.Children.Add(_scrimBoxView);
@@ -187,9 +234,9 @@ namespace Plugin.MaterialDesignControls.Material3
                 HasShadow = false,
                 BackgroundColor = BackgroundColor,
                 CornerRadius = new CornerRadius(CornerRadius, CornerRadius, 0, 0),
-                Content = ContainerContent,
+                Content = Content,
                 HeightRequest = ContainerHeightWithBottomSafeArea,
-                Padding = new Thickness(0, 0, 0, _bottomSafeArea)
+                Padding = new Thickness(0)
             };
 
             // Remove MaterialCard effects to avoid a pan gesture lose
@@ -215,7 +262,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
             mainLayout.Children.Add(_containerView);
 
-            Content = mainLayout;
+            base.Content = mainLayout;
             InputTransparent = true;
         }
 
@@ -226,33 +273,58 @@ namespace Plugin.MaterialDesignControls.Material3
         private static void OnContainerHeightChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialBottomSheet)bindable;
-            control._containerView.HeightRequest = control.ContainerHeightWithBottomSafeArea;
-            control._sheetView.HeightRequest = control.ContainerHeightWithBottomSafeArea;
+            control.SetInitialState();
         }
 
-        private static void OnContainerContentChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void OnContentChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialBottomSheet)bindable;
 
             if (control._sheetViewLayout.Children.Count > 0)
                 control._sheetViewLayout.Children.Clear();
 
-            control._sheetViewLayout.Children.Add((View)newValue, 0, 0);
+            var containerContentView = (View)newValue;
+
+            if (containerContentView.Margin != new Thickness(0))
+                LoggerHelper.Log("Avoid utilizing the Margin property within the root element of the MaterialBottomSheet's content, as its usage may result in errors or unexpected behaviors.");
+
+            containerContentView.VerticalOptions = control.ContentVerticalOptions;
+
+            control._sheetViewLayout.Children.Add(containerContentView, 0, 0);
             control._sheetViewLayout.Children.Add(control._dragHandleView, 0, 0);
 
-            //((View)newValue).SizeChanged += (s, e) =>
-            //{
-            //    var height2 = ((View)s).Height;
-            //};
+            control.ApplyContainerHeight(containerContentView);
+        }
 
-            //((View)newValue).PropertyChanged += (s, e) =>
-            //{
-            //    var height2 = ((View)s).Height;
-            //};
-
-
-            //var height = ((View)newValue).Bounds.Height;
-            //var height2 = ((View)newValue).Height;
+        private void ApplyContainerHeight(View containerContentView)
+        {
+            if (ContainerHeight <= 0)
+            {
+                if (containerContentView.Height > 0)
+                {
+                    if (MaximumHeightRequest > 0)
+                    {
+                        ContainerHeight = containerContentView.Height > MaximumHeightRequest ?
+                            MaximumHeightRequest : containerContentView.Height;
+                    }
+                    else
+                        ContainerHeight = containerContentView.Height;
+                }
+                else
+                {
+                    containerContentView.SizeChanged += (s, e) =>
+                    {
+                        var containerContentViewHeight = ((View)s).Height;
+                        if (MaximumHeightRequest > 0)
+                        {
+                            ContainerHeight = containerContentViewHeight > MaximumHeightRequest ?
+                                MaximumHeightRequest : containerContentViewHeight;
+                        }
+                        else
+                            ContainerHeight = containerContentViewHeight;
+                    };
+                }
+            }
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -281,6 +353,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(DragHandleIsVisible):
                     _dragHandleView.IsVisible = DragHandleIsVisible;
                     break;
+                case nameof(ContentVerticalOptions):
+                    if (Content != null)
+                        Content.VerticalOptions = ContentVerticalOptions;
+                    break;
                 default:
                     base.OnPropertyChanged(propertyName);
                     break;
@@ -290,11 +366,14 @@ namespace Plugin.MaterialDesignControls.Material3
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
-            _containerView.Content.TranslationY = TranslationYClosed;
+            SetInitialState();
         }
 
         public async void Container_PanUpdated(object sender, PanUpdatedEventArgs e)
         {
+            if (!IsSwipeEnabled)
+                return;
+
             try
             {
                 if (e.StatusType == GestureStatus.Running)
@@ -305,7 +384,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 }
                 else if (e.StatusType == GestureStatus.Completed)
                 {
-                    var threshold = ContainerHeightWithBottomSafeArea * _hidingThreshold;
+                    var threshold = ContainerHeightWithBottomSafeArea * DismissThreshold;
                     if (_currentPosition < threshold)
                         await Open();
                     else
@@ -362,6 +441,11 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             var tabBarIsVisible = TabBarIsVisible();
             _bottomSafeArea = tabBarIsVisible ? 0 : bottomSafeArea;
+            SetInitialState();
+        }
+
+        private void SetInitialState()
+        {
             _containerView.TranslationY = _bottomSafeArea;
             _containerView.Content.TranslationY = TranslationYClosed;
             _containerView.HeightRequest = ContainerHeightWithBottomSafeArea;
