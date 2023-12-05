@@ -38,34 +38,51 @@
                         Command="{Binding OpenBottomSheetCommand}"
                         Text="Open MaterialBottomSheet" />
 
+                    <material3:MaterialButton
+                        ButtonType="Text"
+                        Command="{Binding OpenInModalPageCommand}"
+                        Text="Open in modal page" />
+
+                    <BoxView
+                        BackgroundColor="Blue"
+                        HeightRequest="200" />
+
+                    <material3:MaterialButton
+                        ButtonType="Filled"
+                        Command="{Binding OpenBottomSheetCommand}"
+                        Text="Open MaterialBottomSheet" />
+
                 </StackLayout>
             </ScrollView>
 
             <material3:MaterialBottomSheet
                 x:Name="materialBottomSheet"
                 Grid.Row="1"
-                ContainerHeight="400">
+                DragHandleIsVisible="False"
+                BackgroundColor="LightGreen">
                 <material3:MaterialBottomSheet.ContainerContent>
-                    <StackLayout
-                        HeightRequest="300"
-                        BackgroundColor="SkyBlue"
-                        VerticalOptions="Start"
-                        Margin="16,0">
-                        <material3:MaterialLabel
-                            HorizontalTextAlignment="Center"
-                            Text="MaterialBottomSheet sample" />
+                    <Grid>
+                        <StackLayout
+                            HeightRequest="400"
+                            BackgroundColor="SkyBlue"
+                            VerticalOptions="Start"
+                            Margin="22,0">
+                            <material3:MaterialLabel
+                                HorizontalTextAlignment="Center"
+                                Text="MaterialBottomSheet sample" />
 
-                        <material3:MaterialButton
-                            ButtonType="Text"
-                            Command="{Binding CloseBottomSheetCommand}"
-                            Text="Close" />
+                            <material3:MaterialButton
+                                ButtonType="Text"
+                                Command="{Binding CloseBottomSheetCommand}"
+                                Text="Close" />
 
-                        <material3:MaterialLabel
-                            HorizontalTextAlignment="Center"
-                            VerticalOptions="EndAndExpand"
-                            Text="Last label" />
+                            <material3:MaterialLabel
+                                HorizontalTextAlignment="Center"
+                                VerticalOptions="EndAndExpand"
+                                Text="Last label" />
 
-                    </StackLayout>
+                        </StackLayout>
+                    </Grid>
                 </material3:MaterialBottomSheet.ContainerContent>
             </material3:MaterialBottomSheet>
         </Grid>

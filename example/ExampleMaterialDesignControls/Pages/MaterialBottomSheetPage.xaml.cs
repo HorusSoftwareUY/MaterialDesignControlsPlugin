@@ -5,13 +5,14 @@ namespace ExampleMaterialDesignControls.Pages
 {
     public partial class MaterialBottomSheetPage : ContentPage
 	{	
-		public MaterialBottomSheetPage ()
+		public MaterialBottomSheetPage(bool isModalPage = false)
 		{
-			InitializeComponent ();
+			InitializeComponent();
 
 			BindingContext = new MaterialBottomSheetViewModel
 			{
-				DisplayAlert = DisplayAlert,
+				IsModalPage = isModalPage,
+                DisplayAlert = DisplayAlert,
 				Navigation = Navigation,
 				OpenBottomSheetControl = async () => await materialBottomSheet.Open(),
                 CloseBottomSheetControl = async () => await materialBottomSheet.Close()

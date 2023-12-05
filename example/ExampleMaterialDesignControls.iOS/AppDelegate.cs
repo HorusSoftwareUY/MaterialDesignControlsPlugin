@@ -29,6 +29,9 @@ namespace ExampleMaterialDesignControls.iOS
 
             Plugin.MaterialDesignControls.iOS.Renderer.Init();
 
+            // MaterialBottomSheet requires the use of a background color in the TabBar
+            UITabBar.Appearance.BackgroundColor = UIColor.White;
+
             LoadApplication(new App());
 
             CachedImageRenderer.Init();

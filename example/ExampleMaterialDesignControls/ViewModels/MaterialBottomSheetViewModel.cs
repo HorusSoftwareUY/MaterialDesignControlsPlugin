@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
+﻿using ExampleMaterialDesignControls.Pages;
+using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Threading.Tasks;
 
@@ -14,6 +15,12 @@ namespace ExampleMaterialDesignControls.ViewModels
         private async Task OpenBottomSheet()
         {
             OpenBottomSheetControl?.Invoke();
+        }
+
+        [ICommand]
+        private async Task OpenInModalPage()
+        {
+            await Navigation.PushModalAsync(new MaterialBottomSheetPage(isModalPage: true));
         }
 
         [ICommand]

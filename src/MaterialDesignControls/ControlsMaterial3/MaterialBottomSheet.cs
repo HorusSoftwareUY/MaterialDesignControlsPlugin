@@ -4,10 +4,11 @@ using System.Threading.Tasks;
 using Plugin.MaterialDesignControls.Styles;
 using Plugin.MaterialDesignControls.Utils;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
-	public class MaterialBottomSheet : ContentView
+    public class MaterialBottomSheet : ContentView
     {
         #region Attributes and Properties
 
@@ -17,7 +18,11 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private double _bottomSafeArea = 0;
 
-        private double _tabBarHeight = 0;
+        private double _dragHandleMargin = 22;
+
+        private double _translationYClosedCorrection = 10;
+
+        private double _openPosition = 0;
 
         private BoxView _scrimBoxView;
 
@@ -31,25 +36,14 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private double ContainerHeightWithBottomSafeArea => ContainerHeight + _bottomSafeArea;
 
-        private double TranslationYClosed => ContainerHeight + ((_bottomSafeArea + _tabBarHeight) * 2);
-
-        private double OpenPosition
-        {
-            get
-            {
-                if (Device.RuntimePlatform == Device.Android)
-                    return 20;
-                else
-                    return _bottomSafeArea + _tabBarHeight;
-            }
-        }
+        private double TranslationYClosed => ContainerHeight + _translationYClosedCorrection + (_bottomSafeArea * 2);
 
         #endregion Attributes and Properties
 
         #region Bindable properties
 
         public static BindableProperty ContainerHeightProperty =
-            BindableProperty.Create(nameof(ContainerHeight), typeof(double), typeof(MaterialBottomSheet), defaultValue: default(double), defaultBindingMode: BindingMode.TwoWay, propertyChanged: OnSheetHeightChanged);
+            BindableProperty.Create(nameof(ContainerHeight), typeof(double), typeof(MaterialBottomSheet), defaultValue: 400.0, propertyChanged: OnContainerHeightChanged);
 
         public double ContainerHeight
         {
@@ -58,7 +52,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static BindableProperty ContainerContentProperty =
-            BindableProperty.Create(nameof(ContainerContent), typeof(View), typeof(MaterialBottomSheet), defaultValue: default(View), defaultBindingMode: BindingMode.TwoWay, propertyChanged: OnSheetContentChanged);
+            BindableProperty.Create(nameof(ContainerContent), typeof(View), typeof(MaterialBottomSheet), defaultValue: default(View), propertyChanged: OnContainerContentChanged);
 
         public View ContainerContent
         {
@@ -195,18 +189,13 @@ namespace Plugin.MaterialDesignControls.Material3
                 CornerRadius = new CornerRadius(CornerRadius, CornerRadius, 0, 0),
                 Content = ContainerContent,
                 HeightRequest = ContainerHeightWithBottomSafeArea,
-                Padding = new Thickness(0)
+                Padding = new Thickness(0, 0, 0, _bottomSafeArea)
             };
 
             // Remove MaterialCard effects to avoid a pan gesture lose
             _sheetView.Effects.Clear();
 
-            _sheetViewLayout = new Grid
-            {
-                RowSpacing = 0
-            };
-            _sheetViewLayout.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            _sheetViewLayout.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            _sheetViewLayout = new Grid();
 
             _dragHandleView = new BoxView
             {
@@ -215,12 +204,10 @@ namespace Plugin.MaterialDesignControls.Material3
                 HeightRequest = DragHandleHeight,
                 WidthRequest = DragHandleWidth,
                 HorizontalOptions = LayoutOptions.Center,
-                Margin = new Thickness(22),
+                Margin = new Thickness(_dragHandleMargin),
                 VerticalOptions = LayoutOptions.Start,
                 IsVisible = DragHandleIsVisible
             };
-
-            _sheetViewLayout.Children.Add(_dragHandleView, 0, 0);
 
             _sheetView.Content = _sheetViewLayout;
 
@@ -236,24 +223,36 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
-        private static void OnSheetHeightChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void OnContainerHeightChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialBottomSheet)bindable;
             control._containerView.HeightRequest = control.ContainerHeightWithBottomSafeArea;
             control._sheetView.HeightRequest = control.ContainerHeightWithBottomSafeArea;
         }
 
-        private static void OnSheetContentChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void OnContainerContentChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialBottomSheet)bindable;
 
-            if (control._sheetViewLayout.Children.Count > 1)
-            {
+            if (control._sheetViewLayout.Children.Count > 0)
                 control._sheetViewLayout.Children.Clear();
-                control._sheetViewLayout.Children.Add(control._dragHandleView, 0, 0);
-            }
 
-            control._sheetViewLayout.Children.Add((View)newValue, 0, 1);
+            control._sheetViewLayout.Children.Add((View)newValue, 0, 0);
+            control._sheetViewLayout.Children.Add(control._dragHandleView, 0, 0);
+
+            //((View)newValue).SizeChanged += (s, e) =>
+            //{
+            //    var height2 = ((View)s).Height;
+            //};
+
+            //((View)newValue).PropertyChanged += (s, e) =>
+            //{
+            //    var height2 = ((View)s).Height;
+            //};
+
+
+            //var height = ((View)newValue).Bounds.Height;
+            //var height2 = ((View)newValue).Height;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -302,7 +301,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 {
                     _currentPosition = e.TotalY;
                     if (e.TotalY > 0)
-                        _containerView.Content.TranslationY = OpenPosition + e.TotalY;
+                        _containerView.Content.TranslationY = _openPosition + e.TotalY;
                 }
                 else if (e.StatusType == GestureStatus.Completed)
                 {
@@ -326,7 +325,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 await Task.WhenAll
                 (
                     _scrimBoxView.FadeTo(ScrimOpacity, length: (uint)AnimationDuration),
-                    _sheetView.TranslateTo(0, OpenPosition, length: (uint)AnimationDuration, easing: Easing.SinIn)
+                    _sheetView.TranslateTo(0, _openPosition, length: (uint)AnimationDuration, easing: Easing.SinIn)
                 );
 
                 IsOpened = true;
@@ -359,13 +358,50 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
-        public void SetBottomSafeArea(double bottomSafeArea, double tabBarHeight)
+        public void SetBottomSafeArea(double bottomSafeArea)
         {
-            _bottomSafeArea = bottomSafeArea;
-            _tabBarHeight = tabBarHeight;
+            var tabBarIsVisible = TabBarIsVisible();
+            _bottomSafeArea = tabBarIsVisible ? 0 : bottomSafeArea;
+            _containerView.TranslationY = _bottomSafeArea;
             _containerView.Content.TranslationY = TranslationYClosed;
             _containerView.HeightRequest = ContainerHeightWithBottomSafeArea;
             _sheetView.HeightRequest = ContainerHeightWithBottomSafeArea;
+        }
+
+        private bool TabBarIsVisible()
+        {
+            if (Device.RuntimePlatform == Device.Android)
+                return false;
+
+            Element currentElement = this;
+
+            while (!(currentElement is Page) && currentElement != null)
+                currentElement = currentElement.Parent;
+
+            if (currentElement is Page currentPage)
+            {
+                var currentPageIsModal = currentPage.Navigation.ModalStack.Contains(currentPage);
+                if (currentPageIsModal)
+                {
+                    foreach (var page in currentPage.Navigation.ModalStack)
+                    {
+                        if (page is TabbedPage || page.Parent is TabbedPage
+                            || (page.Parent is NavigationPage navigationPage && navigationPage.Parent is TabbedPage))
+                            return true;
+                    }
+                }
+                else
+                {
+                    foreach (var page in currentPage.Navigation.NavigationStack)
+                    {
+                        if (page is TabbedPage || page.Parent is TabbedPage
+                            || (page.Parent is NavigationPage navigationPage && navigationPage.Parent is TabbedPage))
+                            return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         #endregion Methods
