@@ -35,23 +35,27 @@
 
                     <material3:MaterialDivider />
 
+                    <material3:MaterialLabel
+                        Text="MaterialBottomSheet samples:"
+                        HorizontalTextAlignment="Center" />
+
                     <material3:MaterialButton
                         ButtonType="Text"
                         Command="{Binding OpenBottomSheetCommand}"
                         CommandParameter="materialBottomSheet1"
-                        Text="Open MaterialBottomSheet with dynamic size" />
+                        Text="Dynamic size" />
 
                     <material3:MaterialButton
                         ButtonType="Text"
                         Command="{Binding OpenBottomSheetCommand}"
                         CommandParameter="materialBottomSheet2"
-                        Text="Open MaterialBottomSheet with fixed size" />
+                        Text="Fixed size" />
 
                     <material3:MaterialButton
                         ButtonType="Text"
                         Command="{Binding OpenBottomSheetCommand}"
                         CommandParameter="materialBottomSheet3"
-                        Text="Open MaterialBottomSheet with dynamic size and MaximumHeightRequest" />
+                        Text="Dynamic size and MaximumContainerHeightRequest" />
 
                     <material3:MaterialDivider />
 
@@ -119,11 +123,11 @@
                 </material3:MaterialBottomSheet.Content>
             </material3:MaterialBottomSheet>
 
-            <!--Dynamic size with MaximumHeightRequest-->
+            <!--Dynamic size with MaximumContainerHeightRequest-->
             <material3:MaterialBottomSheet
                 x:Name="materialBottomSheet3"
                 Grid.Row="1"
-                MaximumHeightRequest="300">
+                MaximumContainerHeightRequest="300">
                 <material3:MaterialBottomSheet.Content>
                     <StackLayout
                         Padding="22,44,22,0">

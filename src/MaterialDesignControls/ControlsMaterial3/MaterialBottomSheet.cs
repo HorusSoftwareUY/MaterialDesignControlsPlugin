@@ -49,13 +49,13 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ContainerHeightProperty, value); OnPropertyChanged(); }
         }
 
-        public static BindableProperty MaximumHeightRequestProperty =
-            BindableProperty.Create(nameof(MaximumHeightRequest), typeof(double), typeof(MaterialBottomSheet), defaultValue: -1.0);
+        public static BindableProperty MaximumContainerHeightRequestProperty =
+            BindableProperty.Create(nameof(MaximumContainerHeightRequest), typeof(double), typeof(MaterialBottomSheet), defaultValue: -1.0);
 
-        public double MaximumHeightRequest
+        public double MaximumContainerHeightRequest
         {
-            get { return (double)GetValue(MaximumHeightRequestProperty); }
-            set { SetValue(MaximumHeightRequestProperty, value); OnPropertyChanged(); }
+            get { return (double)GetValue(MaximumContainerHeightRequestProperty); }
+            set { SetValue(MaximumContainerHeightRequestProperty, value); OnPropertyChanged(); }
         }
 
         public static new BindableProperty ContentProperty =
@@ -302,10 +302,10 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 if (containerContentView.Height > 0)
                 {
-                    if (MaximumHeightRequest > 0)
+                    if (MaximumContainerHeightRequest > 0)
                     {
-                        ContainerHeight = containerContentView.Height > MaximumHeightRequest ?
-                            MaximumHeightRequest : containerContentView.Height;
+                        ContainerHeight = containerContentView.Height > MaximumContainerHeightRequest ?
+                            MaximumContainerHeightRequest : containerContentView.Height;
                     }
                     else
                         ContainerHeight = containerContentView.Height;
@@ -315,10 +315,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     containerContentView.SizeChanged += (s, e) =>
                     {
                         var containerContentViewHeight = ((View)s).Height;
-                        if (MaximumHeightRequest > 0)
+                        if (MaximumContainerHeightRequest > 0)
                         {
-                            ContainerHeight = containerContentViewHeight > MaximumHeightRequest ?
-                                MaximumHeightRequest : containerContentViewHeight;
+                            ContainerHeight = containerContentViewHeight > MaximumContainerHeightRequest ?
+                                MaximumContainerHeightRequest : containerContentViewHeight;
                         }
                         else
                             ContainerHeight = containerContentViewHeight;
@@ -369,7 +369,7 @@ namespace Plugin.MaterialDesignControls.Material3
             SetInitialState();
         }
 
-        public async void Container_PanUpdated(object sender, PanUpdatedEventArgs e)
+        private async void Container_PanUpdated(object sender, PanUpdatedEventArgs e)
         {
             if (!IsSwipeEnabled)
                 return;
