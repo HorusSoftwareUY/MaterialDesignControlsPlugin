@@ -4,7 +4,6 @@ using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -26,16 +25,6 @@ namespace Plugin.MaterialDesignControls.Material3
             pckOptions.Focused += HandleFocusChange;
             pckOptions.Unfocused += HandleFocusChange;
             pckOptions.SelectedIndexesChanged += PckOptions_SelectedIndexesChanged;
-
-            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
-            frameTapGestureRecognizer.Tapped += (s, e) =>
-            {
-                if (pckOptions.IsControlEnabled())
-                    this.pckOptions.Focus();
-            };
-
-            this.Label.GestureRecognizers.Clear();
-            this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
@@ -170,16 +159,20 @@ namespace Plugin.MaterialDesignControls.Material3
 
         #region Methods
 
-        private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
+        private async static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialDoublePicker)bindable;
             control.InternalUpdateSelectedIndex();
+
+            await control.HandlePlaceholderTransition(newValue);
         }
 
-        private static void OnSecondarySelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
+        private async static void OnSecondarySelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialDoublePicker)bindable;
             control.InternalUpdateSelectedIndex();
+
+            await control.HandlePlaceholderTransition(newValue);
         }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
@@ -422,6 +415,11 @@ namespace Plugin.MaterialDesignControls.Material3
             }
         }
 
+        internal override void OnControlTappedEvent()
+        {
+            if (pckOptions.IsControlEnabled())
+                this.Focus();
+        }
 
         #endregion Methods
     }

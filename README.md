@@ -49,6 +49,7 @@ We're developing the next version of the plugin for .NET MAUI, bringing you exci
   - [MaterialSnackBar](#materialsnackbar)
   - [MaterialDialog](#materialdialog)
   - [MaterialCard](#materialcard)
+  - [MaterialBottomSheet](#materialbottomsheet)
 - [Effects](#effects)
   - [TouchAndPressEffect](#touchandpresseffect)
 - [Sample app](#sample-app)
@@ -370,6 +371,15 @@ MaterialCard display content and actions about a single subject.
 <img src="screenshots/card_preview.png" width="300">
 <br/>
 [View documentation](MaterialCard.md)
+
+---
+
+### MaterialBottomSheet
+MaterialBottomSheet shows secondary content anchored to the bottom of the screen.
+<br/>
+<img src="screenshots/bottomsheet_preview.png" width="300">
+<br/>
+[View documentation](MaterialBottomSheet.md)
 
 ---
 

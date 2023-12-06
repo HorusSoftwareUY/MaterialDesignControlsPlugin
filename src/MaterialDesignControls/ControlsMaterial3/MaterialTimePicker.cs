@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Text;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -25,16 +22,6 @@ namespace Plugin.MaterialDesignControls.Material3
             pckTime.Focused += HandleFocusChange;
             pckTime.Unfocused += HandleFocusChange;
             pckTime.SetBinding(TimePicker.TimeProperty, new Binding() { Source = this, Path = TimeProperty.PropertyName });
-
-            TapGestureRecognizer frameTapGestureRecognizer = new TapGestureRecognizer();
-            frameTapGestureRecognizer.Tapped += (s, e) =>
-            {
-                if (pckTime.IsControlEnabled())
-                    this.pckTime.Focus();
-            };
-
-            this.Label.GestureRecognizers.Clear();
-            this.Label.GestureRecognizers.Add(frameTapGestureRecognizer);
         }
 
         #endregion Constructors
@@ -134,6 +121,12 @@ namespace Plugin.MaterialDesignControls.Material3
                 Focused?.Invoke(this, e);
             else
                 Unfocused?.Invoke(this, e);
+        }
+
+        internal override void OnControlTappedEvent()
+        {
+            if (pckTime.IsControlEnabled())
+                this.Focus();
         }
 
         #endregion Methods

@@ -1,11 +1,18 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Xamarin.Forms;
 
 namespace ExampleMaterialDesignControls.ViewModels
 {
-    public class MaterialEntryViewModel : BaseViewModel
+    public partial class MaterialEntryViewModel : BaseViewModel
     {
+        [ObservableProperty]
+        private bool _isEnabled = true;
+
+        [ObservableProperty]
+        private bool _isVisible = true;
+
         private string name;
 
         public string Name

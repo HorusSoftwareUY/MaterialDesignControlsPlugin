@@ -13,10 +13,15 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         public INavigation Navigation { get; set; }
 
+        public bool IsModalPage { get; set; } = false;
+
         [ICommand]
         private async Task Back()
         {
-            await Navigation.PopAsync();
+            if (IsModalPage)
+                await Navigation.PopModalAsync();
+            else
+                await Navigation.PopAsync();
         }
     }
 }

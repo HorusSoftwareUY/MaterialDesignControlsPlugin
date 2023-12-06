@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ExampleMaterialDesignControls.Pages.MaterialBottomSheetPage"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:contentViews="clr-namespace:ExampleMaterialDesignControls.ContentViews"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:material3="clr-namespace:Plugin.MaterialDesignControls.Material3;assembly=Plugin.MaterialDesignControls"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid
+            RowDefinitions="Auto,*"
+            RowSpacing="0">
+            <material3:MaterialTopAppBar
+                Headline="MaterialBottomSheet"
+                LeadingIconCommand="{Binding BackCommand}">
+                <material3:MaterialTopAppBar.CustomLeadingIcon>
+                    <ffimageloadingsvg:SvgCachedImage
+                        Source="resource://ExampleMaterialDesignControls.Resources.Svg.ic_back_b.svg" />
+                </material3:MaterialTopAppBar.CustomLeadingIcon>
+            </material3:MaterialTopAppBar>
+
+            <ScrollView
+                Grid.Row="1"
+                VerticalScrollBarVisibility="Never">
+                <StackLayout
+                    Padding="20,0,20,20"
+                    Spacing="10">
+
+                    <contentViews:InfoIndicatorView
+                        Message="MaterialBottomSheet follows the latest guidelines of Material Design 3" />
+
+                    <material3:MaterialDivider />
+
+                    <material3:MaterialLabel
+                        Text="MaterialBottomSheet samples:"
+                        HorizontalTextAlignment="Center" />
+
+                    <material3:MaterialButton
+                        ButtonType="Text"
+                        Command="{Binding OpenBottomSheetCommand}"
+                        CommandParameter="materialBottomSheet1"
+                        Text="Dynamic size" />
+
+                    <material3:MaterialButton
+                        ButtonType="Text"
+                        Command="{Binding OpenBottomSheetCommand}"
+                        CommandParameter="materialBottomSheet2"
+                        Text="Fixed size" />
+
+                    <material3:MaterialButton
+                        ButtonType="Text"
+                        Command="{Binding OpenBottomSheetCommand}"
+                        CommandParameter="materialBottomSheet3"
+                        Text="Dynamic size and MaximumContainerHeightRequest" />
+
+                    <material3:MaterialDivider />
+
+                    <material3:MaterialButton
+                        ButtonType="Text"
+                        Command="{Binding OpenInModalPageCommand}"
+                        Text="Open in modal page" />
+
+                </StackLayout>
+            </ScrollView>
+
+            <!--Dynamic size-->
+            <material3:MaterialBottomSheet
+                x:Name="materialBottomSheet1"
+                Grid.Row="1">
+                <material3:MaterialBottomSheet.Content>
+                    <StackLayout
+                        Spacing="10"
+                        Padding="22,44,22,12">
+                        <material3:MaterialLabel
+                            FontFamily="{StaticResource BoldFont}"
+                            FontSize="{StaticResource H4FontSize}"
+                            Text="Material Design"
+                            TextColor="{StaticResource GradientColor1}" />
+                        <material3:MaterialLabel
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SemiBoldFont}"
+                            FontSize="{StaticResource H5FontSize}"
+                            Text="Plugin for Xamarin Forms"
+                            TextColor="{StaticResource BlackColor}" />
+                        <material3:MaterialLabel
+                            FontSize="{StaticResource Body2FontSize}"
+                            Text="Material Design is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material Design streamlines collaboration between designers and developers, and helps teams quickly build beautiful products."
+                            TextColor="{StaticResource DarkGrayColor}" />
+                    </StackLayout>
+                </material3:MaterialBottomSheet.Content>
+            </material3:MaterialBottomSheet>
+
+            <!--Fixed size-->
+            <material3:MaterialBottomSheet
+                x:Name="materialBottomSheet2"
+                Grid.Row="1"
+                ContainerHeight="400"
+                ContentVerticalOptions="Center">
+                <material3:MaterialBottomSheet.Content>
+                    <StackLayout
+                        Spacing="10"
+                        Padding="22,44,22,12">
+                        <material3:MaterialLabel
+                            FontFamily="{StaticResource BoldFont}"
+                            FontSize="{StaticResource H4FontSize}"
+                            Text="Material Design"
+                            TextColor="{StaticResource GradientColor1}" />
+                        <material3:MaterialLabel
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SemiBoldFont}"
+                            FontSize="{StaticResource H5FontSize}"
+                            Text="Plugin for Xamarin Forms"
+                            TextColor="{StaticResource BlackColor}" />
+                        <material3:MaterialLabel
+                            FontSize="{StaticResource Body2FontSize}"
+                            Text="Material Design is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material Design streamlines collaboration between designers and developers, and helps teams quickly build beautiful products."
+                            TextColor="{StaticResource DarkGrayColor}" />
+                    </StackLayout>
+                </material3:MaterialBottomSheet.Content>
+            </material3:MaterialBottomSheet>
+
+            <!--Dynamic size with MaximumContainerHeightRequest-->
+            <material3:MaterialBottomSheet
+                x:Name="materialBottomSheet3"
+                Grid.Row="1"
+                MaximumContainerHeightRequest="300">
+                <material3:MaterialBottomSheet.Content>
+                    <StackLayout
+                        Padding="22,44,22,0">
+                        <material3:MaterialLabel
+                            HorizontalTextAlignment="Center"
+                            Text="MaterialBottomSheet sample" />
+                        <ScrollView>
+                            <StackLayout>
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="1" />
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="2" />
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="3" />
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="4" />
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="5" />
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="6" />
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="7" />
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="8" />
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="9" />
+                                <material3:MaterialLabel
+                                    HorizontalTextAlignment="Center"
+                                    Text="10" />
+                            </StackLayout>
+                        </ScrollView>
+                        <material3:MaterialButton
+                            ButtonType="Text"
+                            Command="{Binding CloseBottomSheetCommand}"
+                            CommandParameter="materialBottomSheet3"
+                            Text="Close" />
+                    </StackLayout>
+                </material3:MaterialBottomSheet.Content>
+            </material3:MaterialBottomSheet>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
