@@ -62,15 +62,10 @@ namespace Plugin.MaterialDesignControls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            switch (propertyName)
-            {
-                case nameof(TextColor):
-                    base.TextColor = this.TextColor;
-                    break;
-                default:
-                    base.OnPropertyChanged(propertyName);
-                    break;
-            }
+            if (propertyName == nameof(TextColor))
+                base.TextColor = this.TextColor;
+
+            base.OnPropertyChanged(propertyName);
         }
 
         #endregion Methods
