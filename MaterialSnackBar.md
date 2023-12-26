@@ -62,6 +62,10 @@ This property is to the font size of the action button.
 This property is to the font family of the action button.
 <br/>
 
+### Property IsActionTextUnderlined:
+This property is to set the underlined style to the action button.
+<br/>
+
 ### Property ActionCommand:
 This property is to the command of the action button.
 <br/>

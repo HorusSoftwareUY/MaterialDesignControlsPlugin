@@ -90,6 +90,10 @@ This property is to set the font size of the button text.
 This property is to set the font family of the button text.
 <br/>
 
+### Property IsTextUnderlined:
+This property is to set the underlined style to the button text. It only works with the ButtonType Text.
+<br/>
+
 ### Property ToUpper:
 This property is to make the text uppercase or lowercase, the default is false.
 <br/>

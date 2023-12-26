@@ -5,6 +5,7 @@ using Plugin.MaterialDesignControls.Animations;
 using Plugin.MaterialDesignControls.Material3.Implementations;
 using Plugin.MaterialDesignControls.Styles;
 using Xamarin.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Plugin.MaterialDesignControls.Material3
 {
@@ -109,6 +110,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
+        }
+
+        public static readonly BindableProperty IsTextUnderlinedProperty =
+            BindableProperty.Create(nameof(IsTextUnderlined), typeof(bool), typeof(MaterialButton), defaultValue: false);
+
+        public bool IsTextUnderlined
+        {
+            get { return (bool)GetValue(IsTextUnderlinedProperty); }
+            set { SetValue(IsTextUnderlinedProperty, value); }
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
@@ -386,7 +396,8 @@ namespace Plugin.MaterialDesignControls.Material3
                 HorizontalOptions = ContentIsExpanded ? LayoutOptions.CenterAndExpand : LayoutOptions.Center,
                 Text = ToUpper ? Text?.ToUpper() : Text,
                 FontSize = FontSize,
-                FontFamily = FontFamily
+                FontFamily = FontFamily,
+                TextDecorations = IsTextUnderlined ? TextDecorations.Underline : TextDecorations.None
             };
             _stcLayout.Children.Add(_textLabel);
 
@@ -428,6 +439,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 case nameof(TextColor):
                 case nameof(BackgroundColor):
                 case nameof(BorderColor):
+                case nameof(IsTextUnderlined):
                     SetButtonType();
                     break;
                 case nameof(base.Opacity):
@@ -570,18 +582,21 @@ namespace Plugin.MaterialDesignControls.Material3
             {
                 case MaterialButtonType.Elevated:
                     _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.Primary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.Disable);
+                    _textLabel.TextDecorations = TextDecorations.None;
                     _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.OnPrimary;
                     _frameLayout.BorderColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.OnPrimary;
                     _frameLayout.HasShadow = true;
                     break;
                 case MaterialButtonType.Filled:
                     _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.OnPrimary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.OnPrimary);
+                    _textLabel.TextDecorations = TextDecorations.None;
                     _frameLayout.BackgroundColor = IsEnabled ? (BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.Primary) : (DisabledBackgroundColor != Color.Default ? DisabledBackgroundColor : MaterialColor.Disable);
                     _frameLayout.BorderColor = Color.Transparent;
                     _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Tonal:
                     _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.Primary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.Disable);
+                    _textLabel.TextDecorations = TextDecorations.None;
                     var defaultBackgroundColor = Color.FromRgba(MaterialColor.Primary.R, MaterialColor.Primary.G, MaterialColor.Primary.B, 0.4);
                     _frameLayout.BackgroundColor = IsEnabled ? defaultBackgroundColor : (DisabledBackgroundColor != Color.Default ? DisabledBackgroundColor : MaterialColor.Disable);
                     _frameLayout.BorderColor = Color.Transparent;
@@ -589,12 +604,14 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case MaterialButtonType.Outlined:
                     _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.Primary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.Disable);
+                    _textLabel.TextDecorations = TextDecorations.None;
                     _frameLayout.BackgroundColor = BackgroundColor != Color.Default ? BackgroundColor : MaterialColor.OnPrimary;
                     _frameLayout.BorderColor = IsEnabled ? (BorderColor != Color.Default ? BorderColor : MaterialColor.Primary) : (DisabledBorderColor != Color.Default ? DisabledBorderColor : MaterialColor.Disable);
                     _frameLayout.HasShadow = false;
                     break;
                 case MaterialButtonType.Text:
                     _textLabel.TextColor = IsEnabled ? (TextColor != Color.Default ? TextColor : MaterialColor.Primary) : (DisabledTextColor != Color.Default ? DisabledTextColor : MaterialColor.Disable);
+                    _textLabel.TextDecorations = IsTextUnderlined ? TextDecorations.Underline : TextDecorations.None;
                     _frameLayout.BackgroundColor = Color.Transparent;
                     _frameLayout.BorderColor = Color.Transparent;
                     _frameLayout.HasShadow = false;

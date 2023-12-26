@@ -50,7 +50,8 @@
                         LeadingIconCommand="{Binding LeadingIconTapCommand}"
                         TrailingIconCommand="{Binding TrailingIconTapCommand}"
                         ActionCommand="{Binding ActionCommand}"
-                        ActionText="Action">
+                        ActionText="Action"
+                        IsActionTextUnderlined="True">
                     </material3:MaterialSnackBar>
                     <material3:MaterialDivider Margin="0,10" />
 

@@ -49,6 +49,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ContainerHeightProperty, value); OnPropertyChanged(); }
         }
 
+        public static BindableProperty ContainerRelativeHeightProperty =
+            BindableProperty.Create(nameof(ContainerRelativeHeight), typeof(double), typeof(MaterialBottomSheet), defaultValue: -1.0, propertyChanged: OnContainerRelativeHeightChanged);
+
+        public double ContainerRelativeHeight
+        {
+            get { return (double)GetValue(ContainerRelativeHeightProperty); }
+            set { SetValue(ContainerRelativeHeightProperty, value); OnPropertyChanged(); }
+        }
+
         public static BindableProperty MaximumContainerHeightRequestProperty =
             BindableProperty.Create(nameof(MaximumContainerHeightRequest), typeof(double), typeof(MaterialBottomSheet), defaultValue: -1.0);
 
@@ -276,6 +285,12 @@ namespace Plugin.MaterialDesignControls.Material3
             control.SetInitialState();
         }
 
+        private static void OnContainerRelativeHeightChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialBottomSheet)bindable;
+            control.SetInitialState();
+        }
+
         private static void OnContentChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MaterialBottomSheet)bindable;
@@ -298,7 +313,23 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private void ApplyContainerHeight(View containerContentView)
         {
-            if (ContainerHeight <= 0)
+            if (ContainerRelativeHeight != (double)ContainerRelativeHeightProperty.DefaultValue
+                && ContainerHeight == (double)ContainerHeightProperty.DefaultValue)
+            {
+                if (Height > 0)
+                {
+                    ContainerHeight = Height * ContainerRelativeHeight;
+                }
+                else
+                {
+                    SizeChanged += (s, e) =>
+                    {
+                        var totalHeight = ((View)s).Height;
+                        ContainerHeight = totalHeight * ContainerRelativeHeight;
+                    };
+                }
+            }
+            else if (ContainerHeight == (double)ContainerHeightProperty.DefaultValue)
             {
                 if (containerContentView.Height > 0)
                 {
