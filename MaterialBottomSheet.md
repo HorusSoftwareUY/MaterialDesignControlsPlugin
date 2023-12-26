@@ -55,6 +55,10 @@ Gets or sets the vertical options to the container's content. By default it has 
 Gets or sets the container height. By default it has a **-1** and the height of the container adjusts to the container's content. This property should only be used if a fixed height is needed for the container.
 <br/>
 
+### Property ContainerRelativeHeight:
+Gets or sets the relative (proportional) container height. By default it has a **-1** and this property is not taken into account. This property should only be used if a relative (proportional) fixed height is needed for the container. This property allows values between 0 and 1.
+<br/>
+
 ### Property MaximumContainerHeightRequest:
 Gets or sets the maximum height to which the container can expand. It only works when the ContainerHeight property is not set and the container height is dynamic.
 <br/>

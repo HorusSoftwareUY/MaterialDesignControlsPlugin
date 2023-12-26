@@ -413,7 +413,7 @@ https://github.com/HorusSoftwareUY/MaterialDesignControlsPlugin/tree/master/exam
 
 
 ## Developed by
-<a href="http://horus.com.uy" ><img src="https://horus.com.uy/img/logo_horus.png" width="128"></a>
+<a href="http://horus.com.uy"><img src="https://assets-global.website-files.com/64a7016392b0b7da3a8604e3/64a7016392b0b7da3a8604ed_horus.svg" width="128"></a>
 
 
 ## Contributions

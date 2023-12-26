@@ -55,6 +55,12 @@
                         ButtonType="Text"
                         Command="{Binding OpenBottomSheetCommand}"
                         CommandParameter="materialBottomSheet3"
+                        Text="Relative size" />
+
+                    <material3:MaterialButton
+                        ButtonType="Text"
+                        Command="{Binding OpenBottomSheetCommand}"
+                        CommandParameter="materialBottomSheet4"
                         Text="Dynamic size and MaximumContainerHeightRequest" />
 
                     <material3:MaterialDivider />
@@ -94,12 +100,40 @@
                 </material3:MaterialBottomSheet.Content>
             </material3:MaterialBottomSheet>
 
-            <!--Fixed size-->
+            <!--Fixed size with ContainerHeight-->
             <material3:MaterialBottomSheet
                 x:Name="materialBottomSheet2"
                 Grid.Row="1"
-                ContainerHeight="400"
-                ContentVerticalOptions="Center">
+                ContainerHeight="600"
+                ContentVerticalOptions="Start">
+                <material3:MaterialBottomSheet.Content>
+                    <StackLayout
+                        Spacing="10"
+                        Padding="22,44,22,12">
+                        <material3:MaterialLabel
+                            FontFamily="{StaticResource BoldFont}"
+                            FontSize="{StaticResource H4FontSize}"
+                            Text="Material Design"
+                            TextColor="{StaticResource GradientColor1}" />
+                        <material3:MaterialLabel
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SemiBoldFont}"
+                            FontSize="{StaticResource H5FontSize}"
+                            Text="Plugin for Xamarin Forms"
+                            TextColor="{StaticResource BlackColor}" />
+                        <material3:MaterialLabel
+                            FontSize="{StaticResource Body2FontSize}"
+                            Text="Material Design is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material Design streamlines collaboration between designers and developers, and helps teams quickly build beautiful products."
+                            TextColor="{StaticResource DarkGrayColor}" />
+                    </StackLayout>
+                </material3:MaterialBottomSheet.Content>
+            </material3:MaterialBottomSheet>
+
+            <!--Fixed relative size with ContainerRelativeHeight-->
+            <material3:MaterialBottomSheet
+                x:Name="materialBottomSheet3"
+                ContainerRelativeHeight="0.8"
+                Grid.Row="1">
                 <material3:MaterialBottomSheet.Content>
                     <StackLayout
                         Spacing="10"
@@ -125,7 +159,7 @@
 
             <!--Dynamic size with MaximumContainerHeightRequest-->
             <material3:MaterialBottomSheet
-                x:Name="materialBottomSheet3"
+                x:Name="materialBottomSheet4"
                 Grid.Row="1"
                 MaximumContainerHeightRequest="300">
                 <material3:MaterialBottomSheet.Content>

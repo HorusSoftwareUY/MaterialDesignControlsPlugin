@@ -61,7 +61,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialButton), defaultValue: "Text");
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialSnackBar), defaultValue: "Text");
 
         public string Text
         {
@@ -70,7 +70,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialButton), defaultValue: MaterialColor.OnPrimary);
+            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: MaterialColor.OnPrimary);
 
         public Color TextColor
         {
@@ -79,7 +79,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontSizeProperty =
-            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialButton), defaultValue: MaterialFontSize.BodyMedium);
+            BindableProperty.Create(nameof(FontSize), typeof(double), typeof(MaterialSnackBar), defaultValue: MaterialFontSize.BodyMedium);
 
         public double FontSize
         {
@@ -88,7 +88,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty FontFamilyProperty =
-            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialButton), defaultValue: MaterialFontFamily.Default);
+            BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(MaterialSnackBar), defaultValue: MaterialFontFamily.Default);
 
         public string FontFamily
         {
@@ -97,7 +97,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionTextProperty =
-            BindableProperty.Create(nameof(ActionText), typeof(string), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(ActionText), typeof(string), typeof(MaterialSnackBar), defaultValue: null);
 
         public string ActionText
         {
@@ -106,7 +106,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionTextColorProperty =
-            BindableProperty.Create(nameof(ActionTextColor), typeof(Color), typeof(MaterialButton), defaultValue: MaterialColor.PrimaryContainer);
+            BindableProperty.Create(nameof(ActionTextColor), typeof(Color), typeof(MaterialSnackBar), defaultValue: MaterialColor.PrimaryContainer);
 
         public Color ActionTextColor
         {
@@ -115,7 +115,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionFontSizeProperty =
-            BindableProperty.Create(nameof(ActionFontSize), typeof(double), typeof(MaterialButton), defaultValue: MaterialFontSize.LabelLarge);
+            BindableProperty.Create(nameof(ActionFontSize), typeof(double), typeof(MaterialSnackBar), defaultValue: MaterialFontSize.LabelLarge);
 
         public double ActionFontSize
         {
@@ -124,7 +124,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionFontFamilyProperty =
-            BindableProperty.Create(nameof(ActionFontFamily), typeof(string), typeof(MaterialButton), defaultValue: MaterialFontFamily.Default);
+            BindableProperty.Create(nameof(ActionFontFamily), typeof(string), typeof(MaterialSnackBar), defaultValue: MaterialFontFamily.Default);
 
         public string ActionFontFamily
         {
@@ -132,8 +132,17 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(ActionFontFamilyProperty, value); }
         }
 
+        public static readonly BindableProperty IsActionTextUnderlinedProperty =
+            BindableProperty.Create(nameof(IsActionTextUnderlined), typeof(bool), typeof(MaterialSnackBar), defaultValue: false);
+
+        public bool IsActionTextUnderlined
+        {
+            get { return (bool)GetValue(IsActionTextUnderlinedProperty); }
+            set { SetValue(IsActionTextUnderlinedProperty, value); }
+        }
+
         public static readonly BindableProperty ActionCommandProperty =
-            BindableProperty.Create(nameof(ActionCommand), typeof(ICommand), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(ActionCommand), typeof(ICommand), typeof(MaterialSnackBar), defaultValue: null);
 
         public ICommand ActionCommand
         {
@@ -142,7 +151,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty ActionCommandParameterProperty =
-            BindableProperty.Create(nameof(ActionCommandParameter), typeof(object), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(ActionCommandParameter), typeof(object), typeof(MaterialSnackBar), defaultValue: null);
 
         public object ActionCommandParameter
         {
@@ -151,7 +160,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LeadingIconProperty =
-            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(LeadingIcon), typeof(string), typeof(MaterialSnackBar), defaultValue: null);
 
         public string LeadingIcon
         {
@@ -160,7 +169,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CustomLeadingIconProperty =
-            BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(CustomLeadingIcon), typeof(View), typeof(MaterialSnackBar), defaultValue: null);
 
         public View CustomLeadingIcon
         {
@@ -179,7 +188,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TrailingIconProperty =
-            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(TrailingIcon), typeof(string), typeof(MaterialSnackBar), defaultValue: null);
 
         public string TrailingIcon
         {
@@ -188,7 +197,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty CustomTrailingIconProperty =
-            BindableProperty.Create(nameof(CustomTrailingIcon), typeof(View), typeof(MaterialButton), defaultValue: null);
+            BindableProperty.Create(nameof(CustomTrailingIcon), typeof(View), typeof(MaterialSnackBar), defaultValue: null);
 
         public View CustomTrailingIcon
         {
@@ -197,7 +206,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty LeadingIconCommandProperty =
-           BindableProperty.Create(nameof(LeadingIconCommand), typeof(ICommand), typeof(MaterialTopAppBar), null, BindingMode.OneTime);
+           BindableProperty.Create(nameof(LeadingIconCommand), typeof(ICommand), typeof(MaterialSnackBar), null, BindingMode.OneTime);
 
         public ICommand LeadingIconCommand
         {
@@ -206,7 +215,7 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         public static readonly BindableProperty TrailingIconCommandProperty =
-           BindableProperty.Create(nameof(TrailingIconCommand), typeof(ICommand), typeof(MaterialTopAppBar), null, BindingMode.OneTime);
+           BindableProperty.Create(nameof(TrailingIconCommand), typeof(ICommand), typeof(MaterialSnackBar), null, BindingMode.OneTime);
 
         public ICommand TrailingIconCommand
         {
@@ -263,6 +272,7 @@ namespace Plugin.MaterialDesignControls.Material3
                 FontFamily = ActionFontFamily,
                 FontSize = ActionFontSize,
                 Padding = 0,
+                IsTextUnderlined = IsActionTextUnderlined
             };
 
             _leadingIconButton = new MaterialIconButton()
@@ -351,6 +361,9 @@ namespace Plugin.MaterialDesignControls.Material3
                     break;
                 case nameof(ActionFontFamily):
                     _actionButton.FontFamily = ActionFontFamily;
+                    break;
+                case nameof(IsActionTextUnderlined):
+                    _actionButton.IsTextUnderlined = IsActionTextUnderlined;
                     break;
                 case nameof(ActionCommand):
                     _actionButton.Command = ActionCommand;
