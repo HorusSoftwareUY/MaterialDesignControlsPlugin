@@ -32,7 +32,7 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private StackLayout _itemsContainer;
 
-        Dictionary<string, NavigationDrawerContainerForObjects> containersWithItems = new Dictionary<string, NavigationDrawerContainerForObjects>();
+        private Dictionary<string, NavigationDrawerContainerForObjects> _containersWithItems = new Dictionary<string, NavigationDrawerContainerForObjects>();
 
         #endregion Attributes
 
@@ -155,6 +155,24 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(SectionLabelFontFamilyProperty, value); }
         }
 
+        public static readonly BindableProperty SectionDividerIsVisibleProperty =
+            BindableProperty.Create(nameof(SectionDividerIsVisible), typeof(bool), typeof(MaterialNavigationDrawer), defaultValue: true);
+
+        public bool SectionDividerIsVisible
+        {
+            get { return (bool)GetValue(SectionDividerIsVisibleProperty); }
+            set { SetValue(SectionDividerIsVisibleProperty, value); }
+        }
+
+        public static readonly BindableProperty ItemDividerIsVisibleProperty =
+            BindableProperty.Create(nameof(ItemDividerIsVisible), typeof(bool), typeof(MaterialNavigationDrawer), defaultValue: false);
+
+        public bool ItemDividerIsVisible
+        {
+            get { return (bool)GetValue(ItemDividerIsVisibleProperty); }
+            set { SetValue(ItemDividerIsVisibleProperty, value); }
+        }
+
         public static readonly BindableProperty DividerColorProperty =
             BindableProperty.Create(nameof(DividerColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.OutlineVariant);
 
@@ -217,6 +235,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (IEnumerable<MaterialNavigationDrawerItem>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
+        }
+
+        public static readonly BindableProperty ItemHeightRequestProperty =
+            BindableProperty.Create(nameof(ItemHeightRequest), typeof(double), typeof(MaterialDivider), defaultValue: 56.0);
+
+        public double ItemHeightRequest
+        {
+            get { return (double)GetValue(ItemHeightRequestProperty); }
+            set { SetValue(ItemHeightRequestProperty, value); }
         }
 
         public static readonly BindableProperty CommandProperty =
@@ -351,6 +378,7 @@ namespace Plugin.MaterialDesignControls.Material3
         private void SetItemSource()
         {
             _itemsContainer.Children.Clear();
+            _containersWithItems.Clear();
 
             if (ItemsSource != null)
             {
@@ -369,7 +397,9 @@ namespace Plugin.MaterialDesignControls.Material3
                         label.FontFamily = SectionLabelFontFamily;
                         label.TextColor = SectionLabelColor;
                         label.Padding = new Thickness(12, 0);
-                        label.Margin = new Thickness(0, 0, 0, 16);
+
+                        var topLabelMargin = SectionDividerIsVisible ? 0 : 16;
+                        label.Margin = new Thickness(0, topLabelMargin, 0, 16);
 
                         _itemsContainer.Children.Add(label);
                     }
@@ -378,7 +408,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     {
                         string key = item.Section + "-" + item.Text;
 
-                        if (containersWithItems.ContainsKey(key))
+                        if (_containersWithItems.ContainsKey(key))
                         {
                             continue;
                         }
@@ -387,8 +417,8 @@ namespace Plugin.MaterialDesignControls.Material3
                         frame.HasShadow = false;
                         frame.BorderColor = Color.Transparent;
                         frame.Padding = new Thickness(16, 0);
-                        frame.HeightRequest = 56;
-                        frame.MinimumHeightRequest = 56;
+                        frame.HeightRequest = ItemHeightRequest;
+                        frame.MinimumHeightRequest = ItemHeightRequest;
                         frame.HorizontalOptions = LayoutOptions.FillAndExpand;
                         frame.VerticalOptions = LayoutOptions.Fill;
                         frame.BackgroundColor = item.IsSelected ? ActiveIndicatorBackgroundColor : Color.Transparent;
@@ -402,37 +432,38 @@ namespace Plugin.MaterialDesignControls.Material3
                         {
                             HorizontalOptions = LayoutOptions.FillAndExpand,
                             VerticalOptions = LayoutOptions.FillAndExpand,
-                            ColumnSpacing = 0,
+                            ColumnSpacing = 12,
                         };
 
                         contentContainer.ColumnDefinitions = new ColumnDefinitionCollection()
                         {
                             new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Star },
+                            new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Auto }
                         };
 
-                        var icon = new CustomImage()
+                        var iconLeading = new CustomImage()
                         {
                             HeightRequest = 24,
                             MinimumHeightRequest = 24,
                             WidthRequest = 24,
                             MinimumWidthRequest = 24,
                             VerticalOptions = LayoutOptions.Center,
-                            Margin = new Thickness(0, 0, 12, 0),
                             Padding = new Thickness(0),
                             IsVisible = false
                         };
 
-                        icon.SetValue(Grid.ColumnProperty, 0);
+                        iconLeading.SetValue(Grid.ColumnProperty, 0);
 
-                        var label = new Label();
-                        label.Text = item.Text.Trim();
-                        label.VerticalTextAlignment = TextAlignment.Center;
-                        label.FontSize = LabelFontSize;
-                        label.FontFamily = LabelFontFamily;
-                        label.TextColor = item.IsEnabled ? item.IsSelected ? ActiveIndicatorLabelColor : LabelColor : DisabledLabelColor;
-                        label.Padding = new Thickness(0,0, 12, 0);
+                        var label = new Label
+                        {
+                            Text = item.Text.Trim(),
+                            VerticalTextAlignment = TextAlignment.Center,
+                            FontSize = LabelFontSize,
+                            FontFamily = LabelFontFamily,
+                            TextColor = item.IsEnabled ? item.IsSelected ? ActiveIndicatorLabelColor : LabelColor : DisabledLabelColor
+                        };
 
                         label.SetValue(Grid.ColumnProperty, 1);
 
@@ -449,9 +480,23 @@ namespace Plugin.MaterialDesignControls.Material3
 
                         badge.SetValue(Grid.ColumnProperty, 2);
 
-                        contentContainer.Children.Add(icon);
+                        var iconTrailing = new CustomImage()
+                        {
+                            HeightRequest = 24,
+                            MinimumHeightRequest = 24,
+                            WidthRequest = 24,
+                            MinimumWidthRequest = 24,
+                            VerticalOptions = LayoutOptions.Center,
+                            Padding = new Thickness(0),
+                            IsVisible = false
+                        };
+
+                        iconTrailing.SetValue(Grid.ColumnProperty, 3);
+
+                        contentContainer.Children.Add(iconLeading);
                         contentContainer.Children.Add(label);
                         contentContainer.Children.Add(badge);
+                        contentContainer.Children.Add(iconTrailing);
 
                         frame.Content = contentContainer;
 
@@ -472,48 +517,63 @@ namespace Plugin.MaterialDesignControls.Material3
                                     {
                                         insideItem.IsSelected = false;
                                         string insideKey = insideItem.Section + "-" + insideItem.Text;
-                                        var container = containersWithItems[insideKey];
-                                        SetContentAndColors(container.Container, container.Icon, container.Label, insideItem);
+                                        var container = _containersWithItems[insideKey];
+                                        SetContentAndColors(container.Container, container.LeadingIcon, container.TrailingIcon, container.Label, insideItem);
                                     }
                                 }
                             }
 
                             item.IsSelected = !item.IsSelected;
-                            SetContentAndColors(frame, icon, label, item);
+                            SetContentAndColors(frame, iconLeading, iconTrailing, label, item);
 
                             if (item.IsEnabled && Command != null && Command.CanExecute(item))
                                 Command.Execute(item);
                         });
 
-                        containersWithItems.Add(key, new NavigationDrawerContainerForObjects()
+                        _containersWithItems.Add(key, new NavigationDrawerContainerForObjects()
                         {
                             Container = frame,
-                            Icon = icon,
+                            LeadingIcon = iconLeading,
+                            TrailingIcon = iconTrailing,
                             Label = label
                         });
 
-                        SetContentAndColors(frame, icon, label,  item);
+                        SetContentAndColors(frame, iconLeading, iconTrailing, label,  item);
 
                         _itemsContainer.Children.Add(frame);
+
+                        if (ItemDividerIsVisible)
+                        {
+                            var divider = new MaterialDivider()
+                            {
+                                Color = DividerColor,
+                                Margin = new Thickness(8, 0)
+                            };
+
+                            _itemsContainer.Children.Add(divider);
+                        }
                     }
 
-                    var divider = new MaterialDivider()
+                    if (SectionDividerIsVisible)
                     {
-                        Color = DividerColor,
-                        Margin = new Thickness(0, 16)
-                    };
+                        var divider = new MaterialDivider()
+                        {
+                            Color = DividerColor,
+                            Margin = new Thickness(0, 16)
+                        };
 
-                    if (itemIdx++ != groupedItems.Count())
-                    {
-                        _itemsContainer.Children.Add(divider);
+                        if (itemIdx++ != groupedItems.Count())
+                        {
+                            _itemsContainer.Children.Add(divider);
+                        }
                     }
                 }
             }
         }
 
-        private void SetContentAndColors(MaterialCard frame, CustomImage icon, Label label, MaterialNavigationDrawerItem item)
+        private void SetContentAndColors(MaterialCard frame, CustomImage leadingIcon, CustomImage trailingIcon, Label label, MaterialNavigationDrawerItem item)
         {
-            SetIcons(icon, item);
+            SetIcons(leadingIcon, trailingIcon, item);
 
             if (!item.ShowActiveIndicator)
             {
@@ -524,47 +584,82 @@ namespace Plugin.MaterialDesignControls.Material3
             label.TextColor = item.IsEnabled ? item.IsSelected ? ActiveIndicatorLabelColor : LabelColor : DisabledLabelColor;
         }
 
-        public void SetIcons(CustomImage icon, MaterialNavigationDrawerItem item)
+        public void SetIcons(CustomImage leadingIcon, CustomImage trailingIcon, MaterialNavigationDrawerItem item)
         {
-
             if (item.IsSelected)
             {
-                if (item.SelectedIconIsVisible)
+                if (item.SelectedLeadingIconIsVisible)
                 {
-                    icon.IsVisible = true;
+                    leadingIcon.IsVisible = true;
 
-                    if (item.CustomSelectedIcon != null)
+                    if (item.CustomSelectedLeadingIcon != null)
                     {
-                        icon.SetCustomImage(item.CustomSelectedIcon);
+                        leadingIcon.SetCustomImage(item.CustomSelectedLeadingIcon);
                     }
-                    else if (!string.IsNullOrWhiteSpace(item.SelectedIcon))
+                    else if (!string.IsNullOrWhiteSpace(item.SelectedLeadingIcon))
                     {
-                        icon.SetImage(item.SelectedIcon);
+                        leadingIcon.SetImage(item.SelectedLeadingIcon);
                     }
                 }
-                else if (item.UnselectedIconIsVisible)
+                else if (item.UnselectedLeadingIconIsVisible)
                 {
-                    icon.IsVisible = false;
+                    leadingIcon.IsVisible = false;
+                }
+
+                if (item.SelectedTrailingIconIsVisible)
+                {
+                    trailingIcon.IsVisible = true;
+
+                    if (item.CustomSelectedTrailingIcon != null)
+                    {
+                        trailingIcon.SetCustomImage(item.CustomSelectedTrailingIcon);
+                    }
+                    else if (!string.IsNullOrWhiteSpace(item.SelectedTrailingIcon))
+                    {
+                        trailingIcon.SetImage(item.SelectedTrailingIcon);
+                    }
+                }
+                else if (item.UnselectedTrailingIconIsVisible)
+                {
+                    trailingIcon.IsVisible = false;
                 }
             }
             else
             {
-                if (item.UnselectedIconIsVisible)
+                if (item.UnselectedLeadingIconIsVisible)
                 {
-                    icon.IsVisible = true;
+                    leadingIcon.IsVisible = true;
 
-                    if (item.CustomUnselectedIcon != null)
+                    if (item.CustomUnselectedLeadingIcon != null)
                     {
-                        icon.SetCustomImage(item.CustomUnselectedIcon);
+                        leadingIcon.SetCustomImage(item.CustomUnselectedLeadingIcon);
                     }
-                    else if (!string.IsNullOrWhiteSpace(item.UnselectedIcon))
+                    else if (!string.IsNullOrWhiteSpace(item.UnselectedLeadingIcon))
                     {
-                        icon.SetImage(item.UnselectedIcon);
+                        leadingIcon.SetImage(item.UnselectedLeadingIcon);
                     }
                 }
-                else if (item.SelectedIconIsVisible)
+                else if (item.SelectedLeadingIconIsVisible)
                 {
-                    icon.IsVisible = false;
+                    leadingIcon.IsVisible = false;
+                }
+
+                if (item.UnselectedTrailingIconIsVisible)
+                {
+                    trailingIcon.IsVisible = true;
+
+                    if (item.CustomUnselectedTrailingIcon != null)
+                    {
+                        trailingIcon.SetCustomImage(item.CustomUnselectedTrailingIcon);
+                    }
+                    else if (!string.IsNullOrWhiteSpace(item.UnselectedTrailingIcon))
+                    {
+                        trailingIcon.SetImage(item.UnselectedTrailingIcon);
+                    }
+                }
+                else if (item.SelectedTrailingIconIsVisible)
+                {
+                    trailingIcon.IsVisible = false;
                 }
             }
         }
@@ -575,7 +670,9 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             public MaterialCard Container { get; set; }
 
-            public CustomImage Icon { get; set; }
+            public CustomImage LeadingIcon { get; set; }
+
+            public CustomImage TrailingIcon { get; set; }
 
             public Label Label { get; set; }
         }

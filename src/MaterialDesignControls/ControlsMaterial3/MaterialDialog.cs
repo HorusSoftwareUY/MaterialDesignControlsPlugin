@@ -117,6 +117,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(IconAlignmentProperty, value); }
         }
 
+        public static readonly BindableProperty ButtonsAlignmentProperty =
+            BindableProperty.Create(nameof(ButtonsAlignment), typeof(LayoutOptions), typeof(MaterialDialog), defaultValue: LayoutOptions.End);
+
+        public LayoutOptions ButtonsAlignment
+        {
+            get { return (LayoutOptions)GetValue(ButtonsAlignmentProperty); }
+            set { SetValue(ButtonsAlignmentProperty, value); }
+        }
+
         #endregion Properties
 
         #region Headline
@@ -295,6 +304,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(CancelCommandProperty, value); }
         }
 
+        public static readonly BindableProperty CancelIsVisibleProperty =
+            BindableProperty.Create(nameof(CancelIsVisible), typeof(bool), typeof(MaterialDialog), defaultValue: true);
+
+        public bool CancelIsVisible
+        {
+            get { return (bool)GetValue(CancelIsVisibleProperty); }
+            set { SetValue(CancelIsVisibleProperty, value); }
+        }
+
         public static readonly BindableProperty CancelIsEnabledProperty =
             BindableProperty.Create(nameof(CancelIsEnabled), typeof(bool), typeof(MaterialDialog), defaultValue: true);
 
@@ -327,7 +345,7 @@ namespace Plugin.MaterialDesignControls.Material3
         #region AcceptButton
 
         public static readonly BindableProperty AcceptTextProperty =
-            BindableProperty.Create(nameof(AcceptText), typeof(string), typeof(MaterialDialog), defaultValue: "AcceptText");
+            BindableProperty.Create(nameof(AcceptText), typeof(string), typeof(MaterialDialog), defaultValue: "OK");
 
         public string AcceptText
         {
@@ -380,6 +398,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(AcceptCommandProperty, value); }
         }
 
+        public static readonly BindableProperty AcceptIsVisibleProperty =
+            BindableProperty.Create(nameof(AcceptIsVisible), typeof(bool), typeof(MaterialDialog), defaultValue: true);
+
+        public bool AcceptIsVisible
+        {
+            get { return (bool)GetValue(AcceptIsVisibleProperty); }
+            set { SetValue(AcceptIsVisibleProperty, value); }
+        }
+
         public static readonly BindableProperty AcceptIsEnabledProperty =
             BindableProperty.Create(nameof(AcceptIsEnabled), typeof(bool), typeof(MaterialDialog), defaultValue: true);
 
@@ -408,15 +435,6 @@ namespace Plugin.MaterialDesignControls.Material3
         }
 
         #endregion AcceptButton
-
-        public static readonly BindableProperty ButtonsAlignmentProperty =
-            BindableProperty.Create(nameof(ButtonsAlignment), typeof(LayoutOptions), typeof(MaterialDialog), defaultValue: LayoutOptions.End);
-
-        public LayoutOptions ButtonsAlignment
-        {
-            get { return (LayoutOptions)GetValue(ButtonsAlignmentProperty); }
-            set { SetValue(ButtonsAlignmentProperty, value); }
-        }
 
         #region Search
 
@@ -486,6 +504,15 @@ namespace Plugin.MaterialDesignControls.Material3
         #endregion Search
 
         #region Items
+
+        public static readonly BindableProperty QuickSelectionCommandProperty =
+            BindableProperty.Create(nameof(QuickSelectionCommand), typeof(ICommand), typeof(MaterialDialog), defaultValue: null);
+
+        public ICommand QuickSelectionCommand
+        {
+            get { return (ICommand)GetValue(QuickSelectionCommandProperty); }
+            set { SetValue(QuickSelectionCommandProperty, value); }
+        }
 
         public static readonly BindableProperty AllowMultiselectProperty =
             BindableProperty.Create(nameof(AllowMultiselect), typeof(bool), typeof(MaterialDialog), defaultValue: false);
@@ -710,6 +737,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     _cancelBtn.FontFamily = CancelFontFamily;
                     break;
 
+                case nameof(CancelIsVisible):
+                    _cancelBtn.IsVisible = CancelIsVisible;
+                    break;
+
                 case nameof(CancelIsEnabled):
                     _cancelBtn.IsEnabled = CancelIsEnabled;
                     break;
@@ -740,6 +771,10 @@ namespace Plugin.MaterialDesignControls.Material3
 
                 case nameof(AcceptFontFamily):
                     _acceptBtn.FontFamily = AcceptFontFamily;
+                    break;
+
+                case nameof(AcceptIsVisible):
+                    _acceptBtn.IsVisible = AcceptIsVisible;
                     break;
 
                 case nameof(AcceptIsEnabled):
@@ -924,9 +959,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     FontFamily = CancelFontFamily,
                     BackgroundColor = CancelBackgroundColor,
                     Command = CancelCommand,
-                    IsVisible = !string.IsNullOrWhiteSpace(CancelText),
                     MinimumWidthRequest = 80,
-                    CornerRadius = CancelCornerRadius
+                    CornerRadius = CancelCornerRadius,
+                    IsVisible = CancelIsVisible,
+                    IsEnabled = CancelIsEnabled
                 };
 
                 _acceptBtn = new MaterialButton
@@ -940,7 +976,9 @@ namespace Plugin.MaterialDesignControls.Material3
                     Margin = new Thickness(0),
                     Command = AcceptCommand,
                     MinimumWidthRequest = 80,
-                    CornerRadius = AcceptCornerRadius
+                    CornerRadius = AcceptCornerRadius,
+                    IsVisible = AcceptIsVisible,
+                    IsEnabled = AcceptIsEnabled
                 };
 
                 _btnsContainer.Children.Add(_cancelBtn);
@@ -993,7 +1031,7 @@ namespace Plugin.MaterialDesignControls.Material3
                     _optionsContainer.Children.Add(materialCheckbox);
                 }
 
-                if (AllowMultiselect)
+                if (AllowMultiselect && QuickSelectionCommand == null)
                     _acceptBtn.CommandParameter = ItemsSource.Where(x => x.IsSelected).ToList();
                 else
                     _acceptBtn.CommandParameter = ItemsSource.FirstOrDefault(x => x.IsSelected);
@@ -1041,6 +1079,9 @@ namespace Plugin.MaterialDesignControls.Material3
                 {
                     selectedItem.IsSelected = true;
                     materialDialog._acceptBtn.CommandParameter = selectedItem;
+
+                    if (materialDialog.QuickSelectionCommand != null)
+                        materialDialog.QuickSelectionCommand.Execute(selectedItem);
                 }
                 else
                     materialDialog._acceptBtn.CommandParameter = null;

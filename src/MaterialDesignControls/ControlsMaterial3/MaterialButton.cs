@@ -338,6 +338,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(MinimumWidthRequestProperty, value); }
         }
 
+        public static new readonly BindableProperty HeightRequestProperty =
+            BindableProperty.Create(nameof(HeightRequest), typeof(double), typeof(MaterialButton), defaultValue: 40.0);
+
+        public new double HeightRequest
+        {
+            get { return (double)GetValue(HeightRequestProperty); }
+            set { SetValue(HeightRequestProperty, value); }
+        }
+
         public event EventHandler Clicked;
 
         #endregion Bindable properties
@@ -361,8 +370,8 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             _initialized = true;
 
-            MinimumHeightRequest = 40;
-            HeightRequest = 40;
+            base.MinimumHeightRequest = HeightRequest;
+            base.HeightRequest = HeightRequest;
 
             _frameLayout = new Frame
             {
@@ -572,6 +581,10 @@ namespace Plugin.MaterialDesignControls.Material3
                         _minimumWidthRequestSetted = true;
                         WidthRequest = MinimumWidthRequest;
                     }
+                    break;
+
+                case nameof(base.HeightRequest):
+                    base.HeightRequest = HeightRequest;
                     break;
             }
         }

@@ -138,14 +138,18 @@ This property is to set the corner radius of cancel button.
 <br/>
 
 ### Property CancelCommand:
-This property is to the command of the cancel button.
+This property is to set the command of the cancel button.
 <br/>
 
 ### Property CancelIsBusy:
 This property is to show a busy indicator in the cancel button when a command is running.
 <br/>
 
-### Property AcceptIsEnabled:
+### Property CancelIsVisible:
+This property is to set if the cancel button is visible or hidden.
+<br/>
+
+### Property CancelIsEnabled:
 This property is to set if the cancel button is enabled or disabled.
 <br/>
 
@@ -174,11 +178,16 @@ This property is to set the corner radius of accept button.
 <br/>
 
 ### Property AcceptCommand:
-This property is to the command of the accept button.
+This property is to set the command of the accept button.
+If the ItemSource property has a bound list, this command will receive as a parameter the selected item if it is a single selection or a list of selected items if it is multiple selection (AllowMultiselect).
 <br/>
 
 ### Property AcceptIsBusy:
 This property is to show a busy indicator in the accept button when a command is running.
+<br/>
+
+### Property AcceptIsVisible:
+This property is to set if the accept button is visible or hidden.
 <br/>
 
 ### Property AcceptIsEnabled:
@@ -223,6 +232,11 @@ This property is to the font size of the search text.
 
 ### Property SearchTextFontFamily:
 This property is to the font family of the search text.
+<br/>
+
+### Property QuickSelectionCommand:
+This property is to set a quick selection command which will be invoked as soon as the user selects any item from the list.
+This command will receive as a parameter the selected item.
 <br/>
 
 ### Property AllowMultiselect:

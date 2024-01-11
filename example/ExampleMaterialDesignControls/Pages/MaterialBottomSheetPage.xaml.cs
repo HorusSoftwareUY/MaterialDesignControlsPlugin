@@ -19,5 +19,15 @@ namespace ExampleMaterialDesignControls.Pages
                 CloseBottomSheetControl = async (controlName) => await this.FindByName<MaterialBottomSheet>(controlName).Close()
             };
         }
+
+        void materialBottomSheet4_Opened(System.Object sender, System.EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Opened!!!!!");
+        }
+
+        void materialBottomSheet4_Closed(System.Object sender, System.EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Closed!!!!!");
+        }
     }
 }

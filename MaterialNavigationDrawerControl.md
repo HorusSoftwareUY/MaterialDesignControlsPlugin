@@ -68,6 +68,14 @@ This property is to set the section label text font size.
 This property is to set the section label text font family.
 <br/>
 
+### Property SectionDividerIsVisible:
+This property is to set if the section's divider is visible or hidden.
+<br/>
+
+### Property ItemDividerIsVisible:
+This property is to set if the item's divider is visible or hidden.
+<br/>
+
 ### Property DividerColor:
 This property is to set the divider color.
 <br/>
@@ -98,13 +106,21 @@ Its definition is:
 - Text (string) :  Text showed
 - BadgeText (string) :  Text showed in the badge
 - Section (string) :  This property is to dive the items in sections
-- SelectedIcon (string): Icon used when item is selected
-- CustomSelectedIcon (view): Custom view used the item is selected
-- UnselectedIcon (string): Icon used when item is Unselected
-- CustomUnselectedIcon (view): Custom view used when item is Unselected
+- SelectedLeadingIcon (string): Leading icon used when item is selected
+- CustomSelectedLeadingIcon (view): Custom leading view used the item is selected
+- UnselectedLeadingIcon (string): Leading icon used when item is Unselected
+- CustomUnselectedLeadingIcon (view): Custom leading view used when item is Unselected
+- SelectedTrailingIcon (string): Trailing icon used when item is selected
+- CustomSelectedTrailingIcon (view): Custom trailing view used the item is selected
+- UnselectedTrailingIcon (string): Trailing icon used when item is Unselected
+- CustomUnselectedTrailingIcon (view): Custom trailing view used when item is Unselected
 - IsSelected (bool) : by default you can select an item
 - ShowActivityIndicator (bool) : show the activity indicator when the item is selected. By default is true.
 - IsEnabled (bool) : enable or disabled the item. by default is true.
+<br/>
+
+### Property ItemHeightRequest:
+This property is to set the height request of each item.
 <br/>
 
 ### Property Command

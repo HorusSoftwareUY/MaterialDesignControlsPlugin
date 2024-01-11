@@ -29,6 +29,10 @@
                                             HorizontalTextAlignment="Center"
                                             Text="Sample" />
 
+                    <material3:MaterialButton
+                        Text="Change ItemsSource"
+                        Command="{Binding ChangeItemsSourceCommand}" />
+
                     <material3:MaterialNavigationDrawer
                         Headline="Mail"
                         Command="{Binding TestCommand}"
