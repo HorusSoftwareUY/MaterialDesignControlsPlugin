@@ -202,6 +202,10 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(DismissWhenScrimIsTappedProperty, value); }
         }
 
+        public event EventHandler Opened;
+
+        public event EventHandler Closed;
+
         #endregion Bindable properties
 
         #region Constructors
@@ -432,13 +436,21 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             try
             {
+                IsVisible = true;
                 await Task.WhenAll
                 (
                     _scrimBoxView.FadeTo(ScrimOpacity, length: (uint)AnimationDuration),
                     _sheetView.TranslateTo(0, _openPosition, length: (uint)AnimationDuration, easing: Easing.SinIn)
                 );
 
+                var raiseOpened = !IsOpened;
+                
                 IsOpened = true;
+
+                if (raiseOpened)
+                {
+                    Opened?.Invoke(this, null);
+                }
 
                 InputTransparent = _scrimBoxView.InputTransparent = false;
             }
@@ -457,8 +469,16 @@ namespace Plugin.MaterialDesignControls.Material3
                     _scrimBoxView.FadeTo(0, length: (uint)AnimationDuration),
                     _containerView.Content.TranslateTo(x: 0, y: TranslationYClosed, length: (uint)AnimationDuration, easing: Easing.SinIn)
                 );
+                IsVisible = false;
+
+                var raiseClosed = IsOpened;
 
                 IsOpened = false;
+
+                if (raiseClosed)
+                {
+                    Closed?.Invoke(this, null);
+                }
 
                 InputTransparent = _scrimBoxView.InputTransparent = true;
             }

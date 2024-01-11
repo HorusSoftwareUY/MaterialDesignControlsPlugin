@@ -161,7 +161,9 @@
             <material3:MaterialBottomSheet
                 x:Name="materialBottomSheet4"
                 Grid.Row="1"
-                MaximumContainerHeightRequest="300">
+                MaximumContainerHeightRequest="300"
+                Opened="materialBottomSheet4_Opened"
+                Closed="materialBottomSheet4_Closed">
                 <material3:MaterialBottomSheet.Content>
                     <StackLayout
                         Padding="22,44,22,0">
@@ -205,7 +207,7 @@
                         <material3:MaterialButton
                             ButtonType="Text"
                             Command="{Binding CloseBottomSheetCommand}"
-                            CommandParameter="materialBottomSheet3"
+                            CommandParameter="materialBottomSheet4"
                             Text="Close" />
                     </StackLayout>
                 </material3:MaterialBottomSheet.Content>
