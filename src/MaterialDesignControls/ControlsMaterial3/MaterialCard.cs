@@ -230,7 +230,7 @@ namespace Plugin.MaterialDesignControls.Material3
         public virtual void ConsumeEvent(EventType gestureType)
         {
             if (IsEnabled && (_clickedEvent != null || (Command != null && Command.CanExecute(CommandParameter))))
-                TouchAndPressAnimation.Animate(this, gestureType);
+                TouchAndPressAnimation.Animate(this, gestureType, cancelExecuteAction: false);
         }
 
         public virtual void ExecuteAction()

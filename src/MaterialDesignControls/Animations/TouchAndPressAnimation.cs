@@ -6,7 +6,7 @@ namespace Plugin.MaterialDesignControls.Animations
 {
     public static class TouchAndPressAnimation
     {
-        public static void Animate(View view, EventType gestureType)
+        public static void Animate(View view, EventType gestureType, bool cancelExecuteAction = true)
         {
             var touchAndPressEffectConsumer = view as ITouchAndPressEffectConsumer;
 
@@ -16,6 +16,11 @@ namespace Plugin.MaterialDesignControls.Animations
                     SetAnimation(view, touchAndPressEffectConsumer);
                     break;
                 case EventType.Cancelled:
+                    if (cancelExecuteAction)
+                        touchAndPressEffectConsumer.ExecuteAction();
+
+                    RestoreAnimation(view, touchAndPressEffectConsumer);
+                    break;
                 case EventType.Released:
                     touchAndPressEffectConsumer.ExecuteAction();
                     RestoreAnimation(view, touchAndPressEffectConsumer);
