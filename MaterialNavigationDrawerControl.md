@@ -32,6 +32,10 @@ This property is to set the headline text font size.
 This property is to set the headline text font family.
 <br/>
 
+### Property HeadlineMargin:
+This property is to set the headline margin.
+<br/>
+
 ### Property ActiveIndicatorBackgroundColor:
 This property is to set the active indicator background color.
 <br/>
@@ -66,6 +70,10 @@ This property is to set the section label text font size.
 
 ### Property SectionLabelFontFamily:
 This property is to set the section label text font family.
+<br/>
+
+### Property SectionLabelMargin:
+This property is to set the section label margin.
 <br/>
 
 ### Property SectionDividerIsVisible:

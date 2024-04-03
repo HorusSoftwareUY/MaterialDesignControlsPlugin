@@ -74,6 +74,15 @@ namespace Plugin.MaterialDesignControls.Material3
             set { SetValue(HeadlineFontFamilyProperty, value); }
         }
 
+        public static readonly BindableProperty HeadlineMarginProperty =
+            BindableProperty.Create(nameof(HeadlineMargin), typeof(Thickness), typeof(MaterialNavigationDrawer), defaultValue: new Thickness(-1));
+
+        public Thickness HeadlineMargin
+        {
+            get { return (Thickness)GetValue(HeadlineMarginProperty); }
+            set { SetValue(HeadlineMarginProperty, value); }
+        }
+
         public static readonly BindableProperty ActiveIndicatorBackgroundColorProperty =
             BindableProperty.Create(nameof(ActiveIndicatorBackgroundColor), typeof(Color), typeof(MaterialNavigationDrawer), defaultValue: MaterialColor.PrimaryContainer);
 
@@ -153,6 +162,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (string)GetValue(SectionLabelFontFamilyProperty); }
             set { SetValue(SectionLabelFontFamilyProperty, value); }
+        }
+
+        public static readonly BindableProperty SectionLabelMarginProperty =
+            BindableProperty.Create(nameof(SectionLabelMargin), typeof(Thickness), typeof(MaterialNavigationDrawer), defaultValue: new Thickness(-1));
+
+        public Thickness SectionLabelMargin
+        {
+            get { return (Thickness)GetValue(SectionLabelMarginProperty); }
+            set { SetValue(SectionLabelMarginProperty, value); }
         }
 
         public static readonly BindableProperty SectionDividerIsVisibleProperty =
@@ -316,7 +334,7 @@ namespace Plugin.MaterialDesignControls.Material3
             this._lblHeadline = new Label()
             {
                 LineBreakMode = LineBreakMode.NoWrap,
-                Margin = new Thickness(0, 16, 0, 16),
+                Margin = HeadlineMargin != new Thickness(-1) ? HeadlineMargin : new Thickness(0, 16),
                 VerticalOptions = LayoutOptions.Center,
                 TextColor = this.HeadlineColor,
                 IsVisible = !string.IsNullOrWhiteSpace(Headline),
@@ -359,6 +377,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     this._lblHeadline.FontSize = this.HeadlineFontSize;
                     break;
 
+                case nameof(this.HeadlineMargin):
+                    this._lblHeadline.Margin = HeadlineMargin != new Thickness(-1) ? HeadlineMargin : new Thickness(0, 16);
+                    break;
+
                 case nameof(base.Opacity):
                 case nameof(base.Scale):
                 case nameof(base.IsVisible):
@@ -398,8 +420,13 @@ namespace Plugin.MaterialDesignControls.Material3
                         label.TextColor = SectionLabelColor;
                         label.Padding = new Thickness(12, 0);
 
-                        var topLabelMargin = SectionDividerIsVisible ? 0 : 16;
-                        label.Margin = new Thickness(0, topLabelMargin, 0, 16);
+                        if (SectionLabelMargin != new Thickness(-1))
+                            label.Margin = SectionLabelMargin;
+                        else
+                        {
+                            var topLabelMargin = SectionDividerIsVisible ? 0 : 16;
+                            label.Margin = new Thickness(0, topLabelMargin, 0, 16);
+                        }
 
                         _itemsContainer.Children.Add(label);
                     }
