@@ -23,7 +23,7 @@
                 <StackLayout Padding="20,0,20,20"
                              Spacing="20">
 
-                    <contentViews:InfoIndicatorView Message="MaterialSnackBar follows the latest guidelines of Material Design 3. Currently, it doesn't provide the popup/alert behavior, you could resolve it with Rg.Plugins.Popup or with a similar implementation." />
+                    <contentViews:InfoIndicatorView Message="MaterialDialog follows the latest guidelines of Material Design 3. Currently, it doesn't provide the popup/alert behavior, you could resolve it with Rg.Plugins.Popup or with a similar implementation." />
 
                     <material3:MaterialDialog
                         HeadlineText="Basic dialog"
@@ -41,6 +41,30 @@
                         AcceptIsBusy="{Binding AcceptTaskCommand.IsRunning}"
                         CancelText="Cancel"
                         CancelCommand="{Binding CancelCommand}" />
+
+                    <material3:MaterialDivider Margin="0,10" />
+
+                    <material3:MaterialDialog
+                        HeadlineText="Basic dialog with CustomContent"
+                        SupportingText="Basic dialog with a CustomContent, an accept button and cancel button."
+                        AcceptText="Accept"
+                        AcceptCommand="{Binding AcceptWithCustomContentCommand}"
+                        CancelText="Cancel"
+                        CancelCommand="{Binding CancelCommand}"
+                        CancelIsTextUnderlined="True"
+                        AcceptCornerRadius="4">
+                        <material3:MaterialDialog.CustomContent>
+                            <material3:MaterialEntry
+                                Text="{Binding InputText}"
+                                Keyboard="Telephone"
+                                LabelText="Phone number"
+                                Placeholder="Enter your phone number"
+                                ReturnType="Done"
+                                HasBorder="True"
+                                CornerRadius="10"
+                                BorderWidth="1" />
+                        </material3:MaterialDialog.CustomContent>
+                    </material3:MaterialDialog>
 
                     <material3:MaterialDivider Margin="0,10" />
 
