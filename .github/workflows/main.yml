@@ -48,7 +48,8 @@ jobs:
 
     # iOS build
     - name: Build
-      run: msbuild ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
+      #run: msbuild ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
+      run: mono '/tmp/msbuild/MSBuild.dll' ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
       
     # Android build
     - name: Build
