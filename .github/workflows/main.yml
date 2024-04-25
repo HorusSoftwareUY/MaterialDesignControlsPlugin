@@ -14,29 +14,25 @@ jobs:
   build:
 
     #runs-on: macos-latest
-    runs-on: macos-13
+    #runs-on: macos-13
+    runs-on: macos-12
 
     steps:
     
     
     - uses: actions/checkout@v3
 
+    # - name: Install Xamarin.iOS
+    #   run: brew install --cask xamarin-ios
 
-
-
-    - name: Install Xamarin.iOS
-      run: brew install --cask xamarin-ios
-
-    - name: Download Visual Studio for Mac
-      run: curl https://download.visualstudio.microsoft.com/download/pr/ceb0ea3f-4db8-46b4-8dc3-8049d27c0107/91eb158e928097dcb6e42ece2db7ebac/visualstudioformac-17.6.7.417-arm64.dmg -o /tmp/vsformac.dmg
+    # - name: Download Visual Studio for Mac
+    #   run: curl https://download.visualstudio.microsoft.com/download/pr/ceb0ea3f-4db8-46b4-8dc3-8049d27c0107/91eb158e928097dcb6e42ece2db7ebac/visualstudioformac-17.6.7.417-arm64.dmg -o /tmp/vsformac.dmg
       
-    - name: Mount Visual Studio for Mac dmg
-      run: hdiutil attach /tmp/vsformac.dmg
+    # - name: Mount Visual Studio for Mac dmg
+    #   run: hdiutil attach /tmp/vsformac.dmg
       
-    - name: Extract MSBuild
-      run: cp -R /Volumes/Visual\ Studio/Visual\ Studio.app/Contents/MonoBundle/MSBuild/Current/bin /tmp/msbuild
-
-
+    # - name: Extract MSBuild
+    #   run: cp -R /Volumes/Visual\ Studio/Visual\ Studio.app/Contents/MonoBundle/MSBuild/Current/bin /tmp/msbuild
 
     - name: Setup .NET Core SDK 5.0.x
       uses: actions/setup-dotnet@v2
@@ -48,8 +44,8 @@ jobs:
 
     # iOS build
     - name: Build
-      #run: msbuild ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
-      run: mono '/tmp/msbuild/MSBuild.dll' ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
+      run: msbuild ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
+      # run: mono '/tmp/msbuild/MSBuild.dll' ${{ env.IOS_CSPROJ_FILE_PATH }} /t:Rebuild /p:Configuration=Release
       
     # Android build
     - name: Build
