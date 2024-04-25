@@ -39,6 +39,8 @@ namespace Plugin.MaterialDesignControls.Material3
 
         private StackLayout _optionsContainer;
 
+        private ContentView _customContentContainer;
+
         #endregion Attributes
 
         #region Properties
@@ -124,6 +126,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (LayoutOptions)GetValue(ButtonsAlignmentProperty); }
             set { SetValue(ButtonsAlignmentProperty, value); }
+        }
+
+        public static readonly BindableProperty CustomContentProperty =
+            BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(MaterialDialog), defaultValue: null, propertyChanged: OnCustomContentChanged);
+
+        public View CustomContent
+        {
+            get { return (View)GetValue(CustomContentProperty); }
+            set { SetValue(CustomContentProperty, value); }
         }
 
         #endregion Properties
@@ -338,6 +349,15 @@ namespace Plugin.MaterialDesignControls.Material3
         {
             get { return (float)GetValue(CancelCornerRadiusProperty); }
             set { SetValue(CancelCornerRadiusProperty, value); }
+        }
+
+        public static readonly BindableProperty CancelIsTextUnderlinedProperty =
+            BindableProperty.Create(nameof(CancelIsTextUnderlined), typeof(bool), typeof(MaterialDialog), defaultValue: false);
+
+        public bool CancelIsTextUnderlined
+        {
+            get { return (bool)GetValue(CancelIsTextUnderlinedProperty); }
+            set { SetValue(CancelIsTextUnderlinedProperty, value); }
         }
 
         #endregion CancelButton
@@ -753,6 +773,10 @@ namespace Plugin.MaterialDesignControls.Material3
                     _cancelBtn.CornerRadius = CancelCornerRadius;
                     break;
 
+                case nameof(CancelIsTextUnderlined):
+                    _cancelBtn.IsTextUnderlined = CancelIsTextUnderlined;
+                    break;
+
                 case nameof(AcceptText):
                     _acceptBtn.Text = AcceptText;
                     break;
@@ -891,6 +915,12 @@ namespace Plugin.MaterialDesignControls.Material3
                     HorizontalOptions = LayoutOptions.FillAndExpand
                 };
                 container.Children.Add(_supportingLbl);
+
+                _customContentContainer = new ContentView
+                {
+                    IsVisible = false
+                };
+                container.Children.Add(_customContentContainer);
 
                 var stackLayoutOptions = new StackLayout
                 {
@@ -1100,6 +1130,13 @@ namespace Plugin.MaterialDesignControls.Material3
                     RefreshItemList(new List<MaterialDialogItem>(search));
                 }
             });
+        }
+
+        private static void OnCustomContentChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (MaterialDialog)bindable;
+            control._customContentContainer.Content = (View)newValue;
+            control._customContentContainer.IsVisible = true;
         }
 
         #endregion Methods

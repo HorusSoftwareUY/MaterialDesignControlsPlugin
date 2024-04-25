@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Plugin.MaterialDesignControls.Material3;
-using System.ComponentModel;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.Shapes;
 using System.Linq;
 
 namespace ExampleMaterialDesignControls.ViewModels
@@ -17,6 +14,9 @@ namespace ExampleMaterialDesignControls.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<MaterialDialogItem> _itemsSourceColors;
+
+        [ObservableProperty]
+        private string _inputText;
 
         public MaterialDialogViewModel()
         {
@@ -107,6 +107,12 @@ namespace ExampleMaterialDesignControls.ViewModels
         {
             await Task.Delay(1000);
             await this.DisplayAlert(_controlTitle, "Accept button was tapped", "Ok");
+        }
+
+        [ICommand]
+        private async Task AcceptWithCustomContent()
+        {
+            await this.DisplayAlert(_controlTitle, $"Accept button was tapped: {InputText}", "Ok");
         }
 
         [ICommand]
