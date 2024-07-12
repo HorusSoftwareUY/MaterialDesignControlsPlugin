@@ -39,6 +39,12 @@ namespace Plugin.MaterialDesignControls.Material3.iOS
                 Draw();
                 SetNeedsDisplay();
             }
+            else if (Element != null
+                && Element.Width > 0 && Element.Height > 0
+                && (e.PropertyName == MaterialCard.WidthProperty.PropertyName || e.PropertyName == MaterialCard.HeightProperty.PropertyName))
+            {
+                SetNeedsDisplay();
+            }
         }
 
         public override void Draw(CGRect rect)
