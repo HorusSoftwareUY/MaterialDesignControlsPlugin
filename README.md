@@ -4,11 +4,8 @@
 
 MaterialDesignControls Plugin for Xamarin.Forms, provides a collection of Xamarin.Forms controls that follow the [Material Design 3 Guidelines](https://m3.material.io/design/components/selection-controls.html).
 
-
-
-## Coming soon
-[.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/what-is-maui)            
-We're developing the next version of the plugin for .NET MAUI, bringing you exciting features and improvements.    
+> [!WARNING]
+> This Xamarin NuGet package is now deprecated and will no longer receive updates or support. For projects migrating to .NET MAUI, please use [HorusStudio.Maui.MaterialDesignControls](https://www.nuget.org/packages/HorusStudio.Maui.MaterialDesignControls/), which is the updated and maintained version. This new package ensures compatibility with .NET MAUI and includes performance improvements, bug fixes, and future updates. We recommend transitioning to the new package as soon as possible for a better and more stable experience.
 
 ## Demo
 
